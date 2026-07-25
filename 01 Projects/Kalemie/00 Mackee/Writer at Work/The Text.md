@@ -62,3 +62,9 @@ aliases: [Dialogue as Ammunition, Suspense Sentence, Vivid Description, Image Sy
 2. Is any line here just "conversation" (going nowhere) instead of turning the beat?
 3. Does any image in this draft explain its own symbolism, or does it stay quiet enough to work subliminally?
 4. Is there a generic noun/verb + adjective/adverb here that should collapse into one sharp, specific word instead?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Write Sentences That Work|The Twenty-Word Rule]] (Cleland) — same compress-and-hold-back tactic and the same target (cut "to be" as connective tissue), just quantified: the Suspense Sentence rule above is qualitative/craft-philosophical, Cleland's twenty-word average is quantitative and auditable against an actual manuscript — which the Craft Log has already done, flagging 49 uses of "was" in the master draft.

@@ -65,3 +65,9 @@ A protagonist (single, plural, or multi; human or not) must have:
 2. What is the minimal, conservative action Daudi would take here — and what reaction from the world breaks that expectation?
 3. What does Daudi actually risk losing if this action fails? If nothing, raise the stakes before writing on.
 4. Am I narrating this beat from outside Daudi, or have I actually gone in and asked "if I were him right now, what would I do"?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Get Into Your Readers Heads|Stability vs. Confusion and Betrayal]] (Cleland) — McKee's Gap is the crack between a character's expectation (probability) and the world's actual response (necessity), the engine that forces escalating action. Cleland runs the identical mechanism one level up, at the reader's need for stability: readers crave order, so craft must deny it until it returns or its absence is understood. McKee explains why the character must act harder after each gap opens; Cleland explains why the reader keeps turning pages while it happens.

@@ -69,3 +69,10 @@ aliases: [Center of Good, Mystery vs Suspense vs Dramatic Irony, Deus Ex Machina
 2. Am I using Mystery, Suspense, or Dramatic Irony here — and is that the deliberate choice, or did it happen by accident?
 3. Does anything in this scene resolve by luck rather than by a choice Daudi or another character actually makes?
 4. If this beat feels melodramatic, is the real fix to shrink the event, or to deepen what's motivating it?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Add Surprise Sparingly|Bomb Under the Table]] (Cleland) — Hitchcock's bomb example maps directly onto the Mystery/Suspense taxonomy above: an unwarned bomb is Mystery collapsing into cheap surprise, a bomb the audience watches tick is Suspense. Cleland goes further practically, naming the banned words (suddenly, out of nowhere, unexpectedly) that undercut a properly earned surprise at the sentence level.
+- [[Illuminate Fear and Dread|The Three Universal Fears]] (Cleland) — the Dramatic Irony mode above (audience knows more than characters, producing dread) is the exact mechanism Cleland names via denial (Badenheim 1939): characters who should feel fear but don't. Cleland adds a layer this chapter doesn't: dread is fear plus perceived inevitability, and fear/excitement share physiology, so labeling the sensation is itself a craft choice.

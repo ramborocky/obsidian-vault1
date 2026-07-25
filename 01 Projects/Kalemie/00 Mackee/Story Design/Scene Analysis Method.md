@@ -46,3 +46,9 @@ Use this to diagnose a scene that reads flat, or to build one from scratch:
 2. Naming each beat as an action/reaction gerund pair — where does the pattern actually change, and is that where I intended the Turning Point?
 3. Does the closing value differ from the opening value, or is this scene currently a nonevent?
 4. Is any line here saying directly what the subtext should be implying instead?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Reveal Answers Slowly|Unreliable Narrators]] (Cleland) — the Text/Subtext distinction above (surface presentation is deliberately not the truth) is the theoretical foundation for Cleland's "statements with multiple meanings" technique, a direct sentence-level implementation of the same principle. Cleland adds an unreliable-narrator taxonomy (Innocent/Guilty/Biased) that determines how much subtext-withholding a given narrator can credibly sustain.

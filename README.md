@@ -1,2 +1,2 @@
 # obsidian-vault
-Obsidian Vault
+obsidian-vault

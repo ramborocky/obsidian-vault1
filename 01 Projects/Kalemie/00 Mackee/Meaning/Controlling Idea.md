@@ -64,3 +64,9 @@ aliases: [Structure and Meaning, Theme, Value plus Cause, Idea vs Counter-Idea]
 2. Is the Counter-Idea ("action is futile") given a scene with real teeth, or is it just asserted?
 3. Does this scene argue Idea or Counter-Idea — or is it dramatically neutral and cuttable?
 4. Am I explaining the theme in dialogue anywhere? If so, cut it and dramatize instead.
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Know Your Readers|Narrative Question]] (Cleland) — the Controlling Idea (Value + Cause) is retrospective/thematic, proven through the climax's action rather than stated in dialogue. Cleland's Narrative Question is the same organizing promise viewed reader-side and forward-looking: raised early enough that readers buy in before the meaning is earned. Know your ending's meaning (McKee), and plant the question it answers early enough (Cleland).

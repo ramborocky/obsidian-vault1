@@ -90,3 +90,9 @@ aliases: [Causality, Coincidence]
 2. If coincidence appears, does it gather meaning?
 3. Is any coincidence used to end the story?
 4. How can I make the causal chain stronger?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Conclusion  The Triple X Strategy|Triple X Strategy]] (Cleland) — near-identical rule to the deus-ex-machina warning above: every plotline must resolve without leaning on coincidence at the close, though coincidence introduced early (so it gathers meaning) is fair game. Both notes flag the same live Kalemie test case: Jean Luc's twenty-minute arrival at the police station.

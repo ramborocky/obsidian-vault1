@@ -51,3 +51,9 @@ aliases: [Exposition as Ammunition, Show Dont Tell, Backstory, Flashback, Table 
 2. Is this secret being revealed too early, robbing a later scene of its Turning-Point power?
 3. If I cut this piece of narrated backstory/interiority entirely, does the scene still work? If yes, cut it or convert it into a live scene.
 4. Does the reader actually want to know this yet — have I built the curiosity that makes this exposition welcome rather than a chore?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Whisper Dont Shout|Banned Labeling Words]] (Cleland) — same show-don't-tell principle at a different altitude: this chapter fixes it at scene level (convert exposition into ammunition characters weaponize against each other), Cleland's banned-word list fixes it at sentence level (cut look/feel/notice/realize so perception is dramatized, not reported).
