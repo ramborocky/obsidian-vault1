@@ -1,0 +1,295 @@
+{
+  "main": {
+    "id": "5324373015726ba8",
+    "type": "split",
+    "children": [
+      {
+        "id": "4509724f8bf84da7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e7a7b303c61786dc",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01 Projects/Kalemie/00 Dashboard/Dashboard.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Dashboard"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6e67a153482f862a",
+    "type": "split",
+    "children": [
+      {
+        "id": "6d27a3f54c60ea9e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "204eba054dbab200",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5529070963875ef0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "character",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "44979a34ddb3302c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "93d245840504d2de",
+            "type": "leaf",
+            "state": {
+              "type": "story-line-navigator",
+              "state": {},
+              "icon": "compass",
+              "title": "StoryLine navigator"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "86833fea54740961",
+    "type": "split",
+    "children": [
+      {
+        "id": "4fe6a8e3b9addbbe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af1a16a396dd8d0a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "01 Projects/Kalemie/00 Dashboard/Dashboard.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Dashboard"
+            }
+          },
+          {
+            "id": "0e568b3d7e2f2db6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "9a8b3e76fade8d8a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c9d82c1ce19fa775",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "f2a81a5d27222257",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "5537a091e2c13a6e",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "01 Projects/Kalemie/00 Dashboard/Dashboard.md"
+              },
+              "icon": "lucide-info",
+              "title": "File properties for Dashboard"
+            }
+          },
+          {
+            "id": "3048d57f88204dbc",
+            "type": "leaf",
+            "state": {
+              "type": "footnotes",
+              "state": {
+                "file": "01 Projects/Kalemie/06 Scenes/Scene_structure.md.md"
+              },
+              "icon": "lucide-file-signature",
+              "title": "Footnotes"
+            }
+          },
+          {
+            "id": "da625f6a8b86ff1b",
+            "type": "leaf",
+            "state": {
+              "type": "quill-sidebar",
+              "state": {},
+              "icon": "feather",
+              "title": "Quill"
+            }
+          },
+          {
+            "id": "2340c8e24ab5e29a",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "homepage:Open homepage": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "templater-obsidian:Templater": false,
+      "zk-prefixer:Create new unique note": false,
+      "markdown-importer:Open format converter": false,
+      "publish:Publish changes...": false,
+      "audio-recorder:Start/stop recording": false,
+      "random-note:Open random note": false,
+      "workspaces:Manage workspace layouts": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "storyline:StoryLine projects": false,
+      "eventide-quill:Eventide quill sidebar": false
+    }
+  },
+  "active": "e7a7b303c61786dc",
+  "lastOpenFiles": [
+    "06 Scenes.md",
+    "01 Projects/Kalemie/00 Dashboard/Dashboard.md",
+    "01 Projects/Kalemie/07 Narrative Craft/Craft Log.md",
+    "01 Projects/Kalemie/02 Characters/Supporting - Djamela.md",
+    "Daudi.md",
+    "Jean Luc.md",
+    "01 Projects/Kalemie/02 Characters/Protagonist - Daudi.md",
+    "01 Projects/Kalemie/01 Story Brain/Story Brain.md",
+    "Djamela.md",
+    "${Antagonist-Jean-luc}.md",
+    "Untitled 2.md",
+    "01 Projects/Kalemie/10 Research/Research.md",
+    "01 Projects/Kalemie/00 Mackee/Writer at Work/The Text.md",
+    "01 Projects/Kalemie/00 Mackee/Setting and Genre/film genres.md.md",
+    "01 Projects/Kalemie/00 Mackee/Meaning/Controlling Idea.md",
+    "01 Projects/Kalemie/00 Mackee/Character/Character Dimension and Cast Design.md",
+    "01 Projects/Kalemie/00 Mackee/Character/Structure and Character.md",
+    "01 Projects/Kalemie/07 Narrative Craft/Writing Constitution.md",
+    "01 Projects/Kalemie/08 Language/_raw-imports/Lingala Street Lexicon (ChatGPT raw).md",
+    "01 Projects/Kalemie/09 AI Laboratory/AI Suggestions — Scene by Scene.md",
+    "01 Projects/Kalemie/09 AI Laboratory/AIprompts.md.md",
+    "01 Projects/Kalemie/09 AI Laboratory/Laboratory.md",
+    "01 Projects/Kalemie/11 Revision/Revision Checklist.md",
+    "01 Projects/Kalemie/zz_Non-Relevant/stray-orphan-files/Conclusion- ideas.md",
+    "01 Projects/Kalemie/zz_Non-Relevant/superseded-drafts/scenes.md.md",
+    "01 Projects/Kalemie/zz_Non-Relevant/superseded-drafts/00 Draft.md.md",
+    "01 Projects/Kalemie/07 Narrative Craft/Craft Log.md.tmp.18292.cbe1cf7c4455",
+    "01 Projects/Kalemie/STORY PROGRESSION & DRAFTS/DRAFTS/KALEMIE-Draft_with_AI_Questions.md.tmp.18292.3835776395d4",
+    "Untitled.base",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "01 Projects/Kalemie/08 Language/_raw-imports",
+    "01 Projects/Kalemie/Collection Tracker.md.tmp.18292.a7691aced84e",
+    "01 Projects/Kalemie/07 Narrative Craft/Craft Log.md.tmp.18292.7f7c3b137fce",
+    "01 Projects/Kalemie/00 Mackee/Setting and Genre",
+    "01 Projects/Kalemie/zz_Non-Relevant/stray-orphan-files/deepseek_text_20260721_06acfe.txt",
+    "01 Projects/Kalemie/zz_Non-Relevant/superseded-drafts/Scenes-Story progression",
+    "01 Projects/Kalemie/zz_Non-Relevant/superseded-drafts",
+    "01 Projects/Kalemie/03 World/Mihogoni Cycle Map.canvas",
+    "Untitled 3.canvas",
+    "Untitled 2.canvas"
+  ]
+}
