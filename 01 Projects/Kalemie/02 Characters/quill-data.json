@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "chapterOverrides": {
+    "add": [],
+    "remove": []
+  },
+  "reclassifiedEntities": {},
+  "dismissedEntities": [],
+  "snapshots": [
+    {
+      "takenAt": 1784591098164,
+      "totalWords": 985,
+      "chapterCount": 5,
+      "perChapterWords": [
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Antagonist - Jean Luc.md",
+          "title": "Antagonist - Jean Luc",
+          "wordCount": 274
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Protagonist - Daudi.md",
+          "title": "Protagonist - Daudi",
+          "wordCount": 192
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Supporting - D'Juma.md",
+          "title": "Supporting - D'Juma",
+          "wordCount": 173
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Supporting - Djamela.md",
+          "title": "Supporting - Djamela",
+          "wordCount": 173
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Supporting - Morisho.md",
+          "title": "Supporting - Morisho",
+          "wordCount": 173
+        }
+      ]
+    },
+    {
+      "takenAt": 1784591698227,
+      "totalWords": 1028,
+      "chapterCount": 5,
+      "perChapterWords": [
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Antagonist - Jean Luc.md",
+          "title": "Antagonist - Jean Luc",
+          "wordCount": 317
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Protagonist - Daudi.md",
+          "title": "Protagonist - Daudi",
+          "wordCount": 192
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Supporting - D'Juma.md",
+          "title": "Supporting - D'Juma",
+          "wordCount": 173
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Supporting - Djamela.md",
+          "title": "Supporting - Djamela",
+          "wordCount": 173
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Supporting - Morisho.md",
+          "title": "Supporting - Morisho",
+          "wordCount": 173
+        }
+      ]
+    },
+    {
+      "takenAt": 1784592298228,
+      "totalWords": 1443,
+      "chapterCount": 5,
+      "perChapterWords": [
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Antagonist - Jean Luc.md",
+          "title": "Antagonist - Jean Luc",
+          "wordCount": 732
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Protagonist - Daudi.md",
+          "title": "Protagonist - Daudi",
+          "wordCount": 192
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Supporting - D'Juma.md",
+          "title": "Supporting - D'Juma",
+          "wordCount": 173
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Supporting - Djamela.md",
+          "title": "Supporting - Djamela",
+          "wordCount": 173
+        },
+        {
+          "filePath": "01 Projects/Kalemie/02 Characters/Supporting - Morisho.md",
+          "title": "Supporting - Morisho",
+          "wordCount": 173
+        }
+      ]
+    }
+  ]
+}

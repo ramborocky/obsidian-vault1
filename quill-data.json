@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "chapterOverrides": {
+    "add": [],
+    "remove": []
+  },
+  "reclassifiedEntities": {},
+  "dismissedEntities": [],
+  "snapshots": [
+    {
+      "takenAt": 1784585422833,
+      "totalWords": 3291,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "KIM KARDASHIAN AND SEXTAPES AND PARIS HILTON.md",
+          "title": "KIM KARDASHIAN AND SEXTAPES AND PARIS HILTON",
+          "wordCount": 3291
+        }
+      ]
+    },
+    {
+      "takenAt": 1784585882464,
+      "totalWords": 3291,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "KIM KARDASHIAN AND SEXTAPES AND PARIS HILTON.md",
+          "title": "KIM KARDASHIAN AND SEXTAPES AND PARIS HILTON",
+          "wordCount": 3291
+        }
+      ]
+    },
+    {
+      "takenAt": 1784587503826,
+      "totalWords": 3291,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "KIM KARDASHIAN AND SEXTAPES AND PARIS HILTON.md",
+          "title": "KIM KARDASHIAN AND SEXTAPES AND PARIS HILTON",
+          "wordCount": 3291
+        }
+      ]
+    },
+    {
+      "takenAt": 1784592898304,
+      "totalWords": 933,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "Antagonist.md",
+          "title": "Antagonist",
+          "wordCount": 933
+        }
+      ]
+    },
+    {
+      "takenAt": 1784593498158,
+      "totalWords": 933,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "Antagonist.md",
+          "title": "Antagonist",
+          "wordCount": 933
+        }
+      ]
+    },
+    {
+      "takenAt": 1784594138160,
+      "totalWords": 933,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "Antagonist.md",
+          "title": "Antagonist",
+          "wordCount": 933
+        }
+      ]
+    },
+    {
+      "takenAt": 1784594738152,
+      "totalWords": 933,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "Antagonist.md",
+          "title": "Antagonist",
+          "wordCount": 933
+        }
+      ]
+    },
+    {
+      "takenAt": 1784595338160,
+      "totalWords": 933,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "Antagonist.md",
+          "title": "Antagonist",
+          "wordCount": 933
+        }
+      ]
+    },
+    {
+      "takenAt": 1784595938165,
+      "totalWords": 933,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "Antagonist.md",
+          "title": "Antagonist",
+          "wordCount": 933
+        }
+      ]
+    },
+    {
+      "takenAt": 1784596538340,
+      "totalWords": 933,
+      "chapterCount": 1,
+      "perChapterWords": [
+        {
+          "filePath": "Antagonist.md",
+          "title": "Antagonist",
+          "wordCount": 933
+        }
+      ]
+    }
+  ]
+}

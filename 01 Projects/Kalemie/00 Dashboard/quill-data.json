@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "chapterOverrides": {
+    "add": [],
+    "remove": []
+  },
+  "reclassifiedEntities": {},
+  "dismissedEntities": [],
+  "snapshots": [
+    {
+      "takenAt": 1784589901719,
+      "totalWords": 430,
+      "chapterCount": 2,
+      "perChapterWords": [
+        {
+          "filePath": "01 Projects/Kalemie/00 Dashboard/Dashboard.md",
+          "title": "Dashboard",
+          "wordCount": 229
+        },
+        {
+          "filePath": "01 Projects/Kalemie/00 Dashboard/README.md.md",
+          "title": "README.md",
+          "wordCount": 201
+        }
+      ]
+    },
+    {
+      "takenAt": 1784589901862,
+      "totalWords": 430,
+      "chapterCount": 2,
+      "perChapterWords": [
+        {
+          "filePath": "01 Projects/Kalemie/00 Dashboard/Dashboard.md",
+          "title": "Dashboard",
+          "wordCount": 229
+        },
+        {
+          "filePath": "01 Projects/Kalemie/00 Dashboard/README.md.md",
+          "title": "README.md",
+          "wordCount": 201
+        }
+      ]
+    }
+  ]
+}

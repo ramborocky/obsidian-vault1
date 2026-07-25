@@ -1,0 +1,39 @@
+{
+	"nodes":[
+		{"id":"hub","type":"text","text":"# The Mihogoni / Lake Cycle\nA linked story world, not a single story. Kalemie is story #1 — each story stands alone for competitions, but shares world, motifs, and cast with the others.\n\nSee [[Collection Tracker]].","x":-180,"y":-380,"width":460,"height":160,"color":"5"},
+		{"id":"motif-lake","type":"text","text":"**Motif: The Lake**\nEntropy · Memory · Women · Death · Colonial history.\nMust start neutral on the page and *accrue* meaning — never announce itself. See [[Composition]] (Symbolic Ascension).","x":-900,"y":-560,"width":300,"height":170,"color":"4"},
+		{"id":"motif-debris","type":"text","text":"**Motif: Debris / Dead Things**\nDaudi's wall of collected junk — a private theology of refusing to let anything be forgotten.","x":-900,"y":-350,"width":300,"height":150,"color":"4"},
+		{"id":"motif-transport","type":"text","text":"**Motif: BMW vs. Dala Dala**\nClass made physical. Mode of transport as a form of antagonism, not just detail.","x":-900,"y":-160,"width":300,"height":150,"color":"4"},
+		{"id":"story1","type":"text","text":"**Story #1 — Kalemie**\nPOV: Daudi\nStatus: Drafting\nTarget: Commonwealth Short Story Prize\nControlling Idea: *Inaction is complicity because choosing not to act is still a choice.*","x":-420,"y":40,"width":300,"height":190,"color":"2"},
+		{"id":"story2","type":"text","text":"**Story #2 — idea / trunk**\nCandidate POV: D'juma or Djamela\nStatus: Idea\n\nShould argue a *different* position in the Idea/Counter-Idea family than Kalemie, not repeat it in a new setting.","x":-60,"y":40,"width":300,"height":190,"color":"2"},
+		{"id":"story3","type":"text","text":"**Story #3 — idea / trunk**\nCandidate POV: Morisho, or a character not yet written\nStatus: Idea\n\nPull from [[Craft Log]]'s Cut / Original Material Archive for reusable fragments.","x":300,"y":40,"width":300,"height":190,"color":"2"},
+		{"id":"char-daudi","type":"file","file":"01 Projects/Kalemie/02 Characters/Protagonist - Daudi.md","x":-1280,"y":60,"width":280,"height":100},
+		{"id":"char-jeanluc","type":"file","file":"01 Projects/Kalemie/02 Characters/Antagonist - Jean Luc.md","x":-1280,"y":190,"width":280,"height":100},
+		{"id":"char-djuma","type":"file","file":"01 Projects/Kalemie/02 Characters/Supporting - D'juma.md","x":-1280,"y":320,"width":280,"height":100},
+		{"id":"char-djamela","type":"file","file":"01 Projects/Kalemie/02 Characters/Supporting - Djamela.md","x":-1280,"y":450,"width":280,"height":100},
+		{"id":"char-morisho","type":"file","file":"01 Projects/Kalemie/02 Characters/Supporting - Morisho.md","x":-1280,"y":580,"width":280,"height":100},
+		{"id":"ct-file","type":"file","file":"01 Projects/Kalemie/Collection Tracker.md","x":-420,"y":340,"width":300,"height":90},
+		{"id":"ci-file","type":"file","file":"01 Projects/Kalemie/00 Mackee/Meaning/Controlling Idea.md","x":-60,"y":340,"width":300,"height":90},
+		{"id":"comp-file","type":"file","file":"01 Projects/Kalemie/00 Mackee/Story Design/Composition.md","x":300,"y":340,"width":300,"height":90}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"hub","fromSide":"left","toNode":"motif-lake","toSide":"right","label":"shared motif"},
+		{"id":"e2","fromNode":"hub","fromSide":"left","toNode":"motif-debris","toSide":"right","label":"shared motif"},
+		{"id":"e3","fromNode":"hub","fromSide":"left","toNode":"motif-transport","toSide":"right","label":"shared motif"},
+		{"id":"e5","fromNode":"hub","fromSide":"bottom","toNode":"story2","toSide":"top"},
+		{"id":"e6","fromNode":"hub","fromSide":"bottom","toNode":"story3","toSide":"top"},
+		{"id":"e7","fromNode":"motif-lake","fromSide":"bottom","toNode":"story1","toSide":"top","label":"already active in"},
+		{"id":"e8","fromNode":"motif-debris","fromSide":"bottom","toNode":"story1","toSide":"top","label":"already active in"},
+		{"id":"e9","fromNode":"char-djuma","fromSide":"right","toNode":"story2","toSide":"left","label":"could protagonize"},
+		{"id":"e10","fromNode":"char-djamela","fromSide":"right","toNode":"story2","toSide":"left","label":"could protagonize"},
+		{"id":"e11","fromNode":"char-morisho","fromSide":"right","toNode":"story3","toSide":"left","label":"could protagonize"},
+		{"id":"e12","fromNode":"char-daudi","fromSide":"right","toNode":"story1","toSide":"left","label":"protagonist"},
+		{"id":"e13","fromNode":"char-jeanluc","fromSide":"right","toNode":"story1","toSide":"left","label":"antagonist"},
+		{"id":"e14","fromNode":"story1","fromSide":"bottom","toNode":"ct-file","toSide":"top"},
+		{"id":"e15","fromNode":"story2","fromSide":"bottom","toNode":"ci-file","toSide":"top","label":"test against"}
+	],
+	"metadata":{
+		"version":"1.0-1.0",
+		"frontmatter":{}
+	}
+}
