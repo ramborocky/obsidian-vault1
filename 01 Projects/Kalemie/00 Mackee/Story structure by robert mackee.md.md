@@ -5,7 +5,7 @@ aliases: [McKee Index, Story Knowledge Base, MacKee MOC]
 
 # MCKEE KNOWLEDGE BASE — MAP OF CONTENT
 
-*Robert McKee, Story: Substance, Structure, Style, and the Principles of Screenwriting. Compact, application-focused notes, each with a "For Kalemie" section and AI prompts.*
+*Robert McKee, Story: Substance, Structure, Style, and the Principles of Screenwriting. Compact, application-focused notes, each with a "For Kalemie" section and AI prompts. Companion knowledge bases: [[Mastering Suspense by Jane Cleland|Cleland]] (reader psychology and sentence-level suspense craft) and [[01 John Gardner/The Art of Fiction by John Gardner|Gardner]] (the underlying theory of why fiction works at all — the vivid and continuous fictional dream, the active-protagonist requirement, sentimentality/frigidity/mannerism).*
 
 ## Part 2 — The Elements of Story
 

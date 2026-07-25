@@ -5,7 +5,7 @@ aliases: [Cleland Index, Cleland Knowledge Base, Cleland MOC, Suspense Knowledge
 
 # CLELAND KNOWLEDGE BASE — MAP OF CONTENT
 
-*Jane K. Cleland, Mastering Suspense, Structure, and Plot: How to Write Gripping Short Stories and Novels That Keep Readers Hooked from Beginning to End. Compact, application-focused notes, each with a "For Kalemie" section and AI prompts — the sentence-and-suspense-level companion to [[Story structure by robert mackee]] (McKee handles structure/plot architecture; Cleland handles reader psychology and line-level suspense craft).*
+*Jane K. Cleland, Mastering Suspense, Structure, and Plot: How to Write Gripping Short Stories and Novels That Keep Readers Hooked from Beginning to End. Compact, application-focused notes, each with a "For Kalemie" section and AI prompts — the sentence-and-suspense-level companion to [[Story structure by robert mackee]] (McKee handles structure/plot architecture; Cleland handles reader psychology and line-level suspense craft) and to [[01 John Gardner/The Art of Fiction by John Gardner|Gardner]] (the theory underneath both — why an unbroken fictional dream and an earned emotion are what suspense and structure are actually in service of).*
 
 ## Part One — Thinking (Plan Before You Write)
 

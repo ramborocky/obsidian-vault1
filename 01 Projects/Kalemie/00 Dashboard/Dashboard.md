@@ -14,7 +14,7 @@ status: in-progress
 
 ## 📖 CRAFT CHEAT SHEET — READ THIS EVERY TIME YOU OPEN THIS NOTE
 
-*Two sources, everything below traces back to one of them: **McKee** (structure/plot) or **Cleland** (sentence-level craft). Full detail in [[Scene_structure.md]] and [[05 Plot Engine]].*
+*Three sources, everything below traces back to one of them: **McKee** (structure/plot), **Cleland** (sentence-level craft), or **Gardner** (the underlying theory — why the McKee/Cleland rules work at all: the [[The Vivid and Continuous Fictional Dream|vivid and continuous fictional dream]], and why [[Interest, Free Will, and the Active Protagonist|a passive protagonist kills interest]]). Full detail in [[Scene_structure.md]], [[05 Plot Engine]], and [[01 John Gardner/The Art of Fiction by John Gardner|the Gardner index]].*
 
 **STRUCTURE & PLOT (McKee)**
 - Inciting incident happens **onscreen** — the reader watches it, doesn't hear about it after the fact.
@@ -191,7 +191,9 @@ Built from [[Scene_structure.md]]'s own beat list + the Rewrite Checklist's inst
 - [[06 Scenes]]
 - [[Collection Tracker]] — story cycle / submission tracking
 - [[Craft Log]] — pattern log + auto-archived cut material
-- [[Story structure by robert mackee.md|McKee Knowledge Base Index]]
+- [[Story structure by robert mackee.md|McKee Knowledge Base Index]] — structure/plot
+- [[Mastering Suspense by Jane Cleland|Cleland Knowledge Base Index]] — reader psychology/suspense
+- [[The Art of Fiction by John Gardner|Gardner Knowledge Base Index]] — underlying theory
 
 ## Recently Touched (last 14 days)
 ```dataview
