@@ -35,3 +35,9 @@ aliases: [Write Sentences That Work, The Twenty Word Rule, Forward-Moving Senten
 1. In the rain/twenty-seconds passage specifically, do the sentences shorten as the tension peaks, or does the prose stay in its reflective, longer-sentence mode straight through the kiss?
 2. Which specific scenes carry the highest concentration of the master draft's 21 thirty-plus-word sentences, and are those the scenes where tension is supposed to be highest — meaning the fog is landing exactly where it hurts most?
 3. Is there a sentence in the current draft doing real emotional work with a "lukewarm" emotion (sadness, annoyance) that would hit harder rewritten around a "hot" one (rage, dread, loathing)?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[The Text|Suspense Sentence]] (McKee) — same compress-and-hold-back tactic and the same target (cut "to be"), just qualitative rather than quantified: this chapter's twenty-word average is the auditable version of McKee's Suspense Sentence rule — the Craft Log has already run the audit, flagging 49 uses of "was" in the master draft.

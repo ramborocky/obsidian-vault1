@@ -104,3 +104,9 @@ aliases: [Setting and Character, McKee Setting Character]
 2. How does the setting create conflict?
 3. How does the character's relationship to the setting change?
 4. What objects define the character?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Set the Stage|Character-Driven Setting]] (Cleland) — both reject setting-as-decoration in the same direction (character/plot dictates locale, never the reverse); this note's contribution is the taxonomy of what to know about a world, Cleland's is the execution technique (five-senses filtering, less-is-more, theme-alignment test) for how much of it actually belongs on the page.

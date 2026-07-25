@@ -63,3 +63,10 @@ A subplot earns its place only if it does one of these; otherwise it "splits the
 2. Am I stacking conflict on only one level here (just plot mechanics) or also personal and inner conflict in the same beat?
 3. Does the scene right before my ending carry the opposite emotional charge from the ending itself?
 4. If I added or cut this subplot beat, which of the four legitimate subplot jobs would it be doing — and if none, should it be cut?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Janes Plotting Road Map|Twists, Reversals, Dangers (TRDs)]] (Cleland) — Progressive Complications explain why each beat must escalate past the last; Cleland's TRD cadence gives the practical scheduling math for pacing those escalations across a manuscript.
+- [[Layer in Two Subplots|Subplots With Purpose]] (Cleland) — near one-to-one match on subplot legitimacy: the four jobs a subplot must do above (contradict, resonate, delay-inciting, complicate) largely overlap Cleland's checklist (full arc, reveals what the main plot can't, mirrors/contradicts theme, resolves, never overtakes). Cleland adds the short-fiction-scale version directly relevant to Kalemie: one mirroring incident can do a subplot's job.

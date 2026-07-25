@@ -35,3 +35,9 @@ aliases: [Get Into Your Readers' Heads, Stability vs Confusion and Betrayal, Kno
 1. What specifically does Daudi consider his own betrayal — of Djamela, of himself, or both — and is that distinction currently legible on the page, or does the story leave it as generic grief?
 2. Running Cleland's knowledge-gap questionnaire on Djamela specifically: what does she believe she's getting from Jean Luc's world, and at what exact point (if any) does the story show her realizing she's been betrayed by that belief?
 3. Is there a moment where "stability" is restored falsely — a scene that resolves too neatly — that should instead honor Cleland's (and the draft's own) thesis that entropy wins?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[The Substance of Story|The Gap]] (McKee) — this chapter's reader-stability model runs on the same mechanism as McKee's Gap (expectation vs. result), just one level up: McKee explains why the character must escalate after each gap opens, this chapter explains why the reader keeps reading while it happens.

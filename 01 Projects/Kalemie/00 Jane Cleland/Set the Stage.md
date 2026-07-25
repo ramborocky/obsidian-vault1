@@ -35,3 +35,9 @@ aliases: [Set the Stage, Character-Driven Setting, Sensual Setting]
 1. Where in the current draft does description of place slow the scene down rather than emerge through a character's action or line of dialogue?
 2. Does the colonial/extraction imagery (Leopold, the rusted ships, "Directeur, le consul général de Belgique") ever tip into being explained rather than left for the reader to feel — per the Structural Notes' own open question about backdrop vs. structure?
 3. Using Cleland's five-sense method, what does Daudi specifically smell, hear, and touch in the rain/mattress scene beyond what's already there — is there a sense being underused?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[setting and character.md|Setting and Character]] and [[setting dimensions.md|Setting Dimensions]] (McKee) — McKee supplies the taxonomy of what to know about a setting (Period, Duration, Location, Level of Conflict, and how it reveals character); this chapter supplies the execution technique — five-senses filtering, less-is-more, and the theme-alignment test — for how much of that knowledge actually belongs on the page.

@@ -37,3 +37,9 @@ aliases: [Reveal Answers Slowly, Unreliable Narrators, Slow Reveal Techniques]
 1. Is Daudi more the Innocent (limited by youth/vocabulary) or the Biased/Stressed (limited by grief and guilt) — and does the draft commit to one reading, or blur the two in a way that confuses rather than deepens the unreliability?
 2. Of the objects planted in the Option C opening (scar, fob, cologne, selfie), which ones are answered explicitly on the page by the story's end, and which are only ever resolved in the reader's inference?
 3. Does "Chantal" get reintroduced later in a way that makes a reader reinterpret the naming scene retroactively — the hallmark of technique #1 (statements with multiple meanings) — or does the name simply recur without gaining new weight?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Scene Analysis Method|Text and Subtext]] (McKee) — this chapter's double-meaning sentence technique is a direct implementation of McKee's Text/Subtext principle (surface presentation is deliberately not the truth); the unreliable-narrator taxonomy here (Innocent/Guilty/Biased) is useful alongside McKee's beat-by-beat method for diagnosing whether a scene's hidden layer is actually landing.

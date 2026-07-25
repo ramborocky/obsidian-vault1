@@ -34,3 +34,9 @@ Has every plot thread paid off? Is coincidence present anywhere (eliminate it)? 
 1. Going forward, should the vault adopt inline `xxx` markers for small unresolved line-level issues, distinct from the Craft Log's Pattern Log (which is better suited to structural, session-spanning decisions)?
 2. Is Jean Luc's twenty-minute arrival time at the police station currently justified by an earlier planted detail (proximity, surveillance), or does it still read as convenient timing that needs a fix?
 3. Does the current ending deliver a global reflection that closes the entropy/lake motif, or does it end purely on the envelope's image without returning to the story's governing metaphor?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Casuality Vs Coincidence.md|Coincidence]] (McKee) — McKee supplies the theoretical principle (never lean on coincidence at the close; bring it in early instead) and a worked example (Jaws); this chapter's xxx-marker checklist is the practical tool for catching violations before a final draft. Both flag Jean Luc's twenty-minute arrival at the police station as a live test case.

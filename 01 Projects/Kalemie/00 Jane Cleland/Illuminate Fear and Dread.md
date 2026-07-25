@@ -33,3 +33,9 @@ aliases: [Illuminate Fear and Dread, The Three Universal Fears, Dread vs Fear]
 1. Which universal fear (death, abandonment, powerlessness) does each of Daudi, Djamela, and D'juma most specifically embody — and is that fear shown through incident, or still described in the abstract (entropy, gravity) without a concrete physical correlate?
 2. Where else, besides the rain scene, does the story rely on the physiological ambiguity of fear/excitement, and is that ambiguity being resolved too early by naming the emotion outright?
 3. Is Daudi's scientific detachment functioning as a kind of denial (Badenheim-1939-style) — focusing on found objects and physical laws instead of registering the danger — and if so, should that be made more visible as a coping mechanism rather than read purely as narrative voice?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Problems and Solutions|Dramatic Irony]] (McKee) — the denial example here (Badenheim 1939) is a worked instance of McKee's Dramatic Irony mode (reader knows more than character, producing dread rather than anxiety); this chapter adds the physiological mechanism (fear and excitement share symptoms, so naming the sensation is a craft choice) that McKee's structural definition doesn't cover.

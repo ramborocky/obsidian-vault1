@@ -36,3 +36,9 @@ aliases: [Isolate Your Protagonist, Physical vs Social Isolation, The Metaphor M
 1. Is Djamela's social isolation — wanting in to the ghost-kids' world — shown through incident, or does the story still rely on Daudi telling us she envies them?
 2. Does Daudi's habit of "arranging found things" (motherboard, hubcap, antelope skull) ever get named, even obliquely, as a coping mechanism for his own isolation — or does it read only as a character quirk?
 3. Running the Metaphor Machine on Daudi's specific dread (not just entropy in the abstract) — what does the fear of having looked away *feel like, smell like, sound like* to him specifically, using his physics vocabulary?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[setting dimensions.md|Levels of Conflict]] (McKee) — the physical-vs-social isolation distinction here is a special case of McKee's inner/personal/extra-personal conflict ladder: physical isolation sits at the extra-personal/environmental level, social isolation at the personal/relational level, self-isolation at the inner level.

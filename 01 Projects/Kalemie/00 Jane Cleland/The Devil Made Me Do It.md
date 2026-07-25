@@ -31,3 +31,9 @@ aliases: [The Devil Made Me Do It, Red Herrings, Halo and Devil Effects, Bandwag
 1. By the story's end, is Morisho's guilt or innocence definitively resolved on the page — or does the draft currently leave him in permanent, unintentional ambiguity, which Cleland would call an unresolved red herring, a promise broken to the reader?
 2. Where exactly is the detail that, hidden in the middle of a list (not first or last), a careful reader could catch on a re-read but not on a first pass — does one exist yet, or is everything either fully obvious or fully hidden?
 3. Does Daudi's scientific detachment ever cause him to misread a piece of evidence specifically *because* he's looking for a physical-law explanation instead of a human one — and could that be sharpened into a deliberate red herring unique to his character?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Character Dimension and Cast Design|Fall in Love with Your Characters]] (McKee) — the halo/devil effect named here is the reader-side mechanism that McKee's writer-side instruction exploits: build a villain from inside their own conviction of being reasonable, and a reader's automatic halo-effect extrapolation (surface charm/authority reads as goodness) will carry it.

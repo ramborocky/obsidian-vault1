@@ -62,3 +62,9 @@ Stories may cycle this more than once. Story lives at the extremes, not the midd
 2. What conscious Object of Desire does it give Daudi — and what unconscious desire, if any, contradicts it?
 3. What Obligatory Scene does this incident promise the audience, and am I certain to deliver it?
 4. Is this incident placed early enough that the audience isn't bored, but late enough that they understand enough of Daudi's world to feel its full impact?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Janes Plotting Road Map|Twists, Reversals, Dangers (TRDs)]] (Cleland) — this chapter explains why an inciting incident must upset the story's balance onscreen; Cleland's TRD cadence gives the practical scheduling math for spacing structural upsets like it across a manuscript (one TRD every 70–90 pages). McKee is the what-and-why, Cleland is the how-often.

@@ -132,3 +132,10 @@ aliases: [Setting, McKee Setting]
 3. What is the location?
 4. What level of conflict dominates?
 5. What are the laws of probability in my world?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Set the Stage|Character-Driven Setting]] (Cleland) — same rejection of setting-as-decoration; this file's dimension taxonomy (Period, Duration, Location, Level of Conflict) names what to interrogate about a world, Cleland's chapter names how to filter it through a character's senses before it hits the page.
+- [[Isolate Your Protagonist|Physical vs. Social Isolation]] (Cleland) — Cleland's isolation types are a special case that maps onto this file's inner/personal/extra-personal conflict levels: physical isolation sits at the extra-personal/environmental level, social isolation at the personal/relational level, self-isolation ("hidden in plain sight") at the inner level. Useful for placing a specific isolation choice precisely on this broader map rather than treating it as a standalone device.

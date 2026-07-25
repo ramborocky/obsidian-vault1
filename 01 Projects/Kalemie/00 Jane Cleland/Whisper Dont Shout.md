@@ -35,3 +35,9 @@ aliases: [Whisper Don't Shout, Maximize Sound Through Quiet, Banned Labeling Wor
 1. Which of the two competing Scene 1 files should be treated as authoritative for banned-word discipline going forward, given the master draft's 11×/7×/5× hit rates against the revision's near-clean pass — and has the master draft actually been brought up to that standard yet?
 2. In the police station scene, could the officers' dialogue be cut in favor of one or two damning sounds (a drawer, a rustle of the envelope, silence where there should be a stamp or a signature) to let dread do more work than exposition?
 3. Beyond the BMW's swish-not-clink detail, is there another sound in the draft that's currently named generically (a "boom," a "bang," a "scream") that could be replaced with a sound specific to this character's interior state?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Exposition|Exposition as Ammunition]] (McKee) — same show-don't-tell principle one level up: McKee stops a scene from being an inert data-dump by converting exposition into live ammunition between characters; this chapter's banned-word list stops individual sentences from softening even a well-motivated scene into reported perception.

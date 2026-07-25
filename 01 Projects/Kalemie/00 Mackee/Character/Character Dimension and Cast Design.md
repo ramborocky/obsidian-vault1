@@ -53,3 +53,9 @@ aliases: [Character Dimension, Cast Design, Solar System Model, Comic Obsession,
 2. Is any character in this cast currently just moving plot, without a clear contradictory side of Daudi they exist to reveal?
 3. Is Jean Luc written from inside his own self-justification, or from outside contempt?
 4. Am I over-explaining Daudi's motivation anywhere, when leaving a little unexplained would trust the reader more?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[The Devil Made Me Do It|Halo and Devil Effects]] (Cleland) — same character-perception phenomenon from opposite sides of the page: this chapter tells the writer to build a villain from inside their own conviction of being reasonable; Cleland names the reader-side mechanism that exploits (halo/devil effect — surface charm or suspicion is automatically extrapolated into goodness or guilt). Cleland adds a fair-play rule this chapter doesn't have: misdirection via the devil effect obligates the writer to clear an innocent character's name by the end.

@@ -37,3 +37,9 @@ aliases: [Plotting Road Map, TRDs, Twists Reversals Dangers, The Highway]
 1. Label every existing scene as T, R, or D (or a subplot beat) — are three of the same type stacked in a row anywhere, and if so, is that flat pacing or intentional accumulation of dread?
 2. Does the Anitha/two-thousand-shillings beat and the "ghost kids" observation each pull weight as a mirror of Djamela's arc, or are either just atmosphere that could be compressed?
 3. What is the next TRD after the current draft's final scene (the thin envelope) — has one been chosen, or is the ending still searching for its last turn?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[The Inciting Incident|Inciting Incident]] and [[Act Design|Progressive Complications]] (McKee) — the TRD cadence here is the practical pacing tool for the escalation McKee explains theoretically: he covers the what-and-why of upsetting a story's balance, this chapter covers the how-often.

@@ -37,3 +37,9 @@ aliases: [Know Your Readers, Genre Contract, Reader Expectations]
 1. Which narrative question is Kalemie actually answering by its last line — the whodunit, or the did-he-look-away question? Is the current draft honoring both equally, and if so, is that diluting either?
 2. Does every planted object from the Option C opening (motherboard, vaccination scar, cologne, fob, selfie) get its answer delivered on the page before the story ends, or does any resolve only in summary?
 3. Measured against six comparable Commonwealth-adjacent stories, where does Kalemie's current draft read as sufficiently fresh, and where does it read as a familiar shape without a fresh angle yet?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Controlling Idea|Value plus Cause]] (McKee) — this chapter's Narrative Question is the reader-facing, forward-looking half of the same promise McKee's Controlling Idea proves retrospectively at the climax through action, not dialogue.

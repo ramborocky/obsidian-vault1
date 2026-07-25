@@ -31,3 +31,9 @@ aliases: [Add Surprise Sparingly, Bomb Under the Table, Surprise vs Suspense]
 1. Does the thin-envelope moment open onto a new question for the reader to carry into the story's final beat, or does it read as a discrete, closed shock?
 2. Is there a scene where a genuine surprise (not foreshadowed dread, an actual first-occurrence shock) would land harder than the current slow-burn treatment — or does this story's contract require dread throughout, with no real surprises at all?
 3. Auditing for false urgency: how many instances of "suddenly," "out of nowhere," or unearned "to be" constructions survive in the current draft's most tense scenes (the rain scene, the police station)?
+
+---
+
+## Cross-Reference (McKee ↔ Cleland)
+
+- [[Problems and Solutions|Mystery vs Suspense vs Dramatic Irony]] (McKee) — this chapter's bomb-under-the-table example is a direct implementation of McKee's Suspense mode (audience knows what characters don't yet, dread comes from anticipation, not shock); an unwarned bomb collapses into McKee's cheap-surprise failure mode instead.
