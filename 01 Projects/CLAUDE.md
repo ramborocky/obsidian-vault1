@@ -2,7 +2,7 @@
 
 This directory is an Obsidian vault subfolder (`01 Projects`, inside the larger "Obsidian Vault"). It contains:
 
-- **`Kalemie/`** — an in-progress literary short story (target: Commonwealth Short Story Prize), planned as story #1 in a linked story cycle set in the same world. See `Kalemie/Collection Tracker.md` for the cycle plan and `Kalemie/00 Mackee/` for a compact, application-focused knowledge base built from Robert McKee's *Story*.
+- **`Kalemie/`** — an in-progress literary short story (target: Commonwealth Short Story Prize), planned as story #1 in a linked story cycle set in the same world. See `Kalemie/Collection Tracker.md` for the cycle plan, and three parallel craft knowledge bases: `Kalemie/00 Mackee/` (Robert McKee's *Story* — structure/plot), `Kalemie/00 Jane Cleland/` (Jane Cleland's *Mastering Suspense* — reader psychology/sentence-level suspense), and `Kalemie/01 John Gardner/` (John Gardner's *The Art of Fiction* — the underlying theory: the vivid-and-continuous fictional dream, why victim-protagonists fail, sentimentality/frigidity/mannerism).
 - **`Personal/`** — unrelated personal to-do/admin files (NBAA/ACPA study, an Airbnb retreat idea, a general to-do list). Not part of the Kalemie project.
 
 ## Standing Rule: Archive Before Editing (Kalemie prose)
@@ -14,7 +14,10 @@ When making a craft-driven fix (not just a typo), also add a one-line entry to t
 ## Kalemie: How to Work On It
 
 - **Dashboard**: `Kalemie/00 Dashboard/Dashboard.md` — the live action plan, craft cheat sheet (McKee structure rules + Cleland sentence-level rules), and status tracker. Read this first for current priorities.
-- **Craft knowledge base**: `Kalemie/00 Mackee/` — start at `Story structure by robert mackee.md.md` (the index/map of content). Every note ends with a "For Kalemie" application section and "Questions for AI" — use these directly when reviewing or drafting a scene rather than re-deriving McKee's theory from scratch.
+- **Craft knowledge bases** (three, same note pattern throughout — principle → "For Kalemie" application → "Questions for AI"; use these directly rather than re-deriving theory from scratch):
+	- `Kalemie/00 Mackee/` — start at `Story structure by robert mackee.md.md`. Structure and plot: Spine, Acts, Turning Points, the Gap, Controlling Idea.
+	- `Kalemie/00 Jane Cleland/` — start at `Mastering Suspense by Jane Cleland.md`. Reader psychology and sentence-level suspense craft: pacing, banned telling-words, the 20-word rule.
+	- `Kalemie/01 John Gardner/` — start at `The Art of Fiction by John Gardner.md`. The theory underneath both: the vivid-and-continuous fictional dream, why a blank/passive protagonist breaks a story, sentimentality/frigidity/mannerism, the Fichtean curve.
 - **Collection strategy**: `Kalemie/Collection Tracker.md` — Kalemie is being written as the first entry in a story cycle (shared world, motifs, and minor characters reusable across future stories). Only one story should be in active "Drafting" status at a time.
 - **Writing Constitution**: quoted in full at the bottom of the Dashboard — *"We write scenes, not explanations. Objects carry emotion. Dialogue reveals class..."* — treat this as a hard style constraint, not a suggestion.
 
