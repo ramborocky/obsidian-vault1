@@ -7,7 +7,14 @@ This directory is an Obsidian vault subfolder (`01 Projects`, inside the larger 
 
 ## Standing Rule: Archive Before Editing (Kalemie prose)
 
-Before any Edit/Write touches story-prose content under `Kalemie/06 Scenes`, `Kalemie/STORY PROGRESSION & DRAFTS`, `Kalemie/02 Characters`, or `Kalemie/01 Story Brain`, the **pre-edit content is automatically archived** into `Kalemie/07 Narrative Craft/Craft Log.md` (under "Cut / Original Material Archive") by a `PreToolUse` hook (`.claude/hooks/archive-before-edit.sh`, wired in `.claude/settings.json`). Nothing in those folders is silently destroyed — cut material is trunk material for other stories in the cycle. The `00 Mackee` knowledge base and the Craft Log itself are excluded from archiving (no need to archive reference notes).
+> [!WARNING] The automatic hook does NOT exist — verified 2026-07-26
+> This section previously claimed a `PreToolUse` hook at `.claude/hooks/archive-before-edit.sh`, wired in `.claude/settings.json`, automatically archived pre-edit content. **Neither file exists.** `.claude/` at the vault root contains only `worktrees/`. Nothing has ever been auto-archived, and the Craft Log's "Cut / Original Material Archive" has only ever been filled in by hand.
+>
+> **Do not rely on this claim.** It was trusted during the 2026-07-26 rewrite of `Supporting - Djamela.md`; the previous version survived only because git had it committed. Ask before rebuilding the hook — it is worth having, but it is not there now.
+
+The *intent* of the rule still stands and must be honoured manually: before any Edit/Write touches story-prose content under `Kalemie/06 Scenes`, `Kalemie/STORY PROGRESSION & DRAFTS`, `Kalemie/02 Characters`, or `Kalemie/01 Story Brain`, **commit first** so the prior version is recoverable, and paste anything substantial being cut into `Kalemie/07 Narrative Craft/Craft Log.md` under "Cut / Original Material Archive". Cut material is trunk material for other stories in the cycle — see `Kalemie/Collection Tracker.md`.
+
+Recovering a prior version: `git show HEAD:"01 Projects/Kalemie/02 Characters/Supporting - Djamela.md"`
 
 When making a craft-driven fix (not just a typo), also add a one-line entry to the Craft Log's **Pattern Log** naming what broke and which McKee principle applied — this is how recurring failure modes become visible over time, separate from the raw archive.
 
