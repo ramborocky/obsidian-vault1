@@ -100,6 +100,95 @@ Built from [[Scene_structure.md]]'s own beat list + the Rewrite Checklist's inst
 
 ---
 
+## 🔧 HYBRID EXERCISES — SESSION OF 2026-07-27, 09:00–16:00
+
+*Three exercises, each fusing several bases. Every one attacks a fault that is actually open. Do them in order; the first unblocks the other two. Calendar block set for 27 July, 09:00–16:00.*
+
+---
+
+### ▸ HYBRID 1 — THE DELETED QUESTIONS PASS · 09:00–11:00
+
+**Fuses:** Kiteley 200 (Q and A) + [[The Cold Read Protocol]] + Cleland's banned words + Gardner's show-don't-tell
+
+The master draft carries ~40 questions in `[!AI]` callouts that have never been answered *as prose*. Kiteley's exercise is: write tough questions → answer them → **delete the questions**. Steps 1 is done. Steps 2 and 3 have never happened.
+
+**Do this:**
+1. Take three callouts. Start with Scene 7's: *"Does Daudi react to the pregnancy reveal? He should. What does he feel that he doesn't say?"*
+2. Answer each **in Daudi's or Djamela's voice** — never in analysis, never as a reply to me.
+3. Delete the questions. Keep only the answers.
+4. Run Cleland over what remains: no *saw / looked / felt / knew*. Physical action only.
+
+**Output:** ~450 words of usable prose. **Success test:** days later, does a whole story kick at the walls of the fragment?
+
+> **Why hybrid:** Kiteley supplies the mechanism, Learning Curve supplies the questions already written, Cleland polices the answers, Gardner sets the standard they must meet.
+
+---
+
+### ▸ HYBRID 2 — THE CIRCLE AT SIX WORDS · 11:15–13:00
+
+**Fuses:** Kiteley 188 (A Circle) + [[Climax and Conclusion — The Story in Six Words|Barrett]] + [[The Resonant Close|Gardner]] + McKee's TRD5
+
+The ending has been specified as a shape since 22 July — *"cyclical: Daudi finds the envelope, nails it, smiles"* — and has never been written. Kiteley's version is 500 words **permitted to be bad**, which is a different task from "write the ending of your Commonwealth submission."
+
+**Do this:**
+1. Write the ending as a circle — begins and ends at the same place or idea. **500 words, no polishing.**
+2. Find your **climax proper: about six words.** Barrett's model is *"The slide! The slide!"* — four.
+3. Cut everything more than one paragraph past it.
+4. Gardner check: list every image the ending resonates with — motherboard, lake, envelope, entropy, the stop. Has each been planted **twice** earlier with enough texture to be recognised on return?
+
+**Output:** one ending, plus a resonance audit. **Constraint:** under 400 words in final form.
+
+> **Why hybrid:** Kiteley makes it writable, Barrett sets the length and position, Gardner tests whether it earns its weight, McKee confirms it is a decision and not just a stop.
+
+---
+
+### ▸ HYBRID 3 — THE ICEBERG AT 20 PERCENT · 14:00–16:00
+
+**Fuses:** Kiteley 186 (Iceberg) + the 20% rule + [[The Art of Omission — Unity, Padding, and Proportion|Barrett]] + [[The ELIZA Effect and the Vestments of Plausibility]] + Cleland's *whisper don't shout*
+
+Kiteley: *any time you can cut a piece of prose by 20 percent, you should.* On the master draft's 3,941 words that recovers **788 words** — twice what the ending needs.
+
+**Do this:**
+1. Cut the chosen draft by exactly 20%. Do not tighten sentences first — **cut whole units**: Scene 2, the duplicated lake speech, the first sentence of the opening.
+2. Take the police station and rewrite it as an iceberg — most of the story underwater, the back room never entered.
+3. Barrett's local-colour test on what survives: any detail that would describe *any* lake town is padding. *Mia tano mia tano* stays; the visa-free-lake paragraph goes.
+4. Re-measure. Report headroom against the 5,000 ceiling.
+
+**Output:** a shorter, harder draft + a word count you have actually counted.
+
+> **Why hybrid:** Kiteley gives the quota, Barrett gives the test for what to cut, ELIZA explains why the reader gains, Cleland governs what replaces it.
+
+---
+
+## 🔴 3 CRITICAL THINGS — DECIDE BEFORE ANY OF THE ABOVE
+
+*These are not craft tasks. They are decisions, and every hour of craft work is being split four ways until they are made.*
+
+### 1. CHOOSE THE SUBMISSION DRAFT — **blocks everything**
+
+Four complete-or-near-complete drafts now exist of one story:
+
+| Draft | POV | Words | State |
+| --- | --- | --- | --- |
+| [[KALEMIE-Draft_with_AI_Questions\|Master draft]] | First (Daudi) | 3,941 | **No ending.** Two openings. Age contradiction |
+| [[2026-07-26 — Chantal (Djamela POV, Draft 2 — Barrett Pass)\|Chantal D2]] | First (Djamela) | 3,399 | Complete |
+| [[2026-07-26 — Found Things (Daudi, Close Third)\|Found Things]] | Close third | 2,942 | Complete, superseded |
+| [[2026-07-26 — Found Things (Final, Free Indirect Close Third)\|Found Things Final]] | Free indirect close third | 3,655 | Complete |
+
+**Only one can be submitted.** The two real candidates are Chantal and Found Things Final. Score both cold on [[The Judging Rubric — Nine Axes]] — after seven days of not reading them, not today.
+
+### 2. FIND AND RECORD THE ACTUAL DEADLINE — **the field is blank**
+
+The Current Status block below has **`Deadline:`** empty. Every craft decision in this vault has been made against a word ceiling and no date. The Commonwealth Short Story Prize opens and closes on fixed dates and there is no route around a closed window. **Look it up, write it in, and work backwards from it.**
+
+### 3. RE-POINT THIS DASHBOARD — it is aimed at a draft that may not ship
+
+The 7-day scene schedule, the 5 Critical Fixes, the 6 High and 6 Medium below — all of it targets the master draft. Two finished drafts now exist elsewhere and several of these fixes are **already done** in them (the cyclical ending, the bigger BMW gap, Daudi's active choice). Once #1 is decided, rewrite the lists below against the draft that actually ships, and archive the rest.
+
+**Also unresolved:** only one story can hold the motherboard reveal. Chantal has it; Found Things deliberately leaves it unexplained. If both enter the cycle, decide which keeps it — see [[Collection Tracker]].
+
+---
+
 ## 🚨 5 CRITICAL FIXES — DO NOW
 
 - [ ] **1. Move Inciting Incident onscreen** — Daudi learns Djamela is dead. We see it happen.
