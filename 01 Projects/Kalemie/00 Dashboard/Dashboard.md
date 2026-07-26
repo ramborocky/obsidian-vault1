@@ -16,6 +16,10 @@ status: in-progress
 
 *Three sources, everything below traces back to one of them: **McKee** (structure/plot), **Cleland** (sentence-level craft), or **Gardner** (the underlying theory — why the McKee/Cleland rules work at all: the [[The Vivid and Continuous Fictional Dream|vivid and continuous fictional dream]], and why [[Interest, Free Will, and the Active Protagonist|a passive protagonist kills interest]]). Full detail in [[Scene_structure.md]], [[05 Plot Engine]], and [[01 John Gardner/The Art of Fiction by John Gardner|the Gardner index]].*
 
+> [!WARNING] Read this before using the rules below
+> The sentence-level rules in this cheat sheet are **already being met** by the current draft (measured average 14.0 words/sentence, 42% of sentences under 10 words, disciplined perception verbs). The draft's live problems are structural, not line-level, and none of them appear on this page.
+> **Open [[Kalemie — Standing Diagnosis]] first.** It has the measured verdict, the word budget against the 5,000-word prize ceiling, and a corrected priority order. Polishing sentences in a scene that may be cut is the main way this project loses time — see [[The Five Passes]].
+
 **STRUCTURE & PLOT (McKee)**
 - Inciting incident happens **onscreen** — the reader watches it, doesn't hear about it after the fact.
 - Every scene must **turn** — someone's situation changes by the end of it, or cut the scene.
@@ -194,6 +198,12 @@ Built from [[Scene_structure.md]]'s own beat list + the Rewrite Checklist's inst
 - [[Story structure by robert mackee.md|McKee Knowledge Base Index]] — structure/plot
 - [[Mastering Suspense by Jane Cleland|Cleland Knowledge Base Index]] — reader psychology/suspense
 - [[The Art of Fiction by John Gardner|Gardner Knowledge Base Index]] — underlying theory
+- [[Learning Curve|Learning Curve Index]] — **the adversarial base**: what gets cut and by whom
+	- [[Kalemie — Standing Diagnosis]] — measured verdict on the live draft, word budget, corrected priority order
+	- [[The Judging Rubric — Nine Axes]] — current score: **24/45**
+	- [[The First-Page Cut]] — read once before each writing session
+	- [[The Five Passes]] — the fixed edit order; the draft is mid-Pass-1
+	- [[The Cold Read Protocol]] — verbatim prompts for extracting honest feedback
 
 ## Recently Touched (last 14 days)
 ```dataview

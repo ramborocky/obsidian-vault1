@@ -33,7 +33,7 @@ aliases: [Cleland Index, Cleland Knowledge Base, Cleland MOC, Suspense Knowledge
 
 ```dataview
 TABLE file.folder as "Section", aliases as "Also Known As"
-FROM "01 Projects/Kalemie/00 Cleland"
+FROM "01 Projects/Kalemie/00 Jane Cleland"
 WHERE file.name != this.file.name
 SORT file.folder ASC, file.name ASC
 ```
@@ -47,3 +47,5 @@ Every note follows the same shape as the McKee notes: Cleland's principle in com
 McKee and Cleland aren't competing systems — they operate at different altitudes. McKee builds the load-bearing structure: Spine, Acts, Turning Points, the Inciting Incident, Controlling Idea. Cleland wires the house so the lights come on while a reader is inside a specific scene: pacing (TRDs, subplot cadence), reader psychology (confusion/betrayal, knowledge gaps), and line-level craft (sentence length, banned labeling words, red herrings, slow reveals). Use McKee to check whether a scene belongs in the story; use Cleland to check whether the scene, once it belongs, actually lands on the page.
 
 Cross-reference with [[00 Dashboard/Dashboard]] for the live action plan and craft cheat sheet — the Dashboard's "Cleland — the 20-word rule" section is the fast-reference summary of [[Write Sentences That Work]] and [[Whisper Don't Shout]] specifically.
+
+**Status note — read before running another Cleland pass.** Cleland's rules are the ones the draft is already passing. Measured against [[KALEMIE-Draft_with_AI_Questions|the master draft]]: 14.0 words per sentence on average, 42% of sentences under ten words, and only 26 instances of the banned labeling verbs across 3,941 words — full figures in [[Kalemie — Standing Diagnosis]]. The one genuine outstanding line job is `looked` (12 instances). Before spending another session here, confirm via [[The Five Passes]] that the scene in question survives structural revision; polishing sentences in a scene that may be cut is the main way this project loses time. See also [[Learning Curve]], the adversarial fourth base.

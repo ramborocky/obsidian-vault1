@@ -60,3 +60,5 @@ SORT file.folder ASC, file.name ASC
 Every note follows the same shape: McKee's principle in compact form → a **For Kalemie** section applying it directly to Daudi, Djamela, Jean Luc, and the current draft → **Questions for AI** to run against a scene before or after drafting it.
 
 Cross-reference with [[00 Dashboard/Dashboard]] for the live action plan and craft cheat sheet, and [[Scene_structure]] / [[Writing Constitution]] in *07 Narrative Craft* for the sentence-level (Cleland) rules that sit alongside McKee's structural ones.
+
+**McKee's altitude is where the draft's live problems are.** The fourth knowledge base, [[Learning Curve]], scores the current draft at 24/45 on [[The Judging Rubric — Nine Axes]] — and every low-scoring axis is structural (opening authority, scene turn, the gap, structural economy, resonant close) while every high-scoring one is at sentence or image level. That is a McKee diagnosis, not a Cleland one. Start at [[Kalemie — Standing Diagnosis]] for the measured verdict, then work [[The Five Passes|Pass 1]] — cut, merge, reorder — before any further line work.
