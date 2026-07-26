@@ -7,14 +7,28 @@ This directory is an Obsidian vault subfolder (`01 Projects`, inside the larger 
 
 ## Standing Rule: Archive Before Editing (Kalemie prose)
 
-> [!WARNING] The automatic hook does NOT exist — verified 2026-07-26
-> This section previously claimed a `PreToolUse` hook at `.claude/hooks/archive-before-edit.sh`, wired in `.claude/settings.json`, automatically archived pre-edit content. **Neither file exists.** `.claude/` at the vault root contains only `worktrees/`. Nothing has ever been auto-archived, and the Craft Log's "Cut / Original Material Archive" has only ever been filled in by hand.
+> [!NOTE] Hook was missing, now rebuilt and tested — 2026-07-26
+> This section described a `PreToolUse` hook that auto-archives pre-edit prose. On 2026-07-26 the hook was found **not to exist on this machine**: `.claude/` at the vault root held only `worktrees/`.
 >
-> **Do not rely on this claim.** It was trusted during the 2026-07-26 rewrite of `Supporting - Djamela.md`; the previous version survived only because git had it committed. Ask before rebuilding the hook — it is worth having, but it is not there now.
+> It had existed. The Craft Log contains auto-captured entries sourced from `C:\Users\lijumba\Documents\Obsidian Vault\...` — so the rule worked on the previous machine and was lost when the vault was copied here without its `.claude/` folder. **The root cause was `.gitignore`, which contained a blanket `.claude/` rule**, so the hook was never in the repo to travel with the vault. That rule now has explicit exceptions for `settings.json` and `hooks/`.
+>
+> The hook has been rewritten, tested against eight cases (protected/unprotected paths, Windows backslash paths, missing files, non-edit tools, duplicate suppression, and both `CLAUDE_PROJECT_DIR` set and unset), and committed. It is real again.
 
-The *intent* of the rule still stands and must be honoured manually: before any Edit/Write touches story-prose content under `Kalemie/06 Scenes`, `Kalemie/STORY PROGRESSION & DRAFTS`, `Kalemie/02 Characters`, or `Kalemie/01 Story Brain`, **commit first** so the prior version is recoverable, and paste anything substantial being cut into `Kalemie/07 Narrative Craft/Craft Log.md` under "Cut / Original Material Archive". Cut material is trunk material for other stories in the cycle — see `Kalemie/Collection Tracker.md`.
+Before any Edit/Write touches story-prose content under `Kalemie/06 Scenes`, `Kalemie/STORY PROGRESSION & DRAFTS`, `Kalemie/02 Characters`, or `Kalemie/01 Story Brain`, the **pre-edit content is automatically archived** to `Kalemie/07 Narrative Craft/Craft Log.md` under "Cut / Original Material Archive" by `.claude/hooks/archive-before-edit.sh`, wired in `.claude/settings.json`. Reference material is excluded — the four knowledge bases and the Craft Log itself. Identical consecutive content is not re-archived. The hook never blocks an edit; archiving is best-effort by design.
 
-Recovering a prior version: `git show HEAD:"01 Projects/Kalemie/02 Characters/Supporting - Djamela.md"`
+Cut material is trunk material for other stories in the cycle — see `Kalemie/Collection Tracker.md`.
+
+**Verify the hook is live** (run after moving the vault, or if archiving seems to have stopped):
+
+```bash
+bash -c 'f="$PWD/01 Projects/Kalemie/02 Characters/Protagonist - Daudi.md"; n=$(grep -c "auto-archived" "$PWD/01 Projects/Kalemie/07 Narrative Craft/Craft Log.md"); printf "{\"tool_name\":\"Edit\",\"tool_input\":{\"file_path\":\"%s\"}}" "$f" | bash .claude/hooks/archive-before-edit.sh; m=$(grep -c "auto-archived" "$PWD/01 Projects/Kalemie/07 Narrative Craft/Craft Log.md"); [ "$m" -gt "$n" ] && echo "HOOK LIVE" || echo "HOOK NOT FIRING"'
+```
+
+**Recover a prior version of any tracked file:**
+
+```bash
+git show HEAD:"01 Projects/Kalemie/02 Characters/Supporting - Djamela.md"
+```
 
 When making a craft-driven fix (not just a typo), also add a one-line entry to the Craft Log's **Pattern Log** naming what broke and which McKee principle applied — this is how recurring failure modes become visible over time, separate from the raw archive.
 
