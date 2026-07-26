@@ -9,6 +9,13 @@ currency: TZS
 
 > **You log. I analyse.** Add one line per spend, whenever. Don't categorise carefully, don't total anything, don't tidy. That is my job.
 
+> [!TIP] 📊 Visual monitor
+> **[Open the Money Monitor →](https://claude.ai/code/artifact/87e856bb-cef9-47cb-a8e0-bbb46213b339)**
+>
+> At-a-glance view of the same numbers: unaccounted cash up top, category bars, and the items that need a decision from you flagged in red. Works on your phone, light or dark.
+>
+> **It is private** — only you can see it unless you share it from the page's share menu. Add rows below, say *"do the expenses"*, and I refresh it at the same link.
+
 ---
 
 ## HOW TO LOG
