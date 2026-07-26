@@ -11,10 +11,14 @@
             "id": "88d12e12903022d7",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "01 Projects/Kalemie/01 Story Brain/Scenario ΓÇö Arcs, Beats & Scenes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Scenario ΓÇö Arcs, Beats & Scenes"
             }
           }
         ]
@@ -160,6 +164,16 @@
               "icon": "lucide-list",
               "title": "Outline of Welcome"
             }
+          },
+          {
+            "id": "0fc83c39283c5e92",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
           }
         ]
       }
@@ -176,47 +190,52 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "storyline:StoryLine projects": false,
+      "eventide-quill:Eventide quill sidebar": false,
+      "homepage:Open homepage": false
     }
   },
   "active": "5fb4b717ae361959",
   "lastOpenFiles": [
+    "01 Projects/Kalemie/02 Characters/Supporting - Morisho.md",
+    "01 Projects/Kalemie/02 Characters/Protagonist - Daudi.md",
+    "01 Projects/Kalemie/01 John Gardner/Working Backward from the Climax — the Victim-Story Trap.md",
+    "01 Projects/Kalemie/01 John Gardner/Vocabulary and the Buried Symbol.md",
+    "01 Projects/Kalemie/01 John Gardner/Three Faults of Soul — Sentimentality, Frigidity, Mannerism.md",
+    "01 Projects/Kalemie/01 John Gardner/The Resonant Close.md",
+    "01 Projects/Kalemie/01 John Gardner/The Vivid and Continuous Fictional Dream.md",
+    "01 Projects/Kalemie/01 John Gardner/The Fichtean Curve.md",
+    "01 Projects/Kalemie/01 John Gardner/The Novella as Continuous Stream — Ritual Within Realism.md",
+    "01 Projects/Kalemie/01 John Gardner/The Barn Exercise — Indirection and Symbolic Description.md",
+    "01 Projects/Kalemie/01 John Gardner/The Art of Fiction by John Gardner.md",
+    "01 Projects/Kalemie/01 John Gardner/Show, Don't Tell — Needless Explanation.md",
+    "01 Projects/Kalemie/01 John Gardner/Sentence-Level Clumsiness.md",
+    "01 Projects/Kalemie/01 John Gardner/Sentence Rhythm as Emotional Instrument.md",
+    "01 Projects/Kalemie/01 John Gardner/Psychic Distance.md",
+    "01 Projects/Kalemie/01 John Gardner/Profluence — Resolution, Logical Exhaustion, and Emphasis vs Function.md",
+    "01 Projects/Kalemie/01 John Gardner/Point of View — From Barbaric First Person to Authorial Omniscient.md",
+    "01 Projects/Kalemie/01 John Gardner/One Interconnected Gesture — Character, Plot, Setting.md",
+    "01 Projects/Kalemie/01 John Gardner/Learning by Exercise — the Value of Indifference.md",
+    "01 Projects/Kalemie/01 John Gardner/Interest, Free Will, and the Active Protagonist.md",
+    "01 Projects/Kalemie/01 John Gardner/Genre as the Writer's First Unit of Thought.md",
+    "01 Projects/Kalemie/01 John Gardner/Exploration vs Demonstration.md",
+    "01 Projects/Kalemie/01 John Gardner/Delay and the Anguish of Choice.md",
+    "01 Projects/Kalemie/01 John Gardner/Aesthetic Law and Artistic Mystery.md",
+    "01 Projects/Kalemie/01 John Gardner",
+    "01 Projects/Kalemie/02 Characters/Antagonist - Jean Luc.md",
     "01 Projects/Kalemie/00 Mackee/00 Mackee/Character/Structure and Character.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Character/Character Dimension and Cast Design.md",
     "01 Projects/Kalemie/00 Mackee/00 Mackee/Character",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/world building checklist.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/settings and genre.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/setting dimensions.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/setting and character.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/reinventing genres.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/mixing genres.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/mastery of genres.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/gift of endurance.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/genre conventions.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/film genres.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/creative choices.md.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre/creative limitation.md.md",
     "01 Projects/Kalemie/00 Mackee/00 Mackee/Setting and Genre",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Writer at Work/The Principle of Antagonism.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Writer at Work/A Writer_s Method.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Writer at Work/The Text.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Writer at Work/Problems and Solutions.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Writer at Work/Exposition.md",
     "01 Projects/Kalemie/00 Mackee/00 Mackee/Writer at Work",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Story Design/The Inciting Incident.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Story Design/Scene Design.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Story Design/The Substance of Story.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Story Design/Crisis, Climax, Resolution.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Story Design/Scene Analysis Method.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Story Design/Composition.md",
-    "01 Projects/Kalemie/00 Mackee/00 Mackee/Story Design/Act Design.md",
     "01 Projects/Kalemie/00 Mackee/00 Mackee/Story Design",
     "01 Projects/Kalemie/00 Mackee/00 Mackee/Structure",
     "01 Projects/Kalemie/00 Mackee/00 Mackee/Meaning",
     "01 Projects/Kalemie/00 Mackee/00 Mackee",
     "01 Projects/Kalemie/Jane Cleland old files",
     "01 Projects/Kalemie/00 Jane Cleland",
-    "Templates2/New Literary Project2",
     "claudey/01 Projects/Kalemie/03 World/Mihogoni Cycle Map.canvas",
     "claudey/Untitled.canvas",
     "claudey/Untitled 3.canvas",

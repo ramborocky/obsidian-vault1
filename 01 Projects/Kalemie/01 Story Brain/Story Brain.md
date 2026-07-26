@@ -19,7 +19,7 @@ story: Kalemie
 - **Narrative Question:** 
 - **Theme:** 
 - **Time Span:** 
-- **Setting:** 
+- **Setting:** cc
 
 ## Characters
 - [[02 Characters/Protagonist - Daudi]]
