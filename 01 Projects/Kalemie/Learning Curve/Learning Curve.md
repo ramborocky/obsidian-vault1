@@ -9,7 +9,9 @@ aliases: [Learning Curve, Learning Curve Index, The Critique Engine]
 
 ## What This Is
 
-[[Story structure by robert mackee|McKee]], [[Mastering Suspense by Jane Cleland|Cleland]] and [[The Art of Fiction by John Gardner|Gardner]] are **generative** — they tell you what to build. Learning Curve is **adversarial** — it tells you what gets cut, and by whom, and on which page.
+[[Story structure by robert mackee|McKee]], [[Mastering Suspense by Jane Cleland|Cleland]], [[The Art of Fiction by John Gardner|Gardner]] and [[Short Story Writing by Charles Raymond Barrett|Barrett]] are **generative** — they tell you what to build. Learning Curve is **adversarial** — it tells you what gets cut, and by whom, and on which page.
+
+Barrett is the closest ally of the four. His chapter on beginnings states [[The First-Page Cut|the first-page cut]] in 1900 — the editor reads no more than the first page of three manuscripts in four — and his chapter on endings adds the test this base had missed: **the editor then turns straight to the last page** to see whether the promise was kept. Read [[Climax and Conclusion — The Story in Six Words]] alongside [[The First-Page Cut]]; together they are the whole of how a story is actually judged.
 
 It has two halves, and they came from two different places:
 

@@ -198,6 +198,11 @@ Built from [[Scene_structure.md]]'s own beat list + the Rewrite Checklist's inst
 - [[Story structure by robert mackee.md|McKee Knowledge Base Index]] — structure/plot
 - [[Mastering Suspense by Jane Cleland|Cleland Knowledge Base Index]] — reader psychology/suspense
 - [[The Art of Fiction by John Gardner|Gardner Knowledge Base Index]] — underlying theory
+- [[Short Story Writing by Charles Raymond Barrett|Barrett Knowledge Base Index]] — the short story **as a form with edges**: what it cannot afford
+	- [[Titles Good and Bad]] — **"Kalemie" fails three of five title tests**; "Chantal" passes
+	- [[The Balance Test — Length as a Function of Idea]] — his ideal length (3,000–5,000) is the prize window almost exactly
+	- [[The Unities in Miniature]] — the story runs two actions; only one is being paid off
+	- [[Climax and Conclusion — The Story in Six Words]] — the editor's second test, which the draft currently fails outright
 - [[Learning Curve|Learning Curve Index]] — **the adversarial base**: what gets cut and by whom
 	- [[Kalemie — Standing Diagnosis]] — measured verdict on the live draft, word budget, corrected priority order
 	- [[The Judging Rubric — Nine Axes]] — current score: **24/45**
