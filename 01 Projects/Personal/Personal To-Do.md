@@ -19,6 +19,7 @@ Pace: one item per day. Don't stack them.
 ## Linked Projects (their own daily lists — see individually)
 - [[House - Airbnb Writers Retreat]]
 - [[ACPA(T) NBAA To-Do]]
+- [[Expenses]] — log spending here, one line each. Say "do the expenses" and I'll categorise, total and flag what matters.
 
 ---
 
