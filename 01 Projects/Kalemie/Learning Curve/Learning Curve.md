@@ -11,6 +11,8 @@ aliases: [Learning Curve, Learning Curve Index, The Critique Engine]
 
 [[Story structure by robert mackee|McKee]], [[Mastering Suspense by Jane Cleland|Cleland]], [[The Art of Fiction by John Gardner|Gardner]] and [[Short Story Writing by Charles Raymond Barrett|Barrett]] are **generative** — they tell you what to build. Learning Curve is **adversarial** — it tells you what gets cut, and by whom, and on which page.
 
+**And a warning this base has earned the right to give itself.** Diagnosis has a ceiling. Kalemie has been comprehensively diagnosed since July and still has no ending. When the problem stops being *what is wrong* and becomes *nothing is getting written*, close this base and open [[The 3 AM Epiphany by Brian Kiteley|Kiteley]] — specifically [[Prescriptions for the Live Draft]], which maps every fault named here to an exercise with a word count. Judgement and generation are different tools; this one is not the second.
+
 Barrett is the closest ally of the four. His chapter on beginnings states [[The First-Page Cut|the first-page cut]] in 1900 — the editor reads no more than the first page of three manuscripts in four — and his chapter on endings adds the test this base had missed: **the editor then turns straight to the last page** to see whether the promise was kept. Read [[Climax and Conclusion — The Story in Six Words]] alongside [[The First-Page Cut]]; together they are the whole of how a story is actually judged.
 
 It has two halves, and they came from two different places:

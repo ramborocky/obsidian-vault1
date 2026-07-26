@@ -57,4 +57,6 @@ That makes him the most immediately useful of the four for a story with a **hard
 
 Chapters not given their own note: **II — Short Stories Classified** (a taxonomy of story types, of historical interest), **XII — The Labor of Authorship** (revision habits, largely absorbed into [[The Five Passes]]), and **XIII — The Quest of a Market** (1900 magazine submission practice, entirely obsolete — use [[Collection Tracker]] instead).
 
+**Barrett gives the constraints; [[The 3 AM Epiphany by Brian Kiteley|Kiteley]] gives the drills.** They pair better than any other two bases here: Barrett says the story must end within a paragraph of its climax and Kiteley hands you [[Internal Structure — Shapes for an Ending|exercise 188]], five hundred words, permitted to be bad. Barrett says cut the padding; Kiteley says any prose can lose 20 percent. Where Barrett diagnoses, Kiteley prescribes — see [[Prescriptions for the Live Draft]].
+
 Cross-reference with [[00 Dashboard/Dashboard]] for the live action plan, [[Learning Curve]] for the adversarial counterpart to all four author bases, and [[Kalemie — Standing Diagnosis]] for the measured state of the draft Barrett's rules are being applied to.

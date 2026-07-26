@@ -203,6 +203,11 @@ Built from [[Scene_structure.md]]'s own beat list + the Rewrite Checklist's inst
 	- [[The Balance Test — Length as a Function of Idea]] — his ideal length (3,000–5,000) is the prize window almost exactly
 	- [[The Unities in Miniature]] — the story runs two actions; only one is being paid off
 	- [[Climax and Conclusion — The Story in Six Words]] — the editor's second test, which the draft currently fails outright
+- [[The 3 AM Epiphany by Brian Kiteley|Kiteley Knowledge Base Index]] — **the only base that prescribes instead of diagnosing**
+	- [[Prescriptions for the Live Draft]] — **every open fault mapped to a numbered exercise.** Includes a 7-day replacement for the schedule below, which has not moved since Day 1
+	- [[What You Are Censoring]] — the exercise aimed straight at Scene 6
+	- [[Q and A — Delete the Questions]] — turns the draft's 40 unanswered `[!AI]` callouts into prose
+	- [[The Method — Restrict and Liberate]] — the 20% rule: cutting the draft by a fifth recovers **788 words**, twice what the ending needs
 - [[Learning Curve|Learning Curve Index]] — **the adversarial base**: what gets cut and by whom
 	- [[Kalemie — Standing Diagnosis]] — measured verdict on the live draft, word budget, corrected priority order
 	- [[The Judging Rubric — Nine Axes]] — current score: **24/45**
