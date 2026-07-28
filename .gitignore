@@ -21,3 +21,15 @@
 
 # Editor lock/temp files (Word, Obsidian plugins).
 ~$*
+
+# Obsidian UI state. Rewritten every time a pane is moved, so it shows up
+# dirty constantly and its diffs say nothing about the writing.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Vendored plugin bundles — ~21 MB of third-party build output that dwarfs the
+# notes themselves. Reinstallable from Obsidian's community plugin browser.
+# Each plugin's own data.json IS tracked, so settings still travel with the vault.
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/styles.css
+.obsidian/plugins/*/manifest.json
