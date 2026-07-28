@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{
+			"id":"f77222a67ef36cda",
+			"type":"text",
+			"text":"",
+			"styleAttributes":{},
+			"x":-240,
+			"y":140,
+			"width":260,
+			"height":60
+		}
+	],
+	"edges":[],
+	"metadata":{
+		"version":"1.0-1.0",
+		"frontmatter":{}
+	}
+}

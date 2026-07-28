@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "chapterOverrides": {
+    "add": [],
+    "remove": []
+  },
+  "reclassifiedEntities": {},
+  "dismissedEntities": [],
+  "snapshots": [
+    {
+      "takenAt": 1784597098531,
+      "totalWords": 9105,
+      "chapterCount": 2,
+      "perChapterWords": [
+        {
+          "filePath": "01 Projects/Kalemie/06 Scenes/Scene Template.md",
+          "title": "Scene Template",
+          "wordCount": 5579
+        },
+        {
+          "filePath": "01 Projects/Kalemie/06 Scenes/Scene_structure.md.md",
+          "title": "Scene_structure.md",
+          "wordCount": 3526
+        }
+      ]
+    }
+  ]
+}

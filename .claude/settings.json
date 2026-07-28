@@ -1,0 +1,16 @@
+{
+  "$comment": "Kalema vault settings. The PreToolUse hook archives pre-edit story prose to the Craft Log before Write/Edit overwrites it. Rebuilt 2026-07-26 after the original was lost when the vault was copied from C:\\Users\\lijumba without its .claude folder. The absolute path is a deliberate fallback for exactly that failure mode — if the vault moves again, update it, and verify with the command in 01 Projects/CLAUDE.md.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'H=\"$CLAUDE_PROJECT_DIR/.claude/hooks/archive-before-edit.sh\"; [ -f \"$H\" ] || H=\"C:/Users/rmhina/Documents/Kalema/.claude/hooks/archive-before-edit.sh\"; [ -f \"$H\" ] && exec bash \"$H\" || exit 0'"
+          }
+        ]
+      }
+    ]
+  }
+}

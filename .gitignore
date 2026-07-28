@@ -1,0 +1,23 @@
+# Claude Code working files.
+#
+# Everything under .claude/ is ignored EXCEPT the vault's shared tooling:
+# settings.json and the hooks that back the "archive before editing" rule.
+#
+# Why the exception: a blanket `.claude/` rule is how the original
+# archive-before-edit hook was lost. The vault was copied here from
+# C:\Users\lijumba\... without its .claude/ folder, CLAUDE.md went on claiming
+# the hook existed, and nothing was archived. Keeping the hook tracked means it
+# travels with the vault. See 01 Projects/CLAUDE.md.
+.claude/*
+!.claude/settings.json
+!.claude/hooks/
+
+# Machine-local overrides and session scratch stay out of the repo.
+.claude/settings.local.json
+.claude/worktrees/
+
+# Hook state file (regenerated automatically).
+01 Projects/Kalemie/07 Narrative Craft/.last-archived
+
+# Editor lock/temp files (Word, Obsidian plugins).
+~$*
