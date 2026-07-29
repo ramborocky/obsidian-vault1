@@ -20,6 +20,13 @@ source: commonwealthfoundation.com
 
 ## 🔴 THE ONE THAT MATTERS — AI, AND WHAT IT MEANS FOR THIS VAULT
 
+> [!danger] Identified 2026-07-29 — the review was about a story we now have
+> The allegations concerned **[[Nazir — The Serpent in the Grove|*The Serpent in the Grove*]] by Jamir Nazir**, the Caribbean regional winner. The Foundation investigated, cleared it, and **it then won the overall prize from 7,806 entries.** Published in Granta.
+>
+> [The Bookseller](https://www.thebookseller.com/news/jamir-nazir-wins-commonwealth-short-story-prize-after-ai-review-clears-regional-winner) · [The Daily Star](https://www.thedailystar.net/culture/books-literature/news/news/jamir-nazir-wins-2026-commonwealth-short-story-prize-following-ai-review-4214976) · [Slate](https://slate.com/culture/2026/07/jamir-nazir-commonwealth-short-story-prize-ai-granta-magazine-controversy.html)
+>
+> **What this means for you, concretely:** an accusation can be made against a winner, publicly, and the burden lands on the writer to produce drafts, timestamps and notes. **Nazir survived it because that evidence existed.** Yours exists too — four dated drafts, a git history, and a vault full of notes. **Keep committing. That is the whole insurance policy.**
+
 The 22 June statement records that the Foundation **investigated allegations that AI was used to write winning stories.** How they investigated:
 
 > They examined *"working drafts, time-stamped documents and notes"* and concluded: *"we are satisfied that AI was not used to write the winning stories."*

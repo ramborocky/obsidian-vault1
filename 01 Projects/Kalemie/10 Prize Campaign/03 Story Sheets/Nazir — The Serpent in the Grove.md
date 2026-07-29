@@ -1,26 +1,66 @@
 ---
-tags: [kalemie, prize, campaign, story-sheet, analysis]
+tags: [kalemie, prize, campaign, story-sheet, analysis, benchmark, winner]
 story: Kalemie
 date: 2026-07-29
 title: The Serpent in the Grove
 author: Jamir Nazir
-prize: unidentified
+prize: "WINNER — Commonwealth Short Story Prize 2026 (Caribbean regional, then overall)"
+published: Granta
 words: 3413
 score: 31
 competence: Y
 short_sentence_ratio: 52%
+role: THE TARGET
 ---
 
-# 📋 STORY SHEET — *The Serpent in the Grove*
+# 🏆 STORY SHEET — *The Serpent in the Grove*
 
-**Jamir Nazir** · 3,413 words · scored **31 / 45** · instrument: [[01 The Six — Analysis Instrument]]
+**Jamir Nazir** · 3,413 words · **WINNER, Commonwealth Short Story Prize 2026** · scored **31 / 45**
 
-> [!warning] Source text deliberately NOT stored in this vault
-> The other sheets have full texts in `_source texts/`. **This one does not, and the others should probably be removed.**
+> [!danger] This is not another data point. This is the target itself.
+> **Overall winner of the exact prize [[Chantal — Prize Plan|Chantal]] is being written for.** Caribbean regional winner in May 2026, then overall winner, **selected from 7,806 entries.** Published in [Granta](https://granta.com/the-serpent-in-the-grove/).
 >
-> This repository is **public**. `_source texts/` currently holds the complete text of two copyrighted stories by living authors, readable by anyone. That was a reasonable thing to do in a private vault and is not one in a public repo. Analysis, measurement and brief quotation for criticism are fine; republishing whole stories is not ours to do.
+> **Chair of the judging panel: Louise Doughty** — whose sentence is the epigraph of [[The Judging Rubric — Nine Axes|the Nine Axes]]. She called it *"an original piece, poetic and deeply moving."*
 >
-> Everything below was measured before the text was discarded. **Nothing here needs the full text again.** See [[12 The Rules — Source of Truth]] on the repo being public.
+> Every other story on the board placed *somewhere unidentified*. This one won *here*. **It outranks the entire board as evidence, including Baldwin.**
+
+> [!warning] And it is the story from the AI review
+> The [[12 The Rules — Source of Truth|22 June statement]] you already have in the vault — the one about examining *"working drafts, time-stamped documents and notes"* — **was about this story.** Allegations were raised, the Foundation investigated, and it was cleared. It then won.
+>
+> **Sources:** [The Bookseller](https://www.thebookseller.com/news/jamir-nazir-wins-commonwealth-short-story-prize-after-ai-review-clears-regional-winner) · [The Daily Star](https://www.thedailystar.net/culture/books-literature/news/news/jamir-nazir-wins-2026-commonwealth-short-story-prize-following-ai-review-4214976) · [Slate](https://slate.com/culture/2026/07/jamir-nazir-commonwealth-short-story-prize-ai-granta-magazine-controversy.html)
+>
+> Full text kept in `_source texts/` at the user's instruction: the story is published and publicly readable at Granta, so this is a study copy of an already-public work, not republication of anything unpublished. Copyright remains the author's.
+
+---
+
+## 🔴 THE CALIBRATION EVENT
+
+**This instrument scored the winner of the Commonwealth Short Story Prize at 31 / 45.**
+
+[[The Judging Rubric — Nine Axes|The Nine Axes]] says: *below 27, structural work. 27–35, the draft is real and the work is refinement. Above 36, you are competing.*
+
+**A story that scores 31 on it beat 7,805 others.** [[2026-07-28 — Chantal (Draft 3, Prize Pass)|Chantal]] scores 40 — nine points above the actual winner.
+
+**Both facts cannot be flattering. One of them is a warning.**
+
+I am not re-scoring this story to fit the result. The long tail is real, the coda does state the theme, and re-scoring backwards is precisely the *"scoring the story you intend"* trap the rubric names. **The score stands and the disagreement is the finding.**
+
+### What the disagreement says
+
+| The instrument punished | The panel rewarded |
+| --- | --- |
+| Economy — **2** (45% aftermath) | *Poetic* |
+| Resonant close — **3** (four endings) | *Deeply moving* |
+| Controlling idea — **3** (stated in the coda) | *Original* |
+
+**All three of the axes it lost are architectural. All three of the things Doughty praised are voice.**
+
+> [!danger] The Comparison Board predicted this in advance, and it is now proven
+> [[02 Comparison Board]] has said since 2026-07-28: *these panels forgive architecture and do not forgive voice — and Chantal is the inverse shape, strong exactly where the panel forgives.*
+>
+> **That was a hypothesis from two stories of unknown provenance. It is now confirmed by the actual winner of the actual prize, chosen by the actual chair.**
+>
+> **Consequence for Chantal, stated plainly:** its 40/45 is inflated by axes this panel does not weight heavily — structural economy, scene turn, the gap. Its two weakest axes, **prose control and controlling idea**, are the column Doughty picked on. **The final pass should go to voice, not to architecture.** Every hour spent tightening structure from here is an hour spent in the forgiven column.
 
 ---
 
@@ -135,7 +175,15 @@ Running tally: Giorgis **N** · Uwazuruike **N** · Baldwin **Y (qualified)** ·
 
 ---
 
-## → WHAT THIS CHANGES
+## → WHAT THIS CHANGES — revised now that the prize is known
+
+**0 · The board has a real ceiling for the first time.** [[Baldwin — Sonny's Blues|Baldwin]] is the *quality* ceiling; **this is the target ceiling.** They are different instruments and both belong. When they disagree — and on economy they disagree completely — **the winner is the better guide to this panel.**
+
+**0b · The final Chantal pass is now decided.** Voice, not architecture. See the calibration box above. The two axes to raise are **prose control** and **controlling idea**, and neither is fixed by cutting.
+
+**0c · A coda is survivable.** I docked this story two axes for its twenty-line sermon and it won anyway. **That does not make codas good** — Doughty praised the poetry, not the ending — but it does mean the earlier warning ("do not add a coda, this is what one costs") **overstated the risk.** Chantal should still end on the four ships. The reason is that its own ending is better, not that a coda is fatal.
+
+
 
 **1 · The climax-position metric is now worth tracking.** Four stories cluster at 76–88%; this one sits at 50.4% and loses three axes downstream of it. **Add climax position to [[01 The Six — Analysis Instrument]].** It predicts the economy score better than word count does.
 
@@ -143,7 +191,9 @@ Running tally: Giorgis **N** · Uwazuruike **N** · Baldwin **Y (qualified)** ·
 
 **3 · Competence is rehabilitated.** Three of five now, and both `Y`s in this sheet are *economic* or *procedural* under pressure, not atmosphere. **Chantal's arithmetic thread is on firmer ground than the 0-for-2 result suggested.**
 
-**4 · A warning for the Kalemie coda.** This story had a 5-scoring close at 88% and spent it. **[[2026-07-28 — Chantal (Draft 3, Prize Pass)|Chantal]] ends at the four ships and stops.** Do not add anything after it. This sheet is the evidence for why.
+**4 · ~~A warning for the Kalemie coda.~~** ~~This story had a 5-scoring close at 88% and spent it.~~ **Superseded — see 0c above.** The coda cost it axes and it won regardless. Chantal still ends at the four ships, but because that ending is stronger, not because a coda is fatal.
+
+**5 · The word count is worth noting.** 3,413 words won. Chantal is 3,896. **Both sit in the lower half of the 2,000–5,000 band**, and the winner is the shorter of the two. There is no evidence here that longer helps.
 
 ## Related
 

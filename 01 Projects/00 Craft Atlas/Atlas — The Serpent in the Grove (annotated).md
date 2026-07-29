@@ -5,10 +5,11 @@ source: "[[Nazir — The Serpent in the Grove]]"
 words: 3413
 ---
 
-# 🗺️ ATLAS — THE SERPENT IN THE GROVE, ANNOTATED
+# 🏆 ATLAS — THE SERPENT IN THE GROVE, ANNOTATED
 
-> Jamir Nazir · 3,413 words · **31 / 45**
-> Positions measured by cumulative word count. Quotes kept short — the text is the author's and is not stored in this vault. See [[Nazir — The Serpent in the Grove|the sheet]].
+> Jamir Nazir · 3,413 words · **WINNER, Commonwealth Short Story Prize 2026** · scored **31 / 45**
+> **This is the target, not a comparison.** Overall winner from 7,806 entries, chosen by Louise Doughty. Published in [Granta](https://granta.com/the-serpent-in-the-grove/).
+> Positions measured by cumulative word count. Full text in `03 Story Sheets/_source texts/`. See [[Nazir — The Serpent in the Grove|the sheet]] for the calibration event this map belongs to.
 
 `#atlas/nazir`
 
@@ -137,7 +138,7 @@ words: 3413
 - [[The Resonant Close]] — **this is the ending.** The grove frame closes, the well stays shut by choice, and the last line is spoken to a child.
 - [[Climax and Conclusion — The Story in Six Words]] — **Barrett satisfied here, and then abandoned.**
 
-## 95.8% – 100% · The coda ⚠️
+## 95.8% – 100% · The coda ⚠️ *(and it won anyway)*
 
 `#atlas/gardner` `#atlas/kiteley`
 
@@ -145,7 +146,12 @@ Twenty lines of fragment-incantation. *The serpent in the grove was never only a
 
 - [[Three Faults of Soul — Sentimentality, Frigidity, Mannerism]] — the register breaks from narrative into sermon.
 - [[Writing That Learns, Not Teaches]] — ⚠️ **the story explains itself here**, having successfully implied the same thing for 95%. It costs axis 7 and axis 8.
-- **The lesson for Kalemie is direct:** [[2026-07-28 — Chantal (Draft 3, Prize Pass)|Chantal]] ends on the four ships and stops. **Do not add a coda. This is what one costs.**
+> [!danger] Corrected — this cost it three axes on our instrument and it still won
+> My first read of this map said *"do not add a coda, this is what one costs."* **That overstated it.** The coda cost the story axes 6, 7 and 8 by our scoring — and it took the Commonwealth Prize from 7,806 entries regardless.
+>
+> **What that actually proves:** this panel weights voice far above architecture, and our rubric does the reverse. See [[Nazir — The Serpent in the Grove|the calibration event]].
+>
+> **[[2026-07-28 — Chantal (Draft 3, Prize Pass)|Chantal]] should still end on the four ships** — because that ending is stronger, not because a coda is fatal. It demonstrably is not.
 
 ---
 

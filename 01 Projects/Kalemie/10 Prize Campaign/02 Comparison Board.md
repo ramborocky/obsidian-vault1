@@ -34,7 +34,7 @@ pie showData
 | [[The Beat of My Hurt (Draft 4 — Free)\|**BEAT D4**]] *(Claude's)* | 3,476 | **51%** | 14.5 | **13%** | w80 | mid | **~41**† | prose control | **Y** |
 | [[Giorgis — A Double-Edged Inheritance\|Giorgis — Double-Edged Inheritance]] | 5,179 | **30%** | 14.9 | 5% | w14 | 8.1 | 33 | prose · interiority | **N** |
 | [[Uwazuruike — Looking for Papa\|Uwazuruike — Looking for Papa]] | 4,035 | **49%** | 11.0 | 2% | w17 | 11.9 | 33 | opening · prose | **N** |
-| [[Nazir — The Serpent in the Grove\|Nazir — The Serpent in the Grove]] | 3,413 | **52%** | 11.2 | 3% | w110 | mid | 31 | **economy · close** | **Y** |
+| 🏆 [[Nazir — The Serpent in the Grove\|**NAZIR — Serpent in the Grove**]] *(**2026 WINNER**)* | **3,413** | **52%** | 11.2 | 3% | w110 | mid | **31** | **economy · close · idea** | **Y** |
 | *5* | | | | | | | | | |
 | *5* | | | | | | | | | |
 | *6* | | | | | | | | | |
@@ -111,9 +111,14 @@ The rebalance was right, and it was right to **stop at 49% rather than chase 30%
 | Giorgis | architecture (prose, interiority) | design · revelation |
 | **Chantal** | **prose control · controlling idea** | **architecture** |
 
-> [!warning] Chantal is the inverse shape
+> [!danger] CONFIRMED BY THE WINNER — 2026-07-29. This is no longer a hypothesis.
 > Every story measured **loses on architecture and wins on voice**. Chantal wins on architecture and is weakest on voice-level axes.
-> **These panels forgive structure. They do not forgive voice.** That is the most consequential finding on this board and it should govern the final pass.
+>
+> **[[Nazir — The Serpent in the Grove|The actual 2026 winner]] scores 31/45 on our instrument** — nine points *below* Chantal — and loses those points on **economy, close and controlling idea**, all architectural. Louise Doughty, the chair, praised it as *poetic, original, deeply moving*. All voice.
+>
+> **These panels forgive structure. They do not forgive voice.** Predicted here from two stories of unknown provenance; now proven by the winner of the exact prize, chosen by the exact chair whose sentence opens [[The Judging Rubric — Nine Axes|the rubric]].
+>
+> **Governing consequence: the final Chantal pass goes to prose control and controlling idea — its two weakest axes and the panel's two strongest preferences. Not to structure.** Every further hour spent tightening architecture is an hour spent in the forgiven column.
 
 **Consequence:** material coming out of [[Chantal — Prize Plan|Exercise 3]] no longer needs to be rationed for fear of over-narrating.
 

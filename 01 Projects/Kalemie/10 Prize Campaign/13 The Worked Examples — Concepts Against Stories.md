@@ -20,7 +20,7 @@ status: active
 | [[2026-07-28 — Chantal (Draft 3, Prize Pass)\|**Chantal** D3]] | submission candidate | **40 / 45** |
 | [[2026-07-26 — Found Things (Final, Free Indirect Close Third)\|**Found Things** Final]] | superseded candidate | unscored |
 | [[The Beat of My Hurt (Draft 4 — Free)\|**Beat of My Hurt** D4]] | separate story | unscored |
-| [[Nazir — The Serpent in the Grove\|**Nazir** — *The Serpent in the Grove*]] | added 2026-07-29 | 31 / 45 |
+| 🏆 [[Nazir — The Serpent in the Grove\|**Nazir** — *The Serpent in the Grove*]] | **2026 Commonwealth WINNER** — the target | **31 / 45** |
 | [[KALEMIE-Draft_with_AI_Questions\|**Master draft**]] | origin, no ending | 24 / 45 |
 
 ---

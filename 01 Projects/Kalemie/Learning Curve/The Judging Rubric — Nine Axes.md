@@ -30,6 +30,17 @@ Nine axes, each 1–5. The last column is what separates a 3 from a 5 — the di
 
 **Reading the total:** below 27, structural work. 27–35, the draft is real and the work is refinement. Above 36, you are competing. A single 1 anywhere caps the story regardless of total — judges eliminate on faults, not averages.
 
+> [!danger] CALIBRATED AGAINST A REAL WINNER — 2026-07-29. Read this before trusting a total.
+> **This instrument scores [[Nazir — The Serpent in the Grove|the winner of the 2026 Commonwealth Short Story Prize]] at 31 / 45** — inside the band this note calls *"the draft is real and the work is refinement."*
+>
+> That story beat **7,806 entries**, and the chair who picked it is **Louise Doughty, whose sentence is the epigraph at the top of this page.**
+>
+> **The bands below are therefore not thresholds for winning.** *Above 36 you are competing* is a statement about craft completeness, not about panels. A 31 won.
+>
+> **What the disagreement locates:** the winner lost its points on **economy, close and controlling idea** — all architectural — and was praised for being *poetic, original, deeply moving*. **This rubric over-weights architecture relative to the panel it was built to model.** [[02 Comparison Board]] predicted exactly this from two stories and is now confirmed by the winner.
+>
+> Keep using it. **It is a good instrument for finding what is broken and a poor one for predicting what will place.**
+
 > [!warning] What these nine axes cannot see
 > Every axis here is a judgement about literary quality. **Not one is mechanical.** A draft can score 40/45 with unglossed vocabulary the reader cannot recover, a cohesion break, or a typo on page one, and nothing above will register it. [[The NAPLAN Floor — Ten Mechanical Criteria]] is the complement — run it last, and never add its number to this one.
 
