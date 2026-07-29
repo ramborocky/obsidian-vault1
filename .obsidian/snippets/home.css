@@ -1,0 +1,108 @@
+/* ==========================================================================
+   home.css — dashboard polish for Home.md and the campaign notes.
+   Scoped to `cssclasses: [home]` where it changes layout, so ordinary
+   notes are untouched. Theme-agnostic: uses Obsidian's own variables so
+   it follows light and dark rather than fighting them.
+   ========================================================================== */
+
+/* ---------- 1. Global, gentle: readable tables everywhere ---------- */
+
+.markdown-preview-view table,
+.markdown-source-view.mod-cm6 table {
+  border-collapse: collapse;
+  font-size: 0.92em;
+  width: 100%;
+}
+
+.markdown-preview-view th,
+.markdown-source-view.mod-cm6 th {
+  background: var(--background-secondary);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.82em;
+  color: var(--text-muted);
+}
+
+.markdown-preview-view td,
+.markdown-preview-view th {
+  padding: 0.45em 0.7em;
+  border: 1px solid var(--background-modifier-border);
+}
+
+/* Zebra striping that works in both themes */
+.markdown-preview-view tbody tr:nth-child(even) {
+  background: var(--background-primary-alt);
+}
+
+/* ---------- 2. Home page only ---------- */
+
+.home h1 {
+  border-bottom: 2px solid var(--interactive-accent);
+  padding-bottom: 0.25em;
+  margin-bottom: 0.6em;
+}
+
+/* Section headings become quiet rules rather than shouty text */
+.home h2 {
+  font-size: 1.15em;
+  letter-spacing: 0.01em;
+  margin-top: 1.8em;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+/* Horizontal rules: near-invisible spacers, not lines across the page */
+.home hr {
+  border: none;
+  border-top: 1px solid var(--background-modifier-border);
+  opacity: 0.4;
+  margin: 2em 0;
+}
+
+/* The status table reads as a spec sheet: label left, value right-weighted */
+.home table td:first-child {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Task list on the home page: roomier, easier to hit on a phone */
+.home ul.contains-task-list li.task-list-item {
+  padding: 0.18em 0;
+  line-height: 1.6;
+}
+
+/* Dataview result counts are noise on a dashboard */
+.home .dataview.result-count {
+  display: none;
+}
+
+/* Dataview tables inherit the same treatment */
+.home .table-view-table th {
+  background: var(--background-secondary);
+}
+
+/* ---------- 3. Callouts: a little more presence ---------- */
+
+.callout {
+  border-radius: 8px;
+  border-left-width: 4px;
+}
+
+.callout[data-callout="danger"],
+.callout[data-callout="warning"] {
+  border-left-width: 5px;
+}
+
+/* ---------- 4. Long tables scroll rather than squashing ---------- */
+
+.markdown-preview-view .table-wrapper,
+.home .block-language-dataview {
+  overflow-x: auto;
+}
+
+/* ---------- 5. Reading comfort in the editor ---------- */
+
+.markdown-source-view.mod-cm6 .cm-line {
+  line-height: 1.65;
+}
