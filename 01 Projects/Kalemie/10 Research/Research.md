@@ -28,3 +28,11 @@ story: Kalemie
 
 ## Sources
 [Cite your sources]
+
+---
+
+## Craft research
+
+| Note | What |
+| --- | --- |
+| [[Miscellaneous]] | Reading that does not belong to a craft base or a story sheet. **Currently: three essays on punctuation as expression**, one of which is a direct defence of Chantal's unquoted dialogue |
