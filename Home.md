@@ -5,9 +5,27 @@ cssclasses: [home]
 
 # 🏠 Home
 
+> [!danger] ⛔ READ THIS FIRST — three things, nothing else matters until they're done
+>
+> ### 1 · ☎️ Answer the ACPA status question
+> **Twenty minutes. Unblocks six tasks.** Are you a registered Graduate Accountant, and how many years are logged?
+> `+255 22 2 211890` · `info@nbaa.go.tz` · → [[ACPA(T) NBAA To-Do]]
+> - [ ] Answered and written into the file
+>
+> ### 2 · ✍️ Chantal needs two paragraphs — **from you, not from Claude**
+> Both briefs are marked inline in [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)|Draft 4]]. Draft 3 stays the submission candidate until they're written.
+> - [ ] **The counting fails** — after the back room. She counts everything, so let her count the *wrong* thing. Flat, no emotion named
+> - [ ] ***Shemeji*** — one sentence, no gloss, her register
+>
+> ### 3 · 🎯 VOICE, NOT STRUCTURE
+> [[Nazir — The Serpent in the Grove|The 2026 winner]] scores **31/45** on our rubric and beat **7,806 entries.** Chantal scores 40. **That gap is a warning, not a win** — the rubric rewards architecture and this panel forgives architecture.
+> **Nothing in Chantal gets cut for tightness again.** The gains left are prose control and controlling idea.
+
 > [!danger] Commonwealth Short Story Prize — deadline 1 November 2026, 23:59 GMT
 > **`$= Math.ceil((new Date("2026-11-01T23:59:00Z") - new Date()) / 86400000) + " days left"`** · entries open 1 September
 > That is **02:59 on 2 November** in Tanzania. Rules: [[12 The Rules — Source of Truth]]
+>
+> **Before submitting:** export `Chantal.docx` → **`Chantal.pdf`** · check Word's word count · your name nowhere in the file → [[README — Submission Format and Log]]
 
 ---
 
@@ -21,7 +39,8 @@ cssclasses: [home]
 | **Gate 2 · Make** | **40 / 45** |
 | **Gate 3 · Fight** | **23 / 25** |
 | **Gate 4 · Afterlife** | ⚠️ **no evidence — no cold reader yet** |
-| **Two open faults** | *shemeji* · the counting-fails paragraph |
+| **Two open faults** | *shemeji* · the counting-fails paragraph — **see the box above** |
+| **Git** | `$= "6 commits local and unpushed as of 29 Jul — say push when you want them up"` |
 
 **The one thing that would change the most:** name a cold reader. Four instruments depend on a human who is not you, and there is nobody. → [[10 The Three Moves — Reader, Winners, Record]]
 
