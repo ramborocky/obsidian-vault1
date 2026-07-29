@@ -225,11 +225,19 @@ Nothing happened to my body in that room. What happened is that three men worked
 
 I sat on a plastic chair with a crack in it and did the arithmetic along with them, because I cannot help it, I have never been able to help it. And the number they landed on was smaller than the one I had been carrying in my head for eight months.
 
+It came in two parts. The second part was for a doctor in Uvira, and it was the smaller one, and they said it in the same voice they said the first.
+
 I came out of that room bent over. Daudi saw me come out and I know what he thought, because he is fifteen and good and he thinks shame is the only thing that can bend a person.
 
 It was not shame. It was arithmetic.
 
 They gave me the envelope on the way out. It had been fat going in. It was thin coming out, and nobody said anything about that, and nobody had to.
+
+---
+
+The house was empty when I got home. My clothes were folded on the end of the bed, all of them, including the two from the bottom of the basket that still had four days to go. Somebody had washed them with soap and then with something after the soap — vinegar, or paraffin, whatever it is you use when soap will not do it.
+
+I put them in the drawer. Then I stood in the doorway of the kitchen for a while, and my mother was not in it, and I went to bed.
 
 ---
 
