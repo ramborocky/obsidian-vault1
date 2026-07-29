@@ -33,6 +33,7 @@ It has two halves, and they came from two different places:
 | [[The NAPLAN Floor — Ten Mechanical Criteria]] | Gate 1. The mechanical complement. Five criteria the Nine Axes has no axis for — cohesion, paragraphing, sentence structure, punctuation, spelling. A floor check, never a benchmark |
 | [[The Underground Rubric — Risk, Afterlife and the Room]] | Gate 3 and 4. Risk, complicity and whether a judge will argue for it. Kept for its criteria, stripped of its fake authority — and seven of its twenty-one cannot be self-scored at all |
 | [[The Five Passes]] | The order edits must run in. Running them out of order is why revision feels endless |
+| [[The De-Slop Pass — English Prose]] | A revision protocol, not a rubric. Over-smoothness, over-symmetry, over-explanation — and a budget rather than a ban. **Built for future projects; not run on any current draft** |
 | [[The Cold Read Protocol]] | How to ask for brutal feedback and how to survive receiving it — including from me |
 | [[Kalemie — Standing Diagnosis]] | **Start here.** The current verdict on the live draft, with line numbers and word counts. Updated as the draft changes |
 
