@@ -68,6 +68,15 @@ Plot, character, direction and timeline are out of scope. If the prose reveals a
 | **Metronomic contrast** | Long sentence, short punchy sentence, on a schedule | Vary the interval, not the lengths |
 | **No dead detail** | Every object is load-bearing; nothing is just there | Add details that solve nothing. See [[All the Small Things — Grief Through the Minor Object]] |
 
+> [!important] Law 5, learned from the first live test — the character-trait exception
+> Added 2026-07-29 after [[2026-07-29 — Chantal (deslop TEST)|the Chantal test]].
+>
+> **When a Tier 1 structural rule collides with a load-bearing character trait, the character wins and the finding is flagged rather than fixed.**
+>
+> The test found that almost every paragraph in Chantal lands on a completed beat — a genuine Tier 1 hit. But composure *is* the narrator; a girl who explains herself is the characterisation. Deflating a hundred paragraph endings would have flattened the voice to treat a symptom.
+>
+> **A structural tell in the prose can be a true fact about the person speaking.** Check that before you edit, every time. The test also confirmed the corollary: **never override the author's own protected list** — two of the antitheses found were on Draft 3's, and the pass left them.
+
 > [!success] On the antithesis — the pattern is not banned, the *repetition* is
 > *It was not shame. It was arithmetic.* is the best line in Chantal and it should never be touched. One antithesis at a peak is rhetoric. Three across a story is a machine tic, and the reader feels it as a mannerism without being able to name it.
 >
