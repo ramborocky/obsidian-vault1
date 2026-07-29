@@ -30,6 +30,9 @@ Nine axes, each 1–5. The last column is what separates a 3 from a 5 — the di
 
 **Reading the total:** below 27, structural work. 27–35, the draft is real and the work is refinement. Above 36, you are competing. A single 1 anywhere caps the story regardless of total — judges eliminate on faults, not averages.
 
+> [!warning] What these nine axes cannot see
+> Every axis here is a judgement about literary quality. **Not one is mechanical.** A draft can score 40/45 with unglossed vocabulary the reader cannot recover, a cohesion break, or a typo on page one, and nothing above will register it. [[The NAPLAN Floor — Ten Mechanical Criteria]] is the complement — run it last, and never add its number to this one.
+
 ## The Two Traps
 
 **Scoring ambition instead of execution.** Axis 9 is where writers overscore most. Having an important subject is not having something to say. Kalemie's subject is the sexual exploitation of a child by a man with diplomatic cover; its *position* is the Controlling Idea — that inaction is complicity. Those are different, and only the second is scoreable.
@@ -68,3 +71,4 @@ The pattern is unmistakable: **every high score is at sentence and image level (
 3. For axis 7: find the exact moment in the existing draft where Daudi comes closest to *choosing* his inaction rather than merely failing to act. Can that moment carry the weight, or must a new one be written?
 4. Which single axis, raised by two points, most raises the total? Which is cheapest in words? If they differ, say so — that is the real revision decision.
 5. Re-score after the fixes in [[Kalemie — Standing Diagnosis]] priority order and report the new total. Log both numbers and the date in [[Craft Log]].
+]

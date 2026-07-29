@@ -28,7 +28,10 @@ It has two halves, and they came from two different places:
 | Note | What it answers |
 | --- | --- |
 | [[The First-Page Cut]] | Why 175 of 200 longlisted stories die before paragraph four, and which of those deaths Kalemie is currently exposed to |
-| [[The Judging Rubric — Nine Axes]] | The actual scoring instrument. Score Kalemie on it, honestly, before anyone else does |
+| [[The Three Gates — Unified Instrument]] | **The one to use.** Merges the three rubrics below into three gates — floor, make, fight — plus a fourth only a stranger can score. Never one number |
+| [[The Judging Rubric — Nine Axes]] | Gate 2. The execution instrument. Score Kalemie on it, honestly, before anyone else does |
+| [[The NAPLAN Floor — Ten Mechanical Criteria]] | Gate 1. The mechanical complement. Five criteria the Nine Axes has no axis for — cohesion, paragraphing, sentence structure, punctuation, spelling. A floor check, never a benchmark |
+| [[The Underground Rubric — Risk, Afterlife and the Room]] | Gate 3 and 4. Risk, complicity and whether a judge will argue for it. Kept for its criteria, stripped of its fake authority — and seven of its twenty-one cannot be self-scored at all |
 | [[The Five Passes]] | The order edits must run in. Running them out of order is why revision feels endless |
 | [[The Cold Read Protocol]] | How to ask for brutal feedback and how to survive receiving it — including from me |
 | [[Kalemie — Standing Diagnosis]] | **Start here.** The current verdict on the live draft, with line numbers and word counts. Updated as the draft changes |
@@ -49,6 +52,9 @@ It has two halves, and they came from two different places:
 
 - **First-Page Cut** — a judge is not looking for a reason to keep you; they are looking for permission to stop.
 - **Nine Axes** — you cannot fix what you have not scored.
+- **NAPLAN Floor** — a top score here means no fault found, never that the story is good.
+- **Underground** — a rubric that tells you to stop revising is applause, not judgement.
+- **Three Gates** — three numbers, never one; and the fourth gate is not yours to score.
 - **Five Passes** — never polish a sentence in a scene you might cut.
 - **Cold Read** — "what's the weakest line" is a better question than "is this good".
 - **Funhouse Mirror** — if the machine writes it without being pushed, it is a cliché by definition.
