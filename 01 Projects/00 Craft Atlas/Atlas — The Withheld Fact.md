@@ -6,7 +6,7 @@ aliases: [The Withheld Fact, What is never released]
 # 🔒 ATLAS — THE WITHHELD FACT
 
 > **Every finished story on the board withholds one central fact and never releases it.**
-> Six for six. The one draft that withholds nothing scores 24.
+> **Seven for seven.** The one draft that withholds nothing scores 24.
 
 `#atlas/kiteley` `#atlas/barrett` `#atlas/cleland`
 
@@ -24,6 +24,7 @@ aliases: [The Withheld Fact, What is never released]
 | [[2026-07-28 — Chantal (Draft 3, Prize Pass)\|**Chantal**]] | The hotel | **54.7%** — *I am not going to describe the hotel.* The refusal is on the page |
 | [[2026-07-26 — Found Things (Final, Free Indirect Close Third)\|**Found Things**]] | How Djamela died | *They buried her on a Thursday.* Nothing else, ever |
 | [[The Beat of My Hurt (Draft 4 — Free)\|**Beat of My Hurt**]] | What killed the Ngoie boy — **and the mother is never named** | 92.4% — the mother's eyeline at the door is the whole answer |
+| [[Nazir — The Serpent in the Grove\|**Nazir**]] | **What Sita knows.** She sends the child away at 30.1%, wraps herself *without meeting his eyes* at 51%, and **never accuses him once in the whole story** | The accusation that never comes |
 | ~~[[KALEMIE-Draft_with_AI_Questions\|**Master draft**]]~~ | ~~Nothing~~ | ~~Every clue delivered and explained~~ · **24 / 45** |
 
 ---

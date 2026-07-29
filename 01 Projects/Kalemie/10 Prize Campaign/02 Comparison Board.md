@@ -3,7 +3,7 @@ tags: [kalemie, prize, campaign, data, comparison]
 story: Kalemie
 date: 2026-07-28
 status: active
-stories_measured: 2
+stories_measured: 3
 target: 10
 ---
 
@@ -34,7 +34,8 @@ pie showData
 | [[The Beat of My Hurt (Draft 4 — Free)\|**BEAT D4**]] *(Claude's)* | 3,476 | **51%** | 14.5 | **13%** | w80 | mid | **~41**† | prose control | **Y** |
 | [[Giorgis — A Double-Edged Inheritance\|Giorgis — Double-Edged Inheritance]] | 5,179 | **30%** | 14.9 | 5% | w14 | 8.1 | 33 | prose · interiority | **N** |
 | [[Uwazuruike — Looking for Papa\|Uwazuruike — Looking for Papa]] | 4,035 | **49%** | 11.0 | 2% | w17 | 11.9 | 33 | opening · prose | **N** |
-| *4* | | | | | | | | | |
+| [[Nazir — The Serpent in the Grove\|Nazir — The Serpent in the Grove]] | 3,413 | **52%** | 11.2 | 3% | w110 | mid | 31 | **economy · close** | **Y** |
+| *5* | | | | | | | | | |
 | *5* | | | | | | | | | |
 | *6* | | | | | | | | | |
 | *7* | | | | | | | | | |
@@ -156,16 +157,43 @@ Where each story releases what it withheld. Bar fills to position.
 
 ---
 
+## 🆕 CLIMAX POSITION — the metric that replaces rhythm
+
+Added 2026-07-29 after [[Nazir — The Serpent in the Grove]]. **This one predicts the economy score; rhythm never did.**
+
+| Story | Climax at | Economy axis |
+| --- | --: | :--: |
+| Baldwin | ~88% | 4 |
+| Chantal D3 | 78.4% | — |
+| Beat of My Hurt | 75.9% | — |
+| **Nazir** | **50.4%** | **2** |
+
+**Four stories cluster at 76–88%. Nazir sits at the exact midpoint and spends 45% of the story on aftermath**, losing axes 6, 7 and 8 downstream of that single fact.
+
+**Add climax position to [[01 The Six — Analysis Instrument]].** It is one measurement, it is unambiguous, and unlike sentence length it correlates with something.
+
+> [!warning] The direct lesson for Chantal
+> Nazir has a 5-scoring close at 95.5% — *you talk soft so it can talk soft back* — **and then writes twenty more lines of sermon**, which costs the controlling idea and the close two points each.
+>
+> **Chantal ends on the four ships and stops. Do not add anything after it.** This is the evidence.
+
 ## Competence — testing the hypothesis
 
 > **Claim under test:** *prize stories tend to have narrators who know how to* do *something — a trade, a procedure, a body of knowledge — and this is what separates them from merely well-observed stories.*
 
 | Result | Count |
 | --- | --- |
-| ❌ **N** | **2** |
-| ✅ **Y** | 0 |
+| ❌ **N** | 2 |
+| ✅ **Y** | **3** *(one qualified)* |
 
-**0 for 2, and the hypothesis is now in trouble.**
+> [!success] Reversed 2026-07-29 — the hypothesis survives
+> **3 for 5.** [[Nazir — The Serpent in the Grove|Nazir]] is the first unqualified `Y` from an outside writer, and it appears twice: Vishnu pricing rice against wet cocoa and knowing what the gap leaves a man, and **Marsha tearing vine from a mango trunk and peeling it in her hands to feel whether it will hold a woman** — procedure under pressure, in one clause, at the moment the story depends on.
+>
+> Add [[Baldwin — Sonny's Blues|Baldwin's]] band knowledge (Y, qualified) and [[The Beat of My Hurt (Draft 4 — Free)|Beat of My Hurt's]] entire drum trade (Y).
+>
+> **The kill criterion — N eight times in ten — can no longer be met.** And note what the two clean `Y`s have in common: the competence is **economic or procedural, deployed under pressure**, never atmosphere. That is a sharper rule than the original hypothesis. **Chantal's arithmetic thread is on firmer ground than 0-for-2 suggested.**
+
+~~**0 for 2, and the hypothesis is now in trouble.**~~
 
 - **Giorgis:** cultural fluency, no procedure. An engineering prodigy who never solves anything, a professor shown holding Baldwin. *Nobody is ever shown at work.*
 - **Uwazuruike:** closer — the fifty naira given for lunch, spent entirely on the keke fare, leaving him to walk home. A child costing out a day. But the gala trade is observed **from outside**, by a boy ashamed of it. What he has is social taxonomy, not procedure.

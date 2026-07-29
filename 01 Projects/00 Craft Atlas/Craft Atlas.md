@@ -35,6 +35,7 @@ Walk the story top to bottom. Every beat carries its position and the concepts f
 | [[Atlas — Chantal (annotated)]] | Chantal D3, 3,895 words | 18 |
 | [[Atlas — Beat of My Hurt (annotated)]] | Beat of My Hurt D4, 3,477 words | 23 |
 | [[Atlas — Sonny's Blues (annotated)]] | Baldwin, the benchmark | 7 |
+| [[Atlas — The Serpent in the Grove (annotated)]] | Nazir, 3,413 words | 16 |
 
 ### 2 · By concept — reverse index
 
@@ -51,7 +52,7 @@ One concept, every story it appears in, with the exact line.
 Every entry carries tags. Click one to see every occurrence across all maps.
 
 **By source:** `#atlas/mckee` · `#atlas/cleland` · `#atlas/gardner` · `#atlas/barrett` · `#atlas/kiteley` · `#atlas/learning-curve`
-**By story:** `#atlas/chantal` · `#atlas/beat` · `#atlas/baldwin`
+**By story:** `#atlas/chantal` · `#atlas/beat` · `#atlas/baldwin` · `#atlas/nazir`
 
 ```dataview
 TABLE WITHOUT ID file.link AS "Atlas note", length(file.outlinks) AS "Links out"

@@ -20,6 +20,7 @@ status: active
 | [[2026-07-28 — Chantal (Draft 3, Prize Pass)\|**Chantal** D3]] | submission candidate | **40 / 45** |
 | [[2026-07-26 — Found Things (Final, Free Indirect Close Third)\|**Found Things** Final]] | superseded candidate | unscored |
 | [[The Beat of My Hurt (Draft 4 — Free)\|**Beat of My Hurt** D4]] | separate story | unscored |
+| [[Nazir — The Serpent in the Grove\|**Nazir** — *The Serpent in the Grove*]] | added 2026-07-29 | 31 / 45 |
 | [[KALEMIE-Draft_with_AI_Questions\|**Master draft**]] | origin, no ending | 24 / 45 |
 
 ---
@@ -36,9 +37,10 @@ status: active
 | **Chantal** | The hotel. *I am not going to describe the hotel* — the refusal is on the page |
 | **Found Things** | How Djamela died |
 | **Beat of My Hurt** | What killed the Ngoie boy — and the narrator's mother is never named once |
+| **Nazir** | What Sita knows. She sends the child away, and **never accuses him once** |
 | ~~Master draft~~ | ~~Nothing. Every clue is delivered and explained~~ — and it scores 24 |
 
-**Six for six among the finished stories, and the one that withholds nothing is the one that fails.** This is the strongest empirical result anywhere in this vault. It is not a technique to consider. It is the entry condition.
+**Seven for seven among the finished stories, and the one that withholds nothing is the one that fails.** This is the strongest empirical result anywhere in this vault. It is not a technique to consider. It is the entry condition.
 
 **The corollary that makes it usable:** the withheld fact must be *load-bearing* — the thing the reader most wants. Withholding something trivial is coyness. See [[The Art of Omission — Unity, Padding, and Proportion|Barrett on omission]] and [[Reveal Answers Slowly|Cleland]].
 

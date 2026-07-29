@@ -21,6 +21,7 @@ aliases: [The Active Protagonist, Active vs Passive]
 | [[2026-07-28 — Chantal (Draft 3, Prize Pass)\|**Chantal**]] | ✅✅ **five times** | see below | **40** |
 | [[Baldwin — Sonny's Blues\|**Baldwin**]] | ✅ once, at the end | takes Sonny to the club, and *listens* | **44** |
 | [[The Beat of My Hurt (Draft 4 — Free)\|**Beat**]] | ✅ at the climax | 73.3% starts it wrong, then plays the true beat in front of the town | — |
+| [[Nazir — The Serpent in the Grove\|**Nazir**]] | ✅ **once, and it is enough** | 30.1% — she reads the cutlass and the cleared path and **sends the child out of the house** | 31 |
 | [[2026-07-26 — Found Things (Final, Free Indirect Close Third)\|**Found Things**]] | ⚠️ once, too late | gives the fob to the officer, nine weeks late, and knows it | — |
 | [[Giorgis — A Double-Edged Inheritance\|**Giorgis**]] | ❌ | *"installed rather than revealed"*; never shown at work | 33 |
 | [[KALEMIE-Draft_with_AI_Questions\|**Master draft**]] | ❌ **nothing is chosen** | pure observer for the whole draft | **24** |
@@ -62,6 +63,14 @@ The narrator teaches algebra and is never once shown teaching it. But the final 
 > **[[Atlas — Beat of My Hurt (annotated)|The map shows that critique is stale.]]** At 75.9% the uncle comes in underneath and plays the tenth beat; Ilunga follows. The competence is handed to the watched man at the climax, exactly as Baldwin does it. The sheet was written against an earlier draft.
 
 ---
+
+## One act can be enough — the Nazir case
+
+**Sita acts exactly once, at 30.1%, and it saves the story from being a victim narrative.**
+
+She notices the cleared path and the cutlass leaning *as if it had legs*, and she sends Puttie to Auntie Marsha. That is the whole of her agency — and it is the beat that summons the woman who will pull her out. **The rescue at 50.4% is caused by a decision made twenty points earlier by the person being rescued.**
+
+> **The rule this gives you: the act does not have to be large, or successful, or late. It has to cause something.** Sita's single act causes the rescue. The master draft's Daudi notices five separate pieces of evidence across a whole year and **causes nothing**, which is why noticing never counts.
 
 ## The operational rule
 
