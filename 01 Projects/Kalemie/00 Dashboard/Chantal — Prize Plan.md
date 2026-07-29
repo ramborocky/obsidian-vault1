@@ -11,6 +11,12 @@ supersedes: "Dashboard hybrid exercises + 17 fixes (aimed at the master draft)"
 > **The submission is [[2026-07-26 — Chantal (Djamela POV, Draft 2 — Barrett Pass)|Chantal]].** Djamela, first person, 3,407 words. Decided 2026-07-27.
 > Everything in [[Dashboard]] below the Craft Cheat Sheet targets the master draft and is now **archive**, not instruction.
 
+> [!tip] This is the draft-level plan. The campaign lives next door.
+> [[00 Campaign HQ]] — timeline, status board, the whole operation on one page
+> [[01 The Six — Analysis Instrument]] — how winners get measured
+> [[02 Comparison Board]] — the data, and what it has already changed
+> [[04 Craft Laws — Reference Card]] — every rule in play, live and retired
+
 ## Why This Draft — Nine Axes, Scored Cold
 
 | #   | Axis                  | Master      | **Chantal** |
@@ -34,20 +40,30 @@ supersedes: "Dashboard hybrid exercises + 17 fixes (aimed at the master draft)"
 
 | Metric             | Value              | Standard                                | Verdict                      |
 | ------------------ | ------------------ | --------------------------------------- | ---------------------------- |
-| Prose words        | **3,407**          | 2,000–5,000 gate                        | ✅ 1,593 headroom             |
-| Sentences          | 267                | —                                       | —                            |
-| Average length     | 12.8               | Cleland: under 20                       | ✅                            |
-| **Under 10 words** | **57%**            | Barrett: excess = bumpety-bump          | 🔴 **the one live defect**   |
-| Over 30 words      | 8%                 | long = interiority                      | ✅                            |
-| Closed aphorisms   | 5                  | a story that argues stops being a story | 🟡 one may still be too many |
+| Prose words        | **3,674**          | 2,000–5,000 gate                        | ✅ 1,326 headroom             |
+| Sentences          | 250                | —                                       | —                            |
+| Average length     | 14.7               | Cleland: under 20                       | ✅                            |
+| Late reframe       | **85.3%**          | the one engineered payoff               | ✅ [[05 The Late Reframe]]    |
+| **Under 10 words** | **48%**            | Barrett: excess = bumpety-bump          | ✅ inside the measured band  |
+| Over 30 words      | 10%                | long = interiority                      | ✅                            |
+| Refrain            | 9% · 30% · 91%     | *mia tano mia tano*, three beats        | ✅ rhythm pass 2026-07-28    |
+| Leitmotif          | 20% · 85% · 99%    | four ships: full → short → restored     | ✅ rhythm pass 2026-07-28    |
+| Closed aphorisms   | 5                  | a story that argues stops being a story | ✅ miscalibrated — both placed stories evaluate harder |
 | Words after climax | ~45                | as near simultaneous as possible        | ✅                            |
-| Destinies settled  | all, incl. Morisho | the climax must decide all              | ✅                            |
+| Destinies settled  | all — Morisho, **the pregnancy** | the climax must decide all | ✅ closed 2026-07-27 |
 
 ---
 
-## 🔴 THE ONE DECISION STILL OPEN
+## ✅ DECIDED — 2026-07-28
 
-### Define the controlling idea *for this story*
+> [!done] THE CONTROLLING IDEA
+> ### *Not that I was fooled. That I did the deciding.*
+>
+> Taken from the draft's own line at ~41%. **It stays where it is and is never restated.** It governs which sentences survive any further pass: anything that asks the reader to pity her is cut, anything that lets her own an ugly choice stays.
+>
+> Board is now closed. Nothing measurable remains.
+
+### ~~Define the controlling idea~~ — original options retained for the record
 
 The vault's stated idea — *"Inaction is complicity because choosing not to act is still a choice"* — is **Daudi's**. It describes a boy who watches and fails to move. It does not describe this story, where the narrator is the one who acts, decides, lies, calculates, and hides the evidence herself.
 
@@ -59,9 +75,23 @@ Chantal's idea is somewhere in this range, and it has to be picked before the re
 
 The draft's own candidate line is **"That is the part I would like written down somewhere. Not that I was fooled. That I did the deciding."** Axis 7 goes from 4 to 5 the moment the story stops nudging this and simply is it.
 
-### And the blocker that is not a craft task
+### ✅ The deadline — found 2026-07-27
 
-**The deadline field is still blank.** Every decision in this vault has been made against a word ceiling and no date. It cannot be resolved from any file here.
+**Entries open 1 September and close 1 November, every year.**
+
+| | |
+| --- | --- |
+| **Window** | 1 Sep – 1 Nov 2026 |
+| **Opens in** | 5 weeks |
+| **Closes in** | 14 weeks |
+| **Target submission** | **25 October** — a week of margin |
+| Word gate | 2,000–5,000 · Chantal 3,407 ✅ |
+| Eligibility | Commonwealth citizens 18+ · Tanzania ✅ |
+| Prize | £2,500 regional · £5,000 overall |
+
+**AI policy:** the Foundation uses no AI checkers and no AI at any stage of judging — it relies on writers accepting the entry rules that the work is their own original unpublished fiction. There is no detector; there is a declaration.
+
+Full campaign schedule: [[00 Campaign HQ]].
 
 ---
 
@@ -100,23 +130,27 @@ Mostly banked — the ending exists and stops at the act. What remains is one te
 
 ---
 
-### ▸ EXERCISE 3 — THE MOTHER, OR WHAT THIS DRAFT CENSORS
+### ▸ EXERCISE 3 — THE MOTHER · now structural, not generative
 
-**Fuses:** Kiteley 200 (Q and A) + [[What You Are Censoring|Kiteley 108]] + Cleland
+**Fuses:** Kiteley 200 (Q and A) + [[What You Are Censoring|Kiteley 108]] + Cleland + [[05 The Late Reframe]]
 
-The old 53 `[!AI]` questions are dead — all of them interrogate Daudi's execution. But Kiteley's mechanism survives, applied to what *this* draft withholds.
+> [!done] Question 2 has been answered on the page — 2026-07-27
+> The mother detonation is **written and in the draft at 84.9%**. See [[05 The Late Reframe]]. This exercise is no longer prose-generation in search of a use; it now services a specific piece of engineering that already exists.
 
-**The hole is her mother.** She has two lines in 3,407 words. One of them — *"A social media influencer, my mother said, fast, the way you move a knife off a table"* — is the best small gesture in the story, and nothing is built on it. A mother who moves that fast already knows.
+**The hole was her mother.** Two lines in 3,500 words, one of which — *"A social media influencer, my mother said, fast, the way you move a knife off a table"* — is the best small gesture in the story with nothing built on it. A mother who moves that fast already knows.
 
-Answer three, **in Djamela's voice, ~150 words each, then delete the questions:**
+Answer these **in Djamela's voice, ~150 words each, then delete the questions:**
 
 1. Her mother answers *fast*. What did her mother already know on that birthday, and how long had she known it?
-2. The perfume needs four days at the bottom of the basket. Did her mother ever do the wash early? What happened?
+2. ~~The perfume needs four days at the bottom of the basket. Did her mother ever do the wash early?~~ ✅ **Answered in the draft.** The remaining question is narrower: **what does the mother do with the four days she now knows the daughter was counting on?**
 3. She had a photograph on her phone and a policeman refused it. She hid the **fob** instead, under a board in a boy's room. What does she think Daudi will do with it that the police would not?
 
 Then run Cleland: no *saw / looked / felt / knew.*
 
-**Output:** ~450 words. Question 3 is the story's actual engine and is currently unexplained. **This is the axis 3 → confirmed-5 work, and the only exercise that adds prose.**
+**Output:** ~450 words. Question 3 is still the story's actual engine and is still unexplained.
+
+> [!warning] Constraint carried over from the reframe
+> Material from this exercise must **not** produce a second engineered payoff. The late reframe is the one device. What comes out of these answers goes in as texture, or as one of the deliberately **inert** details the draft still owes — not as another echo that pays.
 
 ---
 

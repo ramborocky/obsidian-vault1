@@ -33,3 +33,8 @@
 .obsidian/plugins/*/main.js
 .obsidian/plugins/*/styles.css
 .obsidian/plugins/*/manifest.json
+
+# Generated submission artifacts — rebuildable from the markdown source.
+# Kept out of git so story prose is never pushed as a binary to a public remote.
+01 Projects/Kalemie/10 Prize Campaign/11 Submission Pack/*.docx
+01 Projects/Kalemie/10 Prize Campaign/11 Submission Pack/*.pdf
