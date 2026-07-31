@@ -3,18 +3,24 @@ tags: [kalemie, draft, djamela, prose, prize, submission-candidate, working]
 story: Kalemie
 aliases: [Chantal Draft 4, Voice Pass]
 date: 2026-07-29
-status: WORKING — two insertion points open, author to write
+status: COMPLETE — all insertions written by the author 2026-07-31
 supersedes: "2026-07-28 — Chantal (Draft 3, Prize Pass)"
 pov: Djamela, first person
-words: 3881
+words: 3936
 ---
 
 # CHANTAL — DRAFT 4 · THE VOICE PASS
 
-> [!danger] Not finished, and not the submission file yet
-> **Two paragraphs are missing and they are yours to write.** They are marked inline as `✍️ INSERTION` callouts. Until both are written this does not supersede [[2026-07-28 — Chantal (Draft 3, Prize Pass)|Draft 3]], which stays the submission candidate.
+> [!success] All three insertions written by the author, 2026-07-31 — **this now supersedes Draft 3**
+> **3,936 words**, inside the 2,000–5,000 gate. **Re-measure in Word before submitting** — Word's count is the authoritative one, not this.
 >
-> **Why they are briefs and not prose:** Commonwealth rule 3e — *the story must be the entrant's own work* — and the Foundation examines drafts, timestamps and notes when it is questioned. That happened to [[Nazir — The Serpent in the Grove|this year's winner]]. Sentences I write into your prize entry would put that at risk for no craft gain, because you can write these two better than I can: one needs your narrator's counting voice, the other needs Swahili I do not have. See [[12 The Rules — Source of Truth]].
+> **Every word of all three is the author's.** The briefs were briefs and not prose for a reason: Commonwealth rule 3e requires the story to be the entrant's own work, and the Foundation examines drafts, timestamps and notes when it is questioned — that happened to [[Nazir — The Serpent in the Grove|this year's winner]]. See [[12 The Rules — Source of Truth]].
+>
+> **This file's git history is now the evidence that they were.** Commit it.
+
+> [!question] Two small things still open, both the author's call
+> **1 · Is *"just before we reached 34"* deliberately unfinished?** If yes, leave it exactly — no full stop, nothing added. If no, it needs an ending.
+> **2 · Tense wobble in the Daudi clause** — *he **would** grind his teeth* (habitual) sitting beside *and **clenched** his fists* (single past). One of the two verbs wants to change. Also *that sounding thing* is vague for a story this precise.
 
 ## What changed, and what deliberately did not
 
@@ -29,10 +35,35 @@ Both from [[2026-07-29 — Chantal (deslop TEST)|the de-slop test]]. **Scaffoldi
 
 **Why:** six antitheses against a budget of one, three of them clustered inside twelve lines of the BMW scene — spending the ammunition a hundred lines before *It was not shame. It was arithmetic.* needed it. **The peak and your protected lines were not touched.**
 
-### ✍️ Open — two insertions, marked inline
+### ✅ Closed — *shemeji* carried, 2026-07-31
 
-1. **The counting fails** — after the back room, before the arithmetic line. The humanising fix.
-2. ***Shemeji* carried** — one sentence, no gloss.
+**Written by the author.** *"He gave me a coin off my fare once and called me shemeji. **Don't get it confused, he hasn't even put a ring on my finger.** That is the whole of what he did."*
+
+Placed **inside** the paragraph rather than after it, so the verdict — *that is the whole of what he did* — still lands last. No gloss, no translation: **the ring makes it a marriage word**, and it silently drags the only other ring in the story, the not-real gold one on the hand in the photograph at 59%. The floor-check fault at criterion 6 is closed.
+
+### 🔢 Drafted by the author — the counting fails, 2026-07-31
+
+**The last six words are the best thing that has happened to this draft, and here is why.**
+
+The story opens on **thirty-four**: *"Thirty-four days. I counted twice, and the first time I got thirty-three, and I wanted the smaller number to be the true one, so I counted again and it got bigger."*
+
+At 83% she counts again — ***32, 33 and just before we reached 34***
+
+**The number that got bigger at the beginning will not arrive at the end.** A plant at 1% detonating at 83%; the counting motif failing on **the one number that matters** rather than on arbitrary bench slats. [[15 The Chair Test — Scoring the Hidden Factor|Chair Test]] axis 1 requires that the strongest moment land *on material the reader was given earlier for another reason.* This meets it, and **it is a better solution than the brief asked for.**
+
+**Second version, 2026-07-31.** The first draft had her counting the envelope — which she is not given until two paragraphs later. **Steps fixed the continuity**, and they are better besides: it is the walk out of the back room, and Daudi is in it.
+
+**One decision is still open and it is flagged inline** — whether the last clause is deliberately unfinished. If it is, it should stay exactly as it is, unpunctuated, and nothing more should be added to this paragraph by anybody, including me.
+
+### ✊ Closed — the choice, not the silence, 2026-07-31
+
+**Written by the author.** *"Daudi started saying the thing about strangers. Mama alisema — **Then he made that sounding thing where he would grind his teeth and clenched his fists.**"*
+
+Placed at the **first** *mama alisema*, where Jean Luc cuts him off — not at the later paragraph where the brief sat. **The earlier placement is the better one:** he has just been humiliated in front of her, and instead of finishing the sentence he grinds and clenches. That is a boy choosing not to speak, which is the whole point; at the later paragraph he would only have been silent again.
+
+*his hands doing something that costs him something to not-do* was the brief's own wording. **Clenched fists is exactly that.**
+
+**A first version gave Daudi the counting too — 1, 2… 33, couldn't reach 34 — and it was cut.** Counting is Djamela's, 34 is her number and her body's, and a failure to reach it at 43% would have spent the one at 83% before it arrived. The [[Craft Log]]'s standing rule applies: *one engineered payoff of its kind; a second restores the airlessness it was written to break.* **The teeth and the fists survive, the numbers do not, and 34 stays hers.**
 
 ### 🛑 Deliberately unchanged — and this is the real finding
 
@@ -134,7 +165,8 @@ I said: Rue Saint Michel.
 
 I lied immediately and easily and without deciding to. Rue Saint Michel is where the ghost children live and I have never set foot on it, and it came out of my mouth as though it had been sitting behind my teeth for years, waiting.
 
-Daudi started saying the thing about strangers. Mama alisema —
+Daudi started saying the thing about strangers. Mama alisema — Then he made that sounding thing where he would grind his teeth and clenched his fists.
+
 
 We shouldn't talk to strangers, said Jean Luc, finishing it for him. And he smiled.
 
@@ -252,7 +284,22 @@ It came in two parts. The second part was for a doctor in Uvira, and it was the 
 
 I came out of that room bent over. Daudi was there when I came out, and I can tell you what he thought, because he is fifteen and good and he thinks shame is the only thing that can bend a person.
 
-> [!todo] ✍️ INSERTION 1 — THE COUNTING FAILS · yours to write · ~40–70 words
+I counted the steps we had taken and Daudi seemed to be more exhausted than me, 32, 33 and just before we reached 34
+
+> [!question] ⚠️ ONE DECISION LEFT, then delete this box
+> **Continuity is fixed and the naming is gone.** Steps are something she has; the envelope was not. *seemed to have tired* observes him instead of interpreting him. All three slips are gone.
+>
+> **The one open question: is *"just before we reached 34"* meant to be unfinished?**
+>
+> **If YES — keep it exactly, and add nothing.** The sentence stops before it reaches 34 and so does she. The form performs the failure, the thing that interrupted the count is never named, and *It was not shame. It was arithmetic.* arrives as the completion the sentence was denied. That is the strongest version and it needs no punctuation at all.
+>
+> **If NO** — it is an unfinished clause and a reader will take it for a slip. It needs a full stop and an ending.
+>
+> **One smaller thing, optional:** the sentence before this one already tells us what Daudi thinks. Two reads of Daudi back to back — the paragraph may want to open straight on *I counted*.
+>
+> *(v3, 2026-07-31: "seemed to have tired" → "seemed to be more exhausted than me". Stronger word, cleaner construction. Resolved.)*
+
+> [!todo] ✍️ ORIGINAL BRIEF — kept for reference until the paragraph is finished · ~40–70 words
 > **This is the humanising fix, and it is the single highest-value change left in the story.**
 >
 > **The problem:** she comes out of the back room bent over and produces a perfect aphorism two sentences later. Nobody has that ready. It tells the reader she has already recovered, and it is why the draft reads as composed rather than survived.
@@ -280,16 +327,7 @@ Alicia asked me in the corridor whether it was true about the man with the car. 
 
 Here is the thing I have worked out and cannot put down. When this finishes, and it is going to finish, I have known that since the twenty minutes, somebody will be taken for it, and it will not be him. Him they will call as a witness, if they call him at all. They will take somebody visible and poor who cannot afford an envelope, and the whole town will agree to be satisfied, and I think it will be Morisho, because he is the one who shouts mia tano mia tano on the road every morning where everybody can see him.
 
-He gave me a coin off my fare once and called me shemeji. That is the whole of what he did.
-
-> [!todo] ✍️ INSERTION 2 — CARRY *SHEMEJI* · yours to write · one sentence, no gloss
-> **The open fault from [[The NAPLAN Floor — Ten Mechanical Criteria|the floor check]] — criterion 6, the right-moment rule.**
->
-> **The problem:** every other unglossed word here recovers from context — *dagaa*, *dala dala*, *délestage*, *mia tano*. ***Shemeji* does not**, and it carries why Morisho is the one who gets taken. A reader without Swahili gets *he called me a word*, and the ending's whole logic sits on a familiarity they cannot feel.
->
-> **Do NOT translate it.** A gloss kills it. What is needed is the sentence *around* it doing one word more work — something in Djamela's voice that shows what being called that did to the space between them. Her register, not a dictionary's.
->
-> **Test:** a reader with no Swahili should finish the paragraph knowing Morisho was being familiar with her in a way that a watching town would remember. Nothing more.
+He gave me a coin off my fare once and called me shemeji. Don't get it confused, he hasn't even put a ring on my finger. That is the whole of what he did.
 
 I went to my locker at the end of the day when the corridor was empty. There was a good coat of dust on the inside of the door and I wrote his name in it with one finger.
 
