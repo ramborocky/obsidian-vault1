@@ -47,7 +47,13 @@ One concept, every story it appears in, with the exact line.
 | [[Atlas — The Active Protagonist]] | Who chooses, who only watches, and what it costs |
 | [[Atlas — Plant and Detonate]] | Where each story buries a fact and where it goes off |
 
-### 3 · By tag
+### 3 · By cross-base concept — the concordance
+
+Not story-to-concept but concept-to-concept: where McKee, Gardner, Cleland, Barrett and Kiteley converge on the same law under different names, and where Learning Curve genuinely doesn't converge with the other four.
+
+→ [[Atlas — Concordance (Cross-Base Concept Map)]]
+
+### 4 · By tag
 
 Every entry carries tags. Click one to see every occurrence across all maps.
 

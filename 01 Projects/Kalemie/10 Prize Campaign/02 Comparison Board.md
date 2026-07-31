@@ -27,21 +27,21 @@ pie showData
 
 ## The aggregate
 
-| Story | Words | %&lt;10w | Avg | &gt;30w | 1st noun | Eval /1k | Score | 2 weakest | Comp? |
-| --- | --: | --: | --: | --: | --: | --: | --: | --- | :--: |
-| 🏆 [[Baldwin — Sonny's Blues\|**BALDWIN — Sonny's Blues**]] *(benchmark)* | — | — | — | — | — | **highest** | **44** | economy only | **Y** *(qualified)* |
-| **CHANTAL D3** *(ours)* | 3,674 | **48%** | 14.7 | 10% | w16 | low\* | **40** | 2 · 7 | **Y** |
-| [[The Beat of My Hurt (Draft 4 — Free)\|**BEAT D4**]] *(Claude's)* | 3,476 | **51%** | 14.5 | **13%** | w80 | mid | **~41**† | prose control | **Y** |
-| [[Giorgis — A Double-Edged Inheritance\|Giorgis — Double-Edged Inheritance]] | 5,179 | **30%** | 14.9 | 5% | w14 | 8.1 | 33 | prose · interiority | **N** |
-| [[Uwazuruike — Looking for Papa\|Uwazuruike — Looking for Papa]] | 4,035 | **49%** | 11.0 | 2% | w17 | 11.9 | 33 | opening · prose | **N** |
-| 🏆 [[Nazir — The Serpent in the Grove\|**NAZIR — Serpent in the Grove**]] *(**2026 WINNER**)* | **3,413** | **52%** | 11.2 | 3% | w110 | mid | **31** | **economy · close · idea** | **Y** |
-| *5* | | | | | | | | | |
-| *5* | | | | | | | | | |
-| *6* | | | | | | | | | |
-| *7* | | | | | | | | | |
-| *8* | | | | | | | | | |
-| *9* | | | | | | | | | |
-| *10* | | | | | | | | | |
+| Story                                                                                         |     Words | %&lt;10w |  Avg | &gt;30w | 1st noun |    Eval /1k |    Score | 2 weakest                  |        Comp?        |
+| --------------------------------------------------------------------------------------------- | --------: | -------: | ---: | ------: | -------: | ----------: | -------: | -------------------------- | :-----------------: |
+| 🏆 [[Baldwin — Sonny's Blues\|**BALDWIN — Sonny's Blues**]] *(benchmark)*                     |         — |        — |    — |       — |        — | **highest** |   **44** | economy only               | **Y** *(qualified)* |
+| **CHANTAL D3** *(ours)*                                                                       |     3,674 |  **48%** | 14.7 |     10% |      w16 |       low\* |   **40** | 2 · 7                      |        **Y**        |
+| [[The Beat of My Hurt (Draft 4 — Free)\|**BEAT D4**]] *(Claude's)*                            |     3,476 |  **51%** | 14.5 | **13%** |      w80 |         mid | **~41**† | prose control              |        **Y**        |
+| [[Giorgis — A Double-Edged Inheritance\|Giorgis — Double-Edged Inheritance]]                  |     5,179 |  **30%** | 14.9 |      5% |      w14 |         8.1 |       33 | prose · interiority        |        **N**        |
+| [[Uwazuruike — Looking for Papa\|Uwazuruike — Looking for Papa]]                              |     4,035 |  **49%** | 11.0 |      2% |      w17 |        11.9 |       33 | opening · prose            |        **N**        |
+| 🏆 [[Nazir — The Serpent in the Grove\|**NAZIR — Serpent in the Grove**]] *(**2026 WINNER**)* | **3,413** |  **52%** | 11.2 |      3% |     w110 |         mid |   **31** | **economy · close · idea** |        **Y**        |
+| *5*                                                                                           |           |          |      |         |          |             |          |                            |                     |
+| *5*                                                                                           |           |          |      |         |          |             |          |                            |                     |
+| *6*                                                                                           |           |          |      |         |          |             |          |                            |                     |
+| *7*                                                                                           |           |          |      |         |          |             |          |                            |                     |
+| *8*                                                                                           |           |          |      |         |          |             |          |                            |                     |
+| *9*                                                                                           |           |          |      |         |          |             |          |                            |                     |
+| *10*                                                                                          |           |          |      |         |          |             |          |                            |                     |
 
 \* *Chantal's aphorism count (5, Barrett) is not the same measure as evaluative sentences (Labov). Still needs re-counting on the same definition — but see the finding below, which has already settled the decision it was meant to inform.*
 
