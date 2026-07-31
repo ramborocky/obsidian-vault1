@@ -17,6 +17,7 @@ One short story, *Chantal* (3,896 words, first person, narrated by Djamela), is 
 | `01 Projects/Kalemie/` | The main story project: drafts, six craft bases, prize campaign, characters, scenes. |
 | `01 Projects/00 Craft Atlas/` | Cross-index pinning each craft concept to the exact percentage point where it happens in each story. Built without modifying any source note — Obsidian backlinks do the reverse direction automatically. |
 | `01 Projects/00The beat of my hurt/` | A second story (Ilunga, first person, drummer, unnamed lake town). Free invention, currently at Draft 4. Used as a control against Chantal. |
+| `01 Projects/x-factor/` | **The AI sandbox — every file in it was written by Claude and none of it is the user's.** Craft experiments run at full length so an idea can be tested without touching the manuscript. **Nothing in here may cross into `01 Story Brain`.** Start at `x-factor.md`. Created 2026-07-31 by moving the AI drafts out of `Kalemie/`, where they were sitting two folders from the submission candidate. |
 | `01 Projects/Personal/` | Unrelated admin — ACPA/NBAA accountancy study, expenses, an Airbnb retreat idea. Not part of the story work. |
 | `.claude/` | `settings.json` plus the archive-before-edit hook. Deliberately tracked in git — see below. |
 | `.obsidian/` | Plugin config. Workspace state and vendored plugin bundles are gitignored; each plugin's `data.json` is tracked so settings travel with the vault. |
