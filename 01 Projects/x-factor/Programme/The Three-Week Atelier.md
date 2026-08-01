@@ -46,19 +46,20 @@ status: active
 
 *Print this. Put it on the wall. The shape is fixed for 21 days; only the content changes.*
 
-| Time | Block | What |
-| --- | --- | --- |
-| **09:00–09:45** | **A · READ** | One craft note + find it in a gallery story |
-| 09:45–10:00 | — | Break. Leave the room |
-| **10:00–10:45** | **B · COPYWORK** | Hand-copy a named passage. Pen and paper |
-| 10:45–11:00 | — | Break. Leave the room |
-| **11:00–11:45** | **C · MARK** | Pen work on a printed page. Counting, marking, measuring |
-| 11:45–12:00 | **LOG** | Three lines. Commit |
-| **12:00–14:00** | **REST** | **Not work. Not reading. Not thinking about the story** |
-| **14:00–14:50** | **D · DRILL** | Timed. Disposable. Nobody will ever read it |
-| 14:50–15:00 | — | Break |
-| **15:00–15:50** | **E · THE WORK** | Your manuscript. The only block that touches it |
-| 15:50–16:00 | **STOP** | Log. Commit. Close the laptop |
+| Time            | Block            | What                                                            |
+| --------------- | ---------------- | --------------------------------------------------------------- |
+| **09:00–09:45** | **A · READ**     | One craft note + find it in a gallery story                     |
+| 09:45–10:00     | —                | Break. Leave the room                                           |
+| **10:00–10:45** | **B · COPYWORK** | Hand-copy a named passage. Pen and paper                        |
+| 10:45–11:00     | —                | Break. Leave the room                                           |
+| **11:00–11:45** | **C · MARK**     | Pen work on a printed page. Counting, marking, measuring        |
+| 11:45–12:00     | **LOG**          | Three lines. Commit                                             |
+| **12:00–14:00** | **REST**         | **Not work. Not reading. Not thinking about the story**         |
+| **14:00–14:50** | **D · DRILL**    | Timed. Disposable. Nobody will ever read it                     |
+| 14:50–15:00     | —                | Break                                                           |
+| **15:00–15:50** | **E · THE WORK** | Your manuscript. The only block that touches it                 |
+| 15:50–16:00     | **STOP**         | Log. Commit. Close the laptop                                   |
+| **16:00–16:40** | **🌍 THE 40**    | **[[The Worldbuilding Hour]] — and it is not desk work. Legs.** |
 
 ### The ten rules
 
@@ -81,11 +82,11 @@ status: active
 
 Short sleep takes executive function first — which is exactly what a structured plan runs on. **So do not plan to be sharp. Plan to be mechanical.**
 
-| If salawat ended… | The next day |
-| --- | --- |
-| **Before midnight** | Normal day. |
-| **Midnight–01:00** | **COPYWORK MORNING.** Blocks A and C are cancelled. Do **three copywork passages** instead, 09:00–11:45, from that day's story. Afternoon runs normally. |
-| **After 01:00** | **The day is deleted.** Do not make it up. Friday absorbs it. |
+| If salawat ended…   | The next day                                                                                                                                             |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Before midnight** | Normal day.                                                                                                                                              |
+| **Midnight–01:00**  | **COPYWORK MORNING.** Blocks A and C are cancelled. Do **three copywork passages** instead, 09:00–11:45, from that day's story. Afternoon runs normally. |
+| **After 01:00**     | **The day is deleted.** Do not make it up. Friday absorbs it.                                                                                            |
 
 **Why copywork:** it requires no judgement, cannot be failed, and transfers more craft per hour than reading does. It is the correct tired-day activity, not a consolation.
 
