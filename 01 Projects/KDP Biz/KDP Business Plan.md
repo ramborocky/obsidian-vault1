@@ -275,6 +275,117 @@ Fill these from `Seeds/`. **Slots, not premises — the invention stays yours.**
 
 ---
 
+# PART 9 · SIX-MONTH CASHFLOW, ROI AND ADVERTISING
+
+**The six months are launch-centred**, not calendar months from today: **M0 = May 2027** (the month before release), **M1 = June 2027** (release), through **M6 = November 2027**.
+
+## The two facts that drive everything below
+
+**1 · KDP pays roughly 60 days after the end of the month in which the sale happened.** June's royalties arrive at the end of August. There is no way to speed this up.
+
+**2 · Amazon Ads bill your card immediately.** So money goes out at once and comes back two months later. **Advertising a book creates a working-capital hole before it creates anything else**, and that hole is the single most common way a first self-publishing run goes wrong.
+
+Payment thresholds: **$1 by electronic transfer, $100 by wire or cheque.** Get onto EFT if you possibly can — on a wire threshold you could earn $80 in a month and simply not be paid that month.
+
+---
+
+## Scenario A — no advertising · **recommended for book one**
+
+Assumes a launch bump from people who know you, then decay. KU borrows assumed at half the sale count, at $0.34 net each. Sale net blended at **$2.78** (Part 2).
+
+| | M0 May | M1 Jun | M2 Jul | M3 Aug | M4 Sep | M5 Oct | M6 Nov |
+| --- | --: | --: | --: | --: | --: | --: | --: |
+| Copies sold | — | 30 | 18 | 12 | 10 | 10 | 10 |
+| **Earned** | $0 | $89 | $53 | $35 | $30 | $30 | $30 |
+| **Cash in** *(60-day lag)* | $0 | $0 | $0 | **$89** | $53 | $35 | $30 |
+| Cash out | −$120 | $0 | $0 | $0 | $0 | $0 | $0 |
+| **Cumulative cash** | −$120 | −$120 | −$120 | **−$31** | **+$22** | +$57 | +$87 |
+
+- **Total earned over six months: $267.** Total cash actually received: $207 — the rest is still in the pipeline.
+- **Cash breakeven: month 4 (September 2027).** Three months after release, on a $120 outlay.
+- **Peak cash exposure: $120.** You are never more than $120 down. That is the entire risk of this scenario.
+
+## Scenario B — $100/month advertising from launch
+
+Same book, ads running M1–M6.
+
+| | M0 | M1 | M2 | M3 | M4 | M5 | M6 |
+| --- | --: | --: | --: | --: | --: | --: | --: |
+| Copies sold | — | 55 | 40 | 30 | 25 | 22 | 20 |
+| **Earned** | $0 | $162 | $118 | $89 | $74 | $65 | $59 |
+| **Cash in** | $0 | $0 | $0 | $162 | $118 | $89 | $74 |
+| Cash out | −$120 | −$100 | −$100 | −$100 | −$100 | −$100 | −$100 |
+| **Cumulative cash** | −$120 | −$220 | **−$320** | −$258 | −$240 | −$251 | −$277 |
+
+- **Total earned: $567.** Total spent: **$720.** Six months in, you are **$277 down and still going down.**
+- **The ads bought 102 extra copies for $600** — about **$5.88 of spend per $2.78 of royalty.** That is an **ACOS around 210%**, when profitable is 30–50%.
+- **Peak exposure: $320 before a single dollar arrives.** Every one of those dollars is real money out of the household in months 0–2, against nothing.
+
+> [!danger] The recommendation is not to advertise book one
+> Not because ads don't work — because **ads for a single title with no reviews and no backlist almost never work.** A click that produces one $2.78 sale cannot support a $0.50–$0.90 CPC at typical conversion rates.
+>
+> **What makes ads work is read-through.** When you have three or four books, one click can sell three, and the same CPC becomes profitable at once. **Start advertising at book three, funded by books one and two.** That is also exactly the point at which Part 4's catalog logic starts paying.
+
+## ROI
+
+| | Scenario A | Scenario B |
+| --- | --: | --: |
+| Invested | $120 | $720 |
+| Earned, 12 months | ~$400 | ~$800 |
+| **Profit** | **+$280** | **+$80** |
+| **ROI** | **233%** | 11% |
+| Payback | month 4 | month 11+ |
+
+**Read the profit column, not the ROI column.** 233% sounds excellent and is arithmetically true, but the denominator is $120 — it means **$280 in your pocket across a year.** Percentage returns on tiny bases are how self-publishing courses are sold. The absolute number is the honest one, and the absolute number only becomes interesting at book five.
+
+---
+
+# PART 10 · THE TECHNICAL SETUP
+
+## Files
+
+| Item | Spec |
+| --- | --- |
+| **Ebook manuscript** | Reflowable **EPUB** preferred; KDP also accepts DOCX. Straight prose needs nothing exotic |
+| **Ebook cover** | **1600 × 2560 px**, 1.6:1 ratio, RGB, JPEG or TIFF |
+| **Paperback interior** | **PDF**, no bleed for text-only. Trim **5″ × 8″** — the standard fiction size |
+| **Paper** | **Cream** for fiction. White reads as a manual |
+| **Paperback cover** | Single wrap-around PDF sized to the final page count. Spine width ≈ **pages × 0.0025″** for cream — always regenerate from KDP's own template after the interior is final, never before |
+| **ISBN** | **Free from KDP** for the paperback. The ebook uses an ASIN and needs no ISBN. Buy your own only if you later go wide |
+
+## Setup order — do it in this sequence
+
+1. **KDP account + W-8BEN tax interview.** Do this in Phase 1, on a 99¢ single, not on the book. It takes weeks to clear and it gates every payment.
+2. **Bank / EFT details.** Aim for electronic transfer, not wire — the threshold difference is $1 versus $100.
+3. **Publish two 99¢ singles** to learn the upload, metadata, category and keyword machinery on something that doesn't matter.
+4. **Then the collection.**
+
+## Launch mechanics
+
+- **KDP Select: yes for the first 90 days.** Exclusivity in exchange for Kindle Unlimited reach. **It auto-renews — diarise the opt-out date** the day you enrol.
+- **Pre-order: no, for book one.** A pre-order spreads sales across weeks, which flattens the launch-day rank spike that drives visibility. Pre-orders help authors who already have an audience. You don't yet.
+- **A+ Content: yes.** Free, available to KDP authors, and it makes an unknown book look like a published one. Do it before launch.
+- **Series page:** set it up when book two exists, not before.
+- **Reviews:** the first ten matter more than the next hundred. Ask readers directly. **Never buy reviews or trade them** — it's an account-termination offence, and the account is the business.
+
+## Compliance — two things that can end the account
+
+**1 · AI disclosure is mandatory and it is a required field at publication.**
+
+Amazon distinguishes **AI-generated** content (an AI produced the text, image or translation, even if you edited it afterwards) from **AI-assisted** (you made it; AI helped brainstorm, edit or check grammar). **Generated must be disclosed. Assisted must not.**
+
+Applied here: the stories are yours, written by hand, so the **text is AI-assisted at most and is not disclosed.** But note the trap — **cover art counts.** A book with entirely human-written text and an AI-generated cover contains AI-generated content in Amazon's terms and must be declared. **Ask any cover designer, in writing, whether the art is AI-generated**, and answer the KDP field accordingly.
+
+Undisclosed AI content is grounds for removal from sale, and repeat cases escalate to the account. Disclosure itself is internal — it doesn't affect royalties, ranking, or anything a reader sees. **There is no upside to guessing and a total downside to getting it wrong.**
+
+**2 · The prize firewall**, restated once more because it is the only irreversible item in this document: nothing entered, and nothing that might ever be entered, goes in this book.
+
+## What stays yours
+
+The KDP account, the tax interview, the bank details and every advertising payment are **yours alone, done directly with Amazon**. I can model the numbers and check the arithmetic; **no payment, transfer, card or mobile-money detail goes through me.** → [[Expenses]]
+
+---
+
 ## Sources
 
 - [KDP Royalty Rates 2026: Complete Guide (70% vs 35%)](https://www.kdpeasy.com/guides/2026-kdp-royalty-rates)
@@ -294,6 +405,11 @@ Fill these from `Seeds/`. **Slots, not premises — the invention stays yours.**
 - [KDP Categories and Keywords in 2026: the 3+7 rule](https://www.builtwritten.com/blog/kdp-categories-and-keywords-get-found-2026)
 - [How to Choose KDP Categories in 2026](https://manuscriptreport.com/blog/kdp-category-selection-guide)
 - [KDP Keywords for Horror Authors](https://www.darkdraft.us/blog/kdp-keywords-for-horror-authors/)
+- [When will I get paid? — KDP official](https://kdp.amazon.com/en_US/help/topic/GK2MKZUL6U3SFBPZ) · [Payment Thresholds — KDP official](https://kdp.amazon.com/help?topicId=A3E24YJK5O82TD)
+- [What Is a Healthy Book Ad Spend? ACOS, ROAS & Break-Even](https://publishing.co.uk/guides/healthy-book-ad-spend-acos-roas/)
+- [Amazon Ads for KDP Books: Complete Beginner's Guide (2026)](https://kdptools.io/blog/amazon-ads-kdp-guide-2026)
+- [KDP AI Disclosure Rules 2026: Exactly What Amazon Requires](https://publishing.co.uk/guides/kdp-ai-content-disclosure/)
+- [Amazon KDP AI Content Policy 2026: Official Disclosure Rules](https://univers.studio/blog/ai-generated-content-kdp/)
 
 ## Related
 - [[12 The Rules — Source of Truth]] — why the firewall exists
