@@ -137,6 +137,9 @@ Every Chair of Judges 2021–2026, verbatim, checked against the Commonwealth Fo
 | 2 | [[Chantal × Beat — The Twenty-Eight Houses (AI Draft, Not Canon)]] | Fuse with Beat of My Hurt; govern time by cycle, moon, numerology | **36/45.** The **28 letters = 28 lunar mansions = 28 days** correspondence; the section break as a prose instrument |
 | 3 | [[The X-Factor]] | Prize rules off, Congolese register, saturated with daily life | Built on **Leakage**. *Article 15*, **the Lukuga**, and the cost: a digression is a long sentence |
 | 4 | [[MABANGA (New Story — AI Draft, Not Canon)]] | A wholly new story, benchmarked against *Dite* and *Mothers* | **Instruction-as-epigraph turned hostile** — a price list that knows what the narrator doesn't |
+| 5 | [[mihogoni-2]] | The *Dite* object-chorus: four rusted ships, no body, no agency | The naive-narrator engine run for a whole story instead of once. **Cosmic indifference delivered by a commodity price** |
+| 6 | [[mihogoni-3f]] | Chantal's material in **close third**, one ship carrying the ascendancy | The four-flag epigraph chain and the **after-deck clause**. Cost: the narrator |
+| 7 | [[mihogoni-3g]] | **Controlled test** — 3f with the person flipped and nothing else changed | **Five of seven devices were free of person; two were being subsidised by it.** → [[19 The Third-Person Test — What Close Third Bought and Cost]] |
 
 ---
 
@@ -149,6 +152,7 @@ Every Chair of Judges 2021–2026, verbatim, checked against the Commonwealth Fo
 5. **The section break is a prose instrument.** Hard breaks delete the transitional sentence, where feeling-explaining clauses live.
 6. **A digression is a long sentence.** Leakage and a clipped sentence profile pull against each other. Nazir avoids both costs by keeping surplus in dialogue and objects.
 7. **The rhythm metric predicts nothing.** Lubwama 10.5 · Nazir 11.3 · *Dite* **17.5**. Three accomplished stories, two opposite profiles. **Chantal's 14.8 is a register, not a defect.**
+8. **Close third buys reach, not atmosphere — and it does not itemise the bill.** Flipping [[mihogoni-3f]] to first person with one variable changed left five of seven devices untouched and broke two, both for the same reason: third person was paying for access the narrator does not have. **A story about a girl kept out of rooms should not have a narrating position that can see into all of them.** → [[19 The Third-Person Test — What Close Third Bought and Cost]]
 
 ## Related
 
