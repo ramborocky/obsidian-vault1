@@ -117,7 +117,7 @@ The plan in Part 5 is built around these five, in order of how much they matter.
 
 **1 · Catalog, not book.** Nothing in the data says one book earns. Everything says 10+ earns. **Nine stories is one book.** Treat it as unit one of five, or the arithmetic never improves.
 
-**2 · One genre, named on the cover.** The single most repeated finding about self-published collections. "Literary short fiction" is not a genre a reader shops for. *Nine ghost stories from the lake* is.
+**2 · One genre, named on the cover.** The single most repeated finding about self-published collections. "Literary short fiction" is not a genre a reader shops for. → **the genre is decided in [[KDP Business Plan#PART 8 · THE GENRE, AND HOW TO SHELVE IT|Part 8]].**
 
 **3 · Serialise, then bundle.** Publish the nine as individual 99¢ singles or in twos as you finish them, then release the collection. Each single is a separate storefront listing, a separate chance to be found, and a reason to publish something every six weeks instead of once.
 
@@ -190,6 +190,91 @@ Prize is submitted; the desk is free. Four stories, ~4,000 words each, at the At
 
 ---
 
+# PART 8 · THE GENRE, AND HOW TO SHELVE IT
+
+## The pick
+
+> **Quiet supernatural horror — jinn and possession stories on the Swahili coast.**
+
+**Four reasons, in order of weight.**
+
+**1 · Horror is the one genre where the short story is the native form.** Readers actively shop for horror collections. Readers of almost every other genre want novels and treat a collection as a consolation prize. That single fact repairs the worst structural problem in Part 1.
+
+**2 · Kindle Unlimited carries horror hard.** High borrow volume, and short pieces actually get finished — which is where the page-read money is. It is the one category where the KENP arithmetic stops being negligible.
+
+**3 · It cannot collide with the prize work.** Sea, not lake. Bagamoyo, Kilwa, the stone town, the old quarters of Dar. [[Collection Tracker|The cycle]] already claims Mihogoni, the lake, the police station, D'juma, Morisho and Djamela — **none of those may appear here**, and a coastal supernatural book makes that firewall structural rather than a thing you have to remember.
+
+**4 · It runs on what you already do.** *We write scenes, not explanations. Objects carry emotion.* That is quiet-horror craft stated almost word for word. Dread is withholding; the reader arriving before the narrator is the same engine the whole [[The X-Factor|x-factor]] apparatus says works. **You are already writing this, minus the ghost.**
+
+**The authority argument:** you have salawat and the prayer times in your actual life. The Islamic frame is native, not researched, and that is the difference between authority and costume. KU horror is flooded with generic haunted houses; there is very little Swahili-coast jinn horror written by somebody who lives on that coast.
+
+> [!warning] Not splatter
+> Your strength is restraint and refusal, and gore fights it. Aim at the quiet end: **something is wrong, nobody names it, the story ends before the explanation.** A story that stops one beat early is the whole genre.
+
+---
+
+## Shelving it — 3 categories, 7 keywords
+
+Amazon gives **3 browse categories per format** (ebook, paperback and hardcover each get their own three, chosen in the dashboard — the old email-support method for extra categories is gone) and **7 backend keyword fields of 50 characters each**, which shoppers never see.
+
+### The three categories
+
+Pick the **deepest accurate** node, not the biggest shelf — ranking on a small shelf produces a visible bestseller flag; drowning on a big one produces nothing.
+
+| Slot | Target | Why |
+| --- | --- | --- |
+| **1** | Literature & Fiction → Genre Fiction → **Horror → Occult** *(or → Ghosts)* | The category that actually converts. Check which of the two is less crowded on the week you publish |
+| **2** | Literature & Fiction → **Short Stories & Anthologies → Anthologies** *(or Short Stories)* | Tells the store what the format is, so nobody buys expecting a novel and leaves a two-star review about it |
+| **3** | Literature & Fiction → **World Literature → African** | Small, real, and yours by right. This is the slot most likely to produce an actual rank |
+
+**Verify each one is live before you rely on it.** Click through from an existing book in that category and confirm a browsable results page loads — deep sub-nodes with similar names sometimes save differently than they appear in the picker.
+
+### The seven keyword fields
+
+Each is a phrase, not a word. Don't repeat anything already in the title or subtitle — those are indexed separately, so repeating them wastes a slot. Amazon combines terms across fields, so you don't need every permutation.
+
+```
+1   African horror short stories
+2   jinn possession supernatural
+3   Swahili coast ghost stories
+4   quiet horror anthology
+5   Tanzania Zanzibar folklore
+6   Islamic supernatural fiction
+7   creepy folk horror collection
+```
+
+At least one keyword should echo the vocabulary of each category you picked — it raises Amazon's confidence in the classification and reduces the chance of being auto-reassigned during launch, which is exactly when it hurts.
+
+### Title, subtitle, cover
+
+- **Title:** short, concrete, from an object or a place in one of the nine. Not a theme word.
+- **Subtitle carries the genre**, because the title should not have to: *Nine stories from the coast* — or the word *horror* outright if the cover is subtle.
+- **Cover:** the genre must be legible at thumbnail size, before anything is read. This is the one place in Part 6 where money buys the most.
+
+---
+
+## The nine slots
+
+Fill these from `Seeds/`. **Slots, not premises — the invention stays yours.** A collection is ordered, not collected; these are the jobs each position has to do.
+
+| # | Position | Job | Length |
+| --: | --- | --- | --- |
+| 1 | **Opener** | The most immediately unsettling thing you have. It sells the other eight. Nothing withheld so long that a browser gives up | ~3,500 |
+| 2 | Second | Different register from 1 — if 1 was cold, this one is warm until it isn't | ~4,000 |
+| 3 | **The weak one** | Every collection has one. Bury it here, where nobody is deciding anything | ~3,000 |
+| 4 | The funny one | Real jokes. Load-bearing. Comedy braided into dread is the hardest thing in the book and the most memorable when it lands | ~4,000 |
+| 5 | **The short one** | Under 1,500 words. A collection needs one that ends before you have settled into it | ~1,200 |
+| 6 | The long one | The most room, the most world, the most surplus detail that serves nothing | ~6,000 |
+| 7 | The quiet one | Almost nothing happens. No apparition. The horror is entirely a fact somebody states plainly | ~3,000 |
+| 8 | The cruel one | The one you are slightly reluctant to publish. Do not soften it | ~4,000 |
+| 9 | **Closer** | Second-strongest overall. Must end the *book*, not just itself — one image that reaches back over the other eight | ~4,500 |
+
+**~36,000 words total**, which is the figure Part 2's arithmetic is built on.
+
+**Ordering rule: strongest first, second strongest last, weakest at three.** Readers decide in story one and remember story nine.
+
+---
+
 ## Sources
 
 - [KDP Royalty Rates 2026: Complete Guide (70% vs 35%)](https://www.kdpeasy.com/guides/2026-kdp-royalty-rates)
@@ -205,6 +290,10 @@ Prize is submitted; the desk is free. Four stories, ~4,000 words each, at the At
 - [Sales of short story collections surge — The Bookseller](https://www.thebookseller.com/news/short-story-collections-surge-half-value-and-third-volume-2017-709376)
 - [Tax Withholding — Kindle Direct Publishing](https://kdp.amazon.com/en_US/help/topic/G201274690)
 - [KDP for Non-US Authors](https://www.vappingo.com/word-blog/kdp-for-non-us-authors/)
+- [KDP Categories — official help](https://kdp.amazon.com/en_US/help/topic/G200652170)
+- [KDP Categories and Keywords in 2026: the 3+7 rule](https://www.builtwritten.com/blog/kdp-categories-and-keywords-get-found-2026)
+- [How to Choose KDP Categories in 2026](https://manuscriptreport.com/blog/kdp-category-selection-guide)
+- [KDP Keywords for Horror Authors](https://www.darkdraft.us/blog/kdp-keywords-for-horror-authors/)
 
 ## Related
 - [[12 The Rules — Source of Truth]] — why the firewall exists
