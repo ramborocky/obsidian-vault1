@@ -37,6 +37,7 @@ It has two halves, and they came from two different places:
 | [[The Cold Read Protocol]] | How to ask for brutal feedback and how to survive receiving it — including from me |
 | [[13 The Worked Examples — Concepts Against Stories]] | The join between all six bases and all seven stories. When a concept is abstract, go here for a worked example before reopening the theory |
 | [[Kalemie — Standing Diagnosis]] | **Start here.** The current verdict on the live draft, with line numbers and word counts. Updated as the draft changes |
+| [[The Forge — Commute Trainer]] | The instruments made portable. Seven drills — beat, turn, gap, sentence, object, slide, close — with the Nine Axes anchors carried offline. Open the `.html` on your phone; the machine measures the mechanics and you mark the rest, and it never sums the two |
 
 ## Half Two — Creativity Amplification
 

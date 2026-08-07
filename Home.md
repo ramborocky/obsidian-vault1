@@ -54,6 +54,8 @@ cssclasses: [home]
 - [ ] 📿 **100 salawat** — 33 Fajr · 33 Dhuhr · 34 Asr
 - [ ] 🌙 Maghrib → Isha screenless
 
+- [ ] ⚒ **One unit in the Forge** — a beat, a gap, a slide, on the road → [[The Forge — Commute Trainer]]
+
 → [[The Apprenticeship — Learning By Hand]] · [[The Day Plan — 80-20, Pomodoro and Practice]]
 
 ---

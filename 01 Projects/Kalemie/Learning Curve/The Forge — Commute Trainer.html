@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>The Forge — Commute Trainer</title>
+<style>
+/* ============================================================
+   THE FORGE — tokens
+   Dark is the default ground (ribbon); light is the proof sheet.
+   Every colour is defined on bare :root first, then re-defined
+   for the light states. No colour lives only inside a query.
+   ============================================================ */
+:root{
+  --ground:#14131C;
+  --panel:#1D1B28;
+  --panel-2:#242232;
+  --rule:#2E2B3D;
+  --rule-soft:#252334;
+  --text:#E7E4F0;
+  --muted:#9A95AD;
+  --faint:#6B6680;
+  --accent:#8C7DF0;
+  --accent-ink:#12101C;
+  --accent-soft:#241F44;
+  --good:#4FAE90;
+  --warn:#D19B36;
+  --crit:#D9584F;
+  --good-soft:#16302A;
+  --warn-soft:#332612;
+  --crit-soft:#331A18;
+  --shadow:0 1px 0 rgba(255,255,255,.04), 0 8px 24px rgba(0,0,0,.45);
+  --field:#100F17;
+
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Charter,"Bitstream Charter",Georgia,serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+
+  --r:10px;
+  --gap:14px;
+  --pad:16px;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --ground:#EFEEF3;
+    --panel:#FFFFFF;
+    --panel-2:#F6F5F9;
+    --rule:#DBD8E4;
+    --rule-soft:#E7E4EE;
+    --text:#191725;
+    --muted:#5E5972;
+    --faint:#8B8699;
+    --accent:#5B49CE;
+    --accent-ink:#FFFFFF;
+    --accent-soft:#EDEAFB;
+    --good:#2F7F68;
+    --warn:#9A6A12;
+    --crit:#B23A32;
+    --good-soft:#E4F2ED;
+    --warn-soft:#F6EDDC;
+    --crit-soft:#F8E7E5;
+    --shadow:0 1px 0 rgba(255,255,255,.9), 0 6px 18px rgba(30,26,52,.10);
+    --field:#FFFFFF;
+  }
+}
+:root[data-theme="light"]{
+  --ground:#EFEEF3;
+  --panel:#FFFFFF;
+  --panel-2:#F6F5F9;
+  --rule:#DBD8E4;
+  --rule-soft:#E7E4EE;
+  --text:#191725;
+  --muted:#5E5972;
+  --faint:#8B8699;
+  --accent:#5B49CE;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#EDEAFB;
+  --good:#2F7F68;
+  --warn:#9A6A12;
+  --crit:#B23A32;
+  --good-soft:#E4F2ED;
+  --warn-soft:#F6EDDC;
+  --crit-soft:#F8E7E5;
+  --shadow:0 1px 0 rgba(255,255,255,.9), 0 6px 18px rgba(30,26,52,.10);
+  --field:#FFFFFF;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--text);
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none;padding:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+
+.shell{max-width:640px;margin:0 auto;padding:0 var(--pad) 108px}
+
+/* ---------- masthead ---------- */
+.top{
+  position:sticky;top:0;z-index:20;
+  background:var(--ground);
+  border-bottom:1px solid var(--rule);
+  margin:0 calc(var(--pad) * -1);
+  padding:10px var(--pad) 9px;
+  display:flex;align-items:center;gap:12px;
+}
+.mark{display:flex;align-items:baseline;gap:8px;min-width:0}
+.mark b{font-weight:600;letter-spacing:.01em;font-size:16px}
+.mark span{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);white-space:nowrap;
+}
+.stats{margin-left:auto;display:flex;gap:6px;align-items:center;font-family:var(--mono)}
+.stat{
+  display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;
+  padding:3px 8px;border-radius:7px;background:var(--panel);border:1px solid var(--rule-soft);
+}
+.stat b{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.stat span{font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.stat.hot b{color:var(--accent)}
+.themebtn{
+  width:34px;height:34px;border-radius:8px;border:1px solid var(--rule-soft);
+  background:var(--panel);display:grid;place-items:center;font-size:14px;flex:none;
+}
+
+/* ---------- level bar ---------- */
+.levelrow{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 0 13px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+}
+.track{flex:1;height:4px;border-radius:2px;background:var(--rule);overflow:hidden}
+.track i{display:block;height:100%;background:var(--accent);border-radius:2px;transition:width .45s ease}
+
+/* ---------- generic panel ---------- */
+.card{
+  background:var(--panel);border:1px solid var(--rule-soft);
+  border-radius:var(--r);box-shadow:var(--shadow);
+}
+.eyebrow{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);
+}
+h2.sec{
+  font-size:13px;font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin:26px 0 12px;
+}
+p{margin:0 0 10px}
+.lede{color:var(--muted);font-size:15.5px;line-height:1.55;margin:0 0 18px}
+.lede em{color:var(--text);font-style:italic}
+
+/* ---------- the deck ---------- */
+.deck{display:flex;flex-direction:column;gap:9px}
+.drill{
+  display:grid;grid-template-columns:auto 1fr auto;gap:0 13px;align-items:center;
+  width:100%;text-align:left;padding:13px 14px;
+  background:var(--panel);border:1px solid var(--rule-soft);
+  border-radius:var(--r);box-shadow:var(--shadow);
+  transition:border-color .18s ease, transform .18s ease;
+}
+.drill:hover{border-color:var(--accent);transform:translateY(-1px)}
+.drill:active{transform:translateY(0)}
+.glyph{
+  width:38px;height:38px;border-radius:9px;background:var(--accent-soft);
+  color:var(--accent);display:grid;place-items:center;
+  font-family:var(--mono);font-size:15px;font-weight:600;grid-row:span 2;
+}
+.drill h3{margin:0;font-size:16.5px;font-weight:600;letter-spacing:.005em}
+.drill p{margin:2px 0 0;font-size:13.5px;color:var(--muted);line-height:1.35}
+.cost{
+  grid-row:span 2;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  color:var(--faint);text-align:right;white-space:nowrap;
+}
+.cost b{display:block;font-size:14px;color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ---------- run screen ---------- */
+.runhead{display:flex;align-items:center;gap:10px;padding:14px 0 2px}
+.back{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);padding:6px 10px;border:1px solid var(--rule);border-radius:7px;
+}
+.runhead h2{margin:0;font-size:19px;font-weight:600}
+
+.prompt{padding:15px 16px;margin:14px 0}
+.prompt .eyebrow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}
+.reroll{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--rule);border-radius:6px;padding:4px 8px;
+}
+.prompt .body{font-size:17.5px;line-height:1.45;margin:0}
+.prompt .why{
+  margin:12px 0 0;padding-top:11px;border-top:1px solid var(--rule-soft);
+  font-size:13.5px;color:var(--muted);line-height:1.45;
+}
+.prompt .why b{color:var(--text);font-weight:600}
+
+.controls{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.timer{
+  font-family:var(--mono);font-size:21px;font-weight:600;font-variant-numeric:tabular-nums;
+  letter-spacing:.02em;padding:6px 12px;border-radius:8px;
+  background:var(--panel);border:1px solid var(--rule-soft);
+}
+.timer.over{color:var(--crit);border-color:var(--crit);background:var(--crit-soft)}
+.tbtn{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 11px;border-radius:8px;border:1px solid var(--rule);color:var(--muted);
+}
+.tbtn.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+
+textarea.page{
+  width:100%;min-height:230px;resize:vertical;
+  background:var(--field);color:var(--text);
+  border:1px solid var(--rule);border-radius:var(--r);
+  padding:15px 15px;font-family:var(--serif);font-size:17.5px;line-height:1.62;
+}
+textarea.page::placeholder{color:var(--faint)}
+textarea.page:focus{border-color:var(--accent);outline:none}
+
+/* ---------- the rhythm ribbon ---------- */
+.meter{margin:12px 0 0;padding:13px 14px 12px}
+.ribbon{
+  display:flex;align-items:flex-end;gap:2px;height:46px;
+  padding:0 0 3px;border-bottom:1px solid var(--rule);overflow:hidden;
+}
+.ribbon i{flex:1 1 3px;min-width:2px;max-width:26px;border-radius:2px;transition:height .18s ease}
+.ribbon i.s{background:var(--good)}
+.ribbon i.m{background:var(--accent)}
+.ribbon i.l{background:var(--warn)}
+.ribbon .empty{
+  flex:1;text-align:center;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);align-self:center;
+}
+.ribkey{
+  display:flex;gap:14px;margin-top:8px;font-family:var(--mono);
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+}
+.ribkey span{display:flex;align-items:center;gap:5px}
+.ribkey b{width:7px;height:7px;border-radius:2px;display:inline-block}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:13px;background:var(--rule-soft);border-radius:8px;overflow:hidden}
+.cell{background:var(--panel);padding:9px 10px;display:flex;flex-direction:column;gap:2px}
+.cell b{font-family:var(--mono);font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+.cell span{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.cell.ok b{color:var(--good)}
+.cell.warn b{color:var(--warn)}
+.cell.bad b{color:var(--crit)}
+
+.flags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.flag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;
+  padding:4px 8px;border-radius:6px;background:var(--crit-soft);color:var(--crit);
+  border:1px solid transparent;
+}
+.flag.q{background:var(--warn-soft);color:var(--warn)}
+.flag.clean{background:var(--good-soft);color:var(--good)}
+
+.disclaim{
+  margin:10px 0 0;font-family:var(--mono);font-size:10px;line-height:1.5;
+  letter-spacing:.02em;color:var(--faint);
+}
+
+/* ---------- judging ---------- */
+.axis{padding:14px 15px;margin-bottom:9px}
+.axis .num{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);
+}
+.axis h4{margin:3px 0 9px;font-size:16.5px;font-weight:600}
+.anchors{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.anchors div{display:flex;gap:9px;font-size:13.5px;color:var(--muted);line-height:1.35}
+.anchors dt{
+  font-family:var(--mono);font-size:11px;color:var(--faint);flex:none;width:14px;
+  padding-top:2px;
+}
+.scale{display:flex;gap:6px}
+.scale button{
+  flex:1;padding:10px 0;border-radius:8px;border:1px solid var(--rule);
+  font-family:var(--mono);font-size:15px;font-weight:600;color:var(--muted);
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.scale button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+
+.verdict{padding:16px;margin:14px 0}
+.vrow{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0}
+.vrow + .vrow{border-top:1px solid var(--rule-soft)}
+.vrow .k{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint)}
+.vrow .k em{display:block;font-family:var(--serif);font-style:italic;font-size:13px;letter-spacing:0;text-transform:none;color:var(--muted);margin-top:3px}
+.vrow .v{font-family:var(--mono);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.vrow .v small{font-size:13px;color:var(--faint);font-weight:400}
+.nosum{
+  margin-top:12px;padding-top:12px;border-top:1px dashed var(--rule);
+  font-size:13.5px;color:var(--muted);line-height:1.45;
+}
+.nosum b{color:var(--text)}
+
+.actions{display:flex;gap:8px;margin:16px 0 0;flex-wrap:wrap}
+.btn{
+  flex:1;min-width:132px;padding:14px 16px;border-radius:9px;text-align:center;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+  background:var(--accent);color:var(--accent-ink);font-weight:600;
+}
+.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--rule)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+.xpflash{
+  text-align:center;padding:22px 16px;margin:14px 0;
+}
+.xpflash .n{
+  font-family:var(--mono);font-size:46px;font-weight:600;color:var(--accent);
+  line-height:1;font-variant-numeric:tabular-nums;
+}
+.xpflash .l{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-top:8px}
+.breakdown{margin-top:16px;display:flex;flex-direction:column;gap:5px;text-align:left}
+.breakdown div{
+  display:flex;justify-content:space-between;gap:10px;
+  font-family:var(--mono);font-size:11.5px;color:var(--muted);
+  padding:5px 0;border-bottom:1px solid var(--rule-soft);
+}
+.breakdown div b{color:var(--text);font-variant-numeric:tabular-nums}
+.breakdown div.miss{color:var(--faint)}
+.breakdown div.miss b{color:var(--faint)}
+
+/* ---------- trunk ---------- */
+.entry{padding:13px 14px;margin-bottom:8px}
+.entry summary{
+  list-style:none;cursor:pointer;display:flex;gap:10px;align-items:baseline;
+}
+.entry summary::-webkit-details-marker{display:none}
+.entry .tag{
+  font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-soft);padding:3px 7px;border-radius:5px;flex:none;
+}
+.entry .when{font-family:var(--mono);font-size:11px;color:var(--faint);margin-left:auto;flex:none;font-variant-numeric:tabular-nums}
+.entry .snip{font-size:14.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.entry .full{
+  margin-top:12px;padding-top:12px;border-top:1px solid var(--rule-soft);
+  font-size:16px;line-height:1.6;white-space:pre-wrap;word-wrap:break-word;
+}
+.entry .meta{margin-top:11px;font-family:var(--mono);font-size:10.5px;color:var(--faint);line-height:1.6}
+
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.badge{padding:11px 12px;border-radius:9px;border:1px solid var(--rule-soft);background:var(--panel)}
+.badge.locked{opacity:.42}
+.badge b{display:block;font-size:14.5px;font-weight:600}
+.badge span{font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.4;display:block;margin-top:3px}
+
+/* ---------- craft ---------- */
+.note{padding:15px 16px;margin-bottom:10px}
+.note h3{margin:0 0 3px;font-size:17px;font-weight:600}
+.note .src{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.note ul{margin:0;padding-left:18px}
+.note li{margin-bottom:7px;font-size:15px;line-height:1.5;color:var(--muted)}
+.note li b{color:var(--text);font-weight:600}
+.note blockquote{
+  margin:0 0 11px;padding-left:12px;border-left:2px solid var(--accent);
+  font-style:italic;font-size:15.5px;color:var(--text);line-height:1.45;
+}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -2px}
+table{border-collapse:collapse;width:100%;min-width:430px;font-size:13.5px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+th{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:500}
+td.n{font-family:var(--mono);color:var(--accent);width:26px}
+td b{font-weight:600}
+
+/* ---------- bottom nav ---------- */
+nav.tabs{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  background:var(--panel);border-top:1px solid var(--rule);
+  display:flex;padding:6px 8px calc(6px + env(safe-area-inset-bottom));
+}
+nav.tabs button{
+  flex:1;padding:9px 4px 7px;border-radius:9px;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);
+}
+nav.tabs button i{font-style:normal;font-size:17px;line-height:1}
+nav.tabs button[aria-current="true"]{color:var(--accent);background:var(--accent-soft)}
+
+.toast{
+  position:fixed;left:50%;bottom:86px;transform:translateX(-50%) translateY(14px);
+  background:var(--text);color:var(--ground);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+  padding:10px 16px;border-radius:8px;opacity:0;pointer-events:none;
+  transition:opacity .2s ease, transform .2s ease;z-index:50;white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.empty-state{text-align:center;padding:44px 20px;color:var(--faint)}
+.empty-state b{display:block;font-size:17px;color:var(--muted);margin-bottom:6px;font-weight:600}
+.empty-state span{font-family:var(--mono);font-size:11.5px;line-height:1.6}
+
+.hide{display:none !important}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="top">
+    <div class="mark">
+      <b>The Forge</b>
+      <span>Commute Trainer</span>
+    </div>
+    <div class="stats">
+      <div class="stat hot"><b id="s-streak">0</b><span>streak</span></div>
+      <div class="stat"><b id="s-xp">0</b><span>xp</span></div>
+    </div>
+    <button class="themebtn" id="themebtn" aria-label="Switch theme">◐</button>
+  </header>
+
+  <!-- ═══════════ FORGE ═══════════ -->
+  <section id="v-forge">
+    <div class="levelrow">
+      <span id="lvl-name">Impromptu</span>
+      <span class="track"><i id="lvl-bar" style="width:0%"></i></span>
+      <span id="lvl-next">250</span>
+    </div>
+
+    <p class="lede">One unit of the form, made in the time you have. <em>The Forge measures the mechanics and you judge the rest</em> — it never adds the two together, and it never writes a word for you.</p>
+
+    <h2 class="sec">Pick a unit</h2>
+    <div class="deck" id="deck"></div>
+
+    <h2 class="sec">Marks</h2>
+    <div class="badges" id="badges"></div>
+  </section>
+
+  <!-- ═══════════ RUN ═══════════ -->
+  <section id="v-run" class="hide">
+    <div class="runhead">
+      <button class="back" id="run-back">← Deck</button>
+      <h2 id="run-title">Beat</h2>
+    </div>
+
+    <div class="card prompt">
+      <div class="eyebrow">
+        <span>The constraint</span>
+        <button class="reroll" id="reroll">Another</button>
+      </div>
+      <p class="body" id="prompt-body"></p>
+      <p class="why" id="prompt-why"></p>
+    </div>
+
+    <div class="controls">
+      <div class="timer" id="timer">05:00</div>
+      <button class="tbtn" id="t-start">Start</button>
+      <button class="tbtn" id="t-outrun" title="Kiteley 190 — no going back">Outrun: off</button>
+    </div>
+
+    <textarea class="page" id="page" placeholder="Your hand only. Nothing here is generated." spellcheck="true"></textarea>
+
+    <div class="card meter">
+      <div class="ribbon" id="ribbon"><span class="empty">rhythm appears as you write</span></div>
+      <div class="ribkey">
+        <span><b style="background:var(--good)"></b>≤10 short</span>
+        <span><b style="background:var(--accent)"></b>11–29 mid</span>
+        <span><b style="background:var(--warn)"></b>30+ fog</span>
+      </div>
+      <div class="grid" id="cells"></div>
+      <div class="flags" id="flags"></div>
+      <p class="disclaim">MEASURED — mechanics only. This panel cannot see whether the writing is any good.</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="to-judge">Mark it →</button>
+    </div>
+  </section>
+
+  <!-- ═══════════ JUDGE ═══════════ -->
+  <section id="v-judge" class="hide">
+    <div class="runhead">
+      <button class="back" id="judge-back">← Page</button>
+      <h2>Mark it</h2>
+    </div>
+    <p class="lede">Score only what is on the page today. The anchors are verbatim from the vault's own instrument — <em>the distinction between a 3 and a 5 is almost always control, not ambition.</em></p>
+    <div id="axes"></div>
+
+    <div class="card verdict">
+      <div class="vrow">
+        <span class="k">Measured<em>machine, mechanics</em></span>
+        <span class="v" id="v-measured">0<small>/25</small></span>
+      </div>
+      <div class="vrow">
+        <span class="k">Judged<em>you, on the rubric</em></span>
+        <span class="v" id="v-judged">–<small>/10</small></span>
+      </div>
+      <p class="nosum"><b>Two values. Never one number.</b> The Three Gates refuses the merge on purpose: the scores are not commensurable, and judges eliminate on faults, not averages.</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="commit">Into the trunk</button>
+    </div>
+  </section>
+
+  <!-- ═══════════ REWARD ═══════════ -->
+  <section id="v-done" class="hide">
+    <div class="card xpflash">
+      <div class="n" id="xp-num">+0</div>
+      <div class="l">experience</div>
+      <div class="breakdown" id="xp-break"></div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="again">Another unit</button>
+      <button class="btn ghost" id="copy-one">Copy as markdown</button>
+    </div>
+  </section>
+
+  <!-- ═══════════ TRUNK ═══════════ -->
+  <section id="v-trunk" class="hide">
+    <h2 class="sec">The trunk</h2>
+    <p class="lede">Every run is kept. <em>Cut material is trunk material</em> — for Chantal, or for whichever Mihogoni story wants it later.</p>
+    <div class="actions" style="margin-bottom:16px">
+      <button class="btn ghost" id="export-all">Copy all as markdown</button>
+      <button class="btn ghost" id="wipe">Clear trunk</button>
+    </div>
+    <div id="trunk-list"></div>
+  </section>
+
+  <!-- ═══════════ CRAFT ═══════════ -->
+  <section id="v-craft" class="hide">
+    <h2 class="sec">The craft notes</h2>
+    <p class="lede">Everything the marks are built on, carried offline so it is with you on the bus. Names in <em>small caps</em> are the vault notes to open when you are back at the desk.</p>
+    <div id="craft"></div>
+  </section>
+
+</div>
+
+<nav class="tabs">
+  <button data-tab="forge" aria-current="true"><i>◈</i>Forge</button>
+  <button data-tab="trunk"><i>▤</i>Trunk</button>
+  <button data-tab="craft"><i>¶</i>Craft</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ══════════════════════════════════════════════════════════
+   1 · THE RUBRIC — verbatim anchors from the vault
+   Gate 2 axes: "The Judging Rubric — Nine Axes"
+   Gate 3 criteria: "The Three Gates — Unified Instrument"
+   ══════════════════════════════════════════════════════════ */
+const AXES = {
+  a1:{label:"Axis 1 · Opening authority", gate:"Gate 2",
+      a1:"Throat-clearing, double start", a3:"Competent, no reason to stop", a5:"Announces itself; first line is the best line"},
+  a2:{label:"Axis 2 · Prose control", gate:"Gate 2",
+      a1:"Register lurches", a3:"Clean, occasional spike", a5:"Every sentence at the same altitude, deliberately varied"},
+  a3:{label:"Axis 3 · Character interiority", gate:"Gate 2",
+      a1:"Reported feelings", a3:"Consistent voice", a5:"The reader knows what the narrator won't say"},
+  a4:{label:"Axis 4 · Scene turn", gate:"Gate 2",
+      a1:"Nothing changes", a3:"Most scenes turn", a5:"Every scene turns, and the turn is never the expected one"},
+  a5:{label:"Axis 5 · The gap", gate:"Gate 2",
+      a1:"Expectation met", a3:"Gap present, small", a5:"Gap so wide it reorganises the reader's understanding"},
+  a6:{label:"Axis 6 · Structural economy", gate:"Gate 2",
+      a1:"Scenes justify themselves", a3:"Nothing wasted", a5:"Cutting any scene breaks two others"},
+  a7:{label:"Axis 7 · Controlling idea", gate:"Gate 2",
+      a1:"Absent or stated", a3:"Implied, occasionally nudged", a5:"Never stated, impossible to miss"},
+  a8:{label:"Axis 8 · Resonant close", gate:"Gate 2",
+      a1:"Stops", a3:"Resolves", a5:"Fulfils — every closing image drags an earlier one behind it"},
+  a9:{label:"Axis 9 · Something to say", gate:"Gate 2",
+      a1:"Subject mistaken for theme", a3:"Real position", a5:"A position the reader cannot dismiss and did not expect"},
+  g2:{label:"G2 · Ugly honesty", gate:"Gate 3",
+      a1:"Flawed narrator, fully redeemed", a3:"Flawed, no full redemption", a5:"The reader is made complicit in the ugly"},
+  g3:{label:"G3 · The slide", gate:"Gate 3",
+      a1:"The shift is announced (then I realised)", a3:"Clean slide, barely noticed", a5:"The reader does not notice until after it has happened"},
+  g4:{label:"G4 · The leakage", gate:"Gate 3",
+      a1:"Everything contained and tidy", a3:"Multiple deliberate leaks", a5:"Leaks that make the world larger than the story"}
+};
+
+/* ══════════════════════════════════════════════════════════
+   2 · THE DRILLS — one unit of the short story form each
+   ══════════════════════════════════════════════════════════ */
+const DRILLS = [
+{
+  id:"beat", glyph:"◇", name:"Beat", blurb:"One exchange of action and reaction",
+  mins:5, target:120, axes:["a4","a3"],
+  why:"A beat is <b>one exchange of action/reaction</b>, and a new beat only begins when behaviour visibly changes. Name each side's behaviour with an active gerund that catches the subtext — <b>Groveling at her feet</b>, not <b>kneeling</b>. → McKee, Scene Analysis Method",
+  prompts:[
+    "Two people, one table, one object between them that neither mentions. Six beats. Nobody says what the scene is about.",
+    "A refusal that arrives as a favour. The one being refused does not notice for three beats.",
+    "One character is counting something. The other interrupts. Do not name what the counting is for.",
+    "Someone asks for money without using a word for money. The answer takes four beats to become a no.",
+    "A greeting between two people of different class. Everything is in the register — who says what first, who waits.",
+    "One beat where the behaviour is caring for and the subtext is getting rid of. Then top it.",
+    "An apology that is a demand. The other one accepts it and is worse off.",
+    "Someone hands something over. Three beats before, three beats after. The handing over is one line."
+  ]
+},
+{
+  id:"turn", glyph:"↻", name:"Turn", blurb:"A value that changes charge, plus to minus",
+  mins:10, target:250, axes:["a4","a6"],
+  why:"Name the value at stake and its charge at the open. If the charge is unchanged at the close, the scene is a <b>nonevent</b> — exposition passed, nothing happened, cut it. The turn can live in a line of dialogue or in an action. → McKee, Scene Analysis Method",
+  prompts:[
+    "Open on trust at plus. Close it at minus. The turning point is a piece of paper.",
+    "Open on safety at minus. Close at plus, and make the plus worse than the minus was.",
+    "A scene where the value that turns is not the one the characters think they are arguing about.",
+    "Someone arrives to give good news. Write the beat where they decide not to. The value is hope.",
+    "A queue, an official, a document. Turn on a single word said in the wrong language.",
+    "Two people share a meal. Open at belonging plus. Close at belonging minus, without an argument.",
+    "The turning point is a revelation the reader already had two pages ago. Make it land anyway.",
+    "A phone call taken in front of someone else. What turns is the listener's understanding, not the caller's."
+  ]
+},
+{
+  id:"gap", glyph:"⟡", name:"Gap", blurb:"The distance between expectation and result",
+  mins:7, target:150, axes:["a5","a4"],
+  why:"The gap is the space between what a character expects the world to do and what it actually does. Small gap, small story. <b>Gap so wide it reorganises the reader's understanding</b> is the five. → McKee, Scene Design · Nine Axes, axis 5",
+  prompts:[
+    "A character does the correct, sanctioned, obvious thing. The world responds in a register nobody prepared them for.",
+    "Someone rehearses what they will say. Write the rehearsal, then write what the room does instead.",
+    "The gap is in the size of the response: something enormous is answered with something administrative.",
+    "A kindness is offered and lands as an insult, for a reason of class that is never explained.",
+    "A character expects to be believed. Write the exact sentence where they realise the ground has moved — without using realise.",
+    "The gap opens in the other direction: they brace for the worst and are handed something ordinary. Make the ordinary unbearable.",
+    "Two people expect different things from the same sentence. Both are wrong. Neither finds out inside the scene.",
+    "The result is exactly what was expected and arrives one day too late. Everything is in the day."
+  ]
+},
+{
+  id:"sentence", glyph:"|", name:"Sentence", blurb:"Ten sentences under a hard rule",
+  mins:4, target:70, axes:["a2"],
+  why:"Aim for an <b>average under twenty words</b>, not a ceiling on every sentence. Long sentences (30–70) make mood; short ones (4–10) catapult. <b>Five long ones stacked is fog, not lyricism.</b> Shorten at the moment of highest tension. Challenge every is/are/was/were. → Cleland, Write Sentences That Work",
+  prompts:[
+    "Ten sentences about one room. None may contain is, are, was, were, be, being or been.",
+    "Ten sentences that average under twelve words. The tenth must be the shortest and must land.",
+    "One long sentence of sixty words, then four of under six. The long one is the approach; the short ones are the thing arriving.",
+    "Ten sentences, each marrying one fact to one feeling, and no feeling may be named.",
+    "Ten sentences with no adjective anywhere. Carry everything on nouns and verbs.",
+    "Write the same twenty seconds five radically different ways. Same narrator throughout.",
+    "Ten sentences that each end on a concrete noun. No abstractions in final position.",
+    "Ten sentences describing an action at the pace it happens. Sentence length tracks the speed. Nothing else changes."
+  ]
+},
+{
+  id:"object", glyph:"◻", name:"Object", blurb:"Plant a thing while it is still worthless",
+  mins:6, target:120, axes:["a3","g4"],
+  why:"The small thing carries what the large thing cannot. It must arrive <b>with no emotional weight at all</b> — its meaning is made later, by absence. If it arrives already freighted, the effect is impossible. Do not let a single adjective attach to it. → Clark, All the Small Things",
+  prompts:[
+    "Introduce an object in a list of three, where the other two matter and it does not. No adjectives on any of the three.",
+    "Someone uses a thing for the wrong purpose, badly, and thinks nothing of it. 100 words.",
+    "An object passes between two hands without either noticing. Nobody comments.",
+    "Write the object's ordinary Tuesday. It is the last ordinary Tuesday and nobody in the scene knows.",
+    "A repair. Something is fixed poorly and the poor fix is the detail that will be unbearable later.",
+    "Handwriting on a thing that is not a letter. Report only what the handwriting looks like.",
+    "Two people grieve the same loss through two different objects. Do not arbitrate between them.",
+    "An object that belonged to someone before the narrator, and the narrator does not know that yet."
+  ]
+},
+{
+  id:"slide", glyph:"≈", name:"Slide", blurb:"Move time or place without announcing it",
+  mins:8, target:180, axes:["g3","a2"],
+  why:"<b>Chantal's lowest score anywhere is here — G3, a 3 out of 5.</b> A voice that announces its own retrospection cannot slide, because it never pretends to be discovering anything. Gate 2 rewards that control with 40/45; Gate 3 charges for it. This drill is the one that buys the point back. → The Three Gates, G3",
+  prompts:[
+    "Move from now to fifteen years ago inside one sentence. No then, no suddenly, no I remembered.",
+    "A smell carries the narration somewhere else. The reader must be two lines into the elsewhere before noticing.",
+    "Present tense the whole way through, and one of the paragraphs is not happening now. Do not mark which.",
+    "Slide from one person's body into another's without a section break and without changing the pronoun.",
+    "A room becomes a different room. The furniture does the work.",
+    "Begin inside a memory and surface out of it mid-action, so the reader corrects themselves retroactively.",
+    "Write a paragraph in which the verb tense changes exactly once and the reader should not be able to find where.",
+    "Two timelines, alternating without warning, sharing one repeated physical gesture as the hinge."
+  ]
+},
+{
+  id:"close", glyph:"◉", name:"Close", blurb:"An ending image that drags an earlier one behind it",
+  mins:7, target:150, axes:["a8","a7"],
+  why:"<b>Stops</b> is a one. <b>Resolves</b> is a three. The five is <b>fulfils — every closing image drags an earlier one behind it.</b> Barrett wants the ending within a paragraph of the climax. Nothing new may enter. → Nine Axes, axis 8 · Barrett, Climax and Conclusion",
+  prompts:[
+    "End on an object already introduced. It has not changed. Everything around it has.",
+    "The last line is an action, not a thought. It is small and it is not explained.",
+    "Close on the same physical position the piece opened in, and let the reader do the arithmetic.",
+    "An ending in which nobody understands anything more than they did, and the reader understands everything.",
+    "The final image is a sound heard through a wall. Write only what is heard.",
+    "Write three endings under 120 words each. One resolves, one fulfils, one merely stops. Label which is which afterwards.",
+    "End one sentence earlier than feels safe. Then delete that sentence too.",
+    "The close is a repetition of a line from the opening, changed by one word."
+  ]
+}
+];
+
+/* ══════════════════════════════════════════════════════════
+   3 · CRAFT NOTES — offline reference
+   ══════════════════════════════════════════════════════════ */
+const CRAFT = [
+{ t:"The Nine Axes", s:"Gate 2 · The Make · /45", table:[
+    ["1","Opening authority","Throat-clearing, double start","Announces itself; first line is the best line"],
+    ["2","Prose control","Register lurches","Every sentence at the same altitude, deliberately varied"],
+    ["3","Character interiority","Reported feelings","The reader knows what the narrator won't say"],
+    ["4","Scene turn","Nothing changes","Every scene turns, and the turn is never the expected one"],
+    ["5","The gap","Expectation met","Gap so wide it reorganises the reader's understanding"],
+    ["6","Structural economy","Scenes justify themselves","Cutting any scene breaks two others"],
+    ["7","Controlling idea","Absent or stated","Never stated, impossible to miss"],
+    ["8","Resonant close","Stops","Fulfils — every closing image drags an earlier one behind it"],
+    ["9","Something to say","Subject mistaken for theme","A position the reader cannot dismiss and did not expect"]
+  ],
+  li:["<b>A single 1 anywhere caps the story</b> regardless of total — judges eliminate on faults, not averages.",
+      "The 2026 winner scores <b>31/45</b> on this instrument and beat 7,806 entries. The bands describe craft completeness, not panels.",
+      "This rubric <b>over-weights architecture</b> relative to the panel it models. Good for finding what is broken, poor at predicting what will place."]
+},
+{ t:"The Fight", s:"Gate 3 · /25 · five criteria", table:[
+    ["G1","The dangerous ingredient","Completely safe","A risk that makes the story necessary rather than merely bold"],
+    ["G2","Ugly honesty","Flawed narrator, fully redeemed","The reader is made complicit in the ugly"],
+    ["G3","The slide","The shift is announced","The reader does not notice until after it has happened"],
+    ["G4","The leakage","Everything contained and tidy","Leaks that make the world larger than the story"],
+    ["G5","Defensibility","One weak argument for it","A story a judge would fight for out loud"]
+  ],
+  li:["Chantal stands at <b>23/25</b> here, losing its points on G3 alone — the slide. That is why a whole drill exists for it.",
+      "<b>Gate 3 at 20+ with Gate 2 below 30 is the most dangerous result</b> on the instrument: real risk, no control. Reads as courage to the writer, as a mess to a judge."]
+},
+{ t:"The sentence", s:"Cleland · Write Sentences That Work",
+  q:"Certain brief sentences are peerless in their ability to give one the feeling that nothing remains to be said.",
+  li:["<b>Twenty-word average, not a cap.</b> A paragraph of 30/16/4/42/8 still averages 20.",
+      "Long sentences (30–70 words) make mood. Short ones (4–10) catapult. <b>Five long ones in a row is fog.</b>",
+      "<b>Shorten at the moment of highest tension.</b> The same content in half the words reads urgent; the long version reads informative.",
+      "Marry fact and emotion. Favour hot emotions over lukewarm ones — and never name them on the page.",
+      "Challenge every <b>is / are / was / were / be / being / been</b>. Not to delete them all, but to test whether a live verb carries more."]
+},
+{ t:"One incident, one emotion", s:"Barrett · The Isolation Principle",
+  q:"One thing a short story can never be: a novel in a nutshell.",
+  li:["What separates it from the novel is not length. It is <b>isolation and magnification</b>.",
+      "Barrett's allowance, flatly: <b>one scene and incident · one or two real characters · one predominant emotion.</b> Everything else is a detriment.",
+      "<b>The test for any element:</b> is this here because the story requires it, or because life would contain it? The second is a novel's reason and is not available to you.",
+      "The isolation is in the frame, not in the people — they must feel alive before the story started."]
+},
+{ t:"The beat and the turn", s:"McKee · Scene Analysis Method",
+  q:"If the scene is about what the scene is about, you're in deep shit.",
+  li:["<b>Text</b> is the sensory surface. <b>Subtext</b> is the life underneath that the text conceals. Subtext exists even in first person — a narrator confessing can still be lying to themselves.",
+      "A <b>beat</b> is one exchange of action/reaction. A new beat begins only when behaviour visibly changes.",
+      "Name each beat with an <b>active gerund catching the subtext</b>, not the literal activity.",
+      "Note the opening value and its charge. If the charge is unchanged at the close, the scene is a <b>nonevent</b>.",
+      "Read the gerunds top to bottom: each beat should top the last until the gap springs open. That is the turning point."]
+},
+{ t:"The minor object", s:"Clark · All the Small Things",
+  q:"The small thing carries what the large thing cannot.",
+  li:["Grief is <b>non-linear, random and unranked</b>. A story that ranks a funeral above a birthday card is lying about the experience.",
+      "The invisible attachment surfaces only through loss. The object is unremarkable until it is the only remaining evidence.",
+      "<b>Therefore plant it while it is still unremarkable.</b> If it arrives already freighted, the effect is impossible.",
+      "Plant and detonate: introduce with no weight, let it recur in ordinary contexts, then let the loss make it unbearable <b>without a single word of commentary</b>.",
+      "<b>Refuse the single correct grief.</b> Show more than one, and decline to arbitrate."]
+},
+{ t:"Restrict and liberate", s:"Kiteley · The 3 A.M. Epiphany",
+  q:"Any time you can cut a piece of prose by 20 percent, you should cut it by 20 percent.",
+  li:["<b>Restriction generates material.</b> The constraint is not an obstacle to the writing; it is the engine.",
+      "The best fiction shows a writer <b>learning, not teaching</b>.",
+      "<b>Outrunning the critic:</b> write faster than the part of you that edits. That is what the editing-off toggle is for.",
+      "Every writer censors one major thing. The exercise is to find yours.",
+      "<b>Caution — this can become a way of not finishing.</b> Targeted, never browsed."]
+},
+{ t:"Whose words these are", s:"Rule 3e · the standing constraint",
+  li:["<b>Nothing in this app is generated.</b> The constraints are instructions, in the manner of a Kiteley exercise. Every word in the trunk is yours.",
+      "Commonwealth rule 3e requires the story to be the entrant's own work. In June 2026 the Foundation investigated AI-use allegations by examining <b>working drafts, timestamped documents and notes</b>.",
+      "The trunk lives in this browser's local storage on this device. It is not sent anywhere. <b>Export it into the vault</b> so the timestamped record of your own drafting exists where it counts."]
+}
+];
+
+const LEVELS = [
+  {n:"Impromptu",at:0},{n:"Copyist",at:250},{n:"Apprentice",at:700},
+  {n:"Journeyman",at:1500},{n:"Compositor",at:3000},{n:"Maker",at:5500}
+];
+
+const BADGES = [
+  {id:"first",   n:"First Ash",      d:"Complete one run",                  test:s=>s.runs.length>=1},
+  {id:"week",    n:"Seven Days",     d:"A seven-day streak",                test:s=>s.streakBest>=7},
+  {id:"whole",   n:"The Whole Form", d:"Every unit at least once",          test:s=>DRILLS.every(d=>s.runs.some(r=>r.drill===d.id))},
+  {id:"slide",   n:"The Slide",      d:"Five slide drills — Chantal's 3/5", test:s=>s.runs.filter(r=>r.drill==="slide").length>=5},
+  {id:"floor",   n:"Clean Floor",    d:"Ten runs naming no emotion",        test:s=>s.runs.filter(r=>r.m&&r.m.told===0).length>=10},
+  {id:"outrun",  n:"Outrun",         d:"Finish a run with editing off",     test:s=>s.runs.some(r=>r.outrun)},
+  {id:"trunk",   n:"The Trunk",      d:"Twenty-five runs kept",             test:s=>s.runs.length>=25},
+  {id:"twenty",  n:"Under Twenty",   d:"Ten runs averaging under 20 words", test:s=>s.runs.filter(r=>r.m&&r.m.avg>0&&r.m.avg<20).length>=10}
+];
+
+/* ══════════════════════════════════════════════════════════
+   4 · MEASUREMENT — mechanics only, and honest about it
+   ══════════════════════════════════════════════════════════ */
+const TO_BE  = ["is","are","was","were","be","being","been","am"];
+const FILTER = ["looked","look","saw","see","felt","feel","heard","hear","watched","watch",
+                "noticed","notice","realised","realized","realise","realize","seemed","seem",
+                "wondered","thought","knew","remembered","decided"];
+const TOLD   = ["sad","sadly","happy","happily","angry","angrily","afraid","scared","frightened",
+                "nervous","nervously","excited","guilty","ashamed","lonely","grief","grieving",
+                "love","loved","hate","hated","fear","feared","joy","anger","sorrow","despair",
+                "anxious","upset","furious","devastated","heartbroken"];
+
+function wordsOf(s){ return (s.match(/[\p{L}\p{N}'’-]+/gu) || []); }
+
+function measure(text){
+  const t = text.trim();
+  if(!t) return {words:0,sents:0,avg:0,lens:[],shortPct:0,longPct:0,toBe:0,toBeD:0,filter:0,told:0,adv:0,hits:{}};
+  const raw = t.split(/[.!?…]+[\s "'”’)]*|\n+/);
+  const lens = raw.map(s=>wordsOf(s).length).filter(n=>n>0);
+  const all  = wordsOf(t).map(w=>w.toLowerCase().replace(/[’']s$/,""));
+  const words = all.length;
+  const sents = lens.length;
+  const avg   = sents ? words/sents : 0;
+  const short = lens.filter(n=>n<=10).length;
+  const long  = lens.filter(n=>n>=30).length;
+
+  const hits = {};
+  let toBe=0, filt=0, told=0, adv=0;
+  for(const w of all){
+    if(TO_BE.includes(w)){ toBe++; hits[w]=(hits[w]||0)+1; }
+    else if(FILTER.includes(w)){ filt++; hits[w]=(hits[w]||0)+1; }
+    else if(TOLD.includes(w)){ told++; hits[w]=(hits[w]||0)+1; }
+    if(w.length>4 && w.endsWith("ly")) adv++;
+  }
+  return {
+    words, sents, avg, lens,
+    shortPct: sents ? Math.round(short/sents*100) : 0,
+    longPct:  sents ? Math.round(long/sents*100)  : 0,
+    toBe, toBeD: words ? +(toBe/words*100).toFixed(1) : 0,
+    filter:filt, told, adv, hits
+  };
+}
+
+/* XP — capped at 25 for mechanics, mirroring nothing by accident:
+   the machine can only ever award the mechanical part. */
+function scoreXP(m, drill, judged, outrun){
+  const parts = [];
+  const hitTarget = m.words >= drill.target*0.6;
+  parts.push({k:"Words on the page", v: hitTarget?8:0, note:m.words+" / "+drill.target});
+  parts.push({k:"Average under 20",  v:(m.sents&&m.avg<20)?4:0, note:m.avg?m.avg.toFixed(1):"—"});
+  parts.push({k:"Short-sentence band", v:(m.shortPct>=25&&m.shortPct<=60)?4:0, note:m.shortPct+"% short"});
+  parts.push({k:"To-be under 4/100", v:(m.words&&m.toBeD<4)?3:0, note:m.toBeD+"/100"});
+  parts.push({k:"No filter verbs",   v:(m.words&&m.filter===0)?3:0, note:m.filter+" found"});
+  parts.push({k:"No emotion named",  v:(m.words&&m.told===0)?3:0, note:m.told+" found"});
+  if(outrun) parts.push({k:"Outran the critic", v:5, note:"editing off"});
+  const judgedCount = Object.keys(judged||{}).length;
+  parts.push({k:"Marked on the rubric", v: judgedCount?10:0, note: judgedCount+(judgedCount===1?" axis":" axes")});
+  const total = parts.reduce((a,p)=>a+p.v,0);
+  return {total, parts};
+}
+
+/* ══════════════════════════════════════════════════════════
+   5 · STATE
+   ══════════════════════════════════════════════════════════ */
+const KEY = "forge.v1";
+let S = load();
+
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw){ const p = JSON.parse(raw);
+      return {xp:p.xp||0, runs:p.runs||[], last:p.last||null,
+              streak:p.streak||0, streakBest:p.streakBest||0,
+              seen:p.seen||{}, theme:p.theme||null};
+    }
+  }catch(e){}
+  return {xp:0, runs:[], last:null, streak:0, streakBest:0, seen:{}, theme:null};
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){ toast("Storage full — export the trunk"); } }
+function today(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function daysBetween(a,b){ return Math.round((new Date(b)-new Date(a))/86400000); }
+
+function bumpStreak(){
+  const t = today();
+  if(S.last === t) return;
+  const gap = S.last ? daysBetween(S.last,t) : 999;
+  S.streak = (gap===1) ? S.streak+1 : 1;
+  S.last = t;
+  if(S.streak > S.streakBest) S.streakBest = S.streak;
+}
+function checkStreakDecay(){
+  if(!S.last) return;
+  const gap = daysBetween(S.last, today());
+  if(gap > 1) S.streak = 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   6 · VIEW PLUMBING
+   ══════════════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const VIEWS = ["forge","run","judge","done","trunk","craft"];
+function show(v){
+  VIEWS.forEach(x => $("v-"+x).classList.toggle("hide", x!==v));
+  document.querySelectorAll("nav.tabs button").forEach(b=>{
+    const tab = b.dataset.tab;
+    const active = (tab==="forge" && ["forge","run","judge","done"].includes(v)) || tab===v;
+    b.setAttribute("aria-current", active ? "true" : "false");
+  });
+  window.scrollTo(0,0);
+}
+let toastT;
+function toast(msg){
+  const el = $("toast"); el.textContent = msg; el.classList.add("show");
+  clearTimeout(toastT); toastT = setTimeout(()=>el.classList.remove("show"), 2100);
+}
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* theme */
+function applyTheme(){
+  if(S.theme) document.documentElement.setAttribute("data-theme", S.theme);
+  else document.documentElement.removeAttribute("data-theme");
+}
+$("themebtn").onclick = () => {
+  const order = [null,"dark","light"];
+  S.theme = order[(order.indexOf(S.theme)+1) % 3];
+  applyTheme(); save();
+  toast(S.theme ? S.theme+" theme" : "follows your system");
+};
+
+/* header + level */
+function paintHeader(){
+  $("s-streak").textContent = S.streak;
+  $("s-xp").textContent = S.xp;
+  let i = 0; while(i < LEVELS.length-1 && S.xp >= LEVELS[i+1].at) i++;
+  const cur = LEVELS[i], nxt = LEVELS[i+1];
+  $("lvl-name").textContent = cur.n;
+  if(nxt){
+    const pct = Math.min(100, Math.round((S.xp-cur.at)/(nxt.at-cur.at)*100));
+    $("lvl-bar").style.width = pct+"%";
+    $("lvl-next").textContent = (nxt.at - S.xp)+" to "+nxt.n;
+  } else {
+    $("lvl-bar").style.width = "100%";
+    $("lvl-next").textContent = "top";
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   7 · THE DECK
+   ══════════════════════════════════════════════════════════ */
+function paintDeck(){
+  $("deck").innerHTML = DRILLS.map(d=>`
+    <button class="drill" data-drill="${d.id}">
+      <span class="glyph">${d.glyph}</span>
+      <h3>${d.name}</h3>
+      <span class="cost"><b>${d.mins}′</b>${d.target}w</span>
+      <p>${esc(d.blurb)}</p>
+    </button>`).join("");
+  document.querySelectorAll("[data-drill]").forEach(b=>{
+    b.onclick = () => openRun(b.dataset.drill);
+  });
+}
+function paintBadges(){
+  $("badges").innerHTML = BADGES.map(b=>{
+    const got = b.test(S);
+    return `<div class="badge${got?"":" locked"}"><b>${got?"◆ ":"◇ "}${b.n}</b><span>${esc(b.d)}</span></div>`;
+  }).join("");
+}
+
+/* ══════════════════════════════════════════════════════════
+   8 · A RUN
+   ══════════════════════════════════════════════════════════ */
+let RUN = null;
+let tick = null;
+
+function pickPrompt(d){
+  const seen = S.seen[d.id] || [];
+  let pool = d.prompts.map((_,i)=>i).filter(i=>!seen.includes(i));
+  if(!pool.length){ pool = d.prompts.map((_,i)=>i); S.seen[d.id] = []; }
+  const i = pool[Math.floor(Math.random()*pool.length)];
+  S.seen[d.id] = (S.seen[d.id]||[]).concat(i).slice(-5);
+  save();
+  return i;
+}
+
+function openRun(id){
+  const d = DRILLS.find(x=>x.id===id);
+  RUN = {d, pi:pickPrompt(d), left:d.mins*60, running:false, outrun:false, judged:{}};
+  $("run-title").textContent = d.name;
+  $("prompt-body").textContent = d.prompts[RUN.pi];
+  $("prompt-why").innerHTML = d.why;
+  $("page").value = "";
+  $("t-outrun").textContent = "Outrun: off";
+  $("t-outrun").classList.remove("on");
+  $("t-start").textContent = "Start";
+  $("t-start").classList.remove("on");
+  stopTimer();
+  paintTimer();
+  paintMeter();
+  show("run");
+}
+
+$("reroll").onclick = () => {
+  RUN.pi = pickPrompt(RUN.d);
+  $("prompt-body").textContent = RUN.d.prompts[RUN.pi];
+};
+$("run-back").onclick = () => { stopTimer(); show("forge"); };
+$("judge-back").onclick = () => show("run");
+
+/* timer */
+function paintTimer(){
+  const t = $("timer");
+  const neg = RUN.left < 0;
+  const a = Math.abs(RUN.left);
+  t.textContent = (neg?"+":"") + String(Math.floor(a/60)).padStart(2,"0") + ":" + String(a%60).padStart(2,"0");
+  t.classList.toggle("over", neg);
+}
+function stopTimer(){ if(tick){ clearInterval(tick); tick=null; } if(RUN) RUN.running=false; }
+$("t-start").onclick = () => {
+  if(RUN.running){ stopTimer(); $("t-start").textContent="Resume"; $("t-start").classList.remove("on"); return; }
+  RUN.running = true;
+  $("t-start").textContent = "Pause"; $("t-start").classList.add("on");
+  $("page").focus();
+  tick = setInterval(()=>{ RUN.left--; paintTimer(); }, 1000);
+};
+$("t-outrun").onclick = () => {
+  RUN.outrun = !RUN.outrun;
+  $("t-outrun").textContent = "Outrun: " + (RUN.outrun?"on":"off");
+  $("t-outrun").classList.toggle("on", RUN.outrun);
+  if(RUN.outrun) toast("No going back. Kiteley 190.");
+};
+$("page").addEventListener("keydown", e => {
+  if(RUN && RUN.outrun && (e.key==="Backspace" || e.key==="Delete")){ e.preventDefault(); toast("Outrun the critic — keep going"); }
+});
+$("page").addEventListener("paste", e => { if(RUN && RUN.outrun) e.preventDefault(); });
+$("page").addEventListener("input", paintMeter);
+
+/* the rhythm ribbon + cells */
+function paintMeter(){
+  const m = measure($("page").value);
+  RUN.m = m;
+
+  const rib = $("ribbon");
+  if(!m.lens.length){
+    rib.innerHTML = '<span class="empty">rhythm appears as you write</span>';
+  } else {
+    rib.innerHTML = m.lens.slice(-70).map(n=>{
+      const cls = n<=10 ? "s" : (n>=30 ? "l" : "m");
+      const h = Math.max(8, Math.min(100, Math.round(n/40*100)));
+      return `<i class="${cls}" style="height:${h}%" title="${n} words"></i>`;
+    }).join("");
+  }
+
+  const band = (ok,warn)=> ok ? "ok" : (warn ? "warn" : "bad");
+  const cells = [
+    {v:m.words, l:"words", c: m.words>=RUN.d.target*0.6 ? "ok" : ""},
+    {v:m.sents, l:"sentences", c:""},
+    {v:m.sents?m.avg.toFixed(1):"—", l:"avg", c: !m.sents?"":band(m.avg<20, m.avg<26)},
+    {v:m.shortPct+"%", l:"short", c: !m.sents?"":band(m.shortPct>=25&&m.shortPct<=60, m.shortPct>=15)},
+    {v:m.toBeD, l:"to-be /100", c: !m.words?"":band(m.toBeD<4, m.toBeD<6)},
+    {v:m.filter+m.told, l:"tells", c: !m.words?"":band((m.filter+m.told)===0, (m.filter+m.told)<=2)}
+  ];
+  $("cells").innerHTML = cells.map(c=>`<div class="cell ${c.c}"><b>${c.v}</b><span>${c.l}</span></div>`).join("");
+
+  const flags = [];
+  const named = Object.keys(m.hits).sort((a,b)=>m.hits[b]-m.hits[a]).slice(0,8);
+  for(const w of named){
+    const isTold = TOLD.includes(w), isFilt = FILTER.includes(w);
+    if(isTold || isFilt) flags.push(`<span class="flag">${esc(w)} ×${m.hits[w]}</span>`);
+    else flags.push(`<span class="flag q">${esc(w)} ×${m.hits[w]}</span>`);
+  }
+  if(m.longPct>=40 && m.sents>=4) flags.push(`<span class="flag q">${m.longPct}% long — fog</span>`);
+  if(m.adv>=4) flags.push(`<span class="flag q">${m.adv} × –ly</span>`);
+  if(!flags.length && m.words>20) flags.push(`<span class="flag clean">floor clean</span>`);
+  $("flags").innerHTML = flags.join("");
+}
+
+/* ══════════════════════════════════════════════════════════
+   9 · JUDGING
+   ══════════════════════════════════════════════════════════ */
+$("to-judge").onclick = () => {
+  if(!$("page").value.trim()){ toast("Nothing on the page yet"); return; }
+  stopTimer();
+  paintAxes();
+  paintVerdict();
+  show("judge");
+};
+
+function paintAxes(){
+  $("axes").innerHTML = RUN.d.axes.map(k=>{
+    const a = AXES[k];
+    return `<div class="card axis" data-axis="${k}">
+      <div class="num">${a.gate}</div>
+      <h4>${esc(a.label)}</h4>
+      <div class="anchors">
+        <div><dt>1</dt><span>${esc(a.a1)}</span></div>
+        <div><dt>3</dt><span>${esc(a.a3)}</span></div>
+        <div><dt>5</dt><span>${esc(a.a5)}</span></div>
+      </div>
+      <div class="scale">${[1,2,3,4,5].map(n=>
+        `<button data-k="${k}" data-n="${n}" aria-pressed="${RUN.judged[k]===n}">${n}</button>`).join("")}</div>
+    </div>`;
+  }).join("");
+  $("axes").querySelectorAll(".scale button").forEach(b=>{
+    b.onclick = () => {
+      RUN.judged[b.dataset.k] = +b.dataset.n;
+      paintAxes(); paintVerdict();
+    };
+  });
+}
+
+function paintVerdict(){
+  const mech = scoreXP(RUN.m||measure($("page").value), RUN.d, {}, RUN.outrun);
+  const mechMax = 25 + (RUN.outrun?5:0);
+  $("v-measured").innerHTML = mech.total + "<small>/" + mechMax + "</small>";
+  const ks = Object.keys(RUN.judged);
+  const sum = ks.reduce((a,k)=>a+RUN.judged[k],0);
+  $("v-judged").innerHTML = ks.length
+    ? sum + "<small>/" + (RUN.d.axes.length*5) + "</small>"
+    : "–<small>/" + (RUN.d.axes.length*5) + "</small>";
+}
+
+/* ══════════════════════════════════════════════════════════
+   10 · COMMIT
+   ══════════════════════════════════════════════════════════ */
+$("commit").onclick = () => {
+  const text = $("page").value.trim();
+  if(!text){ toast("Nothing to keep"); return; }
+  const m = measure(text);
+  const res = scoreXP(m, RUN.d, RUN.judged, RUN.outrun);
+
+  const run = {
+    id: Date.now(),
+    ts: new Date().toISOString(),
+    drill: RUN.d.id,
+    prompt: RUN.d.prompts[RUN.pi],
+    text, m,
+    judged: {...RUN.judged},
+    outrun: RUN.outrun,
+    xp: res.total,
+    secs: RUN.d.mins*60 - RUN.left
+  };
+  S.runs.unshift(run);
+  S.xp += res.total;
+  checkStreakDecay();
+  bumpStreak();
+  save();
+
+  $("xp-num").textContent = "+" + res.total;
+  $("xp-break").innerHTML = res.parts.map(p=>
+    `<div class="${p.v?"":"miss"}"><span>${esc(p.k)} · ${esc(p.note)}</span><b>${p.v?"+"+p.v:"—"}</b></div>`
+  ).join("");
+  window.LAST = run;
+
+  paintHeader(); paintBadges(); paintTrunk();
+  show("done");
+};
+
+$("again").onclick = () => show("forge");
+$("copy-one").onclick = () => copy(runToMd(window.LAST), "Copied — paste into the vault");
+
+/* ══════════════════════════════════════════════════════════
+   11 · MARKDOWN EXPORT — shaped for the vault
+   ══════════════════════════════════════════════════════════ */
+function stamp(iso){
+  const d = new Date(iso);
+  const p = n => String(n).padStart(2,"0");
+  return {date: d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate()),
+          time: p(d.getHours())+":"+p(d.getMinutes())};
+}
+function runToMd(r){
+  if(!r) return "";
+  const d = DRILLS.find(x=>x.id===r.drill);
+  const t = stamp(r.ts);
+  const judged = Object.keys(r.judged).map(k=>`${AXES[k].label} — **${r.judged[k]}/5**`).join(" · ") || "_not marked_";
+  return [
+`---`,
+`tags: [forge, drill, trunk, ${r.drill}]`,
+`date: ${t.date}`,
+`drill: ${r.drill}`,
+`words: ${r.m.words}`,
+`---`,
+``,
+`# Forge — ${d.name} · ${t.date} ${t.time}`,
+``,
+`> **Constraint** — ${r.prompt}${r.outrun ? "\n> _Written with editing off._" : ""}`,
+``,
+r.text,
+``,
+`---`,
+``,
+`**MEASURED** · ${r.m.words} words · ${r.m.sents} sentences · ${r.m.avg.toFixed(1)} avg · ${r.m.shortPct}% short · ${r.m.longPct}% long · to-be ${r.m.toBeD}/100 · filter verbs ${r.m.filter} · emotions named ${r.m.told}`,
+``,
+`**JUDGED** · ${judged}`,
+``,
+`*Two values, not summed — see [[The Three Gates — Unified Instrument]]. Anchors from [[The Judging Rubric — Nine Axes]].*`,
+``
+  ].join("\n");
+}
+function copy(txt, msg){
+  const done = () => toast(msg);
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>fallback());
+  } else fallback();
+  function fallback(){
+    const ta = document.createElement("textarea");
+    ta.value = txt; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); done(); }catch(e){ toast("Select and copy manually"); }
+    document.body.removeChild(ta);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   12 · TRUNK
+   ══════════════════════════════════════════════════════════ */
+function paintTrunk(){
+  const list = $("trunk-list");
+  if(!S.runs.length){
+    list.innerHTML = `<div class="empty-state"><b>The trunk is empty</b><span>Nothing is stored anywhere but this device.<br>Make one unit and it will be here.</span></div>`;
+    return;
+  }
+  list.innerHTML = S.runs.map(r=>{
+    const d = DRILLS.find(x=>x.id===r.drill) || {name:r.drill};
+    const t = stamp(r.ts);
+    const judged = Object.keys(r.judged).map(k=>`${AXES[k].label.split(" · ")[1] || k} ${r.judged[k]}/5`).join(" · ") || "not marked";
+    return `<details class="card entry">
+      <summary>
+        <span class="tag">${esc(d.name)}</span>
+        <span class="snip">${esc(r.text.slice(0,64))}</span>
+        <span class="when">${t.date.slice(5)}</span>
+      </summary>
+      <div class="meta">${esc(r.prompt)}</div>
+      <div class="full">${esc(r.text)}</div>
+      <div class="meta">
+        MEASURED · ${r.m.words}w · ${r.m.avg.toFixed(1)} avg · ${r.m.shortPct}% short · to-be ${r.m.toBeD}/100 · tells ${r.m.filter+r.m.told}<br>
+        JUDGED · ${esc(judged)}<br>
+        XP +${r.xp}${r.outrun?" · outrun":""}
+      </div>
+      <div class="actions">
+        <button class="btn ghost" data-copy="${r.id}">Copy</button>
+        <button class="btn ghost" data-del="${r.id}">Delete</button>
+      </div>
+    </details>`;
+  }).join("");
+
+  list.querySelectorAll("[data-copy]").forEach(b=>{
+    b.onclick = e => { e.preventDefault();
+      copy(runToMd(S.runs.find(r=>r.id==b.dataset.copy)), "Copied"); };
+  });
+  list.querySelectorAll("[data-del]").forEach(b=>{
+    b.onclick = e => { e.preventDefault();
+      if(!confirm("Delete this run? The words go with it.")) return;
+      S.runs = S.runs.filter(r=>r.id!=b.dataset.del); save(); paintTrunk(); paintBadges(); };
+  });
+}
+$("export-all").onclick = () => {
+  if(!S.runs.length){ toast("Nothing to export"); return; }
+  copy(S.runs.slice().reverse().map(runToMd).join("\n\n"), S.runs.length+" runs copied");
+};
+$("wipe").onclick = () => {
+  if(!S.runs.length) return;
+  if(!confirm("Clear the whole trunk? Export first — this cannot be undone.")) return;
+  S.runs = []; save(); paintTrunk(); paintBadges(); toast("Trunk cleared");
+};
+
+/* ══════════════════════════════════════════════════════════
+   13 · CRAFT
+   ══════════════════════════════════════════════════════════ */
+function paintCraft(){
+  $("craft").innerHTML = CRAFT.map(n=>{
+    let body = "";
+    if(n.q) body += `<blockquote>${esc(n.q)}</blockquote>`;
+    if(n.table){
+      body += `<div class="tablewrap"><table><thead><tr><th></th><th>Axis</th><th>1</th><th>5</th></tr></thead><tbody>` +
+        n.table.map(r=>`<tr><td class="n">${r[0]}</td><td><b>${esc(r[1])}</b></td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("") +
+        `</tbody></table></div>`;
+    }
+    if(n.li) body += `<ul>${n.li.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+    return `<div class="card note"><h3>${esc(n.t)}</h3><div class="src">${esc(n.s)}</div>${body}</div>`;
+  }).join("");
+}
+
+/* ══════════════════════════════════════════════════════════
+   14 · BOOT
+   ══════════════════════════════════════════════════════════ */
+document.querySelectorAll("nav.tabs button").forEach(b=>{
+  b.onclick = () => { stopTimer(); show(b.dataset.tab); };
+});
+
+applyTheme();
+checkStreakDecay();
+save();
+paintHeader();
+paintDeck();
+paintBadges();
+paintTrunk();
+paintCraft();
+show("forge");
+</script>
+</body>
+</html>
