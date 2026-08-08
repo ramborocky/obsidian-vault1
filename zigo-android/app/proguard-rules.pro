@@ -1,0 +1,2 @@
+-keepclassmembers class tz.zigo.app.MainActivity$Bridge { public *; }
+-keepattributes JavascriptInterface

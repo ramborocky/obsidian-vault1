@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The board: three loads stacked, the top one lifting off. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#CEFF4A" android:pathData="M34,34 h40 v9 h-40 z" />
+    <path android:fillColor="#CEFF4A" android:pathData="M34,50 h40 v9 h-40 z" android:fillAlpha="0.62" />
+    <path android:fillColor="#CEFF4A" android:pathData="M34,66 h26 v9 h-26 z" android:fillAlpha="0.34" />
+    <path android:fillColor="#CEFF4A" android:pathData="M34,80 h40 v2.6 h-40 z" android:fillAlpha="0.5" />
+</vector>

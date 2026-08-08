@@ -1,0 +1,61 @@
+name: Build the Zigo pitch APK
+
+# Wraps zigo/zigo-app.html into an installable Android APK for demos.
+# Actions → "Build the Zigo pitch APK" → Run workflow, then download
+# "zigo-pitch-apk" from the finished run.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'zigo/**'
+      - 'zigo-android/**'
+      - '.github/workflows/zigo-android.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up the Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Confirm the prototype is where the build expects it
+        run: |
+          test -f zigo/zigo-app.html || { echo "::error::zigo/zigo-app.html not found"; exit 1; }
+          echo "Found prototype: $(wc -c < zigo/zigo-app.html) bytes"
+
+      - name: Generate the Gradle wrapper
+        working-directory: zigo-android
+        run: gradle wrapper --gradle-version 8.9 --no-daemon
+
+      - name: Assemble the debug APK
+        working-directory: zigo-android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Upload the APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: zigo-pitch-apk
+          path: zigo-android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Report
+        run: |
+          echo "### Zigo pitch APK built" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Download **zigo-pitch-apk** from this run's Artifacts, open it on the phone, allow install from unknown sources." >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Debug-signed: right for sideloading onto demo phones, not for the Play Store." >> "$GITHUB_STEP_SUMMARY"

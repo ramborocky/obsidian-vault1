@@ -1,0 +1,513 @@
+<title>ZIGO — Any load. Any vehicle. Any road.</title>
+<style>
+:root{
+  --ink:#0B0D0A; --panel:#14170F; --panel-2:#1C2015; --panel-3:#252A1C;
+  --rule:#2C3122; --rule-soft:#22261A;
+  --fg:#F2F4EC; --fg-2:#B4BAA6; --fg-3:#7C8370;
+  --lime:#CEFF4A; --lime-ink:#0B0D0A; --lime-soft:#2A3312;
+  --clay:#E08A55; --clay-soft:#332014;
+  --ok:#4FD48A; --ok-soft:#12301F; --bad:#FF6B5A;
+  --sans:system-ui,-apple-system,"Segoe UI Variable","Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+:root[data-theme="light"]{
+  --ink:#F4F3ED; --panel:#FFFFFF; --panel-2:#EBEAE0; --panel-3:#E0DFD2;
+  --rule:#D6D5C6; --rule-soft:#E4E3D7;
+  --fg:#0E110B; --fg-2:#474C3D; --fg-3:#767C68;
+  --lime:#8FBF12; --lime-ink:#FFFFFF; --lime-soft:#EDF7CE;
+  --clay:#B85E28; --clay-soft:#F7E5D8;
+  --ok:#1E8F55; --ok-soft:#DEF2E6; --bad:#C6352A;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --ink:#F4F3ED; --panel:#FFFFFF; --panel-2:#EBEAE0; --panel-3:#E0DFD2;
+  --rule:#D6D5C6; --rule-soft:#E4E3D7;
+  --fg:#0E110B; --fg-2:#474C3D; --fg-3:#767C68;
+  --lime:#8FBF12; --lime-ink:#FFFFFF; --lime-soft:#EDF7CE;
+  --clay:#B85E28; --clay-soft:#F7E5D8;
+  --ok:#1E8F55; --ok-soft:#DEF2E6; --bad:#C6352A;
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--fg);font-family:var(--sans);
+  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;padding:0}
+input,select{font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+section{padding:82px 0}
+@media (max-width:760px){section{padding:56px 0}}
+.alt{background:var(--panel)}
+
+/* ── nav ── */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--ink) 88%,transparent);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav{display:flex;align-items:center;gap:26px;height:62px}
+.mark{font-size:23px;font-weight:800;letter-spacing:-.045em}
+.mark b{color:var(--lime)}
+.nav .links{display:flex;gap:24px;margin-left:auto;font-size:14.5px;color:var(--fg-2);font-weight:550}
+.nav .links a:hover{color:var(--lime)}
+@media (max-width:860px){.nav .links{display:none}}
+.navcta{padding:10px 17px;border-radius:11px;background:var(--lime);color:var(--lime-ink);
+  font-weight:700;font-size:14.5px;margin-left:auto}
+.nav .links + .navcta{margin-left:0}
+.tbtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--rule);display:grid;place-items:center;flex:none}
+
+/* ── hero ── */
+.hero{padding:74px 0 66px;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+@media (max-width:940px){.hero{grid-template-columns:1fr;gap:38px;padding:48px 0 40px}}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--lime);border:1px solid var(--lime);
+  padding:6px 12px;border-radius:20px;margin-bottom:24px}
+.kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:blink 2.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+h1{font-size:clamp(42px,7.2vw,80px);font-weight:800;letter-spacing:-.05em;line-height:.94;
+  margin:0 0 22px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--lime)}
+.sell{font-size:clamp(17px,2.2vw,20px);color:var(--fg-2);line-height:1.5;max-width:46ch;margin:0 0 30px}
+.sell b{color:var(--fg);font-weight:670}
+.herocta{display:flex;gap:11px;flex-wrap:wrap}
+.btn{padding:15px 26px;border-radius:13px;background:var(--lime);color:var(--lime-ink);
+  font-weight:730;font-size:16px;letter-spacing:-.01em;display:inline-block;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--rule);font-weight:650}
+.trust{font-family:var(--mono);font-size:11px;color:var(--fg-3);margin-top:18px;letter-spacing:.03em}
+
+/* ── live board ── */
+.board{background:var(--panel);border:1px solid var(--rule);border-radius:20px;overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.board .hd{display:flex;align-items:center;gap:9px;padding:14px 18px;border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg-3)}
+.board .hd .live{color:var(--lime);display:flex;align-items:center;gap:6px;margin-left:auto}
+.board .hd .live i{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:blink 1.8s infinite}
+.board .body{height:392px;overflow:hidden;position:relative}
+.load{display:grid;grid-template-columns:1fr auto;gap:3px 14px;padding:14px 18px;
+  border-bottom:1px solid var(--rule-soft);animation:slidein .5s cubic-bezier(.2,.9,.3,1.05) both}
+@keyframes slidein{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+.load .w{font-size:15.5px;font-weight:680;letter-spacing:-.012em}
+.load .r{font-family:var(--mono);font-size:11.5px;color:var(--fg-3);grid-column:1}
+.load .p{grid-row:span 2;text-align:right;font-family:var(--mono);font-size:17px;font-weight:700;
+  color:var(--lime);font-variant-numeric:tabular-nums;white-space:nowrap}
+.load .p small{display:block;font-size:9.5px;color:var(--fg-3);font-weight:400;letter-spacing:.1em;
+  text-transform:uppercase;margin-top:3px}
+.board .ft{padding:12px 18px;border-top:1px solid var(--rule);display:flex;gap:20px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3)}
+.board .ft b{color:var(--lime);font-variant-numeric:tabular-nums}
+
+/* ── generic ── */
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.19em;text-transform:uppercase;
+  color:var(--lime);margin:0 0 14px}
+h2{font-size:clamp(28px,4.4vw,44px);font-weight:800;letter-spacing:-.038em;line-height:1.06;
+  margin:0 0 18px;text-wrap:balance;max-width:20ch}
+h3{font-size:20px;font-weight:720;letter-spacing:-.022em;margin:0 0 7px}
+.body-lg{font-size:18px;color:var(--fg-2);line-height:1.55;max-width:56ch;margin:0 0 16px}
+p{margin:0 0 14px;max-width:62ch;color:var(--fg-2)}
+p b, li b{color:var(--fg);font-weight:660}
+
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:34px}
+.tile{background:var(--panel-2);border:1px solid var(--rule-soft);border-radius:16px;padding:24px}
+.alt .tile{background:var(--panel-2)}
+.tile .n{font-family:var(--mono);font-size:38px;font-weight:700;color:var(--lime);
+  letter-spacing:-.03em;line-height:1;margin-bottom:11px}
+.tile p{font-size:14.5px;margin:0;line-height:1.5}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:34px}
+.stepc{background:var(--panel-2);border:1px solid var(--rule-soft);border-radius:16px;padding:24px;position:relative}
+.stepc .i{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--lime-ink);
+  background:var(--lime);width:28px;height:28px;border-radius:9px;display:grid;place-items:center;margin-bottom:15px}
+.stepc p{font-size:14.5px;margin:0}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+@media (max-width:860px){.split{grid-template-columns:1fr;gap:30px}}
+
+.codedemo{background:var(--panel-2);border:1px solid var(--rule);border-radius:18px;padding:28px;text-align:center}
+.codedemo .c{font-family:var(--mono);font-size:46px;font-weight:700;letter-spacing:.2em;color:var(--lime);line-height:1}
+.codedemo .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--fg-3);margin-top:12px}
+.codedemo .bar{height:1px;background:var(--rule);margin:22px 0}
+.flowline{display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11.5px;color:var(--fg-2)}
+.flowline span{padding:7px 12px;border-radius:9px;background:var(--panel-3)}
+.flowline .ar{color:var(--lime);padding:0}
+
+.rails{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:26px}
+.rl{background:var(--panel-2);border:1px solid var(--rule-soft);border-radius:14px;padding:16px 17px}
+.rl .t{font-weight:700;font-size:15px;margin-bottom:3px}
+.rl .d{font-family:var(--mono);font-size:11px;color:var(--fg-3)}
+.rl.bank{border-color:var(--clay-soft)}
+.rl.bank .fee{color:var(--clay)}
+.rl .fee{font-family:var(--mono);font-size:12.5px;color:var(--lime);font-weight:700;margin-top:9px}
+
+.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:32px}
+.pc{background:var(--panel-2);border:1px solid var(--rule-soft);border-radius:16px;padding:24px}
+.pc.hero-tier{border-color:var(--lime);background:var(--lime-soft)}
+.pc .tt{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg-3);margin-bottom:11px}
+.pc .amt{font-family:var(--mono);font-size:27px;font-weight:700;letter-spacing:-.025em;line-height:1}
+.pc .amt small{font-size:12px;color:var(--fg-3);font-weight:400}
+.pc ul{margin:15px 0 0;padding-left:17px}
+.pc li{font-size:13.5px;color:var(--fg-2);margin-bottom:6px}
+.pc li::marker{color:var(--lime)}
+
+.quote{border-left:3px solid var(--lime);padding:4px 0 4px 22px;margin:30px 0;max-width:54ch}
+.quote p{font-size:21px;line-height:1.4;color:var(--fg);font-weight:600;letter-spacing:-.02em;margin:0}
+
+/* corridor */
+.corridor{margin:30px 0 0;background:var(--panel-2);border:1px solid var(--rule-soft);
+  border-radius:16px;padding:26px 22px;overflow-x:auto}
+.corridor svg{display:block;min-width:520px;width:100%;height:auto}
+
+/* form */
+.form{background:var(--panel-2);border:1px solid var(--rule);border-radius:20px;padding:30px}
+.form .f{width:100%;background:var(--panel);border:1px solid var(--rule);border-radius:12px;
+  padding:14px 15px;font-size:16px;margin-bottom:10px;color:var(--fg)}
+.form .f::placeholder{color:var(--fg-3)}
+.form .f:focus{border-color:var(--lime);outline:none}
+.rolepick{display:flex;gap:9px;margin-bottom:10px}
+.rolepick button{flex:1;padding:13px;border-radius:12px;border:1px solid var(--rule);
+  font-weight:640;font-size:14.5px;color:var(--fg-2)}
+.rolepick button[aria-pressed="true"]{background:var(--lime);color:var(--lime-ink);border-color:var(--lime)}
+.form .btn{width:100%;text-align:center;margin-top:4px}
+.ok{text-align:center;padding:26px 10px}
+.ok .tick{font-size:44px;color:var(--lime);line-height:1}
+.fineprint{font-family:var(--mono);font-size:10.5px;color:var(--fg-3);line-height:1.6;margin-top:14px}
+
+footer{border-top:1px solid var(--rule);padding:44px 0 60px;background:var(--panel)}
+.fgrid{display:flex;gap:34px;flex-wrap:wrap;align-items:flex-start}
+.fgrid .col{min-width:150px}
+.fgrid h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--fg-3);margin:0 0 11px;font-weight:500}
+.fgrid a{display:block;font-size:14px;color:var(--fg-2);margin-bottom:8px}
+.fgrid a:hover{color:var(--lime)}
+.legal{font-family:var(--mono);font-size:10.5px;color:var(--fg-3);margin-top:34px;
+  padding-top:22px;border-top:1px solid var(--rule);line-height:1.7}
+.hide{display:none!important}
+</style>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="mark">ZI<b>GO</b></a>
+    <nav class="links">
+      <a href="#how">How it works</a>
+      <a href="#trust">Trust</a>
+      <a href="#pay">Payments</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#pilot">The pilot</a>
+    </nav>
+    <a href="#join" class="navcta">Join the pilot</a>
+    <button class="tbtn" id="tbtn" aria-label="Switch theme">◐</button>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="wrap hero" style="padding-top:56px">
+  <div>
+    <span class="kicker"><span class="dot"></span>Pilot opening · Iringa ⇄ Dar es Salaam</span>
+    <h1>Any load.<br>Any vehicle.<br><em>Any road.</em></h1>
+    <p class="sell">Post what you're sending. Transporters name their own price. <b>You pick.</b> No broker sets your rate, and nobody decides what counts as reasonable — a sack to the district market or five hundred kilometres on a boda, it's your trade.</p>
+    <div class="herocta">
+      <a href="#join" class="btn">Join the pilot</a>
+      <a href="#how" class="btn ghost">See how it works</a>
+    </div>
+    <p class="trust">0% commission on your fare · money held until delivery · mobile money &amp; bank</p>
+  </div>
+
+  <div class="board">
+    <div class="hd"><span>Open loads</span><span class="live"><i></i>live</span></div>
+    <div class="body" id="feed"></div>
+    <div class="ft">
+      <span>Bids today <b id="k1">0</b></span>
+      <span>Moved <b id="k2">0</b></span>
+      <span>Corridors <b>2</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROBLEM ═══════ -->
+<section class="alt"><div class="wrap">
+  <p class="eyebrow">Why this exists</p>
+  <h2>The lorry going back is empty. Your sack has nowhere to sit.</h2>
+  <p class="body-lg">Every day trucks leave Dar loaded and come back with nothing, while a trader in Makambako pays whatever the one broker at the stand decides to charge. Neither of them can see the other. That gap is the entire business.</p>
+  <div class="grid3">
+    <div class="tile"><div class="n">1.28M</div>
+      <p>Registered motorcycles in Tanzania, plus 185,110 recently imported — most of them into the boda trade. The capacity already exists.</p></div>
+    <div class="tile"><div class="n">94%</div>
+      <p>Of Tanzanians use mobile money. The payment rail is already in every pocket, which was never true when Uber launched anywhere.</p></div>
+    <div class="tile"><div class="n">1960s</div>
+      <p><b>Boda boda means "border-border."</b> They began carrying coffee and sugarcane between Busia and Kenya. Long-distance cargo isn't a new idea — it's the original one.</p></div>
+  </div>
+</div></section>
+
+<!-- ═══════ HOW ═══════ -->
+<section id="how"><div class="wrap">
+  <p class="eyebrow">How it works</p>
+  <h2>Four steps. No map, no address, no account needed.</h2>
+  <p class="body-lg">Loads move town to town, not pin to pin. Say what you're sending and where — that's the whole form.</p>
+  <div class="steps">
+    <div class="stepc"><div class="i">1</div><h3>Post it</h3>
+      <p>What it is, how heavy, from which town to which. Pick a vehicle or leave it open to anything.</p></div>
+    <div class="stepc"><div class="i">2</div><h3>They bid</h3>
+      <p>Every transporter running that corridor gets it. They send you their price, their vehicle, and when they can lift.</p></div>
+    <div class="stepc"><div class="i">3</div><h3>You pick</h3>
+      <p>On price, rating, or whether they're verified. Cheapest isn't forced on you and neither is nearest.</p></div>
+    <div class="stepc"><div class="i">4</div><h3>It moves</h3>
+      <p>Money is held. The person receiving reads a code aloud. The money goes. Everyone rates everyone.</p></div>
+  </div>
+</div></section>
+
+<!-- ═══════ TRUST ═══════ -->
+<section id="trust" class="alt"><div class="wrap split">
+  <div>
+    <p class="eyebrow">The trust mechanism</p>
+    <h2>Six digits are why a stranger hands you a 500&nbsp;km load.</h2>
+    <p>When you send money into escrow, Zigo generates a code and gives it only to <b>the person receiving the load</b>. The transporter never sees it.</p>
+    <p>They cannot release your money. They cannot claim they delivered. The only way that payment moves is if somebody at the other end holds the goods and reads the number out loud.</p>
+    <p>If it never gets read, <b>the money comes back to you.</b> No contract, no bank guarantee, no court. That is the whole innovation, and it costs a flat TZS 3,000 — <b>not a percentage</b>, so it never costs more than a small consignment is worth.</p>
+    <div class="quote"><p>Escrow isn't how we make money. It's what makes two strangers willing to trade at all.</p></div>
+  </div>
+  <div class="codedemo">
+    <div class="c" id="code">4 8 2 9 1 7</div>
+    <div class="l">Held by the receiver only</div>
+    <div class="bar"></div>
+    <div class="flowline">
+      <span>Sender funds</span><span class="ar">→</span>
+      <span>Rider lifts</span><span class="ar">→</span>
+      <span>Code read</span><span class="ar">→</span>
+      <span>Rider paid</span>
+    </div>
+  </div>
+</div></section>
+
+<!-- ═══════ PAY ═══════ -->
+<section id="pay"><div class="wrap">
+  <p class="eyebrow">Payments</p>
+  <h2>Every rail Tanzania already uses.</h2>
+  <p class="body-lg">Mobile money for the farmer with a feature phone. Lipa Namba and bank transfer for the trader moving fertiliser by the tonne — and the bank rail is the cheaper one.</p>
+  <div class="rails">
+    <div class="rl"><div class="t">M-Pesa</div><div class="d">Vodacom</div><div class="fee">1.8%</div></div>
+    <div class="rl"><div class="t">Mixx by Yas</div><div class="d">Tigo Pesa</div><div class="fee">1.8%</div></div>
+    <div class="rl"><div class="t">Airtel Money</div><div class="d">Airtel</div><div class="fee">1.8%</div></div>
+    <div class="rl"><div class="t">Halopesa</div><div class="d">Halotel</div><div class="fee">1.8%</div></div>
+    <div class="rl bank"><div class="t">CRDB</div><div class="d">Lipa Namba</div><div class="fee">0.9%</div></div>
+    <div class="rl bank"><div class="t">NMB</div><div class="d">Lipa Namba</div><div class="fee">0.9%</div></div>
+    <div class="rl bank"><div class="t">NBC</div><div class="d">Lipa Namba</div><div class="fee">0.9%</div></div>
+    <div class="rl bank"><div class="t">Any bank</div><div class="d">Absa · Stanbic · Exim · Equity · DTB · TCB</div><div class="fee">0.9%</div></div>
+  </div>
+  <p style="margin-top:24px"><b>Why the bank rail costs half.</b> A Lipa Namba collection settles over <b>TIPS</b>, the Bank of Tanzania's instant payment system — bank to bank in seconds, with no card network taking a slice. On every load you move, that difference compounds.</p>
+</div></section>
+
+<!-- ═══════ PRICING ═══════ -->
+<section id="pricing" class="alt"><div class="wrap">
+  <p class="eyebrow">Pricing</p>
+  <h2>We take nothing from your fare.</h2>
+  <p class="body-lg">When two people agree a price, taxing it just pushes them to settle in cash behind your back. So we don't try. Transporters pay for the board; senders pay only if they want the money held.</p>
+  <div class="price">
+    <div class="pc"><div class="tt">Sender</div><div class="amt">Free</div>
+      <ul><li>Post unlimited loads</li><li>Receive unlimited bids</li><li>Escrow optional, TZS 3,000 flat</li></ul></div>
+    <div class="pc"><div class="tt">Boda · bajaji</div><div class="amt">10,000<small> /mo</small></div>
+      <ul><li>Full board, all corridors</li><li>Instant alerts</li><li>0% on every fare</li></ul></div>
+    <div class="pc hero-tier"><div class="tt">Car · canter</div><div class="amt">25,000<small> /mo</small></div>
+      <ul><li>Everything above</li><li>Verified badge included</li><li>Priority listing</li></ul></div>
+    <div class="pc"><div class="tt">Truck</div><div class="amt">40,000<small> /mo</small></div>
+      <ul><li>Everything above</li><li>Return-load alerts</li><li>Route subscriptions</li></ul></div>
+  </div>
+  <p class="fineprint">Free plan shows 3 loads a day. Verified badge — ID and vehicle checked — TZS 5,000 once, for anyone not on a paid tier.</p>
+</div></section>
+
+<!-- ═══════ BANK ═══════ -->
+<section><div class="wrap split">
+  <div>
+    <p class="eyebrow">For lenders and partners</p>
+    <h2>Six months of payouts is a credit file that never existed.</h2>
+    <p>A boda rider has no payslip, no invoices, and no way to prove what they earn. That's why asset finance on a second motorcycle is priced like a gamble, if it's offered at all.</p>
+    <p>A transporter with six months of settled Zigo payouts into CRDB or NMB has <b>a verifiable, bank-visible income record</b> — earnings, frequency, route consistency, counterparty ratings.</p>
+    <p>We're not asking a bank to fund a logistics app. We're offering an origination channel into a market of more than a million unbanked vehicle owners, <b>with repayment history attached.</b></p>
+  </div>
+  <div>
+    <div class="grid3" style="grid-template-columns:1fr;margin-top:0">
+      <div class="tile"><div class="n">0%</div><p>Commission taken from any fare, ever. Revenue is subscription — the model Vahak used to reach roughly two million registered transport businesses and 25,000 postings a day in India.</p></div>
+      <div class="tile"><div class="n">Month 8</div><p>Projected break-even at 25% month-on-month growth on one corridor, with a peak cash requirement of about TZS 4M. Modelled, not achieved — the working is published.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ═══════ PILOT ═══════ -->
+<section id="pilot" class="alt"><div class="wrap">
+  <p class="eyebrow">The pilot</p>
+  <h2>One corridor. Both directions. Then the next.</h2>
+  <p class="body-lg">Depth beats a national map with nobody on it. We open where produce comes down and goods go up — and we don't open a second corridor until the first one has loads every day.</p>
+  <div class="corridor">
+    <svg viewBox="0 0 700 132" role="img" aria-label="Corridor diagram: Iringa to Dar es Salaam, 500 kilometres, via Makambako, Mikumi and Morogoro, with produce moving down and goods moving up">
+      <line x1="60" y1="66" x2="640" y2="66" stroke="var(--rule)" stroke-width="3"/>
+      <line x1="60" y1="66" x2="640" y2="66" stroke="var(--lime)" stroke-width="3" stroke-dasharray="8 10"/>
+      <g font-family="var(--mono)" font-size="11" fill="var(--fg-3)">
+        <text x="60" y="40" text-anchor="middle" fill="var(--lime)" font-size="13" font-weight="700">Iringa</text>
+        <text x="640" y="40" text-anchor="middle" fill="var(--lime)" font-size="13" font-weight="700">Dar es Salaam</text>
+        <text x="205" y="98">Makambako</text>
+        <text x="350" y="98">Mikumi</text>
+        <text x="495" y="98">Morogoro</text>
+        <text x="350" y="24" text-anchor="middle" fill="var(--fg-2)">500 km · both directions, every day</text>
+      </g>
+      <g fill="var(--lime)">
+        <circle cx="60" cy="66" r="7"/><circle cx="640" cy="66" r="7"/>
+      </g>
+      <g fill="var(--fg-3)">
+        <circle cx="205" cy="66" r="4"/><circle cx="350" cy="66" r="4"/><circle cx="495" cy="66" r="4"/>
+      </g>
+    </svg>
+  </div>
+  <div class="grid3">
+    <div class="tile"><div class="n">↓</div><p><b>Coming down.</b> Maize, tomatoes, avocado, timber — from the Southern Highlands into the city, heaviest June to October.</p></div>
+    <div class="tile"><div class="n">↑</div><p><b>Going up.</b> Fertiliser, seed, spare parts, stock for upcountry shops — the direction that fills the truck that would drive back empty.</p></div>
+    <div class="tile"><div class="n">Apr</div><p><b>Opening with the harvest.</b> Launching into the lean season would cost roughly 40% of first-half volume. We build through it instead.</p></div>
+  </div>
+</div></section>
+
+<!-- ═══════ JOIN ═══════ -->
+<section id="join"><div class="wrap split">
+  <div>
+    <p class="eyebrow">Join the pilot</p>
+    <h2>Be on the board the day it opens.</h2>
+    <p>We're signing the first transporters and traders on the Iringa ⇄ Dar corridor now. Early transporters get <b>the first six months free</b> and a verified badge at no cost.</p>
+    <p>If you send goods upcountry regularly — a shop, a cooperative, a trader — tell us your route and we'll open it with you on it.</p>
+    <p class="fineprint">Zigo is pre-launch. Nothing on this page is a live service yet, and the figures shown are from our working model rather than from operations.</p>
+  </div>
+  <div class="form" id="formbox">
+    <div id="formin">
+      <div class="rolepick">
+        <button data-role="sender" aria-pressed="true">I send goods</button>
+        <button data-role="rider" aria-pressed="false">I carry goods</button>
+      </div>
+      <input class="f" id="i-name" placeholder="Your name" autocomplete="name">
+      <input class="f" id="i-phone" placeholder="Phone (07XX XXX XXX)" inputmode="tel" autocomplete="tel">
+      <select class="f" id="i-route">
+        <option>Iringa ⇄ Dar es Salaam</option>
+        <option>Morogoro ⇄ Dar es Salaam</option>
+        <option>Mbeya ⇄ Dar es Salaam</option>
+        <option>Makambako ⇄ Dar es Salaam</option>
+        <option>Another route</option>
+      </select>
+      <select class="f" id="i-veh">
+        <option value="">Vehicle — if you carry</option>
+        <option>Boda boda</option><option>Bajaji</option><option>Car / pickup</option>
+        <option>Canter</option><option>Truck</option>
+      </select>
+      <button class="btn" id="submit">Put me on the list</button>
+      <p class="fineprint">We'll send one message when the corridor opens. Nothing else, and no sharing your number.</p>
+    </div>
+    <div class="ok hide" id="formok">
+      <div class="tick">✓</div>
+      <h3 style="margin-top:14px">You're on the list</h3>
+      <p style="margin:0 auto;max-width:34ch" id="okmsg"></p>
+      <button class="btn ghost" id="again" style="margin-top:18px">Add someone else</button>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="col" style="flex:1;min-width:220px">
+      <div class="mark" style="margin-bottom:10px">ZI<b>GO</b></div>
+      <p style="font-size:14px;max-width:30ch">Any load. Any vehicle. Any road. Built in Tanzania for the roads that already carry everything.</p>
+    </div>
+    <div class="col"><h4>Product</h4>
+      <a href="#how">How it works</a><a href="#trust">Escrow &amp; codes</a>
+      <a href="#pay">Payments</a><a href="#pricing">Pricing</a></div>
+    <div class="col"><h4>Company</h4>
+      <a href="#pilot">The pilot</a><a href="#join">Join</a>
+      <a href="#top">Back to top</a></div>
+    <div class="col"><h4>Corridors</h4>
+      <a href="#pilot">Iringa ⇄ Dar</a><a href="#pilot">Morogoro ⇄ Dar</a>
+      <a href="#pilot">More soon</a></div>
+  </div>
+  <p class="legal">
+    ZIGO — pre-launch prototype. This page describes a service in development; it is not yet operating and no payments can be made through it.
+    Market figures cited are from published sources; financial figures are projections from an internal model and are not results.
+    Waitlist details entered here are kept on this device only and are not transmitted anywhere.
+  </p>
+</div></footer>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+
+/* theme */
+let TH=null;
+try{ TH=localStorage.getItem("zigo.land.theme"); }catch(e){}
+function paint(){ const r=document.documentElement;
+  if(TH) r.setAttribute("data-theme",TH); else r.removeAttribute("data-theme"); }
+paint();
+$("tbtn").onclick=()=>{ TH = TH==="dark" ? "light" : TH==="light" ? null : "dark";
+  try{ localStorage.setItem("zigo.land.theme", TH||""); }catch(e){}
+  if(!TH){ try{ localStorage.removeItem("zigo.land.theme"); }catch(e){} }
+  paint(); };
+
+/* ── live board ── */
+const LOADS=[
+  ["Maize · 1 sack","Iringa → Dar es Salaam","100 kg",78000],
+  ["Fertiliser · 3 bags","Dar es Salaam → Iringa","150 kg",110000],
+  ["Tomatoes · 4 crates","Makambako → Dar es Salaam","80 kg",96000],
+  ["Spare parts · 2 boxes","Dar es Salaam → Njombe","14 kg",52000],
+  ["Avocado · 6 crates","Njombe → Dar es Salaam","120 kg",132000],
+  ["Shop stock · 5 cartons","Dar es Salaam → Makambako","95 kg",88000],
+  ["Timber · bundle","Mufindi → Morogoro","240 kg",145000],
+  ["Seed · 2 sacks","Dar es Salaam → Mbeya","100 kg",124000],
+  ["Rice · 2 sacks","Ifakara → Dar es Salaam","200 kg",92000],
+  ["Two goats","Dodoma → Morogoro","70 kg",64000],
+];
+const feed=$("feed");
+let idx=0, bids=41, moved=6;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function addLoad(){
+  const [w,r,kg,p]=LOADS[idx%LOADS.length]; idx++;
+  const n=document.createElement("div"); n.className="load";
+  const jitter = Math.round(p*(0.92+Math.random()*0.2)/500)*500;
+  n.innerHTML=`<span class="w">${w}</span>
+    <span class="p">${jitter.toLocaleString("en-US")}<small>${1+Math.floor(Math.random()*5)} bids</small></span>
+    <span class="r">${r} · ${kg}</span>`;
+  feed.prepend(n);
+  while(feed.children.length>7) feed.lastChild.remove();
+  bids += 1+Math.floor(Math.random()*3);
+  if(Math.random()>0.55) moved++;
+  $("k1").textContent=bids; $("k2").textContent=moved;
+}
+for(let i=0;i<6;i++) addLoad();
+if(!reduce) setInterval(addLoad, 3400);
+
+/* rolling escrow code */
+const codeEl=$("code");
+if(!reduce) setInterval(()=>{
+  codeEl.textContent = String(Math.floor(100000+Math.random()*900000)).split("").join(" ");
+}, 4200);
+
+/* waitlist */
+let role="sender";
+document.querySelectorAll("[data-role]").forEach(b=>b.onclick=()=>{
+  role=b.dataset.role;
+  document.querySelectorAll("[data-role]").forEach(x=>
+    x.setAttribute("aria-pressed", String(x.dataset.role===role)));
+});
+$("submit").onclick=()=>{
+  const name=$("i-name").value.trim(), phone=$("i-phone").value.trim();
+  if(!name){ $("i-name").focus(); $("i-name").style.borderColor="var(--bad)"; return; }
+  if(phone.replace(/\D/g,"").length<9){ $("i-phone").focus(); $("i-phone").style.borderColor="var(--bad)"; return; }
+  const entry={name,phone,role,route:$("i-route").value,veh:$("i-veh").value,at:new Date().toISOString()};
+  try{
+    const list=JSON.parse(localStorage.getItem("zigo.waitlist")||"[]");
+    list.push(entry); localStorage.setItem("zigo.waitlist",JSON.stringify(list));
+  }catch(e){}
+  $("okmsg").textContent = role==="rider"
+    ? `We'll message ${phone} when ${entry.route} opens. Your first six months are free.`
+    : `We'll message ${phone} the day ${entry.route} goes live.`;
+  $("formin").classList.add("hide"); $("formok").classList.remove("hide");
+};
+$("again").onclick=()=>{
+  ["i-name","i-phone"].forEach(id=>{ $(id).value=""; $(id).style.borderColor=""; });
+  $("formok").classList.add("hide"); $("formin").classList.remove("hide");
+};
+["i-name","i-phone"].forEach(id=>$(id).addEventListener("input",e=>e.target.style.borderColor=""));
+</script>

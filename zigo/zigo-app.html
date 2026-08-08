@@ -1,0 +1,807 @@
+<title>ZIGO — Any load. Any vehicle. Any road.</title>
+<style>
+:root{
+  --ink:#0B0D0A; --panel:#14170F; --panel-2:#1C2015; --panel-3:#252A1C;
+  --rule:#2C3122; --rule-soft:#22261A;
+  --fg:#F2F4EC; --fg-2:#B4BAA6; --fg-3:#7C8370;
+  --lime:#CEFF4A; --lime-ink:#0B0D0A; --lime-soft:#2A3312;
+  --clay:#E08A55; --clay-soft:#332014;
+  --ok:#4FD48A; --ok-soft:#12301F; --warn:#F5C33B; --bad:#FF6B5A;
+  --frame:#000;
+  --sans:system-ui,-apple-system,"Segoe UI Variable","Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+:root[data-theme="light"]{
+  --ink:#F4F3ED; --panel:#FFFFFF; --panel-2:#EDECE3; --panel-3:#E3E2D6;
+  --rule:#D6D5C6; --rule-soft:#E4E3D7;
+  --fg:#0E110B; --fg-2:#4A4F3F; --fg-3:#7C8370;
+  --lime:#A6D919; --lime-ink:#0B0D0A; --lime-soft:#EBF6C9;
+  --clay:#B85E28; --clay-soft:#F7E5D8;
+  --ok:#1E8F55; --ok-soft:#DEF2E6; --warn:#9A7207; --bad:#C6352A;
+  --frame:#C9C8BA;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --ink:#F4F3ED; --panel:#FFFFFF; --panel-2:#EDECE3; --panel-3:#E3E2D6;
+  --rule:#D6D5C6; --rule-soft:#E4E3D7;
+  --fg:#0E110B; --fg-2:#4A4F3F; --fg-3:#7C8370;
+  --lime:#A6D919; --lime-ink:#0B0D0A; --lime-soft:#EBF6C9;
+  --clay:#B85E28; --clay-soft:#F7E5D8;
+  --ok:#1E8F55; --ok-soft:#DEF2E6; --warn:#9A7207; --bad:#C6352A;
+  --frame:#C9C8BA;
+}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--ink);color:var(--fg);font-family:var(--sans);overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;padding:0}
+input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+/* ───────── desktop stage ───────── */
+.stage{min-height:100vh;display:grid;place-items:center;padding:26px 18px 40px}
+.pitch{max-width:1080px;width:100%;display:grid;grid-template-columns:1fr auto;gap:44px;align-items:center}
+@media (max-width:900px){
+  .stage{padding:0}
+  .pitch{grid-template-columns:1fr;gap:0}
+  .pitchcol{display:none}
+}
+.wordmark{font-size:64px;font-weight:800;letter-spacing:-.05em;line-height:.86;margin:0 0 14px}
+.wordmark b{color:var(--lime)}
+.claim{font-size:23px;font-weight:700;letter-spacing:-.022em;line-height:1.18;margin:0 0 16px;max-width:19ch}
+.blurb{color:var(--fg-2);font-size:15px;line-height:1.55;max-width:42ch;margin:0 0 22px}
+.pitchstats{display:flex;gap:26px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:18px}
+.pitchstats div b{display:block;font-family:var(--mono);font-size:22px;font-weight:700;color:var(--lime);letter-spacing:-.02em}
+.pitchstats div span{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg-3)}
+
+/* ───────── phone ───────── */
+.phone{width:390px;height:844px;background:var(--panel);border-radius:42px;overflow:hidden;
+  position:relative;box-shadow:0 0 0 11px var(--frame),0 0 0 12px var(--rule),0 40px 90px rgba(0,0,0,.55);
+  display:flex;flex-direction:column}
+@media (max-width:900px){
+  .phone{width:100vw;height:100vh;height:100dvh;border-radius:0;box-shadow:none}
+}
+.notch{height:26px;flex:none;display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;font-family:var(--mono);font-size:10px;color:var(--fg-3);letter-spacing:.05em}
+.screen{flex:1;overflow-y:auto;overflow-x:hidden;padding:4px 18px 14px}
+.screen::-webkit-scrollbar{width:0}
+
+.appbar{display:flex;align-items:center;gap:11px;padding:6px 0 14px}
+.appbar .logo{font-size:19px;font-weight:800;letter-spacing:-.04em}
+.appbar .logo b{color:var(--lime)}
+.appbar .spacer{margin-left:auto}
+.chip{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  padding:5px 9px;border-radius:20px;border:1px solid var(--rule);color:var(--fg-2)}
+.chip.live{border-color:var(--lime);color:var(--lime)}
+.iconbtn{width:32px;height:32px;border-radius:10px;border:1px solid var(--rule);
+  display:grid;place-items:center;font-size:14px;flex:none}
+
+h1.big{font-size:30px;font-weight:800;letter-spacing:-.038em;line-height:1.04;margin:6px 0 8px;text-wrap:balance}
+h2.mid{font-size:20px;font-weight:750;letter-spacing:-.026em;margin:0 0 6px}
+.lede{color:var(--fg-2);font-size:14.5px;line-height:1.5;margin:0 0 18px}
+.label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin:18px 0 8px}
+.label:first-child{margin-top:4px}
+
+.card{background:var(--panel-2);border:1px solid var(--rule-soft);border-radius:14px;padding:14px 15px;margin-bottom:9px}
+.card.sel{border-color:var(--lime);background:var(--lime-soft)}
+.row{display:flex;align-items:center;gap:11px}
+.row .grow{flex:1;min-width:0}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+.field{width:100%;background:var(--panel-2);border:1px solid var(--rule);border-radius:12px;
+  padding:13px 14px;font-size:16px;margin-bottom:9px;color:var(--fg)}
+.field::placeholder{color:var(--fg-3)}
+.field:focus{border-color:var(--lime);outline:none}
+select.field{appearance:none;background-image:none}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.two .field{margin-bottom:0}
+
+.pillrow{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.pill{padding:9px 13px;border-radius:22px;border:1px solid var(--rule);font-size:13.5px;
+  font-weight:600;color:var(--fg-2);transition:.15s}
+.pill[aria-pressed="true"]{background:var(--lime);color:var(--lime-ink);border-color:var(--lime)}
+
+.cta{width:100%;padding:16px;border-radius:15px;background:var(--lime);color:var(--lime-ink);
+  font-size:16px;font-weight:750;letter-spacing:-.012em;text-align:center;margin-top:6px}
+.cta:disabled{opacity:.32}
+.cta.ghost{background:transparent;color:var(--fg);border:1px solid var(--rule);font-weight:650}
+.cta.clay{background:var(--clay);color:#fff}
+.ctarow{display:flex;gap:9px;margin-top:8px}
+.ctarow .cta{margin-top:0}
+
+.bid{display:grid;grid-template-columns:38px 1fr auto;gap:0 12px;align-items:center;
+  background:var(--panel-2);border:1px solid var(--rule-soft);border-radius:14px;
+  padding:13px 14px;margin-bottom:9px;width:100%;text-align:left;
+  animation:pop .34s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes pop{from{opacity:0;transform:translateY(9px) scale(.985)}to{opacity:1;transform:none}}
+.bid:hover{border-color:var(--lime)}
+.av{width:38px;height:38px;border-radius:11px;background:var(--panel-3);grid-row:span 2;
+  display:grid;place-items:center;font-size:16px}
+.bid .nm{font-size:15px;font-weight:700;letter-spacing:-.012em;display:flex;align-items:center;gap:6px}
+.bid .sub{font-family:var(--mono);font-size:11px;color:var(--fg-3);margin-top:2px}
+.bid .pr{grid-row:span 2;text-align:right;font-family:var(--mono);font-size:17px;font-weight:700;
+  color:var(--lime);white-space:nowrap}
+.vbadge{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--ok-soft);color:var(--ok);padding:2px 6px;border-radius:5px}
+
+.rail{display:grid;grid-template-columns:34px 1fr auto;gap:0 12px;align-items:center;width:100%;
+  text-align:left;background:var(--panel-2);border:1px solid var(--rule-soft);
+  border-radius:14px;padding:13px 14px;margin-bottom:8px}
+.rail[aria-pressed="true"]{border-color:var(--lime);background:var(--lime-soft)}
+.rail .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  font-family:var(--mono);font-size:11px;font-weight:700;grid-row:span 2}
+.rail .t{font-size:14.5px;font-weight:680}
+.rail .d{font-family:var(--mono);font-size:10.5px;color:var(--fg-3);margin-top:2px}
+.rail .k{grid-row:span 2;font-family:var(--mono);font-size:10px;color:var(--fg-3);text-align:right}
+.rail.bank[aria-pressed="true"]{border-color:var(--clay);background:var(--clay-soft)}
+.rail.bank .ic{background:var(--clay-soft);color:var(--clay)}
+.rail .ic.mm{background:var(--lime-soft);color:var(--lime)}
+
+.steps{display:flex;flex-direction:column;gap:0;margin:8px 0 16px}
+.step{display:grid;grid-template-columns:26px 1fr;gap:0 13px;position:relative;padding-bottom:20px}
+.step:last-child{padding-bottom:0}
+.step .dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--rule);
+  display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--fg-3);background:var(--panel);z-index:1}
+.step.done .dot{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+.step.now .dot{border-color:var(--lime);color:var(--lime)}
+.step:not(:last-child)::before{content:"";position:absolute;left:12.5px;top:24px;bottom:-2px;
+  width:2px;background:var(--rule)}
+.step.done:not(:last-child)::before{background:var(--lime)}
+.step .t{display:block;font-size:14.5px;font-weight:680;padding-top:3px}
+.step .d{display:block;font-family:var(--mono);font-size:11px;color:var(--fg-3);margin-top:3px;line-height:1.5}
+.step.now .t{color:var(--lime)}
+
+.codebox{background:var(--panel-2);border:1px dashed var(--rule);border-radius:14px;
+  padding:16px;text-align:center;margin:12px 0}
+.codebox .c{font-family:var(--mono);font-size:34px;font-weight:700;letter-spacing:.18em;color:var(--lime)}
+.codebox .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--fg-3);margin-top:6px}
+.pin{width:100%;text-align:center;font-family:var(--mono);font-size:28px;letter-spacing:.28em;
+  background:var(--panel-2);border:1px solid var(--rule);border-radius:14px;padding:15px 10px;margin-bottom:9px}
+.pin.bad{border-color:var(--bad);color:var(--bad)}
+.pin.good{border-color:var(--ok);color:var(--ok)}
+
+.money{background:var(--panel-2);border:1px solid var(--rule-soft);border-radius:16px;padding:17px;margin-bottom:9px}
+.money .amt{font-family:var(--mono);font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.money .cur{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg-3);margin-bottom:8px}
+.money.held{border-color:var(--warn)}
+.money.held .amt{color:var(--warn)}
+
+.note{background:var(--panel-2);border-left:3px solid var(--clay);border-radius:0 11px 11px 0;
+  padding:12px 14px;margin:12px 0;font-size:13px;line-height:1.5;color:var(--fg-2)}
+.note b{color:var(--fg)}
+.note.lime{border-left-color:var(--lime)}
+
+nav{flex:none;display:flex;border-top:1px solid var(--rule);background:var(--panel);
+  padding:7px 8px calc(9px + env(safe-area-inset-bottom))}
+nav button{flex:1;padding:8px 2px 5px;border-radius:12px;display:flex;flex-direction:column;
+  align-items:center;gap:5px;font-family:var(--mono);font-size:8.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--fg-3)}
+nav button i{font-style:normal;font-size:17px;line-height:1}
+nav button[aria-current="true"]{color:var(--lime)}
+
+.rolecard{background:var(--panel-2);border:1px solid var(--rule);border-radius:18px;
+  padding:20px 18px;margin-bottom:11px;width:100%;text-align:left;transition:.16s}
+.rolecard:hover{border-color:var(--lime);transform:translateY(-2px)}
+.rolecard .e{font-size:30px;margin-bottom:11px;display:block}
+.rolecard h3{margin:0 0 5px;font-size:19px;font-weight:750;letter-spacing:-.022em}
+.rolecard p{margin:0;font-size:13.5px;color:var(--fg-2);line-height:1.45}
+
+.toast{position:absolute;left:50%;bottom:84px;transform:translate(-50%,12px);opacity:0;
+  background:var(--fg);color:var(--ink);font-family:var(--mono);font-size:11px;padding:10px 15px;
+  border-radius:9px;pointer-events:none;transition:.2s;z-index:40;white-space:nowrap;max-width:88%}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+.demo{position:fixed;right:14px;bottom:14px;z-index:80;font-family:var(--mono);font-size:10.5px}
+.demo .hd{background:var(--lime);color:var(--lime-ink);padding:8px 12px;border-radius:11px;
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.demo .bd{display:none;background:var(--panel-2);border:1px solid var(--rule);border-radius:12px;
+  padding:10px;margin-top:7px;min-width:186px}
+.demo.open .bd{display:block}
+.demo .bd button{display:block;width:100%;text-align:left;padding:7px 9px;border-radius:8px;
+  color:var(--fg-2);margin-bottom:2px}
+.demo .bd button:hover{background:var(--panel-3);color:var(--fg)}
+@media (max-width:900px){.demo{bottom:auto;top:8px;right:8px}}
+/* ── corridor map ── */
+.mapbox{background:var(--panel-2);border:1px solid var(--rule-soft);border-radius:16px;
+  padding:6px;margin-bottom:10px;position:relative;overflow:hidden}
+.mapbox svg{display:block;width:100%;height:auto}
+.mapveh{transition:transform .9s linear}
+.pin{cursor:pointer}
+.pin circle.hit{fill:transparent}
+.maplegend{display:flex;gap:14px;flex-wrap:wrap;padding:9px 10px 4px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3)}
+.maplegend span{display:flex;align-items:center;gap:6px}
+.maplegend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.segrow{display:flex;gap:7px;margin-bottom:12px}
+.segrow button{flex:1;padding:10px;border-radius:11px;border:1px solid var(--rule);
+  font-size:13.5px;font-weight:640;color:var(--fg-2)}
+.segrow button[aria-pressed="true"]{background:var(--lime);color:var(--lime-ink);border-color:var(--lime)}
+.hide{display:none!important}
+.tiny{font-family:var(--mono);font-size:10px;color:var(--fg-3);line-height:1.55;margin-top:10px}
+</style>
+
+<div class="stage">
+<div class="pitch">
+
+  <div class="pitchcol">
+    <p class="wordmark">ZI<b>GO</b></p>
+    <p class="claim">Any load. Any vehicle. Any road.</p>
+    <p class="blurb">Post what you're sending. Transporters name their price. You pick. Nobody in the middle decides what your load is worth, and nobody decides what's reasonable — a sack to the district market or 500&nbsp;km on a boda, it's your trade.</p>
+    <p class="blurb">Money held safely until the person at the other end reads a code aloud. Mobile money, Lipa Namba, or straight from your bank.</p>
+    <div class="pitchstats">
+      <div><b>0%</b><span>commission</span></div>
+      <div><b>2 way</b><span>every corridor</span></div>
+      <div><b>94%</b><span>TZ on mobile money</span></div>
+    </div>
+    <p class="tiny">Interactive prototype — tap through both sides. Demo data only; no real payments, no real accounts.</p>
+  </div>
+
+  <div class="phone">
+    <div class="notch"><span id="clock">08:14</span><span>ZIGO demo ▮▮▮</span></div>
+    <div class="screen" id="screen"></div>
+    <nav id="nav"></nav>
+    <div class="toast" id="toast"></div>
+  </div>
+
+</div>
+</div>
+
+<div class="demo" id="demo">
+  <button class="hd" id="demoHd">Demo controls</button>
+  <div class="bd">
+    <button data-a="flip">⇄ Flip to other side</button>
+    <button data-a="bids">⚡ Force bids to arrive</button>
+    <button data-a="deliver">📍 Simulate arrival</button>
+    <button data-a="bank">🏦 Toggle bank rail</button>
+    <button data-a="theme">◐ Light / dark</button>
+    <button data-a="reset">↺ Reset demo</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* ══════════════ demo data ══════════════ */
+const BANKS = [["CRDB","CRDB Bank","Lipa Namba 150501"],["NMB","NMB Bank","Lipa Namba 900200"],
+  ["NBC","NBC Bank","Lipa Namba 012345"],["Other","Absa · Stanbic · Exim · Equity · DTB · TCB","Any bank on TIPS"]];
+const TOWNS = ["Iringa","Dar es Salaam","Morogoro","Mbeya","Njombe","Dodoma","Makambako"];
+const VEHICLES = [
+  {id:"any",   n:"Any vehicle", e:"◇"},
+  {id:"boda",  n:"Boda boda",   e:"🏍"},
+  {id:"bajaji",n:"Bajaji",      e:"🛺"},
+  {id:"car",   n:"Car / pickup",e:"🚙"},
+  {id:"canter",n:"Canter",      e:"🚐"},
+  {id:"truck", n:"Truck",       e:"🚛"},
+];
+const RIDERS = [
+  {n:"Juma M.",    v:"boda",   e:"🏍", r:4.8, j:212, ver:true,  base:0.86},
+  {n:"Mwajuma S.", v:"boda",   e:"🏍", r:4.4, j:96,  ver:false, base:0.79},
+  {n:"Rashid A.",  v:"boda",   e:"🏍", r:4.7, j:143, ver:true,  base:0.92},
+  {n:"Neema K.",   v:"canter", e:"🚐", r:4.9, j:74,  ver:true,  base:1.14},
+  {n:"Godfrey P.", v:"canter", e:"🚐", r:4.5, j:52,  ver:false, base:1.03},
+  {n:"Salum H.",   v:"car",    e:"🚙", r:4.6, j:158, ver:false, base:0.97},
+  {n:"Anna L.",    v:"car",    e:"🚙", r:4.9, j:88,  ver:true,  base:1.06},
+  {n:"Baraka T.",  v:"truck",  e:"🚛", r:5.0, j:41,  ver:true,  base:1.42},
+  {n:"Hamisi Z.",  v:"truck",  e:"🚛", r:4.6, j:67,  ver:false, base:1.31},
+  {n:"Frank O.",   v:"bajaji", e:"🛺", r:4.5, j:120, ver:false, base:0.83},
+];
+const BOARD = [
+  {what:"Maize, 1 sack",        kg:100, from:"Iringa",    to:"Dar es Salaam", when:"Today",    ask:78000},
+  {what:"Spare parts, 2 boxes", kg:14,  from:"Dar es Salaam", to:"Njombe",    when:"Tomorrow", ask:52000},
+  {what:"Tomatoes, 4 crates",   kg:80,  from:"Makambako", to:"Dar es Salaam", when:"Today",    ask:96000},
+  {what:"Fertiliser, 3 bags",   kg:150, from:"Dar es Salaam", to:"Iringa",    when:"Wed",      ask:110000},
+  {what:"Two goats",            kg:70,  from:"Dodoma",    to:"Morogoro",      when:"Today",    ask:64000},
+];
+
+/* ══════════════ state ══════════════ */
+const KEY="zigo.demo.v1";
+const FRESH = () => ({
+  role:null, screen:"role", bankOn:true, theme:null,
+  mapMode:"loads",
+  post:{what:"Maize, 1 sack", kg:"100", from:"Iringa", to:"Dar es Salaam", when:"Today", veh:"any"},
+  bids:[], chosen:null, rail:null, escrow:"none", code:null, pin:"",
+  wallet:{tzs:0, bank:0}, held:0, done:[],
+  riderBid:null, riderJob:null, riderEarned:0,
+});
+let S = load();
+function load(){ try{ const r=localStorage.getItem(KEY); if(r) return Object.assign(FRESH(), JSON.parse(r)); }catch(e){} return FRESH(); }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const tzs=n=>Math.round(n).toLocaleString("en-US");
+/* Android hardware back. true = we handled it, false = let the OS close the app. */
+window.zigoBack=function(){
+  const back={pay:"bids",bids:"post",track:"post",done:"post",map:S.role==="rider"?"board":"post",
+              sent:"board",job:"board",wallet:"board",about:S.role==="rider"?"board":"post"};
+  if(S.screen==="post"||S.screen==="board"){ S.role=null; go("role"); return true; }
+  if(S.screen==="role") return false;
+  go(back[S.screen]||"role"); return true;
+};
+
+let tT; function toast(m){ const t=$("toast"); t.textContent=m; t.classList.add("on");
+  clearTimeout(tT); tT=setTimeout(()=>t.classList.remove("on"),2200); }
+function go(s){ S.screen=s; save(); render(); $("screen").scrollTop=0; }
+function theme(){ const r=document.documentElement;
+  if(S.theme) r.setAttribute("data-theme",S.theme); else r.removeAttribute("data-theme"); }
+
+/* distance model for indicative pricing (demo) */
+function km(a,b){
+  const D={"Iringa|Dar es Salaam":500,"Dar es Salaam|Njombe":690,"Makambako|Dar es Salaam":610,
+           "Dar es Salaam|Iringa":500,"Dodoma|Morogoro":260,"Mbeya|Dar es Salaam":830,
+           "Morogoro|Dar es Salaam":195,"Dar es Salaam|Morogoro":195};
+  return D[a+"|"+b] || D[b+"|"+a] || 350;
+}
+function indicative(p){
+  const t=(parseFloat(p.kg)||100)/1000;
+  return Math.max(12000, Math.round(t*km(p.from,p.to)*380/500)*500);
+}
+
+/* ══════════════ corridor map ══════════════
+   A schematic, not a tile map: no API key, no per-view cost, and it still
+   works inside an app with no internet permission. For town-to-town freight
+   a schematic is also more legible than a road map. */
+const ROUTE=[ {x:44,y:196,t:"Iringa"}, {x:112,y:170}, {x:176,y:176,t:"Makambako"},
+  {x:238,y:146}, {x:292,y:128,t:"Mikumi"}, {x:346,y:118}, {x:404,y:96,t:"Morogoro"},
+  {x:466,y:86}, {x:520,y:64,t:"Dar es Salaam"} ];
+const SEG=(()=>{ const o=[]; let tot=0;
+  for(let i=1;i<ROUTE.length;i++){ const a=ROUTE[i-1],b=ROUTE[i];
+    const d=Math.hypot(b.x-a.x,b.y-a.y); o.push({a,b,d,at:tot}); tot+=d; }
+  return {o,tot}; })();
+function ptAt(f){ const d=Math.max(0,Math.min(1,f))*SEG.tot;
+  for(const s of SEG.o){ if(d<=s.at+s.d){ const k=(d-s.at)/s.d;
+    return {x:s.a.x+(s.b.x-s.a.x)*k, y:s.a.y+(s.b.y-s.a.y)*k}; } }
+  const l=ROUTE[ROUTE.length-1]; return {x:l.x,y:l.y}; }
+
+const MAPVEH=[{f:.18,e:"🏍",n:"Juma M."},{f:.42,e:"🚐",n:"Neema K."},
+              {f:.66,e:"🚛",n:"Baraka T."},{f:.86,e:"🚙",n:"Anna L."}];
+const MAPLOAD=[{f:0,n:2},{f:.28,n:1},{f:.55,n:3},{f:.78,n:1},{f:1,n:4}];
+
+function corridorSVG(mode, mine){
+  const path=ROUTE.map((p,i)=>`${i?"L":"M"}${p.x},${p.y}`).join(" ");
+  const towns=ROUTE.filter(p=>p.t);
+  let marks="";
+  if(mode==="loads"){
+    marks=MAPLOAD.map((l,i)=>{ const p=ptAt(l.f);
+      return `<g class="pin" data-pin="${i}">
+        <circle cx="${p.x}" cy="${p.y}" r="13" fill="var(--lime)" opacity=".16"/>
+        <circle cx="${p.x}" cy="${p.y}" r="7" fill="var(--lime)"/>
+        <text x="${p.x}" y="${p.y+3.4}" text-anchor="middle" font-size="8"
+          font-weight="700" fill="var(--lime-ink)" font-family="monospace">${l.n}</text>
+        <circle class="hit" cx="${p.x}" cy="${p.y}" r="18"/></g>`; }).join("");
+  } else {
+    marks=MAPVEH.map((v,i)=>{ const p=ptAt(v.f);
+      return `<g class="mapveh" transform="translate(${p.x},${p.y})">
+        <circle r="12" fill="var(--panel-3)" stroke="var(--lime)" stroke-width="1.5"/>
+        <text y="4.5" text-anchor="middle" font-size="12">${v.e}</text></g>`; }).join("");
+  }
+  let me="";
+  if(mine!=null){ const p=ptAt(mine);
+    me=`<g transform="translate(${p.x},${p.y})">
+      <circle r="16" fill="var(--lime)" opacity=".2"><animate attributeName="r" values="12;20;12"
+        dur="2.2s" repeatCount="indefinite"/></circle>
+      <circle r="9" fill="var(--lime)"/><text y="3.6" text-anchor="middle" font-size="9">📦</text></g>`; }
+  return `<svg viewBox="0 0 564 232" role="img" aria-label="Corridor map from Iringa to Dar es Salaam">
+    <rect x="0" y="0" width="564" height="232" rx="12" fill="var(--panel)"/>
+    <path d="M0,214 Q140,196 280,206 T564,192 L564,232 L0,232 Z" fill="var(--rule-soft)" opacity=".55"/>
+    <path d="${path}" fill="none" stroke="var(--rule)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="${path}" fill="none" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"
+      stroke-linejoin="round" stroke-dasharray="7 9" opacity=".85"/>
+    ${towns.map(t=>`<g><circle cx="${t.x}" cy="${t.y}" r="4.5" fill="var(--fg-3)"/>
+      <text x="${t.x}" y="${t.y-13}" text-anchor="middle" font-size="10.5" font-weight="700"
+        fill="var(--fg-2)" font-family="system-ui,sans-serif">${t.t}</text></g>`).join("")}
+    ${marks}${me}
+    <text x="282" y="24" text-anchor="middle" font-size="9.5" fill="var(--fg-3)"
+      font-family="monospace" letter-spacing="1.6">IRINGA \u21C4 DAR ES SALAAM \u00B7 500 KM</text>
+  </svg>`;
+}
+
+function vMap(){
+  const m=S.mapMode||"loads";
+  return `${bar(`<span class="chip live">● live</span>`)}
+  <h2 class="mid">The corridor</h2>
+  <p class="lede">Everything moving between Iringa and Dar right now.</p>
+  <div class="segrow">
+    <button data-map="loads" aria-pressed="${m==="loads"}">Loads waiting</button>
+    <button data-map="veh" aria-pressed="${m==="veh"}">On the road</button>
+  </div>
+  <div class="mapbox">${corridorSVG(m,null)}
+    <div class="maplegend">
+      ${m==="loads"
+        ? `<span><i style="background:var(--lime)"></i>loads waiting</span><span><i style="background:var(--fg-3)"></i>towns</span>`
+        : `<span><i style="background:var(--lime)"></i>vehicles in transit</span><span><i style="background:var(--fg-3)"></i>towns</span>`}
+    </div></div>
+  ${m==="loads"?`<div class="label">Waiting now</div>
+    ${BOARD.slice(0,3).map((l,i)=>`<button class="bid" data-load="${i}">
+      <span class="av">📦</span><span class="nm">${esc(l.what)}</span>
+      <span class="pr">${tzs(l.ask)}</span>
+      <span class="sub">${esc(l.from)} → ${esc(l.to)} · ${l.kg} kg</span></button>`).join("")}`
+   :`<div class="label">Moving now</div>
+     ${MAPVEH.map(v=>`<div class="card"><div class="row"><div class="grow">
+       <div style="font-weight:700">${v.e} ${esc(v.n)}</div>
+       <div class="tiny">${Math.round(v.f*100)}% of the way · ${Math.round(500-v.f*500)} km to run</div></div>
+       <span class="chip live">en route</span></div></div>`).join("")}`}
+  <div class="note lime"><b>Why it's drawn, not a tile map.</b> No API key, no cost per view, and it still works with the phone offline in Mikumi. Freight moves town to town — a schematic says more than a road map ever would.</div>`;
+}
+
+/* ══════════════ screens ══════════════ */
+function render(){
+  theme();
+  const el=$("screen");
+  el.innerHTML = ({
+    role:vRole, post:vPost, bids:vBids, pay:vPay, track:vTrack, done:vDone,
+    board:vBoard, sent:vSent, job:vJob, wallet:vWallet, about:vAbout, map:vMap
+  }[S.screen] || vRole)();
+  renderNav();
+  wire();
+}
+
+function bar(right){
+  return `<div class="appbar">
+    <span class="logo">ZI<b>GO</b></span>
+    ${S.role?`<span class="chip live">${S.role==="sender"?"Sending":"Carrying"}</span>`:""}
+    <span class="spacer"></span>${right||""}
+  </div>`;
+}
+
+function vRole(){
+  return `${bar(`<button class="iconbtn" data-a="theme">◐</button>`)}
+  <h1 class="big">Any load.<br>Any vehicle.<br>Any road.</h1>
+  <p class="lede">A sack to the district market, or five hundred kilometres on a boda. If you and the rider agree the price, that's the trade.</p>
+  <div class="label">Which side are you on today?</div>
+  <button class="rolecard" data-go="sender"><span class="e">📦</span>
+    <h3>I'm sending something</h3><p>Post it once. Transporters come to you with prices.</p></button>
+  <button class="rolecard" data-go="rider"><span class="e">🏍</span>
+    <h3>I'm carrying</h3><p>See loads on your route. Name your own price.</p></button>
+  <div class="note lime"><b>Zero commission.</b> Zigo does not take a cut of your fare. Transporters pay a small monthly fee for the board; senders pay only if they choose escrow.</div>
+  <p class="tiny">Prototype for demonstration. No real money moves. Both sides are simulated so you can walk the whole journey.</p>`;
+}
+
+/* ── SENDER: post ── */
+function vPost(){
+  const p=S.post, ind=indicative(p);
+  return `${bar()}
+  <h2 class="mid">What are you sending?</h2>
+  <p class="lede">No account, no address, no map. Town to town.</p>
+  <div class="label">The load</div>
+  <input class="field" id="f-what" placeholder="e.g. Maize, 1 sack" value="${esc(p.what)}">
+  <div class="two"><input class="field" id="f-kg" inputmode="numeric" placeholder="Weight kg" value="${esc(p.kg)}">
+    <select class="field" id="f-when">${["Today","Tomorrow","Wed","This week"].map(w=>
+      `<option ${w===p.when?"selected":""}>${w}</option>`).join("")}</select></div>
+  <div class="label">From → to</div>
+  <div class="two">
+    <select class="field" id="f-from">${TOWNS.map(t=>`<option ${t===p.from?"selected":""}>${t}</option>`).join("")}</select>
+    <select class="field" id="f-to">${TOWNS.map(t=>`<option ${t===p.to?"selected":""}>${t}</option>`).join("")}</select>
+  </div>
+  <div class="label">Vehicle — pick any, or leave it open</div>
+  <div class="pillrow">${VEHICLES.map(v=>
+    `<button class="pill" data-veh="${v.id}" aria-pressed="${p.veh===v.id}">${v.e} ${v.n}</button>`).join("")}</div>
+  <div class="card"><div class="row"><div class="grow">
+    <div class="mono" style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)">Others paid, this route</div>
+    <div class="mono" style="font-size:19px;font-weight:700;margin-top:3px">TZS ${tzs(ind*0.8)} – ${tzs(ind*1.6)}</div>
+  </div><div class="mono" style="font-size:11px;color:var(--fg-3);text-align:right">${km(p.from,p.to)} km<br>${p.kg||0} kg</div></div>
+  <div class="tiny">Guidance only. You are not bound by it — set any price you and the transporter agree.</div></div>
+  <button class="cta" data-go="postnow">Post to the board →</button>`;
+}
+
+/* ── SENDER: bids ── */
+function vBids(){
+  const p=S.post;
+  return `${bar(`<span class="chip">${S.bids.length} bid${S.bids.length===1?"":"s"}</span>`)}
+  <h2 class="mid">${esc(p.what)}</h2>
+  <p class="lede mono" style="font-size:12.5px">${esc(p.from)} → ${esc(p.to)} · ${esc(p.kg)} kg · ${esc(p.when)}</p>
+  <div class="label">Transporters bidding</div>
+  ${S.bids.length ? S.bids.map((b,i)=>`
+    <button class="bid" data-bid="${i}">
+      <span class="av">${b.e}</span>
+      <span class="nm">${esc(b.n)} ${b.ver?`<span class="vbadge">✓ verified</span>`:""}</span>
+      <span class="pr">${tzs(b.price)}</span>
+      <span class="sub">★ ${b.r} · ${b.j} jobs · lifts ${esc(b.eta)}</span>
+    </button>`).join("")
+   : `<div class="card"><div class="mono" style="font-size:12px;color:var(--fg-3)">
+        Waiting for transporters on this route…</div>
+      <div class="tiny">Riders get a push the moment a load appears on a corridor they run.</div></div>`}
+  ${S.bids.length?`<p class="tiny">Prices are the transporters' own. Zigo adds nothing to them.</p>`:""}`;
+}
+
+/* ── SENDER: pay ── */
+function vPay(){
+  const b=S.chosen, on=S.bankOn;
+  const mm=[["M-Pesa","Vodacom"],["Mixx by Yas","Tigo Pesa"],["Airtel Money","Airtel"],["Halopesa","Halotel"]];
+  return `${bar()}
+  <h2 class="mid">Hold the money safely</h2>
+  <p class="lede">${esc(b.n)} lifts your load for <b class="mono">TZS ${tzs(b.price)}</b>. Zigo holds it until the person receiving reads a code aloud.</p>
+  <div class="label">Mobile money</div>
+  ${mm.map(([n,d])=>`<button class="rail" data-rail="${n}" aria-pressed="${S.rail===n}">
+    <span class="ic mm">${n[0]}</span><span class="t">${n}</span>
+    <span class="k">instant</span><span class="d">${d} · fee 1.8%</span></button>`).join("")}
+  <div class="label">Bank transfer &amp; Lipa Namba ${on?"":"— switched off"}</div>
+  ${on?`
+  ${BANKS.map(([k,n,d])=>`<button class="rail bank" data-rail="${k}" aria-pressed="${S.rail===k}">
+    <span class="ic">${k==="Other"?"🏦":k[0]}</span><span class="t">${n}</span>
+    <span class="k">${k==="Other"?"instant":"instant"}</span><span class="d">${d} · fee 0.9%</span></button>`).join("")}
+  <div class="note"><b>Why the bank rail is cheaper than mobile money.</b> A Lipa Namba collection settles over <b>TIPS</b>, the Bank of Tanzania's instant payment system, so it clears bank-to-bank in seconds without a card network in the middle. For a trader moving fertiliser by the tonne, that 0.9% instead of 1.8% is the difference on every load.</div>
+  `:`<div class="card"><div class="mono" style="font-size:12px;color:var(--fg-3)">Bank rail disabled for this demo.</div>
+     <div class="tiny">Toggle it in Demo controls — useful for showing the mobile-money-only version.</div></div>`}
+  <div class="label">Or don't hold it at all</div>
+  <button class="rail" data-rail="cash" aria-pressed="${S.rail==="cash"}">
+    <span class="ic mm">✋</span><span class="t">Pay cash, no escrow</span>
+    <span class="k">free</span><span class="d">You know the rider · nothing held</span></button>
+  <button class="cta" data-go="fund" ${S.rail?"":"disabled"}>
+    ${S.rail==="cash"?"Confirm without escrow":`Hold TZS ${tzs(b.price)} in escrow`}</button>
+  ${S.rail&&S.rail!=="cash"?`<p class="tiny">Escrow fee TZS 3,000 flat — not a percentage, so it never costs more than a small consignment is worth.</p>`:""}`;
+}
+
+/* ── SENDER: track ── */
+function vTrack(){
+  const b=S.chosen, st=S.escrow;
+  const stages=[
+    ["Posted","Your load went to every transporter on this corridor",true],
+    ["Bid accepted",`${b.n} · ${tzs(b.price)} TZS`,true],
+    [st==="none"?"Cash on delivery":"Money held",st==="none"?"Nothing held — you chose cash":`${S.rail} · released on the code`,true],
+    ["On the road",`${esc(S.post.from)} → ${esc(S.post.to)} · ${km(S.post.from,S.post.to)} km`,st!=="released"],
+    ["Delivered","Receiver reads the code, money moves",st==="released"],
+  ];
+  const cur = st==="released" ? 4 : 3;
+  return `${bar(`<span class="chip live">● live</span>`)}
+  <h2 class="mid">${esc(S.post.what)}</h2>
+  <p class="lede mono" style="font-size:12.5px">${esc(b.n)} · ${VEHICLES.find(v=>v.id===b.v)?.n||b.v} · ★ ${b.r}</p>
+  <div class="mapbox">${corridorSVG("veh", st==="released" ? 1 : (S.prog||0.34))}
+    <div class="maplegend"><span><i style="background:var(--lime)"></i>your load</span>
+      <span>${st==="released"?"arrived":"in transit"}</span></div></div>
+  ${st==="held"?`<div class="money held"><div class="cur">Held in escrow · ${esc(S.rail)}</div>
+    <div class="amt">${tzs(S.held)}</div>
+    <div class="tiny">Released the moment the code is entered. If it never is, it comes back to you.</div></div>`:""}
+  <div class="steps">${stages.map(([t,d,ok],i)=>
+    `<div class="step ${ok?"done":""} ${i===cur&&!ok?"now":""}">
+      <span class="dot">${ok?"✓":i+1}</span><span><span class="t">${t}</span><span class="d">${d}</span></span></div>`).join("")}</div>
+  ${st!=="released"?`
+    <div class="codebox"><div class="c">${S.code}</div><div class="l">Give this to whoever receives the load</div></div>
+    <div class="note"><b>How the code works.</b> Only the receiver has it. The rider cannot release the money — they need the person at the other end to say the number out loud. That is the whole trust mechanism, and it needs no bank and no contract.</div>
+    <button class="cta ghost" data-go="arrive">Simulate: rider has arrived →</button>`
+   :`<div class="card"><div class="row"><div class="grow"><div class="t" style="font-weight:700">Delivered and paid</div>
+      <div class="tiny">${esc(S.rail)} · TZS ${tzs(b.price)} released to ${esc(b.n)}</div></div>
+      <span style="font-size:22px;color:var(--ok)">✓</span></div></div>
+    <button class="cta" data-go="rate">Rate ${esc(b.n.split(" ")[0])} →</button>`}`;
+}
+
+function vDone(){
+  return `${bar()}
+  <div style="text-align:center;padding:28px 0 8px">
+    <div style="font-size:52px">✓</div>
+    <h2 class="mid" style="margin-top:12px">Moved.</h2>
+    <p class="lede">${esc(S.post.what)} · ${esc(S.post.from)} → ${esc(S.post.to)}</p>
+  </div>
+  <div class="card"><div class="row"><div class="grow"><div style="font-weight:700">${esc(S.chosen.n)}</div>
+    <div class="tiny">★★★★★ · you rated 5</div></div>
+    <div class="mono" style="font-weight:700;color:var(--lime)">${tzs(S.chosen.price)}</div></div></div>
+  <div class="note lime"><b>This is the loop that compounds.</b> A completed job gives the rider a rating, gives you a rider you trust, and gives Zigo the one thing a load board runs on — proof that loads on this corridor actually move.</div>
+  <button class="cta" data-go="again">Send something else</button>
+  <button class="cta ghost" data-a="flip">See the rider's side →</button>`;
+}
+
+/* ── RIDER ── */
+function vBoard(){
+  return `${bar(`<span class="chip live">${BOARD.length} open</span>`)}
+  <h2 class="mid">Loads on your routes</h2>
+  <p class="lede">Iringa ⇄ Dar es Salaam · Makambako · Njombe</p>
+  ${S.post && S.bids.length===0 && S.screen==="board" ? "" : ""}
+  <div class="label">Open now</div>
+  ${BOARD.map((l,i)=>`<button class="bid" data-load="${i}">
+    <span class="av">📦</span>
+    <span class="nm">${esc(l.what)}</span>
+    <span class="pr">${tzs(l.ask)}</span>
+    <span class="sub">${esc(l.from)} → ${esc(l.to)} · ${l.kg} kg · ${esc(l.when)}</span></button>`).join("")}
+  <div class="note lime"><b>You set the price, not Zigo.</b> The number shown is what the sender hoped to pay. Bid above it, below it, or exactly it — and say when you can lift.</div>
+  <p class="tiny">Free plan shows 3 loads a day. Boda 10,000 · Canter 25,000 · Truck 40,000 TZS a month for the full board and instant alerts.</p>`;
+}
+function vSent(){
+  const l=BOARD[S.riderBid.i];
+  return `${bar()}
+  <div style="text-align:center;padding:22px 0 6px"><div style="font-size:44px">⚡</div>
+    <h2 class="mid" style="margin-top:10px">Bid sent</h2></div>
+  <div class="card"><div style="font-weight:700">${esc(l.what)}</div>
+    <div class="tiny">${esc(l.from)} → ${esc(l.to)} · ${l.kg} kg</div>
+    <div class="row" style="margin-top:11px"><div class="grow"><div class="mono" style="font-size:10px;color:var(--fg-3);letter-spacing:.14em;text-transform:uppercase">Your price</div>
+      <div class="mono" style="font-size:22px;font-weight:700;color:var(--lime)">${tzs(S.riderBid.price)}</div></div>
+      <div class="mono" style="font-size:11px;color:var(--fg-3);text-align:right">lifts<br>${esc(S.riderBid.eta)}</div></div></div>
+  <div class="note"><b>What happens now.</b> The sender sees your price beside everyone else's, with your rating and whether you're verified. Verified riders win roughly twice as often — it costs 5,000 TZS once.</div>
+  <button class="cta" data-go="accepted">Simulate: sender picks you →</button>
+  <button class="cta ghost" data-go="board">Back to the board</button>`;
+}
+function vJob(){
+  const j=S.riderJob;
+  return `${bar(`<span class="chip live">● job</span>`)}
+  <h2 class="mid">${esc(j.what)}</h2>
+  <p class="lede mono" style="font-size:12.5px">${esc(j.from)} → ${esc(j.to)} · ${j.kg} kg</p>
+  <div class="money"><div class="cur">You will be paid · held in escrow</div>
+    <div class="amt">${tzs(j.price)}</div>
+    <div class="tiny">The sender has already funded this. It cannot be withdrawn — it can only come to you or go back to them.</div></div>
+  <div class="label">Enter the receiver's code to close the job</div>
+  <input class="pin" id="f-pin" inputmode="numeric" maxlength="6" placeholder="——————" value="${esc(S.pin)}">
+  <button class="cta" data-go="claim">Release my payment</button>
+  <div class="note"><b>Why you can't fake it.</b> You never see the code. The person receiving the load reads it to you. That is what makes a stranger hand you a 500 km load in the first place.</div>
+  <p class="tiny">Demo hint: the code is <b class="mono">${j.code}</b> — in the real app only the receiver has it.</p>`;
+}
+function vWallet(){
+  return `${bar()}
+  <h2 class="mid">Wallet</h2>
+  <div class="money"><div class="cur">Available · withdrawable now</div>
+    <div class="amt">${tzs(S.wallet.tzs)}</div>
+    <div class="tiny">Cash out to M-Pesa, Mixx by Yas, Airtel Money or Halopesa. No minimum.</div></div>
+  <div class="money" style="border-color:var(--clay)"><div class="cur">Bank payout · CRDB ····4471</div>
+    <div class="amt" style="color:var(--clay)">${tzs(S.wallet.bank)}</div>
+    <div class="tiny">Swept to your bank account over TIPS. Free above TZS 50,000 — cheaper than a mobile-money cash-out for anyone running more than a few loads a week.</div></div>
+  <div class="ctarow">
+    <button class="cta ghost" data-go="sweep">Send to bank</button>
+    <button class="cta ghost" data-go="cashout">Cash out</button>
+  </div>
+  <div class="label">Earned on Zigo</div>
+  <div class="card"><div class="row"><div class="grow">Completed jobs</div>
+    <div class="mono" style="font-weight:700">${S.done.length}</div></div></div>
+  <div class="card"><div class="row"><div class="grow">Commission paid to Zigo</div>
+    <div class="mono" style="font-weight:700;color:var(--lime)">0</div></div></div>
+  <div class="note lime"><b>Why a bank account matters to a rider.</b> A transporter with six months of settled Zigo payouts into CRDB or NMB has something no boda rider has ever had — a verifiable income record. That is the door to asset finance on a second motorcycle, and it is the reason a bank should want this platform to exist.</div>`;
+}
+
+function vAbout(){
+  return `${bar()}
+  <h2 class="mid">How Zigo makes money</h2>
+  <p class="lede">Not from your fare. When two people agree a price, taxing it just pushes them to settle in cash — so we don't try.</p>
+  ${[["Transporter subscription","10,000 – 40,000 TZS a month","The full board, instant alerts on your corridors, return-load notices"],
+     ["Verified badge","5,000 TZS once","ID and vehicle checked. Wins roughly twice the work"],
+     ["Escrow","3,000 TZS flat, optional","Covers the mobile-money rails. Near break-even by design — it exists to make strangers trade"]]
+    .map(([t,p,d])=>`<div class="card"><div class="row"><div class="grow"><div style="font-weight:700">${t}</div>
+      <div class="tiny" style="margin-top:4px">${d}</div></div>
+      <div class="mono" style="font-size:11px;color:var(--lime);text-align:right;white-space:nowrap;margin-left:10px">${p}</div></div></div>`).join("")}
+  <div class="note"><b>The number that decides everything.</b> Open loads per active transporter, weekly. Below about one a week they stop opening the app, and no pricing model saves you. Every shilling goes to load density on one corridor before a second one opens.</div>
+  <p class="tiny">Prototype. Figures are the working model's, not audited. No real payments, no real accounts, no data leaves this device.</p>`;
+}
+
+/* ── nav ── */
+function renderNav(){
+  const n=$("nav");
+  if(!S.role || S.screen==="role"){ n.innerHTML=""; n.classList.add("hide"); return; }
+  n.classList.remove("hide");
+  const tabs = S.role==="sender"
+    ? [["post","▣","Send"],["map","◭","Map"],["track","◎","Track"],["about","◈","Pricing"]]
+    : [["board","▤","Board"],["map","◭","Map"],["wallet","◫","Wallet"],["about","◈","Pricing"]];
+  n.innerHTML = tabs.map(([k,i,l])=>{
+    const active = (k==="track" && ["track","done","bids","pay"].includes(S.screen))
+      || (k==="board" && ["board","sent","job"].includes(S.screen))
+      || k===S.screen;
+    return `<button data-tab="${k}" aria-current="${active}"><i>${i}</i>${l}</button>`;
+  }).join("");
+}
+
+/* ══════════════ actions ══════════════ */
+function spawnBids(force){
+  const p=S.post, ind=indicative(p);
+  // exact vehicle matches lead; others fill the board so a demo never looks empty
+  const exact=RIDERS.filter(r=>p.veh==="any"||r.v===p.veh);
+  const rest =RIDERS.filter(r=>!exact.includes(r));
+  const use=exact.concat(rest).slice(0,4);
+  S.bids=[]; save(); render();
+  use.forEach((r,i)=>{
+    const add=()=>{
+      S.bids.push({...r, price: Math.round(ind*r.base*(0.9+Math.random()*0.35)/500)*500,
+                   eta:["in 40 min","this afternoon","tomorrow 06:00","in 2 hours"][i%4]});
+      S.bids.sort((a,b)=>a.price-b.price); save();
+      if(S.screen==="bids") render();
+    };
+    force ? add() : setTimeout(add, 700+i*1100);
+  });
+}
+
+function handle(a, node){
+  switch(a){
+    case "theme": S.theme = S.theme==="dark" ? "light" : S.theme==="light" ? null : "dark";
+      save(); theme(); toast(S.theme?S.theme+" mode":"follows your system"); return;
+    case "flip":
+      S.role = S.role==="sender" ? "rider" : "sender";
+      go(S.role==="sender" ? (S.chosen?"track":"post") : "board");
+      toast("Now on the "+(S.role==="sender"?"sender":"transporter")+" side"); return;
+    case "bids": if(S.screen==="bids"){ spawnBids(true); toast("Bids forced in"); } else toast("Post a load first"); return;
+    case "deliver": if(S.role==="sender"&&S.chosen) handle("go:arrive"); else toast("Start a job first"); return;
+    case "bank": S.bankOn=!S.bankOn; save(); render();
+      toast("Bank rail "+(S.bankOn?"on":"off")); return;
+    case "reset": localStorage.removeItem(KEY); S=FRESH(); render(); toast("Demo reset"); return;
+  }
+}
+
+function wire(){
+  const el=$("screen");
+  el.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>handle(b.dataset.a,b));
+  el.querySelectorAll("[data-map]").forEach(b=>b.onclick=()=>{
+    S.mapMode=b.dataset.map; save(); render(); });
+  el.querySelectorAll("[data-veh]").forEach(b=>b.onclick=()=>{
+    S.post.veh=b.dataset.veh; save(); render(); });
+  el.querySelectorAll("[data-rail]").forEach(b=>b.onclick=()=>{
+    S.rail=b.dataset.rail; save(); render(); });
+  el.querySelectorAll("[data-bid]").forEach(b=>b.onclick=()=>{
+    S.chosen=S.bids[+b.dataset.bid]; S.rail=null; save(); go("pay"); });
+  el.querySelectorAll("[data-load]").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.load, l=BOARD[i];
+    S.riderBid={i, price:Math.round(l.ask*1.05/500)*500, eta:"in 40 min"}; save(); go("sent"); });
+
+  ["f-what","f-kg"].forEach(id=>{ const n=$(id); if(n) n.oninput=()=>{
+    S.post[id==="f-what"?"what":"kg"]=n.value; save(); }; });
+  ["f-from","f-to","f-when"].forEach(id=>{ const n=$(id); if(n) n.onchange=()=>{
+    S.post[id.slice(2)]=n.value; save(); render(); }; });
+  const pin=$("f-pin"); if(pin) pin.oninput=()=>{ S.pin=pin.value.replace(/\D/g,""); save(); };
+
+  el.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>step(b.dataset.go));
+  document.querySelectorAll("#nav [data-tab]").forEach(b=>b.onclick=()=>{
+    const t=b.dataset.tab;
+    if(t==="track") go(S.chosen ? (S.escrow==="released"?"track":"track") : "post");
+    else if(t==="board") go(S.riderJob?"job":"board");
+    else go(t);
+  });
+}
+
+function step(k){
+  switch(k){
+    case "sender": S.role="sender"; save(); go("post"); break;
+    case "rider":  S.role="rider";  save(); go("board"); break;
+    case "postnow":
+      if(!S.post.what.trim()){ toast("Say what you're sending"); return; }
+      if(S.post.from===S.post.to){ toast("From and to are the same town"); return; }
+      go("bids"); spawnBids(false); toast("Posted to every transporter on this route"); break;
+    case "fund":
+      S.prog=0.12;
+      S.escrow = S.rail==="cash" ? "none" : "held";
+      S.held = S.rail==="cash" ? 0 : S.chosen.price;
+      S.code = String(Math.floor(100000+Math.random()*900000));
+      save(); go("track");
+      toast(S.rail==="cash" ? "Confirmed — pay the rider directly" : "Held. Only the code releases it"); break;
+    case "arrive":
+      S.escrow="released"; S.prog=1;
+      S.wallet.tzs += S.chosen.price;
+      S.done.push({what:S.post.what, price:S.chosen.price});
+      save(); render(); toast("Code accepted — money released"); break;
+    case "rate": go("done"); break;
+    case "sweep":
+      if(S.wallet.tzs<=0){ toast("Nothing to send yet"); return; }
+      S.wallet.bank += S.wallet.tzs; S.wallet.tzs = 0; save(); render();
+      toast("Sent to CRDB over TIPS — seconds, not days"); break;
+    case "cashout":
+      if(S.wallet.tzs<=0){ toast("Nothing to cash out"); return; }
+      toast("Cash-out to M-Pesa requested"); break;
+    case "again": S.chosen=null; S.bids=[]; S.rail=null; S.escrow="none"; S.code=null; save(); go("post"); break;
+    case "accepted":
+      { const l=BOARD[S.riderBid.i];
+        S.riderJob={...l, price:S.riderBid.price, code:String(Math.floor(100000+Math.random()*900000))};
+        S.pin=""; save(); go("job"); toast("You got the job"); }
+      break;
+    case "claim": {
+      const pinEl=$("f-pin");
+      if(S.pin===S.riderJob.code){
+        pinEl.classList.add("good");
+        S.wallet.tzs += S.riderJob.price;
+        S.done.push({what:S.riderJob.what, price:S.riderJob.price});
+        S.riderJob=null; S.riderBid=null; S.pin=""; save();
+        setTimeout(()=>{ go("wallet"); toast("Paid. Zigo took nothing."); }, 380);
+      } else {
+        pinEl.classList.add("bad"); toast("Wrong code — ask the receiver again");
+        setTimeout(()=>pinEl.classList.remove("bad"), 900);
+      }
+      break; }
+    default: if(k.startsWith("go:")) step(k.slice(3));
+  }
+}
+
+/* demo panel + clock */
+$("demoHd").onclick=()=>$("demo").classList.toggle("open");
+document.querySelectorAll("#demo [data-a]").forEach(b=>b.onclick=()=>handle(b.dataset.a,b));
+(function tick(){ const d=new Date();
+  $("clock").textContent=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");
+  setTimeout(tick,20000); })();
+
+/* the load creeps along the corridor while the tracking screen is open */
+setInterval(()=>{
+  if(S.screen!=="track"||S.escrow==="released") return;
+  S.prog=Math.min(0.9,(S.prog||0.12)+0.035); save();
+  const box=document.querySelector("#screen .mapbox");
+  if(box) box.innerHTML = corridorSVG("veh", S.prog) + box.querySelector(".maplegend").outerHTML;
+}, 2600);
+
+render();
+</script>
