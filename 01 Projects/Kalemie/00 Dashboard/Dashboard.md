@@ -12,6 +12,13 @@ priority: critical
 status: in-progress
 ---
 
+> [!danger] 🕔 STANDING PASS · 17:00 daily — **no sentence explains the sentence before it**
+> **Show, don't tell.** The specific fault is the **gloss**: one sentence does the work, the next says what it meant. The reader feels it being done for them. This is Gardner's author stepping in front of the [[The Vivid and Continuous Fictional Dream|dream]], and it is what holds axis 2 · prose control at **4** and *the slide* at **3**.
+>
+> **Every instance in Chantal D3 is located, tiered and line-numbered:** → **[[The Explaining Sentences — Chantal Draft 3]]**
+>
+> **Not the tightness pass.** It removes explanation, not length. If a cut saves words, it is the wrong cut.
+
 > [!IMPORTANT] SUPERSEDED IN PART — 2026-07-27
 > **The submission draft has been chosen: [[2026-07-26 — Chantal (Djamela POV, Draft 2 — Barrett Pass)|Chantal]]** (Djamela, first person, 3,407 words). It scores **40/45** on [[The Judging Rubric — Nine Axes|the Nine Axes]] against this draft's 24.
 >
