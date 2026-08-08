@@ -12,10 +12,10 @@ cssclasses: [home]
 > `+255 22 2 211890` · `info@nbaa.go.tz` · → [[ACPA(T) NBAA To-Do]]
 > - [ ] Answered and written into the file
 >
-> ### 2 · ✍️ Chantal needs two paragraphs — **from you, not from Claude**
-> Both briefs are marked inline in [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)|Draft 4]]. Draft 3 stays the submission candidate until they're written.
-> - [ ] **The counting fails** — after the back room. She counts everything, so let her count the *wrong* thing. Flat, no emotion named
-> - [ ] ***Shemeji*** — one sentence, no gloss, her register
+> ### 2 · ✍️ Chantal — two **decisions** left, not two paragraphs
+> ✅ **All three insertions were written by you on 31 July** (*shemeji*, the counting fails, the teeth-and-fists). [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)|Draft 4]] now supersedes Draft 3 and is the candidate. What is left is two yes/no calls, both flagged inline:
+> - [ ] **Is *"just before we reached 34"* deliberately unfinished?** If yes — leave it exactly, add nothing, delete the query box. If no, it needs a full stop and an ending
+> - [ ] **Tense wobble in the Daudi clause** — *he **would** grind his teeth* (habitual) beside *and **clenched** his fists* (single past). One verb has to move. *"that sounding thing"* is also vague for a story this precise
 >
 > ### 3 · 🎯 VOICE, NOT STRUCTURE
 > [[Nazir — The Serpent in the Grove|The 2026 winner]] scores **31/45** on our rubric and beat **7,806 entries.** Chantal scores 40. **That gap is a warning, not a win** — the rubric rewards architecture and this panel forgives architecture.
@@ -33,14 +33,14 @@ cssclasses: [home]
 
 | | |
 | --- | --- |
-| **Submission candidate** | [[2026-07-28 — Chantal (Draft 3, Prize Pass)\|Chantal, Draft 3]] |
-| **Length** | 3,896 words · gate is 2,000–5,000 |
+| **Submission candidate** | [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)\|Chantal, Draft 4]] — *superseded Draft 3 on 31 Jul* |
+| **Length** | 3,933 words · gate is 2,000–5,000 · **1,067 headroom** |
 | **Gate 1 · Floor** | ✅ pass |
 | **Gate 2 · Make** | **40 / 45** |
 | **Gate 3 · Fight** | **23 / 25** |
 | **Gate 4 · Afterlife** | ⚠️ **no evidence — no cold reader yet** |
-| **Two open faults** | *shemeji* · the counting-fails paragraph — **see the box above** |
-| **Git** | `$= "6 commits local and unpushed as of 29 Jul — say push when you want them up"` |
+| **Two open faults** | both now **decisions, not drafting** — see the box above |
+| **Git** | `$= "in sync with origin as of 8 Aug — nothing local and unpushed"` |
 
 **The one thing that would change the most:** name a cold reader. Four instruments depend on a human who is not you, and there is nobody. → [[10 The Three Moves — Reader, Winners, Record]]
 

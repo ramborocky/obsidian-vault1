@@ -19,11 +19,14 @@ Before any Edit/Write touches story-prose content under `Kalemie/06 Scenes`, `Ka
 
 Cut material is trunk material for other stories in the cycle — see `Kalemie/Collection Tracker.md`.
 
-**Verify the hook is live** (run after moving the vault, or if archiving seems to have stopped):
+**Verify the hook is live** (run after moving the vault, or if archiving seems to have stopped). Run from the vault root:
 
 ```bash
-bash -c 'f="$PWD/01 Projects/Kalemie/02 Characters/Protagonist - Daudi.md"; n=$(grep -c "auto-archived" "$PWD/01 Projects/Kalemie/07 Narrative Craft/Craft Log.md"); printf "{\"tool_name\":\"Edit\",\"tool_input\":{\"file_path\":\"%s\"}}" "$f" | bash .claude/hooks/archive-before-edit.sh; m=$(grep -c "auto-archived" "$PWD/01 Projects/Kalemie/07 Narrative Craft/Craft Log.md"); [ "$m" -gt "$n" ] && echo "HOOK LIVE" || echo "HOOK NOT FIRING"'
+bash -c 'L="$PWD/01 Projects/Kalemie/07 Narrative Craft/Craft Log.md"; f="$PWD/01 Projects/Kalemie/02 Characters/Protagonist - Daudi.md"; cp "$L" "$L.verifybak"; n=$(grep -c "auto-archived" "$L"); printf "{\"tool_name\":\"Edit\",\"tool_input\":{\"file_path\":\"%s\"}}" "$f" | bash .claude/hooks/archive-before-edit.sh >/dev/null 2>&1; m=$(grep -c "auto-archived" "$L"); mv "$L.verifybak" "$L"; [ "$m" -gt "$n" ] && echo "HOOK LIVE (Craft Log restored)" || echo "HOOK NOT FIRING"'
 ```
+
+> [!note] Why the `cp`/`mv` — corrected 2026-08-08
+> The earlier version of this command worked, but it was **not a dry run**: each invocation appended a genuine ~95-line archive entry for `Protagonist - Daudi.md` to the Craft Log, which is already past 10,700 lines. Verifying the instrument should not add to the record it is verifying. This version snapshots the log, tests, reads the result, then restores — so a real archive entry in the log always means a real edit happened.
 
 **Recover a prior version of any tracked file:**
 
