@@ -15,14 +15,14 @@ status: active
 
 ### The five, in order. Do #1 to completion before #2.
 
-| # | Task | Done when | Rule it comes from |
-| :--: | --- | --- | --- |
-| **1** | **Answer the ACPA status question** | Three lines written into [[ACPA(T) NBAA To-Do]]: GA registered yes/no · years logged · ACPA or ACPA-PP | **80/20** |
-| ~~2~~ | ~~School fees~~ | ✅ **PAID — confirmed 2026-07-29.** Trousers bought too. Shoes still open, no deadline, do not let them take a pomodoro | **Eat the Frog** — *already eaten* |
-| **2** | **The Impromptu** *(new daily)* | One page of a new story, written and abandoned in 15 min. Never revised, never finished | **[[The Apprenticeship — Learning By Hand]]** |
-| **3** | **Learning — one focused block** | 1 topic, 1 page of notes in your own words, 3 questions you couldn't answer | **Parkinson's Law** |
-| **4** | **Journal entry** | 300 words minimum, written, saved | **Two-minute start** |
-| **5** | **Set up the screen-off system** | Tasbih located · phone rule set · draft printed | **Implementation intention** |
+|   #   | Task                                | Done when                                                                                                              | Rule it comes from                            |
+| :---: | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| **1** | **Answer the ACPA status question** | Three lines written into [[ACPA(T) NBAA To-Do]]: GA registered yes/no · years logged · ACPA or ACPA-PP                 | **80/20**                                     |
+| ~~2~~ | ~~School fees~~                     | ✅ **PAID — confirmed 2026-07-29.** Trousers bought too. Shoes still open, no deadline, do not let them take a pomodoro | **Eat the Frog** — *already eaten*            |
+| **2** | **The Impromptu** *(new daily)*     | One page of a new story, written and abandoned in 15 min. Never revised, never finished                                | **[[The Apprenticeship — Learning By Hand]]** |
+| **3** | **Learning — one focused block**    | 1 topic, 1 page of notes in your own words, 3 questions you couldn't answer                                            | **Parkinson's Law**                           |
+| **4** | **Journal entry**                   | 300 words minimum, written, saved                                                                                      | **Two-minute start**                          |
+| **5** | **Set up the screen-off system**    | Tasbih located · phone rule set · draft printed                                                                        | **Implementation intention**                  |
 
 ### Why #1 is first, and why it is the whole day
 
@@ -46,23 +46,23 @@ If the money is not there today, then the task changes shape and still counts as
 
 Prayer times are approximate for Tanzania in late July — **use your own mosque or app, not these.**
 
-| Time | Block | Task |
-| --- | --- | --- |
-| 11:45 – 11:50 | Setup | Write the five on **paper**. Phone in another room |
-| **11:50 – 12:15** | 🍅 **P1** | **#1 ACPA status** |
-| 12:15 – 12:20 | Break | Stand. Water. No screen |
-| **12:20 – 12:40** | 🍅 **P2** *(short)* | **#2 School fees** — the call or the payment |
-| 12:40 – 13:20 | **Dhuhr + food** | Off screen entirely |
-| **13:20 – 13:45** | 🍅 **P3** | **#3 Learning** — one topic only |
-| 13:45 – 13:50 | Break | |
-| **13:50 – 14:15** | 🍅 **P4** | **#3 Learning** — write the page of notes |
-| 14:15 – 14:30 | **Long break** | Walk outside. **Tasbih, not phone** |
-| **14:30 – 14:55** | 🍅 **P5** | **#4 Journal** — 300 words |
-| 14:55 – 15:00 | Break | |
-| **15:00 – 15:25** | 🍅 **P6** | **#5 Screen-off setup** + print Chantal |
-| 15:25 – 15:30 | Break | |
-| **15:30 – 15:55** | 🍅 **P7** | Tick the boxes. Log the numbers. Anything unfinished gets a date |
-| **15:55 – 16:00** | Close | Laptop shut. Asr |
+| Time              | Block               | Task                                                             |
+| ----------------- | ------------------- | ---------------------------------------------------------------- |
+| 11:45 – 11:50     | Setup               | Write the five on **paper**. Phone in another room               |
+| **11:50 – 12:15** | 🍅 **P1**           | **#1 ACPA status**                                               |
+| 12:15 – 12:20     | Break               | Stand. Water. No screen                                          |
+| **12:20 – 12:40** | 🍅 **P2** *(short)* | **#2 School fees** — the call or the payment                     |
+| 12:40 – 13:20     | **Dhuhr + food**    | Off screen entirely                                              |
+| **13:20 – 13:45** | 🍅 **P3**           | **#3 Learning** — one topic only                                 |
+| 13:45 – 13:50     | Break               |                                                                  |
+| **13:50 – 14:15** | 🍅 **P4**           | **#3 Learning** — write the page of notes                        |
+| 14:15 – 14:30     | **Long break**      | Walk outside. **Tasbih, not phone**                              |
+| **14:30 – 14:55** | 🍅 **P5**           | **#4 Journal** — 300 words                                       |
+| 14:55 – 15:00     | Break               |                                                                  |
+| **15:00 – 15:25** | 🍅 **P6**           | **#5 Screen-off setup** + print Chantal                          |
+| 15:25 – 15:30     | Break               |                                                                  |
+| **15:30 – 15:55** | 🍅 **P7**           | Tick the boxes. Log the numbers. Anything unfinished gets a date |
+| **15:55 – 16:00** | Close               | Laptop shut. Asr                                                 |
 
 **Seven pomodoros. If you get five, the day worked.** Tasks 1 and 2 are the day; 3, 4 and 5 are profit.
 

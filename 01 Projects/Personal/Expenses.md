@@ -45,13 +45,16 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 
 *Withdrawals are **not** expenses — this is money moving from bank to pocket. Kept separate so the two are never confused.*
 
-| Date | Source | Amount (TZS) | Notes |
-| --- | --- | ---: | --- |
-| 2026-07-25 | Bank | 980,000 | |
-| 2026-07-26 | Bank | 1,400,000 | |
-| 2026-07-27 | — | 0 | No withdrawal. Day ran on loose cash left from the 26th |
-| 2026-07-29 | Bank | 46,000 | No withdrawal recorded for the 28th, and no direct spending either — say if either happened |
-| | **Total** | **2,426,000** | |
+| Date       | Source                  |  Amount (TZS) | Notes                                                                                       |
+| ---------- | ----------------------- | ------------: | ------------------------------------------------------------------------------------------- |
+| 2026-07-25 | Bank                    |       980,000 |                                                                                             |
+| 2026-07-26 | Bank                    |     1,400,000 |                                                                                             |
+| 2026-07-27 | —                       |             0 | No withdrawal. Day ran on loose cash left from the 26th                                     |
+| 2026-07-29 | Bank                    |        46,000 | No withdrawal recorded for the 28th, and no direct spending either — say if either happened |
+|            | **July total**          | **2,426,000** |                                                                                             |
+| 2026-08-06 | *borrowed form friendy* |        30,000 | Logged as "received" — say whether bank, salary or cash in hand                             |
+| 2026-08-08 | *after hours*           |       441,000 | Logged as "received" — source not given                                                     |
+|            | **August total**        |   **471,000** |                                                                                             |
 
 ---
 
@@ -96,7 +99,9 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-07-27 | Pharmacy                       | Health            |       25,000 | Clarified 2026-07-28 — this is the pharmacy spend itself, not a loan repayment. Was briefly filed under Debt/Repayment                                                                        |
 | 2026-07-27 | Loan repayment — DMK Finance   | Debt/Repayment    |      200,000 | ⚠️ Date assumed 27th — say if it was another day                                                                                                                                              |
 | 2026-07-27 | Food money — given to wife     | Household         |        7,500 | 2 of 4 — see the 26th                                                                                                                                                                         |
-| 2026-07-28 | Food money — given to wife     | Household         |        7,500 | 3 of 4 — see the 26th. **The only line on the 28th** — no other spending logged that day                                                                                                      |
+| 2026-07-28 | Food money — given to wife     | Household         |        7,500 | 3 of 4 — see the 26th                                                                                                                                                                        |
+| 2026-07-28 | TV subscription                | Household         |       28,000 | Added 2026-08-08 — was never logged                                                                                                                                                           |
+| 2026-07-28 | Money given to a friend        | Family/Obligation |       13,000 | Added 2026-08-08. Not the same friend as the 6 Aug loan unless you say otherwise                                                                                                              |
 | 2026-07-29 | Café latte                     | Food & Out        |        9,000 |                                                                                                                                                                                               |
 | 2026-07-29 | Bran muffin                    | Food & Out        |        2,500 |                                                                                                                                                                                               |
 | 2026-07-29 | Food money — given to wife     | Household         |        7,500 | 4 of 4 — see the 26th                                                                                                                                                                         |
@@ -107,6 +112,44 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-07-29 | Uber                           | Transport         |        1,500 | Was logged inside "busfare and shitty"; you named it as Uber 2026-07-30. Still Transport, so no total changes                                                                                  |
 | 2026-07-30 | Karanga — money to Uweis       | Food & Out        |        1,800 | Logged as "Uwesu" — read as Uweis, same as the 26th. Filed as Food & Out because it bought a snack; say if you'd rather money handed to him sat under Family/Obligation like his pocket money |
 | 2026-07-30 | Groceries                      | Household         |        1,000 |                                                                                                                                                                                               |
+| 2026-08-06 | Groceries                      | Household         |       12,000 |                                                                                                                                                                                               |
+| 2026-08-06 | Groceries                      | Household         |        1,500 | Second grocery run the same day                                                                                                                                                              |
+| 2026-08-06 | Cappuccino                     | Food & Out        |        6,000 |                                                                                                                                                                                               |
+| 2026-08-06 | Snacks                         | Food & Out        |        1,000 |                                                                                                                                                                                               |
+| 2026-08-06 | Bus fare                       | Transport         |          800 |                                                                                                                                                                                               |
+| 2026-08-06 | Bus fare                       | Transport         |          800 |                                                                                                                                                                                               |
+| 2026-08-06 | Bus fare                       | Transport         |        2,000 |                                                                                                                                                                                               |
+| 2026-08-06 | Bus fare                       | Transport         |        2,000 |                                                                                                                                                                                               |
+| 2026-08-08 | SIM card renewal               | Personal          |        6,500 |                                                                                                                                                                                               |
+| 2026-08-08 | Phone — plain handset          | Personal          |       30,000 | Logged by you as "a plain dummy phone"                                                                                                                                                       |
+| 2026-08-08 | Cappuccino                     | Food & Out        |        7,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Muffin                         | Food & Out        |        5,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Takeaway                       | Food & Out        |        4,500 |                                                                                                                                                                                               |
+| 2026-08-08 | Instant coffee — for home      | Household         |       10,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Chicken thighs                 | Household         |        5,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Dried lentils / groceries      | Household         |        2,656 | Three grocery lines the same day: 2,656 + 5,580 + 2,500 = 10,736                                                                                                                             |
+| 2026-08-08 | Groceries                      | Household         |        5,580 |                                                                                                                                                                                               |
+| 2026-08-08 | Groceries                      | Household         |        2,500 |                                                                                                                                                                                               |
+| 2026-08-08 | Red onions                     | Household         |        3,486 |                                                                                                                                                                                               |
+| 2026-08-08 | Minced meat                    | Household         |       11,110 |                                                                                                                                                                                               |
+| 2026-08-08 | Cooking oil                    | Household         |        6,700 |                                                                                                                                                                                               |
+| 2026-08-08 | Baked beans                    | Household         |        2,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Biryani masala                 | Household         |        2,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Shopping bag                   | Household         |          500 |                                                                                                                                                                                               |
+| 2026-08-08 | Toothpaste                     | Personal          |        5,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Body lotion — wife             | Personal          |       10,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Boarding school — money sent   | Family/Obligation |       17,000 | Child not named in the log — say which, so it sits with the July fee entries                                                                                                                 |
+| 2026-08-08 | Wedding gift — sent to wife    | Family/Obligation |       30,000 | For a friend of hers; recipient family not specified                                                                                                                                          |
+| 2026-08-08 | Mombasa                        | Miscellaneous     |       45,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Haircut                        | Personal          |       25,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Sent home — household groceries | Household        |       10,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Repaid friend — the 6 Aug loan | Debt/Repayment    |       32,000 | 30,000 principal + **2,000 fee**, confirmed by you. Two days. Date assumed 8 Aug — correct me if it was the 7th                                                                              |
+| 2026-08-08 | Boda                           | Transport         |        1,500 |                                                                                                                                                                                               |
+| 2026-08-08 | Bajaji                         | Transport         |        2,000 |                                                                                                                                                                                               |
+| 2026-08-08 | Dala dala                      | Transport         |          700 |                                                                                                                                                                                               |
+| 2026-08-08 | Dala dala                      | Transport         |          800 |                                                                                                                                                                                               |
+| 2026-08-08 | Boda boda                      | Transport         |        1,500 |                                                                                                                                                                                               |
+| 2026-08-08 | Tip — basket holder            | Personal          |        1,000 | At the toilet; logged as given for holding a shopping basket                                                                                                                                 |
 
 ---
 
@@ -127,6 +170,7 @@ Assign yourself or leave blank. These are drawn from what's already in your Pers
 | **Personal** | Clothes, shoes, haircut, toiletries, phone airtime and repairs |
 | **Family/Obligation** | Money given to relatives, contributions, funerals, weddings |
 | **Debt/Repayment** | Anything paying something back |
+| **Miscellaneous** | Money out that fits nowhere else and does not need a reason in this file |
 | **Other** | I'll reclassify these |
 
 ---
@@ -165,16 +209,16 @@ Say **"do the expenses"** and I will:
 
 #### By category
 
-| Category | Amount (TZS) | Share | Working |
-| --- | ---: | ---: | --- |
-| **Debt/Repayment** | 1,000,000 | 54.3% | 1,000,000 |
-| **School fees** | 575,000 | 31.2% | 450,000 + 75,000 + 50,000 |
-| **Personal** | 105,000 | 5.7% | 6,000 + 1,500 + 95,000 + 2,500 |
-| **Household** | 102,600 | 5.6% | 4,600 + 7,000 + 6,000 + 15,000 + 20,000 + 50,000 |
-| **Food & Out** | 49,000 | 2.7% | 8,000 + 5,000 + 1,000 + 15,000 + 15,000 + 5,000 |
-| **Transport** | 8,000 | 0.4% | 4,000 + 4,000 |
-| **Family/Obligation** | 2,000 + **?** | — | 2,000 charity, Uweis unknown |
-| **TOTAL LOGGED** | **1,841,600** | | |
+| Category              |  Amount (TZS) | Share | Working                                          |
+| --------------------- | ------------: | ----: | ------------------------------------------------ |
+| **Debt/Repayment**    |     1,000,000 | 54.3% | 1,000,000                                        |
+| **School fees**       |       575,000 | 31.2% | 450,000 + 75,000 + 50,000                        |
+| **Personal**          |       105,000 |  5.7% | 6,000 + 1,500 + 95,000 + 2,500                   |
+| **Household**         |       102,600 |  5.6% | 4,600 + 7,000 + 6,000 + 15,000 + 20,000 + 50,000 |
+| **Food & Out**        |        49,000 |  2.7% | 8,000 + 5,000 + 1,000 + 15,000 + 15,000 + 5,000  |
+| **Transport**         |         8,000 |  0.4% | 4,000 + 4,000                                    |
+| **Family/Obligation** |         12000 |     — | charity                                          |
+| **TOTAL LOGGED**      | **1,841,600** |       |                                                  |
 
 #### By day
 
@@ -207,6 +251,128 @@ Anything about the House build or the ACPA qualification — neither appears in 
 
 ---
 
+### August 2026 — two days logged (6th and 8th)
+
+**In 471,000 · logged 312,132 · held 118,000 · unaccounted 40,868.**
+
+#### By day
+
+| Date      |    In |      Logged |  Difference |
+| --------- | ----------: | ----------: | ----------: |
+| **6 Aug** |      30,000 *(borrowed)* |  **26,100** |   **3,900** |
+| **8 Aug** |     441,000 *(after hours)* | **286,032** | **154,968** |
+| **Total** | **471,000** | **312,132** | **158,868** |
+
+*Of that 158,868 difference, **118,000 is cash you are holding** and **40,868 is unaccounted.***
+
+**6 August working:** 12,000 + 1,500 groceries · 6,000 cappuccino · 1,000 snacks · 800 + 800 + 2,000 + 2,000 fares = **26,100**.
+
+**8 August working:** Personal 77,500 · Household 61,532 · Family/Obligation 47,000 · Miscellaneous 45,000 · Debt/Repayment 32,000 · Food & Out 16,500 · Transport 6,500 = **286,032**.
+
+#### By category — August so far
+
+| Category              |      Amount | Share |
+| --------------------- | ----------: | ----: |
+| **Personal**          |  **77,500** |   25% |
+| **Household**         |  **75,032** |   24% |
+| **Family/Obligation** |  **47,000** |   15% |
+| **Miscellaneous**     |  **45,000** |   14% |
+| **Debt/Repayment**    |  **32,000** |   10% |
+| **Food & Out**        |  **23,500** |    8% |
+| **Transport**         |  **12,100** |    4% |
+| **Total**             | **312,132** |       |
+
+#### ✅ The borrowed 30,000 is already repaid — flag closed
+
+**Borrowed from a friend on the 6th, repaid 32,000 on the 8th.** Two days, cleared out of the after-hours money.
+
+**This note previously called it a third credit line and said it was the kind of debt still outstanding in November. It was outstanding for two days.** Worth recording, because the July pattern in this file is the opposite one: 1,200,000 across two lenders with **no balance, no instalment and no due date written down anywhere.** **You clear what you can see. The problem is the two you cannot.** → [[Debt First]]
+
+#### 💸 The 2,000 was a fee — here is what that actually costs
+
+**30,000 borrowed, 2,000 paid, two days.**
+
+```
+2,000 ÷ 30,000            =  6.67%  for two days
+6.67% × 15                =  100%   per month equivalent
+6.67% × 182.5             =  1,217% per year, simple
+```
+
+**The Bank of Tanzania caps microloans at 4% a month.** On the same 30,000 that is **1,200 for a whole month.** You paid **2,000 for two days** — about **25× the capped monthly rate**, expressed as a rate.
+
+> ⚠️ **But do not stop at that number, because on its own it is misleading.**
+>
+> **A flat 2,000 is a charge, not a rate.** Annualising a fixed fee on a two-day loan always produces something absurd. **Everything depends on one thing nobody has recorded: what triggers the fee.**
+
+| If the 2,000 is… | Then borrowing 30,000 costs |
+| --- | --- |
+| **Per loan, flat, whatever the duration** | 2,000 whether you keep it two days or thirty — **6.67% a month, and that is cheaper than the 4%/month cap once you hold it past about three weeks** |
+| **Per week** | ~26% a month |
+| **Per two days, recurring** | **100% a month.** Ruinous, and it compounds fast |
+
+**So the real question is not the rate. It is: *is the 2,000 charged per loan, or per period?*** One question to the friend settles it, and it is the difference between the cheapest short credit you have and the most expensive money in this file.
+
+**What is already true either way:** you paid it back in two days, which is exactly the behaviour that makes a flat fee cheap. **The danger is not this loan. It is the same loan held for a month.**
+
+**And the income side, stated plainly:** the 441,000 was after-hours work. **94% of the money you had this fortnight you earned by working extra hours, and the 6% you borrowed is already back.**
+
+#### 🔴 RECONCILED AGAINST REAL CASH — 8 Aug
+
+**You counted it: 8,000 in the bank, 110,000 in pocket. 118,000.**
+
+```
+In                          471,000
+Logged spending           − 312,132
+                          ─────────
+Should be left              158,868
+Actually left             − 118,000
+                          ─────────
+UNACCOUNTED                  40,868
+```
+
+**Where the 471,000 went:**
+
+| | Amount | Share |
+| --- | ---: | ---: |
+| Logged spending | **312,132** | 66% |
+| **Unaccounted** | **40,868** | **9%** |
+| Still held | **118,000** | 25% |
+| | **471,000** | |
+
+**3,900 of the 40,868 was already known** — the part of the 6th you could not place. **The other 36,968 went somewhere on the 8th and has no line against it.** That is roughly a fifth of what you spent today, and **today is the only day it is recoverable.** Retrace the day rather than the receipts: which shops, which trips, who you handed cash to.
+
+#### 📉 And this is the finding that outranks the day
+
+**July: 204,000 unaccounted out of 2,426,000 — 8.4%** *(after the TV subscription and the 13,000 were recovered on 8 Aug)*
+**August so far: 40,868 out of 471,000 — 8.7%.**
+
+> **Two separate months, three weeks apart, wildly different sums: 8.4% and 8.7%.**
+
+**That is not forgetfulness on one bad day. It is a rate**, and the two figures landing within a third of a percentage point of each other is the strongest thing this file has found. At roughly 2.4 million a month it is **around 210,000 a month, or 2.5 million a year** — the same order as the AMON loan, going out unrecorded.
+
+**And the recovery direction is worth noting:** July's gap has fallen 245,000 → 204,000 purely because two items surfaced weeks later. **The gap is not fixed, it just shrinks slowly and only when something reminds you.**
+
+**Nothing in this file can tell you what it is**, because by definition it is the part that never got written down. **The only instrument that would work is logging at the moment of spending rather than at the end of the day** — and the 8th is the proof: everything you paid before you sat down is here, and about 37,000 of what you paid while moving is not.
+
+#### 📌 On the personal spending — you asked, so straight
+
+> **Personal is now the largest category in August: 77,500, 28% of everything logged. It has overtaken Household.**
+
+**Two items are 71% of it:** the **30,000 handset** and the **25,000 haircut**. Everything else under Personal — SIM 6,500, toothpaste 5,000, lotion 10,000, the 1,000 tip — is **22,500 across two days**, which is ordinary and not worth watching.
+
+**So this is not a habit. It is two purchases on one day.** A phone and a haircut together make a bad day for a category, not a bad pattern. **The question that would actually tell you something: was the 30,000 handset planned?** A planned 30,000 and an impulse 30,000 look identical in a log, and only one of them means anything.
+
+⚠️ **What it does mean:** Personal outspent Household in a fortnight where Household is feeding the house. **That is the line to watch — not the coffees.**
+
+#### What else the numbers say
+
+- **Money out to other people: 92,000** — Mombasa 45,000, wedding gift 30,000, boarding school 17,000. **33% of everything logged.**
+- **Household 75,032** is the only category buying things that last past the week; the 10,000 sent home today is part of it.
+- **Food & Out 23,500** — coffees 13,000, muffin 5,000, takeaway 4,500. Small against everything above. **Noted once, not raising it again.**
+- **August's only repayment is the 32,000 to the friend.** AMON and DMK have had nothing this month, and neither has a due date recorded. **Say if one is coming** — [[00 The Board]] rates clearing them as the best return available to you.
+
+---
+
 ## RUNNING NOTES
 
 *Anything I notice that isn't a number. Also the place for your own asides.*
@@ -225,6 +391,13 @@ Anything about the House build or the ACPA qualification — neither appears in 
 - **2026-07-30** — Two things the re-cut exposes. **The 29th now spends 23,600 of a 46,000 withdrawal** — roughly 22,400 of that cash is either still in your pocket or unlogged, and it is fresh enough to reconstruct. And **the 28th still has no spending of its own**: its only line is an allocated share, not something you actually paid that day. Bus fare appears on the 25th, 26th, 27th and 29th but not the 28th, which is worth a glance — either it was a day at home, or the day is simply missing.
 - **2026-07-30** — Logged the 30th: **2,800** — 1,800 karanga money to Uweis, 1,000 groceries. **No withdrawal reported for the 30th**, so as logged the day ran on cash in hand, which fits the ~22,400 left unspent from the 29th's withdrawal. Month now **2,181,000** logged against 2,426,000 withdrawn, **245,000** unaccounted. Two small things: you wrote **"Uwesu"** where the 26th says *Uweis* — I've read them as the same person, correct me if not; and the karanga money is filed **Food & Out** rather than Family/Obligation, unlike his pocket money on the 26th. Both are defensible, but they should not be split across two categories by accident — tell me which you want and I'll make them consistent.
 - **2026-07-30** — **The 1,500 on the 29th was an Uber**, named by you directly in the log. Stays under Transport, so no total moves. That closes the last open flag on the 29th. The 29th's four bus fares (800 + 800 + 700 + 800 = 3,100) and one Uber at 1,500 now read as five separate trips rather than one blurred 4,600.
+- **2026-08-08** — 🔴 **This file is tracked in git, and `origin` is public.** `01 Projects/Personal/Expenses.md` appears in `git ls-files`; `.gitignore` excludes `.claude/`, Obsidian state and plugin bundles, **but nothing under `Personal/`**. [[00 The Board]] states that this folder "is not pushed" — **that is wrong, and it has been wrong since the folder was tracked.** What is in here: two lender names, two children's names, household amounts, and now a personal transfer to Mombasa. **Nothing has been pushed by me and I will not push it.** Two ways to fix it, both yours to choose: add `01 Projects/Personal/` to `.gitignore` and `git rm --cached` the folder, or make the remote private. **Until one of those happens, do not run `git push`.**
+- **2026-08-08 · two July items recovered** — **TV subscription 28,000** (Household) and **13,000 given to a friend** (Family/Obligation), both **28 July**, neither ever logged. The 28th goes from a single allocated 7,500 food share to a real day of **48,500**. **July: 2,181,000 → 2,222,000 logged, unaccounted 245,000 → 204,000 (10.1% → 8.4%).** The 13,000 was first entered against 8 Aug on my assumption and **moved to the 28th when you corrected it** — August is therefore unchanged at 312,132 logged and **40,868 unaccounted**. ⚠️ **The two months now read 8.4% and 8.7%** — within a third of a percentage point of each other, which is the clearest evidence yet that the gap is a rate rather than a bad day.
+- **2026-08-08 · reconciled against real cash** — You counted: **8,000 bank + 110,000 pocket = 118,000.** Against 471,000 in and 312,132 logged, that leaves **40,868 unaccounted** — 3,900 already known from the 6th, **36,968 new on the 8th.** The 154,968 I called "not a gap yet" was **76% pocket cash and 24% gap.** ⚠️ **The real finding is not today's number:** July leaked 245,000 of 2,426,000 (**10.1%**) and August has leaked 40,868 of 471,000 (**8.7%**). **Two months, same rate — roughly 9% of all cash never gets logged**, about 220,000 a month. That is a rate, not a bad day, and no amount of tidying this file afterwards will find it.
+- **2026-08-08** — **The 2,000 was a fee, confirmed.** 6.67% over two days on 30,000; 100% a month if that fee recurs per two days, 6.67% a month if it is flat per loan. **Totals do not move** — it was already logged inside the 32,000. **One thing still unrecorded and it is the whole answer: whether the fee is charged per loan or per period.** Ask the friend once and write it here; it decides whether that borrowing is the cheapest credit available to you or the most expensive in this file.
+- **2026-08-08 · recalculated again** — **Repayment of 32,000 to the friend added** (Debt/Repayment), against the 30,000 borrowed on the 6th. Day **254,032 → 286,032**; August **280,132 → 312,132**; unspent **190,868 → 158,868**. **The third-credit-line flag raised earlier today is closed** — the loan lasted two days. Two things assumed and open: **the date** (taken as the 8th) and **the 2,000 over** — fee or thank-you. It is 6.7% on 30,000 over two days if it is a fee, and nothing at all if it is not.
+- **2026-08-08 · recalculated** — Two rows added, one recategorised. **Haircut 25,000 (Personal)** and **10,000 sent home for household groceries (Household)**. The **45,000 Mombasa** line is now **Item: Mombasa · Category: Miscellaneous**, note cleared, at your instruction — and **Miscellaneous is added to the categories table** as *money out that fits nowhere else and does not need a reason in this file.* Day total **219,032 → 254,032**; August **245,132 → 280,132**; unspent **225,868 → 190,868**. **You also named both sources: the 30,000 was borrowed from a friend and the 441,000 was after-hours work** — the first is a third credit line and is treated as one above.
+- **2026-08-08** — Logged the 6th and the 8th: **41 rows, 245,132** against **471,000** received. The 6th is complete bar **3,900** you said you cannot place. The 8th logs **219,032 of 441,000** — **the other 221,968 is most likely still with you rather than missing**, and that is the one question worth answering while the day is fresh. Three things need you: **which child** the 17,000 boarding money was for, so it joins the July fee entries; **the source** of both receipts, since "received" could be salary, bank or cash; and whether any **debt repayment** is due this month, because August currently shows none against July's 1,200,000. The Mombasa line is filed under **Personal** with a deliberately flat label — see the note above about the repository; rename it as you like, it is your log.
 - **2026-07-26** — Added a **Food & Out** category (eating and drinking outside the house), split from **Household** (things consumed at home, house help, repairs). Body lotion, shoe repair and the phone went to **Personal**. Say if you'd rather they sat elsewhere — it is your log.
 
 ---
