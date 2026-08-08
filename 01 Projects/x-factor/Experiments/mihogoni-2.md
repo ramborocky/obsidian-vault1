@@ -254,6 +254,7 @@ He covers his son's eyes, goes home, stays away Monday and Tuesday, and comes ba
 **7 · Length.** **3,302 words**, measured from the file, not estimated. Comfortably inside the 2,000–5,000 gate with 1,698 of headroom — unlike [[chantal-3rd]], which came in at 4,961 with 39. The object-narrator is *cheaper* than free indirect discourse, because a narrator with no interiority cannot spend words on it. Re-measure in Word if it ever matters.
 
 ## Related
+- [[mihogoni-3]] — the same device turned on **Chantal itself**, narrated by the water. Tests whether the object-chorus survives having access to every scene
 - [[chantal-3rd]] · [[2026-07-28 — Chantal (Draft 3, Prize Pass)]] · [[Collection Tracker]]
 - [[Dite — MARGINALIA (hand pass)]] — the object-chorus this is built from
 - [[x-factor]] · [[The Worldbuilding Hour]]
