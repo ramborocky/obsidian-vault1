@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The trunk is WebView localStorage under the app's own data dir, so the
+     default full-data backup carries it. Nothing is excluded. -->
+<full-backup-content />

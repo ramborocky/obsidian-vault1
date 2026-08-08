@@ -512,6 +512,7 @@ nav.tabs button[aria-current="true"]{color:var(--accent);background:var(--accent
     <div class="actions">
       <button class="btn" id="again">Another unit</button>
       <button class="btn ghost" id="copy-one">Copy as markdown</button>
+      <button class="btn ghost hide" id="send-one">Send to…</button>
     </div>
   </section>
 
@@ -521,6 +522,7 @@ nav.tabs button[aria-current="true"]{color:var(--accent);background:var(--accent
     <p class="lede">Every run is kept. <em>Cut material is trunk material</em> — for Chantal, or for whichever Mihogoni story wants it later.</p>
     <div class="actions" style="margin-bottom:16px">
       <button class="btn ghost" id="export-all">Copy all as markdown</button>
+      <button class="btn ghost hide" id="send-all">Send trunk to…</button>
       <button class="btn ghost" id="wipe">Clear trunk</button>
     </div>
     <div id="trunk-list"></div>
@@ -881,7 +883,9 @@ function checkStreakDecay(){
    ══════════════════════════════════════════════════════════ */
 const $ = id => document.getElementById(id);
 const VIEWS = ["forge","run","judge","done","trunk","craft"];
+let CURRENT = "forge";
 function show(v){
+  CURRENT = v;
   VIEWS.forEach(x => $("v-"+x).classList.toggle("hide", x!==v));
   document.querySelectorAll("nav.tabs button").forEach(b=>{
     const tab = b.dataset.tab;
@@ -890,6 +894,18 @@ function show(v){
   });
   window.scrollTo(0,0);
 }
+/* Hardware back on Android. Returns true when the app consumed it;
+   false lets the system close the app. Never leaves a run silently. */
+window.forgeBack = function(){
+  if(CURRENT === "judge"){ show("run"); return true; }
+  if(CURRENT === "run"){
+    if($("page").value.trim() && !confirm("Leave this run? The words are not in the trunk yet.")) return true;
+    stopTimer(); show("forge"); return true;
+  }
+  if(CURRENT !== "forge"){ stopTimer(); show("forge"); return true; }
+  return false;
+};
+
 let toastT;
 function toast(msg){
   const el = $("toast"); el.textContent = msg; el.classList.add("show");
@@ -897,11 +913,20 @@ function toast(msg){
 }
 function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 
-/* theme */
+/* ── native host, when wrapped as the Android app ──────────
+   Absent in a plain browser; every call site falls back. */
+const NATIVE = (typeof window.AndroidForge !== "undefined") ? window.AndroidForge : null;
+function nativeSafe(fn){ try{ return fn(); }catch(e){ return null; } }
+
+/* theme — an explicit choice wins; else the native host's system
+   setting; else the stylesheet's own prefers-color-scheme query. */
 function applyTheme(){
-  if(S.theme) document.documentElement.setAttribute("data-theme", S.theme);
-  else document.documentElement.removeAttribute("data-theme");
+  const r = document.documentElement;
+  if(S.theme) r.setAttribute("data-theme", S.theme);
+  else if(window.__forgeSystemTheme) r.setAttribute("data-theme", window.__forgeSystemTheme);
+  else r.removeAttribute("data-theme");
 }
+window.forgeSystemTheme = t => { window.__forgeSystemTheme = t; applyTheme(); };
 $("themebtn").onclick = () => {
   const order = [null,"dark","light"];
   S.theme = order[(order.indexOf(S.theme)+1) % 3];
@@ -996,12 +1021,18 @@ function paintTimer(){
   t.textContent = (neg?"+":"") + String(Math.floor(a/60)).padStart(2,"0") + ":" + String(a%60).padStart(2,"0");
   t.classList.toggle("over", neg);
 }
-function stopTimer(){ if(tick){ clearInterval(tick); tick=null; } if(RUN) RUN.running=false; }
+function keepAwake(on){ if(NATIVE && NATIVE.keepAwake) nativeSafe(()=>NATIVE.keepAwake(!!on)); }
+function stopTimer(){
+  if(tick){ clearInterval(tick); tick=null; }
+  if(RUN) RUN.running=false;
+  keepAwake(false);
+}
 $("t-start").onclick = () => {
   if(RUN.running){ stopTimer(); $("t-start").textContent="Resume"; $("t-start").classList.remove("on"); return; }
   RUN.running = true;
   $("t-start").textContent = "Pause"; $("t-start").classList.add("on");
   $("page").focus();
+  keepAwake(true);
   tick = setInterval(()=>{ RUN.left--; paintTimer(); }, 1000);
 };
 $("t-outrun").onclick = () => {
@@ -1014,7 +1045,40 @@ $("page").addEventListener("keydown", e => {
   if(RUN && RUN.outrun && (e.key==="Backspace" || e.key==="Delete")){ e.preventDefault(); toast("Outrun the critic — keep going"); }
 });
 $("page").addEventListener("paste", e => { if(RUN && RUN.outrun) e.preventDefault(); });
-$("page").addEventListener("input", paintMeter);
+$("page").addEventListener("input", () => { paintMeter(); saveDraft(); });
+
+/* Draft rescue. A commute gets interrupted — a call, a stop, the OS
+   reclaiming the app — and an uncommitted paragraph would otherwise go with
+   it. Kept separate from the trunk, and cleared the moment a run commits. */
+function saveDraft(){
+  if(!RUN) return;
+  const t = $("page").value;
+  try{
+    if(t.trim()) localStorage.setItem("forge.draft",
+      JSON.stringify({drill:RUN.d.id, pi:RUN.pi, text:t, left:RUN.left, outrun:RUN.outrun, ts:Date.now()}));
+    else localStorage.removeItem("forge.draft");
+  }catch(e){}
+}
+function clearDraft(){ try{ localStorage.removeItem("forge.draft"); }catch(e){} }
+function resumeDraft(){
+  let d = null;
+  try{ d = JSON.parse(localStorage.getItem("forge.draft") || "null"); }catch(e){}
+  if(!d || !d.text || !d.text.trim()) return false;
+  const drill = DRILLS.find(x => x.id === d.drill);
+  if(!drill) { clearDraft(); return false; }
+  const age = Math.round((Date.now() - (d.ts||0)) / 60000);
+  if(!confirm("An unfinished "+drill.name+" is waiting"+(age<1440?" from "+(age<60?age+" min":Math.round(age/60)+" h")+" ago":"")+". Pick it up?")){
+    clearDraft(); return false;
+  }
+  openRun(drill.id);
+  RUN.pi = d.pi; RUN.left = d.left; RUN.outrun = !!d.outrun;
+  $("prompt-body").textContent = drill.prompts[RUN.pi];
+  $("page").value = d.text;
+  $("t-outrun").textContent = "Outrun: " + (RUN.outrun?"on":"off");
+  $("t-outrun").classList.toggle("on", RUN.outrun);
+  paintTimer(); paintMeter();
+  return true;
+}
 
 /* the rhythm ribbon + cells */
 function paintMeter(){
@@ -1126,6 +1190,7 @@ $("commit").onclick = () => {
   checkStreakDecay();
   bumpStreak();
   save();
+  clearDraft();
 
   $("xp-num").textContent = "+" + res.total;
   $("xp-break").innerHTML = res.parts.map(p=>
@@ -1139,6 +1204,14 @@ $("commit").onclick = () => {
 
 $("again").onclick = () => show("forge");
 $("copy-one").onclick = () => copy(runToMd(window.LAST), "Copied — paste into the vault");
+$("send-one").onclick = () => share(runToMd(window.LAST), "Forge — one run");
+
+/* Android share sheet: straight into Obsidian, mail, Drive, anywhere */
+function share(txt, subject){
+  if(NATIVE && NATIVE.share){ if(nativeSafe(()=>NATIVE.share(txt, subject)) !== null) return; }
+  if(navigator.share){ navigator.share({title:subject, text:txt}).catch(()=>{}); return; }
+  copy(txt, "Copied");
+}
 
 /* ══════════════════════════════════════════════════════════
    11 · MARKDOWN EXPORT — shaped for the vault
@@ -1180,6 +1253,7 @@ r.text,
 }
 function copy(txt, msg){
   const done = () => toast(msg);
+  if(NATIVE && NATIVE.copy){ if(nativeSafe(()=>NATIVE.copy(txt)) !== null){ done(); return; } }
   if(navigator.clipboard && window.isSecureContext){
     navigator.clipboard.writeText(txt).then(done).catch(()=>fallback());
   } else fallback();
@@ -1235,9 +1309,14 @@ function paintTrunk(){
       S.runs = S.runs.filter(r=>r.id!=b.dataset.del); save(); paintTrunk(); paintBadges(); };
   });
 }
+function trunkMd(){ return S.runs.slice().reverse().map(runToMd).join("\n\n"); }
 $("export-all").onclick = () => {
   if(!S.runs.length){ toast("Nothing to export"); return; }
-  copy(S.runs.slice().reverse().map(runToMd).join("\n\n"), S.runs.length+" runs copied");
+  copy(trunkMd(), S.runs.length+" runs copied");
+};
+$("send-all").onclick = () => {
+  if(!S.runs.length){ toast("Nothing to export"); return; }
+  share(trunkMd(), "Forge — the trunk, "+S.runs.length+" runs");
 };
 $("wipe").onclick = () => {
   if(!S.runs.length) return;
@@ -1269,6 +1348,11 @@ document.querySelectorAll("nav.tabs button").forEach(b=>{
   b.onclick = () => { stopTimer(); show(b.dataset.tab); };
 });
 
+if(NATIVE){
+  $("send-one").classList.remove("hide");
+  $("send-all").classList.remove("hide");
+}
+
 applyTheme();
 checkStreakDecay();
 save();
@@ -1278,6 +1362,7 @@ paintBadges();
 paintTrunk();
 paintCraft();
 show("forge");
+resumeDraft();
 </script>
 </body>
 </html>

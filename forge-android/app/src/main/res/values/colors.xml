@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Straight from the trainer's own tokens, so the chrome and the page
+         are one surface rather than two that nearly match. -->
+    <color name="ground">#EFEEF3</color>
+    <color name="ground_dark">#14131C</color>
+    <color name="accent">#5B49CE</color>
+    <color name="icon_bg">#14131C</color>
+    <color name="rib_short">#4FAE90</color>
+    <color name="rib_mid">#8C7DF0</color>
+    <color name="rib_long">#D19B36</color>
+    <color name="rib_rule">#6B6680</color>
+</resources>

@@ -1,0 +1,78 @@
+name: Build the Forge APK
+
+# Builds the commute trainer into an installable Android APK.
+#
+# Why CI and not a local build: the app is a thin WebView wrapper around
+# "01 Projects/Kalemie/Learning Curve/The Forge — Commute Trainer.html", and
+# assembling it needs the Android SDK. GitHub's runners ship with it. Nothing
+# about the story is sent anywhere — the workflow compiles a file that is
+# already in this repository and hands back a binary.
+#
+# Run it: Actions → "Build the Forge APK" → Run workflow.
+# Then download "forge-debug-apk" from the run's Artifacts, open it on the
+# phone, and allow installing from unknown sources when prompted.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'forge-android/**'
+      - '01 Projects/Kalemie/Learning Curve/The Forge — Commute Trainer.html'
+      - '.github/workflows/forge-android.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the vault
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up the Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Confirm the trainer is where the build expects it
+        run: |
+          f="01 Projects/Kalemie/Learning Curve/The Forge — Commute Trainer.html"
+          test -f "$f" || { echo "::error::Trainer HTML not found at $f"; exit 1; }
+          echo "Found trainer: $(wc -c < "$f") bytes"
+
+      - name: Generate the Gradle wrapper
+        working-directory: forge-android
+        run: gradle wrapper --gradle-version 8.9 --no-daemon
+
+      - name: Assemble the debug APK
+        working-directory: forge-android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Name the APK by date and commit
+        id: name
+        run: |
+          echo "tag=$(date -u +%Y%m%d)-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload the APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-debug-apk
+          path: forge-android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Report
+        run: |
+          echo "### The Forge — APK built" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Build \`${{ steps.name.outputs.tag }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Download **forge-debug-apk** from this run's Artifacts, open it on the phone, and allow install from unknown sources." >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "It is a debug-signed build — right for sideloading onto your own phone, not for the Play Store." >> "$GITHUB_STEP_SUMMARY"

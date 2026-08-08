@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The rhythm ribbon — the trainer's own signature, and the only thing in it
+  that is genuinely its own idea: one tick per sentence, height by word count,
+  green under ten words, violet in the middle, amber past thirty.
+
+  Drawn inside the central 72dp safe zone so no launcher mask clips it.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- short — 4 to 10 words -->
+    <path
+        android:fillColor="#4FAE90"
+        android:pathData="M36,56 h8 v14 h-8 z" />
+
+    <!-- mid — the body of the paragraph -->
+    <path
+        android:fillColor="#8C7DF0"
+        android:pathData="M50,34 h8 v36 h-8 z" />
+
+    <!-- long — the one that is drifting toward fog -->
+    <path
+        android:fillColor="#D19B36"
+        android:pathData="M64,46 h8 v24 h-8 z" />
+
+    <!-- the baseline the ticks stand on -->
+    <path
+        android:fillColor="#6B6680"
+        android:pathData="M32,72 h44 v2.5 h-44 z" />
+
+</vector>

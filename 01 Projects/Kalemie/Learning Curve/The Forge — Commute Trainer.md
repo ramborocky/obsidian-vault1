@@ -65,6 +65,19 @@ Every run is kept on the device. **Copy as markdown** emits a note already shape
 > [!warning] The trunk lives in one browser on one device
 > Local storage is per-origin. Runs made in the phone browser do not appear in the desktop copy, and clearing site data deletes them. **Export into the vault at the end of the week** — that is also what makes them a timestamped record.
 
+## On the phone as an actual app
+
+`forge-android/` at the vault root wraps this same HTML file into an installable Android app. **The trainer is not duplicated** — the build copies it out of this folder at compile time, so editing the file here updates the app too.
+
+**To get the APK:** GitHub → Actions → *Build the Forge APK* → Run workflow → download `forge-debug-apk` from the finished run. Roughly three minutes, and nothing to install on your machine. Full instructions in `forge-android/README.md`.
+
+What the wrapper buys, over opening the HTML in Chrome: a launcher icon, the hardware back button wired to the views, a share sheet that pushes a run or the whole trunk into Obsidian as markdown, and a screen that stays awake while a drill timer runs.
+
+> [!important] The app has no `INTERNET` permission
+> Not "does not connect" — *cannot*. The manifest grants no network access at all, so nothing typed into it can leave the phone except through the share sheet, by your hand. For unpublished work under rule 3f that is worth more than an assurance.
+
+**Three separate trunks.** Local storage is per-origin and per-app: runs made in the APK, in the desktop browser, and on the artifact URL do not see each other. Uninstalling the app deletes its trunk. Export weekly.
+
 ## Authorship
 
 > [!danger] Nothing in this app is generated prose
