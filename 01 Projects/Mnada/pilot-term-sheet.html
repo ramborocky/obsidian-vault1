@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MNADA — Pilot Facility Term Sheet</title>
+<style>
+:root{
+  --ink:#131715; --ink2:#454F4A; --ink3:#727E78;
+  --paper:#FFFFFF; --shell:#EDF0EC; --rule:#D3DAD5; --rule2:#E7EBE7;
+  --moss:#1E4536; --ochre:#9C5B14; --oxblood:#8A2E2E;
+  --tint:#F4F7F3;
+  --serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ink:#E3E9E4; --ink2:#A7B3AD; --ink3:#78857E;
+    --paper:#111614; --shell:#0A0E0C; --rule:#28322D; --rule2:#1C2521;
+    --moss:#79BC9C; --ochre:#DE9946; --oxblood:#D2705F;
+    --tint:#16201B;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E3E9E4; --ink2:#A7B3AD; --ink3:#78857E;
+  --paper:#111614; --shell:#0A0E0C; --rule:#28322D; --rule2:#1C2521;
+  --moss:#79BC9C; --ochre:#DE9946; --oxblood:#D2705F;
+  --tint:#16201B;
+}
+:root[data-theme="light"]{
+  --ink:#131715; --ink2:#454F4A; --ink3:#727E78;
+  --paper:#FFFFFF; --shell:#EDF0EC; --rule:#D3DAD5; --rule2:#E7EBE7;
+  --moss:#1E4536; --ochre:#9C5B14; --oxblood:#8A2E2E;
+  --tint:#F4F7F3;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--shell);color:var(--ink);font-family:var(--sans);
+     font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.sheet{max-width:830px;margin:0 auto;background:var(--paper);
+       padding:clamp(26px,5vw,64px) clamp(20px,5vw,72px) 64px;
+       border-left:1px solid var(--rule);border-right:1px solid var(--rule);min-height:100vh}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* masthead */
+.mast{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;justify-content:space-between;
+      border-bottom:2px solid var(--ink);padding-bottom:10px}
+.wm{font-family:var(--mono);font-weight:700;letter-spacing:.3em;font-size:.85rem}
+.wm span{color:var(--ochre)}
+.mast .ref{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
+           text-transform:uppercase;color:var(--ink3)}
+
+h1{font-family:var(--serif);font-size:clamp(1.7rem,3.6vw,2.35rem);line-height:1.14;
+   letter-spacing:-.015em;margin:28px 0 6px;font-weight:600;text-wrap:balance}
+.dek{font-family:var(--serif);font-size:1.02rem;color:var(--ink2);margin:0 0 4px;font-style:italic}
+.stamp{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+       color:var(--ochre);margin-top:10px}
+
+.warn{border:1px solid var(--rule);border-left:3px solid var(--oxblood);background:var(--tint);
+      padding:13px 16px;margin:22px 0 6px;font-size:.87rem;color:var(--ink2)}
+.warn b{color:var(--ink)}
+
+h2{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin:38px 0 4px;
+   padding-top:14px;border-top:1px solid var(--rule);letter-spacing:-.005em;
+   display:grid;grid-template-columns:2.1rem 1fr;gap:0 .4rem;align-items:baseline}
+h2 .n{font-family:var(--mono);font-size:.78rem;color:var(--ochre);font-weight:400}
+h3{font-family:var(--sans);font-size:.95rem;font-weight:600;margin:22px 0 4px}
+
+p{margin:9px 0}
+p.lead{color:var(--ink2)}
+.tight{margin-left:2.5rem}
+@media(max-width:620px){.tight{margin-left:0}}
+
+table{width:100%;border-collapse:collapse;margin:14px 0 6px;font-size:.88rem}
+.tw{overflow-x:auto;margin:14px 0 6px}
+.tw table{margin:0;min-width:480px}
+th{text-align:left;font-weight:400;font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;
+   text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--rule);
+   padding:7px 10px 6px;vertical-align:bottom}
+td{padding:8px 10px;border-bottom:1px solid var(--rule2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.r,th.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.key td{background:var(--tint);font-weight:600}
+tr.key td.r{color:var(--moss)}
+td strong{font-weight:600}
+
+ol.clauses{margin:12px 0 6px;padding-left:1.35rem}
+ol.clauses li{margin-bottom:9px;font-size:.92rem;color:var(--ink2)}
+ol.clauses li b{color:var(--ink)}
+ul.plain{margin:12px 0 6px;padding-left:1.2rem}
+ul.plain li{margin-bottom:7px;font-size:.92rem;color:var(--ink2)}
+ul.plain li b{color:var(--ink);font-family:var(--mono);font-size:.82rem;letter-spacing:.04em}
+
+.calc{font-family:var(--mono);font-size:.84rem;background:var(--tint);border:1px solid var(--rule);
+      padding:14px 16px;margin:14px 0;white-space:pre-wrap;line-height:1.85;overflow-x:auto;color:var(--ink)}
+
+.pull{border-left:3px solid var(--moss);padding:2px 0 2px 16px;margin:18px 0;
+      font-family:var(--serif);font-size:1.04rem;color:var(--ink)}
+
+.sigs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;margin-top:26px}
+.sig{border-top:1px solid var(--ink);padding-top:8px}
+.sig .who{font-size:.82rem;font-weight:600}
+.sig .line{margin-top:26px;border-bottom:1px solid var(--rule);height:1px}
+.sig .cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--ink3);margin-top:6px}
+
+footer{margin-top:34px;border-top:1px solid var(--rule);padding-top:16px;
+       font-size:.78rem;color:var(--ink3);line-height:1.7}
+footer b{color:var(--ink2)}
+
+.toolbar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule2);
+         margin:0 0 0;padding:8px 0;display:flex;justify-content:flex-end;gap:8px}
+.toolbar button{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+                background:transparent;border:1px solid var(--rule);color:var(--ink2);
+                padding:6px 12px;cursor:pointer;border-radius:3px}
+.toolbar button:hover{border-color:var(--ochre);color:var(--ochre)}
+.toolbar button:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+
+@media print{
+  :root{--ink:#000;--ink2:#222;--ink3:#555;--paper:#fff;--shell:#fff;
+        --rule:#999;--rule2:#CCC;--tint:#F2F2F2;--moss:#1E4536;--ochre:#7A4610;--oxblood:#7A2020}
+  body{background:#fff;font-size:10.5pt}
+  .sheet{max-width:none;border:0;padding:0;min-height:0}
+  .toolbar{display:none}
+  h2{break-after:avoid;page-break-after:avoid}
+  table,.calc,.sigs,.warn,.pull{break-inside:avoid;page-break-inside:avoid}
+  tr{break-inside:avoid}
+  @page{size:A4;margin:17mm 16mm}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="toolbar">
+    <button type="button" onclick="window.print()">Print / Save PDF</button>
+  </div>
+
+  <div class="mast">
+    <div class="wm">MNADA<span>·</span>TZ</div>
+    <div class="ref">Draft 1 &middot; August 2026 &middot; Milestone M6–M9 &middot; Confidential</div>
+  </div>
+
+  <h1>Pilot Facility — Indicative Term Sheet</h1>
+  <p class="dek">Livestock inventory finance secured on a Livestock Deposit Receipt</p>
+  <p class="stamp">Non-binding &middot; Subject to credit approval, due diligence and documentation</p>
+
+  <div class="warn">
+    <b>This term sheet creates no obligation on any party.</b> It is an indicative summary for
+    discussion only, subject to the Lender's credit approval, satisfactory due diligence and executed
+    documentation, and must be reviewed by Tanzanian counsel before it is relied on. Figures are
+    illustrative and based on the MNADA index as at the date shown. Nothing in this document is a
+    credit offer, a commitment to lend, or investment advice.
+  </div>
+
+  <h2><span class="n">01</span><span>Why this transaction exists</span></h2>
+  <div class="tight">
+    <p class="lead">Everything else in the MNADA memorandum is a claim. This is the test.</p>
+    <p class="lead">
+      If a Tanzanian bank advances real money against 200 head of cattle it has never seen, secured
+      only on an electronic document of title, and is repaid on day 45 out of a settlement the
+      exchange controlled end to end — then livestock is a bankable asset class in Tanzania and
+      MNADA owns the rails. If it fails, no amount of platform, map or projection matters.
+    </p>
+    <p class="pull">One lender. One lot. Forty-five days. Deliberately small enough that failure is survivable, and large enough that success is evidence.</p>
+  </div>
+
+  <h2><span class="n">02</span><span>Parties</span></h2>
+  <div class="tight tw">
+    <table>
+      <thead><tr><th>Role</th><th>Party</th><th>Function</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Lender</strong></td><td>[ANCHOR BANK]</td><td>Provides the facility; holds the escrow account</td></tr>
+        <tr><td><strong>Borrower</strong></td><td>[FEEDLOT OPERATOR] Ltd</td><td>Owns the cattle; obligor on the facility</td></tr>
+        <tr><td><strong>Collateral Manager &amp; Platform</strong></td><td>MNADA Exchange Ltd</td><td>Issues and controls the LDR; grades, reconciles, settles</td></tr>
+        <tr><td><strong>Custodian</strong></td><td>[FEEDLOT OPERATOR] Ltd, [—] Holding Ground</td><td>Physical custody, feed and veterinary care</td></tr>
+        <tr><td><strong>Insurer</strong></td><td>[INSURER]</td><td>Mortality cover over the lot</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tight">
+    <p class="lead">
+      <b>On Borrower and Custodian being the same entity:</b> for the pilot this is deliberate. A
+      licensed feedlot is a registered company with a fixed address, an existing herd and something to
+      lose — a materially better first obligor than an itinerant trader. It also concentrates risk,
+      which is why §08 requires independent verification by MNADA rather than custodian
+      self-reporting. In the scaled facility the two roles separate.
+    </p>
+  </div>
+
+  <h2><span class="n">03</span><span>The lot</span></h2>
+  <div class="tight tw">
+    <table>
+      <tbody>
+        <tr><td>Grade</td><td class="r">TZ-C-M2-300-350-BCS3</td></tr>
+        <tr><td>Head</td><td class="r">200</td></tr>
+        <tr><td>Entry index value</td><td class="r">TZS 742,000 / head</td></tr>
+        <tr class="key"><td>Assessed value at drawdown</td><td class="r">TZS 148,400,000</td></tr>
+        <tr><td>Identification</td><td class="r">Ear-tagged, registered to keeper National ID and origin ward</td></tr>
+        <tr><td>Location</td><td class="r">[—] Holding Ground, [—] District</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tight">
+    <p class="lead">Assessed value is the MNADA settled-price index for the grade at that node, on the drawdown date. The index, not the Borrower, sets the number.</p>
+  </div>
+
+  <h2><span class="n">04</span><span>Facility</span></h2>
+  <div class="tight tw">
+    <table>
+      <tbody>
+        <tr><td>Type</td><td class="r">Single-drawdown livestock inventory finance</td></tr>
+        <tr><td>Purpose</td><td class="r">Acquisition and 45-day finishing of the lot</td></tr>
+        <tr><td>Advance rate</td><td class="r">80% of assessed value</td></tr>
+        <tr class="key"><td>Facility amount</td><td class="r">TZS 118,000,000</td></tr>
+        <tr><td>Loan-to-value at drawdown</td><td class="r">79.5%</td></tr>
+        <tr><td>Collateral coverage at drawdown</td><td class="r">125.8%</td></tr>
+        <tr><td>Tenor</td><td class="r">45 days, single bullet</td></tr>
+        <tr><td>Interest rate</td><td class="r">[__]% p.a. — Lender's determination</td></tr>
+        <tr><td>Interest, illustrated at 16%</td><td class="r">TZS 2,327,671</td></tr>
+        <tr><td>Arrangement fee, 1.00%, deducted at drawdown</td><td class="r">TZS 1,180,000</td></tr>
+        <tr><td>Net drawdown to Borrower</td><td class="r">TZS 116,820,000</td></tr>
+        <tr class="key"><td>Repayment at maturity</td><td class="r">TZS 120,327,671</td></tr>
+        <tr><td>MNADA collateral management fee (1.20% standard)</td><td class="r">Waived in full</td></tr>
+        <tr><td>Prepayment</td><td class="r">Permitted, no penalty, interest to actual days</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tight">
+    <p class="pull">MNADA earns nothing on this transaction. If the platform cannot afford to prove the instrument at its own cost, it has no business asking a bank to prove it at theirs.</p>
+  </div>
+
+  <h2><span class="n">05</span><span>Security</span></h2>
+  <div class="tight">
+    <ol class="clauses">
+      <li><b>First-ranking pledge over the Livestock Deposit Receipt</b> covering the lot. The LDR is an electronic document of title held in the MNADA registry and flagged to the Lender's order. MNADA is contractually unable to transfer, split or release it without the Lender's release instruction.</li>
+      <li><b>Tripartite Collateral Management Agreement</b> between Lender, Borrower and MNADA, under which MNADA acknowledges it holds the LDR to the Lender's order and owes the Lender direct reporting duties.</li>
+      <li><b>Custody Agreement</b> with the Custodian, acknowledging the Lender's interest, granting inspection rights, and waiving any lien ranking ahead of the Lender other than accrued feed and care charges as scheduled in §06.</li>
+      <li><b>Assignment of the mortality insurance policy</b>, Lender noted as loss payee.</li>
+      <li><b>Irrevocable settlement instruction</b> directing 100% of gross sale proceeds into the escrow account held at the Lender, applied per the waterfall in §06. The Borrower cannot intercept proceeds.</li>
+      <li><b>Personal guarantee</b> of the Borrower's principal, limited to TZS [—].</li>
+    </ol>
+    <p class="pull">Repayment does not depend on the Borrower choosing to repay. It happens inside the settlement rail, before the Borrower sees any money.</p>
+  </div>
+
+  <h2><span class="n">06</span><span>Settlement waterfall</span></h2>
+  <div class="tight tw">
+    <table>
+      <thead><tr><th>#</th><th>Application of gross sale proceeds</th><th class="r">Illustrative</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Statutory levies and market cess (1.5%)</td><td class="r">2,700,000</td></tr>
+        <tr><td class="num">2</td><td>Custodian feed and care, capped at TZS 2,200/head/day</td><td class="r">19,800,000</td></tr>
+        <tr class="key"><td class="num">3</td><td>Lender — principal, interest and fees</td><td class="r">120,327,671</td></tr>
+        <tr><td class="num">4</td><td>MNADA exchange commission and collateral management fee</td><td class="r">waived</td></tr>
+        <tr><td class="num">5</td><td>Residual to Borrower</td><td class="r">balance</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tight">
+    <p class="lead">
+      Custody ranks ahead of the Lender because unpaid custodians do not release animals, and a lien
+      fight destroys more value than the ranking costs. <b>MNADA ranks behind the Lender in all
+      cases</b> — the platform is not paid until the bank is whole.
+    </p>
+  </div>
+
+  <h2><span class="n">07</span><span>Conditions precedent</span></h2>
+  <div class="tight">
+    <p class="lead">No drawdown until every one of these is satisfied.</p>
+    <ul class="plain">
+      <li><b>CP1</b> — Registry MoU between MNADA and the Ministry of Livestock and Fisheries executed and in force.</li>
+      <li><b>CP2</b> — Custodian holding-ground licence current; site inspected by the Lender and by MNADA.</li>
+      <li><b>CP3</b> — All 200 head tagged, graded and photographed; tag register reconciled 100% against physical count by MNADA in the Lender's presence.</li>
+      <li><b>CP4</b> — Mortality insurance in force, Lender noted as loss payee, premium paid.</li>
+      <li><b>CP5</b> — Collateral Management Agreement, Custody Agreement and settlement instruction executed.</li>
+      <li><b>CP6</b> — Escrow account opened at the Lender in MNADA's name, designated as a trust account.</li>
+      <li><b>CP7</b> — Veterinary certification: lot free of notifiable disease; no movement restriction over the district.</li>
+    </ul>
+  </div>
+
+  <h2><span class="n">08</span><span>Monitoring and coverage triggers</span></h2>
+  <div class="tight tw">
+    <table>
+      <thead><tr><th>Requirement</th><th class="r">Frequency</th></tr></thead>
+      <tbody>
+        <tr><td>Physical tag-read reconciliation by MNADA, reported to Lender</td><td class="r">Weekly</td></tr>
+        <tr><td>Independent weigh sample, minimum 20 head</td><td class="r">Day 1, 22, 45</td></tr>
+        <tr><td>Index revaluation of the lot</td><td class="r">Weekly</td></tr>
+        <tr><td>Mortality notification</td><td class="r">Within 24 hours</td></tr>
+        <tr><td>Lender inspection rights, unannounced</td><td class="r">At will</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tight tw">
+    <table>
+      <thead><tr><th>Trigger</th><th class="r">Coverage</th><th class="r">Implied index</th><th class="r">Fall</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>At drawdown</td><td class="r">125.8%</td><td class="r">742,000</td><td class="r">—</td><td>—</td></tr>
+        <tr><td>Margin call</td><td class="r">&lt; 115%</td><td class="r">678,500</td><td class="r">−8.6%</td><td>Top up cash or head within 5 business days</td></tr>
+        <tr><td>Mandatory sale</td><td class="r">&lt; 108%</td><td class="r">637,200</td><td class="r">−14.1%</td><td>Lender may direct immediate sale</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="n">09</span><span>Events of default</span></h2>
+  <div class="tight">
+    <ul class="plain">
+      <li>Reconciliation shortfall exceeding 1% of head count, unexplained for 48 hours.</li>
+      <li>Mortality exceeding the insured limit, or insurer repudiation.</li>
+      <li>Lapse, suspension or revocation of the Custodian's licence.</li>
+      <li>Movement of any animal off the holding ground without Lender consent.</li>
+      <li>Failure to cure a margin call within 5 business days.</li>
+      <li>Non-payment of any amount at maturity.</li>
+      <li>Any attempt to transfer, pledge or encumber the LDR outside the registry.</li>
+    </ul>
+  </div>
+
+  <h2><span class="n">10</span><span>Why the Lender is protected</span></h2>
+  <div class="tight">
+    <p class="lead">The number that matters is not the advance rate. It is the price at which the Lender stops being whole. Working back through the waterfall:</p>
+    <div class="calc">G × (1 − 0.015) − 19,800,000  ≥  120,327,671
+G  ≥  TZS 142,261,595   →   TZS 711,000 per head</div>
+  </div>
+  <div class="tight tw">
+    <table>
+      <thead><tr><th></th><th class="r">Per head</th><th class="r">Headroom</th></tr></thead>
+      <tbody>
+        <tr class="key"><td>Lender break-even realisation</td><td class="r">TZS 711,000</td><td class="r">—</td></tr>
+        <tr><td>Entry index at drawdown</td><td class="r">TZS 742,000</td><td class="r">+4.4%</td></tr>
+        <tr><td>Expected exit after 45 days finishing</td><td class="r">TZS 900,000</td><td class="r">+26.6%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tight">
+    <p class="lead">
+      The lot can realise 21% below its expected exit price, or 4.4% below the price it was valued at
+      on day one, and the Lender is still repaid in full — before touching the guarantee, the
+      insurance or the margin-call mechanism. Mortality is insured, not borne. Price risk is capped by
+      the coverage triggers. <b>The residual exposure is operational: does the reconciliation hold,
+      and does the settlement rail execute.</b> That is what the pilot is testing.
+    </p>
+  </div>
+
+  <h2><span class="n">11</span><span>Success criteria</span></h2>
+  <div class="tight">
+    <p class="lead">The pilot passes only if <b>all five</b> are met. Anything less is a data point, not a proof.</p>
+  </div>
+  <div class="tight tw">
+    <table>
+      <thead><tr><th>#</th><th>Criterion</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>100% tag reconciliation at maturity</td><td>The register is real, not a spreadsheet</td></tr>
+        <tr><td class="num">2</td><td>Mortality within insured tolerance (≤ 2%)</td><td>Custody standard is adequate</td></tr>
+        <tr><td class="num">3</td><td>Full repayment at or before day 45</td><td>The instrument performs</td></tr>
+        <tr><td class="num">4</td><td>Settlement through escrow, no manual intervention</td><td>The rail works without heroics</td></tr>
+        <tr class="key"><td class="num">5</td><td>Realised price within ±5% of the MNADA index at drawdown</td><td>The index is a valid collateral mark</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tight">
+    <p class="lead">
+      Criterion 5 is the one that changes the Lender's business. The other four prove one loan was
+      repaid. Criterion 5 proves the bank can value any lot in custody without inspecting it — which
+      is the difference between a pilot and an asset class.
+    </p>
+  </div>
+
+  <h2><span class="n">12</span><span>If it passes — and if it fails</span></h2>
+  <div class="tight">
+    <h3>On success, subject to fresh credit approval, the parties to discuss</h3>
+    <ul class="plain">
+      <li>A revolving livestock inventory facility of TZS [—] across MNADA-licensed holding grounds.</li>
+      <li>Settlement-bank exclusivity for the Lender for 60 months.</li>
+      <li>Right of first refusal on all LDR-secured lending originated on the platform.</li>
+      <li>Joint publication of the result to the Ministry and the Bank of Tanzania, as the evidence base for a livestock collateral framework.</li>
+    </ul>
+    <h3>On failure</h3>
+    <p class="lead">
+      MNADA meets the Lender's out-of-pocket costs up to TZS [—], and publishes the failure analysis
+      to the Lender in full, including reconciliation and settlement logs. A quiet failure teaches
+      nobody anything and would poison the second attempt.
+    </p>
+  </div>
+
+  <h2><span class="n">13</span><span>General</span></h2>
+  <div class="tight tw">
+    <table>
+      <tbody>
+        <tr><td>Governing law</td><td class="r">Laws of the United Republic of Tanzania</td></tr>
+        <tr><td>Jurisdiction</td><td class="r">Courts of Tanzania</td></tr>
+        <tr><td>Costs</td><td class="r">Each party bears its own legal costs on the pilot</td></tr>
+        <tr><td>Confidentiality</td><td class="r">Terms confidential to the parties for 24 months</td></tr>
+        <tr><td>Exclusivity</td><td class="r">No comparable pilot with another lender for 90 days from signature</td></tr>
+        <tr><td>Expiry</td><td class="r">Lapses 60 days from date unless extended in writing</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="n">14</span><span>Signature blocks</span></h2>
+  <div class="tight">
+    <p class="lead"><b>Indicative only — this document is not for execution.</b></p>
+    <div class="sigs">
+      <div class="sig"><div class="who">For [ANCHOR BANK]</div><div class="line"></div><div class="cap">Name / Title / Date</div></div>
+      <div class="sig"><div class="who">For [FEEDLOT OPERATOR] LTD</div><div class="line"></div><div class="cap">Name / Title / Date</div></div>
+      <div class="sig"><div class="who">For MNADA EXCHANGE LTD</div><div class="line"></div><div class="cap">Name / Title / Date</div></div>
+    </div>
+  </div>
+
+  <footer>
+    <p><b>Notes on the numbers.</b> Index values are MNADA's own modelled figures, consistent with the
+    bank pitch memorandum and the demo application: TZ-C-M2-300-350-BCS3 at TZS 742,000. The 16%
+    interest rate is an illustration only; the Lender sets pricing from its own cost of funds and
+    provisioning. The custodian charge of TZS 2,200/head/day and the expected exit of TZS 900,000/head
+    are assumptions, not quotations — both must be replaced with a real quote from the named Custodian
+    and a real forward indication from a named buyer before this goes to credit.</p>
+    <p><b>Legal review is outstanding and material.</b> Before this document is sent to any bank it
+    requires review by Tanzanian counsel, particularly on whether an electronic Livestock Deposit
+    Receipt is enforceable as a document of title under current Tanzanian law without amendment to the
+    Warehouse Receipts framework. That question is the single largest legal risk in the structure and
+    it is not resolved by this term sheet.</p>
+  </footer>
+
+</div>
+</body>
+</html>

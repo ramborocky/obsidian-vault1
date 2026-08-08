@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>MNADA</title>
+<style>
+:root{
+  --bg:#0B1512; --surface:#111F1A; --surface2:#162922; --line:#1E332B; --line2:#274036;
+  --txt:#E4EDE7; --txt2:#9DB3A9; --txt3:#6F857C;
+  --ochre:#E0973F; --ochre-d:#C8761A; --moss:#56B189; --moss-d:#2E6B51;
+  --red:#D2705F; --amber:#D9A93C;
+  --mono:ui-monospace,"Roboto Mono",Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15px;line-height:1.5;
+     user-select:none;-webkit-user-select:none}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- app frame ---------- */
+#app{display:flex;flex-direction:column;height:100%}
+
+.topbar{flex:0 0 auto;padding:calc(var(--safe-t) + 10px) 16px 10px;background:var(--bg);
+        border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.brand{font-family:var(--mono);font-weight:700;letter-spacing:.28em;font-size:.82rem}
+.brand span{color:var(--ochre)}
+.topbar .spacer{flex:1}
+.chip{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+      padding:.24rem .5rem;border:1px solid var(--line2);border-radius:3px;color:var(--txt2);background:transparent}
+.chip.sync{color:var(--moss);border-color:var(--moss-d)}
+.chip.queued{color:var(--amber);border-color:#6B5520}
+.lang{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;background:transparent;
+      border:1px solid var(--line2);color:var(--txt2);padding:.26rem .5rem;border-radius:3px;cursor:pointer}
+.lang:active{background:var(--surface2)}
+
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.view{display:none;padding:14px 16px calc(20px + var(--safe-b))}
+.view.on{display:block}
+
+.tabs{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,1fr);
+      background:var(--surface);border-top:1px solid var(--line);
+      padding-bottom:var(--safe-b)}
+.tab{background:transparent;border:0;padding:9px 4px 10px;color:var(--txt3);
+     display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;
+     font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase}
+.tab svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.6;
+         stroke-linecap:round;stroke-linejoin:round}
+.tab.on{color:var(--ochre)}
+.tab:active{background:var(--surface2)}
+
+/* ---------- shared bits ---------- */
+h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
+.sub{color:var(--txt2);font-size:.85rem;margin:0 0 16px}
+.lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;
+     color:var(--txt3);margin:20px 0 8px}
+.lbl:first-child{margin-top:0}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+      padding:13px 14px;margin-bottom:9px}
+.card.tap{cursor:pointer}
+.card.tap:active{background:var(--surface2)}
+
+.row{display:flex;align-items:center;gap:10px}
+.row.between{justify-content:space-between}
+.grow{flex:1;min-width:0}
+
+.grade{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;
+       padding:.15rem .42rem;border:1px solid var(--line2);border-radius:3px;color:var(--txt2)}
+.lotcode{font-family:var(--mono);font-size:.9rem;color:var(--txt);letter-spacing:.01em}
+.meta{font-size:.78rem;color:var(--txt3);margin-top:3px}
+.price{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.02rem;text-align:right;white-space:nowrap}
+.up{color:var(--moss)} .down{color:var(--red)}
+.delta{font-family:var(--mono);font-size:.72rem;text-align:right;margin-top:2px}
+
+.btn{display:block;width:100%;padding:13px;border-radius:5px;border:1px solid var(--ochre-d);
+     background:var(--ochre);color:#160C02;font-family:var(--mono);font-size:.78rem;
+     letter-spacing:.11em;text-transform:uppercase;font-weight:700;cursor:pointer;margin-top:14px}
+.btn:active{background:var(--ochre-d)}
+.btn.ghost{background:transparent;color:var(--txt2);border-color:var(--line2)}
+.btn.ghost:active{background:var(--surface2)}
+.btn:disabled{opacity:.35;pointer-events:none}
+
+.empty{text-align:center;color:var(--txt3);font-size:.86rem;padding:44px 20px;line-height:1.7}
+
+/* ---------- scan pad ---------- */
+.scanpad{border:1px dashed var(--line2);border-radius:8px;background:var(--surface);
+         padding:30px 18px;text-align:center;cursor:pointer;margin-bottom:6px}
+.scanpad:active{background:var(--surface2)}
+.scanpad svg{width:46px;height:46px;stroke:var(--ochre);fill:none;stroke-width:1.4;
+             stroke-linecap:round;stroke-linejoin:round}
+.scanpad .t{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+            color:var(--ochre);margin-top:12px}
+.scanpad .h{font-size:.79rem;color:var(--txt3);margin-top:6px}
+.scanpad.done{border-style:solid;border-color:var(--moss-d)}
+.scanpad.done svg{stroke:var(--moss)} .scanpad.done .t{color:var(--moss)}
+
+/* ---------- form ---------- */
+.field{margin-bottom:16px}
+.field > .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;
+            color:var(--txt3);display:block;margin-bottom:7px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1 1 auto;min-width:56px;padding:9px 6px;border-radius:4px;border:1px solid var(--line2);
+            background:var(--surface);color:var(--txt2);font-family:var(--mono);font-size:.74rem;cursor:pointer}
+.seg button.on{background:var(--moss-d);border-color:var(--moss);color:#EAF5EF}
+.seg button:active{background:var(--surface2)}
+
+.stepper{display:flex;align-items:center;gap:0;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+.stepper button{width:52px;padding:12px 0;background:var(--surface);border:0;color:var(--ochre);
+                font-size:1.15rem;font-family:var(--mono);cursor:pointer}
+.stepper button:active{background:var(--surface2)}
+.stepper .val{flex:1;text-align:center;font-family:var(--mono);font-size:1.05rem;
+              border-left:1px solid var(--line2);border-right:1px solid var(--line2);padding:12px 0}
+.stepper .val small{display:block;font-size:.62rem;color:var(--txt3);letter-spacing:.08em}
+
+.preview{border:1px solid var(--ochre-d);border-radius:6px;background:rgba(224,151,63,.07);
+         padding:13px 14px;margin-top:4px}
+.preview .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ochre)}
+.preview .v{font-family:var(--mono);font-size:1.02rem;margin-top:5px;word-break:break-all;line-height:1.4}
+.preview .est{font-size:.79rem;color:var(--txt2);margin-top:9px;border-top:1px solid var(--line);padding-top:9px}
+.preview .est b{color:var(--txt);font-family:var(--mono)}
+
+/* ---------- sheet ---------- */
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.62);opacity:0;pointer-events:none;
+          transition:opacity .2s;z-index:40}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--surface);
+       border-top:1px solid var(--line2);border-radius:12px 12px 0 0;
+       transform:translateY(100%);transition:transform .24s cubic-bezier(.2,.8,.3,1);
+       max-height:88%;display:flex;flex-direction:column;padding-bottom:var(--safe-b)}
+.sheet.on{transform:translateY(0)}
+.sheet .grip{width:34px;height:4px;border-radius:2px;background:var(--line2);margin:9px auto 3px;flex:0 0 auto}
+.sheet .body{overflow-y:auto;padding:10px 16px 18px}
+
+.kv{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.87rem}
+.kv:last-child{border-bottom:0}
+.kv .k{color:var(--txt3)}
+.kv .v{font-family:var(--mono);text-align:right}
+
+.bidrow{display:flex;justify-content:space-between;gap:10px;padding:7px 0;
+        border-bottom:1px solid var(--line);font-size:.82rem}
+.bidrow:last-child{border-bottom:0}
+.bidrow .who{color:var(--txt2)}
+.bidrow .amt{font-family:var(--mono)}
+.bidrow.best .amt{color:var(--moss)}
+
+/* ---------- toast ---------- */
+#toast{position:fixed;left:16px;right:16px;bottom:calc(78px + var(--safe-b));z-index:60;
+       background:var(--surface2);border:1px solid var(--moss-d);border-left:3px solid var(--moss);
+       border-radius:5px;padding:12px 14px;font-size:.85rem;
+       opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;pointer-events:none}
+#toast.on{opacity:1;transform:translateY(0)}
+#toast.warn{border-color:#6B5520;border-left-color:var(--amber)}
+
+/* ---------- index bars ---------- */
+.idx{display:grid;grid-template-columns:1fr auto;gap:3px 12px;align-items:center;
+     padding:11px 0;border-bottom:1px solid var(--line)}
+.idx:last-child{border-bottom:0}
+.idx .g{font-family:var(--mono);font-size:.8rem}
+.idx .p{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.95rem;text-align:right}
+.idx .bar{grid-column:1/-1;height:3px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:2px}
+.idx .bar i{display:block;height:100%;background:var(--ochre)}
+.idx .n{font-size:.72rem;color:var(--txt3)}
+.spark{grid-column:1/-1;margin-top:5px}
+.spark svg{width:100%;height:30px;display:block}
+
+.disclaimer{font-size:.72rem;color:var(--txt3);line-height:1.65;margin-top:22px;
+            border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="topbar">
+    <div class="brand">MNADA<span>·</span>TZ</div>
+    <div class="spacer"></div>
+    <span class="chip sync" id="syncChip">SYNC</span>
+    <button class="lang" id="langBtn" type="button">SW</button>
+  </div>
+
+  <div class="scroll" id="scroll">
+
+    <!-- ===== SOKO / MARKET ===== -->
+    <section class="view on" id="v-soko">
+      <h2 data-t="soko.h">Soko la leo</h2>
+      <p class="sub" data-t="soko.s">Lots open for bidding across all live nodes.</p>
+      <div class="lbl" data-t="soko.open">Open lots</div>
+      <div id="lotList"></div>
+      <p class="disclaimer" data-t="soko.dis">
+        Demonstration build. Prices, bids and counterparties are simulated on-device — nothing is
+        transmitted and no real trade can be executed.
+      </p>
+    </section>
+
+    <!-- ===== SAJILI / REGISTER ===== -->
+    <section class="view" id="v-sajili">
+      <h2 data-t="reg.h">Sajili mnyama</h2>
+      <p class="sub" data-t="reg.s">Tag, grade and list an animal. Works with no signal — entries queue and sync later.</p>
+
+      <div class="scanpad" id="scanPad">
+        <svg viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/><path d="M9 9v6M13 9v6"/></svg>
+        <div class="t" id="scanT" data-t="reg.scan">Tap to read ear tag</div>
+        <div class="h" id="scanH" data-t="reg.scanh">NFC / RFID reader · hold against the tag</div>
+      </div>
+
+      <div id="regForm" style="display:none">
+        <div class="lbl" data-t="reg.grade">Grading</div>
+
+        <div class="field">
+          <span class="k" data-t="reg.species">Species</span>
+          <div class="seg" data-seg="species">
+            <button type="button" data-v="C" class="on" data-t="reg.cattle">Cattle</button>
+            <button type="button" data-v="S" data-t="reg.goat">Goat</button>
+            <button type="button" data-v="P" data-t="reg.sheep">Sheep</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="k" data-t="reg.sex">Sex</span>
+          <div class="seg" data-seg="sex">
+            <button type="button" data-v="M" class="on" data-t="reg.male">Male</button>
+            <button type="button" data-v="F" data-t="reg.female">Female</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="k" data-t="reg.weight">Live weight</span>
+          <div class="stepper">
+            <button type="button" id="wDn">−</button>
+            <div class="val"><span class="num" id="wVal">320</span> kg<small id="wBand">BAND 300–350</small></div>
+            <button type="button" id="wUp">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="k" data-t="reg.age">Age by dentition</span>
+          <div class="seg" data-seg="age">
+            <button type="button" data-v="1" data-t="reg.a1">0 teeth</button>
+            <button type="button" data-v="2" class="on" data-t="reg.a2">2 teeth</button>
+            <button type="button" data-v="3" data-t="reg.a3">4 teeth</button>
+            <button type="button" data-v="4" data-t="reg.a4">6+ teeth</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="k" data-t="reg.bcs">Body condition score</span>
+          <div class="seg" data-seg="bcs">
+            <button type="button" data-v="1">1</button>
+            <button type="button" data-v="2">2</button>
+            <button type="button" data-v="3" class="on">3</button>
+            <button type="button" data-v="4">4</button>
+            <button type="button" data-v="5">5</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="k" data-t="reg.node">Market node</span>
+          <div class="seg" data-seg="node">
+            <button type="button" data-v="Nyamatala" class="on">Nyamatala</button>
+            <button type="button" data-v="Mhunze">Mhunze</button>
+            <button type="button" data-v="Bariadi">Bariadi</button>
+            <button type="button" data-v="Kizota">Kizota</button>
+          </div>
+        </div>
+
+        <div class="preview">
+          <div class="k" data-t="reg.lot">Lot code</div>
+          <div class="v num" id="lotPreview">—</div>
+          <div class="est" data-t-html="reg.est">
+            Index value for this grade <b class="num" id="estVal">—</b> · advance at 80% <b class="num" id="advVal">—</b>
+          </div>
+        </div>
+
+        <button class="btn" id="listBtn" data-t="reg.list">List on the exchange</button>
+        <button class="btn ghost" id="cancelBtn" data-t="reg.cancel">Cancel</button>
+      </div>
+    </section>
+
+    <!-- ===== ZIZI / CUSTODY ===== -->
+    <section class="view" id="v-zizi">
+      <h2 data-t="cus.h">Zizi &amp; hati</h2>
+      <p class="sub" data-t="cus.s">Livestock Deposit Receipts held in custody. Each one is pledgeable collateral.</p>
+      <div class="lbl" data-t="cus.held">Receipts held</div>
+      <div id="ldrList"></div>
+      <p class="disclaimer" data-t="cus.dis">
+        An LDR is a transferable electronic document of title over a graded lot held at a licensed
+        holding ground. Advances are shown at 80% of assessed index value; the insurer carries first
+        loss on mortality. Illustrative figures only — not a credit offer.
+      </p>
+    </section>
+
+    <!-- ===== BEI / INDEX ===== -->
+    <section class="view" id="v-bei">
+      <h2 data-t="idx.h">Bei ya soko</h2>
+      <p class="sub" data-t="idx.s">Settled-price index by grade. This is the number a bank marks collateral against.</p>
+      <div class="lbl" data-t="idx.cattle">Cattle — TZS per head</div>
+      <div id="idxCattle"></div>
+      <div class="lbl" data-t="idx.shoat">Goats &amp; sheep — TZS per head</div>
+      <div id="idxShoat"></div>
+      <div class="lbl" data-t="idx.node">Same grade, by node</div>
+      <div id="idxNode"></div>
+      <p class="disclaimer" id="buildInfo"></p>
+    </section>
+
+  </div>
+
+  <nav class="tabs">
+    <button class="tab on" data-v="soko" type="button">
+      <svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10M11 20V4M16 20v-7M21 20v-11"/></svg>
+      <span data-t="tab.soko">Soko</span>
+    </button>
+    <button class="tab" data-v="sajili" type="button">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      <span data-t="tab.sajili">Sajili</span>
+    </button>
+    <button class="tab" data-v="zizi" type="button">
+      <svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg>
+      <span data-t="tab.zizi">Zizi</span>
+    </button>
+    <button class="tab" data-v="bei" type="button">
+      <svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg>
+      <span data-t="tab.bei">Bei</span>
+    </button>
+  </nav>
+</div>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet">
+  <div class="grip"></div>
+  <div class="body" id="sheetBody"></div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============ i18n ============ */
+var T = {
+  en:{
+    "soko.h":"Today's market","soko.s":"Lots open for bidding across all live nodes.",
+    "soko.open":"Open lots",
+    "soko.dis":"Demonstration build. Prices, bids and counterparties are simulated on-device — nothing is transmitted and no real trade can be executed.",
+    "reg.h":"Register an animal","reg.s":"Tag, grade and list an animal. Works with no signal — entries queue and sync later.",
+    "reg.scan":"Tap to read ear tag","reg.scanh":"NFC / RFID reader · hold against the tag",
+    "reg.grade":"Grading","reg.species":"Species","reg.cattle":"Cattle","reg.goat":"Goat","reg.sheep":"Sheep",
+    "reg.sex":"Sex","reg.male":"Male","reg.female":"Female","reg.weight":"Live weight",
+    "reg.age":"Age by dentition","reg.a1":"0 teeth","reg.a2":"2 teeth","reg.a3":"4 teeth","reg.a4":"6+ teeth",
+    "reg.bcs":"Body condition score","reg.node":"Market node","reg.lot":"Lot code",
+    "reg.list":"List on the exchange","reg.cancel":"Cancel",
+    "cus.h":"Custody & receipts","cus.s":"Livestock Deposit Receipts held in custody. Each one is pledgeable collateral.",
+    "cus.held":"Receipts held",
+    "cus.dis":"An LDR is a transferable electronic document of title over a graded lot held at a licensed holding ground. Advances are shown at 80% of assessed index value; the insurer carries first loss on mortality. Illustrative figures only — not a credit offer.",
+    "idx.h":"Price index","idx.s":"Settled-price index by grade. This is the number a bank marks collateral against.",
+    "idx.cattle":"Cattle — TZS per head","idx.shoat":"Goats & sheep — TZS per head","idx.node":"Same grade, by node",
+    "tab.soko":"Market","tab.sajili":"Register","tab.zizi":"Custody","tab.bei":"Prices",
+    "sh.bids":"Bid book","sh.place":"Place bid","sh.accept":"Accept best bid & settle",
+    "sh.node":"Node","sh.head":"Head","sh.grade":"Grade","sh.seller":"Seller","sh.custodian":"Custodian",
+    "sh.last":"Last settled","sh.best":"Best bid","sh.status":"Status","sh.issued":"Issued",
+    "sh.days":"Days in custody","sh.assessed":"Assessed value","sh.advance":"Advance available (80%)",
+    "sh.tenor":"Tenor","sh.finance":"Request finance","sh.share":"Share settlement note",
+    "toast.listed":"Lot listed. Bids open at the next session.",
+    "toast.settled":"Settled. Funds released from escrow; LDR issued.",
+    "toast.bid":"Bid placed and held in escrow.",
+    "toast.fin":"Finance request queued for the lender panel.",
+    "toast.queued":"No signal — saved on device, will sync.",
+    "empty.ldr":"No receipts yet. Settle a lot on the market tab and its LDR appears here.",
+    "st.open":"Open","st.custody":"In custody","st.financed":"Financed"
+  },
+  sw:{
+    "soko.h":"Soko la leo","soko.s":"Mifugo iliyoorodheshwa kwenye minada yote hai.",
+    "soko.open":"Mifugo iliyo wazi",
+    "soko.dis":"Toleo la maonyesho. Bei, zabuni na wanunuzi vimetengenezwa kwenye simu — hakuna kinachotumwa na hakuna biashara halisi inayoweza kufanyika.",
+    "reg.h":"Sajili mnyama","reg.s":"Weka alama, panga daraja na orodhesha. Hufanya kazi bila mtandao — taarifa husubiri na kutumwa baadaye.",
+    "reg.scan":"Gusa kusoma hereni","reg.scanh":"Kisomaji cha NFC / RFID · shikilia karibu na hereni",
+    "reg.grade":"Upangaji wa daraja","reg.species":"Aina","reg.cattle":"Ng'ombe","reg.goat":"Mbuzi","reg.sheep":"Kondoo",
+    "reg.sex":"Jinsia","reg.male":"Dume","reg.female":"Jike","reg.weight":"Uzito hai",
+    "reg.age":"Umri kwa meno","reg.a1":"Meno 0","reg.a2":"Meno 2","reg.a3":"Meno 4","reg.a4":"Meno 6+",
+    "reg.bcs":"Alama ya hali ya mwili","reg.node":"Mnada","reg.lot":"Namba ya fungu",
+    "reg.list":"Orodhesha sokoni","reg.cancel":"Ghairi",
+    "cus.h":"Zizi na hati","cus.s":"Hati za Amana ya Mifugo zilizohifadhiwa. Kila moja ni dhamana ya mkopo.",
+    "cus.held":"Hati zilizopo",
+    "cus.dis":"Hati ya Amana ya Mifugo ni hati ya umiliki inayohamishika juu ya fungu lililopangwa daraja na kuhifadhiwa kwenye zizi lenye leseni. Mikopo huonyeshwa kwa 80% ya thamani ya soko; bima hubeba hasara ya kwanza ikitokea kifo. Ni mfano tu — si ahadi ya mkopo.",
+    "idx.h":"Bei ya soko","idx.s":"Kielelezo cha bei zilizolipwa kwa daraja. Hii ndiyo namba benki hutumia kupima dhamana.",
+    "idx.cattle":"Ng'ombe — TZS kwa kichwa","idx.shoat":"Mbuzi na kondoo — TZS kwa kichwa","idx.node":"Daraja moja, kwa mnada",
+    "tab.soko":"Soko","tab.sajili":"Sajili","tab.zizi":"Zizi","tab.bei":"Bei",
+    "sh.bids":"Daftari la zabuni","sh.place":"Weka zabuni","sh.accept":"Kubali zabuni bora na malizia",
+    "sh.node":"Mnada","sh.head":"Idadi","sh.grade":"Daraja","sh.seller":"Muuzaji","sh.custodian":"Mhifadhi",
+    "sh.last":"Bei ya mwisho","sh.best":"Zabuni bora","sh.status":"Hali","sh.issued":"Ilitolewa",
+    "sh.days":"Siku zizini","sh.assessed":"Thamani iliyokadiriwa","sh.advance":"Mkopo unaopatikana (80%)",
+    "sh.tenor":"Muda","sh.finance":"Omba mkopo","sh.share":"Tuma hati ya malipo",
+    "toast.listed":"Fungu limeorodheshwa. Zabuni zitafunguliwa kikao kijacho.",
+    "toast.settled":"Imekamilika. Fedha zimetolewa; hati imetolewa.",
+    "toast.bid":"Zabuni imewekwa na kushikiliwa.",
+    "toast.fin":"Ombi la mkopo limepelekwa kwa wakopeshaji.",
+    "toast.queued":"Hakuna mtandao — imehifadhiwa kwenye simu, itatumwa.",
+    "empty.ldr":"Hakuna hati bado. Maliza mnada kwenye kichupo cha Soko na hati yake itaonekana hapa.",
+    "st.open":"Wazi","st.custody":"Zizini","st.financed":"Imekopeshwa"
+  }
+};
+var lang = "sw";
+function t(k){ return (T[lang] && T[lang][k]) || (T.en[k]) || k; }
+
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.getElementById("langBtn").textContent = lang === "sw" ? "EN" : "SW";
+  Array.prototype.forEach.call(document.querySelectorAll("[data-t]"), function(el){
+    el.textContent = t(el.getAttribute("data-t"));
+  });
+  // the estimate line keeps its inline <b> nodes, so rebuild it by hand
+  var est = document.querySelector("[data-t-html]");
+  if (est) {
+    est.innerHTML = lang === "sw"
+      ? 'Thamani ya daraja hili <b class="num" id="estVal">—</b> · mkopo kwa 80% <b class="num" id="advVal">—</b>'
+      : 'Index value for this grade <b class="num" id="estVal">—</b> · advance at 80% <b class="num" id="advVal">—</b>';
+  }
+  renderAll();
+}
+
+/* ============ device bridge ============ */
+var A = (typeof window.Android !== "undefined") ? window.Android : null;
+function haptic(ms){ try { if (A && A.haptic) A.haptic(ms || 18); } catch(e){} }
+
+/* ============ helpers ============ */
+function fmt(n){ return Math.round(n).toLocaleString("en-US"); }
+function el(id){ return document.getElementById(id); }
+
+var toastTimer;
+function toast(msg, warn){
+  var x = el("toast");
+  x.textContent = msg;
+  x.className = warn ? "on warn" : "on";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ x.className = warn ? "warn" : ""; }, 2800);
+}
+
+/* ============ price index ============ */
+// TZS per head, by species-sex-weightband. Base figures track the memo: cattle ~700k, shoats ~120k.
+var INDEX = {
+  "C-M-250-300": 585000, "C-M-300-350": 742000, "C-M-350-420": 968000, "C-M-420-999": 1145000,
+  "C-F-200-250": 425000, "C-F-250-300": 508000, "C-F-300-350": 655000, "C-F-350-420": 830000,
+  "S-M-020-030": 118000, "S-M-030-045": 158000, "S-F-020-030": 104000, "S-F-030-045": 139000,
+  "P-M-020-030": 112000, "P-M-030-045": 149000, "P-F-020-030":  98000, "P-F-030-045": 131000
+};
+var BCS_ADJ = {1:0.72, 2:0.87, 3:1.00, 4:1.09, 5:1.13};
+var AGE_ADJ = {1:0.94, 2:1.00, 3:0.97, 4:0.88};
+var NODE_ADJ = {"Nyamatala":0.97,"Mhunze":0.96,"Bariadi":0.95,"Kizota":1.03,"Pugu":1.12,"Meserani":1.05};
+
+var CATTLE_BANDS = [[250,300],[300,350],[350,420],[420,999]];
+var SHOAT_BANDS  = [[20,30],[30,45]];
+
+function bandFor(sp, kg){
+  var bands = (sp === "C") ? CATTLE_BANDS : SHOAT_BANDS;
+  for (var i=0;i<bands.length;i++){
+    if (kg >= bands[i][0] && kg < bands[i][1]) return bands[i];
+  }
+  return bands[kg < bands[0][0] ? 0 : bands.length-1];
+}
+function pad3(n){ return ("00" + n).slice(-3); }
+
+function lotCode(f){
+  var b = bandFor(f.species, f.weight);
+  return "TZ-" + f.species + "-" + f.sex + f.age + "-" + pad3(b[0]) + "-" + pad3(b[1]) + "-BCS" + f.bcs;
+}
+function indexKey(f){
+  var b = bandFor(f.species, f.weight);
+  return f.species + "-" + f.sex + "-" + pad3(b[0]) + "-" + pad3(b[1]);
+}
+function valueOf(f){
+  var base = INDEX[indexKey(f)] || 500000;
+  return base * (BCS_ADJ[f.bcs]||1) * (AGE_ADJ[f.age]||1) * (NODE_ADJ[f.node]||1);
+}
+
+/* ============ state ============ */
+var seed = 20260808;
+function rnd(){ seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }
+
+var BUYERS = ["Nyanza Meat Co.","Pugu Traders Ltd","Kibaha Feedlot","Arusha Abattoir",
+              "Dodoma Butchers Assn","Coastal Export Co.","Uyole Meats","Themi Hotels Supply"];
+
+var lots = [
+  { id:"L1", code:"TZ-C-M2-300-350-BCS3", node:"Nyamatala", head:60, last:742000, chg:1.8,
+    seller:"Mwita J.", bids:[], status:"open" },
+  { id:"L2", code:"TZ-C-F3-250-300-BCS2", node:"Bariadi", head:45, last:508000, chg:-0.9,
+    seller:"Ng'wanaboko S.", bids:[], status:"open" },
+  { id:"L3", code:"TZ-C-M1-350-420-BCS4", node:"Meserani", head:32, last:968000, chg:2.4,
+    seller:"Laizer P.", bids:[], status:"open" },
+  { id:"L4", code:"TZ-S-M2-020-030-BCS3", node:"Igunga", head:180, last:131000, chg:0.6,
+    seller:"Hamisi A.", bids:[], status:"open" },
+  { id:"L5", code:"TZ-C-M2-300-350-BCS3", node:"Kizota", head:55, last:761000, chg:1.1,
+    seller:"Chalamila R.", bids:[], status:"open" }
+];
+
+lots.forEach(function(l){
+  var n = 2 + Math.floor(rnd()*4);
+  for (var i=0;i<n;i++){
+    l.bids.push({ who: BUYERS[Math.floor(rnd()*BUYERS.length)],
+                  amt: Math.round(l.last * (0.94 + rnd()*0.09) / 1000) * 1000 });
+  }
+  l.bids.sort(function(a,b){ return b.amt - a.amt; });
+});
+
+var ldrs = [
+  { id:"LDR-2026-0117", code:"TZ-C-M2-300-350-BCS3", head:40, node:"Mhunze",
+    custodian:"Mhunze Holding Ground", days:12, value:742000*40, status:"custody", financed:false },
+  { id:"LDR-2026-0121", code:"TZ-C-M1-350-420-BCS4", head:18, node:"Kibaha",
+    custodian:"Kibaha Feedlot Ltd", days:31, value:968000*18, status:"financed", financed:true }
+];
+
+var ldrSeq = 122;
+var queued = 0;
+
+/* ============ registration form ============ */
+var form = { species:"C", sex:"M", weight:320, age:2, bcs:3, node:"Nyamatala", tag:null };
+
+function refreshBands(){
+  var b = bandFor(form.species, form.weight);
+  el("wBand").textContent = "BAND " + b[0] + "–" + b[1];
+}
+function refreshPreview(){
+  refreshBands();
+  el("lotPreview").textContent = lotCode(form);
+  var v = valueOf(form);
+  var ev = el("estVal"), av = el("advVal");
+  if (ev) ev.textContent = "TZS " + fmt(v);
+  if (av) av.textContent = "TZS " + fmt(v * 0.8);
+}
+
+function bindSegs(){
+  Array.prototype.forEach.call(document.querySelectorAll("[data-seg]"), function(seg){
+    var key = seg.getAttribute("data-seg");
+    seg.addEventListener("click", function(e){
+      var b = e.target.closest("button");
+      if (!b) return;
+      Array.prototype.forEach.call(seg.querySelectorAll("button"), function(x){ x.classList.remove("on"); });
+      b.classList.add("on");
+      var v = b.getAttribute("data-v");
+      form[key] = (key === "age" || key === "bcs") ? parseInt(v,10) : v;
+      if (key === "species") {
+        form.weight = (form.species === "C") ? 320 : 28;
+        el("wVal").textContent = form.weight;
+      }
+      haptic(12);
+      refreshPreview();
+    });
+  });
+}
+
+function stepWeight(d){
+  var step = (form.species === "C") ? 10 : 1;
+  var lo = (form.species === "C") ? 150 : 12;
+  var hi = (form.species === "C") ? 600 : 60;
+  form.weight = Math.max(lo, Math.min(hi, form.weight + d*step));
+  el("wVal").textContent = form.weight;
+  haptic(8);
+  refreshPreview();
+}
+
+/* ============ rendering ============ */
+function statusLabel(s){
+  if (s === "open") return t("st.open");
+  if (s === "financed") return t("st.financed");
+  return t("st.custody");
+}
+
+function renderLots(){
+  var html = lots.map(function(l){
+    var best = l.bids.length ? l.bids[0].amt : 0;
+    var cls = l.chg >= 0 ? "up" : "down";
+    var arrow = l.chg >= 0 ? "▲ +" : "▼ ";
+    return '<div class="card tap" data-lot="' + l.id + '">' +
+      '<div class="row between">' +
+        '<div class="grow">' +
+          '<div class="lotcode">' + l.code + '</div>' +
+          '<div class="meta">' + l.node + ' · ' + l.head + ' ' + (lang==="sw"?"vichwa":"head") +
+            ' · ' + l.bids.length + ' ' + (lang==="sw"?"zabuni":"bids") + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div class="price">' + fmt(best || l.last) + '</div>' +
+          '<div class="delta ' + cls + '">' + arrow + Math.abs(l.chg).toFixed(1) + '%</div>' +
+        '</div>' +
+      '</div></div>';
+  }).join("");
+  el("lotList").innerHTML = html || '<div class="empty">—</div>';
+}
+
+function renderLdrs(){
+  if (!ldrs.length) { el("ldrList").innerHTML = '<div class="empty">' + t("empty.ldr") + '</div>'; return; }
+  el("ldrList").innerHTML = ldrs.map(function(d){
+    var col = d.financed ? "var(--amber)" : "var(--moss)";
+    return '<div class="card tap" data-ldr="' + d.id + '">' +
+      '<div class="row between">' +
+        '<div class="grow">' +
+          '<div class="lotcode">' + d.id + '</div>' +
+          '<div class="meta">' + d.code + '</div>' +
+          '<div class="meta">' + d.custodian + ' · ' + d.head + ' ' + (lang==="sw"?"vichwa":"head") + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div class="price">' + fmt(d.value/1e6) + 'M</div>' +
+          '<div class="delta" style="color:' + col + '">' + statusLabel(d.status) + '</div>' +
+        '</div>' +
+      '</div></div>';
+  }).join("");
+}
+
+function sparkline(vals){
+  var w = 260, h = 30, min = Math.min.apply(null,vals), max = Math.max.apply(null,vals);
+  var span = (max - min) || 1;
+  var pts = vals.map(function(v,i){
+    return (i/(vals.length-1)*w).toFixed(1) + "," + (h - (v-min)/span*(h-4) - 2).toFixed(1);
+  }).join(" ");
+  return '<div class="spark"><svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none">' +
+    '<polyline points="' + pts + '" fill="none" stroke="var(--moss)" stroke-width="1.6"/></svg></div>';
+}
+
+function renderIndex(){
+  function block(keys, targetId, showSpark){
+    var max = 0;
+    keys.forEach(function(k){ if (INDEX[k] > max) max = INDEX[k]; });
+    el(targetId).innerHTML = keys.map(function(k){
+      var p = INDEX[k];
+      var parts = k.split("-");
+      var label = parts[0] + "-" + parts[1] + " · " + parseInt(parts[2],10) + "–" + parseInt(parts[3],10) + "kg";
+      var hist = [];
+      var s = p * 0.94;
+      for (var i=0;i<10;i++){ s = s * (1 + (rnd()-0.42)*0.02); hist.push(s); }
+      hist.push(p);
+      return '<div class="idx">' +
+        '<div class="g">' + label + '</div>' +
+        '<div class="p">' + fmt(p) + '</div>' +
+        '<div class="bar"><i style="width:' + (p/max*100).toFixed(0) + '%"></i></div>' +
+        (showSpark ? sparkline(hist) : "") +
+      '</div>';
+    }).join("");
+  }
+  block(["C-M-250-300","C-M-300-350","C-M-350-420","C-F-250-300","C-F-300-350"], "idxCattle", true);
+  block(["S-M-020-030","S-M-030-045","P-M-020-030","P-F-020-030"], "idxShoat", false);
+
+  var ref = INDEX["C-M-300-350"];
+  var nodes = Object.keys(NODE_ADJ);
+  var maxN = 0;
+  nodes.forEach(function(n){ if (ref*NODE_ADJ[n] > maxN) maxN = ref*NODE_ADJ[n]; });
+  el("idxNode").innerHTML = nodes.map(function(n){
+    var p = ref * NODE_ADJ[n];
+    return '<div class="idx">' +
+      '<div class="g">' + n + '</div>' +
+      '<div class="p">' + fmt(p) + '</div>' +
+      '<div class="bar"><i style="width:' + (p/maxN*100).toFixed(0) + '%"></i></div>' +
+      '<div class="n">' + (lang==="sw" ? "TZ-C-M2-300-350-BCS3" : "TZ-C-M2-300-350-BCS3") + '</div>' +
+    '</div>';
+  }).join("");
+}
+
+function renderAll(){ renderLots(); renderLdrs(); renderIndex(); refreshPreview(); }
+
+/* ============ sheet ============ */
+var sheetOpen = false;
+function openSheet(html){
+  el("sheetBody").innerHTML = html;
+  el("sheet").classList.add("on");
+  el("sheetBg").classList.add("on");
+  sheetOpen = true;
+}
+function closeSheet(){
+  el("sheet").classList.remove("on");
+  el("sheetBg").classList.remove("on");
+  sheetOpen = false;
+}
+el("sheetBg").addEventListener("click", closeSheet);
+
+function showLot(id){
+  var l = lots.filter(function(x){ return x.id === id; })[0];
+  if (!l) return;
+  haptic(14);
+  var best = l.bids.length ? l.bids[0].amt : 0;
+  var bidHtml = l.bids.map(function(b,i){
+    return '<div class="bidrow' + (i===0?' best':'') + '"><span class="who">' + b.who +
+           '</span><span class="amt">' + fmt(b.amt) + '</span></div>';
+  }).join("") || '<div class="bidrow"><span class="who">—</span></div>';
+
+  openSheet(
+    '<div class="lotcode" style="font-size:1.05rem">' + l.code + '</div>' +
+    '<div class="meta" style="margin-bottom:12px">' + l.node + '</div>' +
+    '<div class="kv"><span class="k">' + t("sh.head") + '</span><span class="v">' + l.head + '</span></div>' +
+    '<div class="kv"><span class="k">' + t("sh.seller") + '</span><span class="v">' + l.seller + '</span></div>' +
+    '<div class="kv"><span class="k">' + t("sh.last") + '</span><span class="v">' + fmt(l.last) + '</span></div>' +
+    '<div class="kv"><span class="k">' + t("sh.best") + '</span><span class="v up">' + fmt(best) + '</span></div>' +
+    '<div class="lbl">' + t("sh.bids") + '</div>' + bidHtml +
+    '<button class="btn" data-act="settle" data-id="' + l.id + '">' + t("sh.accept") + '</button>' +
+    '<button class="btn ghost" data-act="bid" data-id="' + l.id + '">' + t("sh.place") + '</button>'
+  );
+}
+
+function showLdr(id){
+  var d = ldrs.filter(function(x){ return x.id === id; })[0];
+  if (!d) return;
+  haptic(14);
+  openSheet(
+    '<div class="lotcode" style="font-size:1.05rem">' + d.id + '</div>' +
+    '<div class="meta" style="margin-bottom:12px">' + d.code + '</div>' +
+    '<div class="kv"><span class="k">' + t("sh.custodian") + '</span><span class="v">' + d.custodian + '</span></div>' +
+    '<div class="kv"><span class="k">' + t("sh.head") + '</span><span class="v">' + d.head + '</span></div>' +
+    '<div class="kv"><span class="k">' + t("sh.days") + '</span><span class="v">' + d.days + '</span></div>' +
+    '<div class="kv"><span class="k">' + t("sh.assessed") + '</span><span class="v">TZS ' + fmt(d.value) + '</span></div>' +
+    '<div class="kv"><span class="k">' + t("sh.advance") + '</span><span class="v up">TZS ' + fmt(d.value*0.8) + '</span></div>' +
+    '<div class="kv"><span class="k">' + t("sh.tenor") + '</span><span class="v">45 ' + (lang==="sw"?"siku":"days") + '</span></div>' +
+    '<div class="kv"><span class="k">' + t("sh.status") + '</span><span class="v">' + statusLabel(d.status) + '</span></div>' +
+    (d.financed ? "" : '<button class="btn" data-act="finance" data-id="' + d.id + '">' + t("sh.finance") + '</button>') +
+    '<button class="btn ghost" data-act="share" data-id="' + d.id + '">' + t("sh.share") + '</button>'
+  );
+}
+
+el("sheetBody").addEventListener("click", function(e){
+  var b = e.target.closest("[data-act]");
+  if (!b) return;
+  var act = b.getAttribute("data-act"), id = b.getAttribute("data-id");
+
+  if (act === "bid") {
+    var l = lots.filter(function(x){ return x.id === id; })[0];
+    var top = l.bids.length ? l.bids[0].amt : l.last;
+    l.bids.unshift({ who: (lang==="sw"?"Wewe":"You"), amt: Math.round(top * 1.02/1000)*1000 });
+    l.bids.sort(function(a,b2){ return b2.amt - a.amt; });
+    haptic(30); closeSheet(); renderLots(); toast(t("toast.bid"));
+
+  } else if (act === "settle") {
+    var i = lots.map(function(x){ return x.id; }).indexOf(id);
+    var lot = lots[i];
+    var best = lot.bids.length ? lot.bids[0].amt : lot.last;
+    lots.splice(i,1);
+    ldrSeq++;
+    ldrs.unshift({
+      id: "LDR-2026-0" + ldrSeq, code: lot.code, head: lot.head, node: lot.node,
+      custodian: lot.node + " Holding Ground", days: 0, value: best * lot.head,
+      status: "custody", financed: false
+    });
+    haptic(45); closeSheet(); renderLots(); renderLdrs(); toast(t("toast.settled"));
+    switchTab("zizi");
+
+  } else if (act === "finance") {
+    var d = ldrs.filter(function(x){ return x.id === id; })[0];
+    d.financed = true; d.status = "financed";
+    haptic(30); closeSheet(); renderLdrs(); toast(t("toast.fin"));
+
+  } else if (act === "share") {
+    var r = ldrs.filter(function(x){ return x.id === id; })[0];
+    var body = "MNADA settlement note\n" + r.id + "\n" + r.code + "\n" +
+               r.head + " head at " + r.custodian + "\nAssessed TZS " + fmt(r.value) +
+               "\nAdvance available TZS " + fmt(r.value*0.8) +
+               "\n\nDemonstration build — not a negotiable instrument.";
+    try { if (A && A.share) A.share("MNADA " + r.id, body); else toast(t("toast.queued"), true); }
+    catch(err){ toast(t("toast.queued"), true); }
+  }
+});
+
+/* ============ nav ============ */
+var current = "soko";
+function switchTab(name){
+  current = name;
+  Array.prototype.forEach.call(document.querySelectorAll(".view"), function(v){
+    v.classList.toggle("on", v.id === "v-" + name);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(b){
+    b.classList.toggle("on", b.getAttribute("data-v") === name);
+  });
+  el("scroll").scrollTop = 0;
+}
+
+document.querySelector(".tabs").addEventListener("click", function(e){
+  var b = e.target.closest(".tab");
+  if (!b) return;
+  haptic(10);
+  switchTab(b.getAttribute("data-v"));
+});
+
+el("lotList").addEventListener("click", function(e){
+  var c = e.target.closest("[data-lot]");
+  if (c) showLot(c.getAttribute("data-lot"));
+});
+el("ldrList").addEventListener("click", function(e){
+  var c = e.target.closest("[data-ldr]");
+  if (c) showLdr(c.getAttribute("data-ldr"));
+});
+
+/* ============ register flow ============ */
+el("scanPad").addEventListener("click", function(){
+  haptic(40);
+  var pad = el("scanPad");
+  form.tag = "TZ" + (620000000 + Math.floor(rnd()*9000000));
+  pad.classList.add("done");
+  el("scanT").textContent = form.tag;
+  el("scanH").textContent = lang === "sw"
+    ? "Hereni imesomwa · imeunganishwa na NIDA ya mfugaji"
+    : "Tag read · bound to keeper's National ID";
+  el("regForm").style.display = "block";
+  refreshPreview();
+});
+
+el("wUp").addEventListener("click", function(){ stepWeight(1); });
+el("wDn").addEventListener("click", function(){ stepWeight(-1); });
+
+el("listBtn").addEventListener("click", function(){
+  haptic(45);
+  var v = valueOf(form);
+  lots.unshift({
+    id: "N" + Date.now(), code: lotCode(form), node: form.node, head: 1,
+    last: Math.round(v/1000)*1000, chg: 0, seller: (lang==="sw"?"Wewe":"You"),
+    bids: [], status: "open"
+  });
+  queued++;
+  el("syncChip").className = "chip queued";
+  el("syncChip").textContent = "QUEUE " + queued;
+  setTimeout(function(){
+    queued = 0;
+    el("syncChip").className = "chip sync";
+    el("syncChip").textContent = "SYNC";
+  }, 4200);
+  resetForm();
+  renderLots();
+  switchTab("soko");
+  toast(t("toast.listed"));
+});
+
+el("cancelBtn").addEventListener("click", function(){ haptic(10); resetForm(); });
+
+function resetForm(){
+  form.tag = null;
+  el("regForm").style.display = "none";
+  var pad = el("scanPad");
+  pad.classList.remove("done");
+  el("scanT").textContent = t("reg.scan");
+  el("scanH").textContent = t("reg.scanh");
+}
+
+/* ============ language ============ */
+el("langBtn").addEventListener("click", function(){
+  lang = (lang === "sw") ? "en" : "sw";
+  haptic(12);
+  applyLang();
+  if (!form.tag) resetForm();
+});
+
+/* ============ hardware back ============ */
+window.MNADA = {
+  onBack: function(){
+    if (sheetOpen) { closeSheet(); return true; }
+    if (current !== "soko") { switchTab("soko"); return true; }
+    return false;
+  }
+};
+
+/* ============ boot ============ */
+bindSegs();
+applyLang();
+try {
+  if (A && A.buildInfo) {
+    el("buildInfo").textContent = A.buildInfo() +
+      " · demonstration build, simulated data, no network access.";
+  } else {
+    el("buildInfo").textContent = "Demonstration build · simulated data · no network access.";
+  }
+} catch(e){
+  el("buildInfo").textContent = "Demonstration build · simulated data · no network access.";
+}
+
+// Gentle drift on the board so the demo feels live during a pitch.
+setInterval(function(){
+  if (!lots.length) return;
+  var i = Math.floor(rnd()*lots.length);
+  var d = (rnd()-0.45) * 0.011;
+  lots[i].last = Math.round(lots[i].last * (1+d) / 1000) * 1000;
+  lots[i].chg = Math.round((lots[i].chg + d*100)*10)/10;
+  if (lots[i].bids.length && rnd() > 0.55) {
+    lots[i].bids.unshift({ who: BUYERS[Math.floor(rnd()*BUYERS.length)],
+                           amt: Math.round(lots[i].bids[0].amt * (1+Math.abs(d))/1000)*1000 });
+    lots[i].bids.sort(function(a,b){ return b.amt - a.amt; });
+  }
+  if (current === "soko" && !sheetOpen) renderLots();
+}, 3400);
+
+})();
+</script>
+</body>
+</html>
