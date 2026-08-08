@@ -67,6 +67,7 @@ cssclasses: [home]
 | [[The Apprenticeship — Learning By Hand]] | [[08 Three Gates — Field Comparison]] | [[Expenses]] |
 | [[The De-Slop Pass — English Prose]] | [[12 The Rules — Source of Truth]] | [[The Day Plan — 80-20, Pomodoro and Practice]] |
 | [[Craft Log]] | [[09 The Practice — Calendar, Ritual and Ilmu Huruf]] | [[House - Airbnb Writers Retreat]] |
+| [[Vault Commands — How Slash Commands Work\|⌨️ `/deslop` `/atlas` `/count`]] | | |
 
 ---
 

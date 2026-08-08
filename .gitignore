@@ -1,16 +1,22 @@
 # Claude Code working files.
 #
 # Everything under .claude/ is ignored EXCEPT the vault's shared tooling:
-# settings.json and the hooks that back the "archive before editing" rule.
+# settings.json, the hooks that back the "archive before editing" rule, and
+# the slash commands in commands/.
 #
 # Why the exception: a blanket `.claude/` rule is how the original
 # archive-before-edit hook was lost. The vault was copied here from
 # C:\Users\lijumba\... without its .claude/ folder, CLAUDE.md went on claiming
 # the hook existed, and nothing was archived. Keeping the hook tracked means it
 # travels with the vault. See 01 Projects/CLAUDE.md.
+#
+# commands/ was added 2026-08-08 for the same reason, before the first command
+# was written — an untracked /deslop would disappear on the next machine and
+# take the protocol's enforcement with it.
 .claude/*
 !.claude/settings.json
 !.claude/hooks/
+!.claude/commands/
 
 # Machine-local overrides and session scratch stay out of the repo.
 .claude/settings.local.json
