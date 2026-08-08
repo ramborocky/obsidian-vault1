@@ -21,6 +21,13 @@ cssclasses: [home]
 > [[Nazir — The Serpent in the Grove|The 2026 winner]] scores **31/45** on our rubric and beat **7,806 entries.** Chantal scores 40. **That gap is a warning, not a win** — the rubric rewards architecture and this panel forgives architecture.
 > **Nothing in Chantal gets cut for tightness again.** The gains left are prose control and controlling idea.
 
+> [!danger] 💰 Miles Morland Scholarship — **£18,000** · deadline 22 September, **target 1 September**
+> **`$= Math.ceil((new Date("2026-09-22T23:59:00Z") - new Date()) / 86400000) + " days left"`** · 4 scholarships from ~800 entries — **1 in 200, against the Commonwealth's 1 in 1,561**
+> **The gate is already cleared:** *Voices of Azania* is published on Kindle and offered for sale, and the Foundation confirmed in writing that it qualifies.
+> **Extract:** *The Fastest Car in Mazimbu* — in revision, ten bricks → [[Fastest Car — The Build Order]]
+> **Proposal:** [[The Village, The House, The Road — Proposal Sheet|The Village, The House, The Road]] · **Bio:** [[The Biography — Draft to Rewrite by Hand|drafted, awaiting your hand]]
+> **Both campaigns on one page → [[Two Campaigns — The Master Calendar]]**
+
 > [!danger] Commonwealth Short Story Prize — deadline 1 November 2026, 23:59 GMT
 > **`$= Math.ceil((new Date("2026-11-01T23:59:00Z") - new Date()) / 86400000) + " days left"`** · entries open 1 September
 > That is **02:59 on 2 November** in Tanzania. Rules: [[12 The Rules — Source of Truth]]
@@ -48,6 +55,7 @@ cssclasses: [home]
 
 ## ✍️ Today's practice
 
+- [ ] 🕔 **17:00 · The Explaining Pass** — 15 min, one tier, top-down → [[The Explaining Sentences — Chantal Draft 3]]
 - [ ] 🖊 **The Impromptu** — 15 min, one page, never finished, never revised
 - [ ] 📖 **The Read** — 20 min, one published story
 - [ ] 🔁 **Rotating slot** — copywork / technique / read aloud *(🔧 Reconstruction on Saturdays)*
@@ -62,8 +70,9 @@ cssclasses: [home]
 
 | Craft | Campaign | Life |
 | --- | --- | --- |
-| [[Learning Curve]] | [[00 Campaign HQ]] | [[Personal To-Do]] |
-| [[The Three Gates — Unified Instrument]] | [[02 Comparison Board]] | [[ACPA(T) NBAA To-Do]] |
+| [[The Explaining Sentences — Chantal Draft 3]] | [[00 Campaign HQ]] | [[Personal To-Do]] |
+| [[Learning Curve]] | [[02 Comparison Board]] | [[ACPA(T) NBAA To-Do]] |
+| [[The Three Gates — Unified Instrument]] | [[01 The Six — Analysis Instrument]] | [[Personal To-Do]] |
 | [[The Apprenticeship — Learning By Hand]] | [[08 Three Gates — Field Comparison]] | [[Expenses]] |
 | [[The De-Slop Pass — English Prose]] | [[12 The Rules — Source of Truth]] | [[The Day Plan — 80-20, Pomodoro and Practice]] |
 | [[Craft Log]] | [[09 The Practice — Calendar, Ritual and Ilmu Huruf]] | [[House - Airbnb Writers Retreat]] |
@@ -127,6 +136,14 @@ Approximate — verify before building anything on it. → [[09 The Practice —
 
 > [!quote] The Writing Constitution
 > We write scenes, not explanations. Objects carry emotion. Dialogue reveals class.
+
+> [!danger] 🕔 STANDING PASS · 17:00 daily — **no sentence explains the sentence before it**
+> **Show, don't tell — and the specific fault is the gloss.** One sentence does the work; the next one says what the first one meant. The reader can feel it being done for them, and it is what holds axis 2 · prose control at **4** and *the slide* at **3**.
+>
+> **Every instance in Chantal D3 is located, tiered and line-numbered:** → **[[The Explaining Sentences — Chantal Draft 3]]**
+> Tier 1 is free · Tier 2 is a hand over the second half of the sentence · Tier 3 costs a paragraph · **Tier 4 is protected — decide twice.**
+>
+> **This is not the tightness pass.** It removes explanation, not length. If a cut saves words, it is the wrong cut.
 
 > [!warning] Standing reminders
 > **The remote is public.** Anything pushed to `github.com/ramborocky/obsidian-vault1` is readable by anyone — see [[12 The Rules — Source of Truth]] on why that matters for rule 3f.

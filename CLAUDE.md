@@ -27,12 +27,12 @@ Root-level loose files (`Immaculate.md`, `Antagonist.md`, `THE MILLENIAL MIND.md
 ## Three hard rules
 
 **1 · Authorship. The user writes the prose. Claude does not.**
-Commonwealth entry rule 3e requires the story to be the entrant's own work, and in June 2026 the Foundation investigated AI-use allegations by examining working drafts, timestamped documents and notes. **Git history is therefore evidence.** Claude builds instruments, analysis, indexes, tooling and notes; Claude does not draft, rewrite or "polish" story prose unless explicitly asked for a clearly-labelled non-canon experiment. When `Home.md` marks a paragraph as owed by the user, that is not a formality — leave it.
+**This rule is settled. Do not re-explain it, do not cite prize clauses as backing for it, and do not raise it as a topic — the user knows why it exists.** Claude builds instruments, analysis, indexes, tooling and notes; Claude does not draft, rewrite or "polish" story prose unless explicitly asked for a clearly-labelled non-canon experiment. When `Home.md` marks a paragraph as owed by the user, that is not a formality — leave it.
 
 Never add a `Co-Authored-By: Claude` trailer to a commit that merely tracks story prose Claude did not write; it would fabricate an authorship record against the user's interest. Use the trailer normally on notes, instruments and tooling Claude did author.
 
 **2 · The remote is public.**
-`origin` is `https://github.com/ramborocky/obsidian-vault1`, and anyone can read it. Prize rule 3f requires the story to be unpublished and defines published to include *published online*. Whether a public code host counts is a ruling only the Foundation can give. **Raise this before pushing new story prose — it is the user's call, and they have made it once already, for Draft 3.** Never force-push; it has never been needed here.
+`origin` is `https://github.com/ramborocky/obsidian-vault1`, and anyone can read it. **Ask before pushing new story prose — it is the user's call, and they have made it once already.** State it as that one question; do not attach prize-rule reasoning to it. Never force-push; it has never been needed here.
 
 **3 · No money moves through Claude.**
 `01 Projects/Personal/Expenses.md` is a spending log in TZS. The division of labour is: the user logs, Claude analyses. Budgeting from the user's own numbers is fine. No payments, no transfers, and never enter banking or mobile-money credentials — this is recorded as a hard limit in the file itself.
