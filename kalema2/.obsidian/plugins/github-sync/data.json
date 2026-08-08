@@ -1,0 +1,9 @@
+{
+  "remoteURL": "https://github.com/ramborocky/obsidian-vault1",
+  "gitLocation": "",
+  "syncinterval": 2,
+  "isSyncOnLoad": true,
+  "checkStatusOnLoad": true,
+  "noticeLevel": "ALL",
+  "showSyncSuccessNotice": true
+}
