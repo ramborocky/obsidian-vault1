@@ -40,6 +40,10 @@
 01 Projects/Kalemie/10 Prize Campaign/11 Submission Pack/*.pdf
 .obsidian/graph.json
 
+# Compiled app binaries — rebuildable from the app-android source beside them.
+# Same reason as the submission artifacts: no opaque binaries on a public remote.
+*.apk
+
 # Other authors' stories held in full for study. Published works, copyright theirs.
 # Tracked on the user's explicit instruction 2026-07-31: these are published and
 # publicly readable (Granta / Commonwealth Foundation). Copyright remains the authors'.
