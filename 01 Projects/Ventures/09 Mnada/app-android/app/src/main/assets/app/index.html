@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>MNADA</title>
+<title>MNADA · Uangalizi</title>
 <style>
 :root{
   --bg:#0B1512; --surface:#111F1A; --surface2:#162922; --line:#1E332B; --line2:#274036;
   --txt:#E4EDE7; --txt2:#9DB3A9; --txt3:#6F857C;
   --ochre:#E0973F; --ochre-d:#C8761A; --moss:#56B189; --moss-d:#2E6B51;
-  --red:#D2705F; --amber:#D9A93C;
+  --red:#D2705F; --red-d:#7A3A30; --amber:#D9A93C; --amber-d:#6B5520;
   --mono:ui-monospace,"Roboto Mono",Consolas,monospace;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
@@ -20,18 +20,16 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15p
      user-select:none;-webkit-user-select:none}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-/* ---------- app frame ---------- */
 #app{display:flex;flex-direction:column;height:100%}
 
 .topbar{flex:0 0 auto;padding:calc(var(--safe-t) + 10px) 16px 10px;background:var(--bg);
-        border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+        border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
 .brand{font-family:var(--mono);font-weight:700;letter-spacing:.28em;font-size:.82rem}
 .brand span{color:var(--ochre)}
 .topbar .spacer{flex:1}
 .chip{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
       padding:.24rem .5rem;border:1px solid var(--line2);border-radius:3px;color:var(--txt2);background:transparent}
-.chip.sync{color:var(--moss);border-color:var(--moss-d)}
-.chip.queued{color:var(--amber);border-color:#6B5520}
+.chip.local{color:var(--txt2);border-color:var(--line2)}
 .lang{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;background:transparent;
       border:1px solid var(--line2);color:var(--txt2);padding:.26rem .5rem;border-radius:3px;cursor:pointer}
 .lang:active{background:var(--surface2)}
@@ -45,13 +43,12 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15p
       padding-bottom:var(--safe-b)}
 .tab{background:transparent;border:0;padding:9px 4px 10px;color:var(--txt3);
      display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;
-     font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase}
+     font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase}
 .tab svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.6;
          stroke-linecap:round;stroke-linejoin:round}
 .tab.on{color:var(--ochre)}
 .tab:active{background:var(--surface2)}
 
-/* ---------- shared bits ---------- */
 h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
 .sub{color:var(--txt2);font-size:.85rem;margin:0 0 16px}
 .lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;
@@ -67,13 +64,8 @@ h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
 .row.between{justify-content:space-between}
 .grow{flex:1;min-width:0}
 
-.grade{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;
-       padding:.15rem .42rem;border:1px solid var(--line2);border-radius:3px;color:var(--txt2)}
-.lotcode{font-family:var(--mono);font-size:.9rem;color:var(--txt);letter-spacing:.01em}
 .meta{font-size:.78rem;color:var(--txt3);margin-top:3px}
-.price{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.02rem;text-align:right;white-space:nowrap}
-.up{color:var(--moss)} .down{color:var(--red)}
-.delta{font-family:var(--mono);font-size:.72rem;text-align:right;margin-top:2px}
+.up{color:var(--moss)} .down{color:var(--red)} .warn{color:var(--amber)}
 
 .btn{display:block;width:100%;padding:13px;border-radius:5px;border:1px solid var(--ochre-d);
      background:var(--ochre);color:#160C02;font-family:var(--mono);font-size:.78rem;
@@ -81,21 +73,23 @@ h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
 .btn:active{background:var(--ochre-d)}
 .btn.ghost{background:transparent;color:var(--txt2);border-color:var(--line2)}
 .btn.ghost:active{background:var(--surface2)}
+.btn.danger{background:transparent;color:var(--red);border-color:var(--red-d)}
 .btn:disabled{opacity:.35;pointer-events:none}
 
-.empty{text-align:center;color:var(--txt3);font-size:.86rem;padding:44px 20px;line-height:1.7}
+.empty{text-align:center;color:var(--txt3);font-size:.86rem;padding:40px 20px;line-height:1.7}
 
-/* ---------- scan pad ---------- */
-.scanpad{border:1px dashed var(--line2);border-radius:8px;background:var(--surface);
-         padding:30px 18px;text-align:center;cursor:pointer;margin-bottom:6px}
-.scanpad:active{background:var(--surface2)}
-.scanpad svg{width:46px;height:46px;stroke:var(--ochre);fill:none;stroke-width:1.4;
-             stroke-linecap:round;stroke-linejoin:round}
-.scanpad .t{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
-            color:var(--ochre);margin-top:12px}
-.scanpad .h{font-size:.79rem;color:var(--txt3);margin-top:6px}
-.scanpad.done{border-style:solid;border-color:var(--moss-d)}
-.scanpad.done svg{stroke:var(--moss)} .scanpad.done .t{color:var(--moss)}
+/* ---------- cover gauge ---------- */
+.gauge{border:1px solid var(--line2);border-radius:8px;background:var(--surface);padding:16px 14px;margin-bottom:10px}
+.gauge .cap{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--txt3)}
+.gauge .big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:2.5rem;line-height:1.1;margin:6px 0 2px}
+.gauge .band{font-size:.82rem}
+.gauge .track{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:12px;position:relative}
+.gauge .track i{display:block;height:100%;background:var(--moss)}
+.gauge .track u{position:absolute;top:-3px;width:2px;height:12px;background:var(--txt2);text-decoration:none}
+.gauge.ok .big{color:var(--moss)} .gauge.ok .track i{background:var(--moss)}
+.gauge.watch .big{color:var(--amber)} .gauge.watch .track i{background:var(--amber)}
+.gauge.call .big{color:var(--red)} .gauge.call .track i{background:var(--red)}
+.gauge .foot{font-size:.75rem;color:var(--txt3);margin-top:9px;line-height:1.6}
 
 /* ---------- form ---------- */
 .field{margin-bottom:16px}
@@ -106,6 +100,13 @@ h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
             background:var(--surface);color:var(--txt2);font-family:var(--mono);font-size:.74rem;cursor:pointer}
 .seg button.on{background:var(--moss-d);border-color:var(--moss);color:#EAF5EF}
 .seg button:active{background:var(--surface2)}
+
+input[type=text],input[type=number],input[type=date]{
+  width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line2);
+  background:var(--surface);color:var(--txt);font-family:var(--mono);font-size:.92rem;
+  -webkit-user-select:text;user-select:text}
+input:focus{outline:none;border-color:var(--ochre-d)}
+input::placeholder{color:var(--txt3)}
 
 .stepper{display:flex;align-items:center;gap:0;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
 .stepper button{width:52px;padding:12px 0;background:var(--surface);border:0;color:var(--ochre);
@@ -122,7 +123,58 @@ h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
 .preview .est{font-size:.79rem;color:var(--txt2);margin-top:9px;border-top:1px solid var(--line);padding-top:9px}
 .preview .est b{color:var(--txt);font-family:var(--mono)}
 
-/* ---------- sheet ---------- */
+/* ---------- evidence capture ---------- */
+.cap{display:flex;gap:10px;align-items:center;border:1px dashed var(--line2);border-radius:6px;
+     background:var(--surface);padding:11px 12px;cursor:pointer;margin-bottom:8px}
+.cap:active{background:var(--surface2)}
+.cap.done{border-style:solid;border-color:var(--moss-d)}
+.cap .ico{width:38px;height:38px;flex:0 0 auto;border-radius:4px;border:1px solid var(--line2);
+          display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg)}
+.cap .ico svg{width:20px;height:20px;stroke:var(--ochre);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cap.done .ico svg{stroke:var(--moss)}
+.cap .ico img{width:100%;height:100%;object-fit:cover;display:block}
+.cap .t{font-size:.86rem}
+.cap .h{font-size:.72rem;color:var(--txt3);margin-top:2px;word-break:break-all;font-family:var(--mono)}
+.hidden-file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+.flag{display:inline-block;font-family:var(--mono);font-size:.58rem;letter-spacing:.09em;
+      text-transform:uppercase;padding:.16rem .42rem;border-radius:3px;
+      border:1px solid var(--amber-d);color:var(--amber);background:rgba(217,169,60,.08)}
+.flag.green{border-color:var(--moss-d);color:var(--moss);background:rgba(86,177,137,.08)}
+.flag.red{border-color:var(--red-d);color:var(--red);background:rgba(210,112,95,.08)}
+
+/* ---------- count rows ---------- */
+.crow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:0}
+.crow .th{width:34px;height:34px;flex:0 0 auto;border-radius:4px;border:1px solid var(--line2);
+          overflow:hidden;background:var(--bg)}
+.crow .th img{width:100%;height:100%;object-fit:cover;display:block}
+.crow .tg{font-family:var(--mono);font-size:.84rem}
+.crow .mk{display:flex;gap:5px;flex:0 0 auto}
+.crow .mk button{width:34px;padding:7px 0;border-radius:4px;border:1px solid var(--line2);
+                 background:var(--surface);color:var(--txt3);font-family:var(--mono);font-size:.7rem;cursor:pointer}
+.crow .mk button.on[data-s=present]{background:var(--moss-d);border-color:var(--moss);color:#EAF5EF}
+.crow .mk button.on[data-s=missing]{background:#6B4520;border-color:var(--amber);color:#F5EEE0}
+.crow .mk button.on[data-s=dead]{background:var(--red-d);border-color:var(--red);color:#F7E9E6}
+
+.kv{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.87rem}
+.kv:last-child{border-bottom:0}
+.kv .k{color:var(--txt3)}
+.kv .v{font-family:var(--mono);text-align:right;word-break:break-all}
+
+table.trig{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:4px}
+table.trig th,table.trig td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right}
+table.trig th:first-child,table.trig td:first-child{text-align:left}
+table.trig th{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);font-weight:400}
+table.trig td{font-family:var(--mono)}
+table.trig tr.now td{color:var(--ochre)}
+
+.ev{padding:9px 0;border-bottom:1px solid var(--line);font-size:.8rem}
+.ev:last-child{border-bottom:0}
+.ev .h{font-family:var(--mono);font-size:.68rem;color:var(--txt3);word-break:break-all;margin-top:3px}
+.ev .ty{font-family:var(--mono);font-size:.72rem;color:var(--ochre);letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------- sheet & toast ---------- */
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.62);opacity:0;pointer-events:none;
           transition:opacity .2s;z-index:40}
 .sheet-bg.on{opacity:1;pointer-events:auto}
@@ -134,40 +186,16 @@ h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
 .sheet .grip{width:34px;height:4px;border-radius:2px;background:var(--line2);margin:9px auto 3px;flex:0 0 auto}
 .sheet .body{overflow-y:auto;padding:10px 16px 18px}
 
-.kv{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.87rem}
-.kv:last-child{border-bottom:0}
-.kv .k{color:var(--txt3)}
-.kv .v{font-family:var(--mono);text-align:right}
-
-.bidrow{display:flex;justify-content:space-between;gap:10px;padding:7px 0;
-        border-bottom:1px solid var(--line);font-size:.82rem}
-.bidrow:last-child{border-bottom:0}
-.bidrow .who{color:var(--txt2)}
-.bidrow .amt{font-family:var(--mono)}
-.bidrow.best .amt{color:var(--moss)}
-
-/* ---------- toast ---------- */
 #toast{position:fixed;left:16px;right:16px;bottom:calc(78px + var(--safe-b));z-index:60;
        background:var(--surface2);border:1px solid var(--moss-d);border-left:3px solid var(--moss);
        border-radius:5px;padding:12px 14px;font-size:.85rem;
        opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;pointer-events:none}
 #toast.on{opacity:1;transform:translateY(0)}
-#toast.warn{border-color:#6B5520;border-left-color:var(--amber)}
-
-/* ---------- index bars ---------- */
-.idx{display:grid;grid-template-columns:1fr auto;gap:3px 12px;align-items:center;
-     padding:11px 0;border-bottom:1px solid var(--line)}
-.idx:last-child{border-bottom:0}
-.idx .g{font-family:var(--mono);font-size:.8rem}
-.idx .p{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.95rem;text-align:right}
-.idx .bar{grid-column:1/-1;height:3px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:2px}
-.idx .bar i{display:block;height:100%;background:var(--ochre)}
-.idx .n{font-size:.72rem;color:var(--txt3)}
-.spark{grid-column:1/-1;margin-top:5px}
-.spark svg{width:100%;height:30px;display:block}
+#toast.bad{border-color:var(--red-d);border-left-color:var(--red)}
 
 .disclaimer{font-size:.72rem;color:var(--txt3);line-height:1.65;margin-top:22px;
             border-top:1px solid var(--line);padding-top:12px}
+.disclaimer b{color:var(--txt2);font-weight:600}
 </style>
 </head>
 <body>
@@ -176,587 +204,1047 @@ h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
   <div class="topbar">
     <div class="brand">MNADA<span>·</span>TZ</div>
     <div class="spacer"></div>
-    <span class="chip sync" id="syncChip">SYNC</span>
+    <span class="chip local" id="localChip">—</span>
     <button class="lang" id="langBtn" type="button">SW</button>
   </div>
 
   <div class="scroll" id="scroll">
 
-    <!-- ===== SOKO / MARKET ===== -->
-    <section class="view on" id="v-soko">
-      <h2 data-t="soko.h">Soko la leo</h2>
-      <p class="sub" data-t="soko.s">Lots open for bidding across all live nodes.</p>
-      <div class="lbl" data-t="soko.open">Open lots</div>
-      <div id="lotList"></div>
-      <p class="disclaimer" data-t="soko.dis">
-        Demonstration build. Prices, bids and counterparties are simulated on-device — nothing is
-        transmitted and no real trade can be executed.
-      </p>
+    <!-- ===== FUNGU / THE LOT ===== -->
+    <section class="view on" id="v-fungu">
+      <h2 data-t="lot.h">Fungu lililowekwa dhamana</h2>
+      <p class="sub" data-t="lot.s">Hali ya dhamana leo, dhidi ya kile mkopeshaji anadai leo.</p>
+
+      <div class="gauge" id="gauge">
+        <div class="cap" data-t="lot.cover">Kinga leo</div>
+        <div class="big num" id="coverPct">—</div>
+        <div class="band" id="coverBand">—</div>
+        <div class="track"><i id="coverBar" style="width:0%"></i><u id="coverMark" style="left:0%"></u></div>
+        <div class="foot" data-t="lot.coverfoot">100% ni pale mkopeshaji analipwa kamili baada ya ushuru na gharama za zizi. Chini ya hapo ni hasara.</div>
+      </div>
+
+      <div class="card">
+        <div class="kv"><span class="k" data-t="lot.day">Siku</span><span class="v" id="kDay">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.head">Mifugo iliyosajiliwa</span><span class="v" id="kHead">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.present">Waliohesabiwa mwisho</span><span class="v" id="kPresent">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.value">Thamani ya sasa</span><span class="v" id="kValue">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.need">Inayohitajika leo</span><span class="v" id="kNeed">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.gap">Ziada juu ya kiwango</span><span class="v" id="kGap">—</span></div>
+      </div>
+
+      <div class="lbl" data-t="lot.trig">Kiwango cha lazima, kinapanda kila siku</div>
+      <table class="trig" id="trigTable"></table>
+      <p class="meta" data-t="lot.trigfoot">Gharama za zizi na riba hujilimbikiza. Kiwango cha siku ya kwanza si cha siku ya 45.</p>
+
+      <div class="lbl" data-t="lot.setup">Mpangilio</div>
+      <div class="field">
+        <span class="k" data-t="lot.draw">Tarehe ya mkopo</span>
+        <input type="date" id="drawDate">
+      </div>
+      <div class="field">
+        <span class="k" data-t="lot.agent">Jina la afisa</span>
+        <input type="text" id="agentName" placeholder="—">
+      </div>
+
+      <p class="disclaimer" data-t-html="lot.dis"></p>
     </section>
 
-    <!-- ===== SAJILI / REGISTER ===== -->
+    <!-- ===== SAJILI / ENROL ===== -->
     <section class="view" id="v-sajili">
-      <h2 data-t="reg.h">Sajili mnyama</h2>
-      <p class="sub" data-t="reg.s">Tag, grade and list an animal. Works with no signal — entries queue and sync later.</p>
+      <h2 data-t="reg.h">Sajili mnyama kwenye fungu</h2>
+      <p class="sub" data-t="reg.s">Kila mnyama anahitaji hereni, picha na mahali. Bila hivyo hasajiliwi.</p>
 
-      <div class="scanpad" id="scanPad">
-        <svg viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/><path d="M9 9v6M13 9v6"/></svg>
-        <div class="t" id="scanT" data-t="reg.scan">Tap to read ear tag</div>
-        <div class="h" id="scanH" data-t="reg.scanh">NFC / RFID reader · hold against the tag</div>
+      <div class="field">
+        <span class="k" data-t="reg.tag">Namba ya hereni</span>
+        <input type="text" id="tagInput" placeholder="TZ0000000" autocomplete="off" autocapitalize="characters">
+        <p class="meta" data-t="reg.taghelp">Andika kwa mkono. Kisomaji cha NFC hakijawekwa kwenye toleo hili.</p>
       </div>
 
-      <div id="regForm" style="display:none">
-        <div class="lbl" data-t="reg.grade">Grading</div>
+      <div class="lbl" data-t="reg.evid">Ushahidi</div>
 
-        <div class="field">
-          <span class="k" data-t="reg.species">Species</span>
-          <div class="seg" data-seg="species">
-            <button type="button" data-v="C" class="on" data-t="reg.cattle">Cattle</button>
-            <button type="button" data-v="S" data-t="reg.goat">Goat</button>
-            <button type="button" data-v="P" data-t="reg.sheep">Sheep</button>
-          </div>
+      <div class="cap" id="capPhoto">
+        <div class="ico" id="photoIco">
+          <svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/></svg>
         </div>
-
-        <div class="field">
-          <span class="k" data-t="reg.sex">Sex</span>
-          <div class="seg" data-seg="sex">
-            <button type="button" data-v="M" class="on" data-t="reg.male">Male</button>
-            <button type="button" data-v="F" data-t="reg.female">Female</button>
-          </div>
+        <div class="grow">
+          <div class="t" id="photoT" data-t="reg.photo">Piga picha ya mnyama</div>
+          <div class="h" id="photoH" data-t="reg.photoh">Lazima</div>
         </div>
-
-        <div class="field">
-          <span class="k" data-t="reg.weight">Live weight</span>
-          <div class="stepper">
-            <button type="button" id="wDn">−</button>
-            <div class="val"><span class="num" id="wVal">320</span> kg<small id="wBand">BAND 300–350</small></div>
-            <button type="button" id="wUp">+</button>
-          </div>
-        </div>
-
-        <div class="field">
-          <span class="k" data-t="reg.age">Age by dentition</span>
-          <div class="seg" data-seg="age">
-            <button type="button" data-v="1" data-t="reg.a1">0 teeth</button>
-            <button type="button" data-v="2" class="on" data-t="reg.a2">2 teeth</button>
-            <button type="button" data-v="3" data-t="reg.a3">4 teeth</button>
-            <button type="button" data-v="4" data-t="reg.a4">6+ teeth</button>
-          </div>
-        </div>
-
-        <div class="field">
-          <span class="k" data-t="reg.bcs">Body condition score</span>
-          <div class="seg" data-seg="bcs">
-            <button type="button" data-v="1">1</button>
-            <button type="button" data-v="2">2</button>
-            <button type="button" data-v="3" class="on">3</button>
-            <button type="button" data-v="4">4</button>
-            <button type="button" data-v="5">5</button>
-          </div>
-        </div>
-
-        <div class="field">
-          <span class="k" data-t="reg.node">Market node</span>
-          <div class="seg" data-seg="node">
-            <button type="button" data-v="Nyamatala" class="on">Nyamatala</button>
-            <button type="button" data-v="Mhunze">Mhunze</button>
-            <button type="button" data-v="Bariadi">Bariadi</button>
-            <button type="button" data-v="Kizota">Kizota</button>
-          </div>
-        </div>
-
-        <div class="preview">
-          <div class="k" data-t="reg.lot">Lot code</div>
-          <div class="v num" id="lotPreview">—</div>
-          <div class="est" data-t-html="reg.est">
-            Index value for this grade <b class="num" id="estVal">—</b> · advance at 80% <b class="num" id="advVal">—</b>
-          </div>
-        </div>
-
-        <button class="btn" id="listBtn" data-t="reg.list">List on the exchange</button>
-        <button class="btn ghost" id="cancelBtn" data-t="reg.cancel">Cancel</button>
       </div>
+
+      <div class="cap" id="capGps">
+        <div class="ico" id="gpsIco">
+          <svg viewBox="0 0 24 24"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        </div>
+        <div class="grow">
+          <div class="t" id="gpsT" data-t="reg.gps">Chukua mahali</div>
+          <div class="h" id="gpsH" data-t="reg.gpsh">Lazima</div>
+        </div>
+      </div>
+
+      <div class="lbl" data-t="reg.grade">Upangaji wa daraja</div>
+
+      <div class="field">
+        <span class="k" data-t="reg.species">Aina</span>
+        <div class="seg" data-seg="species">
+          <button type="button" data-v="C" class="on" data-t="reg.cattle">Ng'ombe</button>
+          <button type="button" data-v="S" data-t="reg.goat">Mbuzi</button>
+          <button type="button" data-v="P" data-t="reg.sheep">Kondoo</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="k" data-t="reg.sex">Jinsia</span>
+        <div class="seg" data-seg="sex">
+          <button type="button" data-v="M" class="on" data-t="reg.male">Dume</button>
+          <button type="button" data-v="F" data-t="reg.female">Jike</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="k" data-t="reg.weight">Uzito hai</span>
+        <div class="stepper">
+          <button type="button" id="wDn">&minus;</button>
+          <div class="val"><span class="num" id="wVal">320</span> kg<small id="wBand">BAND 300&ndash;350</small></div>
+          <button type="button" id="wUp">+</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="k" data-t="reg.age">Umri kwa meno</span>
+        <div class="seg" data-seg="age">
+          <button type="button" data-v="1" data-t="reg.a1">Meno 0</button>
+          <button type="button" data-v="2" class="on" data-t="reg.a2">Meno 2</button>
+          <button type="button" data-v="3" data-t="reg.a3">Meno 4</button>
+          <button type="button" data-v="4" data-t="reg.a4">Meno 6+</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="k" data-t="reg.bcs">Alama ya hali ya mwili</span>
+        <div class="seg" data-seg="bcs">
+          <button type="button" data-v="1">1</button>
+          <button type="button" data-v="2">2</button>
+          <button type="button" data-v="3" class="on">3</button>
+          <button type="button" data-v="4">4</button>
+          <button type="button" data-v="5">5</button>
+        </div>
+      </div>
+
+      <div class="lbl" data-t="reg.keeper">Mfugaji</div>
+      <div class="field">
+        <span class="k" data-t="reg.kname">Jina</span>
+        <input type="text" id="keeperName" placeholder="—" autocomplete="off">
+      </div>
+      <div class="field">
+        <span class="k" data-t="reg.kid">Namba ya NIDA</span>
+        <input type="text" id="keeperId" placeholder="—" autocomplete="off">
+        <p class="meta" style="margin-top:7px">
+          <span class="flag" data-t="reg.unver">Haijathibitishwa</span>
+          <span data-t="reg.unverh"> &mdash; imeandikwa na afisa, haijaangaliwa na NIDA.</span>
+        </p>
+      </div>
+
+      <div class="preview">
+        <div class="k" data-t="reg.lot">Namba ya daraja</div>
+        <div class="v num" id="lotPreview">&mdash;</div>
+        <div class="est" data-t-html="reg.est"></div>
+      </div>
+
+      <button class="btn" id="saveBtn" data-t="reg.save">Hifadhi kwenye fungu</button>
+      <button class="btn ghost" id="clearBtn" data-t="reg.clear">Futa fomu</button>
+
+      <input type="file" accept="image/*" capture="environment" id="fileIn" class="hidden-file">
     </section>
 
-    <!-- ===== ZIZI / CUSTODY ===== -->
-    <section class="view" id="v-zizi">
-      <h2 data-t="cus.h">Zizi &amp; hati</h2>
-      <p class="sub" data-t="cus.s">Livestock Deposit Receipts held in custody. Each one is pledgeable collateral.</p>
-      <div class="lbl" data-t="cus.held">Receipts held</div>
-      <div id="ldrList"></div>
-      <p class="disclaimer" data-t="cus.dis">
-        An LDR is a transferable electronic document of title over a graded lot held at a licensed
-        holding ground. Advances are shown at 80% of assessed index value; the insurer carries first
-        loss on mortality. Illustrative figures only — not a credit offer.
-      </p>
+    <!-- ===== HESABU / RECONCILIATION ===== -->
+    <section class="view" id="v-hesabu">
+      <h2 data-t="cnt.h">Hesabu ya kila wiki</h2>
+      <p class="sub" data-t="cnt.s">Tembea zizi, gusa kila hereni. Mkopeshaji anaona jibu, si ahadi.</p>
+
+      <div class="card" id="cntSummary"></div>
+
+      <div class="lbl" data-t="cnt.list">Orodha</div>
+      <div id="cntList"></div>
+
+      <button class="btn" id="finishBtn" data-t="cnt.finish">Maliza hesabu</button>
+      <button class="btn ghost" id="resetCntBtn" data-t="cnt.reset">Anza upya</button>
+
+      <div class="lbl" data-t="cnt.hist">Hesabu zilizopita</div>
+      <div id="cntHist"></div>
     </section>
 
-    <!-- ===== BEI / INDEX ===== -->
-    <section class="view" id="v-bei">
-      <h2 data-t="idx.h">Bei ya soko</h2>
-      <p class="sub" data-t="idx.s">Settled-price index by grade. This is the number a bank marks collateral against.</p>
-      <div class="lbl" data-t="idx.cattle">Cattle — TZS per head</div>
-      <div id="idxCattle"></div>
-      <div class="lbl" data-t="idx.shoat">Goats &amp; sheep — TZS per head</div>
-      <div id="idxShoat"></div>
-      <div class="lbl" data-t="idx.node">Same grade, by node</div>
-      <div id="idxNode"></div>
+    <!-- ===== KUMBUKUMBU / THE RECORD ===== -->
+    <section class="view" id="v-rec">
+      <h2 data-t="rec.h">Kumbukumbu</h2>
+      <p class="sub" data-t="rec.s">Kila kitendo kimefungwa kwenye mnyororo. Kikibadilishwa, mnyororo huvunjika.</p>
+
+      <div class="card">
+        <div class="kv"><span class="k" data-t="rec.events">Matukio</span><span class="v" id="kEvents">0</span></div>
+        <div class="kv"><span class="k" data-t="rec.headhash">Alama ya mwisho</span><span class="v" id="kHead2">—</span></div>
+        <div class="kv"><span class="k" data-t="rec.chain">Hali ya mnyororo</span><span class="v" id="kChain">—</span></div>
+      </div>
+
+      <button class="btn ghost" id="verifyBtn" data-t="rec.verify">Thibitisha mnyororo</button>
+      <button class="btn" id="exportBtn" data-t="rec.export">Toa faili kwa mkopeshaji</button>
+
+      <div class="lbl" data-t="rec.recent">Matukio ya karibuni</div>
+      <div id="evList"></div>
+
+      <div class="lbl" data-t="rec.honest">Toleo hili linafanya nini</div>
+      <div class="card" id="honestCard"></div>
+
+      <button class="btn danger" id="wipeBtn" data-t="rec.wipe">Futa data yote ya simu hii</button>
+
       <p class="disclaimer" id="buildInfo"></p>
     </section>
 
   </div>
 
   <nav class="tabs">
-    <button class="tab on" data-v="soko" type="button">
-      <svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10M11 20V4M16 20v-7M21 20v-11"/></svg>
-      <span data-t="tab.soko">Soko</span>
+    <button class="tab on" data-v="fungu" type="button">
+      <svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg>
+      <span data-t="tab.fungu">Fungu</span>
     </button>
     <button class="tab" data-v="sajili" type="button">
       <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
       <span data-t="tab.sajili">Sajili</span>
     </button>
-    <button class="tab" data-v="zizi" type="button">
-      <svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg>
-      <span data-t="tab.zizi">Zizi</span>
+    <button class="tab" data-v="hesabu" type="button">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/><path d="M18 16.5l1.6 1.6L23 15"/></svg>
+      <span data-t="tab.hesabu">Hesabu</span>
     </button>
-    <button class="tab" data-v="bei" type="button">
-      <svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg>
-      <span data-t="tab.bei">Bei</span>
+    <button class="tab" data-v="rec" type="button">
+      <svg viewBox="0 0 24 24"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v6h6M9 13h6M9 17h4"/></svg>
+      <span data-t="tab.rec">Kumbukumbu</span>
     </button>
   </nav>
 </div>
 
 <div class="sheet-bg" id="sheetBg"></div>
-<div class="sheet" id="sheet">
-  <div class="grip"></div>
-  <div class="body" id="sheetBody"></div>
-</div>
-
+<div class="sheet" id="sheet"><div class="grip"></div><div class="body" id="sheetBody"></div></div>
 <div id="toast"></div>
 
 <script>
 (function(){
 "use strict";
 
+/* ============================================================
+   MNADA — collateral custody record.
+   Scope is one pledged lot under one facility. There is no market
+   board, no bid book and no price index in this build: CropSupply
+   already publishes crop prices nationally, and the livestock index
+   is not something a field app should invent on-device.
+   ============================================================ */
+
+/* ---------- facility, from the Pilot Term Sheet ---------- */
+var FAC = {
+  principal: 118000000,   // TZS drawn
+  ratePa:    0.16,        // illustrative
+  tenorDays: 45,
+  cess:      0.015,       // statutory levies, rank 1 in the waterfall
+  custody:   2200,        // TZS per head per day, rank 2
+  targetHead:200,
+  indexValue:742000,      // entry index, TZ-C-M2-300-350-BCS3
+  callAt:    1.10,        // cover below this = margin call
+  floorAt:   1.02         // cover below this = mandatory sale
+};
+
+/* ============ SHA-256 (hash chain over the event log) ============ */
+var K256=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+
+function utf8Bytes(str){
+  var out=[],i,c,c2;
+  for(i=0;i<str.length;i++){
+    c=str.charCodeAt(i);
+    if(c<0x80){ out.push(c); }
+    else if(c<0x800){ out.push(0xC0|(c>>6),0x80|(c&63)); }
+    else if(c<0xD800||c>=0xE000){ out.push(0xE0|(c>>12),0x80|((c>>6)&63),0x80|(c&63)); }
+    else { i++; c2=str.charCodeAt(i); c=0x10000+(((c&0x3FF)<<10)|(c2&0x3FF));
+           out.push(0xF0|(c>>18),0x80|((c>>12)&63),0x80|((c>>6)&63),0x80|(c&63)); }
+  }
+  return out;
+}
+function rr(v,n){ return (v>>>n)|(v<<(32-n)); }
+function sha256(str){
+  var b=utf8Bytes(str), bitLen=b.length*8, i,t;
+  b.push(0x80);
+  while(b.length%64!==56) b.push(0);
+  var hi=Math.floor(bitLen/4294967296), lo=bitLen>>>0;
+  b.push((hi>>>24)&255,(hi>>>16)&255,(hi>>>8)&255,hi&255,
+         (lo>>>24)&255,(lo>>>16)&255,(lo>>>8)&255,lo&255);
+  var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  var w=new Array(64);
+  for(i=0;i<b.length;i+=64){
+    for(t=0;t<16;t++) w[t]=((b[i+4*t]<<24)|(b[i+4*t+1]<<16)|(b[i+4*t+2]<<8)|b[i+4*t+3])|0;
+    for(t=16;t<64;t++){
+      var s0=rr(w[t-15],7)^rr(w[t-15],18)^(w[t-15]>>>3);
+      var s1=rr(w[t-2],17)^rr(w[t-2],19)^(w[t-2]>>>10);
+      w[t]=(((w[t-16]+s0)|0)+((w[t-7]+s1)|0))|0;
+    }
+    var a=H[0],bv=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+    for(t=0;t<64;t++){
+      var S1=rr(e,6)^rr(e,11)^rr(e,25);
+      var ch=(e&f)^((~e)&g);
+      var t1=(((h+S1)|0)+((ch+K256[t])|0)+w[t])|0;
+      var S0=rr(a,2)^rr(a,13)^rr(a,22);
+      var mj=(a&bv)^(a&c)^(bv&c);
+      var t2=(S0+mj)|0;
+      h=g; g=f; f=e; e=(d+t1)|0; d=c; c=bv; bv=a; a=(t1+t2)|0;
+    }
+    H[0]=(H[0]+a)|0; H[1]=(H[1]+bv)|0; H[2]=(H[2]+c)|0; H[3]=(H[3]+d)|0;
+    H[4]=(H[4]+e)|0; H[5]=(H[5]+f)|0; H[6]=(H[6]+g)|0; H[7]=(H[7]+h)|0;
+  }
+  var out="";
+  for(i=0;i<8;i++) out += ("00000000"+((H[i]>>>0).toString(16))).slice(-8);
+  return out;
+}
+
 /* ============ i18n ============ */
 var T = {
-  en:{
-    "soko.h":"Today's market","soko.s":"Lots open for bidding across all live nodes.",
-    "soko.open":"Open lots",
-    "soko.dis":"Demonstration build. Prices, bids and counterparties are simulated on-device — nothing is transmitted and no real trade can be executed.",
-    "reg.h":"Register an animal","reg.s":"Tag, grade and list an animal. Works with no signal — entries queue and sync later.",
-    "reg.scan":"Tap to read ear tag","reg.scanh":"NFC / RFID reader · hold against the tag",
-    "reg.grade":"Grading","reg.species":"Species","reg.cattle":"Cattle","reg.goat":"Goat","reg.sheep":"Sheep",
-    "reg.sex":"Sex","reg.male":"Male","reg.female":"Female","reg.weight":"Live weight",
-    "reg.age":"Age by dentition","reg.a1":"0 teeth","reg.a2":"2 teeth","reg.a3":"4 teeth","reg.a4":"6+ teeth",
-    "reg.bcs":"Body condition score","reg.node":"Market node","reg.lot":"Lot code",
-    "reg.list":"List on the exchange","reg.cancel":"Cancel",
-    "cus.h":"Custody & receipts","cus.s":"Livestock Deposit Receipts held in custody. Each one is pledgeable collateral.",
-    "cus.held":"Receipts held",
-    "cus.dis":"An LDR is a transferable electronic document of title over a graded lot held at a licensed holding ground. Advances are shown at 80% of assessed index value; the insurer carries first loss on mortality. Illustrative figures only — not a credit offer.",
-    "idx.h":"Price index","idx.s":"Settled-price index by grade. This is the number a bank marks collateral against.",
-    "idx.cattle":"Cattle — TZS per head","idx.shoat":"Goats & sheep — TZS per head","idx.node":"Same grade, by node",
-    "tab.soko":"Market","tab.sajili":"Register","tab.zizi":"Custody","tab.bei":"Prices",
-    "sh.bids":"Bid book","sh.place":"Place bid","sh.accept":"Accept best bid & settle",
-    "sh.node":"Node","sh.head":"Head","sh.grade":"Grade","sh.seller":"Seller","sh.custodian":"Custodian",
-    "sh.last":"Last settled","sh.best":"Best bid","sh.status":"Status","sh.issued":"Issued",
-    "sh.days":"Days in custody","sh.assessed":"Assessed value","sh.advance":"Advance available (80%)",
-    "sh.tenor":"Tenor","sh.finance":"Request finance","sh.share":"Share settlement note",
-    "toast.listed":"Lot listed. Bids open at the next session.",
-    "toast.settled":"Settled. Funds released from escrow; LDR issued.",
-    "toast.bid":"Bid placed and held in escrow.",
-    "toast.fin":"Finance request queued for the lender panel.",
-    "toast.queued":"No signal — saved on device, will sync.",
-    "empty.ldr":"No receipts yet. Settle a lot on the market tab and its LDR appears here.",
-    "st.open":"Open","st.custody":"In custody","st.financed":"Financed"
-  },
   sw:{
-    "soko.h":"Soko la leo","soko.s":"Mifugo iliyoorodheshwa kwenye minada yote hai.",
-    "soko.open":"Mifugo iliyo wazi",
-    "soko.dis":"Toleo la maonyesho. Bei, zabuni na wanunuzi vimetengenezwa kwenye simu — hakuna kinachotumwa na hakuna biashara halisi inayoweza kufanyika.",
-    "reg.h":"Sajili mnyama","reg.s":"Weka alama, panga daraja na orodhesha. Hufanya kazi bila mtandao — taarifa husubiri na kutumwa baadaye.",
-    "reg.scan":"Gusa kusoma hereni","reg.scanh":"Kisomaji cha NFC / RFID · shikilia karibu na hereni",
+    "lot.h":"Fungu lililowekwa dhamana","lot.s":"Hali ya dhamana leo, dhidi ya kile mkopeshaji anadai leo.",
+    "lot.cover":"Kinga leo",
+    "lot.coverfoot":"100% ni pale mkopeshaji analipwa kamili baada ya ushuru na gharama za zizi. Chini ya hapo ni hasara.",
+    "lot.day":"Siku","lot.head":"Mifugo iliyosajiliwa","lot.present":"Waliohesabiwa mwisho",
+    "lot.value":"Thamani ya sasa","lot.need":"Inayohitajika leo","lot.gap":"Ziada juu ya kiwango",
+    "lot.trig":"Kiwango cha lazima, kinapanda kila siku",
+    "lot.trigfoot":"Gharama za zizi na riba hujilimbikiza. Kiwango cha siku ya kwanza si cha siku ya 45.",
+    "lot.setup":"Mpangilio","lot.draw":"Tarehe ya mkopo","lot.agent":"Jina la afisa",
+    "lot.dis":"Thamani hutumia bei ya kuingia ya <b>TZS 742,000</b> kwa kichwa hadi bei halisi itakapowekwa. Si ahadi ya mkopo, wala si ushauri wa uwekezaji.",
+    "reg.h":"Sajili mnyama kwenye fungu","reg.s":"Kila mnyama anahitaji hereni, picha na mahali. Bila hivyo hasajiliwi.",
+    "reg.tag":"Namba ya hereni","reg.taghelp":"Andika kwa mkono. Kisomaji cha NFC hakijawekwa kwenye toleo hili.",
+    "reg.evid":"Ushahidi","reg.photo":"Piga picha ya mnyama","reg.photoh":"Lazima",
+    "reg.gps":"Chukua mahali","reg.gpsh":"Lazima",
     "reg.grade":"Upangaji wa daraja","reg.species":"Aina","reg.cattle":"Ng'ombe","reg.goat":"Mbuzi","reg.sheep":"Kondoo",
     "reg.sex":"Jinsia","reg.male":"Dume","reg.female":"Jike","reg.weight":"Uzito hai",
     "reg.age":"Umri kwa meno","reg.a1":"Meno 0","reg.a2":"Meno 2","reg.a3":"Meno 4","reg.a4":"Meno 6+",
-    "reg.bcs":"Alama ya hali ya mwili","reg.node":"Mnada","reg.lot":"Namba ya fungu",
-    "reg.list":"Orodhesha sokoni","reg.cancel":"Ghairi",
-    "cus.h":"Zizi na hati","cus.s":"Hati za Amana ya Mifugo zilizohifadhiwa. Kila moja ni dhamana ya mkopo.",
-    "cus.held":"Hati zilizopo",
-    "cus.dis":"Hati ya Amana ya Mifugo ni hati ya umiliki inayohamishika juu ya fungu lililopangwa daraja na kuhifadhiwa kwenye zizi lenye leseni. Mikopo huonyeshwa kwa 80% ya thamani ya soko; bima hubeba hasara ya kwanza ikitokea kifo. Ni mfano tu — si ahadi ya mkopo.",
-    "idx.h":"Bei ya soko","idx.s":"Kielelezo cha bei zilizolipwa kwa daraja. Hii ndiyo namba benki hutumia kupima dhamana.",
-    "idx.cattle":"Ng'ombe — TZS kwa kichwa","idx.shoat":"Mbuzi na kondoo — TZS kwa kichwa","idx.node":"Daraja moja, kwa mnada",
-    "tab.soko":"Soko","tab.sajili":"Sajili","tab.zizi":"Zizi","tab.bei":"Bei",
-    "sh.bids":"Daftari la zabuni","sh.place":"Weka zabuni","sh.accept":"Kubali zabuni bora na malizia",
-    "sh.node":"Mnada","sh.head":"Idadi","sh.grade":"Daraja","sh.seller":"Muuzaji","sh.custodian":"Mhifadhi",
-    "sh.last":"Bei ya mwisho","sh.best":"Zabuni bora","sh.status":"Hali","sh.issued":"Ilitolewa",
-    "sh.days":"Siku zizini","sh.assessed":"Thamani iliyokadiriwa","sh.advance":"Mkopo unaopatikana (80%)",
-    "sh.tenor":"Muda","sh.finance":"Omba mkopo","sh.share":"Tuma hati ya malipo",
-    "toast.listed":"Fungu limeorodheshwa. Zabuni zitafunguliwa kikao kijacho.",
-    "toast.settled":"Imekamilika. Fedha zimetolewa; hati imetolewa.",
-    "toast.bid":"Zabuni imewekwa na kushikiliwa.",
-    "toast.fin":"Ombi la mkopo limepelekwa kwa wakopeshaji.",
-    "toast.queued":"Hakuna mtandao — imehifadhiwa kwenye simu, itatumwa.",
-    "empty.ldr":"Hakuna hati bado. Maliza mnada kwenye kichupo cha Soko na hati yake itaonekana hapa.",
-    "st.open":"Wazi","st.custody":"Zizini","st.financed":"Imekopeshwa"
+    "reg.bcs":"Alama ya hali ya mwili","reg.keeper":"Mfugaji","reg.kname":"Jina","reg.kid":"Namba ya NIDA",
+    "reg.unver":"Haijathibitishwa","reg.unverh":" — imeandikwa na afisa, haijaangaliwa na NIDA.",
+    "reg.lot":"Namba ya daraja","reg.save":"Hifadhi kwenye fungu","reg.clear":"Futa fomu",
+    "cnt.h":"Hesabu ya kila wiki","cnt.s":"Tembea zizi, gusa kila hereni. Mkopeshaji anaona jibu, si ahadi.",
+    "cnt.list":"Orodha","cnt.finish":"Maliza hesabu","cnt.reset":"Anza upya","cnt.hist":"Hesabu zilizopita",
+    "rec.h":"Kumbukumbu","rec.s":"Kila kitendo kimefungwa kwenye mnyororo. Kikibadilishwa, mnyororo huvunjika.",
+    "rec.events":"Matukio","rec.headhash":"Alama ya mwisho","rec.chain":"Hali ya mnyororo",
+    "rec.verify":"Thibitisha mnyororo","rec.export":"Toa faili kwa mkopeshaji",
+    "rec.recent":"Matukio ya karibuni","rec.honest":"Toleo hili linafanya nini","rec.wipe":"Futa data yote ya simu hii",
+    "tab.fungu":"Fungu","tab.sajili":"Sajili","tab.hesabu":"Hesabu","tab.rec":"Kumbukumbu",
+    "st.ok":"Salama","st.watch":"Angalia","st.call":"Ongeza dhamana",
+    "s.present":"Yupo","s.missing":"Hayupo","s.dead":"Amekufa","s.pending":"Bado",
+    "t.saved":"Amesajiliwa na kufungwa kwenye mnyororo.",
+    "t.needtag":"Andika namba ya hereni.",
+    "t.duptag":"Hereni hii tayari ipo kwenye fungu.",
+    "t.needphoto":"Picha inahitajika.",
+    "t.needgps":"Mahali panahitajika.",
+    "t.nogps":"Mahali hapajapatikana. Ruhusu GPS, kisha jaribu tena.",
+    "gps.noh":"Mahali hapajapatikana","gps.flag":"Mfano",
+    "gps.nos":"GPS haipatikani hapa. Kwenye simu, ruhusu ruhusa ya mahali. Kwa maonyesho tu, tumia mahali pa mfano — kitakuwa na alama ya MFANO kwenye kumbukumbu milele.",
+    "gps.demo":"Tumia mahali pa mfano","t.demopack":"Kumbukumbu hii ina mahali pa mfano — si ushahidi.",
+    "t.countdone":"Hesabu imekamilika na kuhifadhiwa.",
+    "t.countpend":"Bado kuna mifugo ambayo haijahesabiwa.",
+    "t.chainok":"Mnyororo ni mzima.",
+    "t.chainbad":"MNYORORO UMEVUNJIKA — data imebadilishwa.",
+    "t.exported":"Faili limehifadhiwa: ",
+    "t.exportfail":"Faili halikuhifadhiwa. Imetumwa kama maandishi.",
+    "t.wiped":"Data yote imefutwa.",
+    "t.nolot":"Hakuna mnyama kwenye fungu bado.",
+    "e.empty":"Hakuna mnyama bado. Nenda Sajili.",
+    "e.noev":"Hakuna matukio bado.",
+    "e.nohist":"Hakuna hesabu bado.",
+    "h.does":"<b>Linafanya:</b> husajili mnyama mmoja mmoja na hereni, picha, mahali na saa; huhifadhi kwenye simu bila mtandao; hufunga kila kitendo kwenye mnyororo wa alama; huhesabu kinga kwa kutumia gharama zinazojilimbikiza; hutoa faili moja kwa mkopeshaji.",
+    "h.doesnt":"<b>Halifanyi:</b> halithibitishi NIDA; halina seva wala mtandao — data ipo kwenye simu hii pekee; halina malipo wala pesa za simu; halina bima; halitoi hati ya umiliki. Kinga hutumia bei ya kuingia, si bei ya soko ya leo."
+  },
+  en:{
+    "lot.h":"The pledged lot","lot.s":"Where the security stands today, against what the lender is owed today.",
+    "lot.cover":"Cover today",
+    "lot.coverfoot":"100% is the point where the lender is repaid in full after cess and custody. Below that is a loss.",
+    "lot.day":"Day","lot.head":"Head enrolled","lot.present":"Present at last count",
+    "lot.value":"Value today","lot.need":"Needed today","lot.gap":"Headroom over the line",
+    "lot.trig":"The line the lot must clear, and it rises daily",
+    "lot.trigfoot":"Custody and interest accrue. The day-1 line is not the day-45 line.",
+    "lot.setup":"Setup","lot.draw":"Drawdown date","lot.agent":"Field agent name",
+    "lot.dis":"Value uses the entry index of <b>TZS 742,000</b> per head until a real mark is supplied. Not a credit offer and not investment advice.",
+    "reg.h":"Enrol an animal into the lot","reg.s":"Every animal needs a tag, a photo and a place. Without them it is not enrolled.",
+    "reg.tag":"Ear tag number","reg.taghelp":"Typed by hand. No NFC reader is fitted in this build.",
+    "reg.evid":"Evidence","reg.photo":"Photograph the animal","reg.photoh":"Required",
+    "reg.gps":"Capture location","reg.gpsh":"Required",
+    "reg.grade":"Grading","reg.species":"Species","reg.cattle":"Cattle","reg.goat":"Goat","reg.sheep":"Sheep",
+    "reg.sex":"Sex","reg.male":"Male","reg.female":"Female","reg.weight":"Live weight",
+    "reg.age":"Age by dentition","reg.a1":"0 teeth","reg.a2":"2 teeth","reg.a3":"4 teeth","reg.a4":"6+ teeth",
+    "reg.bcs":"Body condition score","reg.keeper":"Keeper","reg.kname":"Name","reg.kid":"National ID number",
+    "reg.unver":"Unverified","reg.unverh":" — typed by the agent, not checked against NIDA.",
+    "reg.lot":"Grade code","reg.save":"Save into the lot","reg.clear":"Clear form",
+    "cnt.h":"Weekly reconciliation","cnt.s":"Walk the pen, tap every tag. The lender sees an answer, not an assurance.",
+    "cnt.list":"Roll","cnt.finish":"Finish count","cnt.reset":"Start over","cnt.hist":"Past counts",
+    "rec.h":"The record","rec.s":"Every action is sealed into a chain. Change one and the chain breaks.",
+    "rec.events":"Events","rec.headhash":"Head hash","rec.chain":"Chain status",
+    "rec.verify":"Verify chain","rec.export":"Export pack for the lender",
+    "rec.recent":"Recent events","rec.honest":"What this build does","rec.wipe":"Wipe all data on this phone",
+    "tab.fungu":"Lot","tab.sajili":"Enrol","tab.hesabu":"Count","tab.rec":"Record",
+    "st.ok":"Covered","st.watch":"Watch","st.call":"Margin call",
+    "s.present":"Present","s.missing":"Missing","s.dead":"Dead","s.pending":"Pending",
+    "t.saved":"Enrolled and sealed into the chain.",
+    "t.needtag":"Enter the ear tag number.",
+    "t.duptag":"That tag is already in the lot.",
+    "t.needphoto":"A photograph is required.",
+    "t.needgps":"A location is required.",
+    "t.nogps":"No location available. Allow GPS, then try again.",
+    "gps.noh":"No location available","gps.flag":"Demo",
+    "gps.nos":"GPS is not available here. On a phone, allow the location permission. For a demonstration only, use a sample position — it is marked DEMO in the record permanently.",
+    "gps.demo":"Use a sample location","t.demopack":"This record contains sample locations — it is not evidence.",
+    "t.countdone":"Count complete and recorded.",
+    "t.countpend":"Some animals have not been marked yet.",
+    "t.chainok":"Chain intact.",
+    "t.chainbad":"CHAIN BROKEN — the record has been altered.",
+    "t.exported":"Saved to: ",
+    "t.exportfail":"Could not write the file. Sent as text instead.",
+    "t.wiped":"All data wiped.",
+    "t.nolot":"No animals in the lot yet.",
+    "e.empty":"No animals yet. Go to Enrol.",
+    "e.noev":"No events yet.",
+    "e.nohist":"No counts yet.",
+    "h.does":"<b>It does:</b> enrol animals one by one with tag, photo, location and time; store them on the phone with no network; seal every action into a hash chain; compute cover against accruing senior costs; export one file for the lender.",
+    "h.doesnt":"<b>It does not:</b> verify NIDA; talk to any server — the data lives on this phone only; move money or mobile money; arrange insurance; issue a document of title. Cover uses the entry index, not today's market price."
   }
 };
 var lang = "sw";
-function t(k){ return (T[lang] && T[lang][k]) || (T.en[k]) || k; }
-
-function applyLang(){
-  document.documentElement.lang = lang;
-  document.getElementById("langBtn").textContent = lang === "sw" ? "EN" : "SW";
-  Array.prototype.forEach.call(document.querySelectorAll("[data-t]"), function(el){
-    el.textContent = t(el.getAttribute("data-t"));
-  });
-  // the estimate line keeps its inline <b> nodes, so rebuild it by hand
-  var est = document.querySelector("[data-t-html]");
-  if (est) {
-    est.innerHTML = lang === "sw"
-      ? 'Thamani ya daraja hili <b class="num" id="estVal">—</b> · mkopo kwa 80% <b class="num" id="advVal">—</b>'
-      : 'Index value for this grade <b class="num" id="estVal">—</b> · advance at 80% <b class="num" id="advVal">—</b>';
-  }
-  renderAll();
-}
+function t(k){ return (T[lang] && T[lang][k]) || T.en[k] || k; }
 
 /* ============ device bridge ============ */
 var A = (typeof window.Android !== "undefined") ? window.Android : null;
-function haptic(ms){ try { if (A && A.haptic) A.haptic(ms || 18); } catch(e){} }
+function haptic(ms){ try{ if(A && A.haptic) A.haptic(ms||18); }catch(e){} }
 
 /* ============ helpers ============ */
-function fmt(n){ return Math.round(n).toLocaleString("en-US"); }
 function el(id){ return document.getElementById(id); }
+function fmt(n){ return Math.round(n).toLocaleString("en-US"); }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+function pad3(n){ return ("00"+n).slice(-3); }
+function isoDay(ts){ var d=new Date(ts); return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2); }
+function shortHash(h){ return h ? h.slice(0,12) : "—"; }
 
 var toastTimer;
-function toast(msg, warn){
+function toast(msg, bad){
   var x = el("toast");
   x.textContent = msg;
-  x.className = warn ? "on warn" : "on";
+  x.className = bad ? "on bad" : "on";
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(function(){ x.className = warn ? "warn" : ""; }, 2800);
+  toastTimer = setTimeout(function(){ x.className = bad ? "bad" : ""; }, 3200);
 }
 
-/* ============ price index ============ */
-// TZS per head, by species-sex-weightband. Base figures track the memo: cattle ~700k, shoats ~120k.
+/* ============ grading (unchanged — this part was always real) ============ */
 var INDEX = {
-  "C-M-250-300": 585000, "C-M-300-350": 742000, "C-M-350-420": 968000, "C-M-420-999": 1145000,
-  "C-F-200-250": 425000, "C-F-250-300": 508000, "C-F-300-350": 655000, "C-F-350-420": 830000,
-  "S-M-020-030": 118000, "S-M-030-045": 158000, "S-F-020-030": 104000, "S-F-030-045": 139000,
-  "P-M-020-030": 112000, "P-M-030-045": 149000, "P-F-020-030":  98000, "P-F-030-045": 131000
+  "C-M-250-300":585000,"C-M-300-350":742000,"C-M-350-420":968000,"C-M-420-999":1145000,
+  "C-F-200-250":425000,"C-F-250-300":508000,"C-F-300-350":655000,"C-F-350-420":830000,
+  "S-M-020-030":118000,"S-M-030-045":158000,"S-F-020-030":104000,"S-F-030-045":139000,
+  "P-M-020-030":112000,"P-M-030-045":149000,"P-F-020-030":98000,"P-F-030-045":131000
 };
-var BCS_ADJ = {1:0.72, 2:0.87, 3:1.00, 4:1.09, 5:1.13};
-var AGE_ADJ = {1:0.94, 2:1.00, 3:0.97, 4:0.88};
-var NODE_ADJ = {"Nyamatala":0.97,"Mhunze":0.96,"Bariadi":0.95,"Kizota":1.03,"Pugu":1.12,"Meserani":1.05};
+var BCS_ADJ={1:0.72,2:0.87,3:1.00,4:1.09,5:1.13};
+var AGE_ADJ={1:0.94,2:1.00,3:0.97,4:0.88};
+var CATTLE_BANDS=[[250,300],[300,350],[350,420],[420,999]];
+var SHOAT_BANDS=[[20,30],[30,45]];
 
-var CATTLE_BANDS = [[250,300],[300,350],[350,420],[420,999]];
-var SHOAT_BANDS  = [[20,30],[30,45]];
-
-function bandFor(sp, kg){
-  var bands = (sp === "C") ? CATTLE_BANDS : SHOAT_BANDS;
-  for (var i=0;i<bands.length;i++){
-    if (kg >= bands[i][0] && kg < bands[i][1]) return bands[i];
-  }
-  return bands[kg < bands[0][0] ? 0 : bands.length-1];
+function bandFor(sp,kg){
+  var bands = (sp==="C") ? CATTLE_BANDS : SHOAT_BANDS;
+  for(var i=0;i<bands.length;i++){ if(kg>=bands[i][0] && kg<bands[i][1]) return bands[i]; }
+  return bands[kg<bands[0][0] ? 0 : bands.length-1];
 }
-function pad3(n){ return ("00" + n).slice(-3); }
-
 function lotCode(f){
-  var b = bandFor(f.species, f.weight);
-  return "TZ-" + f.species + "-" + f.sex + f.age + "-" + pad3(b[0]) + "-" + pad3(b[1]) + "-BCS" + f.bcs;
+  var b=bandFor(f.species,f.weight);
+  return "TZ-"+f.species+"-"+f.sex+f.age+"-"+pad3(b[0])+"-"+pad3(b[1])+"-BCS"+f.bcs;
 }
-function indexKey(f){
-  var b = bandFor(f.species, f.weight);
-  return f.species + "-" + f.sex + "-" + pad3(b[0]) + "-" + pad3(b[1]);
-}
+function indexKey(f){ var b=bandFor(f.species,f.weight); return f.species+"-"+f.sex+"-"+pad3(b[0])+"-"+pad3(b[1]); }
 function valueOf(f){
   var base = INDEX[indexKey(f)] || 500000;
-  return base * (BCS_ADJ[f.bcs]||1) * (AGE_ADJ[f.age]||1) * (NODE_ADJ[f.node]||1);
+  return base * (BCS_ADJ[f.bcs]||1) * (AGE_ADJ[f.age]||1);
 }
 
-/* ============ state ============ */
-var seed = 20260808;
-function rnd(){ seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }
+/* ============ persistent state ============ */
+var KEY = "mnada.custody.v2";
+var S = null;
 
-var BUYERS = ["Nyanza Meat Co.","Pugu Traders Ltd","Kibaha Feedlot","Arusha Abattoir",
-              "Dodoma Butchers Assn","Coastal Export Co.","Uyole Meats","Themi Hotels Supply"];
+function blankState(){
+  return { v:2, drawTs:null, agent:"", animals:[], counts:[], log:[], marks:{} };
+}
+function load(){
+  try{
+    var raw = localStorage.getItem(KEY);
+    S = raw ? JSON.parse(raw) : blankState();
+    if(!S || S.v !== 2) S = blankState();
+    if(!S.marks) S.marks = {};
+  }catch(e){ S = blankState(); }
+}
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(S)); }
+  catch(e){ toast("Storage full — export and wipe.", true); }
+}
 
-var lots = [
-  { id:"L1", code:"TZ-C-M2-300-350-BCS3", node:"Nyamatala", head:60, last:742000, chg:1.8,
-    seller:"Mwita J.", bids:[], status:"open" },
-  { id:"L2", code:"TZ-C-F3-250-300-BCS2", node:"Bariadi", head:45, last:508000, chg:-0.9,
-    seller:"Ng'wanaboko S.", bids:[], status:"open" },
-  { id:"L3", code:"TZ-C-M1-350-420-BCS4", node:"Meserani", head:32, last:968000, chg:2.4,
-    seller:"Laizer P.", bids:[], status:"open" },
-  { id:"L4", code:"TZ-S-M2-020-030-BCS3", node:"Igunga", head:180, last:131000, chg:0.6,
-    seller:"Hamisi A.", bids:[], status:"open" },
-  { id:"L5", code:"TZ-C-M2-300-350-BCS3", node:"Kizota", head:55, last:761000, chg:1.1,
-    seller:"Chalamila R.", bids:[], status:"open" }
-];
-
-lots.forEach(function(l){
-  var n = 2 + Math.floor(rnd()*4);
-  for (var i=0;i<n;i++){
-    l.bids.push({ who: BUYERS[Math.floor(rnd()*BUYERS.length)],
-                  amt: Math.round(l.last * (0.94 + rnd()*0.09) / 1000) * 1000 });
+/* ---- the hash chain ---- */
+function headHash(){ return S.log.length ? S.log[S.log.length-1].hash : "0"; }
+function payload(ev){
+  return ev.seq+"|"+ev.ts+"|"+ev.type+"|"+JSON.stringify(ev.data)+"|"+ev.prev;
+}
+function append(type, data){
+  var ev = { seq:S.log.length+1, ts:Date.now(), type:type, data:data, prev:headHash(), hash:"" };
+  ev.hash = sha256(payload(ev));
+  S.log.push(ev);
+  save();
+  return ev;
+}
+function verifyLog(log){
+  var prev = "0";
+  for(var i=0;i<log.length;i++){
+    var ev = log[i];
+    if(!ev || ev.seq !== i+1 || ev.prev !== prev) return i+1;
+    if(sha256(payload(ev)) !== ev.hash) return i+1;
+    prev = ev.hash;
   }
-  l.bids.sort(function(a,b){ return b.amt - a.amt; });
-});
-
-var ldrs = [
-  { id:"LDR-2026-0117", code:"TZ-C-M2-300-350-BCS3", head:40, node:"Mhunze",
-    custodian:"Mhunze Holding Ground", days:12, value:742000*40, status:"custody", financed:false },
-  { id:"LDR-2026-0121", code:"TZ-C-M1-350-420-BCS4", head:18, node:"Kibaha",
-    custodian:"Kibaha Feedlot Ltd", days:31, value:968000*18, status:"financed", financed:true }
-];
-
-var ldrSeq = 122;
-var queued = 0;
-
-/* ============ registration form ============ */
-var form = { species:"C", sex:"M", weight:320, age:2, bcs:3, node:"Nyamatala", tag:null };
-
-function refreshBands(){
-  var b = bandFor(form.species, form.weight);
-  el("wBand").textContent = "BAND " + b[0] + "–" + b[1];
+  return 0;
 }
+/**
+ * Verifies what is actually persisted, not what this session happens to hold in memory.
+ * Anyone tampering with the record edits the stored copy while the app is shut, so checking
+ * the in-memory array would pass on evidence that has already been altered underneath it.
+ */
+function verifyChain(){
+  var stored = null;
+  try{
+    var raw = localStorage.getItem(KEY);
+    if(raw) stored = JSON.parse(raw);
+  }catch(e){ stored = null; }
+  if(!stored || !stored.log) return verifyLog(S.log);
+  var bad = verifyLog(stored.log);
+  if(bad) return bad;
+  // A truncated store is tampering too: the chain that is left verifies perfectly.
+  if(stored.log.length < S.log.length) return stored.log.length + 1;
+  return 0;
+}
+
+/* ---- photo blobs live in IndexedDB, thumbnails in the record ---- */
+var db = null;
+function openDb(cb){
+  if(db){ cb(db); return; }
+  try{
+    var rq = indexedDB.open("mnada-photos", 1);
+    rq.onupgradeneeded = function(){ rq.result.createObjectStore("photos"); };
+    rq.onsuccess = function(){ db = rq.result; cb(db); };
+    rq.onerror = function(){ cb(null); };
+  }catch(e){ cb(null); }
+}
+function putPhoto(sha, dataUrl){
+  openDb(function(d){
+    if(!d) return;
+    try{ d.transaction("photos","readwrite").objectStore("photos").put(dataUrl, sha); }catch(e){}
+  });
+}
+
+/* ============ the arithmetic that matters ============ */
+// Senior costs rank ahead of the lender and accrue daily, so the coverage
+// line is not a constant. This is the accrual-adjusted version.
+function dayNow(){
+  if(!S.drawTs) return 1;
+  var d = Math.floor((Date.now() - S.drawTs)/86400000) + 1;
+  return Math.max(1, d);
+}
+function headCount(){ return S.animals.length; }
+function presentCount(){
+  if(!S.counts.length) return headCount();
+  return S.counts[S.counts.length-1].present;
+}
+function owedOn(day){ return FAC.principal * (1 + FAC.ratePa * day/365); }
+function custodyOn(day, head){ return FAC.custody * head * day; }
+function grossNeeded(day, head){
+  return (owedOn(day) + custodyOn(day, head)) / (1 - FAC.cess);
+}
+function lotValue(){
+  var v = 0;
+  for(var i=0;i<S.animals.length;i++){
+    if(S.animals[i].status === "dead") continue;
+    v += S.animals[i].value;
+  }
+  return v;
+}
+function coverNow(){
+  var head = headCount() || FAC.targetHead;
+  var need = grossNeeded(dayNow(), head);
+  var val = lotValue();
+  return { need:need, val:val, ratio: need>0 ? val/need : 0, day:dayNow(), head:head };
+}
+
+/* ============ rendering ============ */
+function renderChip(){
+  el("localChip").textContent = headCount() + " · " + S.log.length;
+}
+
+function renderLot(){
+  var c = coverNow();
+  var g = el("gauge");
+  var pct = c.ratio*100;
+  var cls = pct >= FAC.callAt*100 ? "ok" : (pct >= FAC.floorAt*100 ? "watch" : "call");
+  var band = pct >= FAC.callAt*100 ? t("st.ok") : (pct >= FAC.floorAt*100 ? t("st.watch") : t("st.call"));
+  g.className = "gauge " + cls;
+  el("coverPct").textContent = c.val ? pct.toFixed(1) + "%" : "—";
+  el("coverBand").textContent = c.val ? band : "—";
+  el("coverBand").className = "band " + (cls==="ok"?"up":(cls==="watch"?"warn":"down"));
+  // the bar runs 90%–140% cover; the mark sits on 100%
+  var lo=90, hi=140;
+  el("coverBar").style.width = Math.max(0, Math.min(100, (pct-lo)/(hi-lo)*100)).toFixed(1) + "%";
+  el("coverMark").style.left = ((100-lo)/(hi-lo)*100).toFixed(1) + "%";
+
+  el("kDay").textContent = c.day + " / " + FAC.tenorDays;
+  el("kHead").textContent = headCount() + " / " + FAC.targetHead;
+  el("kPresent").textContent = S.counts.length ? presentCount() : "—";
+  el("kValue").textContent = "TZS " + fmt(c.val);
+  el("kNeed").textContent = "TZS " + fmt(c.need);
+  var gap = c.val - c.need;
+  el("kGap").textContent = (gap>=0?"+":"−") + " TZS " + fmt(Math.abs(gap));
+  el("kGap").className = "v " + (gap>=0?"up":"down");
+
+  var head = headCount() || FAC.targetHead;
+  var rows = [1, c.day, FAC.tenorDays];
+  var seen = {}, html = '<tr><th data-x>' + (lang==="sw"?"Siku":"Day") + '</th><th>' +
+      (lang==="sw"?"Zizi + riba":"Custody + interest") + '</th><th>' +
+      (lang==="sw"?"Inayohitajika":"Line") + '</th></tr>';
+  rows.forEach(function(d){
+    if(seen[d]) return; seen[d]=1;
+    var senior = custodyOn(d,head) + (owedOn(d) - FAC.principal);
+    var need = grossNeeded(d, head);
+    html += '<tr' + (d===c.day?' class="now"':'') + '><td>' + d + '</td><td>' +
+            fmt(senior/1e6) + 'M</td><td>' + fmt(need/1e6) + 'M</td></tr>';
+  });
+  el("trigTable").innerHTML = html;
+}
+
+function renderCountSummary(){
+  var p=0,m=0,d=0,pend=0;
+  S.animals.forEach(function(a){
+    var mk = S.marks[a.tag];
+    if(mk==="present") p++; else if(mk==="missing") m++; else if(mk==="dead") d++; else pend++;
+  });
+  var total = S.animals.length;
+  if(!total){ el("cntSummary").innerHTML = ""; return; }
+  var shortfall = (m+d)/total;
+  var flagCls = shortfall > 0.01 ? "flag red" : "flag green";
+  el("cntSummary").innerHTML =
+    '<div class="kv"><span class="k">'+t("s.present")+'</span><span class="v up">'+p+'</span></div>' +
+    '<div class="kv"><span class="k">'+t("s.missing")+'</span><span class="v warn">'+m+'</span></div>' +
+    '<div class="kv"><span class="k">'+t("s.dead")+'</span><span class="v down">'+d+'</span></div>' +
+    '<div class="kv"><span class="k">'+t("s.pending")+'</span><span class="v">'+pend+'</span></div>' +
+    '<div class="kv"><span class="k">'+(lang==="sw"?"Upungufu":"Shortfall")+'</span><span class="v">' +
+      (shortfall*100).toFixed(1) + '% <span class="'+flagCls+'">' +
+      (shortfall>0.01 ? (lang==="sw"?"Zaidi ya 1%":"Over 1%") : (lang==="sw"?"Ndani ya 1%":"Within 1%")) +
+    '</span></span></div>';
+}
+
+function renderCount(){
+  var list = el("cntList");
+  if(!S.animals.length){
+    list.innerHTML = '<div class="empty">' + t("e.empty") + '</div>';
+    el("cntSummary").innerHTML = '';
+  } else {
+    var rows = S.animals.map(function(a){
+      var mk = S.marks[a.tag] || "";
+      var thumb = a.thumb ? '<img src="'+a.thumb+'" alt="">' : '';
+      return '<div class="crow" data-tag="'+esc(a.tag)+'">' +
+        '<div class="th">'+thumb+'</div>' +
+        '<div class="grow"><div class="tg">'+esc(a.tag)+'</div>' +
+        '<div class="meta">'+esc(a.code)+'</div></div>' +
+        '<div class="mk">' +
+          '<button type="button" data-s="present"'+(mk==="present"?' class="on"':'')+'>&#10003;</button>' +
+          '<button type="button" data-s="missing"'+(mk==="missing"?' class="on"':'')+'>?</button>' +
+          '<button type="button" data-s="dead"'+(mk==="dead"?' class="on"':'')+'>&#10007;</button>' +
+        '</div></div>';
+    }).join("");
+    list.innerHTML = rows;
+    renderCountSummary();
+  }
+
+  var hist = el("cntHist");
+  if(!S.counts.length){ hist.innerHTML = '<div class="empty">' + t("e.nohist") + '</div>'; }
+  else {
+    hist.innerHTML = S.counts.slice().reverse().map(function(c){
+      var bad = c.total ? ((c.missing+c.dead)/c.total > 0.01) : false;
+      return '<div class="card"><div class="row between">' +
+        '<div class="grow"><div class="tg num">'+isoDay(c.ts)+'</div>' +
+        '<div class="meta">'+c.present+' '+t("s.present").toLowerCase()+' · '+c.missing+' '+t("s.missing").toLowerCase()+' · '+c.dead+' '+t("s.dead").toLowerCase()+'</div></div>' +
+        '<span class="'+(bad?"flag red":"flag green")+'">'+((c.total?((c.missing+c.dead)/c.total*100):0).toFixed(1))+'%</span>' +
+      '</div></div>';
+    }).join("");
+  }
+}
+
+function renderRecord(){
+  el("kEvents").textContent = S.log.length;
+  el("kHead2").textContent = shortHash(headHash());
+  var evs = el("evList");
+  if(!S.log.length){ evs.innerHTML = '<div class="empty">' + t("e.noev") + '</div>'; }
+  else {
+    evs.innerHTML = S.log.slice(-12).reverse().map(function(ev){
+      var d = new Date(ev.ts);
+      return '<div class="ev"><span class="ty">'+esc(ev.type)+'</span> · ' +
+        isoDay(ev.ts) + " " + ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2) +
+        '<div class="h">#'+ev.seq+' '+shortHash(ev.hash)+'</div></div>';
+    }).join("");
+  }
+  var demo = demoCount();
+  el("honestCard").innerHTML =
+    (demo ? '<p style="margin:0 0 10px;font-size:.84rem;line-height:1.65"><span class="flag">' +
+       t("gps.flag") + '</span> ' + t("t.demopack") + '</p>' : '') +
+    '<p style="margin:0 0 10px;font-size:.84rem;line-height:1.65">' + t("h.does") + '</p>' +
+    '<p style="margin:0;font-size:.84rem;line-height:1.65;color:var(--txt2)">' + t("h.doesnt") + '</p>';
+}
+
+function renderAll(){ renderChip(); renderLot(); renderCount(); renderRecord(); refreshPreview(); }
+
+/* ============ enrolment form ============ */
+var form = { species:"C", sex:"M", weight:320, age:2, bcs:3 };
+var pending = { photoSha:null, thumb:null, lat:null, lon:null, acc:null, locTs:null, locSource:null };
+
 function refreshPreview(){
-  refreshBands();
-  el("lotPreview").textContent = lotCode(form);
+  var b = bandFor(form.species, form.weight);
+  var wb = el("wBand"); if(wb) wb.textContent = "BAND " + b[0] + "–" + b[1];
+  var lp = el("lotPreview"); if(lp) lp.textContent = lotCode(form);
   var v = valueOf(form);
-  var ev = el("estVal"), av = el("advVal");
-  if (ev) ev.textContent = "TZS " + fmt(v);
-  if (av) av.textContent = "TZS " + fmt(v * 0.8);
+  var est = document.querySelector("[data-t-html='reg.est']");
+  if(est){
+    est.innerHTML = (lang==="sw" ? "Thamani ya daraja hili " : "Index value for this grade ") +
+      '<b class="num">TZS ' + fmt(v) + '</b>';
+  }
 }
 
 function bindSegs(){
   Array.prototype.forEach.call(document.querySelectorAll("[data-seg]"), function(seg){
     var key = seg.getAttribute("data-seg");
     seg.addEventListener("click", function(e){
-      var b = e.target.closest("button");
-      if (!b) return;
+      var b = e.target.closest ? e.target.closest("button") : null;
+      if(!b) return;
       Array.prototype.forEach.call(seg.querySelectorAll("button"), function(x){ x.classList.remove("on"); });
       b.classList.add("on");
       var v = b.getAttribute("data-v");
-      form[key] = (key === "age" || key === "bcs") ? parseInt(v,10) : v;
-      if (key === "species") {
-        form.weight = (form.species === "C") ? 320 : 28;
-        el("wVal").textContent = form.weight;
-      }
+      form[key] = (key==="age"||key==="bcs") ? parseInt(v,10) : v;
+      if(key==="species"){ form.weight = (form.species==="C") ? 320 : 28; el("wVal").textContent = form.weight; }
       haptic(12);
       refreshPreview();
     });
   });
 }
-
 function stepWeight(d){
-  var step = (form.species === "C") ? 10 : 1;
-  var lo = (form.species === "C") ? 150 : 12;
-  var hi = (form.species === "C") ? 600 : 60;
+  var step = (form.species==="C") ? 10 : 1;
+  var lo = (form.species==="C") ? 150 : 12;
+  var hi = (form.species==="C") ? 600 : 60;
   form.weight = Math.max(lo, Math.min(hi, form.weight + d*step));
   el("wVal").textContent = form.weight;
   haptic(8);
   refreshPreview();
 }
 
-/* ============ rendering ============ */
-function statusLabel(s){
-  if (s === "open") return t("st.open");
-  if (s === "financed") return t("st.financed");
-  return t("st.custody");
+/* ---- photo ---- */
+el("capPhoto").addEventListener("click", function(){ haptic(14); el("fileIn").click(); });
+el("fileIn").addEventListener("change", function(){
+  var f = this.files && this.files[0];
+  if(!f) return;
+  var fr = new FileReader();
+  fr.onload = function(){
+    var img = new Image();
+    img.onload = function(){
+      // full frame, capped at 1024px, goes to IndexedDB; a 96px thumb goes in the record
+      pending.photoSha = sha256(shrink(img, 1024, 0.72));
+      pending.thumb = shrink(img, 96, 0.55);
+      putPhoto(pending.photoSha, shrink(img, 1024, 0.72));
+      el("capPhoto").classList.add("done");
+      el("photoIco").innerHTML = '<img src="'+pending.thumb+'" alt="">';
+      el("photoT").textContent = (lang==="sw" ? "Picha imepigwa" : "Photograph captured");
+      el("photoH").textContent = shortHash(pending.photoSha);
+      haptic(30);
+    };
+    img.onerror = function(){ toast(t("t.needphoto"), true); };
+    img.src = fr.result;
+  };
+  fr.readAsDataURL(f);
+  this.value = "";
+});
+function shrink(img, max, q){
+  var w = img.width, h = img.height;
+  var scale = Math.min(1, max/Math.max(w,h));
+  var cv = document.createElement("canvas");
+  cv.width = Math.max(1, Math.round(w*scale));
+  cv.height = Math.max(1, Math.round(h*scale));
+  cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height);
+  return cv.toDataURL("image/jpeg", q);
 }
 
-function renderLots(){
-  var html = lots.map(function(l){
-    var best = l.bids.length ? l.bids[0].amt : 0;
-    var cls = l.chg >= 0 ? "up" : "down";
-    var arrow = l.chg >= 0 ? "▲ +" : "▼ ";
-    return '<div class="card tap" data-lot="' + l.id + '">' +
-      '<div class="row between">' +
-        '<div class="grow">' +
-          '<div class="lotcode">' + l.code + '</div>' +
-          '<div class="meta">' + l.node + ' · ' + l.head + ' ' + (lang==="sw"?"vichwa":"head") +
-            ' · ' + l.bids.length + ' ' + (lang==="sw"?"zabuni":"bids") + '</div>' +
-        '</div>' +
-        '<div>' +
-          '<div class="price">' + fmt(best || l.last) + '</div>' +
-          '<div class="delta ' + cls + '">' + arrow + Math.abs(l.chg).toFixed(1) + '%</div>' +
-        '</div>' +
-      '</div></div>';
-  }).join("");
-  el("lotList").innerHTML = html || '<div class="empty">—</div>';
-}
-
-function renderLdrs(){
-  if (!ldrs.length) { el("ldrList").innerHTML = '<div class="empty">' + t("empty.ldr") + '</div>'; return; }
-  el("ldrList").innerHTML = ldrs.map(function(d){
-    var col = d.financed ? "var(--amber)" : "var(--moss)";
-    return '<div class="card tap" data-ldr="' + d.id + '">' +
-      '<div class="row between">' +
-        '<div class="grow">' +
-          '<div class="lotcode">' + d.id + '</div>' +
-          '<div class="meta">' + d.code + '</div>' +
-          '<div class="meta">' + d.custodian + ' · ' + d.head + ' ' + (lang==="sw"?"vichwa":"head") + '</div>' +
-        '</div>' +
-        '<div>' +
-          '<div class="price">' + fmt(d.value/1e6) + 'M</div>' +
-          '<div class="delta" style="color:' + col + '">' + statusLabel(d.status) + '</div>' +
-        '</div>' +
-      '</div></div>';
-  }).join("");
-}
-
-function sparkline(vals){
-  var w = 260, h = 30, min = Math.min.apply(null,vals), max = Math.max.apply(null,vals);
-  var span = (max - min) || 1;
-  var pts = vals.map(function(v,i){
-    return (i/(vals.length-1)*w).toFixed(1) + "," + (h - (v-min)/span*(h-4) - 2).toFixed(1);
-  }).join(" ");
-  return '<div class="spark"><svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none">' +
-    '<polyline points="' + pts + '" fill="none" stroke="var(--moss)" stroke-width="1.6"/></svg></div>';
-}
-
-function renderIndex(){
-  function block(keys, targetId, showSpark){
-    var max = 0;
-    keys.forEach(function(k){ if (INDEX[k] > max) max = INDEX[k]; });
-    el(targetId).innerHTML = keys.map(function(k){
-      var p = INDEX[k];
-      var parts = k.split("-");
-      var label = parts[0] + "-" + parts[1] + " · " + parseInt(parts[2],10) + "–" + parseInt(parts[3],10) + "kg";
-      var hist = [];
-      var s = p * 0.94;
-      for (var i=0;i<10;i++){ s = s * (1 + (rnd()-0.42)*0.02); hist.push(s); }
-      hist.push(p);
-      return '<div class="idx">' +
-        '<div class="g">' + label + '</div>' +
-        '<div class="p">' + fmt(p) + '</div>' +
-        '<div class="bar"><i style="width:' + (p/max*100).toFixed(0) + '%"></i></div>' +
-        (showSpark ? sparkline(hist) : "") +
-      '</div>';
-    }).join("");
+/* ---- location ---- */
+el("capGps").addEventListener("click", function(){
+  haptic(14);
+  var raw = "";
+  try{ if(A && A.location) raw = A.location(); }catch(e){ raw = ""; }
+  if(raw){
+    try{
+      var o = JSON.parse(raw);
+      setLoc(o.lat, o.lon, o.acc, o.ts, "gps");
+      return;
+    }catch(e){}
   }
-  block(["C-M-250-300","C-M-300-350","C-M-350-420","C-F-250-300","C-F-300-350"], "idxCattle", true);
-  block(["S-M-020-030","S-M-030-045","P-M-020-030","P-F-020-030"], "idxShoat", false);
+  try{ if(A && A.requestLocation) A.requestLocation(); }catch(e){}
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(function(p){
+      setLoc(p.coords.latitude, p.coords.longitude, p.coords.accuracy, p.timestamp, "gps");
+    }, offerDemoLocation, {enableHighAccuracy:true, timeout:8000});
+    return;
+  }
+  offerDemoLocation();
+});
 
-  var ref = INDEX["C-M-300-350"];
-  var nodes = Object.keys(NODE_ADJ);
-  var maxN = 0;
-  nodes.forEach(function(n){ if (ref*NODE_ADJ[n] > maxN) maxN = ref*NODE_ADJ[n]; });
-  el("idxNode").innerHTML = nodes.map(function(n){
-    var p = ref * NODE_ADJ[n];
-    return '<div class="idx">' +
-      '<div class="g">' + n + '</div>' +
-      '<div class="p">' + fmt(p) + '</div>' +
-      '<div class="bar"><i style="width:' + (p/maxN*100).toFixed(0) + '%"></i></div>' +
-      '<div class="n">' + (lang==="sw" ? "TZ-C-M2-300-350-BCS3" : "TZ-C-M2-300-350-BCS3") + '</div>' +
-    '</div>';
-  }).join("");
+/**
+ * A browser opened from a file, or a phone with no fix, cannot give a real position. Rather than
+ * dead-ending the demo, offer an obviously-marked sample position — and carry that mark all the
+ * way into the sealed record, so a pack built this way can never be mistaken for field evidence.
+ */
+function offerDemoLocation(){
+  toast(t("t.nogps"), true);
+  openSheet(
+    '<h2 style="margin-bottom:6px">' + t("gps.noh") + '</h2>' +
+    '<p class="sub">' + t("gps.nos") + '</p>' +
+    '<button class="btn ghost" data-act="demoloc">' + t("gps.demo") + '</button>'
+  );
 }
 
-function renderAll(){ renderLots(); renderLdrs(); renderIndex(); refreshPreview(); }
+function setLoc(lat, lon, acc, ts, source){
+  pending.lat = lat; pending.lon = lon; pending.acc = acc;
+  pending.locTs = ts || Date.now();
+  pending.locSource = source || "gps";
+  el("capGps").classList.add("done");
+  el("gpsT").innerHTML = (source === "demo")
+    ? (lang==="sw" ? "Mahali pa mfano " : "Sample location ") + '<span class="flag">' + t("gps.flag") + '</span>'
+    : (lang==="sw" ? "Mahali pamepatikana" : "Location captured");
+  el("gpsH").textContent = lat.toFixed(5) + ", " + lon.toFixed(5) + " ±" + Math.round(acc||0) + "m";
+  haptic(30);
+}
+
+/* ---- save ---- */
+el("saveBtn").addEventListener("click", function(){
+  var tag = (el("tagInput").value || "").trim().toUpperCase();
+  if(!tag){ toast(t("t.needtag"), true); return; }
+  for(var i=0;i<S.animals.length;i++){ if(S.animals[i].tag === tag){ toast(t("t.duptag"), true); return; } }
+  if(!pending.photoSha){ toast(t("t.needphoto"), true); return; }
+  if(pending.lat === null){ toast(t("t.needgps"), true); return; }
+
+  var rec = {
+    tag: tag,
+    code: lotCode(form),
+    species: form.species, sex: form.sex, weight: form.weight, age: form.age, bcs: form.bcs,
+    value: Math.round(valueOf(form)),
+    photoSha: pending.photoSha,
+    thumb: pending.thumb,
+    lat: pending.lat, lon: pending.lon, acc: pending.acc, locTs: pending.locTs,
+    locSource: pending.locSource || "gps",
+    keeperName: (el("keeperName").value||"").trim(),
+    keeperId: (el("keeperId").value||"").trim(),
+    idVerified: false,
+    agent: S.agent || "",
+    ts: Date.now(),
+    status: "present"
+  };
+  S.animals.push(rec);
+  if(!S.drawTs){ S.drawTs = Date.now(); el("drawDate").value = isoDay(S.drawTs); }
+  // the thumbnail is deliberately not hashed into the chain — the photo hash is
+  var sealed = {};
+  Object.keys(rec).forEach(function(k){ if(k!=="thumb") sealed[k]=rec[k]; });
+  append("ENROL", sealed);
+  save();
+  haptic(45);
+  clearForm();
+  renderAll();
+  toast(t("t.saved"));
+});
+
+el("clearBtn").addEventListener("click", function(){ haptic(10); clearForm(); });
+
+function clearForm(){
+  el("tagInput").value = "";
+  el("keeperName").value = "";
+  el("keeperId").value = "";
+  pending = { photoSha:null, thumb:null, lat:null, lon:null, acc:null, locTs:null, locSource:null };
+  el("capPhoto").classList.remove("done");
+  el("capGps").classList.remove("done");
+  el("photoIco").innerHTML = '<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/></svg>';
+  el("photoT").textContent = t("reg.photo");
+  el("photoH").textContent = t("reg.photoh");
+  el("gpsT").textContent = t("reg.gps");
+  el("gpsH").textContent = t("reg.gpsh");
+}
+
+/* ============ reconciliation ============ */
+el("cntList").addEventListener("click", function(e){
+  var b = e.target.closest ? e.target.closest("button[data-s]") : null;
+  if(!b) return;
+  var row = b.closest(".crow");
+  var tag = row.getAttribute("data-tag");
+  S.marks[tag] = b.getAttribute("data-s");
+  save();
+  haptic(12);
+  // Touch only the row that was tapped. Rebuilding 200 rows on every tap of a
+  // 200-head walk is slow on a cheap phone and throws away the scroll position.
+  Array.prototype.forEach.call(row.querySelectorAll("button[data-s]"), function(x){
+    x.classList.toggle("on", x === b);
+  });
+  renderCountSummary();
+});
+
+el("finishBtn").addEventListener("click", function(){
+  if(!S.animals.length){ toast(t("t.nolot"), true); return; }
+  var p=0,m=0,d=0,pend=0;
+  S.animals.forEach(function(a){
+    var mk = S.marks[a.tag];
+    if(mk==="present") p++; else if(mk==="missing") m++; else if(mk==="dead") d++; else pend++;
+  });
+  if(pend){ toast(t("t.countpend"), true); return; }
+  // a dead animal leaves the lot value; a missing one is a default event, not a write-off
+  S.animals.forEach(function(a){ if(S.marks[a.tag]==="dead") a.status = "dead"; else a.status = S.marks[a.tag]; });
+  var c = { ts:Date.now(), total:S.animals.length, present:p, missing:m, dead:d,
+            agent:S.agent||"", day:dayNow() };
+  S.counts.push(c);
+  append("COUNT", c);
+  S.marks = {};
+  save();
+  haptic(50);
+  renderAll();
+  toast(t("t.countdone"));
+});
+
+el("resetCntBtn").addEventListener("click", function(){
+  S.marks = {}; save(); haptic(12); renderCount();
+});
+
+/* ============ record: verify, export, wipe ============ */
+el("verifyBtn").addEventListener("click", function(){
+  haptic(20);
+  var bad = verifyChain();
+  var k = el("kChain");
+  if(bad === 0){ k.textContent = t("t.chainok"); k.className = "v up"; toast(t("t.chainok")); }
+  else { k.textContent = "#" + bad; k.className = "v down"; toast(t("t.chainbad"), true); }
+});
+
+function demoCount(){
+  var n = 0;
+  S.animals.forEach(function(a){ if(a.locSource === "demo") n++; });
+  return n;
+}
+
+function buildPack(){
+  var c = coverNow();
+  var demo = demoCount();
+  return JSON.stringify({
+    format: "mnada-custody-pack",
+    version: 2,
+    // A pack with any sample position in it is a demonstration, and says so first.
+    demonstration: demo > 0,
+    demonstrationNote: demo > 0
+      ? demo + " of " + S.animals.length + " records carry a sample location, not a GPS fix. "
+        + "This pack is a demonstration and must not be relied on as custody evidence."
+      : null,
+    generatedAt: new Date().toISOString(),
+    agent: S.agent || "",
+    facility: FAC,
+    drawdown: S.drawTs ? new Date(S.drawTs).toISOString() : null,
+    day: c.day,
+    position: { head: headCount(), value: Math.round(c.val),
+                grossNeededToday: Math.round(c.need), cover: +(c.ratio).toFixed(4) },
+    animals: S.animals.map(function(a){
+      var o = {}; Object.keys(a).forEach(function(k){ if(k!=="thumb") o[k]=a[k]; }); return o;
+    }),
+    counts: S.counts,
+    log: S.log,
+    chainHead: headHash(),
+    chainValid: verifyChain() === 0,
+    note: "Photographs are held on the capture device, keyed by photoSha. This pack carries the hashes, not the images."
+  }, null, 2);
+}
+
+el("exportBtn").addEventListener("click", function(){
+  haptic(30);
+  var name = "mnada-pack-" + isoDay(Date.now()) + "-" + headHash().slice(0,8) + ".json";
+  var content = buildPack();
+  var path = "";
+  try{ if(A && A.savePack) path = A.savePack(name, content); }catch(e){ path = ""; }
+  if(path){ toast(t("t.exported") + path); return; }
+  try{
+    if(A && A.share){ A.share(name, content); toast(t("t.exportfail"), true); return; }
+  }catch(e){}
+  // browser fallback
+  try{
+    var blob = new Blob([content], {type:"application/json"});
+    var url = URL.createObjectURL(blob);
+    var a2 = document.createElement("a");
+    a2.href = url; a2.download = name; a2.click();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }catch(e){ toast(t("t.exportfail"), true); }
+});
+
+el("wipeBtn").addEventListener("click", function(){
+  openSheet('<h2 style="margin-bottom:8px">' + t("rec.wipe") + '</h2>' +
+    '<p class="sub">' + (lang==="sw"
+      ? "Hakuna nakala nyingine. Toa faili kwanza."
+      : "There is no other copy. Export the pack first.") + '</p>' +
+    '<button class="btn danger" data-act="wipe">' + t("rec.wipe") + '</button>');
+});
+
+el("sheetBody").addEventListener("click", function(e){
+  var b = e.target.closest ? e.target.closest("[data-act]") : null;
+  if(!b) return;
+  if(b.getAttribute("data-act") === "demoloc"){
+    // Nyamatala market, Shinyanga — a real place, an unreal fix, and labelled as such.
+    setLoc(-3.4589, 33.4211, 0, Date.now(), "demo");
+    closeSheet();
+    return;
+  }
+  if(b.getAttribute("data-act") === "wipe"){
+    S = blankState();
+    save();
+    try{ localStorage.removeItem(KEY); }catch(err){}
+    closeSheet();
+    el("drawDate").value = "";
+    el("agentName").value = "";
+    clearForm();
+    renderAll();
+    toast(t("t.wiped"));
+  }
+});
 
 /* ============ sheet ============ */
 var sheetOpen = false;
 function openSheet(html){
   el("sheetBody").innerHTML = html;
-  el("sheet").classList.add("on");
-  el("sheetBg").classList.add("on");
-  sheetOpen = true;
+  el("sheet").classList.add("on"); el("sheetBg").classList.add("on"); sheetOpen = true;
 }
 function closeSheet(){
-  el("sheet").classList.remove("on");
-  el("sheetBg").classList.remove("on");
-  sheetOpen = false;
+  el("sheet").classList.remove("on"); el("sheetBg").classList.remove("on"); sheetOpen = false;
 }
 el("sheetBg").addEventListener("click", closeSheet);
 
-function showLot(id){
-  var l = lots.filter(function(x){ return x.id === id; })[0];
-  if (!l) return;
-  haptic(14);
-  var best = l.bids.length ? l.bids[0].amt : 0;
-  var bidHtml = l.bids.map(function(b,i){
-    return '<div class="bidrow' + (i===0?' best':'') + '"><span class="who">' + b.who +
-           '</span><span class="amt">' + fmt(b.amt) + '</span></div>';
-  }).join("") || '<div class="bidrow"><span class="who">—</span></div>';
-
-  openSheet(
-    '<div class="lotcode" style="font-size:1.05rem">' + l.code + '</div>' +
-    '<div class="meta" style="margin-bottom:12px">' + l.node + '</div>' +
-    '<div class="kv"><span class="k">' + t("sh.head") + '</span><span class="v">' + l.head + '</span></div>' +
-    '<div class="kv"><span class="k">' + t("sh.seller") + '</span><span class="v">' + l.seller + '</span></div>' +
-    '<div class="kv"><span class="k">' + t("sh.last") + '</span><span class="v">' + fmt(l.last) + '</span></div>' +
-    '<div class="kv"><span class="k">' + t("sh.best") + '</span><span class="v up">' + fmt(best) + '</span></div>' +
-    '<div class="lbl">' + t("sh.bids") + '</div>' + bidHtml +
-    '<button class="btn" data-act="settle" data-id="' + l.id + '">' + t("sh.accept") + '</button>' +
-    '<button class="btn ghost" data-act="bid" data-id="' + l.id + '">' + t("sh.place") + '</button>'
-  );
-}
-
-function showLdr(id){
-  var d = ldrs.filter(function(x){ return x.id === id; })[0];
-  if (!d) return;
-  haptic(14);
-  openSheet(
-    '<div class="lotcode" style="font-size:1.05rem">' + d.id + '</div>' +
-    '<div class="meta" style="margin-bottom:12px">' + d.code + '</div>' +
-    '<div class="kv"><span class="k">' + t("sh.custodian") + '</span><span class="v">' + d.custodian + '</span></div>' +
-    '<div class="kv"><span class="k">' + t("sh.head") + '</span><span class="v">' + d.head + '</span></div>' +
-    '<div class="kv"><span class="k">' + t("sh.days") + '</span><span class="v">' + d.days + '</span></div>' +
-    '<div class="kv"><span class="k">' + t("sh.assessed") + '</span><span class="v">TZS ' + fmt(d.value) + '</span></div>' +
-    '<div class="kv"><span class="k">' + t("sh.advance") + '</span><span class="v up">TZS ' + fmt(d.value*0.8) + '</span></div>' +
-    '<div class="kv"><span class="k">' + t("sh.tenor") + '</span><span class="v">45 ' + (lang==="sw"?"siku":"days") + '</span></div>' +
-    '<div class="kv"><span class="k">' + t("sh.status") + '</span><span class="v">' + statusLabel(d.status) + '</span></div>' +
-    (d.financed ? "" : '<button class="btn" data-act="finance" data-id="' + d.id + '">' + t("sh.finance") + '</button>') +
-    '<button class="btn ghost" data-act="share" data-id="' + d.id + '">' + t("sh.share") + '</button>'
-  );
-}
-
-el("sheetBody").addEventListener("click", function(e){
-  var b = e.target.closest("[data-act]");
-  if (!b) return;
-  var act = b.getAttribute("data-act"), id = b.getAttribute("data-id");
-
-  if (act === "bid") {
-    var l = lots.filter(function(x){ return x.id === id; })[0];
-    var top = l.bids.length ? l.bids[0].amt : l.last;
-    l.bids.unshift({ who: (lang==="sw"?"Wewe":"You"), amt: Math.round(top * 1.02/1000)*1000 });
-    l.bids.sort(function(a,b2){ return b2.amt - a.amt; });
-    haptic(30); closeSheet(); renderLots(); toast(t("toast.bid"));
-
-  } else if (act === "settle") {
-    var i = lots.map(function(x){ return x.id; }).indexOf(id);
-    var lot = lots[i];
-    var best = lot.bids.length ? lot.bids[0].amt : lot.last;
-    lots.splice(i,1);
-    ldrSeq++;
-    ldrs.unshift({
-      id: "LDR-2026-0" + ldrSeq, code: lot.code, head: lot.head, node: lot.node,
-      custodian: lot.node + " Holding Ground", days: 0, value: best * lot.head,
-      status: "custody", financed: false
-    });
-    haptic(45); closeSheet(); renderLots(); renderLdrs(); toast(t("toast.settled"));
-    switchTab("zizi");
-
-  } else if (act === "finance") {
-    var d = ldrs.filter(function(x){ return x.id === id; })[0];
-    d.financed = true; d.status = "financed";
-    haptic(30); closeSheet(); renderLdrs(); toast(t("toast.fin"));
-
-  } else if (act === "share") {
-    var r = ldrs.filter(function(x){ return x.id === id; })[0];
-    var body = "MNADA settlement note\n" + r.id + "\n" + r.code + "\n" +
-               r.head + " head at " + r.custodian + "\nAssessed TZS " + fmt(r.value) +
-               "\nAdvance available TZS " + fmt(r.value*0.8) +
-               "\n\nDemonstration build — not a negotiable instrument.";
-    try { if (A && A.share) A.share("MNADA " + r.id, body); else toast(t("toast.queued"), true); }
-    catch(err){ toast(t("toast.queued"), true); }
+/* ============ setup fields ============ */
+el("drawDate").addEventListener("change", function(){
+  var v = this.value;
+  if(!v){ S.drawTs = null; }
+  else {
+    var p = v.split("-");
+    S.drawTs = new Date(+p[0], +p[1]-1, +p[2], 8, 0, 0).getTime();
   }
+  save(); renderLot();
+});
+el("agentName").addEventListener("change", function(){
+  S.agent = (this.value||"").trim(); save();
 });
 
 /* ============ nav ============ */
-var current = "soko";
+var current = "fungu";
 function switchTab(name){
   current = name;
   Array.prototype.forEach.call(document.querySelectorAll(".view"), function(v){
@@ -767,118 +1255,60 @@ function switchTab(name){
   });
   el("scroll").scrollTop = 0;
 }
-
 document.querySelector(".tabs").addEventListener("click", function(e){
-  var b = e.target.closest(".tab");
-  if (!b) return;
+  var b = e.target.closest ? e.target.closest(".tab") : null;
+  if(!b) return;
   haptic(10);
   switchTab(b.getAttribute("data-v"));
 });
 
-el("lotList").addEventListener("click", function(e){
-  var c = e.target.closest("[data-lot]");
-  if (c) showLot(c.getAttribute("data-lot"));
-});
-el("ldrList").addEventListener("click", function(e){
-  var c = e.target.closest("[data-ldr]");
-  if (c) showLdr(c.getAttribute("data-ldr"));
-});
-
-/* ============ register flow ============ */
-el("scanPad").addEventListener("click", function(){
-  haptic(40);
-  var pad = el("scanPad");
-  form.tag = "TZ" + (620000000 + Math.floor(rnd()*9000000));
-  pad.classList.add("done");
-  el("scanT").textContent = form.tag;
-  el("scanH").textContent = lang === "sw"
-    ? "Hereni imesomwa · imeunganishwa na NIDA ya mfugaji"
-    : "Tag read · bound to keeper's National ID";
-  el("regForm").style.display = "block";
-  refreshPreview();
-});
-
-el("wUp").addEventListener("click", function(){ stepWeight(1); });
-el("wDn").addEventListener("click", function(){ stepWeight(-1); });
-
-el("listBtn").addEventListener("click", function(){
-  haptic(45);
-  var v = valueOf(form);
-  lots.unshift({
-    id: "N" + Date.now(), code: lotCode(form), node: form.node, head: 1,
-    last: Math.round(v/1000)*1000, chg: 0, seller: (lang==="sw"?"Wewe":"You"),
-    bids: [], status: "open"
-  });
-  queued++;
-  el("syncChip").className = "chip queued";
-  el("syncChip").textContent = "QUEUE " + queued;
-  setTimeout(function(){
-    queued = 0;
-    el("syncChip").className = "chip sync";
-    el("syncChip").textContent = "SYNC";
-  }, 4200);
-  resetForm();
-  renderLots();
-  switchTab("soko");
-  toast(t("toast.listed"));
-});
-
-el("cancelBtn").addEventListener("click", function(){ haptic(10); resetForm(); });
-
-function resetForm(){
-  form.tag = null;
-  el("regForm").style.display = "none";
-  var pad = el("scanPad");
-  pad.classList.remove("done");
-  el("scanT").textContent = t("reg.scan");
-  el("scanH").textContent = t("reg.scanh");
-}
-
 /* ============ language ============ */
+function applyLang(){
+  document.documentElement.lang = lang;
+  el("langBtn").textContent = (lang === "sw") ? "EN" : "SW";
+  Array.prototype.forEach.call(document.querySelectorAll("[data-t]"), function(e2){
+    e2.textContent = t(e2.getAttribute("data-t"));
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-t-html]"), function(e2){
+    var k = e2.getAttribute("data-t-html");
+    if(k !== "reg.est") e2.innerHTML = t(k);
+  });
+  renderAll();
+}
 el("langBtn").addEventListener("click", function(){
   lang = (lang === "sw") ? "en" : "sw";
   haptic(12);
   applyLang();
-  if (!form.tag) resetForm();
 });
 
 /* ============ hardware back ============ */
 window.MNADA = {
   onBack: function(){
-    if (sheetOpen) { closeSheet(); return true; }
-    if (current !== "soko") { switchTab("soko"); return true; }
+    if(sheetOpen){ closeSheet(); return true; }
+    if(current !== "fungu"){ switchTab("fungu"); return true; }
     return false;
-  }
+  },
+  // Exposed so the same hash can be recomputed outside the app when checking a pack.
+  sha256: sha256,
+  verify: verifyChain
 };
 
 /* ============ boot ============ */
+load();
 bindSegs();
+el("wUp").addEventListener("click", function(){ stepWeight(1); });
+el("wDn").addEventListener("click", function(){ stepWeight(-1); });
+if(S.drawTs) el("drawDate").value = isoDay(S.drawTs);
+el("agentName").value = S.agent || "";
 applyLang();
-try {
-  if (A && A.buildInfo) {
-    el("buildInfo").textContent = A.buildInfo() +
-      " · demonstration build, simulated data, no network access.";
-  } else {
-    el("buildInfo").textContent = "Demonstration build · simulated data · no network access.";
-  }
-} catch(e){
-  el("buildInfo").textContent = "Demonstration build · simulated data · no network access.";
+try{
+  el("buildInfo").textContent = ((A && A.buildInfo) ? A.buildInfo() : "MNADA")
+    + " · " + (lang==="sw"
+        ? "data ipo kwenye simu hii pekee · hakuna seva"
+        : "data on this device only · no server");
+}catch(e){
+  el("buildInfo").textContent = "MNADA · data on this device only · no server";
 }
-
-// Gentle drift on the board so the demo feels live during a pitch.
-setInterval(function(){
-  if (!lots.length) return;
-  var i = Math.floor(rnd()*lots.length);
-  var d = (rnd()-0.45) * 0.011;
-  lots[i].last = Math.round(lots[i].last * (1+d) / 1000) * 1000;
-  lots[i].chg = Math.round((lots[i].chg + d*100)*10)/10;
-  if (lots[i].bids.length && rnd() > 0.55) {
-    lots[i].bids.unshift({ who: BUYERS[Math.floor(rnd()*BUYERS.length)],
-                           amt: Math.round(lots[i].bids[0].amt * (1+Math.abs(d))/1000)*1000 });
-    lots[i].bids.sort(function(a,b){ return b.amt - a.amt; });
-  }
-  if (current === "soko" && !sheetOpen) renderLots();
-}, 3400);
 
 })();
 </script>

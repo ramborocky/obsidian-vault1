@@ -3,6 +3,9 @@
 **Livestock inventory finance secured on a Livestock Deposit Receipt**
 Milestone M6–M9 · MNADA Exchange · Draft 1 · August 2026
 
+> [!warning] Superseded on two points — 10 August 2026
+> [[Pilot Term Sheet — Plain English]] carries the corrections found in [[MNADA — Due Diligence and Gap Analysis]] and **is authoritative where the two disagree**: §8's static 108% trigger must become an accrual-adjusted ladder (~102% day 1 → ~121% day 45), and §10's "21% below expected exit" holds only against a smooth market. §5's LDR should also be recast as a registered security interest. Rebuild this document from the plain-English version, not the reverse.
+
 > **NON-BINDING.** This term sheet is an indicative summary for discussion. It creates no obligation on any party, is subject to the Lender's credit approval, satisfactory due diligence and executed documentation, and must be reviewed by Tanzanian counsel before it is relied on. Figures are illustrative and based on the MNADA index as at the date shown. Nothing here is a credit offer, a commitment to lend, or investment advice.
 
 ---

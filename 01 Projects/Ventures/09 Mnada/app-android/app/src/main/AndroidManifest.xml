@@ -3,6 +3,33 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- Where the animal was seen. Custody evidence without a place is an assertion. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!--
+      There is deliberately NO android.permission.INTERNET. Nothing recorded here leaves the
+      phone except through the export pack the agent hands over. Adding INTERNET is a decision
+      about the pilot's data protection posture, not a build convenience.
+
+      There is also no CAMERA permission: the photograph is taken by the device camera app
+      through ACTION_IMAGE_CAPTURE, which needs none.
+    -->
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+
+    <!-- API 30+ package visibility, so resolveActivity() can find a camera app. -->
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+            <data android:mimeType="image/*" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
