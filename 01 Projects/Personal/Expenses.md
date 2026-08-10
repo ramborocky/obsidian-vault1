@@ -307,7 +307,7 @@ Anything about the House build or the ACPA qualification — neither appears in 
 
 **This single receipt is 3.4× everything else you have received in August put together** (1,600,000 against 471,000) and **77% of all money in this month.**
 
-**It is also the first money in this file large enough to touch the two debts nobody has written down.** AMON took 1,000,000 on 26 July and DMK 200,000 on 27 July — **1,200,000 across two lenders, with no balance, no instalment and no due date recorded anywhere.** The bonus covers both with 400,000 left over. [[00 The Board]] already rates clearing them as the best return available to you; this is the first time it has been possible. Stated once, and left with you.
+**It is also the first money in this file large enough to clear the worst debt in it.** *(Updated 2026-08-10: **AMON is fully paid — 1,000,000, settled, closed.** **DMK is 177,000 outstanding at 5% per day.** See the note below; it changes the priority of everything.)*
 
 #### ✅ It went into the bank — and that is the best news in this file
 
@@ -432,7 +432,7 @@ UNACCOUNTED                  40,868
 - **Money out to other people: 92,000** — Mombasa 45,000, wedding gift 30,000, boarding school 17,000. **33% of everything logged.**
 - **Household 75,032** is the only category buying things that last past the week; the 10,000 sent home today is part of it.
 - **Food & Out 23,500** — coffees 13,000, muffin 5,000, takeaway 4,500. Small against everything above. **Noted once, not raising it again.**
-- **August's only repayment is the 32,000 to the friend.** AMON and DMK have had nothing this month, and neither has a due date recorded. **Say if one is coming** — [[00 The Board]] rates clearing them as the best return available to you.
+- **August's only repayment is the 32,000 to the friend.** ⚠️ *Superseded 2026-08-10:* **AMON is paid in full and closed.** **DMK still holds 177,000 at 5% per day** — see [[The Bonus — Allocation Plan]]. That is 8,850 a day, and it outranks every other use of this money.
 
 ---
 
@@ -471,6 +471,11 @@ UNACCOUNTED                  40,868
 - **2026-08-10 · three flags closed, and one correction worth more than the numbers** — **Coke Zero and plain chips = 3,000** (the two together), **the restaurant tip stays Food & Out** by your instruction — the 8 Aug basket-holder tip stays under Personal, deliberate now rather than accidental, and I will not raise it again — and **the bonus went into the bank.** August: logged **388,032 → 391,032**, 10 Aug **65,900 → 68,900**. Food & Out reaches **75,500**, now 2,000 short of Personal.
 	**The correction: I said ~144,000 of the bonus was exposed to this file's 9% leak. That was wrong once you said "bank."** The leak is a property of *pocket cash* — everything this file has ever lost went missing while you were moving, and money in an account has to be withdrawn before it can go unrecorded. **Real exposure today is about 2,800, not 144,000**: 1,608,000 sits in the bank, 31,100 in pocket. **The moment to watch is the first big withdrawal**, not today.
 	**One flag still open:** whether the 10,000 sent home is the 8 Aug row told twice.
+- **2026-08-10 · the debt picture, corrected by you — one closed, one urgent** — **AMON is paid in full. 1,000,000, settled, no balance.** The "two lenders, 1,200,000, no due dates" finding that has run through this file since 28 July is **half wrong and now retired.**
+	**DMK is 177,000 outstanding at 5% per day.** You also placed it: the 177,000 inside the "3 months ago" 217,000 **is DMK**, so nothing double-counts and the allocation total is unchanged at 1,574,000. **What changes is the order.**
+	**5% a day on 177,000 is 8,850 a day.** For scale: it is **24% of your entire daily living budget**, it is **265,500 a month** — half again the debt itself — and at 21 days the interest alone **overtakes the principal.** The Bank of Tanzania caps microloans at 4% *a month*; this is about **38× that**. It is also worse than the friend's 2,000-on-30,000, which worked out at 3.3%/day and which this file already called the most expensive money in it. **It is not. This is.**
+	**Two things still unknown and they differ by a lot:** whether the 5% is charged on the original 177,000 or on the running balance, and whether 177,000 is principal or principal plus what has already accrued. Simple, the balance on 31 Aug is **362,850**; compounding, it is **493,122**.
+	→ **[[The Bonus — Allocation Plan]]** rewritten: DMK moves ahead of school fees, the bike and everything else.
 - **2026-07-26** — Added a **Food & Out** category (eating and drinking outside the house), split from **Household** (things consumed at home, house help, repairs). Body lotion, shoe repair and the phone went to **Personal**. Say if you'd rather they sat elsewhere — it is your log.
 
 ---
