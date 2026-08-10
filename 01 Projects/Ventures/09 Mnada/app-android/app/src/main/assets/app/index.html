@@ -6,59 +6,112 @@
 <title>MNADA · Uangalizi</title>
 <style>
 :root{
-  --bg:#0B1512; --surface:#111F1A; --surface2:#162922; --line:#1E332B; --line2:#274036;
-  --txt:#E4EDE7; --txt2:#9DB3A9; --txt3:#6F857C;
-  --ochre:#E0973F; --ochre-d:#C8761A; --moss:#56B189; --moss-d:#2E6B51;
-  --red:#D2705F; --red-d:#7A3A30; --amber:#D9A93C; --amber-d:#6B5520;
-  --mono:ui-monospace,"Roboto Mono",Consolas,monospace;
-  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  /* Ground: near-black with a green cast, so a photograph of an animal is the
+     brightest thing on the screen and the chrome gets out of its way. */
+  --bg:#070C0A; --bg2:#0A120F;
+  --surface:#101A16; --surface2:#16241E; --surface3:#1D3029;
+  --line:#1B2A24; --line2:#263C33;
+  --txt:#EDF4F0; --txt2:#9EB5AA; --txt3:#6B8078;
+
+  --ochre:#F0A94A; --ochre2:#D97706; --ochre-d:#A85A0E;
+  --moss:#4ADE9B; --moss2:#16A968; --moss-d:#276B4C;
+  --red:#F2705C; --red2:#C63F2C; --red-d:#7A3025;
+  --amber:#F5C63C; --amber-d:#6E5518;
+
+  --grad-ochre:linear-gradient(135deg,#F5B65E,#D97706);
+  --grad-moss:linear-gradient(135deg,#5FE8A9,#0E8A5C);
+  --grad-card:linear-gradient(158deg,#182A22 0%,#101A16 62%);
+  --grad-deep:linear-gradient(180deg,#0A120F,#070C0A);
+
+  --sh-1:0 1px 2px rgba(0,0,0,.5);
+  --sh-2:0 6px 18px -6px rgba(0,0,0,.66);
+  --sh-3:0 18px 44px -14px rgba(0,0,0,.8);
+  --glow-moss:0 0 34px -6px rgba(74,222,155,.42);
+  --glow-ochre:0 0 34px -6px rgba(240,169,74,.42);
+  --glow-red:0 0 34px -6px rgba(242,112,92,.42);
+
+  --r-s:8px; --r-m:14px; --r-l:20px; --r-xl:26px;
+
+  --mono:ui-monospace,"SF Mono","Roboto Mono",Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
   --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0;height:100%;overflow:hidden}
 body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15px;line-height:1.5;
-     user-select:none;-webkit-user-select:none}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+     user-select:none;-webkit-user-select:none;
+     -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+
+/* one warm light source, top-left, so the whole app sits in a place */
+#app::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(120% 62% at 12% -8%, rgba(240,169,74,.10), transparent 62%),
+    radial-gradient(96% 54% at 92% 4%, rgba(74,222,155,.07), transparent 60%),
+    var(--grad-deep);}
+.topbar,.scroll,.tabs{position:relative;z-index:1}
 
 #app{display:flex;flex-direction:column;height:100%}
 
-.topbar{flex:0 0 auto;padding:calc(var(--safe-t) + 10px) 16px 10px;background:var(--bg);
-        border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
-.brand{font-family:var(--mono);font-weight:700;letter-spacing:.28em;font-size:.82rem}
-.brand span{color:var(--ochre)}
+.topbar{flex:0 0 auto;padding:calc(var(--safe-t) + 12px) 18px 12px;
+        display:flex;align-items:center;gap:10px}
+.brand{font-family:var(--mono);font-weight:700;letter-spacing:.26em;font-size:.86rem;
+       background:var(--grad-ochre);-webkit-background-clip:text;background-clip:text;
+       -webkit-text-fill-color:transparent}
 .topbar .spacer{flex:1}
-.chip{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
-      padding:.24rem .5rem;border:1px solid var(--line2);border-radius:3px;color:var(--txt2);background:transparent}
-.chip.local{color:var(--txt2);border-color:var(--line2)}
-.lang{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;background:transparent;
-      border:1px solid var(--line2);color:var(--txt2);padding:.26rem .5rem;border-radius:3px;cursor:pointer}
-.lang:active{background:var(--surface2)}
+.chip{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;
+      padding:.34rem .6rem;border:1px solid var(--line2);border-radius:999px;
+      color:var(--txt2);background:rgba(255,255,255,.03);backdrop-filter:blur(6px)}
+.lang{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;
+      background:rgba(255,255,255,.03);border:1px solid var(--line2);color:var(--txt2);
+      padding:.34rem .62rem;border-radius:999px;cursor:pointer;transition:.16s}
+.lang:active{background:var(--surface3);transform:scale(.94)}
 
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
-.view{display:none;padding:14px 16px calc(20px + var(--safe-b))}
-.view.on{display:block}
+.view{display:none;padding:6px 18px calc(24px + var(--safe-b))}
+.view.on{display:block;animation:viewIn .34s cubic-bezier(.2,.85,.3,1)}
+@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* the cards stagger in behind the heading rather than all landing at once */
+.view.on > .card,.view.on > .gauge,.view.on > .mosaic,.view.on > .field{animation:cardIn .42s both}
+.view.on > *:nth-child(3){animation-delay:.03s}
+.view.on > *:nth-child(4){animation-delay:.06s}
+.view.on > *:nth-child(5){animation-delay:.09s}
+.view.on > *:nth-child(n+6){animation-delay:.12s}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .view.on,.view.on > *{animation:none!important}
+  .arc .val{transition:none}
+}
 
-.tabs{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,1fr);
-      background:var(--surface);border-top:1px solid var(--line);
-      padding-bottom:var(--safe-b)}
-.tab{background:transparent;border:0;padding:9px 4px 10px;color:var(--txt3);
-     display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;
-     font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase}
-.tab svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.6;
-         stroke-linecap:round;stroke-linejoin:round}
-.tab.on{color:var(--ochre)}
-.tab:active{background:var(--surface2)}
+.tabs{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;
+      background:rgba(10,18,15,.86);backdrop-filter:blur(18px) saturate(1.3);
+      border-top:1px solid var(--line);padding:8px 10px calc(8px + var(--safe-b))}
+.tab{background:transparent;border:0;padding:8px 2px 7px;color:var(--txt3);border-radius:var(--r-m);
+     display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;position:relative;
+     font-family:var(--sans);font-size:.63rem;letter-spacing:.02em;font-weight:600;
+     transition:color .2s,background .2s}
+.tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;
+         stroke-linecap:round;stroke-linejoin:round;transition:transform .24s cubic-bezier(.3,1.5,.5,1)}
+.tab.on{color:var(--ochre);background:rgba(240,169,74,.09)}
+.tab.on svg{transform:translateY(-2px) scale(1.08)}
+.tab.on::after{content:"";position:absolute;top:2px;width:16px;height:2.5px;border-radius:2px;
+               background:var(--grad-ochre);box-shadow:var(--glow-ochre)}
+.tab:active{transform:scale(.93)}
 
-h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
-.sub{color:var(--txt2);font-size:.85rem;margin:0 0 16px}
-.lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;
-     color:var(--txt3);margin:20px 0 8px}
+h2{font-size:1.72rem;margin:0 0 5px;letter-spacing:-.028em;font-weight:700;line-height:1.14}
+.sub{color:var(--txt2);font-size:.9rem;margin:0 0 20px;line-height:1.5}
+.lbl{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+     color:var(--txt3);margin:26px 0 10px;font-weight:700}
 .lbl:first-child{margin-top:0}
 
-.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
-      padding:13px 14px;margin-bottom:9px}
-.card.tap{cursor:pointer}
-.card.tap:active{background:var(--surface2)}
+.card{background:var(--grad-card);border:1px solid var(--line);border-radius:var(--r-l);
+      padding:16px 17px;margin-bottom:11px;box-shadow:var(--sh-2);
+      position:relative;overflow:hidden}
+/* a single hairline of light along the top edge — the thing that reads as "expensive" */
+.card::before{content:"";position:absolute;top:0;left:14px;right:14px;height:1px;
+              background:linear-gradient(90deg,transparent,rgba(255,255,255,.11),transparent)}
+.card.tap{cursor:pointer;transition:transform .16s,box-shadow .16s}
+.card.tap:active{transform:scale(.985);box-shadow:var(--sh-1)}
 
 .row{display:flex;align-items:center;gap:10px}
 .row.between{justify-content:space-between}
@@ -67,46 +120,102 @@ h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
 .meta{font-size:.78rem;color:var(--txt3);margin-top:3px}
 .up{color:var(--moss)} .down{color:var(--red)} .warn{color:var(--amber)}
 
-.btn{display:block;width:100%;padding:13px;border-radius:5px;border:1px solid var(--ochre-d);
-     background:var(--ochre);color:#160C02;font-family:var(--mono);font-size:.78rem;
-     letter-spacing:.11em;text-transform:uppercase;font-weight:700;cursor:pointer;margin-top:14px}
-.btn:active{background:var(--ochre-d)}
-.btn.ghost{background:transparent;color:var(--txt2);border-color:var(--line2)}
-.btn.ghost:active{background:var(--surface2)}
-.btn.danger{background:transparent;color:var(--red);border-color:var(--red-d)}
-.btn:disabled{opacity:.35;pointer-events:none}
+.btn{display:block;width:100%;padding:16px;border-radius:var(--r-m);border:0;
+     background:var(--grad-ochre);color:#1A0E02;font-family:var(--sans);font-size:.94rem;
+     letter-spacing:-.01em;font-weight:700;cursor:pointer;margin-top:14px;
+     box-shadow:0 8px 22px -10px rgba(240,169,74,.7),inset 0 1px 0 rgba(255,255,255,.28);
+     transition:transform .14s,box-shadow .18s,filter .18s}
+.btn:active{transform:scale(.972);box-shadow:0 3px 10px -6px rgba(240,169,74,.6);filter:brightness(.95)}
+.btn.ghost{background:rgba(255,255,255,.035);color:var(--txt);border:1px solid var(--line2);
+           box-shadow:none;font-weight:600}
+.btn.ghost:active{background:var(--surface3)}
+.btn.danger{background:rgba(242,112,92,.09);color:var(--red);border:1px solid var(--red-d);box-shadow:none}
+.btn:disabled{opacity:.3;pointer-events:none;filter:saturate(.4)}
 
-.empty{text-align:center;color:var(--txt3);font-size:.86rem;padding:40px 20px;line-height:1.7}
+.empty{text-align:center;color:var(--txt3);font-size:.88rem;padding:34px 20px;line-height:1.7}
+.empty svg{width:56px;height:56px;stroke:var(--line2);fill:none;stroke-width:1.4;
+           stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px;display:block;
+           margin-left:auto;margin-right:auto}
+
+/* ---------- the lot, as photographs ----------
+   Every animal that has been enrolled, in the order it was enrolled. This is the
+   only screen that shows the lot as a thing rather than as a number. */
+.mosaic{display:grid;grid-template-columns:repeat(auto-fill,minmax(66px,1fr));gap:7px}
+.mtile{position:relative;padding-bottom:100%;border-radius:var(--r-s);overflow:hidden;
+       background:var(--surface2);cursor:pointer;box-shadow:var(--sh-1);transition:transform .16s}
+.mtile:active{transform:scale(.92)}
+.mtile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mtile::after{content:"";position:absolute;inset:0;
+              background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.55))}
+.mtile .dot{position:absolute;right:5px;bottom:5px;width:8px;height:8px;border-radius:50%;
+            z-index:2;box-shadow:0 0 0 2px rgba(0,0,0,.6)}
+.mtile.present .dot{background:var(--moss)}
+.mtile.missing .dot{background:var(--amber)}
+.mtile.dead .dot{background:var(--red)}
+.mtile.dead img{filter:grayscale(1) brightness(.45)}
+.mosaic .more{display:flex;align-items:center;justify-content:center;color:var(--txt2);
+              font-family:var(--mono);font-size:.8rem;background:var(--surface2);
+              position:absolute;inset:0}
+
+.bigpic{width:100%;border-radius:var(--r-m);display:block;margin-bottom:14px;
+        background:var(--surface2);box-shadow:var(--sh-2)}
 
 /* ---------- cover gauge ---------- */
-.gauge{border:1px solid var(--line2);border-radius:8px;background:var(--surface);padding:16px 14px;margin-bottom:10px}
-.gauge .cap{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--txt3)}
-.gauge .big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:2.5rem;line-height:1.1;margin:6px 0 2px}
-.gauge .band{font-size:.82rem}
-.gauge .track{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:12px;position:relative}
-.gauge .track i{display:block;height:100%;background:var(--moss);
-                transition:width .5s cubic-bezier(.2,.8,.3,1),background-color .3s}
-.gauge .track u{position:absolute;top:-3px;width:2px;height:12px;background:var(--txt2);text-decoration:none}
-.gauge.ok .big{color:var(--moss)} .gauge.ok .track i{background:var(--moss)}
-.gauge.watch .big{color:var(--amber)} .gauge.watch .track i{background:var(--amber)}
-.gauge.call .big{color:var(--red)} .gauge.call .track i{background:var(--red)}
-.gauge .foot{font-size:.75rem;color:var(--txt3);margin-top:9px;line-height:1.6}
+.gauge{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--r-xl);
+       background:var(--grad-card);padding:20px 18px 16px;margin-bottom:14px;box-shadow:var(--sh-3)}
+.gauge::before{content:"";position:absolute;top:0;left:18px;right:18px;height:1px;
+               background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent)}
+/* the colour of the state, bled into the top of the card */
+.gauge::after{content:"";position:absolute;top:-58%;left:50%;transform:translateX(-50%);
+              width:150%;height:100%;pointer-events:none;opacity:.5;transition:background .5s}
+.gauge.ok::after{background:radial-gradient(closest-side,rgba(74,222,155,.36),transparent 72%)}
+.gauge.watch::after{background:radial-gradient(closest-side,rgba(245,198,60,.34),transparent 72%)}
+.gauge.call::after{background:radial-gradient(closest-side,rgba(242,112,92,.36),transparent 72%)}
+
+.arcwrap{position:relative;max-width:290px;margin:0 auto}
+.arc{width:100%;display:block;overflow:visible}
+.arc .trk{fill:none;stroke:rgba(255,255,255,.06);stroke-width:15;stroke-linecap:round}
+.arc .val{fill:none;stroke-width:15;stroke-linecap:round;
+          transition:stroke-dashoffset .85s cubic-bezier(.2,.85,.25,1),stroke .45s}
+.gauge.ok   .arc .val{stroke:url(#gMoss); filter:drop-shadow(0 0 9px rgba(74,222,155,.55))}
+.gauge.watch .arc .val{stroke:url(#gAmber);filter:drop-shadow(0 0 9px rgba(245,198,60,.5))}
+.gauge.call .arc .val{stroke:url(#gRed);  filter:drop-shadow(0 0 9px rgba(242,112,92,.55))}
+.arc .mk{stroke:rgba(255,255,255,.42);stroke-width:2.5;stroke-linecap:round}
+
+.arccentre{position:absolute;left:0;right:0;bottom:2px;text-align:center}
+.arccentre .capt{font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;
+                 color:var(--txt3);font-weight:700}
+.arccentre .big{font-family:var(--mono);font-variant-numeric:tabular-nums;
+                font-size:3.1rem;line-height:1;margin:5px 0 3px;letter-spacing:-.045em;font-weight:600}
+.arccentre .band{font-size:.86rem;font-weight:600}
+.gauge.ok .arccentre .big{color:var(--moss)}
+.gauge.watch .arccentre .big{color:var(--amber)}
+.gauge.call .arccentre .big{color:var(--red)}
+.arcends{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;
+         color:var(--txt3);margin:-6px 6px 0}
+/* the break-even tick label, parked on the arc rather than under the middle of the card */
+.arcmklbl{position:absolute;transform:translate(7px,-50%);font-family:var(--mono);
+          font-size:.6rem;color:var(--txt2);white-space:nowrap;pointer-events:none}
+.gauge .foot{font-size:.76rem;color:var(--txt3);margin-top:12px;line-height:1.6;
+             border-top:1px solid var(--line);padding-top:11px}
 
 /* ---------- form ---------- */
 .field{margin-bottom:16px}
 .field > .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;
             color:var(--txt3);display:block;margin-bottom:7px}
-.seg{display:flex;gap:6px;flex-wrap:wrap}
-.seg button{flex:1 1 auto;min-width:56px;padding:9px 6px;border-radius:4px;border:1px solid var(--line2);
-            background:var(--surface);color:var(--txt2);font-family:var(--mono);font-size:.74rem;cursor:pointer}
-.seg button.on{background:var(--moss-d);border-color:var(--moss);color:#EAF5EF}
-.seg button:active{background:var(--surface2)}
+.seg{display:flex;gap:7px;flex-wrap:wrap}
+.seg button{flex:1 1 auto;min-width:58px;padding:12px 8px;border-radius:var(--r-s);
+            border:1px solid var(--line2);background:rgba(255,255,255,.028);color:var(--txt2);
+            font-family:var(--sans);font-size:.84rem;font-weight:600;cursor:pointer;transition:.16s}
+.seg button.on{background:var(--grad-moss);border-color:transparent;color:#04241A;font-weight:700;
+               box-shadow:0 6px 16px -8px rgba(74,222,155,.75),inset 0 1px 0 rgba(255,255,255,.3)}
+.seg button:active{transform:scale(.95)}
 
 input[type=text],input[type=number],input[type=date]{
-  width:100%;padding:11px 12px;border-radius:4px;border:1px solid var(--line2);
-  background:var(--surface);color:var(--txt);font-family:var(--mono);font-size:.92rem;
-  -webkit-user-select:text;user-select:text}
-input:focus{outline:none;border-color:var(--ochre-d)}
+  width:100%;padding:15px 15px;border-radius:var(--r-m);border:1px solid var(--line2);
+  background:rgba(255,255,255,.028);color:var(--txt);font-family:var(--mono);font-size:1rem;
+  -webkit-user-select:text;user-select:text;transition:border-color .18s,box-shadow .18s}
+input:focus{outline:none;border-color:var(--ochre2);box-shadow:0 0 0 3px rgba(240,169,74,.14)}
 input::placeholder{color:var(--txt3)}
 
 .stepper{display:flex;align-items:center;gap:0;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
@@ -125,11 +234,11 @@ input::placeholder{color:var(--txt3)}
 .preview .est b{color:var(--txt);font-family:var(--mono)}
 
 /* ---------- evidence capture ---------- */
-.cap{display:flex;gap:10px;align-items:center;border:1px dashed var(--line2);border-radius:6px;
-     background:var(--surface);padding:11px 12px;cursor:pointer;margin-bottom:8px}
-.cap:active{background:var(--surface2)}
-.cap.done{border-style:solid;border-color:var(--moss-d)}
-.cap .ico{width:38px;height:38px;flex:0 0 auto;border-radius:4px;border:1px solid var(--line2);
+.cap{display:flex;gap:13px;align-items:center;border:1.5px dashed var(--line2);border-radius:var(--r-m);
+     background:rgba(255,255,255,.022);padding:14px;cursor:pointer;margin-bottom:9px;transition:.18s}
+.cap:active{background:var(--surface3);transform:scale(.985)}
+.cap.done{border-style:solid;border-color:var(--moss-d);background:rgba(74,222,155,.07)}
+.cap .ico{width:46px;height:46px;flex:0 0 auto;border-radius:var(--r-s);border:1px solid var(--line2);
           display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg)}
 .cap .ico svg{width:20px;height:20px;stroke:var(--ochre);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .cap.done .ico svg{stroke:var(--moss)}
@@ -158,10 +267,11 @@ input::placeholder{color:var(--txt3)}
 .crow .mk button.on[data-s=missing]{background:#6B4520;border-color:var(--amber);color:#F5EEE0}
 .crow .mk button.on[data-s=dead]{background:var(--red-d);border-color:var(--red);color:#F7E9E6}
 
-.kv{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.87rem}
+.kv{display:flex;justify-content:space-between;gap:14px;padding:11px 0;
+    border-bottom:1px solid var(--line);font-size:.9rem;align-items:baseline}
 .kv:last-child{border-bottom:0}
-.kv .k{color:var(--txt3)}
-.kv .v{font-family:var(--mono);text-align:right;word-break:break-all}
+.kv .k{color:var(--txt3);font-size:.84rem}
+.kv .v{font-family:var(--mono);text-align:right;word-break:break-all;font-size:.98rem;color:var(--txt)}
 
 table.trig{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:4px}
 table.trig th,table.trig td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right}
@@ -243,13 +353,15 @@ table.trig tr.now td{color:var(--ochre)}
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.62);opacity:0;pointer-events:none;
           transition:opacity .2s;z-index:40}
 .sheet-bg.on{opacity:1;pointer-events:auto}
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--surface);
-       border-top:1px solid var(--line2);border-radius:12px 12px 0 0;
-       transform:translateY(100%);transition:transform .24s cubic-bezier(.2,.8,.3,1);
-       max-height:88%;display:flex;flex-direction:column;padding-bottom:var(--safe-b)}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;
+       background:linear-gradient(180deg,#1A2C25,#101A16 30%);
+       border-top:1px solid var(--line2);border-radius:var(--r-xl) var(--r-xl) 0 0;
+       transform:translateY(100%);transition:transform .32s cubic-bezier(.2,.9,.25,1);
+       max-height:90%;display:flex;flex-direction:column;padding-bottom:var(--safe-b);
+       box-shadow:0 -24px 60px -20px rgba(0,0,0,.85)}
 .sheet.on{transform:translateY(0)}
-.sheet .grip{width:34px;height:4px;border-radius:2px;background:var(--line2);margin:9px auto 3px;flex:0 0 auto}
-.sheet .body{overflow-y:auto;padding:10px 16px 18px}
+.sheet .grip{width:38px;height:4px;border-radius:2px;background:var(--line2);margin:11px auto 4px;flex:0 0 auto}
+.sheet .body{overflow-y:auto;padding:12px 18px 22px}
 
 #toast{position:fixed;left:16px;right:16px;bottom:calc(78px + var(--safe-b));z-index:60;
        background:var(--surface2);border:1px solid var(--moss-d);border-left:3px solid var(--moss);
@@ -281,10 +393,31 @@ table.trig tr.now td{color:var(--ochre)}
       <p class="sub" data-t="lot.s">Hali ya dhamana leo, dhidi ya kile mkopeshaji anadai leo.</p>
 
       <div class="gauge" id="gauge">
-        <div class="cap" data-t="lot.cover">Kinga leo</div>
-        <div class="big num" id="coverPct">—</div>
-        <div class="band" id="coverBand">—</div>
-        <div class="track"><i id="coverBar" style="width:0%"></i><u id="coverMark" style="left:0%"></u></div>
+        <div class="arcwrap">
+          <svg class="arc" viewBox="0 0 240 136" aria-hidden="true">
+            <defs>
+              <linearGradient id="gMoss" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#0E8A5C"/><stop offset="1" stop-color="#5FE8A9"/>
+              </linearGradient>
+              <linearGradient id="gAmber" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#B98908"/><stop offset="1" stop-color="#F5C63C"/>
+              </linearGradient>
+              <linearGradient id="gRed" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#A5301F"/><stop offset="1" stop-color="#F2705C"/>
+              </linearGradient>
+            </defs>
+            <path class="trk" d="M22 120 A 98 98 0 0 1 218 120"/>
+            <path class="val" id="arcVal" d="M22 120 A 98 98 0 0 1 218 120"/>
+            <line class="mk" id="arcMk" x1="0" y1="0" x2="0" y2="0"/>
+          </svg>
+          <div class="arccentre">
+            <div class="capt" data-t="lot.cover">Kinga leo</div>
+            <div class="big num" id="coverPct">—</div>
+            <div class="band" id="coverBand">—</div>
+          </div>
+          <div class="arcmklbl" id="arcMkLbl">100%</div>
+        </div>
+        <div class="arcends"><span>90%</span><span>140%</span></div>
         <div class="foot" data-t="lot.coverfoot">100% ni pale mkopeshaji analipwa kamili baada ya ushuru na gharama za zizi. Chini ya hapo ni hasara.</div>
       </div>
 
@@ -296,6 +429,9 @@ table.trig tr.now td{color:var(--ochre)}
         <div class="kv"><span class="k" data-t="lot.need">Inayohitajika leo</span><span class="v" id="kNeed">—</span></div>
         <div class="kv"><span class="k" data-t="lot.gap">Ziada juu ya kiwango</span><span class="v" id="kGap">—</span></div>
       </div>
+
+      <div class="lbl" data-t="lot.herd">Fungu lako</div>
+      <div class="mosaic" id="mosaic"></div>
 
       <div class="lbl" data-t="lot.trig">Kiwango cha lazima, kinapanda kila siku</div>
       <table class="trig" id="trigTable"></table>
@@ -612,7 +748,7 @@ var T = {
     "lot.value":"Thamani ya sasa","lot.need":"Inayohitajika leo","lot.gap":"Ziada juu ya kiwango",
     "lot.trig":"Kiwango cha lazima, kinapanda kila siku",
     "lot.trigfoot":"Gharama za zizi na riba hujilimbikiza. Kiwango cha siku ya kwanza si cha siku ya 45.",
-    "lot.setup":"Mpangilio","lot.draw":"Tarehe ya mkopo","lot.agent":"Jina la afisa",
+    "lot.herd":"Fungu lako","lot.setup":"Mpangilio","lot.draw":"Tarehe ya mkopo","lot.agent":"Jina la afisa",
     "lot.dis":"Thamani hutumia bei ya kuingia ya <b>TZS 742,000</b> kwa kichwa hadi bei halisi itakapowekwa. Si ahadi ya mkopo, wala si ushauri wa uwekezaji.",
     "reg.h":"Sajili mnyama kwenye fungu","reg.s":"Kila mnyama anahitaji hereni, picha na mahali. Bila hivyo hasajiliwi.",
     "reg.tag":"Namba ya hereni","reg.taghelp":"Andika kwa mkono. Kisomaji cha NFC hakijawekwa kwenye toleo hili.",
@@ -666,7 +802,7 @@ var T = {
     "lot.value":"Value today","lot.need":"Needed today","lot.gap":"Headroom over the line",
     "lot.trig":"The line the lot must clear, and it rises daily",
     "lot.trigfoot":"Custody and interest accrue. The day-1 line is not the day-45 line.",
-    "lot.setup":"Setup","lot.draw":"Drawdown date","lot.agent":"Field agent name",
+    "lot.herd":"Your lot","lot.setup":"Setup","lot.draw":"Drawdown date","lot.agent":"Field agent name",
     "lot.dis":"Value uses the entry index of <b>TZS 742,000</b> per head until a real mark is supplied. Not a credit offer and not investment advice.",
     "reg.h":"Enrol an animal into the lot","reg.s":"Every animal needs a tag, a photo and a place. Without them it is not enrolled.",
     "reg.tag":"Ear tag number","reg.taghelp":"Typed by hand. No NFC reader is fitted in this build.",
@@ -906,6 +1042,34 @@ function renderChip(){
   el("localChip").textContent = headCount() + " · " + S.log.length;
 }
 
+/* The gauge is a 180° arc of radius 98 centred on (120,120), spanning 90%–140%
+   cover. The tick sits on 100% — the point where the lender is exactly whole. */
+var ARC = { cx:120, cy:120, r:98, lo:90, hi:140 };
+var ARC_LEN = Math.PI * ARC.r;
+
+function arcPoint(frac, radius){
+  var ang = Math.PI - frac * Math.PI;         // 180° down to 0°
+  return [ ARC.cx + radius * Math.cos(ang), ARC.cy - radius * Math.sin(ang) ];
+}
+function drawArc(pct, has){
+  var frac = has ? Math.max(0, Math.min(1, (pct - ARC.lo)/(ARC.hi - ARC.lo))) : 0;
+  var v = el("arcVal");
+  v.style.strokeDasharray = ARC_LEN;
+  v.style.strokeDashoffset = ARC_LEN * (1 - frac);
+
+  var mf = (100 - ARC.lo)/(ARC.hi - ARC.lo);
+  var a = arcPoint(mf, ARC.r - 13), b = arcPoint(mf, ARC.r + 13);
+  var mk = el("arcMk");
+  mk.setAttribute("x1", a[0].toFixed(1)); mk.setAttribute("y1", a[1].toFixed(1));
+  mk.setAttribute("x2", b[0].toFixed(1)); mk.setAttribute("y2", b[1].toFixed(1));
+
+  // park the label just clear of the tick, reading inward so it never runs off the card
+  var lp = arcPoint(mf, ARC.r + 14);
+  var lbl = el("arcMkLbl");
+  lbl.style.left = (lp[0]/240*100).toFixed(2) + "%";
+  lbl.style.top  = (lp[1]/136*100).toFixed(2) + "%";
+}
+
 function renderLot(){
   var c = coverNow();
   var g = el("gauge");
@@ -916,10 +1080,7 @@ function renderLot(){
   if(c.val) countTo(el("coverPct"), pct); else el("coverPct").textContent = "—";
   el("coverBand").textContent = c.val ? band : "—";
   el("coverBand").className = "band " + (cls==="ok"?"up":(cls==="watch"?"warn":"down"));
-  // the bar runs 90%–140% cover; the mark sits on 100%
-  var lo=90, hi=140;
-  el("coverBar").style.width = Math.max(0, Math.min(100, (pct-lo)/(hi-lo)*100)).toFixed(1) + "%";
-  el("coverMark").style.left = ((100-lo)/(hi-lo)*100).toFixed(1) + "%";
+  drawArc(pct, c.val > 0);
 
   el("kDay").textContent = c.day + " / " + FAC.tenorDays;
   el("kHead").textContent = headCount() + " / " + FAC.targetHead;
@@ -943,6 +1104,71 @@ function renderLot(){
             fmt(senior/1e6) + 'M</td><td>' + fmt(need/1e6) + 'M</td></tr>';
   });
   el("trigTable").innerHTML = html;
+  renderMosaic();
+}
+
+var MOSAIC_CAP = 60;   // enough to read as a herd; the roll on Hesabu holds the rest
+function renderMosaic(){
+  var m = el("mosaic");
+  if(!S.animals.length){
+    m.innerHTML = '<div class="empty" style="grid-column:1/-1">' +
+      '<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/></svg>' +
+      t("e.empty") + '</div>';
+    return;
+  }
+  var shown = S.animals.slice(0, MOSAIC_CAP);
+  var extra = S.animals.length - shown.length;
+  var html = shown.map(function(a){
+    var st = a.status === "dead" ? "dead" : (a.status === "missing" ? "missing" : "present");
+    return '<div class="mtile ' + st + '" data-tag="' + esc(a.tag) + '">' +
+      (a.thumb ? '<img src="' + a.thumb + '" alt="">' : '') +
+      '<span class="dot"></span></div>';
+  }).join("");
+  if(extra > 0){
+    html += '<div class="mtile" data-more="1"><span class="more">+' + extra + '</span></div>';
+  }
+  m.innerHTML = html;
+}
+
+el("mosaic").addEventListener("click", function(e){
+  var tile = e.target.closest ? e.target.closest(".mtile") : null;
+  if(!tile) return;
+  haptic(12);
+  if(tile.getAttribute("data-more")){ switchTab("hesabu"); return; }
+  showAnimal(tile.getAttribute("data-tag"));
+});
+
+function showAnimal(tag){
+  var a = null;
+  for(var i=0;i<S.animals.length;i++){ if(S.animals[i].tag === tag){ a = S.animals[i]; break; } }
+  if(!a) return;
+  var st = a.status === "dead" ? "red" : (a.status === "missing" ? "" : "green");
+  var stLabel = a.status === "dead" ? t("s.dead") : (a.status === "missing" ? t("s.missing") : t("s.present"));
+  openSheet(
+    '<img class="bigpic" id="bigPic" src="' + (a.thumb || "") + '" style="filter:blur(8px)" alt="">' +
+    '<div class="row between" style="margin-bottom:10px">' +
+      '<div><div style="font-family:var(--mono);font-size:1.5rem">' + esc(a.tag) + '</div>' +
+      '<div class="meta">' + esc(a.code) + '</div></div>' +
+      '<span class="flag ' + st + '">' + stLabel + '</span>' +
+    '</div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Thamani":"Value") + '</span><span class="v">TZS ' + fmt(a.value) + '</span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Uzito":"Weight") + '</span><span class="v">' + a.weight + ' kg</span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Mfugaji":"Keeper") + '</span><span class="v">' +
+       (esc(a.keeperName) || "—") + ' <span class="flag">' + t("reg.unver") + '</span></span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Mahali":"Location") + '</span><span class="v">' +
+       a.lat.toFixed(5) + ', ' + a.lon.toFixed(5) +
+       (a.locSource === "demo" ? ' <span class="flag">' + t("gps.flag") + '</span>' : '') + '</span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Muda":"Recorded") + '</span><span class="v">' +
+       new Date(a.ts).toLocaleString() + '</span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Alama ya picha":"Photo hash") + '</span><span class="v">' +
+       shortHash(a.photoSha) + '</span></div>'
+  );
+  // the stored thumbnail shows at once, the full frame replaces it
+  getPhoto(a.photoSha, function(full){
+    var img = el("bigPic");
+    if(img && full){ img.src = full; img.style.filter = ""; }
+    else if(img){ img.style.filter = "blur(3px)"; }
+  });
 }
 
 function renderCountSummary(){

@@ -61,6 +61,27 @@ The SHA-256 is a local implementation (no `crypto.subtle` — a `file://` page i
 context). It passes the NIST vectors for `""`, `"abc"` and the 56-byte multi-block case, and is
 exposed as `window.MNADA.sha256` so a lender can recompute a pack's hashes independently.
 
+## The visual language
+
+The reference class is Revolut, Monzo and Wise — money apps that are genuinely beautiful and are
+still trusted with real money. Not a social feed.
+
+- **One light source.** A warm ochre glow top-left and a cool green one top-right sit behind
+  everything, so the app reads as a single lit object rather than a stack of grey boxes.
+- **The photograph is the brightest thing on screen.** The chrome is near-black with a green cast
+  specifically so a picture of an animal wins every time.
+- **Cards are gradient-filled with a hairline of light along the top edge.** That single hairline is
+  most of what separates "expensive" from "flat" on a dark UI.
+- **The cover figure is the hero:** a 180° arc, gradient stroke, drop-shadow glow, with the state's
+  colour bled into the top of the card. The tick on the arc marks 100% — the break-even point — and
+  the label is parked on the arc next to it rather than centred under the card, because the tick sits
+  at 20% of the sweep, not the middle.
+- **The lot is shown as photographs**, not only as a number: a mosaic of every animal enrolled, with
+  a status dot, greyed out when dead, tapping through to the full frame and its hash.
+- **Motion is a hierarchy cue, not decoration.** Views fade up, cards stagger in behind the heading,
+  the arc eases over ~850 ms, and the whole thing is switched off under
+  `prefers-reduced-motion`.
+
 ## The swipe deck, and what was deliberately left out
 
 A 200-head walk is 200 decisions. A list row you have to aim at is the wrong instrument for that,
