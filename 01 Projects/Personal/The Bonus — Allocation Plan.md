@@ -16,25 +16,36 @@ currency: TZS
 > **Every day you wait costs more than a day's food.** At 21 days the interest overtakes the debt.
 > The 177,000 sits inside the 217,000 you listed as "3 months ago" — it is the same money, so nothing below double-counts. **Only the order changed, and it changed completely.** → jump to [the cost of waiting](#the-clock-that-outranks-everything-dmk)
 
-## THE SHORT ANSWER
+## THE SHORT ANSWER — rewritten 2026-08-10 (15,000/day · payday 23 Aug)
 
-**On paper, yes. Across the month, no.**
+**Almost all of it, yes. The shortfall goes from 684,900 to 114,900 — and the phone is the only thing that does not fit.**
 
-Your list comes to **1,574,000** and you have **1,639,100**. It fits — with 65,100 to spare.
-
-**But 65,100 has to feed you for 21 more days**, and this file says that costs about **750,000**.
+**Two facts changed everything, and the smaller-looking one did most of the work.**
 
 ```
-Available                     1,639,100
-Your list                   − 1,574,000
-                            ───────────
-Left for 11–31 August            65,100
-Actually needed for 21 days     750,000
-                            ───────────
-SHORTFALL                     − 684,900
+Old shortfall                              − 684,900
+Cutting the daily rate to 15,000              saved
+  AND only needing to reach 23 Aug        + 570,000
+                                          ──────────
+NEW SHORTFALL                              − 114,900
 ```
 
-**So the real question is not "can I afford this list" — it is "which 685,000 of it comes off."**
+**You do not need to fund 21 days. You need to fund 12** — the 11th to the 22nd. **The salary on the 23rd takes over from there.** That single fact is worth more than the budget cut, and neither of them was on the page an hour ago.
+
+### What now fits
+
+| | |
+| --- | --- |
+| 🔴 **DMK, today** | ✅ **177,000** |
+| **Kids' school fees** | ✅ **200,000** |
+| **All four personal debts** | ✅ **197,000** |
+| **Living, 11–22 Aug @ 15,000/day** | ✅ **180,000** |
+| **Rainy-day buffer** | ✅ **100,000** |
+| **The full 550,000 road bicycle** | ✅ **550,000** — no longer the cheap one |
+| **The phone** | ❌ **114,900 short** — revisit on the 23rd |
+| | **235,100 still in hand on 22 Aug** |
+
+**On 23 August you would wake up with no debt of any kind, a bicycle, a funded buffer, 235,100 spare, and a salary landing.** That is a different month from the one this page opened with.
 
 ---
 
@@ -60,7 +71,37 @@ SHORTFALL                     − 684,900
 
 ---
 
-## THE NUMBER THAT BREAKS IT — 21 days of living
+## 💥 THE 15,000/DAY CUT IS THE BIGGEST LEVER ON THIS PAGE
+
+**Bigger than the bicycle. Bigger than DMK. Bigger than the phone.**
+
+Your ordinary living rate is **33,806 a day**. Cutting to **15,000** saves **18,806 a day**:
+
+```
+18,806 × 30 days  =  564,180 a month
+                  =  6.8 million a year
+```
+
+**Nothing else on this page is worth 564,000 a month.** The bicycle returns ~72,000. Clearing DMK saves 265,500. **The daily rate beats both put together**, and it is the only one that keeps paying every month after this one.
+
+### Can 15,000 actually be done? Here is what it has to cover
+
+| | Per day | Note |
+| --- | ---: | --- |
+| Groceries sent home | ~5,000 | Running at 10,000 every other day |
+| Transport | ~3,800 | **The bicycle kills most of this** |
+| **Fixed subtotal** | **~8,800** | |
+| **Everything else** | **~6,200** | Food out, coffee, household bits |
+
+⚠️ **6,200 a day for everything else means the coffees stop.** A cappuccino has been 6,000–8,000 in this log — **one of them is the whole day's discretionary allowance.** Not a judgement, just what the number means in practice.
+
+✅ **But two things make it easier than it looks.** It is **twelve days, not a month** — a sprint with a payday at the end, not indefinite austerity. And **buying the bicycle cuts the transport line to near zero**, which hands roughly 3,500 a day back to the other column. **The bicycle and the budget help each other.**
+
+⚠️ **Scale check, so the size of the cut is honest: 8 August alone was 107,032 of ordinary spending — seven days of the new budget in one day.** This is a 56% cut. It is arithmetically possible; it is not a small ask.
+
+---
+
+## THE OLD NUMBER — 21 days at the uncut rate
 
 **This is the weakest figure in the plan and the one that decides everything, so here is the working.**
 
@@ -142,29 +183,41 @@ August's logged days, with the one-offs stripped out (handset, haircut, Mombasa,
 
 **After Tier 1: 1,065,100 left.** *(Same figure as before — the order changed, not the total.)*
 
-### Tier 2 · Ring-fence — 750,000
+### Tier 2 · Ring-fence for living — 180,000 *(was 750,000)*
 
-**Do not treat this as spare.** It is the next 21 days.
+**12 days, the 11th to the 22nd, at 15,000 a day.** The salary on the 23rd takes over.
 
-> **Withdraw it weekly, not now.** Roughly **250,000 a week**, three times.
-> This is the single most evidenced lever in this file: money in the bank does not leak, money in pocket leaks at ~9%. Three withdrawals instead of one keeps roughly **50,000–60,000** that would otherwise vanish unlogged.
+> **Withdraw it in two tranches, not one:** ~**90,000 on Tue 11**, ~**90,000 on Mon 17**.
+> Money in the bank does not leak; money in pocket leaks at ~9%. Two withdrawals instead of one keeps roughly **8,000** that would otherwise vanish unlogged — and at 15,000 a day, 8,000 is half a day of food.
 
-**After Tier 2: 315,100 left.**
+⚠️ **Budget 15,000/day, but expect to need ~16,350/day in cash** once the leak is counted. **Either hold the extra ~16,000 across the twelve days, or log at the moment of spending and keep it.**
+
+**After Tier 2: 885,100 left.**
 
 ### Tier 3 · The buffer — 100,000
 
-**Keep this one.** Not on principle — on evidence from your own log:
+**Keep this one, and keep it harder now than before.** Not on principle — on evidence from your own log:
 
-> **On 6 August you borrowed 30,000 from a friend and paid 2,000 for it.** Two days. That is 6.67%, and if the fee is per-period rather than per-loan it annualises to something ruinous.
+> **On 6 August you borrowed 30,000 from a friend and paid 2,000 for it.** Two days. That is 3.3% a day.
 > **A 100,000 buffer is exactly what stops that.** It has already paid for itself once this month.
 
-**After Tier 3: 215,100 left.**
+⚠️ **A 15,000/day budget makes the buffer more necessary, not less.** A tight budget has no slack in it — the first unexpected 40,000 breaks the month, and the thing you reach for when a month breaks is the lender charging 5% a day. **The buffer is what stands between the budget and DMK's replacement.**
 
-### Tier 4 · The bike and the phone — 900,000 wanted, 215,100 available
+**After Tier 3: 785,100 left.**
 
-**Neither one fits.** The bike is 550,000 and you are 334,900 short. The phone is 350,000 and you are 134,900 short.
+### Tier 4 · The bicycle — 550,000 ✅ **it fits now**
 
-**Recommendation: hold the 215,100 and buy the bike in early September**, not the phone, and not both. Reasoning below.
+**Buy the full 550,000 road bicycle. The used-200,000 compromise is no longer needed.**
+
+And buy it **early in the twelve days, not late** — every day you have it, it is cutting the transport line that the 15,000/day budget is straining against. **It is the one purchase that makes the budget easier instead of harder.**
+
+**After Tier 4: 235,100 left, sitting in hand on 22 August with a salary landing the next day.**
+
+### Tier 5 · The phone — 350,000, and it is 114,900 short
+
+**The only thing on your list that does not fit.** It is also the only one that returns nothing and is worth less the moment you buy it.
+
+**Revisit it on the 23rd**, from the salary, once you know what the salary is. If it clears 250,000, the phone is affordable then without touching anything above it.
 
 ---
 
@@ -204,43 +257,57 @@ This retires the finding that has run through [[Expenses]] since 28 July — *"t
 
 **And it removes the biggest unknown in this plan:** there is no second lender who might present an instalment before 31 August. Once DMK is paid today, **you have no institutional debt at all** — the remaining 197,000 is owed to four people and a shop, none of whom charge you anything.
 
-**Also unrecorded: your regular income.** Everything in this file arrived as *borrowed*, *after hours*, or *bonus*. **There is no salary logged anywhere**, which is why the plan above stops at 31 August — I have no basis for what September looks like. Say what comes in monthly and the schedule can run past the month end.
+## 📅 THE PAYDAY — 23 August, and it is doing the heavy lifting
+
+**This is the most useful thing you have told me.** Until now this file had no regular income in it at all — everything arrived as *borrowed*, *after hours* or *bonus*, which is why the plan could not see past 31 August.
+
+**A payday on the 23rd cuts the bridge from 21 days to 12.** At 15,000 a day that is **180,000 instead of 315,000** — and against the old uncut rate it is **180,000 instead of 750,000.** **570,000 of the 684,900 shortfall was closed by that one fact.**
+
+❓ **But I still do not know the amount, and the back half of the month depends on it.** The 23rd has to cover **23–31 August at 15,000/day = 135,000**, plus whatever you want to do about the phone. **Tell me the figure and this plan runs to the end of September instead of stopping at the 22nd.**
+
+⚠️ **One thing to confirm: is 23 August the regular monthly date?** If it is, the next one is ~23 September and every plan after this can be built on it. If it moves, the twelve-day bridge is really a fourteen- or sixteen-day bridge and the living provision needs 30,000–60,000 more.
 
 ---
 
 ## IF YOU WANT ALL OF IT ANYWAY
 
-**Three honest ways to close the 684,900, in the order I would do them:**
-
-1. **Drop the phone — 350,000.** Largest discretionary item, no return, nothing else depends on it, and it is worth nothing the day after you buy it.
-2. **Take the 200,000 bicycle instead of the 550,000 one — 350,000.** Better return, sooner, and it fits without squeezing anything.
-3. **Compress the living rate.** Food & Out has tripled to 75,500 this month and **43,000 of it was one meal.** Not a lecture — the arithmetic is simply that the tandoori is 1.2 days of your whole living budget.
-
-**Doing 1 and 2 lands you almost exactly on target:**
+**The 15,000/day cut and the 23 August payday closed 570,000 of it between them. Here is the whole plan on one page:**
 
 ```
 Available                          1,639,100
-DMK (today)                      −   177,000
+DMK — today                      −   177,000
 School fees                      −   200,000
 The four personal debts          −   197,000
-Living, 11–31 Aug                −   750,000
+Living, 11–22 Aug @ 15,000/day   −   180,000
 Rainy-day buffer                 −   100,000
-Used road bicycle                −   200,000
+Road bicycle — the full one      −   550,000
                                  ───────────
-LEFT                                  15,100
+IN HAND ON 22 AUGUST                 235,100   ← and the salary lands on the 23rd
+Phone                            −   350,000
+                                 ───────────
+STILL SHORT                        − 114,900
 ```
 
-**Every debt cleared, fees paid, buffer funded, and you are riding by the weekend** — against a plan that started 684,900 short. **The 550,000 bicycle and the phone are what that costs**, and only one of them was ever going to earn anything back.
+**Everything except the phone.** And the phone is 114,900 away — comfortably inside one payday, if the salary clears 250,000.
+
+**Three ways to have it too, in the order I would consider them:**
+
+1. **Wait nine days.** Buy it on the 23rd from the salary. It costs you nothing to wait, because the phone earns nothing while you hold it.
+2. **Take the 200,000 used bicycle instead — frees 350,000.** But you would be spending a 350,000 saving on a 350,000 item that returns nothing, to get it nine days sooner.
+3. **Hold 15,000/day past the 23rd.** It frees 564,000 a month. **One month of it buys the phone outright** and leaves 200,000 over.
+
+**Option 1 is the obvious one.** Nothing on this page is improved by having the phone on the 14th rather than the 23rd.
 
 ---
 
 ## WHAT I NEED FROM YOU
 
-1. 🔴 **DMK: is the 5% on the original 177,000 or on the running balance?** And is 177,000 principal, or principal plus accrued? — **130,000 of difference by month end.** The last open number that changes the plan
-2. **What comes in monthly** — no salary has ever been logged here, so the plan cannot see past 31 August
-3. **Count your pocket: it should be 31,100.** Ten seconds, and it is the only day it is checkable
+1. 🔴 **DMK: is the 5% on the original 177,000 or on the running balance?** And is 177,000 principal, or principal plus accrued? — **130,000 of difference by month end.** The last open number that changes today's action
+2. 💰 **How much is the 23 August pay, and is the 23rd the regular monthly date?** — decides the phone, and lets this plan run past the 22nd
+3. **Are the school fees due before or after the 23rd?** If after, they can come from salary and today gets 200,000 easier
+4. **Count your pocket: it should be 31,100.** Ten seconds, and today is the only day it is checkable
 
-*Closed 2026-08-10: AMON paid in full · DMK balance and rate given · the 177,000 placed inside the 217,000 · **the bike is a road bicycle** · **the two 10,000 grocery sends are separate, not a duplicate.***
+*Closed 2026-08-10: AMON paid in full · DMK balance and rate given · the 177,000 placed inside the 217,000 · the bike is a road bicycle · the two 10,000 grocery sends are separate · **budget set at 15,000/day** · **payday 23 August.***
 
 ---
 
