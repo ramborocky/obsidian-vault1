@@ -114,6 +114,12 @@ These change the ranking, and only you have them:
 - [[Debt First]] — 05 · the debt, then investing
 - [[The House]] — 06 · the unfinished property. **Parked, and here is why**
 - [[Projected Profit — All Tracks]] — 07 · **the numbers only**, three years, no verdicts
+- [[MNADA — Bank Pitch Memo]] — 09 · livestock and commodity exchange — pitch memo, [[Pilot Term Sheet|term sheet]], demo app
+
+> [!warning] MNADA is an eighth track, and this board's whole argument is that there are already too many
+> It arrived from another session on 8 August and was filed here on 10 August. **It has not been costed, ranked, or tested against the sentence at the top of this page** — it sits outside the table because nothing in it has been checked yet.
+>
+> Before it earns a row: what does it return, how long until money, and which of the two live tracks would it displace? **The rule is still two at full intensity.**
 
 ## Related
 - [[Home]] · [[Three Tracks — An Honest Comparison]] · [[Expenses]] · [[ACPA(T) NBAA To-Do]]
