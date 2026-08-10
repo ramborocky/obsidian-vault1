@@ -163,7 +163,7 @@ Every Chair of Judges 2021–2026, verbatim, checked against the Commonwealth Fo
 | File | What it is | Reach for it when |
 | --- | --- | --- |
 | **[[How To Build A Short Story]]** | Seven stages, one written question each, with a flowchart. Stages 1–6 happen **before a word of the story** and take about three hours | You are starting something and don't yet have a germ, a position or a shape |
-| **[[Portable Shapes ΓÇö What Survives Out of the Experiments\|Portable Shapes — What Survives Out of the Experiments]]** | The seven devices that survived the experiments, described as **shapes only — no sentences, no quoted prose**, so whatever fills them must be invented at the keyboard | You are drafting and need a device without risking a borrowed phrase |
+| **[[Portable Shapes — What Survives Out of the Experiments]]** | The seven devices that survived the experiments, described as **shapes only — no sentences, no quoted prose**, so whatever fills them must be invented at the keyboard | You are drafting and need a device without risking a borrowed phrase |
 | **[[The Letter to Zadie at Eighteen]]** | *NW* reduced to three engines and twelve effects, Kafka's five structural moves, and the three passages worth stealing outright — the dog sentence, the question ladder, the reversal clause | You want to understand **why** a move works before using it |
 | **[[Six Moves — The Simple Guide]]** | The same material as a **tickable checklist** with timers and a calendar to 25 October. Four of the six moves are additive | You are stuck, scattered, or short on time and need one job for tonight |
 
