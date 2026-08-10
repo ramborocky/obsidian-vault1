@@ -54,7 +54,8 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 |            | **July total**          | **2,426,000** |                                                                                             |
 | 2026-08-06 | *borrowed form friendy* |        30,000 | Logged as "received" — say whether bank, salary or cash in hand                             |
 | 2026-08-08 | *after hours*           |       441,000 | Logged as "received" — source not given                                                     |
-|            | **August total**        |   **471,000** |                                                                                             |
+| 2026-08-10 | **Bonus — work**        |     1,600,000 | Employer bonus. Say whether it landed in the bank or came as cash — it changes how findable it is |
+|            | **August total**        | **2,071,000** |                                                                                             |
 
 ---
 
@@ -150,6 +151,18 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-08 | Dala dala                      | Transport         |          800 |                                                                                                                                                                                               |
 | 2026-08-08 | Boda boda                      | Transport         |        1,500 |                                                                                                                                                                                               |
 | 2026-08-08 | Tip — basket holder            | Personal          |        1,000 | At the toilet; logged as given for holding a shopping basket                                                                                                                                 |
+| 2026-08-09 | Food money — given to wife     | Household         |       10,000 | Logged 2026-08-10 as "yesterday" — date read as the 9th                                                                                                                                      |
+| 2026-08-10 | Tandoori chicken               | Food & Out        |       43,000 |                                                                                                                                                                                               |
+| 2026-08-10 | Cashew nuts                    | Food & Out        |        4,000 |                                                                                                                                                                                               |
+| 2026-08-10 | Tip — restaurant               | Food & Out        |        2,000 | Filed with the meal. ⚠️ The 8 Aug basket-holder tip sits under **Personal** — say which you want and I'll make both consistent                                                                |
+| 2026-08-10 | Coke Zero and plain chips      | Food & Out        |            — | ⚠️ **No amount given — not guessed.** Coke Zero alone was 4,000 on 27 July. Tell me the figure and I'll fill it; until then it is outside every total below                                   |
+| 2026-08-10 | Sent home — household groceries | Household        |       10,000 | ⚠️ **Possible duplicate — check this one.** You said it came "from the 440,000 I received last time"; the **8 Aug** row is also 10,000 sent home for groceries. If it is the same spend being re-told, say so and I'll strike it |
+| 2026-08-10 | Bus fare                       | Transport         |        1,500 |                                                                                                                                                                                               |
+| 2026-08-10 | Bus fare                       | Transport         |          800 |                                                                                                                                                                                               |
+| 2026-08-10 | Bus fare                       | Transport         |          800 |                                                                                                                                                                                               |
+| 2026-08-10 | Bus fare                       | Transport         |          800 |                                                                                                                                                                                               |
+| 2026-08-10 | Bus fare                       | Transport         |        1,000 |                                                                                                                                                                                               |
+| 2026-08-10 | Bus fare                       | Transport         |        2,000 |                                                                                                                                                                                               |
 
 ---
 
@@ -251,36 +264,63 @@ Anything about the House build or the ACPA qualification — neither appears in 
 
 ---
 
-### August 2026 — two days logged (6th and 8th)
+### August 2026 — four days logged (6th, 8th, 9th, 10th)
 
-**In 471,000 · logged 312,132 · held 118,000 · unaccounted 40,868.**
+**In 2,071,000 · logged 388,032 · should still be held 1,642,100 (count it) · unaccounted 40,868 so far.**
 
 #### By day
 
-| Date      |    In |      Logged |  Difference |
-| --------- | ----------: | ----------: | ----------: |
-| **6 Aug** |      30,000 *(borrowed)* |  **26,100** |   **3,900** |
-| **8 Aug** |     441,000 *(after hours)* | **286,032** | **154,968** |
-| **Total** | **471,000** | **312,132** | **158,868** |
+| Date       |                          In |      Logged |    Difference |
+| ---------- | --------------------------: | ----------: | ------------: |
+| **6 Aug**  |    30,000 *(borrowed)*      |  **26,100** |     **3,900** |
+| **8 Aug**  |   441,000 *(after hours)*   | **286,032** |   **154,968** |
+| **9 Aug**  |                           — |  **10,000** |  **−10,000**  |
+| **10 Aug** | 1,600,000 *(work bonus)*    |  **65,900** | **1,534,100** |
+| **Total**  |               **2,071,000** | **388,032** | **1,682,968** |
 
-*Of that 158,868 difference, **118,000 is cash you are holding** and **40,868 is unaccounted.***
+*Of the 158,868 difference at the 8th, **118,000 was cash you counted** and **40,868 is unaccounted.** Everything after that is money that should still exist — see the reconciliation below.*
 
 **6 August working:** 12,000 + 1,500 groceries · 6,000 cappuccino · 1,000 snacks · 800 + 800 + 2,000 + 2,000 fares = **26,100**.
 
 **8 August working:** Personal 77,500 · Household 61,532 · Family/Obligation 47,000 · Miscellaneous 45,000 · Debt/Repayment 32,000 · Food & Out 16,500 · Transport 6,500 = **286,032**.
 
+**9 August working:** 10,000 food money to your wife. Nothing else logged.
+
+**10 August working:** 43,000 tandoori + 4,000 cashews + 2,000 tip = 49,000 Food & Out · 10,000 groceries sent home (Household) · 1,500 + 800 + 800 + 800 + 1,000 + 2,000 = 6,900 Transport = **65,900**. **Coke Zero and plain chips are logged with no amount and sit outside this figure.**
+
 #### By category — August so far
 
-| Category              |      Amount | Share |
-| --------------------- | ----------: | ----: |
-| **Personal**          |  **77,500** |   25% |
-| **Household**         |  **75,032** |   24% |
-| **Family/Obligation** |  **47,000** |   15% |
-| **Miscellaneous**     |  **45,000** |   14% |
-| **Debt/Repayment**    |  **32,000** |   10% |
-| **Food & Out**        |  **23,500** |    8% |
-| **Transport**         |  **12,100** |    4% |
-| **Total**             | **312,132** |       |
+| Category              |      Amount | Share | Movement                        |
+| --------------------- | ----------: | ----: | ------------------------------- |
+| **Household**         |  **95,032** | 24.5% | ▲ back on top                   |
+| **Personal**          |  **77,500** | 20.0% | ▼ unchanged in cash, down in share |
+| **Food & Out**        |  **72,500** | 18.7% | ▲▲ **tripled — 23,500 → 72,500** |
+| **Family/Obligation** |  **47,000** | 12.1% | —                               |
+| **Miscellaneous**     |  **45,000** | 11.6% | —                               |
+| **Debt/Repayment**    |  **32,000** |  8.2% | —                               |
+| **Transport**         |  **19,000** |  4.9% | ▲ 12,100 → 19,000               |
+| **Total**             | **388,032** |       |                                 |
+
+#### 🟢 The bonus — 1,600,000, and the one thing it changes
+
+**This single receipt is 3.4× everything else you have received in August put together** (1,600,000 against 471,000) and **77% of all money in this month.**
+
+**It is also the first money in this file large enough to touch the two debts nobody has written down.** AMON took 1,000,000 on 26 July and DMK 200,000 on 27 July — **1,200,000 across two lenders, with no balance, no instalment and no due date recorded anywhere.** The bonus covers both with 400,000 left over. [[00 The Board]] already rates clearing them as the best return available to you; this is the first time it has been possible. Stated once, and left with you.
+
+⚠️ **The other thing 1,600,000 changes is the leak.** This file's firmest finding is that **~9% of all cash passing through never gets logged** — 8.4% in July, 8.7% in August. **Nine percent of 1,600,000 is about 144,000.** That is not a prediction, it is what the last two months did to smaller sums. Money in the bank leaks slowly; money in pocket leaks at the file's rate — which is why the source of the bonus is worth one line in the log.
+
+#### 🔢 Reconciliation to run — this is checkable today
+
+```
+Counted 8 Aug (8,000 bank + 110,000 pocket)     118,000
+9 Aug  food money to wife                      −  10,000
+10 Aug bonus                                   +1,600,000
+10 Aug spending                                −  65,900
+                                               ──────────
+SHOULD BE IN HAND OR BANK NOW                   1,642,100
+```
+
+**Count it and tell me the real figure.** If the 10,000 sent home turns out to be the 8 Aug row told twice, the target is **1,652,100** instead. Anything below either number is this month's leak, caught on the day it happened rather than three weeks later — and **the 8th is the proof that the day is the only time it is recoverable.**
 
 #### ✅ The borrowed 30,000 is already repaid — flag closed
 
@@ -358,6 +398,8 @@ UNACCOUNTED                  40,868
 
 > **Personal is now the largest category in August: 77,500, 28% of everything logged. It has overtaken Household.**
 
+> [!NOTE] Superseded 2026-08-10 — **Household has taken the lead back** (95,032 to Personal's 77,500) and Personal's share has fallen 28% → 20% without a shilling being added to it. The reading below still holds for what it was about: two purchases on one day, not a habit.
+
 **Two items are 71% of it:** the **30,000 handset** and the **25,000 haircut**. Everything else under Personal — SIM 6,500, toothpaste 5,000, lotion 10,000, the 1,000 tip — is **22,500 across two days**, which is ordinary and not worth watching.
 
 **So this is not a habit. It is two purchases on one day.** A phone and a haircut together make a bad day for a category, not a bad pattern. **The question that would actually tell you something: was the 30,000 handset planned?** A planned 30,000 and an impulse 30,000 look identical in a log, and only one of them means anything.
@@ -398,6 +440,13 @@ UNACCOUNTED                  40,868
 - **2026-08-08 · recalculated again** — **Repayment of 32,000 to the friend added** (Debt/Repayment), against the 30,000 borrowed on the 6th. Day **254,032 → 286,032**; August **280,132 → 312,132**; unspent **190,868 → 158,868**. **The third-credit-line flag raised earlier today is closed** — the loan lasted two days. Two things assumed and open: **the date** (taken as the 8th) and **the 2,000 over** — fee or thank-you. It is 6.7% on 30,000 over two days if it is a fee, and nothing at all if it is not.
 - **2026-08-08 · recalculated** — Two rows added, one recategorised. **Haircut 25,000 (Personal)** and **10,000 sent home for household groceries (Household)**. The **45,000 Mombasa** line is now **Item: Mombasa · Category: Miscellaneous**, note cleared, at your instruction — and **Miscellaneous is added to the categories table** as *money out that fits nowhere else and does not need a reason in this file.* Day total **219,032 → 254,032**; August **245,132 → 280,132**; unspent **225,868 → 190,868**. **You also named both sources: the 30,000 was borrowed from a friend and the 441,000 was after-hours work** — the first is a third credit line and is treated as one above.
 - **2026-08-08** — Logged the 6th and the 8th: **41 rows, 245,132** against **471,000** received. The 6th is complete bar **3,900** you said you cannot place. The 8th logs **219,032 of 441,000** — **the other 221,968 is most likely still with you rather than missing**, and that is the one question worth answering while the day is fresh. Three things need you: **which child** the 17,000 boarding money was for, so it joins the July fee entries; **the source** of both receipts, since "received" could be salary, bank or cash; and whether any **debt repayment** is due this month, because August currently shows none against July's 1,200,000. The Mombasa line is filed under **Personal** with a deliberately flat label — see the note above about the repository; rename it as you like, it is your log.
+- **2026-08-10 · bonus logged, 9th and 10th logged** — **1,600,000 work bonus** added to the receipts table; **thirteen spending rows** added across the 9th and 10th. August: in **471,000 → 2,071,000**, logged **312,132 → 388,032**. Four things need you, and the first two change the numbers:
+	1. ⚠️ **The 10,000 sent home may be logged twice.** You said it came out of "the 440,000 I received last time" — but there is already a **10,000 sent home for household groceries on 8 Aug**. I have logged it again against the 10th rather than assume, because a re-told spend and a second identical spend look the same in a sentence. **One word from you removes it or keeps it.**
+	2. ⚠️ **Coke Zero and plain chips have no amount** and are in the log at zero, outside every total. Coke Zero on its own was 4,000 on 27 July; I have not borrowed that figure.
+	3. **The receipt you called 440,000 is the 441,000 already on the books** from 8 Aug — read as the same money, not a new one. Say if that is wrong.
+	4. **The restaurant tip (2,000) is filed under Food & Out**, with the meal. The 8 Aug basket-holder tip sits under **Personal**. Both are defensible; they should not be split by accident. Pick one.
+	**Dates assumed:** the bonus and everything unlabelled went to **today, the 10th**; "gave wifey 10,000 for food yesterday" went to **the 9th**. Correct any of them and the totals move with you.
+- **2026-08-10 · what the day actually says** — **Food & Out tripled in one day**, 23,500 → 72,500, and it is now 19% of the month. **The tandoori chicken is 43,000 of that** — one item, more than every coffee, muffin, snack and takeaway logged in August combined (23,500). It is not a pattern, it is one meal, and it is recorded here only so that it is not mistaken for one later. **The six bus fares came to 6,900** and are kept as six rows so the trips stay visible. **And the reconciliation above is the real work of today:** you should be holding **1,642,100**. That number is checkable in five minutes and it is the only day it is checkable.
 - **2026-07-26** — Added a **Food & Out** category (eating and drinking outside the house), split from **Household** (things consumed at home, house help, repairs). Body lotion, shoe repair and the phone went to **Personal**. Say if you'd rather they sat elsewhere — it is your log.
 
 ---
