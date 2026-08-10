@@ -140,7 +140,7 @@ Kafka: *delete the author.* Smith: *the author's intelligence is part of the mat
 
 ## Related
 
-- [[How To Build A Short Story]] · [[Portable Shapes — What Survives Out of the Experiments]] · [[The X-Factor]]
+- [[How To Build A Short Story]] · [[Portable Shapes ΓÇö What Survives Out of the Experiments|Portable Shapes — What Survives Out of the Experiments]] · [[The X-Factor]]
 - [[The Fullness of Omission]] · [[End Two Paragraphs Earlier]] · [[White Space as Grammar]] · [[The Paragraph as Dwelling]]
 - [[Voice Is What You Cannot Help Doing]] · [[Dialogue Is Character]] · [[The Short Story as an Ending]]
 - [[Methods of Narration — The Author Must Vanish]] · [[Character by Salient Detail]] · [[The Isolation Principle — One Emotion, One Incident]]

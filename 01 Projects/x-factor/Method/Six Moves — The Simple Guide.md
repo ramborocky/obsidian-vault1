@@ -214,6 +214,6 @@ That is the whole job for today.
 
 - [[The Letter to Zadie at Eighteen]] — where Moves 2, 3 and the ending rule come from
 - [[15 The Chair Test — Scoring the Hidden Factor]] · [[The X-Factor]] · [[The First-Page Cut]]
-- [[How To Build A Short Story]] · [[Portable Shapes — What Survives Out of the Experiments]]
+- [[How To Build A Short Story]] · [[Portable Shapes ΓÇö What Survives Out of the Experiments|Portable Shapes — What Survives Out of the Experiments]]
 - [[The Resonant Close]] · [[All the Small Things — Grief Through the Minor Object]] · [[What You Are Censoring]]
 - [[Home]] · [[Dashboard]]
