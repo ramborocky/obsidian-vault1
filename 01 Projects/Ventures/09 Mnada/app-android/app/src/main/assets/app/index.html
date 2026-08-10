@@ -84,7 +84,8 @@ h2{font-size:1.28rem;margin:0 0 3px;letter-spacing:-.01em;font-weight:600}
 .gauge .big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:2.5rem;line-height:1.1;margin:6px 0 2px}
 .gauge .band{font-size:.82rem}
 .gauge .track{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:12px;position:relative}
-.gauge .track i{display:block;height:100%;background:var(--moss)}
+.gauge .track i{display:block;height:100%;background:var(--moss);
+                transition:width .5s cubic-bezier(.2,.8,.3,1),background-color .3s}
 .gauge .track u{position:absolute;top:-3px;width:2px;height:12px;background:var(--txt2);text-decoration:none}
 .gauge.ok .big{color:var(--moss)} .gauge.ok .track i{background:var(--moss)}
 .gauge.watch .big{color:var(--amber)} .gauge.watch .track i{background:var(--amber)}
@@ -173,6 +174,70 @@ table.trig tr.now td{color:var(--ochre)}
 .ev:last-child{border-bottom:0}
 .ev .h{font-family:var(--mono);font-size:.68rem;color:var(--txt3);word-break:break-all;margin-top:3px}
 .ev .ty{font-family:var(--mono);font-size:.72rem;color:var(--ochre);letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------- swipe deck ----------
+   The one pattern worth borrowing from a consumer feed: a 200-head walk is 200
+   decisions, and a full-screen card you flick is far faster than a list row you
+   aim at. No streaks, no rewards, no counters designed to pull you back. */
+#deck{position:fixed;inset:0;z-index:70;background:var(--bg);display:none;
+      flex-direction:column;padding-top:var(--safe-t);padding-bottom:var(--safe-b)}
+#deck.on{display:flex}
+
+.deckbar{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:12px 16px}
+.deckbar .x{background:transparent;border:0;color:var(--txt2);font-size:1.5rem;
+            line-height:1;padding:4px 8px;cursor:pointer;font-family:var(--mono)}
+.deckbar .prog{flex:1}
+.deckbar .prog .t{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
+                  text-transform:uppercase;color:var(--txt3);display:flex;justify-content:space-between}
+.deckbar .prog .track{height:4px;border-radius:2px;background:var(--line);overflow:hidden;margin-top:5px}
+.deckbar .prog .track i{display:block;height:100%;background:var(--ochre);
+                        transition:width .28s cubic-bezier(.2,.8,.3,1)}
+.deckbar .undo{background:transparent;border:1px solid var(--line2);border-radius:4px;
+               color:var(--txt2);font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;
+               text-transform:uppercase;padding:.4rem .55rem;cursor:pointer}
+.deckbar .undo:disabled{opacity:.3}
+
+.stage{flex:1;position:relative;margin:4px 16px 0;min-height:0}
+.dcard{position:absolute;inset:0;border-radius:14px;overflow:hidden;
+       background:var(--surface);border:1px solid var(--line2);
+       display:flex;flex-direction:column;will-change:transform,opacity;
+       touch-action:none;-webkit-user-select:none;user-select:none}
+.dcard.behind{transform:scale(.94) translateY(10px);opacity:.55;pointer-events:none}
+.dcard.settle{transition:transform .26s cubic-bezier(.2,.8,.3,1),opacity .26s}
+.dcard .pic{flex:1;min-height:0;background:#070D0B;position:relative;overflow:hidden}
+.dcard .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.dcard .pic .none{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+                  color:var(--txt3);font-family:var(--mono);font-size:.78rem}
+.dcard .info{flex:0 0 auto;padding:14px 16px;background:linear-gradient(180deg,rgba(11,21,18,0),var(--surface) 34%)}
+.dcard .tagbig{font-family:var(--mono);font-size:1.6rem;letter-spacing:.02em;line-height:1.15}
+.dcard .subline{font-family:var(--mono);font-size:.78rem;color:var(--txt3);margin-top:4px}
+.dcard .valline{font-family:var(--mono);font-size:.92rem;color:var(--txt2);margin-top:8px}
+
+/* the verdict wash — colour arrives with the gesture, not after it */
+.dcard .wash{position:absolute;inset:0;opacity:0;pointer-events:none;
+             display:flex;align-items:center;justify-content:center}
+.dcard .wash span{font-family:var(--mono);font-size:1.5rem;letter-spacing:.18em;text-transform:uppercase;
+                  border:3px solid currentColor;border-radius:8px;padding:.4rem 1rem;transform:rotate(-8deg)}
+.dcard .wash.present{background:rgba(86,177,137,.22);color:var(--moss)}
+.dcard .wash.missing{background:rgba(217,169,60,.22);color:var(--amber)}
+.dcard .wash.dead{background:rgba(210,112,95,.22);color:var(--red)}
+
+.deckbtns{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:14px 16px 10px}
+.deckbtns button{padding:15px 6px;border-radius:9px;border:1px solid var(--line2);
+                 background:var(--surface);font-family:var(--mono);font-size:.7rem;
+                 letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--txt2)}
+.deckbtns button:active{transform:scale(.96)}
+.deckbtns button[data-s=present]{border-color:var(--moss-d);color:var(--moss)}
+.deckbtns button[data-s=missing]{border-color:var(--amber-d);color:var(--amber)}
+.deckbtns button[data-s=dead]{border-color:var(--red-d);color:var(--red)}
+.deckhint{flex:0 0 auto;text-align:center;font-size:.7rem;color:var(--txt3);padding:0 16px 12px}
+
+.deckdone{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;
+          justify-content:center;text-align:center;padding:24px}
+.deckdone.on{display:flex}
+.deckdone .big{font-family:var(--mono);font-size:2.6rem;margin:10px 0 2px}
+.deckdone .lead{color:var(--txt2);font-size:.9rem;max-width:19rem;line-height:1.6}
+.deckdone .btn{max-width:19rem}
 
 /* ---------- sheet & toast ---------- */
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.62);opacity:0;pointer-events:none;
@@ -364,6 +429,8 @@ table.trig tr.now td{color:var(--ochre)}
 
       <div class="card" id="cntSummary"></div>
 
+      <button class="btn" id="walkBtn" data-t="cnt.walk">Anza kutembea zizi</button>
+
       <div class="lbl" data-t="cnt.list">Orodha</div>
       <div id="cntList"></div>
 
@@ -419,6 +486,34 @@ table.trig tr.now td{color:var(--ochre)}
       <span data-t="tab.rec">Kumbukumbu</span>
     </button>
   </nav>
+</div>
+
+<div id="deck">
+  <div class="deckbar">
+    <button class="x" id="deckClose" type="button">&times;</button>
+    <div class="prog">
+      <div class="t"><span id="deckPos">0 / 0</span><span id="deckLeft"></span></div>
+      <div class="track"><i id="deckBar" style="width:0%"></i></div>
+    </div>
+    <button class="undo" id="deckUndo" type="button" disabled data-t="deck.undo">Rudi</button>
+  </div>
+
+  <div class="stage" id="deckStage"></div>
+
+  <div class="deckbtns">
+    <button type="button" data-s="missing" data-t="s.missing">Hayupo</button>
+    <button type="button" data-s="dead" data-t="s.dead">Amekufa</button>
+    <button type="button" data-s="present" data-t="s.present">Yupo</button>
+  </div>
+  <div class="deckhint" data-t="deck.hint">Telesha kulia = yupo · kushoto = hayupo · juu = amekufa</div>
+
+  <div class="deckdone" id="deckDone">
+    <div class="lead" id="deckDoneLead"></div>
+    <div class="big num" id="deckDoneBig">—</div>
+    <div class="lead" id="deckDoneSub"></div>
+    <button class="btn" id="deckFinish" data-t="cnt.finish">Maliza hesabu</button>
+    <button class="btn ghost" id="deckBack" data-t="deck.review">Pitia tena</button>
+  </div>
 </div>
 
 <div class="sheet-bg" id="sheetBg"></div>
@@ -531,6 +626,8 @@ var T = {
     "reg.lot":"Namba ya daraja","reg.save":"Hifadhi kwenye fungu","reg.clear":"Futa fomu",
     "cnt.h":"Hesabu ya kila wiki","cnt.s":"Tembea zizi, gusa kila hereni. Mkopeshaji anaona jibu, si ahadi.",
     "cnt.list":"Orodha","cnt.finish":"Maliza hesabu","cnt.reset":"Anza upya","cnt.hist":"Hesabu zilizopita",
+    "cnt.walk":"Anza kutembea zizi","deck.undo":"Rudi","deck.review":"Pitia tena",
+    "deck.hint":"Telesha kulia = yupo · kushoto = hayupo · juu = amekufa",
     "rec.h":"Kumbukumbu","rec.s":"Kila kitendo kimefungwa kwenye mnyororo. Kikibadilishwa, mnyororo huvunjika.",
     "rec.events":"Matukio","rec.headhash":"Alama ya mwisho","rec.chain":"Hali ya mnyororo",
     "rec.verify":"Thibitisha mnyororo","rec.export":"Toa faili kwa mkopeshaji",
@@ -583,6 +680,8 @@ var T = {
     "reg.lot":"Grade code","reg.save":"Save into the lot","reg.clear":"Clear form",
     "cnt.h":"Weekly reconciliation","cnt.s":"Walk the pen, tap every tag. The lender sees an answer, not an assurance.",
     "cnt.list":"Roll","cnt.finish":"Finish count","cnt.reset":"Start over","cnt.hist":"Past counts",
+    "cnt.walk":"Start walking the pen","deck.undo":"Undo","deck.review":"Back to the roll",
+    "deck.hint":"Swipe right = present · left = missing · up = dead",
     "rec.h":"The record","rec.s":"Every action is sealed into a chain. Change one and the chain breaks.",
     "rec.events":"Events","rec.headhash":"Head hash","rec.chain":"Chain status",
     "rec.verify":"Verify chain","rec.export":"Export pack for the lender",
@@ -629,6 +728,30 @@ function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
 function pad3(n){ return ("00"+n).slice(-3); }
 function isoDay(ts){ var d=new Date(ts); return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2); }
 function shortHash(h){ return h ? h.slice(0,12) : "—"; }
+
+/**
+ * Eases a percentage into place rather than snapping it. Worth it on exactly one number —
+ * the cover ratio is the figure the agent checks each morning, and the movement is what makes
+ * a change register. Everything else in the app updates instantly and silently.
+ */
+function countTo(node, target){
+  var from = parseFloat(node.getAttribute("data-v") || "0");
+  if(Math.abs(target - from) < 0.05){
+    node.textContent = target.toFixed(1) + "%";
+    node.setAttribute("data-v", target);
+    return;
+  }
+  node.setAttribute("data-v", target);
+  var t0 = null, dur = 520;
+  function step(ts){
+    if(t0 === null) t0 = ts;
+    var k = Math.min(1, (ts - t0)/dur);
+    var eased = 1 - Math.pow(1 - k, 3);
+    node.textContent = (from + (target - from)*eased).toFixed(1) + "%";
+    if(k < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
 
 var toastTimer;
 function toast(msg, bad){
@@ -790,7 +913,7 @@ function renderLot(){
   var cls = pct >= FAC.callAt*100 ? "ok" : (pct >= FAC.floorAt*100 ? "watch" : "call");
   var band = pct >= FAC.callAt*100 ? t("st.ok") : (pct >= FAC.floorAt*100 ? t("st.watch") : t("st.call"));
   g.className = "gauge " + cls;
-  el("coverPct").textContent = c.val ? pct.toFixed(1) + "%" : "—";
+  if(c.val) countTo(el("coverPct"), pct); else el("coverPct").textContent = "—";
   el("coverBand").textContent = c.val ? band : "—";
   el("coverBand").className = "band " + (cls==="ok"?"up":(cls==="watch"?"warn":"down"));
   // the bar runs 90%–140% cover; the mark sits on 100%
@@ -1123,6 +1246,228 @@ el("resetCntBtn").addEventListener("click", function(){
   S.marks = {}; save(); haptic(12); renderCount();
 });
 
+/* ============ the swipe deck ============ */
+var deck = { queue:[], i:0, history:[], card:null, next:null, drag:null };
+
+function getPhoto(sha, cb){
+  openDb(function(d){
+    if(!d || !sha){ cb(null); return; }
+    try{
+      var rq = d.transaction("photos","readonly").objectStore("photos").get(sha);
+      rq.onsuccess = function(){ cb(rq.result || null); };
+      rq.onerror = function(){ cb(null); };
+    }catch(e){ cb(null); }
+  });
+}
+
+function openDeck(){
+  deck.queue = S.animals.filter(function(a){ return !S.marks[a.tag]; });
+  if(!deck.queue.length){
+    // nothing left unmarked — go straight to the summary
+    deck.queue = [];
+  }
+  deck.i = 0;
+  deck.history = [];
+  el("deckUndo").disabled = true;
+  el("deck").classList.add("on");
+  el("deckDone").classList.remove("on");
+  buildCards();
+  updateDeckProgress();
+}
+function closeDeck(){
+  el("deck").classList.remove("on");
+  el("deckStage").innerHTML = "";
+  deck.card = deck.next = null;
+  renderAll();
+}
+
+function cardHtml(a){
+  return '<div class="pic"><div class="none">' + (lang==="sw"?"Hakuna picha":"No photograph") + '</div></div>' +
+    '<div class="wash present"><span>' + t("s.present") + '</span></div>' +
+    '<div class="wash missing"><span>' + t("s.missing") + '</span></div>' +
+    '<div class="wash dead"><span>' + t("s.dead") + '</span></div>' +
+    '<div class="info">' +
+      '<div class="tagbig">' + esc(a.tag) + '</div>' +
+      '<div class="subline">' + esc(a.code) + '</div>' +
+      '<div class="valline">TZS ' + fmt(a.value) + '</div>' +
+    '</div>';
+}
+function makeCard(a, behind){
+  var c = document.createElement("div");
+  c.className = "dcard" + (behind ? " behind" : "");
+  c.innerHTML = cardHtml(a);
+  // the thumbnail shows instantly; the full frame replaces it when IndexedDB answers
+  var pic = c.querySelector(".pic");
+  if(a.thumb){
+    var none = pic.querySelector(".none");
+    if(none) none.style.display = "none";
+    var img = document.createElement("img");
+    img.src = a.thumb;
+    img.style.filter = "blur(6px)";
+    pic.insertBefore(img, pic.firstChild);
+    getPhoto(a.photoSha, function(full){
+      if(full && img.parentNode){ img.src = full; img.style.filter = ""; }
+      else { img.style.filter = "blur(2px)"; }
+    });
+  }
+  return c;
+}
+
+function buildCards(){
+  var stage = el("deckStage");
+  stage.innerHTML = "";
+  if(deck.i >= deck.queue.length){ showDeckDone(); return; }
+  el("deckDone").classList.remove("on");
+  var nxt = deck.queue[deck.i+1];
+  deck.next = nxt ? makeCard(nxt, true) : null;
+  if(deck.next) stage.appendChild(deck.next);
+  deck.card = makeCard(deck.queue[deck.i], false);
+  stage.appendChild(deck.card);
+  bindDrag(deck.card);
+}
+
+function updateDeckProgress(){
+  var total = S.animals.length;
+  var marked = 0;
+  S.animals.forEach(function(a){ if(S.marks[a.tag]) marked++; });
+  el("deckPos").textContent = marked + " / " + total;
+  el("deckLeft").textContent = (total - marked) + " " + (lang==="sw" ? "wamebaki" : "left");
+  el("deckBar").style.width = (total ? (marked/total*100) : 0).toFixed(1) + "%";
+}
+
+function washFor(dx, dy){
+  if(dy < -70 && Math.abs(dy) > Math.abs(dx)) return "dead";
+  if(dx > 60) return "present";
+  if(dx < -60) return "missing";
+  return null;
+}
+function paintWash(card, dx, dy){
+  var w = washFor(dx, dy);
+  ["present","missing","dead"].forEach(function(k){
+    var e2 = card.querySelector(".wash." + k);
+    if(!e2) return;
+    var mag = (k === "dead") ? Math.min(1, Math.max(0,-dy)/150) : Math.min(1, Math.abs(dx)/150);
+    e2.style.opacity = (w === k) ? mag.toFixed(2) : 0;
+  });
+}
+
+function bindDrag(card){
+  card.addEventListener("pointerdown", function(e){
+    if(e.button !== undefined && e.button !== 0) return;
+    deck.drag = { x:e.clientX, y:e.clientY, dx:0, dy:0, id:e.pointerId };
+    card.classList.remove("settle");
+    try{ card.setPointerCapture(e.pointerId); }catch(err){}
+  });
+  card.addEventListener("pointermove", function(e){
+    if(!deck.drag || deck.drag.id !== e.pointerId) return;
+    deck.drag.dx = e.clientX - deck.drag.x;
+    deck.drag.dy = e.clientY - deck.drag.y;
+    card.style.transform = "translate(" + deck.drag.dx + "px," + deck.drag.dy +
+      "px) rotate(" + (deck.drag.dx/22).toFixed(2) + "deg)";
+    paintWash(card, deck.drag.dx, deck.drag.dy);
+  });
+  function release(e){
+    if(!deck.drag || deck.drag.id !== e.pointerId) return;
+    var dx = deck.drag.dx, dy = deck.drag.dy;
+    deck.drag = null;
+    var verdict = washFor(dx, dy);
+    if(verdict){ flingCard(card, verdict, dx, dy); }
+    else {
+      card.classList.add("settle");
+      card.style.transform = "";
+      paintWash(card, 0, 0);
+    }
+  }
+  card.addEventListener("pointerup", release);
+  card.addEventListener("pointercancel", release);
+}
+
+function flingCard(card, verdict, dx, dy){
+  var a = deck.queue[deck.i];
+  if(!a) return;
+  card.classList.add("settle");
+  var ox = verdict === "present" ? 700 : (verdict === "missing" ? -700 : (dx||0));
+  var oy = verdict === "dead" ? -800 : (dy||0);
+  card.style.transform = "translate(" + ox + "px," + oy + "px) rotate(" + (ox/22).toFixed(1) + "deg)";
+  card.style.opacity = "0";
+  // a short, single tick — confirmation, not reward
+  haptic(verdict === "dead" ? 34 : 16);
+  markFromDeck(a.tag, verdict);
+  setTimeout(function(){
+    deck.i++;
+    buildCards();
+    updateDeckProgress();
+  }, 170);
+}
+
+function markFromDeck(tag, verdict){
+  S.marks[tag] = verdict;
+  deck.history.push(tag);
+  el("deckUndo").disabled = false;
+  save();
+}
+
+el("deckStage").addEventListener("click", function(){ /* taps fall through to buttons */ });
+
+document.querySelector(".deckbtns").addEventListener("click", function(e){
+  var b = e.target.closest ? e.target.closest("button[data-s]") : null;
+  if(!b || !deck.card) return;
+  flingCard(deck.card, b.getAttribute("data-s"), 0, 0);
+});
+
+el("deckUndo").addEventListener("click", function(){
+  if(!deck.history.length) return;
+  var tag = deck.history.pop();
+  delete S.marks[tag];
+  save();
+  haptic(12);
+  // step back to the animal that was just judged
+  for(var i=0;i<deck.queue.length;i++){ if(deck.queue[i].tag === tag){ deck.i = i; break; } }
+  el("deckUndo").disabled = deck.history.length === 0;
+  buildCards();
+  updateDeckProgress();
+});
+
+el("deckClose").addEventListener("click", function(){ haptic(10); closeDeck(); });
+el("deckBack").addEventListener("click", function(){ haptic(10); closeDeck(); });
+
+function showDeckDone(){
+  var p=0,m=0,d=0,pend=0;
+  S.animals.forEach(function(a){
+    var mk = S.marks[a.tag];
+    if(mk==="present") p++; else if(mk==="missing") m++; else if(mk==="dead") d++; else pend++;
+  });
+  var total = S.animals.length;
+  var shortfall = total ? (m+d)/total : 0;
+  el("deckDoneLead").textContent = pend
+    ? (lang==="sw" ? "Bado hawajahesabiwa" : "Still unmarked")
+    : (lang==="sw" ? "Upungufu wa hesabu hii" : "Shortfall on this count");
+  el("deckDoneBig").textContent = pend ? pend : (shortfall*100).toFixed(1) + "%";
+  el("deckDoneBig").className = "big num " +
+    (pend ? "" : (shortfall > 0.01 ? "down" : "up"));
+  el("deckDoneSub").textContent = pend
+    ? (lang==="sw" ? "Rudi kwenye orodha kuwamaliza." : "Return to the roll to finish them.")
+    : (p + " " + t("s.present").toLowerCase() + " · " + m + " " + t("s.missing").toLowerCase() +
+       " · " + d + " " + t("s.dead").toLowerCase() +
+       (shortfall > 0.01
+         ? (lang==="sw" ? " — zaidi ya 1%, ni tukio la kuvunja mkataba."
+                        : " — over 1%, which is an event of default.")
+         : ""));
+  el("deckFinish").disabled = !!pend;
+  el("deckDone").classList.add("on");
+}
+
+el("deckFinish").addEventListener("click", function(){
+  closeDeck();
+  el("finishBtn").click();
+});
+
+el("walkBtn").addEventListener("click", function(){
+  if(!S.animals.length){ toast(t("t.nolot"), true); return; }
+  haptic(18);
+  openDeck();
+});
+
 /* ============ record: verify, export, wipe ============ */
 el("verifyBtn").addEventListener("click", function(){
   haptic(20);
@@ -1284,6 +1629,7 @@ el("langBtn").addEventListener("click", function(){
 /* ============ hardware back ============ */
 window.MNADA = {
   onBack: function(){
+    if(el("deck").classList.contains("on")){ closeDeck(); return true; }
     if(sheetOpen){ closeSheet(); return true; }
     if(current !== "fungu"){ switchTab("fungu"); return true; }
     return false;

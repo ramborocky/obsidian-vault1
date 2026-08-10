@@ -26,7 +26,7 @@ syncs nothing, no "bound to keeper's NIDA" on a field that nobody verified.
 |---|---|---|
 | Lot | **Fungu** | Cover today, the accruing line the lot must clear, day *n* of 45, setup |
 | Enrol | **Sajili** | Tag → photo → GPS → grade → keeper → sealed into the chain |
-| Count | **Hesabu** | The weekly walk: present / missing / dead, shortfall against the 1% default threshold |
+| Count | **Hesabu** | The weekly walk: present / missing / dead, shortfall against the 1% default threshold. Tap **Anza kutembea zizi** for the swipe deck |
 | Record | **Kumbukumbu** | Event count, head hash, chain verification, export pack, wipe |
 
 Bilingual Swahili / English, Swahili default.
@@ -60,6 +60,28 @@ removed verifies perfectly on its own terms, so the check also compares lengths.
 The SHA-256 is a local implementation (no `crypto.subtle` — a `file://` page is not a secure
 context). It passes the NIST vectors for `""`, `"abc"` and the 56-byte multi-block case, and is
 exposed as `window.MNADA.sha256` so a lender can recompute a pack's hashes independently.
+
+## The swipe deck, and what was deliberately left out
+
+A 200-head walk is 200 decisions. A list row you have to aim at is the wrong instrument for that,
+so the count opens as a full-screen deck: one animal per card, big photograph, tag at 1.6rem.
+**Swipe right = present, left = missing, up = dead**, with the verdict colour arriving *during* the
+gesture rather than after it, so the agent knows what they are about to commit before they let go.
+Three buttons do the same job for anyone who would rather tap. Undo steps back one animal and
+un-marks it. The thumbnail paints immediately and the full frame swaps in when IndexedDB answers,
+so the card is never blank.
+
+Consumer-app craft that earns its place here: instant response, one-handed reach, a single short
+haptic per decision, a progress bar that moves, and a cover figure that eases into position instead
+of snapping — that last one on exactly one number, because it is the figure the agent checks each
+morning and the movement is what makes a change register.
+
+**What is deliberately absent, and should stay absent:** streaks, badges, scores, levels, celebration
+animations, variable rewards, notification loops, and anything that counts consecutive days. This
+app's output is evidence a credit officer relies on. Confetti on a livestock count reads as a toy,
+and a reviewer who thinks the tool is a toy stops trusting the reconciliation — which is the only
+thing being sold. The engagement pattern that fits here is the one where the agent finishes the walk
+quickly and puts the phone away.
 
 ## Storage
 
