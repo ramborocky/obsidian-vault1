@@ -26,16 +26,28 @@ source: nbaa.go.tz
 5. Submission now goes through **MEMS** (NBAA's Members and Examination Management System) — online.
 6. Application reviewed and approved by the Board.
 
+## Progress
+- **2026-08-10 — MEMS profile updated, a certificate uploaded to the professional section.** First movement on this file since 22 July. Day 2 is done; Day 6 is part-done.
+
 ## One-Task-A-Day To-Do
 | Day | Task                                                                                                                                       | Status |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
-| 1   | Confirm your current status: are you a registered Graduate Accountant already, and how many years of logged experience do you have so far? | ⬜      |
-| 2   | Log into (or create) your MEMS account on nbaa.go.tz                                                                                       | ⬜      |
+| 1   | Confirm your current status — **now readable off the MEMS profile, no phone call needed.** See the three fields below                      | 🔄      |
+| 2   | Log into (or create) your MEMS account on nbaa.go.tz                                                                                       | ✅      |
 | 3   | Download the logbook template(s) and the ACPA application form                                                                             | ⬜      |
 | 4   | Fill in / update your practical-experience logbook(s) for whatever years are outstanding                                                   | ⬜      |
 | 5   | Identify and contact two ACPA/FCPA-registered accountants to act as referees                                                               | ⬜      |
-| 6   | Gather documents: Board certificates copy, employer details, 2 passport photos                                                             | ⬜      |
+| 6   | Gather documents: Board certificates copy, employer details, 2 passport photos — **certificate uploaded 10 Aug; photos and employer details outstanding** | 🔄      |
 | 7   | Pay the application fee and submit the full application via MEMS                                                                           | ⬜      |
+
+### Day 1, while you are still logged in — three fields to read off the profile
+The status question was going to cost a phone call. It doesn't any more; MEMS holds the answer.
+
+1. **Membership grade** — does it say *Graduate Accountant* / show a GA registration number, or something else?
+2. **Registration date** — this starts the three-year clock. Years elapsed is the number [[00 The Board]] and [[Home]] are both waiting on
+3. **Practical experience / logbook section** — does one exist on the profile, and are any years already recorded in it?
+
+**Write the three answers into the Progress line above.** That closes Home's blocker #1 and unblocks six tasks.
 
 ## Open Questions (need your input, not guessable)
 - Are you already registered as a Graduate Accountant with NBAA?
