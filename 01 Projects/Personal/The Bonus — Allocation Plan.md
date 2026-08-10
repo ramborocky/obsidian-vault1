@@ -168,23 +168,29 @@ August's logged days, with the one-offs stripped out (handset, haircut, Mombasa,
 
 ---
 
-## THE BIKE IS THE ONLY ITEM THAT PAYS YOU BACK
+## ✅ IT IS A ROAD BICYCLE — the payback, done honestly
+
+**Confirmed 2026-08-10.** That settles the running cost: **a bicycle has no fuel, no licence, no insurance.** Tyres, tubes, chain and brake pads are real but small — call it **5,000–10,000 a month**, not the 45,000–114,000 a motorbike would have cost.
 
 Transport in August: **19,000 over 5 days = 3,800 a day → about 114,000 a month.**
 
-```
-550,000 ÷ 114,000 per month  =  4.8 months to pay for itself
-```
+**But I am not going to hand you 4.8 months, because a bicycle does not replace every trip.** Rain, night, carrying a full shop home, anything far. **The honest figure is a range**, and even the pessimistic end is good:
 
-**That is a genuinely good return — but it depends entirely on one number nobody has recorded: what the bike costs to run per day.**
+| If it displaces… | Saves/month (after upkeep) | 550,000 pays back in |
+| --- | ---: | ---: |
+| **All your fares** | ~106,000 | **5.2 months** |
+| **70%** — realistic | ~72,000 | **7.6 months** |
+| **50%** — cautious | ~50,000 | **11 months** |
 
-| If running it costs… | Then it… |
-| --- | --- |
-| **Near zero** (a bicycle) | Pays back in **under 5 months**, then saves 114,000/month forever. **Clearly the best purchase on your list** |
-| **~1,500/day** (45,000/mo) | Pays back in ~8 months. Still worth it |
-| **~3,800/day** | **Saves you nothing.** You have bought your own fares |
+**Every one of those is a good return on a thing that then keeps working for years.** At the realistic middle it returns about **13% a month** on what you put in — and unlike the phone, it is still worth something if you need to sell it.
 
-❓ **First question, and it changes the answer completely: is this a bicycle or a motorbike?** At 550,000 TZS this reads like a **bicycle** — a road-legal motorbike here runs to several million. If it is a bicycle, running cost is near zero and this is the strongest single item on your list. Tell me which and I will redo the payback properly.
+> **So the bicycle is the right purchase. It is simply not the urgent one** — and that distinction is the whole plan. **DMK costs 150% a month. The bicycle returns about 13%.** Both are worth doing; only one of them is bleeding while you decide.
+
+### ⏳ What waiting on the bicycle actually costs
+
+**About 72,000 a month in fares you keep paying** — roughly 2,400 a day. Real, but **a twenty-seventh of DMK's daily bite.** Waiting three weeks costs you around 50,000; waiting three weeks on DMK costs 185,850.
+
+💡 **One way to have it now: buy a cheaper bicycle.** A sound used road bike at **~200,000** fits inside the 215,100 you have left after everything above, with nothing squeezed. At 72,000 a month saved it **pays for itself in under three months** — a better return than the 550,000 one, and it starts today instead of in September.
 
 **The phone has no such calculation.** 350,000, no return, and it is the one item on the list with no precedent anywhere in [[Expenses]] — so I cannot tell you whether it is a one-off or the first of several. That is a budgeting question, not any other kind, and only you know the answer.
 
@@ -206,22 +212,35 @@ This retires the finding that has run through [[Expenses]] since 28 July — *"t
 
 **Three honest ways to close the 684,900, in the order I would do them:**
 
-1. **Drop the phone — saves 350,000.** Largest discretionary item, no return, and it is the only one with nothing else depending on it.
-2. **Buy the bike in September instead — frees 550,000 now.** It is not urgent this week and the payback clock barely notices three weeks.
+1. **Drop the phone — 350,000.** Largest discretionary item, no return, nothing else depends on it, and it is worth nothing the day after you buy it.
+2. **Take the 200,000 bicycle instead of the 550,000 one — 350,000.** Better return, sooner, and it fits without squeezing anything.
 3. **Compress the living rate.** Food & Out has tripled to 75,500 this month and **43,000 of it was one meal.** Not a lecture — the arithmetic is simply that the tandoori is 1.2 days of your whole living budget.
 
-**Doing 1 and 2 gets you to a surplus of 215,100 instead of a shortfall of 684,900**, with every debt cleared, the fees paid and the buffer funded.
+**Doing 1 and 2 lands you almost exactly on target:**
+
+```
+Available                          1,639,100
+DMK (today)                      −   177,000
+School fees                      −   200,000
+The four personal debts          −   197,000
+Living, 11–31 Aug                −   750,000
+Rainy-day buffer                 −   100,000
+Used road bicycle                −   200,000
+                                 ───────────
+LEFT                                  15,100
+```
+
+**Every debt cleared, fees paid, buffer funded, and you are riding by the weekend** — against a plan that started 684,900 short. **The 550,000 bicycle and the phone are what that costs**, and only one of them was ever going to earn anything back.
 
 ---
 
 ## WHAT I NEED FROM YOU
 
-1. 🔴 **DMK: is the 5% on the original 177,000 or on the running balance?** And is 177,000 principal, or principal plus accrued? — **130,000 of difference by month end**
-2. **Bicycle or motorbike?** — decides whether the bike is your best purchase or a break-even one
-3. **What comes in monthly** — no salary has ever been logged here, so the plan cannot see past 31 August
-4. **Still open from the 10th:** is the 10,000 sent home the same 10,000 as 8 Aug?
+1. 🔴 **DMK: is the 5% on the original 177,000 or on the running balance?** And is 177,000 principal, or principal plus accrued? — **130,000 of difference by month end.** The last open number that changes the plan
+2. **What comes in monthly** — no salary has ever been logged here, so the plan cannot see past 31 August
+3. **Count your pocket: it should be 31,100.** Ten seconds, and it is the only day it is checkable
 
-*Closed 2026-08-10: AMON paid in full · DMK balance and rate given · the 177,000 placed inside the 217,000.*
+*Closed 2026-08-10: AMON paid in full · DMK balance and rate given · the 177,000 placed inside the 217,000 · **the bike is a road bicycle** · **the two 10,000 grocery sends are separate, not a duplicate.***
 
 ---
 

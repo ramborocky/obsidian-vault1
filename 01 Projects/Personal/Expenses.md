@@ -156,7 +156,7 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-10 | Cashew nuts                    | Food & Out        |        4,000 |                                                                                                                                                                                               |
 | 2026-08-10 | Tip — restaurant               | Food & Out        |        2,000 | **Food & Out confirmed by you 2026-08-10.** The 8 Aug basket-holder tip stays under Personal — deliberate, not an accident; not raising it again                                              |
 | 2026-08-10 | Coke Zero and plain chips      | Food & Out        |        3,000 | Amount given by you 2026-08-10 — the two together, not each                                                                                                                                  |
-| 2026-08-10 | Sent home — household groceries | Household        |       10,000 | ⚠️ **Possible duplicate — check this one.** You said it came "from the 440,000 I received last time"; the **8 Aug** row is also 10,000 sent home for groceries. If it is the same spend being re-told, say so and I'll strike it |
+| 2026-08-10 | Sent home — household groceries | Household        |       10,000 | ✅ **Not a duplicate — confirmed by you 2026-08-10.** You sent 10,000 on the 8th and 10,000 again today. Two separate sends, both stand                                                        |
 | 2026-08-10 | Bus fare                       | Transport         |        1,500 |                                                                                                                                                                                               |
 | 2026-08-10 | Bus fare                       | Transport         |          800 |                                                                                                                                                                                               |
 | 2026-08-10 | Bus fare                       | Transport         |          800 |                                                                                                                                                                                               |
@@ -341,7 +341,7 @@ SHOULD BE         1,608,000                                 ──────�
 
 **Check the pocket figure first — it is the one that can be wrong.** 31,100 is small enough to count in ten seconds, and any shortfall against it is this month's leak caught on the day rather than three weeks later. **The bank side should reconcile exactly**; if it does not, that is a different kind of problem and worth knowing immediately.
 
-*If the 10,000 sent home turns out to be the 8 Aug row told twice, pocket should be **41,100** and the total **1,649,100**. That question is still open.*
+✅ *The duplicate question is closed — you sent 10,000 on the 8th and 10,000 again on the 10th, two separate sends. **31,100 and 1,639,100 are the figures to check against.*** **Household groceries sent home are now running at 10,000 every other day**, which is 150,000 a month if it holds — worth knowing, not worth acting on yet.
 
 #### ✅ The borrowed 30,000 is already repaid — flag closed
 
