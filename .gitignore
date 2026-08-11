@@ -43,6 +43,10 @@
 # Compiled app binaries — rebuildable from the app-android source beside them.
 # Same reason as the submission artifacts: no opaque binaries on a public remote.
 *.apk
+# Exception, on the user's explicit instruction 2026-08-11: the MNADA demo build is
+# tracked so it can be downloaded and sideloaded without a toolchain. It is signed
+# with the Android debug key and carries no story prose.
+!01 Projects/Ventures/09 Mnada/mnada-demo-*.apk
 
 # Other authors' stories held in full for study. Published works, copyright theirs.
 # Tracked on the user's explicit instruction 2026-07-31: these are published and

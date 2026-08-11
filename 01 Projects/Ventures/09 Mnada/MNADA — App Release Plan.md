@@ -1,8 +1,8 @@
 ---
 tags: [ventures, mnada, app, release, timetable, android]
 aliases: [MNADA App Timetable, MNADA Release Plan, APK Plan]
-date: 2026-08-10
-status: build blocked on this machine — no JDK, no Android SDK, no Gradle
+date: 2026-08-11
+status: APK built and tracked — debug-signed, still untested on a phone
 author: Claude — planning. Not a credit offer, not investment advice.
 ---
 
@@ -14,19 +14,60 @@ author: Claude — planning. Not a credit offer, not investment advice.
 
 ## THE HONEST STATUS
 
+*Corrected 11 August 2026. The previous version of this table said the build was blocked
+for want of a toolchain. That was wrong — Android Studio, JDK 21, SDK 35 and build-tools
+35.0.0 are all installed on this machine, and Gradle 8.12 was already in the wrapper cache.
+The only thing actually missing was a `local.properties`.*
+
 | | |
 |---|---|
 | **Source** | Complete and tested. Enrolment, reconciliation, hash chain, export pack all work |
-| **APK** | **Not built.** This machine has no JDK, no Android SDK and no Gradle. The old `mnada-demo-v0.1.0.apk` was built on a different machine (`rmhina`) |
-| **Signing** | Falls back to the **debug key**, because `keystore.properties` does not exist yet |
-| **Tested on a phone** | **No.** Camera, GPS, and the file writer have never run on real hardware |
-| **Shareable today** | **Yes — `app-preview.html`.** Opens in any browser on any phone or laptop. No install, no APK, no "unknown sources" warning |
+| **APK** | **Built — `mnada-demo-v0.2.0-custody.apk`, 47 KB, tracked in git.** Verified to carry byte-identical assets to `app-preview.html` |
+| **Signing** | **Debug key.** `keystore.properties` still does not exist, so the release build fell back as designed. Fine in a meeting, wrong for a bank, a custodian or a field agent |
+| **Tested on a phone** | **No.** Camera, GPS, and the file writer have still never run on real hardware |
+| **Shareable today** | **Both.** `app-preview.html` for a link that opens anywhere; the APK for anyone who wants it installed |
+
+**To rebuild:** the build fails from this vault's own path — Gradle's SDK locator chokes on
+something in it — so copy `app-android/` to a scratch directory and build there. Write
+`local.properties` with **forward slashes**; backslashes are escape characters in a
+`.properties` file and produce exactly the misleading `IOException: The filename, directory
+name, or volume label syntax is incorrect` that this note previously mistook for a missing SDK.
+
+```bash
+printf 'sdk.dir=C:/Users/rmhina/AppData/Local/Android/Sdk\n' > local.properties
+```
+
+---
+
+## WHAT CHANGED ON 11 AUGUST
+
+**The app is now light and green.** It was near-black with a green cast, on the reasoning that
+a photograph of an animal should be the brightest thing on screen. That reasoning was sound and
+the result still read as a surveillance tool. The palette is now a pale green-white ground with
+deep forest ink, and **green has taken over as the primary colour** — buttons, brand, active tab —
+with ochre demoted to the warning tone, which was the only job it was really doing. Nineteen
+hard-coded translucent fills were replaced with `--fill` / `--hair` tokens, so the next palette
+change is one block, not a scavenger hunt.
+
+**Counterparties are now named in the app.** The Lot screen carries a lender and a mortality
+insurer, picked from horizontal strips of nine Tanzanian banks and eight insurers. Choosing one
+appends a `lender.set` / `insurer.set` event to the hash chain like any other custody fact, and
+both names travel in the export pack.
+
+> [!warning] The marks are not the real logos
+> They are original monograms — initials on one curated colour palette, deliberately not drawn
+> from anybody's brand book. The strip says so on screen in both languages, and `buildPack()`
+> repeats it in the JSON: *neither institution has reviewed, endorsed, or agreed to this
+> facility.* **Keep that line intact.** The moment this app appears to carry a real bank's mark
+> in a document sent to a third party, it stops being a demo and becomes a misrepresentation.
+> If a bank ever does come on board, use their supplied assets under their written permission —
+> not these placeholders.
 
 ---
 
 ## SHOW IT TODAY WITHOUT AN APK
 
-`app-preview.html` is the same app, refreshed from source on 10 August 2026. Send the file, or put it on any web host and send the link.
+`app-preview.html` is the same app, refreshed from source on 11 August 2026. Send the file, or put it on any web host and send the link.
 
 **It is arguably the better thing to show.** An unsigned APK from a stranger triggers an install warning, needs Android, and looks amateur. A link opens instantly on anything, including the iPhone of whoever the CropSupply founders forward it to.
 
