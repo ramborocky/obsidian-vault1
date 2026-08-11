@@ -140,6 +140,7 @@ Every Chair of Judges 2021–2026, verbatim, checked against the Commonwealth Fo
 | 5 | [[mihogoni-2]] | The *Dite* object-chorus: four rusted ships, no body, no agency | The naive-narrator engine run for a whole story instead of once. **Cosmic indifference delivered by a commodity price** |
 | 6 | [[mihogoni-3f]] | Chantal's material in **close third**, one ship carrying the ascendancy | The four-flag epigraph chain and the **after-deck clause**. Cost: the narrator |
 | 7 | [[mihogoni-3g]] | **Controlled test** — 3f with the person flipped and nothing else changed | **Five of seven devices were free of person; two were being subsidised by it.** → [[19 The Third-Person Test — What Close Third Bought and Cost]] |
+| 8 | [[The Fastest Car in Mazimbu — Morland-Standard Build (AI Draft, Not Canon)]] | **A ruler, not an experiment.** The Morland extract's premise rebuilt to the vault's own ten bricks, so the published text has something to be scored against | Built to spec: 1984 throughout, km/h, no detached participles, opens on the car, **ends on Dube**. 2,863 words. The user's inventions, my sentences |
 
 ---
 
