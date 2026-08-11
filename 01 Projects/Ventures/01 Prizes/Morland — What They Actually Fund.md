@@ -14,14 +14,15 @@ status: research — twelve funded projects read closely, three years deep
 
 ## THE ROLL — 2013 to 2025
 
-The Foundation names its scholars but rarely publishes the proposals. **Names exist for every year; project descriptions only survive in detail for 2023–2025**, which is where the pattern below comes from.
+The Foundation names its scholars but rarely publishes the proposals. **Names exist for every year; the descriptions behind the six patterns below come from 2023–2025.** ⚠️ **2022 has since been recovered as well — all five projects, in [[Morland 2022 — The Five, Read Closely]] — and it corrects three of the six patterns.** Read that note beside this one.
 
 | Year | Scholars |
 | --- | --- |
 | **2013** | Percy Zvomuya (SA) · Doreen Baingana (UG) · Tony Mochama (KE) |
 | **2014** | Yewande Omotosho (NG) · Ahmed Khalifa (EG) · Ndinda Kioko (KE) · Simone Haysom (SA) |
 | **2015** | Noo Saro-Wiwa (NG) · Bolaji Odofin (NG) · Fatin Abbas (SD) · Karen Jennings (SA) · **Akwaeke Emezi** (NG) |
-| **2016–2022** | named on the Foundation's *Previous Winners* page; projects not published |
+| **2016–2021** | named on the Foundation's *Previous Winners* page; projects not published |
+| **2022** | ML Kejera (GM) · **Neema Komba (TZ)** · Chido Muchemwa (ZW) · Chika Oduah (NG) · Lanre Otaiku (NG) — **five, and all five projects recovered** → [[Morland 2022 — The Five, Read Closely]] |
 | **2023** | Rafeeat Aliyu (NG) · Kiprop Kimutai (KE) · Mubanga Kalimamukwento (ZM) · Remy Ngamije (RW/NA) |
 | **2024** | Carey Baraka (KE) · Yvette Ndlovu (ZW) · Frances Ogamba (NG) · Fayssal Bensalah (DZ) |
 | **2025** | Adeola Opeyemi (NG) · Carlo Saio (KE) · Chinelo Onwualu (NG) · Monique Kwachou (CM) |
