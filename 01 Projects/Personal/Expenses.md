@@ -54,7 +54,8 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 |            | **July total**          | **2,426,000** |                                                                                             |
 | 2026-08-06 | *borrowed form friendy* |        30,000 | Logged as "received" — say whether bank, salary or cash in hand                             |
 | 2026-08-08 | *after hours*           |       441,000 | Logged as "received" — source not given                                                     |
-|            | **August total**        |   **471,000** |                                                                                             |
+| 2026-08-10 | **Bonus**               | **1,640,000** | ⚠️ **Added 13 Aug from memory, not from a record.** You said you logged this on your phone around the 10th. **It never reached this repo** — not the working tree, not any commit in the whole history, not the journal inbox. **Confirm the amount and the date before this figure is trusted**, and see the running note |
+|            | **August total**        | **2,111,000** |                                                                                             |
 
 ---
 
@@ -151,7 +152,7 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-08 | Boda boda                      | Transport         |        1,500 |                                                                                                                                                                                               |
 | 2026-08-08 | Tip — basket holder            | Personal          |        1,000 | At the toilet; logged as given for holding a shopping basket                                                                                                                                 |
 | 2026-08-09 | —                              | —                 |            0 | No spending. **Corroborated:** two x-factor notes written and dated the 9th, one saying *"Today is 9 August"* — a desk day, and no fares logged, which fits                                   |
-| 2026-08-10 | —                              | —                 |            0 | No spending. **Corroborated:** vault commits 15:51–22:45, MNADA app rebuild, and the MEMS login + certificate upload on the ACPA file. Another desk day. **The ACPA application fee was not paid** — Day 7 still open, so it is not hiding in this gap |
+| 2026-08-10 | ⚠️ **INCOMPLETE — needs rebuilding** | —          |        **?** | ~~No spending.~~ **Overturned 13 Aug.** You named **tandoori chicken** on this day, so the zero is wrong and the "corroboration" was bad reasoning — commits prove you were at a desk *at some point*, not all day. **The bonus also arrived on or about this date.** Amounts not guessed. Tell me what you ate and anything else and I will rebuild the day. **The ACPA application fee was still not paid** — that part stands |
 | 2026-08-11 | Repaid corner shop             | Debt/Repayment    |       40,000 | Running tab settled. No record of what period it covered                                                                                                                                      |
 | 2026-08-11 | Cooking gas                    | Household         |       25,000 |                                                                                                                                                                                               |
 | 2026-08-11 | Food money — given to wife     | Household         |       15,000 | For the home. Not part of the July four-way split                                                                                                                                             |
@@ -298,29 +299,46 @@ Anything about the House build or the ACPA qualification — neither appears in 
 
 **In 471,000 · logged 1,520,732.** The 13th is **534,300** — the second 500k+ day running, and **417,000 of it is a bicycle and its kit.**
 
-#### 🔴 Money came in that this file has no record of — and it has passed a million
+#### ✅ THE INCOME GAP IS ANSWERED — the 1,640,000 bonus, 13 Aug
+
+**The gap was 1,090,600. You named a 1,640,000 bonus received around the 10th. It covers it, and then some.**
 
 ```
-Received, all August              471,000
-Logged spending 6 + 8 Aug       − 312,132
-                                ─────────
 Cash you counted on 8 Aug         118,000   ← you counted it: 8,000 bank + 110,000 pocket
+Bonus, ~10 Aug                + 1,640,000
+                                ─────────
+                                1,758,000
 Spent 11 Aug                    − 133,300
-                                ─────────
-Already short on the 11th        − 15,300
 Spent 12 Aug                    − 541,000
-                                ─────────
-Short after the 12th            − 556,300
 Spent 13 Aug                    − 534,300
                                 ─────────
-SHORT                           1,090,600
+SHOULD BE LEFT                    549,400
 ```
 
-**At least 1,090,600 came in between the 9th and today and is not written down.** That is not the 8.4%/8.7% leak below — that gap is money going *out* unrecorded. **This is money coming *in* unrecorded**, and it is now more than twice the entire recorded August income. A wage, a withdrawal, another after-hours run and new borrowing all look identical from here, and **only one of them adds a repayment you will owe.**
+> ### 🔎 **Count your cash and your wallet balance. It should come to about 549,400.**
+>
+> **This is the first prediction this file has ever been able to make, and it is checkable in two minutes.** Every previous gap was reconstructed backwards from a hole; this one runs forwards from a stated figure to a number you can verify by looking.
+>
+> | If you find… | Then |
+> | --- | --- |
+> | **~549,400** | The bonus figure and the whole August log are both correct. The month reconciles for the first time |
+> | **Meaningfully less** | The difference is unlogged spending — most likely the 10th, see below |
+> | **Meaningfully more** | The bonus was larger than 1,640,000, or something else came in too |
 
-> **This is the thing on this page that matters.** Two days ago the unrecorded income was 554,300 and the recommendation was to pull the M-Pesa statement. **It has doubled since, and nothing has been pulled.** A 340,000 bicycle bought out of money the file cannot see is not a spending problem — it is a record problem, and it is the one that makes every other number here provisional.
+**What this changes about August, stated plainly:** the handset and the bicycle were **bought out of a bonus**, not out of borrowing this file could not see. **That is a completely different month.** The earlier reading — *797,000 of assets acquired against money with no source* — was the correct conclusion from the evidence available, and the evidence was incomplete. **No new lender, no new repayment.**
 
-**The dating narrows it usefully.** You were 15,300 short before the 11th ended, so **something arrived on the 9th, 10th or 11th**, and more since.
+> [!warning] ⚠️ But the figure is memory, not a record — and that is the actual lesson here
+> **You logged this on your phone around the 10th and it never reached this repo.** Searched on 13 Aug: the working tree, **every blob in the entire git history**, all branches, stashes, untracked files, the journal inbox, and the stale `claudey/` copy. **Nothing anywhere mentions a bonus or this amount.**
+>
+> **A note written in a chat on your phone is not in the vault unless it was committed and pushed.** The 10th has eleven commits between 15:51 and 22:45 — the vault was being saved all evening — and not one of them touches `Personal/`. So the writing was being kept and the money was not.
+>
+> **Three days of analysis on this page were built on a hole that a two-line entry would have closed.** Nothing was wrong with the arithmetic; the input was missing.
+
+#### ⚠️ And the 10th is no longer a zero-spend day
+
+You mentioned **tandoori chicken** on the same day. The log currently shows **10 Aug: 0**, "corroborated" by the vault commits — **that corroboration was bad reasoning.** Commits prove you were at a desk *at some point*, not that you never left or never ate out.
+
+**The 10th needs its rows.** The tandoori chicken and anything else that day are not logged, and no amount has been guessed here. **Whatever they come to reduces the 549,400 above by the same amount** — which is exactly why the count is worth doing before the day is reconstructed.
 
 #### 🟢 And most of the 12th is recoverable, unlike every other gap in this file
 
@@ -528,6 +546,9 @@ UNACCOUNTED                  40,868
 - **2026-08-12 · what git could and could not answer** — You asked whether the repo knew anything about the 9th, 10th and 11th. **It does, about the days — not the money.** The **9th** has two x-factor notes written and dated, one opening *"Today is 9 August."* The **10th** has vault commits from 15:51 to 22:45, the MNADA app rebuild, and the **MEMS login with a certificate uploaded** on the ACPA file. Both were desk days, which is exactly why no fares appear on them — that corroborates the log rather than contradicting it. The **11th has nothing in git at all**, and it is the day you were out. **One thing ruled out: the ACPA application fee was not paid** — Day 7 is still open on that file, so it is not hiding inside the gap. **No commit records money arriving.** Git tracks what you wrote, not what you were paid; the vault has no file that logs income, which is why the Cash Withdrawn table is the only instrument for it.
 - **2026-08-12 · the finding** — **672,300 spent since the 8th against 118,000 you counted and nothing received since.** At least **554,300 came in between the 9th and the 12th that this file has no record of.** Every previous gap in this log has been money leaving unrecorded; this is the first time the *income* side is the hole, and it is bigger than any spending gap here. **It matters because a withdrawal, a wage and a new loan are indistinguishable from inside the log, and one of them adds a repayment.** ✅ **But unlike every gap before it, this one is recoverable:** you did not leave the house on the 12th and **480,000 of that day went out by phone** — the two 3,500 charges prove it. **Money cannot be sent from an empty wallet, so the M-Pesa statement for the 9th to the 12th holds both what went out and what came in.** That statement is the single action worth taking on this file today.
 - **2026-08-12** — **The "Personal is the largest category" flag from 8 Aug is superseded.** Personal is now 9% of August. **Miscellaneous is 44%, and 350,000 of that is a single handset — 36% of everything logged this month.** Separately, the 8 Aug question *"is a debt repayment coming?"* is answered: **DMK 120,000 + 3,500 charge, and the corner shop 40,000.** Debt/Repayment is 195,500, a fifth of the month. **AMON has still had nothing, and neither lender has a balance or due date recorded anywhere.**
+- **2026-08-13 · ✅ THE INCOME GAP IS ANSWERED, and the answer was never in the vault.** You named a **1,640,000 bonus received around the 10th**, logged on your phone at the time. **It is not in this repository and never was.** I searched the working tree, **every blob in the entire git history** (`git log --all -S`), all branches, the stash, untracked files, the journal inbox and the stale `claudey/` copy: no mention of a bonus or that amount anywhere. **The 10th has eleven commits between 15:51 and 22:45 and not one of them touches `Personal/`** — the writing was being saved that evening and the money was not. **A note in a phone chat is not in the vault unless it is committed and pushed.** Three days of analysis on this page were built on a hole a two-line entry would have closed; the arithmetic was right and the input was missing. **Added to the receipts table dated the 10th and marked as memory, not record — confirm the amount and the date.**
+- **2026-08-13 · what the bonus changes.** August received goes **471,000 → 2,111,000**. Against 1,520,732 logged and the 118,000 counted on the 8th, **you should be holding about 549,400 right now** — the first forward prediction this file has produced, and checkable by counting. **The handset and the bicycle were bought out of a bonus, not out of invisible borrowing.** The earlier reading was the right conclusion from the evidence there was, and the evidence was incomplete. **No new lender and no new repayment**, which was the real worry.
+- **2026-08-13 · the 10th is no longer a zero-spend day.** You named **tandoori chicken**. The row is now marked incomplete rather than zero, and **the "corroborated by commits" reasoning is withdrawn** — commits show you were at a desk at some point, not that you never went out. **No amounts guessed.** Whatever the 10th comes to reduces the 549,400 by the same amount, so count the cash before rebuilding the day.
 - **2026-08-13 · ⚠️ THE PUSH INSTRUCTION IS SUPERSEDED — decided by you.** The 8 Aug note below says *"do not run `git push`"* until `Personal/` is gitignored or the remote is made private. **Neither was done. You were shown exactly what this file contains — two lender names, two children's names, household amounts, the water bill, the bicycle, money given to your wife — and chose to push regardless.** Recorded here so this is a decision on the record and not an accident. **`01 Projects/Personal/` is public and will stay public until you change it.** The two fixes remain available at any time and nothing here is deleted by either: `.gitignore` the folder and `git rm --cached` it, or make the repository private.
 - **2026-08-13** — Logged **16 rows, 536,300** — fifteen on the 13th (**534,300**) and one on the 12th. **The 2,000 electricity is dated the 12th because you said "last night"**, which moves that day 539,000 → 541,000; say the word and it comes forward. **August is now 1,520,732 logged against 471,000 received, so the unrecorded income has doubled to 1,090,600.** Three things filed on a reading rather than your words: **the 800 bus fare** (you said no fares today except the 1,500, then gave it — logged as a second trip today), **the bike shoes** (with the bike under Transport, though Personal is just as defensible), and the **cappuccino** kept as its own row rather than folded into the date. **The 2,000 electricity against a 52,000 water bill looks like a token top-up rather than a bill** — if the electricity bill itself is still due, it is a liability nothing here records.
 - **2026-08-13 · ~~Transport is now the biggest category and the number is a trap.~~ Done — `Capital/Assets` created at your instruction.** Six rows moved: the bicycle 340,000, shoes 50,000, lights 17,000 and lock 10,000 out of Transport; the 350,000 handset out of Miscellaneous; the 30,000 plain handset out of Personal. **797,000, and it is 52% of August.** The **95,000 phone repair was reviewed and deliberately left in Personal** — a repair restores an asset rather than creating one, so it is revenue expenditure. **Nothing in July moves**, so the July tables above are unaffected and the month totals are unchanged in both months. **Written policy, so it is applied the same way next time:** over 25,000, durable past the month, and not a repair — all three, with components of one purchase assessed as one asset. **One row still open: the 50,000 bike shoes** are capitalised with the bike to keep the purchase as one event, and Personal remains defensible.
