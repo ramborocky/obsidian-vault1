@@ -55,8 +55,8 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-06 | *borrowed form friendy* |        30,000 | Logged as "received" — say whether bank, salary or cash in hand                             |
 | 2026-08-08 | *after hours*           |       441,000 | Logged as "received" — source not given                                                     |
 | 2026-08-10 | **Work bonus**          | **1,641,000** | Added 2026-08-13. **Largest single receipt in this file. Paid into the bank, not cash — confirmed by you.** This is the only receipt here that arrives with a statement behind it |
-| 2026-08-10 or 11 | *bank → pocket*   |  **≥ 85,300** | ⚠️ **Inferred, not reported by you.** The 10th and 11th spent 195,300 in person against 110,000 pocket cash counted on the 8th — so at least this much was withdrawn and never logged. **The bank statement gives the true figure**; correct this row from it |
-|            | **August total — money in** | **2,112,000** | 30,000 + 441,000 + 1,641,000. **The 85,300 above is deliberately excluded** — it is cash moving from your own bank to your own pocket, not money arriving. Counting it would inflate the month by money you already had |                                                                                             |
+| 2026-08-10 → 13 | *bank → pocket, or elsewhere* | **1,172,000** | 🔴 **The bank is empty — stated by you 13 Aug.** It took in 1,649,000 and sent 477,000 by phone, so this much left by an unrecorded route. **Only ~193,800 is explained by logged cash spending.** Supersedes the "≥85,300" inferred earlier today, which was the same gap seen through a keyhole. **Not necessarily lost — if it came out as cash it is still yours.** The statement shows which |
+|            | **August total — money in** | **2,112,000** | 30,000 + 441,000 + 1,641,000. **The 1,172,000 above is deliberately excluded** — money leaving your bank is not money arriving, whether it became cash or went somewhere else. Counting it would inflate the month by money you already had |                                                                                             |
 
 ---
 
@@ -320,6 +320,8 @@ SHOULD BE LEFT                      978,200
 
 > **This changes what kind of file this is.** Every gap here before now was cash, and **cash has no statement** — which is why July's 204,000 and the 8 Aug 40,868 were unrecoverable in principle, not just in practice. **1,641,000 of August's 2,112,000 — 78% — went through a bank account.** For the first time the month can be checked against a document instead of a memory.
 
+⚠️ **Income being complete is not the same as the month being complete.** Within hours of closing this side, the outflow side opened up much wider — **see the empty bank below.** The two findings are not in tension: **we now know exactly what came in, which is the only reason the size of what went out can be stated at all.** A month with unknown income could not have produced the 1,172,000 figure.
+
 #### 🔴 Which immediately exposes a withdrawal nobody wrote down
 
 **The 10th and 11th spent 195,300 in person** — restaurants, café, corner shop, cooking gas, food money and thirteen separate fares. Cash, all of it. **You counted 110,000 in pocket on the 8th.**
@@ -331,21 +333,61 @@ Pocket cash counted 8 Aug       − 110,000
 CASH THAT MUST HAVE BEEN DRAWN     85,300   ← minimum, and not in this file
 ```
 
-**So at least 85,300 moved from bank to pocket on the 10th or 11th and was never logged.** It is **not** missing money and not new income — it is your own cash changing pockets. But this file keeps a separate Withdrawals table for exactly this reason, and **August's is incomplete**, which means the bank/pocket split below is an estimate rather than a fact. **The real figure is likely higher** — nobody draws the exact amount they are about to spend.
+**So at least 85,300 moved from bank to pocket on the 10th or 11th and was never logged.** It is **not** missing money and not new income — it is your own cash changing pockets. But this file keeps a separate Withdrawals table for exactly this reason, and **August's is incomplete.**
 
-#### 🧮 So count it in two places, not one
+> ⚠️ **Superseded within the hour — kept because the reasoning was right and only the size was wrong.** This inferred a *minimum* of 85,300 from one day's cash spending. **You then said the bank is empty, which puts the true figure at 1,172,000** — fourteen times larger. **See the section below.** The lesson is worth keeping: inferring a floor from what cash *must* have been available found the right hole, but a floor says nothing about the ceiling, and this one was nowhere near it.
 
-The prediction is **~978,200** after today, and it is **not one pile**:
+#### 🔴 THE BANK IS EMPTY — and that is 1,172,000 this file cannot see
+
+**Stated by you, 13 August: the bank money is used up.** The file expected this much to still be sitting there:
 
 ```
-Bank:    8,000 counted 8 Aug + 1,641,000 bonus − 477,000 sent by phone
-       = 1,172,000  −  whatever you withdrew
-Pocket:  978,200 − the bank balance
+Bank counted 8 Aug                    8,000
+Work bonus, 10 Aug              + 1,641,000
+                                ──────────
+Bank took in                      1,649,000
+Sent by phone, 12 Aug           −   477,000   (350,000 + 120,000, each +3,500)
+                                ──────────
+SHOULD STILL BE IN BANK           1,172,000
+Actually in bank                          0
 ```
 
-**Check the bank first — it is the easier half and it does three jobs at once.** It gives you the balance, it gives the withdrawals that fill the gap above, and it confirms the 12th's two transfers. **Then count the pocket.** If bank + pocket lands near 978,200, August reconciles and this is the first month in the file that has. If it lands short, that difference is the leak — measured for once against a receipt of known size and date rather than an assumption.
+**So 1,172,000 left that account by some route other than the two transfers already logged.** Only about **193,800** of it is explained by the cash you are recorded as spending — the 10th, 11th, 13th and the non-phone part of the 12th, less the 110,000 pocket cash you counted on the 8th.
 
-*(The 62,000 of the 12th that did not go by phone — damages 35,000, household 10,000, allowance 10,000, bundles 7,000 — is the one soft edge in the split: on a day you did not leave the house it was probably sent too, but it is not marked either way.)*
+> ### ⚠️ But an empty bank is NOT proof the money is gone.
+>
+> **Withdrawing is not spending** — that is the rule this file has held since 26 July, and it decides everything here. **If the 1,172,000 came out as cash, it is still yours and simply moved pockets.** The log is then correct and nothing is missing.
+
+#### 🧮 Which collapses the whole month into one question
+
+With the bank at zero, the two-part check is over. **Everything the file predicts you still hold — all 978,200 — must now be physical cash.**
+
+```
+Pocket 8 Aug                        110,000
+Withdrawn from bank               + 1,172,000
+Cash spent 10th–13th              −   303,800
+                                  ──────────
+CASH YOU SHOULD BE HOLDING          978,200
+```
+
+> ## **Count the cash. That single number decides everything.**
+>
+> **If roughly 978,200 is there** — August reconciles completely, the bank simply moved to your pocket, and this becomes **the first month in this file that has ever balanced.**
+>
+> **If it is not there, the shortfall is the finding**, and it could run to most of a million. **This file has never had a gap of that order** — the largest before it was 406,900 on 25 July, and the running leak is about 9%, which on this month would be roughly 95,000.
+
+**Two things make this worth doing today rather than at month end.** ⚠️ **978,200 is a great deal of cash to be holding**, and if it is genuinely sitting somewhere that is worth knowing for its own sake. And **the bonus was only three days ago** — a bank that took in 1,641,000 on the 10th and is empty on the 13th emptied fast, and three days is still inside the window where you can retrace it.
+
+**The statement is now the single most valuable document in this file, more than before rather than less.** It will not just give a balance — **it shows the route each payment took**, and the route is the answer:
+
+| What the statement shows | What it means |
+| --- | --- |
+| **ATM / counter withdrawals** | The money became cash. Not lost — count it, then log the withdrawals |
+| **Transfers to other people** | It went somewhere specific, and the statement names where |
+| **Card payments** | Ordinary spending that never reached this log — the 9% leak, at scale |
+| **Standing orders / debits** | Something recurring nobody here has recorded |
+
+*(One soft edge, unchanged: the 62,000 of the 12th that did not go by phone — damages 35,000, household 10,000, allowance 10,000, bundles 7,000 — is counted above as cash, but on a day you did not leave the house it may have been sent. It moves the figures by that much either way and does not change the picture.)*
 
 #### ⚠️ Correction — the 10th was not a desk day
 
@@ -544,7 +586,9 @@ UNACCOUNTED                  40,868
 - **2026-08-13 · a withdrawal nobody logged, found by inference** — The 10th and 11th spent **195,300 in person** (two restaurants, a café, corner shop, cooking gas, food money, thirteen fares) against **110,000 pocket cash counted on the 8th**. **At least 85,300 must have been drawn from the bank on the 10th or 11th and never written down.** ⚠️ **This is inferred by me, not reported by you** — it is in the Withdrawals table marked as such, and **excluded from the 2,112,000 money-in total**, because bank-to-pocket is your own cash moving, not income; counting it would inflate the month by money you already had. **The true figure is probably higher** — nobody withdraws the exact amount they are about to spend. **The statement settles it.**
 - **2026-08-13 · how to check the 1,024,700** — It is **not one pile**. Bank should be **1,172,000 less whatever you withdrew** (8,000 counted on the 8th + 1,641,000 bonus − 477,000 sent by phone); pocket is the remainder. **Check the bank first** — it does three jobs at once: the balance, the missing withdrawals, and confirmation of the 12th's two transfers. **If bank + pocket lands near 1,024,700, August reconciles — and no month in this file ever has.** The soft edge is the **62,000** of the 12th that did not go by phone; on a day you did not leave the house it was probably sent as well, but nothing marks it either way.
 - **2026-08-13 · the 13th logged — 43,500, all Household** — Six grocery lines (26,000 + 2,500 + 3,000 + 8,000 + 3,000 + 1,000), kept as six rows rather than one so the shape of the run stays visible. August: **1,046,432 → 1,089,932** logged. **Household moves 125,032 → 168,532, from 12% to 15%**, and is now third behind Miscellaneous and Debt/Repayment — **but both of those are single events** (the 350,000 handset; two lender payments), so **on recurring spending Household is the biggest thing in the file.**
-- **2026-08-13 · one fare added** — **3,000, Transport**, the only fare today. Day **43,500 → 46,500**; August **1,089,932 → 1,092,932**; the count-check **981,200 → 978,200**. Small, but it answers the question the grocery note had just raised: **you went out and shopped in person**, so today came out of pocket cash rather than an account, and it draws down the same pocket the inferred 85,300 withdrawal was needed to fill. **One trip, not eleven** — the 11th spent 19,300 on thirteen fares, today 3,000 on one. Worth noting only because it means today's 46,500 is a single deliberate shopping run rather than a day of moving about, which is the cheap way to buy groceries.
+- **2026-08-13 · one fare added** — **3,000, Transport**, the only fare today. Day **43,500 → 46,500**; August **1,089,932 → 1,092,932**; the count-check **981,200 → 978,200**. **One trip, not thirteen** — the 11th spent 19,300 on thirteen fares, today 3,000 on one, so today reads as a single deliberate shopping run rather than a day of moving about. ⚠️ **I wrote that this "came out of pocket cash rather than an account" — withdraw that.** You then said the bank money is used up, and the routing of today's 46,500 is not something this file knows.
+- **2026-08-13 · 🔴 THE BANK IS EMPTY — the largest finding in this file** — Stated by you. The account took in **1,649,000** (8,000 counted on the 8th + the 1,641,000 bonus) and sent **477,000** by phone on the 12th, so **1,172,000 left it by a route nothing here records.** Only about **193,800** of that is explained by the cash spending logged on the 10th, 11th, 12th and 13th. **This supersedes the "≥85,300 inferred withdrawal" I wrote earlier today** — same gap, seen through a keyhole. ⚠️ **But withdrawing is not spending, and that rule decides this entirely: if the 1,172,000 came out as cash, none of it is lost and the log is correct.** **The whole month now rests on one number — count the cash.** With the bank at zero, **all 978,200 the file predicts you hold must be physical notes.** If it is there, August reconciles and no month in this file ever has. If it is not, the shortfall is the finding, and **it could run to most of a million against a previous record gap of 406,900 and a running leak of about 9% (~95,000 on this month).**
+- **2026-08-13 · why the statement matters more now, not less** — It will not just give a balance; **it names the route each payment took, and the route is the answer.** ATM or counter withdrawals mean the money became cash — not lost, just unlogged, and the withdrawals belong in the table above. Transfers name a recipient. Card payments would mean ordinary spending that never reached this log, which is **the 9% leak at a scale it has never been seen at.** Standing orders would mean something recurring nobody has recorded. **The bonus landed on the 10th and the account was empty by the 13th** — three days, still inside the window where a day can be retraced.
 - **2026-08-13 · the first forecast this file can support** — Household runs **168,532 over the eight days from the 6th to the 13th, about 21,000 a day, roughly 630,000 a month.** ⚠️ **Do not use that flat rate** — it averages a 61,532 stock-up on the 8th together with quiet days, and eight days is a small sample. **The real shape is a large run every four or five days with small days between**: 61,532 on the 8th, 43,500 today. **So the next run falls around the 17th–18th and should land near 50,000.** Everything else in this file explains what already happened; this is the one line that predicts. **One more grocery run confirms or kills the interval** — worth watching precisely because school fees are the only larger recurring commitment and they do not move.
 - **2026-07-26** — Added a **Food & Out** category (eating and drinking outside the house), split from **Household** (things consumed at home, house help, repairs). Body lotion, shoe repair and the phone went to **Personal**. Say if you'd rather they sat elsewhere — it is your log.
 
