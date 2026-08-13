@@ -181,6 +181,12 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-12 | Household — misc               | Household         |       10,000 | Logged as approximate                                                                                                                                                                         |
 | 2026-08-12 | Allowance — child              | Family/Obligation |       10,000 | Child not named. Filed like Uweis's pocket money on 26 July                                                                                                                                    |
 | 2026-08-12 | Internet bundles               | Personal          |        7,000 | Under Personal with airtime. Move to Writing if it was bought for the work                                                                                                                    |
+| 2026-08-13 | Groceries                      | Household         |       26,000 | Six grocery lines today: 26,000 + 2,500 + 3,000 + 8,000 + 3,000 + 1,000 = **43,500**. Kept as six rows, not one, so the shape of the run stays visible                                        |
+| 2026-08-13 | Groceries                      | Household         |        2,500 |                                                                                                                                                                                               |
+| 2026-08-13 | Groceries                      | Household         |        3,000 |                                                                                                                                                                                               |
+| 2026-08-13 | Groceries                      | Household         |        8,000 |                                                                                                                                                                                               |
+| 2026-08-13 | Groceries                      | Household         |        3,000 |                                                                                                                                                                                               |
+| 2026-08-13 | Groceries                      | Household         |        1,000 |                                                                                                                                                                                               |
 
 ---
 
@@ -282,9 +288,9 @@ Anything about the House build or the ACPA qualification — neither appears in 
 
 ---
 
-### August 2026 — five days logged (6th, 8th, 10th, 11th, 12th)
+### August 2026 — six days logged (6th, 8th, 10th, 11th, 12th, 13th)
 
-**In 2,112,000 · logged 1,046,432.** The 12th alone is **539,000**, but the month is no longer defined by it — **the 1,641,000 bonus on the 10th is 78% of everything that came in.**
+**In 2,112,000 · logged 1,089,932.** The 12th alone is **539,000**, but the month is no longer defined by it — **the 1,641,000 bonus on the 10th is 78% of everything that came in.**
 
 #### ✅ The 554,300 income hole is closed — and it overshot
 
@@ -327,12 +333,12 @@ CASH THAT MUST HAVE BEEN DRAWN     85,300   ← minimum, and not in this file
 
 #### 🧮 So count it in two places, not one
 
-The prediction is **~1,024,700**, and it is **not one pile**:
+The prediction is **~981,200** after today's groceries, and it is **not one pile**:
 
 ```
 Bank:    8,000 counted 8 Aug + 1,641,000 bonus − 477,000 sent by phone
        = 1,172,000  −  whatever you withdrew
-Pocket:  1,024,700 − the bank balance
+Pocket:  981,200 − the bank balance
 ```
 
 **Check the bank first — it is the easier half and it does three jobs at once.** It gives you the balance, it gives the withdrawals that fill the gap above, and it confirms the 12th's two transfers. **Then count the pocket.** If bank + pocket lands near 1,024,700, August reconciles and this is the first month in the file that has. If it lands short, that difference is the leak — measured for once against a receipt of known size and date rather than an assumption.
@@ -354,8 +360,9 @@ This file recorded the 10th as **zero spending**, "corroborated" by vault commit
 | 9 Aug      |                         — |          **0** | Two x-factor notes written and dated — zero unconfirmed |
 | **10 Aug** |  **1,641,000** *(bonus)*  |     **62,000** | **Out, not a desk day** — café, restaurant, 10,000 fares |
 | **11 Aug** |                         — |    **133,300** | The day out — eleven fares                            |
-| **12 Aug** |                         — |    **539,000** | House day — 480,000 of it sent by phone               |
-| **Total**  |             **2,112,000** |  **1,046,432** | **Left: ~1,024,700**                                 |
+| **12 Aug** |                         — |    **539,000** | House day — 477,000 of it sent by phone               |
+| **13 Aug** |                         — |     **43,500** | Groceries only — six lines, one Household run          |
+| **Total**  |             **2,112,000** |  **1,089,932** | **Left: ~981,200**                                   |
 
 **10 August working:** chicken tandoori 42,000 · cappuccino 6,000 · cashew 4,000 · bus fare 10,000 = **62,000**. **52,000 of it — 84% — is food and drink**, on the day the bonus landed.
 
@@ -366,22 +373,40 @@ Fares: 6,000 + 800 + 1,000 + 1,000 + 500 + 4,000 + 1,500 + 1,000 + 1,000 + 1,000
 
 #### By category — August so far
 
-| Category              |        Amount | Share |  10 Aug |  11 Aug |  12 Aug |
-| --------------------- | ------------: | ----: | ------: | ------: | ------: |
-| **Miscellaneous**     |   **433,500** |   41% |       — |       — | 388,500 |
-| **Debt/Repayment**    |   **195,500** |   19% |       — |  40,000 | 123,500 |
-| **Household**         |   **125,032** |   12% |       — |  40,000 |  10,000 |
-| **Food & Out**        |   **109,500** |   10% |  52,000 |  34,000 |       — |
-| **Personal**          |    **84,500** |    8% |       — |       — |   7,000 |
-| **Family/Obligation** |    **57,000** |    5% |       — |       — |  10,000 |
-| **Transport**         |    **41,400** |    4% |  10,000 |  19,300 |       — |
-| **Total**             | **1,046,432** |       | **62,000** | **133,300** | **539,000** |
+| Category              |        Amount | Share |  10 Aug |  11 Aug |  12 Aug |  13 Aug |
+| --------------------- | ------------: | ----: | ------: | ------: | ------: | ------: |
+| **Miscellaneous**     |   **433,500** |   40% |       — |       — | 388,500 |       — |
+| **Debt/Repayment**    |   **195,500** |   18% |       — |  40,000 | 123,500 |       — |
+| **Household**         |   **168,532** |   15% |       — |  40,000 |  10,000 |  43,500 |
+| **Food & Out**        |   **109,500** |   10% |  52,000 |  34,000 |       — |       — |
+| **Personal**          |    **84,500** |    8% |       — |       — |   7,000 |       — |
+| **Family/Obligation** |    **57,000** |    5% |       — |       — |  10,000 |       — |
+| **Transport**         |    **41,400** |    4% |  10,000 |  19,300 |       — |       — |
+| **Total**             | **1,089,932** |       | **62,000** | **133,300** | **539,000** | **43,500** |
 
 **Miscellaneous is still the largest category in August at 41%, and 350,000 of it is one handset** — now 33% of everything logged, down from 36% only because the month got bigger. The Personal finding below — *Personal is the largest category, watch it* — **remains superseded**; Personal is 8% and has now been overtaken by Food & Out.
 
 **The mover is Food & Out: 57,500 → 109,500, from 6% to 10%.** It has passed Personal and is closing on Household. **One item is 38% of it** — the 42,000 tandoori, the largest single eating-out line anywhere in this file, bigger than the 28,000 restaurant breakfast on the 11th.
 
 > **Two days, two restaurant meals, 70,000 — both confirmed as eaten out, not carried home.** That is the observation, and it is two days, not a habit. **The coffees are still not the story** (13,000 across the whole month); the sit-down meals are more than five times every coffee in August combined.
+
+#### 🍚 Household is the real recurring cost, and today makes that visible
+
+**Strip the 350,000 handset — a one-off nobody repeats — and Household is the largest thing you actually consume.** It is now **168,532, 15% of August**, third overall behind Miscellaneous and Debt/Repayment, and both of those are dominated by single events rather than daily life.
+
+| Household by day | Amount | |
+| --- | ---: | --- |
+| 6 Aug | 13,500 | two grocery runs |
+| 8 Aug | **61,532** | the big stock-up — twelve lines |
+| 11 Aug | 40,000 | cooking gas 25,000 + food money 15,000 |
+| 12 Aug | 10,000 | misc |
+| **13 Aug** | **43,500** | **six grocery lines — today** |
+
+> **168,532 across the eight days from the 6th to the 13th is about 21,000 a day.** Held for a month that is **roughly 630,000** — which would make feeding and running the house **the largest recurring commitment in this file after school fees**, and unlike the handset it arrives every week whether or not anything else does.
+
+**Two honest caveats before that number gets used for anything.** Eight days is a small sample, and it contains a 61,532 stock-up on the 8th that is plainly not a daily rate — **stock-ups and top-ups are being averaged together.** The shape is really *a large run every four or five days* (61,532 on the 8th, 43,500 today) *with small days between*. **That is a rhythm, not a drip**, and it is the more useful way to see it: **the next run is due around the 17th or 18th, and it will be somewhere near 50,000.**
+
+**This is the first thing in this file that supports a forecast rather than a post-mortem.** Nothing needs deciding about it today — it wants one more grocery run to confirm the interval.
 
 **What the confirmation settles:** the 42,000 was not the house being fed, so it does not belong with Household's 125,032. **August's eating-out and the household's food are now cleanly separated**, which is the only way the Food & Out line means anything going forward. One more restaurant meal at this size would make it a pattern worth costing; two days does not.
 
@@ -516,6 +541,8 @@ UNACCOUNTED                  40,868
 - **2026-08-13 · the bonus went to the bank — and this is the most useful thing the file has been told** — It closes the income side: the 12th's **477,000 of phone transfers** had a source, so no unrecorded money was sitting in the account. **But the real consequence is evidential, not arithmetical.** Every gap this file has ever failed to explain — July's 204,000, the 36,968 on the 8th — was cash, and **cash leaves no record, which is why those are gone for good rather than merely unfound.** **78% of August's money went through a bank account.** A statement exists. **For the first time a month here can be audited instead of remembered**, and that is worth more than the individual figures.
 - **2026-08-13 · a withdrawal nobody logged, found by inference** — The 10th and 11th spent **195,300 in person** (two restaurants, a café, corner shop, cooking gas, food money, thirteen fares) against **110,000 pocket cash counted on the 8th**. **At least 85,300 must have been drawn from the bank on the 10th or 11th and never written down.** ⚠️ **This is inferred by me, not reported by you** — it is in the Withdrawals table marked as such, and **excluded from the 2,112,000 money-in total**, because bank-to-pocket is your own cash moving, not income; counting it would inflate the month by money you already had. **The true figure is probably higher** — nobody withdraws the exact amount they are about to spend. **The statement settles it.**
 - **2026-08-13 · how to check the 1,024,700** — It is **not one pile**. Bank should be **1,172,000 less whatever you withdrew** (8,000 counted on the 8th + 1,641,000 bonus − 477,000 sent by phone); pocket is the remainder. **Check the bank first** — it does three jobs at once: the balance, the missing withdrawals, and confirmation of the 12th's two transfers. **If bank + pocket lands near 1,024,700, August reconciles — and no month in this file ever has.** The soft edge is the **62,000** of the 12th that did not go by phone; on a day you did not leave the house it was probably sent as well, but nothing marks it either way.
+- **2026-08-13 · the 13th logged — 43,500, all Household** — Six grocery lines (26,000 + 2,500 + 3,000 + 8,000 + 3,000 + 1,000), kept as six rows rather than one so the shape of the run stays visible. August: **1,046,432 → 1,089,932** logged. **The count-check drops to ~981,200.** **Household moves 125,032 → 168,532, from 12% to 15%**, and is now third behind Miscellaneous and Debt/Repayment — **but both of those are single events** (the 350,000 handset; two lender payments), so **on recurring spending Household is the biggest thing in the file.** Two things unrecorded and worth a word: **whether today was cash or card** — it changes which half of the 981,200 to expect it to have come out of — and whether the six lines were one shop or several.
+- **2026-08-13 · the first forecast this file can support** — Household runs **168,532 over the eight days from the 6th to the 13th, about 21,000 a day, roughly 630,000 a month.** ⚠️ **Do not use that flat rate** — it averages a 61,532 stock-up on the 8th together with quiet days, and eight days is a small sample. **The real shape is a large run every four or five days with small days between**: 61,532 on the 8th, 43,500 today. **So the next run falls around the 17th–18th and should land near 50,000.** Everything else in this file explains what already happened; this is the one line that predicts. **One more grocery run confirms or kills the interval** — worth watching precisely because school fees are the only larger recurring commitment and they do not move.
 - **2026-07-26** — Added a **Food & Out** category (eating and drinking outside the house), split from **Household** (things consumed at home, house help, repairs). Body lotion, shoe repair and the phone went to **Personal**. Say if you'd rather they sat elsewhere — it is your log.
 
 ---
