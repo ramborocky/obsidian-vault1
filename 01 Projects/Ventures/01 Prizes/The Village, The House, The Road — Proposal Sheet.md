@@ -43,6 +43,13 @@ The Arusha Declaration, February 1967. Then **Operation Vijiji**: millions moved
 **Part II · THE HOUSE — 1983**
 **The Economic Sabotage Act No. 9 of 1983**, launched 5 April, run by Sokoine. The burden of proof reversed — explain where your wealth came from. Special courts, no lawyers, defend yourself. **Televisions and bundles of money thrown into the gutters of Oysterbay and Upanga**, collected by police, sent to the Bank of Tanzania. **The state enters what you own.**
 
+> [!important] ➕ ADDED 2026-08-12 — the motive layer, and the hinge → [[The Scarcity — What 1983 Was Standing In]]
+> **The Act is unintelligible without the shortage.** Empty shelves, *foleni* for sugar and soap, yellow American maize, no cloth and no *mitumba* to fall back on — and behind all of it the **$500m Kagera War**, the 1979 floods and drought, and a month in **November 1980 when the country's major industry was ordered to switch off.** Sokoine's logic only works standing in a queue: *these goods exist somewhere, and somebody is holding them.* **This is the cleanest route to rule 1 — you need no verdict on Nyerere if you show what he was standing in.**
+>
+> 🔴 **And the find: *Nguvu Kazi*, the Human Resources Deployment Act 1983 — same year, and driven by the Office of the Prime Minister.** It rounded up unemployed men in Dar and **sent them back to the rural areas.** Vijiji put people on lorries *to* the village in 1973–76; Nguvu Kazi put them on lorries *back* in 1983, out of Sokoine's own office. **The three parts become one motion instead of three episodes.**
+>
+> ⚠️ **Motive and weather, not a fourth part.** No THE QUEUE, no THE SHOP — a survey does not get funded. And **verify the commencement date**: the legal record says *retroactive to 25 March 1983*, not 5 April.
+
 **Part III · THE ROAD — 12 April 1984**
 Fourteen months in, on the Dodoma–Dar road at **Dakawa**, Sokoine's car is struck by a Land Cruiser driven by **Dumisani Dube**, a South African freedom fighter. Dube is convicted. **Forty years later the country still does not believe it.** **The state ends on a road.**
 
