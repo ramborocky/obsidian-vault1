@@ -54,8 +54,9 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 |            | **July total**          | **2,426,000** |                                                                                             |
 | 2026-08-06 | *borrowed form friendy* |        30,000 | Logged as "received" — say whether bank, salary or cash in hand                             |
 | 2026-08-08 | *after hours*           |       441,000 | Logged as "received" — source not given                                                     |
-| 2026-08-10 | **Work bonus**          | **1,641,000** | Added 2026-08-13. **Largest single receipt in this file.** Say whether it landed in the bank or came as cash — it decides where the 12th's phone transfers were sent from |
-|            | **August total**        | **2,112,000** |                                                                                             |
+| 2026-08-10 | **Work bonus**          | **1,641,000** | Added 2026-08-13. **Largest single receipt in this file. Paid into the bank, not cash — confirmed by you.** This is the only receipt here that arrives with a statement behind it |
+| 2026-08-10 or 11 | *bank → pocket*   |  **≥ 85,300** | ⚠️ **Inferred, not reported by you.** The 10th and 11th spent 195,300 in person against 110,000 pocket cash counted on the 8th — so at least this much was withdrawn and never logged. **The bank statement gives the true figure**; correct this row from it |
+|            | **August total — money in** | **2,112,000** | 30,000 + 441,000 + 1,641,000. **The 85,300 above is deliberately excluded** — it is cash moving from your own bank to your own pocket, not money arriving. Counting it would inflate the month by money you already had |                                                                                             |
 
 ---
 
@@ -305,9 +306,38 @@ SHOULD BE LEFT                    1,024,700
 
 **Why this one is worth doing now rather than at month end:** every previous reconciliation in this file started from a number nobody could verify. This one starts from a bonus with a known amount and a known date, so for the first time the arithmetic has a firm end to hold on to.
 
-#### 🟢 The 12th is still the recoverable day
+#### ✅ The income side is now complete — and it is the first time that has been true
 
-**You did not leave the house on the 12th, and 480,000 of the 539,000 went out by phone** — the 350,000 and the 120,000 each carry a **3,500 transfer charge**, which is proof they were sent electronically. That is no longer a mystery to solve, but it does answer one open question: **if the bonus came as cash, none of it could have funded those transfers** — so either the bonus landed in an account, or something else was already sitting there. **Which way the 1,641,000 arrived is now the only unknown left on the income side.**
+**The bonus was paid into the bank.** That was the last open question, and it resolves cleanly: the 12th sent **477,000 out by phone** (350,000 + 120,000, each with a 3,500 charge), and money cannot be sent from a pocket. **The bank held it, so nothing unrecorded had to be sitting there.** No further income is implied. Every shilling August has spent is now traceable to a receipt this file names.
+
+> **This changes what kind of file this is.** Every gap here before now was cash, and **cash has no statement** — which is why July's 204,000 and the 8 Aug 40,868 were unrecoverable in principle, not just in practice. **1,641,000 of August's 2,112,000 — 78% — went through a bank account.** For the first time the month can be checked against a document instead of a memory.
+
+#### 🔴 Which immediately exposes a withdrawal nobody wrote down
+
+**The 10th and 11th spent 195,300 in person** — restaurants, café, corner shop, cooking gas, food money and thirteen separate fares. Cash, all of it. **You counted 110,000 in pocket on the 8th.**
+
+```
+Cash spent 10 + 11 Aug            195,300
+Pocket cash counted 8 Aug       − 110,000
+                                ─────────
+CASH THAT MUST HAVE BEEN DRAWN     85,300   ← minimum, and not in this file
+```
+
+**So at least 85,300 moved from bank to pocket on the 10th or 11th and was never logged.** It is **not** missing money and not new income — it is your own cash changing pockets. But this file keeps a separate Withdrawals table for exactly this reason, and **August's is incomplete**, which means the bank/pocket split below is an estimate rather than a fact. **The real figure is likely higher** — nobody draws the exact amount they are about to spend.
+
+#### 🧮 So count it in two places, not one
+
+The prediction is **~1,024,700**, and it is **not one pile**:
+
+```
+Bank:    8,000 counted 8 Aug + 1,641,000 bonus − 477,000 sent by phone
+       = 1,172,000  −  whatever you withdrew
+Pocket:  1,024,700 − the bank balance
+```
+
+**Check the bank first — it is the easier half and it does three jobs at once.** It gives you the balance, it gives the withdrawals that fill the gap above, and it confirms the 12th's two transfers. **Then count the pocket.** If bank + pocket lands near 1,024,700, August reconciles and this is the first month in the file that has. If it lands short, that difference is the leak — measured for once against a receipt of known size and date rather than an assumption.
+
+*(The 62,000 of the 12th that did not go by phone — damages 35,000, household 10,000, allowance 10,000, bundles 7,000 — is the one soft edge in the split: on a day you did not leave the house it was probably sent too, but it is not marked either way.)*
 
 #### ⚠️ Correction — the 10th was not a desk day
 
@@ -481,8 +511,11 @@ UNACCOUNTED                  40,868
 - **2026-08-12 · the finding** — **672,300 spent since the 8th against 118,000 you counted and nothing received since.** At least **554,300 came in between the 9th and the 12th that this file has no record of.** Every previous gap in this log has been money leaving unrecorded; this is the first time the *income* side is the hole, and it is bigger than any spending gap here. **It matters because a withdrawal, a wage and a new loan are indistinguishable from inside the log, and one of them adds a repayment.** ✅ **But unlike every gap before it, this one is recoverable:** you did not leave the house on the 12th and **480,000 of that day went out by phone** — the two 3,500 charges prove it. **Money cannot be sent from an empty wallet, so the M-Pesa statement for the 9th to the 12th holds both what went out and what came in.** That statement is the single action worth taking on this file today.
 - **2026-08-12** — **The "Personal is the largest category" flag from 8 Aug is superseded.** Personal is now 9% of August. **Miscellaneous is 44%, and 350,000 of that is a single handset — 36% of everything logged this month.** Separately, the 8 Aug question *"is a debt repayment coming?"* is answered: **DMK 120,000 + 3,500 charge, and the corner shop 40,000.** Debt/Repayment is 195,500, a fifth of the month. **AMON has still had nothing, and neither lender has a balance or due date recorded anywhere.**
 - **2026-08-13 · the 10th logged, and the income hole closed** — Four rows, **62,000**, and a receipt of **1,641,000 (work bonus)**. August: in **471,000 → 2,112,000**, logged **984,432 → 1,046,432**. **The 554,300 that was "missing income" on the 12th is explained** — the dating had narrowed it to the 9th–11th and the bonus landed on the 10th, inside that window. **It is earned money, not borrowed**, so it adds no repayment; that was the only thing that actually mattered about not knowing. ⚠️ **I had the 10th recorded as a zero-spend desk day and called it "corroborated" by the evening's vault commits.** That was over-read — commits at 15:51–22:45 say where you were at night, not where you were at noon. Corrected in the log and flagged in the summary. **The 9th's zero rests on the same kind of reasoning and should be treated as unconfirmed.**
-- **2026-08-13 · the number to check** — With the bonus in, the file predicts **~1,024,700 still in hand or in the bank** as of the end of the 12th, less anything spent on the 13th. **Count it.** Every reconciliation before this one started from an amount nobody could verify; this one starts from a bonus with a known size and a known date, so the gap it exposes would be real rather than assumed. **If what you hold is well short of 1,024,700, that difference is August's leak measured properly** — against the 8.4%/8.7% rate recorded above, roughly 90,000 would be expected, and anything much beyond that is worth retracing while the week is fresh. **One thing still open: whether the 1,641,000 came as cash or into an account.** The 12th sent 480,000 by phone, and money cannot be sent from a pocket — so if the bonus was cash, something else was already in the account and the income side is still not complete.
+- **2026-08-13 · the number to check** — With the bonus in, the file predicts **~1,024,700 still in hand or in the bank** as of the end of the 12th, less anything spent on the 13th. **Count it.** Every reconciliation before this one started from an amount nobody could verify; this one starts from a bonus with a known size and a known date, so the gap it exposes would be real rather than assumed. **If what you hold is well short of 1,024,700, that difference is August's leak measured properly** — against the 8.4%/8.7% rate recorded above, roughly 90,000 would be expected, and anything much beyond that is worth retracing while the week is fresh. ✅ **Answered the same day: the bonus was paid into the bank.** The 12th's 477,000 of phone transfers came from there, so nothing unrecorded was sitting in the account and **August's income side is complete** — the first time that has been true in this file.
 - **2026-08-13** — **Food & Out is the category that moved**: 6% → 10% of August, past Personal. **The 42,000 tandoori is the largest eating-out line in this file**, and with the 28,000 breakfast on the 11th that is **70,000 on two restaurant meals in two days**. Noting it once as a shape, not a habit — two days is not a pattern. Filed as **Food & Out**. ✅ **Confirmed by you the same day: eaten out at a restaurant, not carried home** — so the category is settled, no totals move, and the 42,000 stays out of Household. **The two restaurant meals are genuinely 70,000 of eating out**, not the house being fed.
+- **2026-08-13 · the bonus went to the bank — and this is the most useful thing the file has been told** — It closes the income side: the 12th's **477,000 of phone transfers** had a source, so no unrecorded money was sitting in the account. **But the real consequence is evidential, not arithmetical.** Every gap this file has ever failed to explain — July's 204,000, the 36,968 on the 8th — was cash, and **cash leaves no record, which is why those are gone for good rather than merely unfound.** **78% of August's money went through a bank account.** A statement exists. **For the first time a month here can be audited instead of remembered**, and that is worth more than the individual figures.
+- **2026-08-13 · a withdrawal nobody logged, found by inference** — The 10th and 11th spent **195,300 in person** (two restaurants, a café, corner shop, cooking gas, food money, thirteen fares) against **110,000 pocket cash counted on the 8th**. **At least 85,300 must have been drawn from the bank on the 10th or 11th and never written down.** ⚠️ **This is inferred by me, not reported by you** — it is in the Withdrawals table marked as such, and **excluded from the 2,112,000 money-in total**, because bank-to-pocket is your own cash moving, not income; counting it would inflate the month by money you already had. **The true figure is probably higher** — nobody withdraws the exact amount they are about to spend. **The statement settles it.**
+- **2026-08-13 · how to check the 1,024,700** — It is **not one pile**. Bank should be **1,172,000 less whatever you withdrew** (8,000 counted on the 8th + 1,641,000 bonus − 477,000 sent by phone); pocket is the remainder. **Check the bank first** — it does three jobs at once: the balance, the missing withdrawals, and confirmation of the 12th's two transfers. **If bank + pocket lands near 1,024,700, August reconciles — and no month in this file ever has.** The soft edge is the **62,000** of the 12th that did not go by phone; on a day you did not leave the house it was probably sent as well, but nothing marks it either way.
 - **2026-07-26** — Added a **Food & Out** category (eating and drinking outside the house), split from **Household** (things consumed at home, house help, repairs). Body lotion, shoe repair and the phone went to **Personal**. Say if you'd rather they sat elsewhere — it is your log.
 
 ---
