@@ -162,7 +162,7 @@ Compare the two clean `Y`s in [[02 Comparison Board]] — both **economic or pro
 
 [[Dite — Story Sheet|Dite]]'s finding: **one body part, six times, never explained, is enough to carry a controlling idea.** The throat is pressed by a cane, a code of conduct, a lover and a colonial ledger, and the reader assembles the argument without being handed it once.
 
-*The ones who remain* appears **fifteen times** as a phrase, plus *remaining* five more. And it is explained — by Bi Mwajuma, by Mzee Hamid twice, by the tree, by Amina, by the narrator, and by the title.
+The phrase *the ones who remain* / *who remained* appears **ten times**, and the word *remain* in some form **seventeen**, in 3,974 words. And it is explained — by Bi Mwajuma, by Mzee Hamid twice, by the tree, by Amina, by the narrator, and by the title.
 
 **Dite proves a motif works by being unexplained. This is the controlled experiment for the inverse, and it comes out the way Dite predicts.** The mechanism is not repetition; it is repetition plus silence.
 
