@@ -176,6 +176,22 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-12 | Household — misc               | Household         |       10,000 | Logged as approximate                                                                                                                                                                         |
 | 2026-08-12 | Allowance — child              | Family/Obligation |       10,000 | Child not named. Filed like Uweis's pocket money on 26 July                                                                                                                                    |
 | 2026-08-12 | Internet bundles               | Personal          |        7,000 | Under Personal with airtime. Move to Writing if it was bought for the work                                                                                                                    |
+| 2026-08-12 | Electricity                    | Household         |        2,000 | ⚠️ **Dated the 12th because you said "last night", but you reported it in today's batch.** The 12th moves 539,000 → 541,000. Say the word and it comes to the 13th. Also: 2,000 against a 52,000 water bill reads like a LUKU token top-up, not a monthly bill — **if the electricity bill itself is still outstanding, it is a liability this file has no record of** |
+| 2026-08-13 | Cashew nuts — from Rehema      | Household         |       24,000 | Bought from a colleague at work, paid by mobile money. Filed Household as food for the house — say if it was for resale or a gift and it moves                                                |
+| 2026-08-13 | Transfer charge — Rehema       | Household         |        1,000 | Filed with the payment it belongs to, same as the two 3,500 charges on the 12th                                                                                                              |
+| 2026-08-13 | **Bicycle**                    | Transport         |  **340,000** | **Largest single item in August after the 12th's handset.** See the summary — the bike and its kit are 417,000 and they break Transport as a fares measure                                    |
+| 2026-08-13 | Bike shoes                     | Transport         |       50,000 | ⚠️ Filed with the bike. **Personal is equally defensible** — they are shoes. Say which and I'll keep it consistent                                                                            |
+| 2026-08-13 | Bike lights                    | Transport         |       17,000 |                                                                                                                                                                                              |
+| 2026-08-13 | Bike lock                      | Transport         |       10,000 |                                                                                                                                                                                              |
+| 2026-08-13 | Water bill                     | Household         |       52,000 |                                                                                                                                                                                              |
+| 2026-08-13 | Food money — given to wife     | Household         |       15,000 | For house food today. Same shape as the 15,000 on the 11th                                                                                                                                   |
+| 2026-08-13 | Food at the bike place         | Food & Out        |        8,000 |                                                                                                                                                                                              |
+| 2026-08-13 | Date                           | Food & Out        |        8,000 | You noted the place was cheaper than the usual ones                                                                                                                                          |
+| 2026-08-13 | Cappuccino                     | Food & Out        |        5,000 | Same outing as the date unless you say otherwise — kept as its own row so the coffee line stays comparable                                                                                    |
+| 2026-08-13 | Coke Zero                      | Food & Out        |        1,000 |                                                                                                                                                                                              |
+| 2026-08-13 | Bus fare — to collect the bike | Transport         |        1,500 |                                                                                                                                                                                              |
+| 2026-08-13 | Bus fare                       | Transport         |          800 | ⚠️ **You said no fares today except the 1,500 for the bike, then gave this one.** Logged as a second trip today. If it belongs to another day, say which                                      |
+| 2026-08-13 | Money given — passer-by        | Family/Obligation |        1,000 | Filed like the 2,000 charity on 26 July                                                                                                                                                      |
 
 ---
 
@@ -277,11 +293,11 @@ Anything about the House build or the ACPA qualification — neither appears in 
 
 ---
 
-### August 2026 — four days logged (6th, 8th, 11th, 12th)
+### August 2026 — five days logged (6th, 8th, 11th, 12th, 13th)
 
-**In 471,000 · logged 984,432.** The 12th alone is **539,000** — more than the whole month before it.
+**In 471,000 · logged 1,520,732.** The 13th is **534,300** — the second 500k+ day running, and **417,000 of it is a bicycle and its kit.**
 
-#### 🔴 Money came in that this file has no record of
+#### 🔴 Money came in that this file has no record of — and it has passed a million
 
 ```
 Received, all August              471,000
@@ -291,14 +307,19 @@ Cash you counted on 8 Aug         118,000   ← you counted it: 8,000 bank + 110
 Spent 11 Aug                    − 133,300
                                 ─────────
 Already short on the 11th        − 15,300
-Spent 12 Aug                    − 539,000
+Spent 12 Aug                    − 541,000
                                 ─────────
-SHORT                             554,300
+Short after the 12th            − 556,300
+Spent 13 Aug                    − 534,300
+                                ─────────
+SHORT                           1,090,600
 ```
 
-**At least 554,300 came in between the 9th and the 12th and is not written down.** That is not the 8.4%/8.7% leak below — that gap is money going *out* unrecorded. **This is money coming *in* unrecorded**, and it is the larger number. A wage, a withdrawal, another after-hours run and new borrowing all look identical from here, and **only one of them adds a repayment you will owe.**
+**At least 1,090,600 came in between the 9th and today and is not written down.** That is not the 8.4%/8.7% leak below — that gap is money going *out* unrecorded. **This is money coming *in* unrecorded**, and it is now more than twice the entire recorded August income. A wage, a withdrawal, another after-hours run and new borrowing all look identical from here, and **only one of them adds a repayment you will owe.**
 
-**The dating narrows it usefully.** You were 15,300 short before the 11th ended, so **something arrived on the 9th, 10th or 11th** — the rest by the 12th.
+> **This is the thing on this page that matters.** Two days ago the unrecorded income was 554,300 and the recommendation was to pull the M-Pesa statement. **It has doubled since, and nothing has been pulled.** A 340,000 bicycle bought out of money the file cannot see is not a spending problem — it is a record problem, and it is the one that makes every other number here provisional.
+
+**The dating narrows it usefully.** You were 15,300 short before the 11th ended, so **something arrived on the 9th, 10th or 11th**, and more since.
 
 #### 🟢 And most of the 12th is recoverable, unlike every other gap in this file
 
@@ -315,28 +336,43 @@ SHORT                             554,300
 | 9 Aug      |                         — |          **0** | Desk day — two x-factor notes written and dated       |
 | 10 Aug     |                         — |          **0** | Desk day — vault commits 15:51–22:45, MEMS login      |
 | **11 Aug** |          **not recorded** |    **133,300** | The day out — eleven fares                            |
-| **12 Aug** |          **not recorded** |    **539,000** | House day — 480,000 of it sent by phone               |
-| **Total**  |               **471,000** |    **984,432** |                                                      |
+| **12 Aug** |          **not recorded** |    **541,000** | House day — 480,000 of it sent by phone               |
+| **13 Aug** |          **not recorded** |    **534,300** | The bike day — 417,000 of it on one machine and its kit |
+| **Total**  |               **471,000** |  **1,520,732** |                                                      |
 
 **11 August working:** corner shop 40,000 · gas 25,000 · food money 15,000 · breakfast 28,000 · cappuccino 6,000 · fares 19,300 = **133,300**.
 Fares: 6,000 + 800 + 1,000 + 1,000 + 500 + 4,000 + 1,500 + 1,000 + 1,000 + 1,000 + 1,500 = **19,300** across **eleven trips** — the 6,000 and the 4,000 are long runs, not town hops.
 
-**12 August working:** handset 350,000 + 3,500 charge · DMK 120,000 + 3,500 charge · damages 35,000 · household 10,000 · allowance 10,000 · bundles 7,000 = **539,000**.
+**12 August working:** handset 350,000 + 3,500 charge · DMK 120,000 + 3,500 charge · damages 35,000 · household 10,000 · allowance 10,000 · bundles 7,000 · electricity 2,000 = **541,000**.
+
+**13 August working:** bike 340,000 + shoes 50,000 + lights 17,000 + lock 10,000 = **417,000** · water 52,000 · cashews 24,000 + 1,000 charge · food money 15,000 · food out 8,000 + date 8,000 + cappuccino 5,000 + Coke 1,000 = 22,000 · fares 1,500 + 800 = 2,300 · passer-by 1,000 = **534,300**.
 
 #### By category — August so far
 
-| Category              |      Amount | Share |  11 Aug |  12 Aug |
-| --------------------- | ----------: | ----: | ------: | ------: |
-| **Miscellaneous**     | **433,500** |   44% |       — | 388,500 |
-| **Debt/Repayment**    | **195,500** |   20% |  40,000 | 123,500 |
-| **Household**         | **125,032** |   13% |  40,000 |  10,000 |
-| **Personal**          |  **84,500** |    9% |       — |   7,000 |
-| **Food & Out**        |  **57,500** |    6% |  34,000 |       — |
-| **Family/Obligation** |  **57,000** |    6% |       — |  10,000 |
-| **Transport**         |  **31,400** |    3% |  19,300 |       — |
-| **Total**             | **984,432** |       | **133,300** | **539,000** |
+| Category              |        Amount | Share |  11 Aug |  12 Aug |  13 Aug |
+| --------------------- | ------------: | ----: | ------: | ------: | ------: |
+| **Transport**         |   **450,700** |   30% |  19,300 |       — | 419,300 |
+| **Miscellaneous**     |   **433,500** |   29% |       — | 388,500 |       — |
+| **Household**         |   **219,032** |   14% |  40,000 |  12,000 |  92,000 |
+| **Debt/Repayment**    |   **195,500** |   13% |  40,000 | 123,500 |       — |
+| **Personal**          |    **84,500** |    6% |       — |   7,000 |       — |
+| **Food & Out**        |    **79,500** |    5% |  34,000 |       — |  22,000 |
+| **Family/Obligation** |    **58,000** |    4% |       — |  10,000 |   1,000 |
+| **Total**             | **1,520,732** |       | **133,300** | **541,000** | **534,300** |
 
-**Miscellaneous is now the largest category in August at 44%, and 350,000 of it is one handset.** The Personal finding below — *Personal is the largest category, watch it* — **is superseded.** Personal has dropped to 9% and is not the line to watch. **One purchase on the 12th is 36% of everything logged this month**, which is larger than the AMON-scale observation July produced.
+> [!warning] Transport is now the largest category, and the number is misleading
+> **419,300 of Transport's 450,700 is the bicycle and its kit — bought once, on one day.** Actual fares in August are **31,400**, exactly what they were before today.
+>
+> **Read Transport as two things or it stops telling you anything:**
+>
+> | | Amount | What it is |
+> | --- | ---: | --- |
+> | Fares | **31,400** | 7% of Transport — the real running cost |
+> | **The bike, one-off** | **419,300** | 93% of Transport — an asset, not a cost |
+>
+> **Say the word and I'll open a `Capital/Assets` category** for things bought once that keep working — the bike, the handset, the phone repair. Until then the bike sits in Transport and this box is the correction.
+
+**Two purchases now dominate the month: a 350,000 handset on the 12th and a 340,000 bicycle on the 13th — 690,000, 45% of everything logged in August**, across two consecutive days, both funded from money this file cannot see.
 
 #### The repayment question from the 8th is answered
 
@@ -463,6 +499,10 @@ UNACCOUNTED                  40,868
 - **2026-08-12 · what git could and could not answer** — You asked whether the repo knew anything about the 9th, 10th and 11th. **It does, about the days — not the money.** The **9th** has two x-factor notes written and dated, one opening *"Today is 9 August."* The **10th** has vault commits from 15:51 to 22:45, the MNADA app rebuild, and the **MEMS login with a certificate uploaded** on the ACPA file. Both were desk days, which is exactly why no fares appear on them — that corroborates the log rather than contradicting it. The **11th has nothing in git at all**, and it is the day you were out. **One thing ruled out: the ACPA application fee was not paid** — Day 7 is still open on that file, so it is not hiding inside the gap. **No commit records money arriving.** Git tracks what you wrote, not what you were paid; the vault has no file that logs income, which is why the Cash Withdrawn table is the only instrument for it.
 - **2026-08-12 · the finding** — **672,300 spent since the 8th against 118,000 you counted and nothing received since.** At least **554,300 came in between the 9th and the 12th that this file has no record of.** Every previous gap in this log has been money leaving unrecorded; this is the first time the *income* side is the hole, and it is bigger than any spending gap here. **It matters because a withdrawal, a wage and a new loan are indistinguishable from inside the log, and one of them adds a repayment.** ✅ **But unlike every gap before it, this one is recoverable:** you did not leave the house on the 12th and **480,000 of that day went out by phone** — the two 3,500 charges prove it. **Money cannot be sent from an empty wallet, so the M-Pesa statement for the 9th to the 12th holds both what went out and what came in.** That statement is the single action worth taking on this file today.
 - **2026-08-12** — **The "Personal is the largest category" flag from 8 Aug is superseded.** Personal is now 9% of August. **Miscellaneous is 44%, and 350,000 of that is a single handset — 36% of everything logged this month.** Separately, the 8 Aug question *"is a debt repayment coming?"* is answered: **DMK 120,000 + 3,500 charge, and the corner shop 40,000.** Debt/Repayment is 195,500, a fifth of the month. **AMON has still had nothing, and neither lender has a balance or due date recorded anywhere.**
+- **2026-08-13** — Logged **16 rows, 536,300** — fifteen on the 13th (**534,300**) and one on the 12th. **The 2,000 electricity is dated the 12th because you said "last night"**, which moves that day 539,000 → 541,000; say the word and it comes forward. **August is now 1,520,732 logged against 471,000 received, so the unrecorded income has doubled to 1,090,600.** Three things filed on a reading rather than your words: **the 800 bus fare** (you said no fares today except the 1,500, then gave it — logged as a second trip today), **the bike shoes** (with the bike under Transport, though Personal is just as defensible), and the **cappuccino** kept as its own row rather than folded into the date. **The 2,000 electricity against a 52,000 water bill looks like a token top-up rather than a bill** — if the electricity bill itself is still due, it is a liability nothing here records.
+- **2026-08-13 · Transport is now the biggest category and the number is a trap.** 450,700, 30% of August — but **419,300 of it is the bicycle and its kit, bought once.** Fares are **31,400**, unchanged. A bike is an asset and fares are a running cost, and averaging them makes both unreadable. **Offered, not done: a `Capital/Assets` category** that would take the bike, the 350,000 handset and the 95,000 phone repair out of the running-cost lines. Say the word.
+- **2026-08-13 · the two-day picture.** A **350,000 handset on the 12th** and a **340,000 bicycle on the 13th** — 690,000 across two consecutive days, **45% of everything logged this month**, both paid out of money the log has no source for. **The spending is not the finding. The finding is that 1,090,600 has arrived since the 9th with nothing written against it**, and the M-Pesa statement recommended on the 12th has still not been pulled. It answers both days at once.
+- **2026-08-13 · the repo, checked rather than assumed.** `origin/main` sits at `1b1c0b1`, the commit that logged the 11th and 12th — **so this file was already readable on the public remote before today**, and the 8 Aug warning below describes a risk that had already landed. Pushing the story-sheet branch today added **no** new `Personal/` content; that history was already there. **The fix is unchanged and still unmade:** `.gitignore` the folder and `git rm --cached` it, or make the remote private. **Today's rows — the water bill, the bike, the money to your wife — are in the working tree and will go public the moment anything is pushed.** Nothing has been pushed since these rows were added.
 - **2026-07-26** — Added a **Food & Out** category (eating and drinking outside the house), split from **Household** (things consumed at home, house help, repairs). Body lotion, shoe repair and the phone went to **Personal**. Say if you'd rather they sat elsewhere — it is your log.
 
 ---
