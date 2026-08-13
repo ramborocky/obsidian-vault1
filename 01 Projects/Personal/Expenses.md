@@ -85,7 +85,7 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-07-26 | Pocket money — Uweis           | Family/Obligation |       10,000 | Amount confirmed 2026-07-28                                                                                                                                                                   |
 | 2026-07-26 | Loan repayment — AMON Finance  | Debt/Repayment    |    1,000,000 | Lender confirmed 2026-07-28. What the loan was originally for is still unrecorded                                                                                                             |
 | 2026-07-26 | Phone recharge                 | Personal          |        2,500 |                                                                                                                                                                                               |
-| 2026-07-26 | Phone repair                   | Personal          |       95,000 |                                                                                                                                                                                               |
+| 2026-07-26 | Phone repair                   | Personal          |       95,000 | **Stays Personal.** Reviewed 13 Aug against the new Capital/Assets rule and deliberately not moved — a repair restores an asset, it does not create one. Revenue expenditure, not capital |
 | 2026-07-26 | Food money — given to wife     | Household         |        7,500 | 1 of 4 — the 30,000 for 26–29 July, split 7,500/day on your instruction 2026-07-30                                                                                                            |
 | 2026-07-27 | Bus fare                       | Transport         |        4,000 |                                                                                                                                                                                               |
 | 2026-07-27 | Bus fare                       | Transport         |        1,500 |                                                                                                                                                                                               |
@@ -121,7 +121,7 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-06 | Bus fare                       | Transport         |        2,000 |                                                                                                                                                                                               |
 | 2026-08-06 | Bus fare                       | Transport         |        2,000 |                                                                                                                                                                                               |
 | 2026-08-08 | SIM card renewal               | Personal          |        6,500 |                                                                                                                                                                                               |
-| 2026-08-08 | Phone — plain handset          | Personal          |       30,000 | Logged by you as "a plain dummy phone"                                                                                                                                                       |
+| 2026-08-08 | Phone — plain handset          | Capital/Assets    |       30,000 | Logged by you as "a plain dummy phone". **Moved from Personal 13 Aug** — over the threshold and it keeps working |
 | 2026-08-08 | Cappuccino                     | Food & Out        |        7,000 |                                                                                                                                                                                               |
 | 2026-08-08 | Muffin                         | Food & Out        |        5,000 |                                                                                                                                                                                               |
 | 2026-08-08 | Takeaway                       | Food & Out        |        4,500 |                                                                                                                                                                                               |
@@ -168,7 +168,7 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-11 | Bus fare                       | Transport         |        1,000 |                                                                                                                                                                                               |
 | 2026-08-11 | Bus fare                       | Transport         |        1,000 |                                                                                                                                                                                               |
 | 2026-08-11 | Bus fare                       | Transport         |        1,500 |                                                                                                                                                                                               |
-| 2026-08-12 | Phone — handset                | Miscellaneous     |      350,000 | Flat label and Miscellaneous, same as the Mombasa line — see the repo note of 8 Aug. Largest single item in August. Sent, not carried — see the 3,500 below                                   |
+| 2026-08-12 | Phone — handset                | Capital/Assets    |      350,000 | Flat label kept, but **moved from Miscellaneous 13 Aug** — it is an asset, not an unexplained outflow. Sent, not carried — see the 3,500 below |
 | 2026-08-12 | Transfer charge — M-Pesa       | Miscellaneous     |        3,500 | Attached to the 350,000 above                                                                                                                                                                 |
 | 2026-08-12 | Loan repayment — DMK Finance   | Debt/Repayment    |      120,000 | First lender repayment in August. Previous DMK payment was 200,000 on 27 July. Still no balance or due date recorded                                                                          |
 | 2026-08-12 | Transfer charge — DMK payment  | Debt/Repayment    |        3,500 | Filed with the payment it belongs to, not separately                                                                                                                                          |
@@ -179,10 +179,10 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-12 | Electricity                    | Household         |        2,000 | ⚠️ **Dated the 12th because you said "last night", but you reported it in today's batch.** The 12th moves 539,000 → 541,000. Say the word and it comes to the 13th. Also: 2,000 against a 52,000 water bill reads like a LUKU token top-up, not a monthly bill — **if the electricity bill itself is still outstanding, it is a liability this file has no record of** |
 | 2026-08-13 | Cashew nuts — from Rehema      | Household         |       24,000 | Bought from a colleague at work, paid by mobile money. Filed Household as food for the house — say if it was for resale or a gift and it moves                                                |
 | 2026-08-13 | Transfer charge — Rehema       | Household         |        1,000 | Filed with the payment it belongs to, same as the two 3,500 charges on the 12th                                                                                                              |
-| 2026-08-13 | **Bicycle**                    | Transport         |  **340,000** | **Largest single item in August after the 12th's handset.** See the summary — the bike and its kit are 417,000 and they break Transport as a fares measure                                    |
-| 2026-08-13 | Bike shoes                     | Transport         |       50,000 | ⚠️ Filed with the bike. **Personal is equally defensible** — they are shoes. Say which and I'll keep it consistent                                                                            |
-| 2026-08-13 | Bike lights                    | Transport         |       17,000 |                                                                                                                                                                                              |
-| 2026-08-13 | Bike lock                      | Transport         |       10,000 |                                                                                                                                                                                              |
+| 2026-08-13 | **Bicycle**                    | Capital/Assets    |  **340,000** | **Largest single item in August after the 12th's handset.** The bike and its kit are one asset at **417,000** — see the capitalisation policy below |
+| 2026-08-13 | Bike shoes                     | Capital/Assets    |       50,000 | ⚠️ Capitalised with the bike so the purchase reads as one event. **Personal is still defensible** — shoes wear out. Say the word and 50,000 moves |
+| 2026-08-13 | Bike lights                    | Capital/Assets    |       17,000 | Under 25,000 on its own; capitalised as a component of the bike |
+| 2026-08-13 | Bike lock                      | Capital/Assets    |       10,000 | Under 25,000 on its own; capitalised as a component of the bike |
 | 2026-08-13 | Water bill                     | Household         |       52,000 |                                                                                                                                                                                              |
 | 2026-08-13 | Food money — given to wife     | Household         |       15,000 | For house food today. Same shape as the 15,000 on the 11th                                                                                                                                   |
 | 2026-08-13 | Food at the bike place         | Food & Out        |        8,000 |                                                                                                                                                                                              |
@@ -209,7 +209,8 @@ Assign yourself or leave blank. These are drawn from what's already in your Pers
 | **ACPA/NBAA** | Exam fees, registration, study materials — see [[ACPA(T) NBAA To-Do]] |
 | **The House** | Anything on the Airbnb/retreat build — see [[House - Airbnb Writers Retreat]] |
 | **Writing** | Books, printing, submission fees, internet specifically for the work |
-| **Personal** | Clothes, shoes, haircut, toiletries, phone airtime and repairs |
+| **Personal** | Clothes, shoes, haircut, toiletries, phone airtime — **and repairs, including to things that are themselves assets** |
+| 🏗️ **Capital/Assets** | Things bought once that keep working: bicycles, handsets, tools, furniture. **Three tests, all required — over 25,000, durable past the month, and not a repair.** Components bought together for one asset count as one asset. Added 2026-08-13 |
 | **Family/Obligation** | Money given to relatives, contributions, funerals, weddings |
 | **Debt/Repayment** | Anything paying something back |
 | **Miscellaneous** | Money out that fits nowhere else and does not need a reason in this file |
@@ -349,30 +350,58 @@ Fares: 6,000 + 800 + 1,000 + 1,000 + 500 + 4,000 + 1,500 + 1,000 + 1,000 + 1,000
 
 #### By category — August so far
 
+**Restated 13 Aug on the capitalisation policy below.** Six rows moved into **Capital/Assets**; nothing else changed and the total is unmoved.
+
 | Category              |        Amount | Share |  11 Aug |  12 Aug |  13 Aug |
 | --------------------- | ------------: | ----: | ------: | ------: | ------: |
-| **Transport**         |   **450,700** |   30% |  19,300 |       — | 419,300 |
-| **Miscellaneous**     |   **433,500** |   29% |       — | 388,500 |       — |
+| 🏗️ **Capital/Assets**  |   **797,000** |   52% |       — | 350,000 | 417,000 |
 | **Household**         |   **219,032** |   14% |  40,000 |  12,000 |  92,000 |
 | **Debt/Repayment**    |   **195,500** |   13% |  40,000 | 123,500 |       — |
-| **Personal**          |    **84,500** |    6% |       — |   7,000 |       — |
+| **Miscellaneous**     |    **83,500** |    6% |       — |  38,500 |       — |
 | **Food & Out**        |    **79,500** |    5% |  34,000 |       — |  22,000 |
 | **Family/Obligation** |    **58,000** |    4% |       — |  10,000 |   1,000 |
+| **Personal**          |    **54,500** |    4% |       — |   7,000 |       — |
+| **Transport**         |    **33,700** |    2% |  19,300 |       — |   2,300 |
 | **Total**             | **1,520,732** |       | **133,300** | **541,000** | **534,300** |
 
-> [!warning] Transport is now the largest category, and the number is misleading
-> **419,300 of Transport's 450,700 is the bicycle and its kit — bought once, on one day.** Actual fares in August are **31,400**, exactly what they were before today.
+> [!important] 🏗️ THE CAPITALISATION POLICY — written down so it is applied the same way every time
+> A thing goes to **Capital/Assets** when **all three** hold. Otherwise it is an expense, whatever it cost.
 >
-> **Read Transport as two things or it stops telling you anything:**
+> | | The rule |
+> | :--: | --- |
+> | **1** | **Over 25,000 TZS.** A de minimis threshold, so a 7,000 water bottle does not become an asset |
+> | **2** | **It keeps working past this month.** Durable, not consumed |
+> | **3** | **Repairs and maintenance never qualify** — restoring an asset is revenue expenditure, not capital, regardless of size |
 >
-> | | Amount | What it is |
-> | --- | ---: | --- |
-> | Fares | **31,400** | 7% of Transport — the real running cost |
-> | **The bike, one-off** | **419,300** | 93% of Transport — an asset, not a cost |
+> **Components bought together to put one asset into use are assessed as one asset.** That is why the bike lights (17,000) and lock (10,000) are capitalised despite being under the threshold on their own — they are part of a single 417,000 purchase, not four separate ones.
 >
-> **Say the word and I'll open a `Capital/Assets` category** for things bought once that keep working — the bike, the handset, the phone repair. Until then the bike sits in Transport and this box is the correction.
+> **What this excluded, deliberately:** the **95,000 phone repair** on 26 July. It clears the threshold easily and it is still not capital — rule 3. It stays in Personal, flagged in the log so the decision is visible rather than inferred.
 
-**Two purchases now dominate the month: a 350,000 handset on the 12th and a 340,000 bicycle on the 13th — 690,000, 45% of everything logged in August**, across two consecutive days, both funded from money this file cannot see.
+#### 🏗️ And here is what the new category actually reveals
+
+> **More than half of August — 52% — is not spending. It is buying things.**
+
+```
+Logged, all August        1,520,732
+Capital/Assets            − 797,000
+                          ─────────
+What the month cost you     723,732
+```
+
+| | Amount | What it means |
+| --- | ---: | --- |
+| **Capital/Assets** | **797,000** | Two handsets and a bicycle. Bought once, still yours |
+| **Running cost** | **723,732** | Food, fares, house, debt, family — what August actually consumed |
+
+**The three biggest single things you did in August were acquisitions, on three separate days:** the 350,000 handset (12th), the 340,000 bicycle (13th), and the 30,000 plain handset (8th).
+
+**And the two categories that were the story before this are now readable:**
+
+- **Transport falls from 450,700 to 33,700 — from first place to last.** Fares are the entire category again, and they are **31,400**, unchanged all month. The 30% figure was the bike wearing Transport's coat.
+- **Miscellaneous falls from 433,500 to 83,500.** What remains is the 45,000 Mombasa line and the 35,000 damages — the two genuinely unexplained outflows. **That is what Miscellaneous is for, and it could not be seen while a handset was sitting in it.**
+- **Personal falls to 54,500, 4%.** The 8 Aug warning that Personal was the category to watch is now doubly superseded — it was a haircut and a handset, and the handset has left.
+
+> **The finding that survives all of this is unchanged and is not about categories.** 797,000 of assets were acquired out of **1,090,600 of income this file cannot see.** Reclassifying the spending does not answer where the money came from. **The M-Pesa statement still does.**
 
 #### The repayment question from the 8th is answered
 
@@ -501,7 +530,8 @@ UNACCOUNTED                  40,868
 - **2026-08-12** — **The "Personal is the largest category" flag from 8 Aug is superseded.** Personal is now 9% of August. **Miscellaneous is 44%, and 350,000 of that is a single handset — 36% of everything logged this month.** Separately, the 8 Aug question *"is a debt repayment coming?"* is answered: **DMK 120,000 + 3,500 charge, and the corner shop 40,000.** Debt/Repayment is 195,500, a fifth of the month. **AMON has still had nothing, and neither lender has a balance or due date recorded anywhere.**
 - **2026-08-13 · ⚠️ THE PUSH INSTRUCTION IS SUPERSEDED — decided by you.** The 8 Aug note below says *"do not run `git push`"* until `Personal/` is gitignored or the remote is made private. **Neither was done. You were shown exactly what this file contains — two lender names, two children's names, household amounts, the water bill, the bicycle, money given to your wife — and chose to push regardless.** Recorded here so this is a decision on the record and not an accident. **`01 Projects/Personal/` is public and will stay public until you change it.** The two fixes remain available at any time and nothing here is deleted by either: `.gitignore` the folder and `git rm --cached` it, or make the repository private.
 - **2026-08-13** — Logged **16 rows, 536,300** — fifteen on the 13th (**534,300**) and one on the 12th. **The 2,000 electricity is dated the 12th because you said "last night"**, which moves that day 539,000 → 541,000; say the word and it comes forward. **August is now 1,520,732 logged against 471,000 received, so the unrecorded income has doubled to 1,090,600.** Three things filed on a reading rather than your words: **the 800 bus fare** (you said no fares today except the 1,500, then gave it — logged as a second trip today), **the bike shoes** (with the bike under Transport, though Personal is just as defensible), and the **cappuccino** kept as its own row rather than folded into the date. **The 2,000 electricity against a 52,000 water bill looks like a token top-up rather than a bill** — if the electricity bill itself is still due, it is a liability nothing here records.
-- **2026-08-13 · Transport is now the biggest category and the number is a trap.** 450,700, 30% of August — but **419,300 of it is the bicycle and its kit, bought once.** Fares are **31,400**, unchanged. A bike is an asset and fares are a running cost, and averaging them makes both unreadable. **Offered, not done: a `Capital/Assets` category** that would take the bike, the 350,000 handset and the 95,000 phone repair out of the running-cost lines. Say the word.
+- **2026-08-13 · ~~Transport is now the biggest category and the number is a trap.~~ Done — `Capital/Assets` created at your instruction.** Six rows moved: the bicycle 340,000, shoes 50,000, lights 17,000 and lock 10,000 out of Transport; the 350,000 handset out of Miscellaneous; the 30,000 plain handset out of Personal. **797,000, and it is 52% of August.** The **95,000 phone repair was reviewed and deliberately left in Personal** — a repair restores an asset rather than creating one, so it is revenue expenditure. **Nothing in July moves**, so the July tables above are unaffected and the month totals are unchanged in both months. **Written policy, so it is applied the same way next time:** over 25,000, durable past the month, and not a repair — all three, with components of one purchase assessed as one asset. **One row still open: the 50,000 bike shoes** are capitalised with the bike to keep the purchase as one event, and Personal remains defensible.
+- **2026-08-13 · what the new category shows, and it is worth more than the reshuffle.** **August splits 797,000 acquisitions against 723,732 of actual running cost** — more than half the month was buying things, not spending. **Transport drops from first place to last**, 450,700 → 33,700, and fares are 31,400 and were never anything else. **Miscellaneous drops 433,500 → 83,500**, leaving only the 45,000 Mombasa line and the 35,000 damages, which is what that category is for and could not be seen while a handset sat in it. **Personal drops to 4%**, superseding the 8 Aug warning for a second time. **The one thing reclassification cannot touch: 797,000 of assets were bought out of 1,090,600 of income with no record. The statement is still the answer.**
 - **2026-08-13 · the two-day picture.** A **350,000 handset on the 12th** and a **340,000 bicycle on the 13th** — 690,000 across two consecutive days, **45% of everything logged this month**, both paid out of money the log has no source for. **The spending is not the finding. The finding is that 1,090,600 has arrived since the 9th with nothing written against it**, and the M-Pesa statement recommended on the 12th has still not been pulled. It answers both days at once.
 - **2026-08-13 · the repo, checked rather than assumed.** `origin/main` sits at `1b1c0b1`, the commit that logged the 11th and 12th — **so this file was already readable on the public remote before today**, and the 8 Aug warning below describes a risk that had already landed. Pushing the story-sheet branch today added **no** new `Personal/` content; that history was already there. **The fix is unchanged and still unmade:** `.gitignore` the folder and `git rm --cached` it, or make the remote private. **Today's rows — the water bill, the bike, the money to your wife — are in the working tree and will go public the moment anything is pushed.** Nothing has been pushed since these rows were added.
 - **2026-07-26** — Added a **Food & Out** category (eating and drinking outside the house), split from **Household** (things consumed at home, house help, repairs). Body lotion, shoe repair and the phone went to **Personal**. Say if you'd rather they sat elsewhere — it is your log.
