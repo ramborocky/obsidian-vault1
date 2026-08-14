@@ -10,9 +10,20 @@ status: seven moves · ~670 words · one continuous piece of prose
 
 → [[The Village, The House, The Road — Proposal Sheet]] · [[Morland 2025 — Post-Mortem]]
 
-> **The band is 400–1,000 words. Aim at ~700.** Under 500 looks thin against a £18,000 ask; over 900 starts explaining. **The word budgets below add to about 670, which leaves you room to run long somewhere that deserves it.**
+> **The band is 400–1,000 words. Aim at ~700.** Under 500 looks thin against a £18,000 ask; over 900 starts explaining. **The word budgets below add to about 690, which leaves you room to run long somewhere that deserves it.**
 >
 > **You have every fact you need already.** Nothing below asks you to invent. It asks you to choose.
+
+> [!important] ⚠️ AMENDED 2026-08-12 — four changes, from [[Reverse-Engineered — What a Winning Morland Application Contained|three winning applications reconstructed from the finished books]]
+> The seven moves stand. Four things changed underneath them:
+>
+> **1 · Move 2 gets a hard test it did not have.** The Foundation publishes its own one-line summary of every funded project, written *after* a judge reads your description. **Five for five, those summaries run 11–16 words.** Your spine must survive being compressed to that length by somebody else.
+>
+> **2 · Move 6 shrinks and turns, 120 → 80 words.** **Not one of the five published blurbs mentions method, access or schedule** — and **none of five scholars delivered inside twelve months** (Emezi took 5 years and published a different novel first; Muchemwa and Kimutai both delivered different books entirely). Deliverability is not what they are scoring. **Keep the clock, cut the itinerary.**
+>
+> **3 · A new Move 6½ · The Refusal.** Not solving the murder is currently only listed as a prohibition. **Stated out loud, it becomes the strongest paragraph in the document** — it converts your single biggest exclusion risk into evidence of judgement.
+>
+> **4 · Move 6 needs proof of motion, not proof of plan.** They are buying **the writer, not the manuscript.** One person already spoken to outweighs six archives named.
 
 ---
 
@@ -37,6 +48,24 @@ status: seven moves · ~670 words · one continuous piece of prose
 **The decision:** whether the seventeen years appear here or in move 4. **Here is braver.**
 
 ⚠️ **The trap:** *"This book will explore…"* **Never write that.** State what happened. The book is implied by the fact that you are writing to them.
+
+> [!important] 🎯 THE COMPRESSION TEST — added 2026-08-12. Run it before you write a word of this move.
+> **The Foundation writes its own one-sentence summary of every project it funds, after reading the description.** It is published. Five for five, it runs **11–16 words**:
+>
+> | *A woman haunted by the living ghost of the Gambian dictator throughout her life* | 13 |
+> | --- | :-: |
+> | *Twins separated in the 1800s in the Kenyan highlands, whose paths cross a British explorer* | 16 |
+> | *Mkomanile, a formidable Ngoni general in the Majimaji rebellion against the illegitimate colonial administration* | 15 |
+> | *A journalist traversing Nigeria to witness the uprising of Boko Haram* | 11 |
+>
+> **You do not write that sentence. They do — and what they write is what they took away.**
+>
+> **So write the 15-word version first, on its own line, before drafting the paragraph.** Two candidates from your own material:
+>
+> > *A Tanzanian Prime Minister who made the rich explain their money, and died on a road.* — **16**
+> > *The fourteen months Tanzania searched its own houses, and the death that ended them.* — **14**
+>
+> **Say both out loud to somebody who does not read. The one that makes them look up is the spine.** Then write the ~60 words around it. If the paragraph is good but does not compress, the paragraph is wrong.
 
 ---
 
@@ -86,8 +115,15 @@ status: seven moves · ~670 words · one continuous piece of prose
 
 ---
 
-## MOVE 6 · WHAT THE YEAR BUYS · ~120 words
-### *Deliverability. Foundations fund books they believe will exist.*
+## MOVE 6 · THE CLOCK · ~80 words
+### *Not a research plan. A reason this year rather than any year.*
+
+> [!warning] ⚠️ REVISED 2026-08-12 — this move was *"What the Year Buys · ~120 words · deliverability"*
+> **The evidence says deliverability is not being scored.** Not one of five published blurbs mentions method, access or schedule — and **not one of five scholars delivered inside twelve months.** Emezi took five years and published a different novel first. Muchemwa and Kimutai both delivered entirely different books. **They are buying the writer, not the manuscript.**
+>
+> **So: keep the clock, cut the itinerary.** The archive list below is for *you*, not for them — name two at most, in passing. **Forty words of urgency beats a hundred and twenty of logistics.**
+>
+> **And add one line of proof of motion.** *One person you have already spoken to outweighs six archives named*, because it is the difference between a plan and a book that has started. → [[Reverse-Engineered — What a Winning Morland Application Contained]]
 
 **What you have:**
 
@@ -101,6 +137,21 @@ status: seven moves · ~670 words · one continuous piece of prose
 **The decision — and it is your strongest argument:** say plainly that **this is the last decade in which those people can be asked.** That is a reason for *this year* rather than some year, and no other applicant's project has a clock on it.
 
 ⚠️ **The trap:** *"identifying key archives and sources"* and *"potentially to Germany."* **Name them or cut them.** Also worth saying: every site is inside Tanzania. **No visa, no flight, no fixer.** This book can actually be delivered.
+
+---
+
+## MOVE 6½ · THE REFUSAL · ~60 words
+### *Say what the book will not do. Added 2026-08-12.*
+
+**Not solving the murder currently appears only in the prohibitions list below — as something to avoid.** That is a waste. **Said out loud, it is the strongest paragraph in the document.**
+
+**The shape:** name the thing a reader expects you to promise · say plainly that you will not · say why the evidence cannot carry it · then name what *can* be proved, and make that the subject.
+
+**What you have:** you cannot prove Dakawa was an assassination. Nobody can. The records that would settle it do not exist. **What can be established is what the state did in those fourteen months, what people were told afterwards, and that forty years on the country does not believe it.** The distance between the verdict and the belief is the book.
+
+> **Why this earns its sixty words.** It converts your single largest exclusion risk — *works of special interest such as political writings* — into **evidence of judgement**, on the page, unprompted. A judge reading it stops worrying that you are grinding an axe. → [[The Village, The House, The Road — Proposal Sheet]] rule 3
+
+⚠️ **The trap:** do not perform the refusal. **One flat statement, no throat-clearing about responsibility or rigour.** *"I cannot prove that and I am not going to try"* is the register.
 
 ---
 

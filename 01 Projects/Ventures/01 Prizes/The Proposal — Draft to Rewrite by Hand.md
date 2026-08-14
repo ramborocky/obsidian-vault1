@@ -2,16 +2,32 @@
 tags: [ventures, morland, proposal, draft, submission]
 aliases: [Proposal Draft]
 date: 2026-08-05
-status: draft for the author to rewrite by hand — ~705 words, inside the 400–1,000 band
+revised: 2026-08-12
+status: draft for the author to rewrite by hand — ~835 words, inside the 400–1,000 band
 register: dry, flat, unsentimental. Irony by juxtaposition, never by comment
 ---
 
 # ✒️ THE PROPOSAL — DRAFT TO REWRITE BY HAND
-### *The Village, The House, The Road* · **~705 words** · one continuous piece of prose
+### *The Village, The House, The Road* · **~835 words** · one continuous piece of prose
 
-→ [[The Proposal — Drafting Session]] · [[The Village, The House, The Road — Proposal Sheet]]
+→ [[The Proposal — Drafting Session]] · [[The Village, The House, The Road — Proposal Sheet]] · [[The Scarcity — What 1983 Was Standing In]]
+
+> [!important] ⚠️ REVISED 2026-08-12 — three changes, and one of them is the best paragraph in the draft
+> **1 · THE HOUSE now opens on the shortage.** The Act was unintelligible without it. *When the shelves are empty a state reasons the goods are somewhere and somebody is holding them* — that sentence is the whole motive, and it means **no verdict on Nyerere is needed anywhere in the document.**
+> **2 · *Nguvu Kazi* is in.** Same year, same office, and it fuses the three parts into one motion.
+> **3 · The archive list is cut back to the clock**, per the finding that **not one funded blurb mentions method or schedule**. One line of proof-of-motion replaces four archives. → [[Reverse-Engineered — What a Winning Morland Application Contained]]
+>
+> **The refusal paragraph was already here** and is unchanged — it was right the first time.
 
 > **On the register you asked for.** Sophisticated, nonchalant, existential, post-humanist satire — the usable version of that on this material is **cold rather than funny.** Flat declaratives. Irony carried by putting two facts next to each other and declining to comment. Objects that outlast the people who owned them. **What it must never be is jokey about a man dying or a village being emptied** — the moment it laughs at them rather than at the apparatus, it is both bad writing and the excluded political thing. **The draft below stays on the apparatus.**
+
+---
+
+## 🎯 THE SPINE, IN FOURTEEN WORDS — write this on a card before you touch the draft
+
+> ### *The fourteen months Tanzania searched its own houses, and the death that ended them.*
+
+**This is not in the proposal.** It is the sentence the Foundation will write about you after reading it, and five for five those run 11–16 words. **Every paragraph below either serves that sentence or comes out.** → [[The Proposal — Drafting Session]], Move 2
 
 ---
 
@@ -25,7 +41,9 @@ This book is an investigation of those fourteen months and of the seventeen year
 
 The village came first. In February 1967 the Arusha Declaration announced that the nation would be built out of its own people, and between 1973 and 1976 the state moved millions of them into planned villages, mostly by lorry. Houses were left standing. Graves were left where they were. The policy was given an operational name, Operation Vijiji, and the name is the most honest document the period produced.
 
-The house came sixteen years later. The Act of April 1983 established special courts, admitted no lawyers, and required a man to account for his own furniture. It was popular. It was popular because everybody knew somebody it should have been aimed at.
+The house came sixteen years later, and it came out of a shortage. The war against Amin had cost five hundred million dollars, and a hundred million more went on propping up the government that replaced him. Then floods. Then a drought. Then a month in 1980 when the country's industry was ordered to switch itself off. By 1983 there were queues for sugar, for soap, for cloth, and the maize was yellow and had come from somewhere else. When the shelves are empty a state reasons that the goods are somewhere, and that somebody is holding them.
+
+So the Act established special courts, admitted no lawyers, and required a man to account for his own furniture. The same office passed a second law that year — Nguvu Kazi — which registered everyone in work and put everyone else on lorries back to the villages they had been moved into ten years before. It was popular. It was popular because everybody knew somebody it should have been aimed at.
 
 The road came last, on 12 April 1984, at Dakawa, where a Land Cruiser met the Prime Minister's car on the Dodoma–Dar es Salaam highway at a speed nobody has ever established. Dube served the sentence. Forty years later the country has still not accepted the verdict, and the interesting thing is not whether it is right. The interesting thing is that a state which had spent seventeen years asking its citizens to account for everything could not, in the end, account for this.
 
@@ -33,9 +51,7 @@ I was born in 1977, the year the ruling party was founded, and at home I was cal
 
 I am also a CPA. I can read a ledger, a seizure inventory and a tribunal record, which is a duller qualification than the one in the paragraph above and a more useful one. The archive is in Kiswahili.
 
-The scholarship year buys the fieldwork: Iringa and the resettled villages, the Dodoma road at Dakawa, the Tanzania National Archives, the special-tribunal records, Dube's trial file, and the runs of *Daily News* and *Uhuru* between April 1983 and April 1984. All of it is inside Tanzania. There is no visa in this book and no fixer.
-
-It also buys the interviews, and that is the part with a clock on it. The people who were put on the lorries in 1974 are in their seventies and eighties. The people arrested in 1983 are not much younger. This is the last decade in which the book can be reported rather than researched, and after that it becomes somebody's thesis.
+The year buys interviews, and that is the part with a clock on it. The people who were put on the lorries in 1974 are in their seventies and eighties; the people arrested in 1983 are not much younger. I have started with two of them. This is the last decade in which the book can be reported rather than researched, and after that it becomes somebody's thesis. The archives, the tribunal records and Dube's trial file are in Dar and Dodoma. There is no visa in this book and no fixer.
 
 I am not going to solve the accident. The country has been not-solving it since 1984 and has become rather good at it. What I want to write is the seventeen years that made a road a plausible place for a government to end.
 
@@ -48,36 +64,46 @@ I am not going to solve the accident. The country has been not-solving it since 
 | **1 · The image** | *the televisions in the gutters* | True, strange, and nobody walks away. Ends on the post-humanist beat — **the objects understood the law before the people did** |
 | **2 · The spine** | *fourteen months later* | Two facts, no comment. The reader assembles the accusation; the proposal never makes one |
 | **3 · The form** | *narrative non-fiction, eighty-five thousand words, three parts* | Named, sized, shelved. **No adjective** |
-| **4 · The movements** | village · house · road | Three things that happened, **not three things you will write.** The 2025 proposal's fatal move, reversed |
+| **4 · The movements** | village · **shortage** · house · road | Three things that happened, **not three things you will write** |
+| **4b · The motive** ➕ | *when the shelves are empty a state reasons that the goods are somewhere* | **New.** Makes the Act intelligible instead of arbitrary — **and does the work a verdict on Nyerere would otherwise have to do** |
+| **4c · The hinge** ➕ | *Nguvu Kazi… back to the villages they had been moved into ten years before* | **New.** Lorries to the village in 1974, lorries back in 1983, **same office.** One motion, not three episodes |
 | **5 · Why you** | *Chama · the laugh* | Never claimed. The last sentence converts family closeness into standing |
-| **6 · The year** | archives · witnesses | Named, and **it has a clock on it** — no other applicant's project does |
+| **6 · The clock** ✂️ | witnesses · *I have started with two of them* | **Shortened.** Itinerary cut, urgency kept, **proof of motion added** |
 | **7 · The close** | *not-solving it since 1984* | Ends on the doubt. **Last year ended on a promise of quality** |
 
 **The controlling idea never gets stated and cannot be missed:** *a state that spent seventeen years demanding an account of everything could not account for this.* It arrives as an observation in move 4, and every other paragraph is evidence for it.
 
 ---
 
-## ⚠️ THE ONE LINE TO DECIDE BEFORE YOU SEND
+## 🔴 THREE THINGS TO SETTLE BEFORE YOU SEND
+
+### 1 · *"I have started with two of them"* — only if it is true
+
+**This is the proof-of-motion line and it is the strongest sentence in the second half.** It is also a factual claim about your own conduct. **If you have not yet interviewed two people, either do it this week or cut the sentence.** Do not send it on an intention.
+
+### 2 · The Act's date
+
+The draft says **April 1983.** The legal record says the Act was brought into force **retroactive to 25 March 1983.** Both may be true — announced in April, reaching back to March. **A criminal law that runs backwards in time is a better fact than a launch date**, and it is free. **Check the Gazette, then use whichever is right.**
+
+### 3 · The Vijiji sentence
 
 > *"The policy was given an operational name, Operation Vijiji, and the name is the most honest document the period produced."*
 
-**That is the sharpest sentence in the draft and the closest thing to a verdict.** It is an observation about naming rather than about Nyerere, which is what keeps it inside the rules — **but it is the sentence a cautious reader would circle**, and the Foundation excludes political writing.
-
-**Two defensible calls, and it is yours:** keep it, because it is the moment the register earns its keep and the book announces it has a mind. **Or flatten it** to the plain fact — *the policy was called Operation Vijiji* — and lose the best line to buy safety.
-
-**I would keep it.** It is aimed at bureaucratic language, not at a president.
+**The sharpest sentence in the draft and the closest thing to a verdict.** It is aimed at bureaucratic language rather than at a president, which is what keeps it inside the rules — **but a cautious reader would circle it.** Keep it, or flatten it to *the policy was called Operation Vijiji* and lose the best line to buy safety. **I would keep it.**
 
 ---
 
 ## 🖊️ WHEN YOU REWRITE IT
 
 - [ ] **Read it aloud first, before changing anything.** Anything that sounds like me and not like you, cut and replace — **especially *rather good at it*, which is an English idiom and may not be your English**
-- [ ] **Check "thirty-six years."** 1990 to 2026. Confirm it against your own memory of the visit
-- [ ] **Decide the Vijiji sentence** — keep or flatten
+- [ ] **The yellow maize is yours, not mine.** *came from somewhere else* is a placeholder — **you know where it came from and what people called it.** Put your own words there
+- [ ] **Check "thirty-six years."** 1990 to 2026
+- [ ] **Settle the three items above** — the interviews, the date, the Vijiji sentence
 - [ ] Consider whether *"It was popular because everybody knew somebody it should have been aimed at"* is true to what you were told. **If it is not yours, cut it**
-- [ ] Count the words — **400–1,000, target ~700**
+- [ ] Count the words — **400–1,000, and this now sits at ~835.** If it needs to come down, **the war-and-floods sentences are the cheapest cut** — they are context, not scene
 - [ ] Run [[The De-Slop Pass — English Prose]] and [[The NAPLAN Floor — Ten Mechanical Criteria]]. **A typo here costs more than a typo anywhere else in the application**
 - [ ] **Written by 31 August. Submitted 1 September**
 
 ## Related
-- [[The Proposal — Drafting Session]] · [[The Village, The House, The Road — Proposal Sheet]] · [[The Biography — Draft to Rewrite by Hand]] · [[Morland 2025 — Post-Mortem]] · [[Two Campaigns — The Master Calendar]]
+- [[The Proposal — Drafting Session]] · [[The Scarcity — What 1983 Was Standing In]] · [[Reverse-Engineered — What a Winning Morland Application Contained]]
+- [[The Village, The House, The Road — Proposal Sheet]] · [[The Biography — Draft to Rewrite by Hand]] · [[Morland 2025 — Post-Mortem]] · [[Two Campaigns — The Master Calendar]]
