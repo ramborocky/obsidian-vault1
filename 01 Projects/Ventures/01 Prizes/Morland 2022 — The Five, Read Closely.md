@@ -94,7 +94,14 @@ This is the axis *What They Actually Fund* does not cover, and it is the one wor
 
 **2 · Two of five came in on a *shortlist*, not a win.** Kejera and Muchemwa. A shortlist is a credential. **This is the single most under-valued fact on the page** — losing well, publicly, twice, is a track record.
 
-**3 · 🎯 adda published two of the five.** Kejera and Komba. **adda is Commonwealth Writers' own magazine** — free to submit, and it feeds directly into the same ecosystem that runs the story prize. It is the most efficient venue on this list and it is not on the vault's submissions calendar. → [[The Year — Submissions Calendar]]
+**3 · 🎯 adda published two of the five.** Kejera and Komba. **adda is Commonwealth Writers' own magazine**, and it feeds directly into the same ecosystem that runs the story prize.
+
+> [!warning] ⚠️ CORRECTED 2026-08-12 — this said "free to submit" and told you to add it to the calendar. **Both were wrong.**
+> **adda does not accept unsolicited submissions.** Pieces are commissioned, or selected through specific calls announced to its mailing list. **You cannot submit to it and it does not belong on a submissions calendar.**
+>
+> **The route in is the prize itself** — Commonwealth shortlisted stories are published in adda. Which makes [[Reverse-Engineered — What a Winning Morland Application Contained|Kejera's ladder]] tighter than first described: **Commonwealth shortlist 2020 → published in adda → Morland 2022.** The magazine is a *consequence* of the shortlist, not a separate door.
+>
+> **What to do instead:** join the mailing list for the calls, and treat [[The Year — Submissions Calendar|Brittle Paper]] as the venue that is actually open all year.
 
 **4 · 🔥 Kejera's route is your two campaigns, in your order.** **Commonwealth Short Story Prize shortlist in 2020 → Morland scholarship in 2022.** Same sequence, two years apart, first Gambian at both. Whatever else is uncertain, the ladder [[Two Campaigns — The Master Calendar]] is built on is one a real person has climbed.
 
@@ -141,7 +148,7 @@ Yvette Ndlovu 2024 — *a fictional Zimbabwe haunted by its resurrected dictator
 
 ## ✅ WHAT TO DO WITH THIS
 
-- [ ] **Add adda to the submissions calendar.** Free, Commonwealth Writers' own, two of five 2022 scholars in it → [[The Year — Submissions Calendar]]
+- [ ] ~~Add adda to the submissions calendar~~ — **wrong, see the correction above. adda takes no unsolicited work.** Join its mailing list for calls; put **Brittle Paper** on the calendar instead, which is open all year with no fee → [[The Year — Submissions Calendar]]
 - [ ] **Find and read *Daughters of Bloody Soil* material** — Oduah's Boko Haram reporting is widely available even if the book is not. This is the proposal's model
 - [ ] **Do not chase a named formal device.** Pattern **4** is the weakest of the six; subject and hook first
 - [ ] **Say the book in one clause and check it stays strange.** *"The Prime Minister who died on the road"* — pattern **3**, the only one that is seventeen for seventeen
