@@ -1,7 +1,7 @@
 # Claude Code working files.
 #
 # Everything under .claude/ is ignored EXCEPT the vault's shared tooling:
-# settings.json and the hooks that back the "archive before editing" rule.
+# settings.json, the hooks that back the "archive before editing" rule, and skills.
 #
 # Why the exception: a blanket `.claude/` rule is how the original
 # archive-before-edit hook was lost. The vault was copied here from
@@ -11,6 +11,7 @@
 .claude/*
 !.claude/settings.json
 !.claude/hooks/
+!.claude/skills/
 
 # Machine-local overrides and session scratch stay out of the repo.
 .claude/settings.local.json
