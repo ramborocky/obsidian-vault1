@@ -30,7 +30,10 @@ author: Claude — written at the user's request
 | 3 | [[The Second Curriculum]] | 16 modules, 17 weeks, four of them load-bearing |
 | 4 | [[Unstoppable — The Architecture]] | Consistency as architecture, not character |
 | 5 | [[Legacy — What Scales]] | Past your own hours — and where the parked idea belongs |
-| 6 | [[Five Models I Can't Unsee]] | Five questions. The note to re-read |
+| 6 | **[[Seventeen Questions]]** | **17 questions, one file per chapter. Supersedes the models** |
+| — | [[Better Than Free — The Eight Generatives]] | Kevin Kelly. What you sell when output is free |
+| — | [[Unknown Unknowns — What Could Kill This]] | Four rules nobody had gone looking for |
+| — | [[Five Models I Can't Unsee]] | Superseded. Kept as the record of what was cut |
 | 7 | [[The Ten-Years-Ahead Operator]] | The practice, and the 36-month route with proof gates |
 | — | [[The Millionaire Question — Honest Arithmetic]] | $1M ÷ 36 months. Revised upward 31 Aug |
 
@@ -38,15 +41,17 @@ author: Claude — written at the user's request
 
 ## The thesis, in three lines
 
-**1 · There is a business in this vault and it was not the one being worked on.** A qualified accountant who signs off work that agents produce is a funded, proven 2026 model. The credential is the moat, not the admin. → [[Due Diligence — What the Market Says]]
+**1 · You are not selling bookkeeping — that is now the free copy.** You are selling **interpretation with a signature on it, delivered fast**. Kelly's generatives 3, 4 and 1. The credential is the moat, not the admin. → [[Better Than Free — The Eight Generatives]]
 
 **2 · The number that ends the emergency is four.** Four clients at $350/month covers the entire household-plus-debt figure. Not forty. Four.
 
 **3 · The obstacle was never ability or information.** It is that the exposing action goes second — and a tool that builds apparatus ten times faster will hide you ten times faster. → [[The Mentor Session — Seven Ideas]] §3
 
+**4 · And one finding could reorder all of it.** NBAA may require a supervising mentor and an employer signature on the logbook, which would put the cash plan and the credential plan in conflict. Unverified. → [[Unknown Unknowns — What Could Kill This]]
+
 ## The one instruction
 
-**Log into MEMS. Read three fields: grade, registration date, years logged.** Then choose ACPA or ACPA-PP — public practice is the track that lets you sign for clients, and its referees must be PP as well, so deciding late costs the referee search twice. → [[ACPA(T) NBAA To-Do]]
+**Log into MEMS, read three fields — grade, registration date, years logged — and send NBAA one email: does self-employed practice count toward the logbook, and can the mentor be someone other than my employer?** Then choose ACPA or ACPA-PP — public practice is the track that lets you sign for clients, and its referees must be PP as well, so deciding late costs the referee search twice. → [[ACPA(T) NBAA To-Do]]
 
 Ten minutes. It was a phone call in July and it is a login now; the blocker shrank and still didn't move, which is the whole diagnosis.
 

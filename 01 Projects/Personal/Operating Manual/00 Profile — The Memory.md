@@ -58,9 +58,17 @@ From [[Expenses]], the 25–30 July window (six days):
 > [!danger] UNKNOWN #3 — ACPA or ACPA-PP?
 > **This is now a business decision, not a study decision.** ACPA-PP is the public-practice variant. If the plan is to sign off work for clients, PP is the track, and its referees must themselves be ACPA-PP or FCPA-PP. Nobody has decided this yet. → [[The Ten-Years-Ahead Operator]]
 
+> [!danger] UNKNOWN #4 — does self-employment count toward the NBAA logbook?
+> NBAA requires three years under a **supervising mentor**, logbook signed by mentor *and employer*. If self-employed practice does not count, the cash plan and the credential plan are in direct conflict and the sequence has to change. **This is now the highest-value unanswered question in the vault.** → [[Unknown Unknowns — What Could Kill This]]
+
+> [!warning] Known constraints found 31 Aug, none fatal
+> **IRC §7216** — US tax data offshore is a criminal statute needing specific written consent; sell bookkeeping, not tax prep. **AI on client data** must be named in the engagement letter; generic wording fails the 2026 consent standard. **VAT** — Tanzanian professional services register regardless of turnover, though exported services are zero-rated. A TIN is mandatory and free.
+
 ## What is actually being built (revised 31 August 2026)
 
 **An AI-native accounting practice serving clients who pay in hard currency.** The research behind this is in [[Due Diligence — What the Market Says]]; the short version is that a qualified accountant plus AI, with the accountant signing off, is a funded and proven 2026 business model, and the price ladder makes it work from Tanzania.
+
+**What is being sold is not bookkeeping.** Output is a copy and AI makes copies free. The sale is **interpretation with a signature on it, delivered fast** — three of Kevin Kelly's eight generatives. → [[Better Than Free — The Eight Generatives]]
 
 **The writing stays**, at low intensity, as a cheap option with a free ticket and a small chance of a large payoff. It is not the income plan and never was.
 
@@ -77,4 +85,4 @@ Sustained effort, no exposure. The apparatus around one short story is nine-axis
 - **No money moves through Claude.** No payments, no transfers, no banking or mobile-money credentials, no investment advice. The user logs; Claude analyses.
 
 ## Related
-- [[Operating Manual]] · [[The Seven]] · [[Home]] · [[Expenses]] · [[ACPA(T) NBAA To-Do]] · [[Three Tracks — An Honest Comparison]]
+- [[Operating Manual]] · [[Seventeen Questions]] · [[The Seven]] · [[Home]] · [[Expenses]] · [[ACPA(T) NBAA To-Do]] · [[Three Tracks — An Honest Comparison]]

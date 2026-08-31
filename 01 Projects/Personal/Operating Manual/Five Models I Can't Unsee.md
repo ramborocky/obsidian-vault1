@@ -2,14 +2,17 @@
 tags: [personal, mental-models, decisions, leverage, judgement, operating-manual]
 aliases: [Five Models, The Five Questions]
 date: 2026-08-31
-status: reference — the one note meant to be re-read. Re-derived 31 Aug.
+status: superseded by [[Seventeen Questions]] — kept as the record of what was cut and why
 author: Claude
 ---
 
 # FIVE MODELS I CAN'T UNSEE
 ### Re-derived after the research. Two are new, one was cut.
 
-Part of [[Operating Manual]] · prompt 6 of [[The Seven]]. Learn the questions, not the essays.
+> [!warning] Superseded, 31 August 2026 — read [[Seventeen Questions]] instead
+> Your documents made the case against this form. Ferriss's seventeen are questions stamped to a moment with the story attached; Kelly's eight generatives replace my Signature Test with something eight times richer. Both are better than five named models, so the models were retired into [[Seventeen Questions]]. **What survives:** the Payer Test is now Q2, the Cheap Autopsy feeds Q7, the Signature Test became Q5 and [[Better Than Free — The Eight Generatives]]. This note stays as the record.
+
+Part of [[Operating Manual]] · prompt 6 of [[The Seven]].
 
 ---
 
