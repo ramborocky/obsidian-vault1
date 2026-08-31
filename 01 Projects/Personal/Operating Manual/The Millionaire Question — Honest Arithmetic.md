@@ -53,16 +53,21 @@ Route 1 is real and not closed to you. It is also a different project from anyth
 
 ## What is actually available in 36 months
 
-Not a fantasy, and not nothing:
+> [!warning] Revised 31 August 2026 — I under-called this
+> The first version of this note put the three-year target at TSh 100M (~$37,800). That was too low. It priced a freelancer selling hours and ignored what AI leverage does to a one-person professional practice — a documented solo firm now runs **37 client engagements with no staff accountants**. The corrected band is four to five times higher. The full workings are in [[Due Diligence — What the Market Says]].
 
-| Month | Target | Why it matters |
-| --- | --- | --- |
-| 3 | Three paid invoices in hard currency | Proves the offer exists. See [[The Ten-Years-Ahead Operator]] Phase 1 |
-| 12 | Debt cleared; income ≥ $1,500/mo | The 1.2M/month to AMON and DMK stops. This is the real prize |
-| 24 | First inbound enquiry you did not chase | Distribution has started working |
-| 36 | Three uncorrelated income lines; ~TSh 100M net worth (~$37,800) | Ambitious. Not fantasy. |
+| | Month 12 | Month 24 | Month 36 |
+| --- | --- | --- | --- |
+| Clients at ~$350–400/mo | 10 | 25 | 45–60 |
+| Revenue | ~$42k/yr | ~$105k/yr | **$215–290k/yr** |
+| Practice value @ ~1.1× revenue | — | — | **$235–320k** |
+| Debt | cleared | — | — |
 
-**TSh 100M in three years is a hard, respectable, achievable target.** $1M is not. Aiming at the second is the fastest way to miss the first, because it makes the boring reliable path look too small to bother with — and the boring reliable path is the one that ends the debt.
+**Net worth landing around $300–450k — TSh 0.8–1.2 billion.** Roughly a third of a million dollars.
+
+**And the million is now arithmetic rather than fantasy**, just not in 36 months solo: firms sell at 0.9–1.2× revenue under $500k, so $1M of value needs ~$850k–1.1M of revenue — about 180–230 clients. That is a firm with staff. The buyers exist and are acquiring today. It is a live option; it is not a plan.
+
+**The number that ends the emergency is four.** Four clients at $350/month covers the entire $1,228/month household-and-debt figure. → [[The Ten-Years-Ahead Operator]]
 
 ---
 

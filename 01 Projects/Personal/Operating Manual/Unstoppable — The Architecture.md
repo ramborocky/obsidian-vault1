@@ -37,7 +37,9 @@ Time, place, trigger, decided in advance, so the moment arrives with nothing to 
 
 ## The uncomfortable part
 
-**The order of operations is the whole difference: the exposing thing goes first, the safe thing second.** The pitch before the portfolio. The call before the research. The paragraph before the rubric. You run it the other way, and the tell is public — the apparatus is finished and the phone call is not.
+**The order of operations is the whole difference: the exposing thing goes first, the safe thing second.** The pitch before the portfolio. The profile before the plan. The paragraph before the rubric. You run it the other way, and the tell is public — the apparatus is finished and the three fields are still unread.
+
+Applied to the practice, this has one concrete form: **the ask goes before the offer is perfect.** Ten asks a week starting in week one, with a rough offer, beats a beautiful offer in month four. The market is the only thing that can tell you what the offer should have been, and it will not speak until you ask it something.
 
 **And the one nobody wants: volume beats intensity, and it isn't close.** Intensity is dramatic, photogenic and it ends. Volume is boring, unimpressive on any given day, and it is what actually produces people who look unstoppable at forty. The reason it stays unpopular is that volume offers no story about how special you are.
 

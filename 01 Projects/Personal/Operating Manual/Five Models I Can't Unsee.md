@@ -2,56 +2,67 @@
 tags: [personal, mental-models, decisions, leverage, judgement, operating-manual]
 aliases: [Five Models, The Five Questions]
 date: 2026-08-31
-status: reference — the one note meant to be re-read
+status: reference — the one note meant to be re-read. Re-derived 31 Aug.
 author: Claude
 ---
 
 # FIVE MODELS I CAN'T UNSEE
-### Learn the questions, not the essays
+### Re-derived after the research. Two are new, one was cut.
 
-Part of [[Operating Manual]]. The shortest note here and the one that gets used.
+Part of [[Operating Manual]] · prompt 6 of [[The Seven]]. Learn the questions, not the essays.
 
 ---
 
-## ① The Exposure Ledger — *decisions*
-Every choice either increases or decreases your exposure to being seen, judged and corrected. Keep the tally honestly. When two options are close on merit, take the one with **more** exposure — exposure is the only thing that returns information about reality; the protected option returns comfort and time.
+## ① The Payer Test — *before you build anything*
+Name three things: **who writes the cheque, which budget line it comes out of, and what they stop buying in order to buy you.** If you cannot name all three in one sentence each, you have a project, not a business — however many people would happily use it for free.
+
+Kippa proved this at a cost of $14M and 500,000 users. Users are not customers. Enthusiasm is not a budget line.
+
+> **Ask:** *Who pays, out of what money, instead of what?*
+> **Diagnostic:** if the answer is "eventually, once we have scale," the answer is nobody.
+
+## ② The Exposure Ledger — *decisions and action*
+Every choice raises or lowers your exposure to being seen, judged and corrected. When two options are close on merit, take the one with **more** exposure: it is the only one that returns information about reality. The protected option returns comfort and time.
 
 > **Ask:** *Which of these can tell me I'm wrong?*
 > **Diagnostic:** a week with no exposure in it was a week of hiding, whatever it produced.
 
-## ② The Ninety-Day Ghost — *priority*
-Which items on your list would still be there, unchanged, in three months if you did nothing? Most of them. The **ghosts** are the ones that evaporate: a person's willingness, an open window, a live offer, someone's memory of meeting you. Do the ghosts first. Deadlines are a poor proxy for decay rate, and silent decay never makes it onto an urgent list.
-
-> **Ask:** *What disappears if I don't touch it?*
-> **Diagnostic:** no ghosts on the list means the list is all maintenance.
-
 ## ③ The Second Conversation — *judging people*
-Nobody is knowable on first meeting; everyone is impressive once, and charisma is the cheapest thing a person can produce. All the signal is in the gap between the first conversation and the second. Did they do the small thing they said they'd do? Is the story identical? Do they reference what *you* said? Three free signals, available in a fortnight, and they beat any amount of first-impression instinct.
+Everyone is impressive once; charisma is the cheapest thing a person can make. All the signal sits in the gap between the first conversation and the second: did they do the small thing they said they would, is the story identical, do they reference what *you* said.
 
 > **Ask:** *What happened between the two conversations?*
 > **Companion test:** watch how they treat someone who cannot help them. That is the whole character exam and it takes ten seconds.
 
 ## ④ The Cheap Autopsy — *failure*
-"Why did this fail" invites a story and you will write a flattering one. Replace the question: **at what point could I have known, and what would finding out have cost?** The answer is nearly always *three weeks earlier, for one phone call.* The lesson in most failure is not *try harder* — it is the invoice for information you declined to buy up front.
+"Why did this fail" invites a story, and you will write a flattering one. Replace the question: **at what point could I have known, and what would finding out have cost?** The answer is nearly always *weeks earlier, for one small deliberate act.* The lesson in most failure is not *try harder* — it is the invoice for information you declined to buy up front.
 
 > **Ask:** *When could I have known, and what would it have cost?*
-> **Diagnostic:** if the answer keeps being "a phone call," the pattern is not bad luck. → [[The Mentor Session — Seven Ideas]] §2
+> **Diagnostic:** if the answer keeps being "a form I hadn't opened," the pattern is not bad luck.
 
-## ⑤ The Two-Handed Test — *leverage*
-All work divides in two. **Carried work** stops the moment you let go — hours sold, tasks done, favours performed. **Standing work** keeps producing after you leave the room — a system, a published piece, a template, a trained person, a relationship that routes opportunity to you by default. Both are necessary; the ratio is the entire story of whether your life compounds.
+## ⑤ The Signature Test — *leverage and moat, in one*
+Two questions about any hour of work, and you want a yes to at least one.
 
-> **Ask:** *If I stop touching this today, is it still working for me in a month?*
+**Does it stand?** Carried work stops the moment you let go — hours sold, tasks done, favours performed. Standing work keeps producing after you leave the room: a system, a published piece, a trained person, a relationship that routes opportunity to you by default.
+
+**Does it need your signature?** As execution gets cheap, value lodges in whoever is licensed, credentialed or trusted enough to stand behind the output. The work a machine can do is not where the margin will be in five years. The signature at the bottom is.
+
+> **Ask:** *If I stop touching this, does it keep working — and could anyone else have signed it?*
 > **Rule:** one standing hour a day, taken **before** the carried hours. After never arrives.
-> **Diagnostic:** count last week's standing hours. The honest answer is usually zero, and it explains most of where you are.
+> **Diagnostic:** count last week's standing hours. The honest answer is usually zero.
 
 ---
 
+> [!note] What changed, and why
+> **Cut: The Ninety-Day Ghost** (*what disappears if I don't touch it?*). Still true, still useful, but it is a scheduling heuristic and the four survivors are load-bearing. It lives on inside curriculum module II.3.
+> **Added: The Payer Test**, because failing to ask it is the most expensive documented mistake in this whole research file.
+> **Rebuilt: The Signature Test** out of the old Two-Handed Test, which measured leverage but missed the half that matters in 2026 — not just *does it keep working*, but *could anyone have done it*.
+
 ## The five questions, on one line each
-1. Which of these can tell me I'm wrong?
-2. What disappears if I don't touch it?
+1. Who pays, out of what money, instead of what?
+2. Which of these can tell me I'm wrong?
 3. What happened between the two conversations?
 4. When could I have known, and what would it have cost?
-5. If I stop touching this today, is it still working in a month?
+5. Does it keep working without me — and could anyone else have signed it?
 
 ## Related
-- [[Operating Manual]] · [[Ten Things I Was Blind To]] · [[The Second Curriculum]] · [[The Ten-Years-Ahead Operator]]
+- [[Operating Manual]] · [[Ten Things I Was Blind To]] · [[Due Diligence — What the Market Says]] · [[The Ten-Years-Ahead Operator]]

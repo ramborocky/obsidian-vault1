@@ -31,6 +31,20 @@ Part of [[Operating Manual]]. Tactics stop working at the point where your hours
 
 ---
 
+---
+
+## The parked idea belongs here, not in year one
+
+Training mama ntilie and small traders on records and credit is a **legacy-shaped idea in a business-shaped disguise**, and reading it correctly is what saves it.
+
+It fails as a first business for reasons that are documented rather than arguable — Kippa reached 500,000 traders and could not monetise them; the training is already given away free by Vodacom, the BOT Academy and CRDB's Malkia programme; Ramani.io is running the funded version of it in Dar with a BOT lending licence and $34M. → [[Due Diligence — What the Market Says]]
+
+But the insight is provably right: **NMB's own loan criteria require "a proper recording system", and 80–85% of Tanzania's 3.5 million SMEs never get bank finance.** Records are the gate to credit.
+
+So place it where it works. A year-three product, with a bank or FSDT as the customer rather than the trader, built on a practice that already has revenue and a credential behind it. That is the form that outlives you — not a course, a **method other people can run without you.** Everything on this page above says why that distinction is the whole game.
+
+---
+
 > [!warning] The uncomfortable one
 > Most legacy talk is fear of death in a good suit. The honest test: **would the work still matter to you with your name removed?** If not, you are building a monument, and monuments have a poor record of outliving the people who commissioned them.
 

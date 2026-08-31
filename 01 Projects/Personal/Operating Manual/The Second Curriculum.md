@@ -147,5 +147,20 @@ Read one per track at most; reading more of these is the commonest way to avoid 
 4. **You build an elaborate system for tracking the curriculum instead of running it.** It will look productive from outside and inside. → [[The Mentor Session — Seven Ideas]] §3.
 5. You wait until things calm down. They don't.
 
+---
+
+## What the drills are actually for — added 31 August
+
+The curriculum was written as general training. It is not general any more; it now serves one business ([[The Ten-Years-Ahead Operator]]), and four modules are load-bearing rather than educational:
+
+| Module | In the abstract | In the practice |
+| --- | --- | --- |
+| **III.4** the weekly ask | one request to one person | **ten asks a week** to small US/UK firms who already outsource. This is Phase 1 |
+| **I.1** the forecast log | calibration training | *"70% this prospect replies"* — your pipeline becomes the scoring set, free |
+| **IV.1** feedback loops | signal and latency | **time one full month-end close built with Claude.** That number is the business model |
+| **II.4** standing assets | one asset a month | the repeatable fixed-price package. Phase 2's gate is selling it three times unmodified |
+
+Run those four against real client work and the other twelve become cheap. Run all sixteen as a study course and you have built [[The Mentor Session — Seven Ideas|apparatus]] again.
+
 ## Related
-- [[Operating Manual]] · [[Ten Things I Was Blind To]] · [[Five Models I Can't Unsee]] · [[The Day Plan — 80-20, Pomodoro and Practice]]
+- [[Operating Manual]] · [[Ten Things I Was Blind To]] · [[Five Models I Can't Unsee]] · [[The Ten-Years-Ahead Operator]] · [[The Day Plan — 80-20, Pomodoro and Practice]]

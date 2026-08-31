@@ -1,86 +1,94 @@
 ---
-tags: [personal, career, money, freelance, plan, operating-manual]
-aliases: [The Operator, Ten Years Ahead]
+tags: [personal, career, money, practice, plan, accounting, operating-manual]
+aliases: [The Operator, Ten Years Ahead, The Blueprint]
 date: 2026-08-31
-status: blueprint — Phase 1 not started
+status: blueprint — Phase 0 open, Phase 1 not started
 horizon: 2036
-author: Claude — constructed from your own trajectory, not from a named person
+author: Claude — rewritten 31 Aug on [[Due Diligence — What the Market Says]]
 ---
 
 # THE TEN-YEARS-AHEAD OPERATOR
-### Who you are in 2036, and the 36-month route there
+### The AI-native practice, and the 36-month route into it
 
-Part of [[Operating Manual]]. Built on [[Three Tracks — An Honest Comparison]] and bounded by [[The Millionaire Question — Honest Arithmetic]].
+Part of [[Operating Manual]] · prompt 7 of [[The Seven]].
 
 > [!note] Assumption stated
-> You did not name the person you admire, so this is constructed from your own trajectory rather than a guess at a hero. **Name them and the whole blueprint can be refitted to their actual habits.**
+> You did not name the person you admire, so this is built from your own trajectory and from operators the research actually found, not from a guess at a hero. Name someone and it can be refitted.
 
 ---
 
 ## Who he is in 2036
 
-He runs a small advisory practice serving clients who pay in hard currency, in a niche narrow enough to state in one sentence. He has published a body of fiction with a shape to it, set in one place. He is the person people call because almost nobody else does that particular combination. Three income lines that do not fail together. No lenders.
+He signs. That is the whole business in one word. A small practice where agents do the production and **he is the person legally and professionally allowed to stand behind the output** — bookkeeping, management accounts, close, filings — for clients who pay in hard currency, in a niche he can state in one sentence. A body of fiction with a shape to it exists alongside, set in one town by one lake. Three income lines that do not fail together. No lenders.
+
+## The model, in one line
+
+> **Agents do the work. A certified accountant signs off.** That is the funded 2026 category — Basis at $1.15bn, Modus at $85M buying firms outright, General Catalyst putting $1.5bn behind it. You are the accountant. Claude is the agent.
+
+The proof one person can run it: a solo practice in Texas went AI-native and now services **37 client engagements with no staff accountants**, close time down from 18 days to 5.
 
 ## What he knows that you don't yet
 
-- **Price is a positioning statement, not a measurement** — and he lost years being cheap out of politeness.
-- Clients buy **certainty**, not hours.
+- **Price is a position, not a measurement.** He lost years being cheap out of politeness. Offshore competitors bill $10–25/hour; he sells a $350 monthly outcome, and the client is buying certainty, not hours.
 - The first three clients are the entire problem. Everything after arrives by referral.
-- **Saying no** is the highest-margin act available to him.
+- **Saying no** is his highest-margin act.
 - The work that made his name was **narrower than he was ever comfortable with**.
-- Reputation arrives roughly four years after the work that earned it, which makes patience a strategy rather than a virtue.
-- Most of his income now comes from things built while nobody was paying attention.
+- Reputation arrives about four years after the work that earned it, which makes patience a strategy rather than a virtue.
+- Most of his income comes from things built while nobody was paying attention.
 
 ## What he had to unlearn
 
-- That credentials produce income. They produce **permission**; demand produces income, and the two are unrelated. → [[ACPA(T) NBAA To-Do]]
+- That credentials produce income. **They produce permission — and in an AI market, permission is the moat.** That is a bigger claim than the old one and it is why the letters now matter more, not less. → [[ACPA(T) NBAA To-Do]]
 - That being good is a form of marketing.
-- That effort earns reward — school taught it, the market disproved it.
-- That he had to choose between the numbers and the prose. **The combination was the asset.**
-- That protecting the process by hiding it was protecting anything.
+- That effort earns reward. School taught it; the market disproved it.
+- That he had to choose between the numbers and the prose. **The combination was the asset** — an accountant who writes clean English is not a common animal and should never have been priced as a generic one.
 - That his perfectionism was high standards rather than fear with a good vocabulary. → [[The Mentor Session — Seven Ideas]] §3
 
 ---
 
 ## The blueprint
 
-### Phase 1 · Months 1–3 — Escape velocity
-One offer, narrow enough to say in a sentence. **Ten asks a week**, tracked. Price set deliberately, not by asking what's normal.
-**Proof:** three paid invoices from abroad.
-*Nothing in the later phases is real until this lands.*
+### Phase 0 · This week — Resolve the credential question
+Three fields off the MEMS profile: grade, registration date, years logged. Then the decision nobody has made: **ACPA or ACPA-PP.** Public practice is the track that lets you sign for clients, and its referees must themselves be ACPA-PP or FCPA-PP, so choosing late costs you the referee search twice.
+**Gate:** the three answers written into [[ACPA(T) NBAA To-Do]], and the track chosen.
 
-### Phase 2 · Months 4–12 — Rate and repeatability
-Raise the price on new clients every quarter **until someone declines** — that is the ceiling, now known instead of guessed low. Turn the best-selling thing into a fixed-price repeatable deliverable.
-**Proof:** the same package sold three times without redesigning it.
+### Phase 1 · Months 1–3 — Escape velocity
+One offer, narrow enough to say in a sentence — not "bookkeeping" but something like *monthly close for US e-commerce sellers doing $500k–2M.* Build one full month-end close with Claude on fabricated data and **time it**: that number is the entire business model. Ten asks a week, tracked, aimed at small US and UK accounting firms who already outsource — they have volume and already pay Manila $10–25/hour.
+**Gate:** three paid invoices in hard currency. *Nothing above this is real until it clears.*
+
+### Phase 2 · Months 4–12 — Rate, repeatability, and the end of the debt
+Raise the price on new clients each quarter **until someone declines** — that is the ceiling, now known instead of guessed low. Turn the best-selling thing into a fixed-price repeatable package.
+**Gate:** the same package sold three times unmodified, and the lenders cleared. Four clients at $350 already covers the whole $1,228/month household-plus-debt figure.
 
 ### Phase 3 · Year 2 — A name in one niche
-Publish weekly, same place, on the intersection nobody else stands on. Speak once, anywhere.
-**Proof:** the first enquiry that arrives without you chasing it.
+Publish weekly in English, same place, on the intersection nobody else stands on. Not for ad revenue — one client is worth more than 100,000 local views — but because inbound is what makes the third year cheap.
+**Gate:** the first enquiry you did not chase.
 
-### Phase 4 · Year 3 — Uncorrelated income and standing assets
-Three lines that don't fail together. One asset earning without your hands. One person trained.
-**Proof:** a month where a third of income arrives while you are doing something else.
+### Phase 4 · Year 3 — Team, assets, and optionality
+The jump from a practice to a firm is one hire. Three income lines that don't fail together; one asset earning without your hands; one person trained.
+**Gate:** a month where a third of income arrives while you are doing something else.
 
-### Standing regimen throughout
-Ten asks a week until the pipeline is full · one publish a week forever · **one standing hour a day, taken first** ([[Five Models I Can't Unsee]] ⑤) · raise one thing a month · cut the lowest-value commitment every quarter.
+### The standing regimen
+Ten asks a week until the pipeline is full · one publish a week forever · **one standing hour a day, taken first** ([[Five Models I Can't Unsee]] ⑤) · raise one thing a month · cut the lowest-value commitment each quarter.
 
 ---
+
+## Where the money actually lands
+
+| | M12 | M24 | M36 |
+| --- | --- | --- | --- |
+| Clients | 10 | 25 | 45–60 |
+| Revenue | ~$42k/yr | ~$105k/yr | **$215–290k/yr** |
+| Practice value @ ~1.1× revenue | — | — | **$235–320k** |
+
+**Net worth around $300–450k — TSh 0.8–1.2 billion — in three years.** A dollar million needs roughly $850k–1.1M of revenue, or 180–230 clients, which is a firm with staff rather than a solo practice. It stays a live option, not a promise, and the buyers are real: AI roll-ups are acquiring firms right now.
 
 ## On being impossible to replace
 
-You won't be, and aiming for it is a trap. The achievable goal is **expensive to replace**, from four things:
+You won't be. Aim instead at **expensive to replace**, which is four things: a rare pairing of two ordinary skills, context nobody else holds (Tanzania, international standards, clean English), relationships that route work to you by default, and a signature nobody else can put on the page. Depth in one skill is the weakest of the four and the one everybody chases.
 
-1. A rare pairing of two ordinary skills
-2. Context nobody else holds — Tanzania, international standards, clean English. That trio is genuinely uncommon
-3. Relationships that route work to you by default
-4. A public body of work that answers *why him* before you enter the room
-
-Depth in one skill is the weakest of the four and the one everybody chases.
-
----
-
-> [!danger] The honest caveat the 2036 version would say first
-> None of this outruns the current constraint, which is monthly cash against two lenders ([[Expenses]]). **Phase 1 exists to buy the calm that Phases 2–4 require. Everything after it is fiction until the first three invoices clear.**
+> [!danger] What the 2036 version would say first
+> None of this outruns the current constraint, which is monthly cash against two lenders. **Phase 1 exists to buy the calm Phases 2–4 require, and everything above it is fiction until the first three invoices clear.**
 
 ## Related
-- [[Operating Manual]] · [[Three Tracks — An Honest Comparison]] · [[The Millionaire Question — Honest Arithmetic]] · [[Legacy — What Scales]] · [[Home]]
+- [[Operating Manual]] · [[Due Diligence — What the Market Says]] · [[The Millionaire Question — Honest Arithmetic]] · [[Legacy — What Scales]] · [[00 Profile — The Memory]]

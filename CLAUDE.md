@@ -24,6 +24,14 @@ One short story, *Chantal* (3,896 words, first person, narrated by Djamela), is 
 
 Root-level loose files (`Immaculate.md`, `Antagonist.md`, `THE MILLENIAL MIND.md`, the `Untitled*` files, `${Antagonist-Jean-luc}.md`) are **legacy scratch from before the vault was organised.** Do not treat them as current; do not tidy them without being asked.
 
+## The memory layer
+
+`01 Projects/Personal/Operating Manual/00 Profile — The Memory.md` holds the standing personal
+context — money, credential status, what is actually being built, and the named UNKNOWNs.
+**Read it before answering anything about the user's life, work, money or plans**, and fix it first
+when a fact changes; the rest of that folder is derived from it and goes stale silently otherwise.
+The `second-brain` skill wires this up and re-derives the downstream notes.
+
 ## Three hard rules
 
 **1 · Authorship. The user writes the prose. Claude does not.**

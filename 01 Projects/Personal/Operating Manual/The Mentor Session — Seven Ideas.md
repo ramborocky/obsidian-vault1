@@ -2,7 +2,7 @@
 tags: [personal, psychology, philosophy, avoidance, operating-manual]
 aliases: [The Mentor Session, Seven Ideas]
 date: 2026-08-31
-status: reference — §3 is the one to re-read
+status: reference — §3 is the one to re-read. Corrected 31 Aug (MEMS, not a phone call).
 author: Claude
 ---
 
@@ -32,6 +32,8 @@ The clinical finding is unusually blunt: **insight does not dissolve avoidance.*
 > The apparatus is measurable and safe. The paragraph and the call are exposing. One risks the verdict *you can't actually write*; the other risks *you're further from qualified than you hoped.* The system protects you from ever reaching either verdict, and it does so while producing artefacts — so no one can accuse you of laziness, least of all you.
 >
 > That is not high standards. High standards are about the work. This is about the self, and it is what perfectionism actually is: self-worth made contingent on an outcome, defended by never arriving at the test. **The tell is always the same — sustained effort, no exposure.**
+>
+> **The 31 August addition, and it is the sharper version.** The research says the credential is not admin sitting beside the writing — it is the moat of the only business here that pays ([[Due Diligence — What the Market Says]]). So the file you have been leaving alone is not the boring one. It is the valuable one, and it was left alone precisely *because* something is at stake in it.
 
 ### 4 · Your feelings are predictions, not measurements
 Barrett's constructed-emotion work. The brain runs a body budget — sleep, food, blood sugar, safety, money-stress — produces an affective state from it, then hunts for a cause and always finds one. Fatigue gets narrated as *this project is wrong.* Financial fear as *she is being unreasonable.* Under-slept as a philosophical crisis at 11pm.
@@ -61,7 +63,9 @@ That number converts "keep your options open" from wisdom into an expense. And t
 
 > **The session in one line:** you already know what to do. The thing stopping you is not confusion, and treating it as confusion is how you spend another year.
 
-> **The one instruction:** the ACPA call, tomorrow, before you open the vault. Not because it is the most important thing in your life — because it is the smallest act of walking toward the thing you've been walking away from, and you need to watch yourself do it. §1 is why.
+> **The one instruction — corrected 31 August:** it is no longer a phone call. Log into MEMS and read three fields off your own profile — grade, registration date, years logged. Ten minutes, and it decides whether the credential is six months away or three years. §1 is why: identity follows the evidence of what you watch yourself do.
+>
+> And note what the correction itself shows. The blocker got *smaller* while it sat there — from a call you had to make to a page you had to open — and it still didn't move. That is not a scheduling problem.
 
 ## Related
 - [[Operating Manual]] · [[Unstoppable — The Architecture]] · [[Ten Things I Was Blind To]] · [[ACPA(T) NBAA To-Do]] · [[Home]]
