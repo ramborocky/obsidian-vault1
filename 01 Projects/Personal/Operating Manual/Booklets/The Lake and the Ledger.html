@@ -1,0 +1,611 @@
+<title>The Lake and the Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap">
+
+<style>
+  :root {
+    --paper:     #F6F2E7;
+    --stock:     #EDE7D6;
+    --ink:       #142028;
+    --ink-soft:  #3F5058;
+    --faint:     #75838B;
+    --rule:      #D8D0BC;
+    --blue:      #1E6E8C;
+    --flame:     #E0451F;
+    --deep:      #124454;
+
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body:    "Crimson Pro", Georgia, "Times New Roman", serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:    #101A20;
+      --stock:    #17242B;
+      --ink:      #EDE7D9;
+      --ink-soft: #B3BEC4;
+      --faint:    #8A97A0;
+      --rule:     #2A3A43;
+      --blue:     #57B0CD;
+      --flame:    #FF7A54;
+      --deep:     #2C7C97;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:    #101A20;
+    --stock:    #17242B;
+    --ink:      #EDE7D9;
+    --ink-soft: #B3BEC4;
+    --faint:    #8A97A0;
+    --rule:     #2A3A43;
+    --blue:     #57B0CD;
+    --flame:    #FF7A54;
+    --deep:     #2C7C97;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  p { margin: 0; }
+  strong { font-weight: 600; }
+
+  .vol {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 1.25rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  .label {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  /* ============ PLATES ============ */
+  .plate {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .plate svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--stock);
+  }
+  .plate figcaption {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 42rem;
+  }
+  .plate figcaption b {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--flame);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .svg-t  { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 13px; fill: var(--ink); letter-spacing: 0.04em; }
+  .svg-s  { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 10.5px; fill: var(--faint); letter-spacing: 0.14em; text-transform: uppercase; }
+  .svg-n  { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 22px; }
+
+  /* ============ COVER ============ */
+  .cover { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+  .cover h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 9vw, 5.6rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .cover h1 em { font-style: normal; color: var(--flame); }
+  .cover .sub {
+    font-size: clamp(1.05rem, 2.3vw, 1.35rem);
+    font-weight: 300;
+    color: var(--ink-soft);
+    max-width: 36rem;
+  }
+  .cover-meta {
+    display: flex; flex-wrap: wrap; gap: 0.4rem 2rem;
+    border-top: 3px solid var(--ink); padding-top: 0.8rem;
+  }
+
+  /* ============ SECTIONS ============ */
+  .sec { display: flex; flex-direction: column; gap: 1.15rem; }
+  .sec-head { display: flex; flex-direction: column; gap: 0.45rem; }
+  .sec-head h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .sec-head .deck { color: var(--ink-soft); max-width: 38rem; font-size: 1.08rem; }
+  .col { max-width: 38rem; display: flex; flex-direction: column; gap: 0.95rem; }
+  .col h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin: 0.5rem 0 -0.35rem;
+  }
+
+  .pull {
+    border-left: 5px solid var(--flame);
+    padding: 0.3rem 0 0.3rem 1.2rem;
+    max-width: 40rem;
+    font-size: 1.28rem;
+    font-weight: 300;
+    line-height: 1.42;
+  }
+  .pull strong { font-weight: 600; }
+
+  .band {
+    background: var(--stock);
+    border-top: 3px solid var(--blue);
+    padding: 1.15rem 1.3rem;
+    max-width: 42rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .band.alarm { border-top-color: var(--flame); }
+  .band .label { color: var(--blue); }
+  .band.alarm .label { color: var(--flame); }
+
+  /* ============ FIGURES ROW ============ */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 1.1rem 1.8rem; }
+  .stats div { display: flex; flex-direction: column; gap: 0.1rem; }
+  .stats b {
+    font-family: var(--display); font-weight: 800;
+    font-size: 1.85rem; line-height: 1; color: var(--flame);
+    font-variant-numeric: tabular-nums;
+  }
+  .stats span { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.35; }
+
+  /* ============ TABLE ============ */
+  .table-wrap { overflow-x: auto; max-width: 44rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 26rem; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 0.5rem 0.9rem 0.5rem 0; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+  th {
+    font-family: var(--display); font-weight: 600; font-size: 0.66rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint);
+    border-bottom: 2px solid var(--ink);
+  }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ============ ACTIONS ============ */
+  ol.acts { margin: 0; padding: 0; list-style: none; counter-reset: a; display: flex; flex-direction: column; gap: 0.9rem; max-width: 40rem; }
+  ol.acts li { counter-increment: a; display: grid; grid-template-columns: 2.1rem 1fr; gap: 0.85rem; }
+  ol.acts li::before {
+    content: counter(a);
+    font-family: var(--display); font-weight: 800; font-size: 1.1rem;
+    color: var(--paper); background: var(--flame);
+    width: 1.75rem; height: 1.75rem; display: grid; place-items: center;
+    border-radius: 50%;
+  }
+  ol.acts strong { display: block; }
+  ol.acts span { color: var(--ink-soft); font-size: 0.95rem; }
+
+  .end {
+    border-top: 3px solid var(--ink);
+    padding-top: 1.2rem;
+    max-width: 40rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    display: flex; flex-direction: column; gap: 0.8rem;
+  }
+  .end code {
+    font-family: ui-monospace, Menlo, monospace; font-size: 0.8rem;
+    color: var(--blue); background: var(--stock); padding: 0.08rem 0.3rem;
+  }
+
+  @media (max-width: 600px) { .vol { gap: 2.5rem; } }
+</style>
+
+<div class="vol">
+
+  <!-- ================= COVER PLATE ================= -->
+  <figure class="plate">
+    <svg viewBox="0 0 1200 520" role="img" aria-label="A risograph-style landscape: the sun rising over hills above a lake, a single boat on the water, and a small town on the far shore.">
+      <defs>
+        <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.5" fill="var(--blue)"></circle>
+        </pattern>
+        <pattern id="dotsF" width="7" height="7" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.3" fill="var(--flame)"></circle>
+        </pattern>
+      </defs>
+
+      <rect x="0" y="0" width="1200" height="520" fill="var(--stock)"></rect>
+      <rect x="0" y="0" width="1200" height="300" fill="url(#dotsF)" opacity="0.18"></rect>
+
+      <circle cx="885" cy="168" r="82" fill="var(--flame)" opacity="0.9"></circle>
+      <circle cx="885" cy="168" r="82" fill="none" stroke="var(--flame)" stroke-width="2"></circle>
+
+      <polygon points="0,300 190,196 350,268 540,168 720,262 900,206 1060,272 1200,222 1200,320 0,320" fill="var(--blue)" opacity="0.42"></polygon>
+      <polygon points="0,330 150,262 330,318 500,244 690,316 880,266 1050,326 1200,286 1200,352 0,352" fill="var(--deep)" opacity="0.78"></polygon>
+
+      <g opacity="0.9">
+        <rect x="946" y="300" width="20" height="34" fill="var(--ink)"></rect>
+        <rect x="974" y="288" width="16" height="46" fill="var(--ink)"></rect>
+        <rect x="998" y="306" width="24" height="28" fill="var(--ink)"></rect>
+        <polygon points="1030,334 1046,308 1062,334" fill="var(--ink)"></polygon>
+      </g>
+
+      <rect x="0" y="352" width="1200" height="168" fill="var(--blue)" opacity="0.62"></rect>
+      <rect x="0" y="352" width="1200" height="168" fill="url(#dots)" opacity="0.35"></rect>
+      <rect x="80" y="392" width="300" height="5" fill="var(--stock)" opacity="0.55"></rect>
+      <rect x="470" y="418" width="420" height="5" fill="var(--stock)" opacity="0.45"></rect>
+      <rect x="180" y="452" width="560" height="5" fill="var(--stock)" opacity="0.35"></rect>
+      <rect x="700" y="482" width="330" height="5" fill="var(--stock)" opacity="0.3"></rect>
+
+      <g>
+        <polygon points="300,412 404,412 388,438 316,438" fill="var(--ink)"></polygon>
+        <rect x="348" y="356" width="4" height="56" fill="var(--ink)"></rect>
+        <polygon points="352,360 352,406 402,406" fill="var(--flame)"></polygon>
+      </g>
+
+      <g stroke="var(--ink)" stroke-width="3" fill="none" opacity="0.65">
+        <polyline points="150,112 168,100 186,112"></polyline>
+        <polyline points="214,86 230,76 246,86"></polyline>
+      </g>
+    </svg>
+  </figure>
+
+  <header class="cover">
+    <p class="label">One volume · Both campaigns · 31 August 2026</p>
+    <h1>The Lake<br>and the <em>Ledger</em></h1>
+    <p class="sub">Two campaigns, one set of hours. What the research found, what nobody had checked, and the five acts that are small enough to do this week.</p>
+    <div class="cover-meta">
+      <span class="label">34 notes in the vault</span>
+      <span class="label">4 booklets</span>
+      <span class="label">7 findings</span>
+    </div>
+  </header>
+
+  <!-- ================= THE TWO CAMPAIGNS ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <p class="label">Part one</p>
+      <h2>Two campaigns, one set of hours</h2>
+      <p class="deck">They have never competed openly, because both are real work and both feel like progress. The hours are the only thing that makes them rivals.</p>
+    </div>
+
+    <figure class="plate">
+      <svg viewBox="0 0 1200 400" role="img" aria-label="A diptych: on the left a desk with a ledger, lamp and cup; on the right a notebook, pen and a window looking onto the lake.">
+        <rect x="0" y="0" width="1200" height="400" fill="var(--stock)"></rect>
+
+        <!-- LEFT: the ledger -->
+        <g>
+          <rect x="40" y="40" width="520" height="320" fill="none" stroke="var(--rule)" stroke-width="2"></rect>
+          <text x="64" y="76" class="svg-s">The practice</text>
+
+          <rect x="70" y="300" width="460" height="8" fill="var(--ink)"></rect>
+          <rect x="120" y="196" width="230" height="104" fill="var(--blue)" opacity="0.75"></rect>
+          <rect x="120" y="196" width="230" height="104" fill="none" stroke="var(--ink)" stroke-width="2.5"></rect>
+          <rect x="234" y="196" width="3" height="104" fill="var(--stock)" opacity="0.8"></rect>
+          <g fill="var(--stock)" opacity="0.75">
+            <rect x="136" y="216" width="82" height="4"></rect>
+            <rect x="136" y="234" width="82" height="4"></rect>
+            <rect x="136" y="252" width="82" height="4"></rect>
+            <rect x="252" y="216" width="82" height="4"></rect>
+            <rect x="252" y="234" width="82" height="4"></rect>
+          </g>
+
+          <polygon points="404,120 476,120 500,182 380,182" fill="var(--flame)" opacity="0.85"></polygon>
+          <polygon points="404,120 476,120 500,182 380,182" fill="none" stroke="var(--ink)" stroke-width="2.5"></polygon>
+          <rect x="436" y="182" width="8" height="112" fill="var(--ink)"></rect>
+          <rect x="404" y="292" width="72" height="10" fill="var(--ink)"></rect>
+          <circle cx="440" cy="176" r="9" fill="var(--stock)"></circle>
+
+          <rect x="92" y="262" width="44" height="38" fill="none" stroke="var(--ink)" stroke-width="2.5"></rect>
+          <path d="M 136 272 q 18 8 0 20" fill="none" stroke="var(--ink)" stroke-width="2.5"></path>
+        </g>
+
+        <!-- RIGHT: the writing -->
+        <g>
+          <rect x="640" y="40" width="520" height="320" fill="none" stroke="var(--rule)" stroke-width="2"></rect>
+          <text x="664" y="76" class="svg-s">The writing</text>
+
+          <rect x="900" y="104" width="220" height="150" fill="var(--blue)" opacity="0.3"></rect>
+          <polygon points="900,206 962,172 1022,204 1078,178 1120,200 1120,254 900,254" fill="var(--deep)" opacity="0.7"></polygon>
+          <circle cx="1068" cy="146" r="24" fill="var(--flame)" opacity="0.9"></circle>
+          <rect x="900" y="104" width="220" height="150" fill="none" stroke="var(--ink)" stroke-width="3"></rect>
+          <rect x="1008" y="104" width="3" height="150" fill="var(--ink)"></rect>
+
+          <rect x="670" y="300" width="460" height="8" fill="var(--ink)"></rect>
+          <polygon points="676,296 830,296 838,214 684,214" fill="var(--stock)" stroke="var(--ink)" stroke-width="2.5"></polygon>
+          <polygon points="838,214 838,296 908,296 892,214" fill="var(--stock)" stroke="var(--ink)" stroke-width="2.5"></polygon>
+          <g fill="var(--faint)" opacity="0.8">
+            <rect x="702" y="238" width="112" height="3.5"></rect>
+            <rect x="702" y="252" width="112" height="3.5"></rect>
+            <rect x="702" y="266" width="76" height="3.5"></rect>
+            <rect x="852" y="240" width="38" height="3.5"></rect>
+          </g>
+
+          <g transform="rotate(-24 780 190)">
+            <rect x="762" y="118" width="10" height="66" fill="var(--ink)"></rect>
+            <polygon points="762,184 772,184 767,206" fill="var(--flame)"></polygon>
+          </g>
+        </g>
+
+        <line x1="600" y1="40" x2="600" y2="360" stroke="var(--ink)" stroke-width="2" stroke-dasharray="8 8"></line>
+      </svg>
+      <figcaption><b>Plate I · The two desks</b>Both are real work. Both produce artefacts. Only one of them currently has a payer with a budget line, and only one has a deadline in September — and they are not the same one.</figcaption>
+    </figure>
+
+    <div class="col">
+      <p>The vault holds a nine-axis judging rubric, six craft knowledge bases, an empirical campaign measuring real prize winners, and a cross-index pinning each craft concept to the percentage point where it occurs. It also holds a credential file that has moved once in six weeks.</p>
+      <p>Neither of those facts is about laziness. <strong>Avoidance does not look like idleness — it looks like your best work</strong>, because relief arrives the instant you turn toward the safe task, every time, with no delay. Nothing you deliberately build will ever be reinforced that cleanly.</p>
+    </div>
+
+    <div class="pull">
+      <p>The blocker on the credential shrank from a phone call to a login, and still did not move. <strong>If effort were the obstacle, halving it would have worked.</strong></p>
+    </div>
+  </section>
+
+  <!-- ================= THE MONEY ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <p class="label">Part two</p>
+      <h2>The number, divided</h2>
+      <p class="deck">A million dollars over thirty-six months, and what the division rules out before anything else gets decided.</p>
+    </div>
+
+    <figure class="plate">
+      <svg viewBox="0 0 1200 380" role="img" aria-label="Bar chart: the monthly saving needed for a million dollars in three years is $27,778, against $2,400 at the top of the freelance range and $1,228 for the household and debt service.">
+        <rect x="0" y="0" width="1200" height="380" fill="var(--stock)"></rect>
+        <text x="60" y="52" class="svg-s">Monthly, to reach $1,000,000 in 36 months</text>
+
+        <rect x="60" y="80" width="1080" height="52" fill="var(--flame)" opacity="0.9"></rect>
+        <text x="76" y="114" class="svg-n" fill="var(--stock)">$27,778</text>
+        <text x="1124" y="114" class="svg-t" text-anchor="end" fill="var(--stock)">every month, for three years</text>
+
+        <text x="60" y="188" class="svg-s">Top of the freelance range</text>
+        <rect x="60" y="204" width="93" height="46" fill="var(--blue)" opacity="0.85"></rect>
+        <text x="170" y="234" class="svg-t">$2,400 — twenty hours a week at a specialist rate</text>
+
+        <text x="60" y="290" class="svg-s">Household plus both lenders</text>
+        <rect x="60" y="306" width="48" height="46" fill="var(--deep)"></rect>
+        <text x="126" y="336" class="svg-t">$1,228 — the number that actually has to be beaten</text>
+      </svg>
+      <figcaption><b>Plate II · The gap, to scale</b>All three bars share a scale. The target is 11.6× the top of the freelance range and 22× the figure that runs the household and services both lenders.</figcaption>
+    </figure>
+
+    <div class="band alarm">
+      <p class="label">The line that closes a whole category</p>
+      <p>At $30 an hour, $27,778 a month is <strong>926 billable hours — 214 hours a week.</strong> A week contains 168. Even at $100 an hour it is 64 billable hours every week for three years, saving every cent. <strong>Selling hours cannot reach it at any rate, ever.</strong></p>
+    </div>
+
+    <figure class="plate">
+      <svg viewBox="0 0 1200 300" role="img" aria-label="Four figures representing four clients at $350 a month, totalling $1,400, set against the $1,228 monthly household and debt figure.">
+        <rect x="0" y="0" width="1200" height="300" fill="var(--stock)"></rect>
+        <text x="60" y="52" class="svg-s">What actually ends the emergency</text>
+
+        <g>
+          <circle cx="120" cy="140" r="30" fill="var(--blue)"></circle>
+          <rect x="88" y="180" width="64" height="70" fill="var(--blue)"></rect>
+          <circle cx="240" cy="140" r="30" fill="var(--blue)"></circle>
+          <rect x="208" y="180" width="64" height="70" fill="var(--blue)"></rect>
+          <circle cx="360" cy="140" r="30" fill="var(--blue)"></circle>
+          <rect x="328" y="180" width="64" height="70" fill="var(--blue)"></rect>
+          <circle cx="480" cy="140" r="30" fill="var(--blue)"></circle>
+          <rect x="448" y="180" width="64" height="70" fill="var(--blue)"></rect>
+        </g>
+        <text x="120" y="278" class="svg-t" text-anchor="middle">$350</text>
+        <text x="240" y="278" class="svg-t" text-anchor="middle">$350</text>
+        <text x="360" y="278" class="svg-t" text-anchor="middle">$350</text>
+        <text x="480" y="278" class="svg-t" text-anchor="middle">$350</text>
+
+        <text x="580" y="150" class="svg-n" fill="var(--ink)">=</text>
+
+        <rect x="640" y="96" width="500" height="108" fill="var(--flame)" opacity="0.9"></rect>
+        <text x="668" y="152" class="svg-n" fill="var(--stock)">$1,400 a month</text>
+        <text x="668" y="180" class="svg-t" fill="var(--stock)">against a household-and-debt figure of $1,228</text>
+        <text x="640" y="240" class="svg-t">Four. Not four hundred.</text>
+      </svg>
+      <figcaption><b>Plate III · Four</b>The elaborate plan is an app for informal traders, a funding round and a lending licence. The easy plan is four clients. The gap between them is not effort — it is a thousand times the risk.</figcaption>
+    </figure>
+
+    <div class="col">
+      <h3>And what is actually being sold</h3>
+      <p>Kevin Kelly's argument, from the essay you supplied: when copies are abundant they become worthless, and what can't be copied becomes valuable. AI made competent copies free. <strong>So the bookkeeping output is now the free copy</strong> — reconciliations, schedules, a set of management accounts, all produced in seconds and heading toward zero.</p>
+      <p>What survives are his generatives. <strong>Interpretation</strong> — what the numbers mean and what to do, which is his Red Hat example exactly. <strong>Authenticity</strong> — a signed, warranted set of accounts with a named human behind it. <strong>Immediacy</strong> — a close on day five instead of day eighteen.</p>
+    </div>
+
+    <div class="pull">
+      <p>You are not selling bookkeeping. Bookkeeping is now the free copy. You are selling <strong>interpretation with a signature on it, delivered faster than anyone else can manage.</strong></p>
+    </div>
+  </section>
+
+  <!-- ================= THE WRITING ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <p class="label">Part three</p>
+      <h2>The prize that isn't a prize</h2>
+      <p class="deck">Three payers, one body of craft, and a ranking that turns out to be backwards.</p>
+    </div>
+
+    <div class="stats">
+      <div><b>£1.92</b><span>Commonwealth expected value, per entry</span></div>
+      <div><b>£90</b><span>Morland expected value, per application</span></div>
+      <div><b>$1,900</b><span>Morland's monthly payment, for twelve months</span></div>
+      <div><b>$1,228</b><span>The bill it would cover, every month</span></div>
+    </div>
+
+    <div class="band">
+      <p class="label">The re-ranking</p>
+      <p>Morland is roughly <strong>47× the Commonwealth per application</strong> — and that understates it, because the Commonwealth pays one lump sum to one person while Morland pays £1,500 a month for twelve months. <strong>It is not a prize. It is a salaried commission with a delivery schedule</strong>, and it is the only thing on either side of this vault that pays the monthly bill in 2027.</p>
+    </div>
+
+    <figure class="plate">
+      <svg viewBox="0 0 1200 400" role="img" aria-label="A road forking: one branch runs to a town representing the practice, the other climbs into hills representing the book. Both start from the same point.">
+        <rect x="0" y="0" width="1200" height="400" fill="var(--stock)"></rect>
+        <rect x="0" y="0" width="1200" height="180" fill="url(#dotsF)" opacity="0.12"></rect>
+
+        <polygon points="560,400 640,400 700,150 660,150" fill="var(--ink)" opacity="0.15"></polygon>
+        <polygon points="560,400 640,400 520,150 480,150" fill="var(--ink)" opacity="0.15"></polygon>
+        <polygon points="560,400 640,400 690,160 668,160" fill="var(--blue)" opacity="0.55"></polygon>
+        <polygon points="560,400 640,400 530,160 508,160" fill="var(--flame)" opacity="0.6"></polygon>
+
+        <g opacity="0.85">
+          <rect x="700" y="112" width="26" height="44" fill="var(--ink)"></rect>
+          <rect x="734" y="96" width="20" height="60" fill="var(--ink)"></rect>
+          <rect x="762" y="122" width="30" height="34" fill="var(--ink)"></rect>
+          <polygon points="800,156 818,124 836,156" fill="var(--ink)"></polygon>
+        </g>
+        <text x="700" y="182" class="svg-t">The practice — a payer, a budget line, a signature</text>
+
+        <polygon points="330,158 400,104 470,158" fill="var(--deep)" opacity="0.75"></polygon>
+        <polygon points="270,158 330,118 392,158" fill="var(--blue)" opacity="0.5"></polygon>
+        <circle cx="452" cy="92" r="20" fill="var(--flame)"></circle>
+        <text x="270" y="182" class="svg-t">The book — 10,000 words a month, for twelve months</text>
+
+        <circle cx="600" cy="392" r="11" fill="var(--ink)"></circle>
+        <text x="600" y="368" class="svg-s" text-anchor="middle">One set of hours</text>
+      </svg>
+      <figcaption><b>Plate IV · The fork</b>Both roads leave from the same point and it is a finite one. The choice has never been forced because craft hours build skill that transfers either way — but only one branch has a deadline in September, and it is the one currently being walked in parallel.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= WHAT NOBODY CHECKED ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <p class="label">Part four</p>
+      <h2>What nobody had checked</h2>
+      <p class="deck">Seven findings from asking a different question: not <em>how do I make money</em>, but <em>what am I not allowed to do</em>.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Finding</th><th scope="col">Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td><strong>The logbook needs a mentor</strong></td><td>NBAA requires three years under a supervising CPA, signed by mentor <em>and</em> employer. Self-employment may not count — which would put the cash plan and the credential in conflict</td></tr>
+          <tr><td><strong>IRC §7216</strong></td><td>A criminal statute. US taxpayer data offshore needs standalone written consent. Sell bookkeeping, not tax prep</td></tr>
+          <tr><td><strong>AI must be named</strong></td><td>2026 engagement letters name the specific tools. Generic wording fails the consent bar — and getting this right is a selling point, not a cost</td></tr>
+          <tr><td><strong>VAT from day one</strong></td><td>Tanzanian professional services register regardless of turnover, though exported services are zero-rated</td></tr>
+          <tr><td><strong>The Foundation reads drafts</strong></td><td>In 2026 it investigated AI allegations by examining working drafts and time-stamped notes — which makes your git history an asset</td></tr>
+          <tr><td><strong>An AI draft sits in a public repo</strong></td><td>Beside the submission candidate. Honestly labelled, and the filename is what a search returns</td></tr>
+          <tr><td><strong>"Published online" has a boundary</strong></td><td>Personal blogs and websites are exempt; public platforms are not. Where a public repo falls is unconfirmed, against a rule allowing no second attempt</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="band alarm">
+      <p class="label">The asymmetry worth staring at</p>
+      <p>This vault held a nine-axis rubric for judging a 3,896-word short story, and — until this week — nothing at all on whether its own income plan was legal, licensed or loggable, or whether the story could be disqualified by a repository setting.</p>
+    </div>
+  </section>
+
+  <!-- ================= THE ROUTE ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <p class="label">Part five</p>
+      <h2>Thirty-six months</h2>
+      <p class="deck">A phase ends when its gate clears, not when the months run out.</p>
+    </div>
+
+    <figure class="plate">
+      <svg viewBox="0 0 1200 420" role="img" aria-label="A four-step ladder over thirty-six months. Each step carries a proof gate: three paid invoices, a package sold three times, a first unchased enquiry, and a month where a third of income arrives hands-off.">
+        <rect x="0" y="0" width="1200" height="420" fill="var(--stock)"></rect>
+        <line x1="60" y1="358" x2="1140" y2="358" stroke="var(--ink)" stroke-width="3"></line>
+
+        <rect x="60" y="286" width="250" height="72" fill="var(--flame)" opacity="0.92"></rect>
+        <rect x="322" y="230" width="250" height="128" fill="var(--blue)" opacity="0.42"></rect>
+        <rect x="584" y="166" width="266" height="192" fill="var(--blue)" opacity="0.3"></rect>
+        <rect x="862" y="96" width="278" height="262" fill="var(--blue)" opacity="0.2"></rect>
+
+        <text x="80" y="330" class="svg-n" fill="var(--stock)">1</text>
+        <text x="342" y="274" class="svg-n" fill="var(--ink)">2</text>
+        <text x="604" y="210" class="svg-n" fill="var(--ink)">3</text>
+        <text x="882" y="140" class="svg-n" fill="var(--ink)">4</text>
+
+        <text x="60" y="384" class="svg-s">Month 1–3</text>
+        <text x="322" y="384" class="svg-s">Month 4–12</text>
+        <text x="584" y="384" class="svg-s">Year 2</text>
+        <text x="862" y="384" class="svg-s">Year 3</text>
+
+        <g fill="var(--flame)">
+          <polygon points="310,286 322,274 334,286 322,298"></polygon>
+          <polygon points="572,230 584,218 596,230 584,242"></polygon>
+          <polygon points="850,166 862,154 874,166 862,178"></polygon>
+          <polygon points="1128,96 1140,84 1152,96 1140,108"></polygon>
+        </g>
+
+        <text x="330" y="252" class="svg-t">3 paid invoices</text>
+        <text x="592" y="188" class="svg-t">package sold 3× unmodified · debt cleared</text>
+        <text x="870" y="118" class="svg-t">first enquiry you didn't chase</text>
+        <text x="1140" y="70" class="svg-t" text-anchor="end">a third of income, hands off</text>
+
+        <text x="60" y="52" class="svg-s">Gates, not calendar dates</text>
+      </svg>
+      <figcaption><b>Plate V · The ladder and its gates</b>Phase 1 is drawn solid because nothing above it is real until it clears. Before all of it sits a phase with no bar at all: three fields on a profile, and one email about mentors.</figcaption>
+    </figure>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col"></th><th scope="col">Month 12</th><th scope="col">Month 24</th><th scope="col">Month 36</th></tr></thead>
+        <tbody>
+          <tr><td>Clients at $350–400/mo</td><td class="num">10</td><td class="num">25</td><td class="num">45–60</td></tr>
+          <tr><td>Revenue</td><td class="num">~$42k</td><td class="num">~$105k</td><td class="num">$215–290k</td></tr>
+          <tr><td>Practice value at ~1.1×</td><td class="num">—</td><td class="num">—</td><td class="num">$235–320k</td></tr>
+          <tr><td>Debt</td><td class="num">cleared</td><td class="num">—</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p>Net worth landing near <strong>$300–450k — TSh 0.8 to 1.2 billion</strong>. About a third of a million dollars, and four to five times what the first version of this analysis projected, because that one priced a freelancer selling hours rather than a credentialed practice with AI leverage.</p>
+      <p>The dollar million needs roughly $850k–1.1M of revenue — 180 to 230 clients — which is a firm with staff. The buyers for that firm exist and are acquiring today. <strong>It stays a live option. It is not a plan.</strong></p>
+    </div>
+  </section>
+
+  <!-- ================= THE ACTS ================= -->
+  <section class="sec">
+    <div class="sec-head">
+      <p class="label">Part six</p>
+      <h2>Five acts, all small</h2>
+      <p class="deck">Each one returns a verdict you don't control. That is the only property that matters — an act that cannot tell you you're wrong has not exposed you to anything, however much work it contained.</p>
+    </div>
+
+    <ol class="acts">
+      <li><div><strong>Log into MEMS and read three fields.</strong><span>Grade, registration date, years logged. Ten minutes, cannot be done wrong, and every plan in the vault is currently guessing at the answers.</span></div></li>
+      <li><div><strong>Email NBAA one question.</strong><span>Does self-employed practice count toward the logbook, and can the mentor be someone other than my employer? It may reorder the entire sequence.</span></div></li>
+      <li><div><strong>Email the Commonwealth Foundation one question.</strong><span>Does work in a personal public code repository count as previously published? Asked neutrally, without naming the story, now rather than in October.</span></div></li>
+      <li><div><strong>Move the AI material to a private repository.</strong><span>Not deletion — git keeps history and deleting destroys the labelling that currently protects you. An hour's work.</span></div></li>
+      <li><div><strong>Write the offer in one sentence and send it to one person.</strong><span>Not ten. One. The market is the only thing that can tell you what the offer should have been, and it will not speak until asked.</span></div></li>
+    </ol>
+
+    <div class="pull">
+      <p>Scored at the end of the week: <strong>how many acts did I take that could have come back badly?</strong> Zero is a week of hiding, whatever it produced. One is a working week. Three is a good one.</p>
+    </div>
+  </section>
+
+  <footer class="end">
+    <p class="label">Colophon</p>
+    <p>All of this lives in the vault. The accounting side sits under <code>01 Projects/Personal/Operating Manual/</code> — the memory layer, the research, and seventeen questions as separate chapters. The writing side sits under <code>01 Projects/Ventures/</code>, alongside a prize apparatus that was already there and, in two places, already ahead of this analysis. The booklets are saved as HTML under <code>Operating Manual/Booklets/</code>.</p>
+    <p>Every figure comes from the household numbers logged in <code>Expenses.md</code> or from a named public source, listed in the two due-diligence notes. Where something was estimated it says so, and where an earlier version was wrong the correction is stamped rather than quietly overwritten.</p>
+    <p><strong>Two paragraphs on the dashboard are still owed, and they are not mine to write.</strong></p>
+  </footer>
+
+</div>
