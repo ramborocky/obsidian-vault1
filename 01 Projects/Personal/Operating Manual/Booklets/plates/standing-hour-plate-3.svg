@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" role="img" aria-label="Price ladder per client per month. AI-assisted practices charge $150 to $400. US small businesses budget $400 to $800. The target price of $350 sits inside both ranges."><style>.svg-label{font-family: "JetBrains Mono", monospace; font-size: 11px; fill: #737C88; letter-spacing: 0.06em;}.svg-name{font-family: "Newsreader", Georgia, serif; font-size: 14px; fill: #E4E7EA;}.svg-num{font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; fill: #E4E7EA;}</style><rect x="0" y="0" width="640" height="200" fill="#171C24"/>
+        <line x1="110" y1="150" x2="610" y2="150" stroke="#3E4A59" stroke-width="1"></line>
+        <text x="110" y="170" class="svg-label">$0</text>
+        <text x="332" y="170" text-anchor="middle" class="svg-label">$400</text>
+        <text x="554" y="170" text-anchor="middle" class="svg-label">$800</text>
+        <text x="610" y="170" text-anchor="end" class="svg-label">per client / month</text>
+        <text x="100" y="52" text-anchor="end" class="svg-name">Buyer's budget</text>
+        <rect x="332" y="36" width="222" height="22" fill="#57A08F" opacity="0.75"></rect>
+        <text x="562" y="52" class="svg-label">$400–800</text>
+        <text x="100" y="96" text-anchor="end" class="svg-name">AI-assisted practice</text>
+        <rect x="193" y="80" width="139" height="22" fill="#C89B4A" opacity="0.8"></rect>
+        <text x="340" y="96" class="svg-label">$150–400</text>
+        <line x1="305" y1="24" x2="305" y2="150" stroke="#E3BC6B" stroke-width="2" stroke-dasharray="5 4"></line>
+        <text x="305" y="18" text-anchor="middle" class="svg-num" fill="#E3BC6B">$350</text>
+        <text x="100" y="132" text-anchor="end" class="svg-name">Four clients</text>
+        <text x="110" y="132" class="svg-label">= $1,400/month — the entire household-and-debt figure is $1,228</text>
+      </svg>

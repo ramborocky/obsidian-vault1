@@ -114,6 +114,17 @@ These change the ranking, and only you have them:
 - [[Debt First]] — 05 · the debt, then investing
 - [[The House]] — 06 · the unfinished property. **Parked, and here is why**
 - [[Projected Profit — All Tracks]] — 07 · **the numbers only**, three years, no verdicts
+- [[MNADA — Bank Pitch Memo]] — 09 · livestock and commodity exchange — pitch memo, [[Pilot Term Sheet|term sheet]], demo app
+- [[MNADA — Due Diligence and Gap Analysis]] — 09b · **the check. TMX's published fee tables, CropSupply, SWOT, and the three questions answered**
+
+> [!warning] MNADA is an eighth track, and this board's whole argument is that there are already too many
+> It arrived from another session on 8 August and was filed here on 10 August. It has now been **checked against TMX's published fee tables and against CropSupply/MazaoHub** — see [[MNADA — Due Diligence and Gap Analysis]], 10 August — and still has **no row in the table.**
+>
+> **Two outside facts re-price it.** TMX charges **TZS 5/kg — about 0.2% of trade value** — for the exchange function, against MNADA's assumed 0.90–1.50%; the exchange layer is a regulated utility here, not a margin business. And **CropSupply already runs 163+ Tanzanian markets on a 30-minute price refresh**, funded at $2m in September 2025 — the data layer is taken, by a team with four years and five countries behind it.
+>
+> The three questions: **nothing for 24+ months**, **realistic time to money 18–30 months**, and **it would displace both live tracks**, not one. It fails the sentence at the top of this page on every clause.
+>
+> **What survives is the collateral instrument** — livestock credit, which nobody in this market is doing. **That earns a research spike, no build and no spend:** counsel's opinion on whether a security interest over identified livestock is perfectible in Tanzania today, one email to CropSupply, one WRRB enquiry on the collateral-manager licence, one tag quote. If the first comes back yes, re-rank it. **The rule is still two at full intensity.**
 
 ## Related
 - [[Home]] · [[Three Tracks — An Honest Comparison]] · [[Expenses]] · [[ACPA(T) NBAA To-Do]]

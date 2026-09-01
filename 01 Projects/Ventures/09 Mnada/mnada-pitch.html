@@ -1,0 +1,1881 @@
+<title>MNADA — National Livestock &amp; Commodity Exchange</title>
+<style>
+  :root {
+    --ink:        #0F1A17;
+    --ink-soft:   #3A4A45;
+    --ink-faint:  #6B7C76;
+    --paper:      #F3F6F2;
+    --surface:    #FFFFFF;
+    --line:       #D6DED8;
+    --line-soft:  #E6ECE6;
+    --moss:       #1F4034;
+    --moss-tint:  #E4EDE6;
+    --ochre:      #B4661A;
+    --ochre-tint: #FAEDDF;
+    --oxblood:    #8E2F2F;
+    --brass:      #9C7C2E;
+    --board-bg:   #0C1512;
+    --board-line: #1D2E28;
+    --board-txt:  #C9D8D0;
+    --up:         #3E8E6B;
+    --down:       #B7503F;
+
+    --font-display: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+
+    --wrap: 1140px;
+    --gutter: clamp(1.1rem, 4vw, 3rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink:        #E4EDE7;
+      --ink-soft:   #A9BAB3;
+      --ink-faint:  #76887F;
+      --paper:      #0B1210;
+      --surface:    #111B18;
+      --line:       #24332D;
+      --line-soft:  #1A2723;
+      --moss:       #6FB795;
+      --moss-tint:  #16251F;
+      --ochre:      #E0973F;
+      --ochre-tint: #2A1D0F;
+      --oxblood:    #D2705F;
+      --brass:      #C9A24A;
+      --board-bg:   #070D0B;
+      --board-line: #1B2A25;
+      --board-txt:  #C9D8D0;
+      --up:         #56B189;
+      --down:       #D2705F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink:        #E4EDE7;
+    --ink-soft:   #A9BAB3;
+    --ink-faint:  #76887F;
+    --paper:      #0B1210;
+    --surface:    #111B18;
+    --line:       #24332D;
+    --line-soft:  #1A2723;
+    --moss:       #6FB795;
+    --moss-tint:  #16251F;
+    --ochre:      #E0973F;
+    --ochre-tint: #2A1D0F;
+    --oxblood:    #D2705F;
+    --brass:      #C9A24A;
+    --board-bg:   #070D0B;
+    --board-line: #1B2A25;
+    --board-txt:  #C9D8D0;
+    --up:         #56B189;
+    --down:       #D2705F;
+  }
+  :root[data-theme="light"] {
+    --ink:        #0F1A17;
+    --ink-soft:   #3A4A45;
+    --ink-faint:  #6B7C76;
+    --paper:      #F3F6F2;
+    --surface:    #FFFFFF;
+    --line:       #D6DED8;
+    --line-soft:  #E6ECE6;
+    --moss:       #1F4034;
+    --moss-tint:  #E4EDE6;
+    --ochre:      #B4661A;
+    --ochre-tint: #FAEDDF;
+    --oxblood:    #8E2F2F;
+    --brass:      #9C7C2E;
+    --board-bg:   #0C1512;
+    --board-line: #1D2E28;
+    --board-txt:  #C9D8D0;
+    --up:         #3E8E6B;
+    --down:       #B7503F;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0;
+  }
+
+  .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .masthead-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-block: 0.85rem;
+  }
+  .wordmark {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.34em;
+    color: var(--ink);
+  }
+  .wordmark span { color: var(--ochre); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero { padding-block: clamp(2.75rem, 7vw, 5.25rem) clamp(2rem, 5vw, 3.5rem); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: clamp(1.75rem, 5vw, 4rem);
+    align-items: end;
+  }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; align-items: start; } }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6.4vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-block: 0.7rem 1.1rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--moss); }
+  .hero-lede {
+    font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .hero-aside {
+    border-left: 2px solid var(--ochre);
+    padding-left: 1.25rem;
+  }
+  .hero-aside dl { margin: 0; display: grid; gap: 1.1rem; }
+  .hero-aside dt {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .hero-aside dd {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .hero-aside dd small {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    letter-spacing: 0;
+    margin-top: 0.15rem;
+  }
+
+  .assumption {
+    margin-top: 2.4rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--brass);
+    background: var(--surface);
+    padding: 0.9rem 1.15rem;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    max-width: 78ch;
+  }
+  .assumption b { color: var(--ink); }
+
+  /* ---------- sections ---------- */
+
+  .band { padding-block: clamp(2.5rem, 6vw, 4.25rem); border-top: 1px solid var(--line); }
+  .band--dark {
+    background: var(--board-bg);
+    color: var(--board-txt);
+    border-top: none;
+  }
+  .band--dark h2, .band--dark h3 { color: #EDF3EF; }
+  .band--dark .section-head p { color: #94A9A0; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 3.6rem minmax(0, 1fr);
+    gap: 0 1.5rem;
+    margin-bottom: 2.25rem;
+  }
+  @media (max-width: 620px) { .section-head { grid-template-columns: 1fr; gap: 0.35rem; } }
+  .section-index {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--ochre);
+    padding-top: 0.55rem;
+    border-top: 2px solid var(--ochre);
+    height: fit-content;
+  }
+  .section-head h2 {
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+  }
+  .section-head p {
+    grid-column: 2;
+    margin: 0.6rem 0 0;
+    color: var(--ink-soft);
+    max-width: 68ch;
+  }
+  @media (max-width: 620px) { .section-head p { grid-column: 1; } }
+
+  /* ---------- stat row ---------- */
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .stat { background: var(--surface); padding: 1.15rem 1.25rem 1.25rem; }
+  .stat .v {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(1.45rem, 2.6vw, 1.85rem);
+    line-height: 1.1;
+    color: var(--moss);
+    display: block;
+  }
+  .stat .k {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .stat .src {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.63rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- prose columns ---------- */
+
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 1.75rem 2.25rem;
+    margin-top: 2rem;
+  }
+  .cols h3 { font-size: 1.06rem; margin-bottom: 0.4rem; }
+  .cols p { margin: 0; color: var(--ink-soft); font-size: 0.93rem; }
+
+  /* ---------- mechanism steps ---------- */
+
+  .steps { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 0.5rem; }
+  .step {
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 15rem);
+    gap: 1.4rem;
+    padding: 1.35rem 1.4rem;
+    align-items: start;
+  }
+  @media (max-width: 760px) { .step { grid-template-columns: 1fr; gap: 0.5rem; } }
+  .step-n {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--ochre);
+    padding-top: 0.28rem;
+  }
+  .step h3 { font-size: 1.1rem; }
+  .step p { margin: 0.3rem 0 0; color: var(--ink-soft); font-size: 0.92rem; }
+  .step-note {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    border-left: 1px solid var(--line);
+    padding-left: 1rem;
+  }
+  @media (max-width: 760px) { .step-note { border-left: none; border-top: 1px solid var(--line-soft); padding: 0.6rem 0 0; } }
+
+  /* ---------- board ---------- */
+
+  .board {
+    border: 1px solid var(--board-line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  }
+  .board-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--board-line);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7E948B;
+  }
+  .live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--up);
+  }
+  .live::before {
+    content: "";
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--up);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+  .board-scroll { overflow-x: auto; }
+  table.board-tbl {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.82rem;
+  }
+  table.board-tbl th {
+    text-align: left;
+    font-weight: 400;
+    font-size: 0.66rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: #6F857C;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--board-line);
+    white-space: nowrap;
+  }
+  table.board-tbl td {
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--board-txt);
+    white-space: nowrap;
+  }
+  table.board-tbl tr:last-child td { border-bottom: none; }
+  .tick-up { color: var(--up); }
+  .tick-down { color: var(--down); }
+  .lot { color: #EDF3EF; }
+  .grade {
+    display: inline-block;
+    padding: 0.05rem 0.4rem;
+    border: 1px solid var(--board-line);
+    border-radius: 2px;
+    font-size: 0.7rem;
+    color: #9DB3A9;
+  }
+  .flash { animation: flash 0.9s ease-out; }
+  @keyframes flash { from { background: rgba(62,142,107,0.22); } to { background: transparent; } }
+
+  /* ---------- map ---------- */
+
+  .map-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+  @media (max-width: 900px) { .map-shell { grid-template-columns: 1fr; } }
+  .map-figure { position: relative; }
+  .map-figure svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+  .phase-toggle { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem; }
+  .phase-toggle button {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    background: transparent;
+    color: #8CA298;
+    border: 1px solid var(--board-line);
+    padding: 0.42rem 0.8rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .phase-toggle button:hover { color: #DCE8E2; border-color: #35544A; }
+  .phase-toggle button[aria-pressed="true"] {
+    background: var(--ochre);
+    border-color: var(--ochre);
+    color: #120A03;
+  }
+  .phase-toggle button:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; }
+
+  .map-legend { display: grid; gap: 0.85rem; }
+  .legend-row {
+    display: grid;
+    grid-template-columns: 1.4rem minmax(0,1fr);
+    gap: 0.75rem;
+    align-items: start;
+    font-size: 0.83rem;
+    color: #9DB3A9;
+  }
+  .legend-row b { color: #EDF3EF; font-weight: 600; display: block; font-family: var(--font-body); }
+  .swatch { width: 12px; height: 12px; border-radius: 50%; margin-top: 0.34rem; }
+
+  .map-readout {
+    margin-top: 1.6rem;
+    border-top: 1px solid var(--board-line);
+    padding-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: #9DB3A9;
+    min-height: 7.5rem;
+  }
+  .map-readout strong { color: #EDF3EF; font-weight: 600; display: block; font-size: 0.95rem; letter-spacing: 0.02em; }
+  .map-readout .rk { color: #6F857C; }
+
+  .node { cursor: pointer; }
+  .node circle.hit { fill: transparent; }
+  .node:focus-visible { outline: none; }
+  .node:focus-visible circle.dot { stroke: #FFF; stroke-width: 2; }
+
+  /* ---------- model ---------- */
+
+  .model-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 17rem) minmax(0, 1fr);
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+  @media (max-width: 900px) { .model-shell { grid-template-columns: 1fr; } }
+
+  .controls {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    padding: 1.25rem;
+  }
+  .controls h3 {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+    margin-bottom: 1.1rem;
+  }
+  .ctrl { margin-bottom: 1.25rem; }
+  .ctrl:last-of-type { margin-bottom: 0.75rem; }
+  .ctrl label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-size: 0.83rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.35rem;
+  }
+  .ctrl output {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.86rem;
+    color: var(--ochre);
+  }
+  .ctrl input[type="range"] {
+    width: 100%;
+    accent-color: var(--ochre);
+    cursor: pointer;
+  }
+  .ctrl input[type="range"]:focus-visible { outline: 2px solid var(--ochre); outline-offset: 3px; }
+  .reset {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 0.45rem 0.75rem;
+    cursor: pointer;
+    width: 100%;
+  }
+  .reset:hover { border-color: var(--ochre); color: var(--ochre); }
+  .reset:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; }
+
+  .headline-figs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-bottom: 1.5rem;
+  }
+  .headline-figs div { background: var(--surface); padding: 0.95rem 1.05rem 1.05rem; }
+  .headline-figs .v {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.45rem;
+    line-height: 1.15;
+    display: block;
+    color: var(--ink);
+  }
+  .headline-figs .v.pos { color: var(--moss); }
+  .headline-figs .k {
+    display: block;
+    margin-top: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .tbl-scroll { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+  table.data {
+    width: 100%;
+    min-width: 660px;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.82rem;
+  }
+  table.data th, table.data td { padding: 0.55rem 0.9rem; text-align: right; white-space: nowrap; }
+  table.data th:first-child, table.data td:first-child { text-align: left; }
+  table.data thead th {
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-bottom: 1px solid var(--line);
+  }
+  table.data tbody td { border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); }
+  table.data tbody tr:last-child td { border-bottom: none; }
+  table.data td:first-child { color: var(--ink); }
+  table.data tr.rule-above td { border-top: 1px solid var(--line); }
+  table.data tr.total td { color: var(--ink); background: var(--moss-tint); }
+  table.data .neg { color: var(--oxblood); }
+  table.data .pos { color: var(--moss); }
+
+  .chart-wrap { margin-top: 1.5rem; border: 1px solid var(--line); background: var(--surface); padding: 1.25rem 1.1rem 0.9rem; }
+  .chart-wrap svg { width: 100%; height: auto; display: block; }
+  .chart-key {
+    display: flex; flex-wrap: wrap; gap: 0.4rem 1.35rem;
+    font-family: var(--font-mono); font-size: 0.68rem;
+    letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-faint);
+    margin-bottom: 0.9rem;
+  }
+  .chart-key i { display: inline-block; width: 10px; height: 10px; margin-right: 0.4rem; vertical-align: -1px; }
+
+  /* ---------- bank panel ---------- */
+
+  .bank-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .bank-cell { background: var(--surface); padding: 1.3rem 1.35rem 1.4rem; }
+  .bank-cell .v {
+    font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+    font-size: clamp(1.5rem, 2.7vw, 1.95rem); line-height: 1.1;
+    color: var(--ochre); display: block;
+  }
+  .bank-cell .k { display: block; margin-top: 0.55rem; font-size: 0.87rem; color: var(--ink-soft); }
+  .bank-cell .n { display: block; margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-faint); line-height: 1.6; }
+
+  /* ---------- risk ---------- */
+
+  .risks { border: 1px solid var(--line); background: var(--surface); }
+  .risk {
+    display: grid;
+    grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+    gap: 0.4rem 2rem;
+    padding: 1.1rem 1.35rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .risk:last-child { border-bottom: none; }
+  @media (max-width: 720px) { .risk { grid-template-columns: 1fr; } }
+  .risk h3 { font-size: 0.99rem; }
+  .risk h3 span {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 0.2rem;
+  }
+  .risk p { margin: 0; font-size: 0.9rem; color: var(--ink-soft); }
+  .risk p b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- ask ---------- */
+
+  .ask-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+  }
+  @media (max-width: 820px) { .ask-grid { grid-template-columns: 1fr; } }
+  .use-of-funds { border: 1px solid var(--line); background: var(--surface); }
+  .uof-row {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    gap: 1rem;
+    padding: 0.8rem 1.15rem;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 0.9rem;
+    align-items: baseline;
+  }
+  .uof-row:last-child { border-bottom: none; }
+  .uof-row.tot { background: var(--moss-tint); font-weight: 600; }
+  .uof-row .amt { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .uof-bar { height: 3px; background: var(--ochre); grid-column: 1 / -1; margin-top: 0.4rem; }
+
+  .milestones { list-style: none; margin: 0; padding: 0; }
+  .milestones li {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0,1fr);
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 0.91rem;
+    color: var(--ink-soft);
+  }
+  .milestones li:last-child { border-bottom: none; }
+  .milestones .when {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    padding-top: 0.15rem;
+  }
+  .milestones b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- footer ---------- */
+
+  footer { border-top: 1px solid var(--line); padding-block: 2.25rem 3rem; }
+  footer h3 {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+    margin-bottom: 0.9rem;
+  }
+  footer ol { margin: 0; padding-left: 1.2rem; columns: 2; column-gap: 2.5rem; }
+  @media (max-width: 700px) { footer ol { columns: 1; } }
+  footer li { font-size: 0.8rem; color: var(--ink-faint); margin-bottom: 0.45rem; break-inside: avoid; }
+  footer a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { color: var(--ochre); border-color: var(--ochre); }
+  footer a:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; }
+  .colophon { margin-top: 1.75rem; font-size: 0.78rem; color: var(--ink-faint); max-width: 74ch; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+</style>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <div class="wordmark">MNADA<span>·</span>TZ</div>
+    <div class="masthead-meta">Funding memorandum &middot; Series&nbsp;A &middot; August&nbsp;2026 &middot; Confidential draft</div>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">National Livestock &amp; Commodity Exchange</p>
+      <h1>Tanzania owns 39&nbsp;million cattle. <em>None of them are collateral.</em></h1>
+      <p class="hero-lede">
+        MNADA turns a live animal into a graded, tagged, custodied, price-discovered lot — and then into a
+        financial instrument a bank can lend against. Cattle and shoats first; sesame, cashew, pigeon peas
+        and maize on the same rails.
+      </p>
+    </div>
+    <div class="hero-aside">
+      <dl>
+        <div>
+          <dt>Livestock asset base</dt>
+          <dd>TZS 33.22tn<small>National herd value, 2024/25 — up from 30.49tn</small></dd>
+        </div>
+        <div>
+          <dt>Annual live-animal trade</dt>
+          <dd>≈ TZS 4.4tn<small>Est. from 39.2m cattle + 38.3m shoats at published offtake rates</small></dd>
+        </div>
+        <div>
+          <dt>The ask</dt>
+          <dd>TZS 5.5bn<small>≈ USD 2.08m at 2,650 TZS/USD · 36-month facility</small></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <p class="assumption">
+    <b>Read this first.</b> Every market-size figure on this page is sourced and footnoted. Every projection
+    figure is <b>modelled</b> from the assumptions shown in §06, which are exposed as live controls so the credit
+    committee can re-run the model against its own view rather than argue with ours. Node coordinates are
+    approximate; Phase&nbsp;1 sites are candidates pending Ministry and LGA confirmation.
+  </p>
+</section>
+
+<!-- 01 ================================================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">01</div>
+      <h2>The gap is not supply. It is price discovery and title.</h2>
+      <p>
+        Tanzania has the second-largest cattle herd in Africa and a functioning digital exchange for crops.
+        It has neither for animals. A pastoralist in Simiyu sells to the one broker who showed up. A butcher in
+        Dar pays a chain of four intermediaries. Neither knows the other exists, and no bank can lend against
+        an animal it cannot identify, value, or repossess.
+      </p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="v num">39.2m</span>
+        <span class="k">Cattle, 2024/25 — up 3.4% year on year. Plus 28.6m goats and 9.65m sheep.</span>
+        <span class="src">Ministry of Livestock &amp; Fisheries</span>
+      </div>
+      <div class="stat">
+        <span class="v num">10–13%</span>
+        <span class="k">Offtake rate for indigenous cattle. Commercial dairy systems reach 22% — the gap is market access, not biology.</span>
+        <span class="src">Tanzania Livestock Master Plan</span>
+      </div>
+      <div class="stat">
+        <span class="v num">400+</span>
+        <span class="k">Primary livestock markets nationwide, almost all settling in cash, on paper, with no price record.</span>
+        <span class="src">Ministry of Livestock &amp; Fisheries</span>
+      </div>
+      <div class="stat">
+        <span class="v num">TZS 2.68tn</span>
+        <span class="k">Traded through TMX crop auctions in 2025/26, on 1.12bn kg. Proof the digital-auction model already clears at national scale here.</span>
+        <span class="src">Tanzania Mercantile Exchange</span>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <h3>The seller's problem</h3>
+        <p>
+          No forward price signal. The herder walks animals to market on a fixed day and accepts whatever
+          the assembled traders offer. Distress sales during drought clear at a third of value because the
+          only buyers present are the ones who drove there.
+        </p>
+      </div>
+      <div>
+        <h3>The buyer's problem</h3>
+        <p>
+          Abattoirs run at roughly half capacity because supply arrives unscheduled and ungraded. Six
+          abattoirs operate nationally with seven more under construction — all of them buying blind, on
+          market day, against a spot cash requirement.
+        </p>
+      </div>
+      <div>
+        <h3>The bank's problem</h3>
+        <p>
+          TZS 33.22 trillion of livestock sits outside the credit system. There is no register, no valuation
+          method, no custody, and no enforceable security interest. The asset exists; the instrument does not.
+        </p>
+      </div>
+      <div>
+        <h3>The state's problem</h3>
+        <p>
+          The Livestock Identification, Registration and Traceability Act has been law since 2010 and remains
+          largely unimplemented outside pilots. Disease control, theft, and export certification all depend on
+          a register nobody has funded into existence.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ================================================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">02</div>
+      <h2>How an animal becomes an instrument</h2>
+      <p>
+        This is the whole business. Crops solved it with the Warehouse Receipt System: a graded deposit in a
+        licensed warehouse produces a receipt that is title, and title is collateral. Livestock has never had
+        an equivalent because you cannot pour a cow into a silo. The four steps below are our answer — and they
+        are strictly sequential, because each one is only meaningful if the previous one happened.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">STEP 01</div>
+        <div>
+          <h3>Identify — the tag is the ISIN</h3>
+          <p>
+            Every animal entering the system gets a uniquely coded ear tag registered against the keeper's
+            National ID and the origin ward. This is not our invention: it is the National Livestock
+            Identification, Registration and Traceability Registry that the 2010 Act already requires. We
+            implement existing law rather than lobby for new law.
+          </p>
+        </div>
+        <div class="step-note">
+          Tag + application ≈ TZS 1,800/head.<br>Recovered via a verification fee at first sale.<br>Field-proven on the
+          Northern Tanzania–Narok–Nairobi corridor pilot.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-n">STEP 02</div>
+        <div>
+          <h3>Grade — turn an animal into a specification</h3>
+          <p>
+            At the market pen: weigh-band, dentition age, sex, breed group, body condition score. Output is a
+            standard lot code — <span class="num">TZ&#8209;C&#8209;M2&#8209;300&#8209;350&#8209;BCS3</span> — that a buyer 900km away can bid on without
+            seeing the animal. Fungibility is what makes an exchange possible; grading is what manufactures
+            fungibility.
+          </p>
+        </div>
+        <div class="step-note">
+          Grader kit: cattle crush, weigh bar, tablet.<br>≈ TZS 8.4m per node, amortised 4 years.<br>Grade disputes settle
+          on the recorded weigh-bar reading.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-n">STEP 03</div>
+        <div>
+          <h3>Custody — the Livestock Deposit Receipt</h3>
+          <p>
+            The animal is held at a licensed holding ground or partner feedlot under a custody agreement, and
+            the platform issues a <b>Livestock Deposit Receipt</b>: a transferable electronic document of title
+            naming the graded lot, the custodian, and the feed/veterinary schedule. This is the legal object
+            the bank actually takes security over. Same architecture as a warehouse receipt; different asset.
+          </p>
+        </div>
+        <div class="step-note">
+          Custody standard modelled on the Warehouse Receipts framework.<br>Mortality risk insured at the
+          holding ground, not carried by the lender.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-n">STEP 04</div>
+        <div>
+          <h3>Clear — bid, match, escrow, settle</h3>
+          <p>
+            Buyers nationwide bid against the lot code. On match, funds move into escrow from mobile money or
+            bank account, the LDR transfers, movement permits generate automatically, and the seller is paid
+            on release. 80.98m mobile money accounts and 84.2% internet penetration mean the rails already
+            reach the pastoralist. Feature-phone USSD covers the rest.
+          </p>
+        </div>
+        <div class="step-note">
+          Settlement T+0 on spot, T+30/60/90 on forwards.<br>Escrow held at the partner bank —
+          which is where the float sits.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ================================================= -->
+<section class="band band--dark">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">03</div>
+      <h2>The board</h2>
+      <p>
+        What a trader sees on market day. Graded lots, live bids, and — the part that changes behaviour —
+        a settled price for the same grade at every other node in the country.
+      </p>
+    </div>
+
+    <div class="board">
+      <div class="board-bar">
+        <span class="live">Session open &middot; 09:42 EAT</span>
+        <span>Illustrative board — simulated session, not live market data</span>
+      </div>
+      <div class="board-scroll">
+        <table class="board-tbl">
+          <thead>
+            <tr>
+              <th>Lot</th>
+              <th>Grade</th>
+              <th>Node</th>
+              <th>Head</th>
+              <th>Last (TZS/head)</th>
+              <th>Chg</th>
+              <th>Bids</th>
+              <th>Settle</th>
+            </tr>
+          </thead>
+          <tbody id="boardBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ================================================= -->
+<section class="band band--dark" style="border-top:1px solid var(--board-line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">04</div>
+      <h2>Where the buyers are</h2>
+      <p>
+        Livestock in Tanzania moves along four corridors, all of them ending at a city or a border. The
+        exchange does not need to be everywhere on day one — it needs to sit on the corridor, at the
+        secondary markets where the animals already concentrate. Select a node for detail.
+      </p>
+    </div>
+
+    <div class="map-shell">
+      <div>
+        <div class="phase-toggle" role="group" aria-label="Rollout phase">
+          <button type="button" data-phase="1" aria-pressed="true">Phase 1 — 14 nodes</button>
+          <button type="button" data-phase="2" aria-pressed="false">Phase 2 — 40 nodes</button>
+          <button type="button" data-phase="3" aria-pressed="false">Phase 3 — 280 nodes</button>
+        </div>
+        <div class="map-figure" id="mapFigure"></div>
+      </div>
+
+      <div>
+        <div class="map-legend">
+          <div class="legend-row">
+            <span class="swatch" style="background:#C98A3C"></span>
+            <span><b>Supply node</b>Pastoral and agro-pastoral catchments. Sellers list here.</span>
+          </div>
+          <div class="legend-row">
+            <span class="swatch" style="background:#4FA37E"></span>
+            <span><b>Demand node</b>Cities, abattoirs, butchery clusters. Buyers bid from here.</span>
+          </div>
+          <div class="legend-row">
+            <span class="swatch" style="background:#7FA8C7"></span>
+            <span><b>Corridor hub</b>Secondary markets and holding grounds — where custody and grading sit.</span>
+          </div>
+          <div class="legend-row">
+            <span class="swatch" style="background:#C2606B"></span>
+            <span><b>Export gate</b>Border posts and ports. Traceability is the licence to trade here at all.</span>
+          </div>
+          <div class="legend-row">
+            <span class="swatch" style="background:transparent;border:1px solid #6F857C"></span>
+            <span><b>Circle size</b>Estimated head traded per month at that node.</span>
+          </div>
+        </div>
+        <div class="map-readout" id="mapReadout">
+          <strong>Select a node</strong>
+          <span class="rk">Hover or tap any marker for catchment, type, and estimated monthly throughput.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ================================================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">05</div>
+      <h2>One market node, fully loaded</h2>
+      <p>
+        The whole model is this unit, repeated. A node is one secondary market with two MNADA market agents,
+        a grading crush, a weigh bar, two tablets, and a tag stock. If the unit works, the company works.
+      </p>
+    </div>
+
+    <div class="tbl-scroll">
+      <table class="data">
+        <thead>
+          <tr><th>Line</th><th>Basis</th><th>Monthly</th><th>Annual (TZS)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cattle settled on-platform</td><td>at node maturity</td><td class="num">900 head</td><td class="num">10,800 head</td></tr>
+          <tr><td>Goats &amp; sheep settled</td><td>at node maturity</td><td class="num">1,800 head</td><td class="num">21,600 head</td></tr>
+          <tr class="rule-above"><td>Cattle GMV</td><td>@ TZS 700,000/head</td><td class="num">630,000,000</td><td class="num">7,560,000,000</td></tr>
+          <tr><td>Shoat GMV</td><td>@ TZS 120,000/head</td><td class="num">216,000,000</td><td class="num">2,592,000,000</td></tr>
+          <tr class="total"><td>Node GMV</td><td>livestock only</td><td class="num">846,000,000</td><td class="num">10,152,000,000</td></tr>
+          <tr class="rule-above"><td>Trade commission</td><td>1.50% (0.75 buyer / 0.75 seller)</td><td class="num">12,690,000</td><td class="num">152,280,000</td></tr>
+          <tr><td>Haulage matching</td><td>0.24% of GMV</td><td class="num">2,030,400</td><td class="num">24,364,800</td></tr>
+          <tr><td>Data, insurance attach, verification</td><td>flat per node</td><td class="num">1,800,000</td><td class="num">21,600,000</td></tr>
+          <tr class="total"><td>Node revenue</td><td>excl. credit fees</td><td class="num">16,520,400</td><td class="num">198,244,800</td></tr>
+          <tr class="rule-above"><td>Two market agents, loaded</td><td>salary, airtime, transport</td><td class="num">2,300,000</td><td class="num">27,600,000</td></tr>
+          <tr><td>Equipment, amortised</td><td>crush, weigh bar, tablets, tags</td><td class="num">1,916,667</td><td class="num">23,000,000</td></tr>
+          <tr><td>Settlement &amp; payment cost</td><td>0.30% of GMV</td><td class="num">2,538,000</td><td class="num">30,456,000</td></tr>
+          <tr><td>Node share of central cost</td><td>tech, G&amp;A, compliance</td><td class="num">1,200,000</td><td class="num">14,400,000</td></tr>
+          <tr class="total"><td>Node contribution</td><td>at maturity</td><td class="num pos">8,565,733</td><td class="num pos">102,788,800</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cols">
+      <div>
+        <h3>Payback per node</h3>
+        <p>
+          Setup capex of TZS 23m and roughly nine months of sub-maturity operation put node payback at
+          <b>month 14–16</b>. Nodes are opened in clusters of four along a single corridor so one supervisor
+          and one veterinary officer cover the cluster.
+        </p>
+      </div>
+      <div>
+        <h3>Why 900 head is conservative</h3>
+        <p>
+          Pugu alone moves 600–1,000 cattle and 400–500 goats <em>per session</em>. A weekly-session secondary
+          market clearing 900 cattle a month is roughly a quarter of one large market's throughput — we are
+          modelling partial capture, not displacement.
+        </p>
+      </div>
+      <div>
+        <h3>What kills a node</h3>
+        <p>
+          Broker capture. If the incumbent brokers at a market organise against listing, throughput never
+          matures. Mitigation is to recruit the largest three brokers at each node <em>as</em> licensed
+          MNADA agents on commission share — the model co-opts the middleman rather than removing him.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ================================================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">06</div>
+      <h2>Fee income, five years</h2>
+      <p>
+        The controls are live. Move them and the table, the chart and the bank's return in §07 all recompute.
+        Defaults are the base case; the figures below the sliders are what we are actually asking you to
+        underwrite.
+      </p>
+    </div>
+
+    <div class="model-shell">
+      <div class="controls">
+        <h3>Model assumptions</h3>
+
+        <div class="ctrl">
+          <label for="cNodes">Active nodes by Year 5 <output id="oNodes">280</output></label>
+          <input type="range" id="cNodes" min="60" max="420" step="10" value="280">
+        </div>
+        <div class="ctrl">
+          <label for="cCattle">Cattle / node / month <output id="oCattle">900</output></label>
+          <input type="range" id="cCattle" min="300" max="1600" step="50" value="900">
+        </div>
+        <div class="ctrl">
+          <label for="cPrice">Avg cattle price (TZS) <output id="oPrice">700,000</output></label>
+          <input type="range" id="cPrice" min="400000" max="1100000" step="25000" value="700000">
+        </div>
+        <div class="ctrl">
+          <label for="cComm">Livestock commission <output id="oComm">1.50%</output></label>
+          <input type="range" id="cComm" min="0.5" max="3" step="0.05" value="1.5">
+        </div>
+        <div class="ctrl">
+          <label for="cCrop">Crop GMV vs livestock, Yr 5 <output id="oCrop">60%</output></label>
+          <input type="range" id="cCrop" min="0" max="120" step="5" value="60">
+        </div>
+        <div class="ctrl">
+          <label for="cLoan">Yr 5 GMV financed on LDRs <output id="oLoan">30%</output></label>
+          <input type="range" id="cLoan" min="0" max="60" step="2" value="30">
+        </div>
+        <button type="button" class="reset" id="btnReset">Reset to base case</button>
+      </div>
+
+      <div>
+        <div class="headline-figs">
+          <div><span class="v num" id="figY5Rev">—</span><span class="k">Yr 5 revenue</span></div>
+          <div><span class="v num" id="figY5Gmv">—</span><span class="k">Yr 5 GMV cleared</span></div>
+          <div><span class="v num" id="figBreak">—</span><span class="k">EBITDA breakeven</span></div>
+          <div><span class="v num" id="figPeak">—</span><span class="k">Peak cash deficit</span></div>
+        </div>
+
+        <div class="tbl-scroll">
+          <table class="data">
+            <thead>
+              <tr><th>TZS billion</th><th>Yr 1</th><th>Yr 2</th><th>Yr 3</th><th>Yr 4</th><th>Yr 5</th></tr>
+            </thead>
+            <tbody id="modelBody"></tbody>
+          </table>
+        </div>
+
+        <div class="chart-wrap">
+          <div class="chart-key">
+            <span><i style="background:var(--ochre)"></i>Trade commission</span>
+            <span><i style="background:var(--moss)"></i>Credit &amp; custody fees</span>
+            <span><i style="background:var(--brass)"></i>Logistics, data, attach</span>
+            <span><i style="background:var(--oxblood)"></i>EBITDA line</span>
+          </div>
+          <div id="chart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 ================================================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">07</div>
+      <h2>What the bank gets that is not equity upside</h2>
+      <p>
+        This is the part that distinguishes MNADA from a marketplace app. You are not primarily buying a
+        share of our commission. You are buying an origination channel into a secured asset class that does
+        not currently exist on anyone's balance sheet, plus the settlement float that runs through it.
+      </p>
+    </div>
+
+    <div class="bank-grid">
+      <div class="bank-cell">
+        <span class="v num" id="bankOrig">—</span>
+        <span class="k">Annual loan originations by Year 5, secured on Livestock Deposit Receipts</span>
+        <span class="n">Feedlot finance, trader working capital, and buyer inventory lines — each tied to a graded lot in custody.</span>
+      </div>
+      <div class="bank-cell">
+        <span class="v num" id="bankBook">—</span>
+        <span class="k">Average outstanding book at 45-day tenor</span>
+        <span class="n">Short, self-liquidating, and repaid out of a settlement the exchange controls end-to-end.</span>
+      </div>
+      <div class="bank-cell">
+        <span class="v num" id="bankNii">—</span>
+        <span class="k">Indicative annual net interest income at a 10% net margin</span>
+        <span class="n">Illustrative only — the bank's own pricing, provisioning and cost of funds govern.</span>
+      </div>
+      <div class="bank-cell">
+        <span class="v num" id="bankFloat">—</span>
+        <span class="k">Average escrow deposits held at the settlement bank</span>
+        <span class="n">Two days of GMV in transit at any time, in a designated trust account.</span>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <h3>Repayment sits inside the rail</h3>
+        <p>
+          A conventional livestock loan is repaid when the borrower chooses to come back. An LDR-secured loan
+          is repaid at settlement, automatically, before the seller's proceeds are released. The bank is never
+          chasing a herd across a district.
+        </p>
+      </div>
+      <div>
+        <h3>Valuation stops being a guess</h3>
+        <p>
+          Every settled trade feeds a published price index by grade and node. After twelve months the bank
+          has a defensible mark for any lot in custody — which is what a credit committee needs before it will
+          write the first shilling.
+        </p>
+      </div>
+      <div>
+        <h3>Exclusivity and first refusal</h3>
+        <p>
+          The funding bank takes settlement-bank exclusivity for 60 months and right of first refusal on all
+          LDR-secured lending originated on the platform. Other lenders join the panel only on terms the
+          anchor declines.
+        </p>
+      </div>
+      <div>
+        <h3>A portfolio that is not correlated to your existing book</h3>
+        <p>
+          Livestock credit performance tracks rainfall and disease, not the urban salary and trade cycles that
+          dominate a Tanzanian bank's current exposure. This is diversification, priced as growth.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ================================================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">08</div>
+      <h2>What could break this, and what we have done about it</h2>
+      <p>
+        Presented as a credit committee would want it: the risk, our honest assessment of severity, and the
+        specific structural mitigation rather than an assurance.
+      </p>
+    </div>
+
+    <div class="risks">
+      <div class="risk">
+        <h3><span>Regulatory — high</span>Licensing an exchange for live animals</h3>
+        <p>
+          No Tanzanian licence category maps cleanly to a livestock exchange. <b>Mitigation:</b> we do not seek
+          one at launch. Phase 1 operates as a licensed livestock market operator and agent under existing LGA
+          arrangements, with commodity trading conducted <em>through</em> TMX under its existing CMSA licence
+          rather than in competition with it. Exchange licensing is a Phase 3 objective with 24 months of
+          operating record behind the application.
+        </p>
+      </div>
+      <div class="risk">
+        <h3><span>Behavioural — high</span>Broker capture at market level</h3>
+        <p>
+          Incumbent brokers control access at most secondary markets and lose margin if price becomes public.
+          <b>Mitigation:</b> licensed-agent scheme. The top brokers at each node are recruited onto commission
+          share and given the tablet. Their income rises with volume; it no longer depends on information
+          asymmetry.
+        </p>
+      </div>
+      <div class="risk">
+        <h3><span>Operational — high</span>Disease outbreak closes a corridor</h3>
+        <p>
+          Foot-and-mouth or Rift Valley fever quarantine can shut movement across whole regions for months.
+          <b>Mitigation:</b> geographic diversification across four independent corridors by Year 2, and
+          traceability that lets authorities quarantine at ward rather than region level — which shortens
+          closures for everyone and is a direct argument for Ministry support.
+        </p>
+      </div>
+      <div class="risk">
+        <h3><span>Credit — medium</span>Mortality and shrinkage in custody</h3>
+        <p>
+          The collateral can die. <b>Mitigation:</b> custody only at licensed holding grounds carrying
+          mandatory mortality cover; LDRs are issued at 80% of assessed value; the insurer, not the lender,
+          carries first loss. Weekly custodian reconciliation against tag reads.
+        </p>
+      </div>
+      <div class="risk">
+        <h3><span>Commercial — medium</span>A state platform makes us redundant</h3>
+        <p>
+          Government has launched e-Kilimo and Kilimo BaNDO for crops and could extend to livestock.
+          <b>Mitigation:</b> build for integration, not competition. Our identity layer is the Ministry's own
+          statutory registry, and we will contract to operate it. The state platform that owns the register is
+          our best distribution partner and our hardest competitor — the choice of which is made in the first
+          twelve months.
+        </p>
+      </div>
+      <div class="risk">
+        <h3><span>Financial — medium</span>Take rate compresses</h3>
+        <p>
+          A competitor undercuts 1.5%. <b>Mitigation:</b> the commission is the smallest of four revenue lines
+          by Year 5 in relative growth terms, and the credit, custody and data lines are defended by the
+          registry relationship rather than by price. Drag the commission slider in §06 to 0.90% and the
+          business still reaches EBITDA breakeven in Year 4 — but peak cash deficit rises to roughly
+          TZS 7.0bn, above this facility. At sustained sub-1% pricing we would return for a second tranche;
+          we would rather state that now than discover it in Year 3.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ================================================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">09</div>
+      <h2>The ask</h2>
+      <p>
+        TZS 5.5 billion over 36 months. Structured as TZS 3.5bn development and working capital, TZS 1.0bn
+        equipment capex, and TZS 1.0bn ring-fenced as a settlement guarantee fund that never leaves the bank.
+      </p>
+    </div>
+
+    <div class="ask-grid">
+      <div>
+        <div class="use-of-funds">
+          <div class="uof-row">
+            <span>Platform, USSD stack, registry integration</span>
+            <span class="amt">TZS 1.85bn</span>
+            <span class="uof-bar" style="width:34%"></span>
+          </div>
+          <div class="uof-row">
+            <span>Field operations — 40 nodes to Year 2</span>
+            <span class="amt">TZS 1.40bn</span>
+            <span class="uof-bar" style="width:25%"></span>
+          </div>
+          <div class="uof-row">
+            <span>Equipment — crushes, weigh bars, readers, tag stock</span>
+            <span class="amt">TZS 1.00bn</span>
+            <span class="uof-bar" style="width:18%"></span>
+          </div>
+          <div class="uof-row">
+            <span>Licensing, legal, compliance, audit</span>
+            <span class="amt">TZS 0.25bn</span>
+            <span class="uof-bar" style="width:5%"></span>
+          </div>
+          <div class="uof-row">
+            <span>Settlement guarantee fund (ring-fenced)</span>
+            <span class="amt">TZS 1.00bn</span>
+            <span class="uof-bar" style="width:18%"></span>
+          </div>
+          <div class="uof-row tot">
+            <span>Total facility</span>
+            <span class="amt">TZS 5.50bn</span>
+          </div>
+        </div>
+        <p style="font-size:0.86rem;color:var(--ink-soft);margin-top:1.1rem;max-width:60ch;">
+          Base case shows a peak cumulative cash deficit of roughly TZS 3.4bn in Year 2 and cumulative cash
+          positive during Year 4. The facility is sized at 1.6× peak deficit so that a twelve-month delay in
+          node maturity does not require a second raise.
+        </p>
+      </div>
+
+      <div>
+        <p class="eyebrow" style="margin-bottom:0.9rem;">Milestones to first drawdown and beyond</p>
+        <ul class="milestones">
+          <li><span class="when">M0–M3</span><span><b>Registry MoU.</b> Ministry of Livestock and Fisheries agreement to operate the statutory identification and traceability registry. This is the gating condition — no MoU, no drawdown.</span></li>
+          <li><span class="when">M3–M6</span><span><b>Four nodes live</b> on the Shinyanga–Dodoma–Dar corridor. Grading standard published. First 5,000 animals tagged.</span></li>
+          <li><span class="when">M6–M9</span><span><b>First LDR issued and financed.</b> Single-lender pilot, 200 head, 45-day feedlot facility. This is the proof the whole memorandum turns on.</span></li>
+          <li><span class="when">M9–M12</span><span><b>14 nodes live.</b> Price index published weekly by grade. TMX integration for the crop side operational for the sesame season.</span></li>
+          <li><span class="when">M12–M18</span><span><b>Export gate.</b> Traceability certification accepted at one border post or port, unlocking the Comoros and Gulf live-animal channels.</span></li>
+          <li><span class="when">M18–M24</span><span><b>40 nodes, four corridors.</b> Second-lender panel opens. Exchange licence application filed with 24 months of settled-price record behind it.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h3>Sources for stated market figures</h3>
+    <ol>
+      <li>Ministry of Livestock and Fisheries / Tanzania Government Portal — herd population and sector value 2024/25. <a href="https://tanzania.go.tz/home/pages/1931">tanzania.go.tz</a></li>
+      <li>Tanzania Livestock Master Plan — offtake rates, production systems, abattoir capacity. <a href="https://asdp.kilimo.go.tz/uploads/Tanzania%20Livestock%20Master%20Plan.pdf">asdp.kilimo.go.tz</a></li>
+      <li>Tanzania Mercantile Exchange — 2025/26 auction volumes and trading procedures. <a href="https://tmx.co.tz/">tmx.co.tz</a></li>
+      <li>Warehouse Receipt System earnings, 2025/26 season. <a href="https://www.therespondents.co.tz/2026/07/farmers-earn-record-tzs-23-trillion.html">therespondents.co.tz</a></li>
+      <li>TCRA communications statistics Q1 2026 — mobile money accounts, internet and smartphone penetration. <a href="https://www.tanzaniainvest.com/telecoms/tcra-telecom-stats-q1-2026">tanzaniainvest.com</a></li>
+      <li>Livestock Identification, Registration and Traceability Act, 2010 (No. 12 of 2010). <a href="https://media.tanzlii.org/media/legislation/318950/source_file/fda3170b19d70f8d/2010-12.pdf">tanzlii.org</a></li>
+      <li>Pugu and Vingunguti market throughput — Animals' Angels market monitoring, Tanzania. <a href="https://www.animals-angels.de/en/projects/animal-markets/tanzania.html">animals-angels.de</a></li>
+      <li>Livestock identification and traceability pilot, Northern Tanzania–Narok–Nairobi corridor. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5780531/">ILRI / Trop. Anim. Health Prod.</a></li>
+      <li>Live cattle and cattle-grade price references, Tanzania. <a href="https://www.selinawamucii.com/insights/prices/tanzania/live-cattle/">selinawamucii.com</a></li>
+      <li>Ministry of Livestock and Fisheries — Livestock Sector Analysis. <a href="https://www.mifugouvuvi.go.tz/uploads/documents/sw-1749142748-1553602287-LIVESTOCK%20SECTOR%20ANALYSIS_compressed.pdf">mifugouvuvi.go.tz</a></li>
+      <li>e-Kilimo national agriculture platform launch. <a href="https://www.techinafrica.com/tanzania-launches-e-kilimo-to-revolutionize-agriculture-with-digital-solutions/">techinafrica.com</a></li>
+      <li>World Bank Tanzania Economic Update — livestock sector competitiveness. <a href="https://www.worldbank.org/en/news/feature/2024/06/26/tanzania-economic-update-harnessing-the-opportunity-for-a-climate-smart-and-competitive-livestock-sector-in-afe-tanzania">worldbank.org</a></li>
+    </ol>
+    <p class="colophon">
+      Prepared August 2026. Population, sector-value, trading-volume, telecom and legal figures are sourced as
+      above. All five-year figures, node economics, loan originations and interest income are modelled
+      projections built on the stated assumptions and are not forecasts, guarantees, or investment advice.
+      FX conversions at 2,650 TZS/USD. Market node coordinates are approximate and Phase 1 sites remain
+      subject to Ministry and local government authority confirmation.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* =========================================================
+     BOARD — simulated settled/working lots
+     ========================================================= */
+
+  var LOTS = [
+    { lot: "TZ-C-M2-300-350", grade: "Steer · 300–350kg · BCS3", node: "Nyamatala, Shinyanga", head: 60, px: 742000, chg:  1.8 },
+    { lot: "TZ-C-F3-250-300", grade: "Cow · 250–300kg · BCS2",   node: "Bariadi, Simiyu",     head: 45, px: 508000, chg: -0.9 },
+    { lot: "TZ-C-M1-350-420", grade: "Steer · 350–420kg · BCS4", node: "Meserani, Arusha",    head: 32, px: 968000, chg:  2.4 },
+    { lot: "TZ-S-M2-025-035", grade: "Goat · 25–35kg · BCS3",    node: "Igunga, Tabora",      head: 180, px: 131000, chg:  0.6 },
+    { lot: "TZ-C-M2-300-350", grade: "Steer · 300–350kg · BCS3", node: "Kizota, Dodoma",      head: 55, px: 761000, chg:  1.1 },
+    { lot: "TZ-S-F2-020-030", grade: "Sheep · 20–30kg · BCS3",   node: "Kahama, Shinyanga",   head: 220, px: 104000, chg: -1.4 },
+    { lot: "TZ-C-F2-280-330", grade: "Heifer · 280–330kg · BCS3",node: "Nzega, Tabora",       head: 40, px: 655000, chg:  0.4 },
+    { lot: "TZ-C-M3-260-300", grade: "Steer · 260–300kg · BCS2", node: "Korogwe, Tanga",      head: 38, px: 574000, chg: -0.3 }
+  ];
+
+  var STATES = ["T+0 spot", "T+0 spot", "T+30 fwd", "T+0 spot", "T+60 fwd", "T+0 spot", "T+30 fwd", "T+0 spot"];
+
+  function fmtTZS(n) { return n.toLocaleString("en-US"); }
+
+  var boardBody = document.getElementById("boardBody");
+  var bids = LOTS.map(function (l, i) { return 3 + ((i * 5) % 9); });
+
+  function renderBoard(flashIndex) {
+    if (!boardBody) return;
+    boardBody.innerHTML = LOTS.map(function (l, i) {
+      var cls = l.chg >= 0 ? "tick-up" : "tick-down";
+      var sign = l.chg >= 0 ? "▲ +" : "▼ ";
+      return '<tr' + (i === flashIndex ? ' class="flash"' : '') + '>' +
+        '<td class="lot">' + l.lot + '</td>' +
+        '<td><span class="grade">' + l.grade + '</span></td>' +
+        '<td>' + l.node + '</td>' +
+        '<td>' + l.head + '</td>' +
+        '<td>' + fmtTZS(l.px) + '</td>' +
+        '<td class="' + cls + '">' + sign + Math.abs(l.chg).toFixed(1) + '%</td>' +
+        '<td>' + bids[i] + '</td>' +
+        '<td>' + STATES[i] + '</td>' +
+        '</tr>';
+    }).join("");
+  }
+
+  renderBoard(-1);
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var tickSeed = 7;
+  function nextRand() { tickSeed = (tickSeed * 1103515245 + 12345) % 2147483648; return tickSeed / 2147483648; }
+
+  if (!reduceMotion) {
+    setInterval(function () {
+      var i = Math.floor(nextRand() * LOTS.length);
+      var drift = (nextRand() - 0.45) * 0.012;
+      LOTS[i].px = Math.round(LOTS[i].px * (1 + drift) / 1000) * 1000;
+      LOTS[i].chg = Math.round((LOTS[i].chg + drift * 100) * 10) / 10;
+      bids[i] = Math.max(1, bids[i] + (nextRand() > 0.5 ? 1 : -1));
+      renderBoard(i);
+    }, 2600);
+  }
+
+  /* =========================================================
+     MAP
+     ========================================================= */
+
+  var OUTLINE = [
+    [30.45,-1.05],[30.83,-1.00],[31.87,-1.02],[33.00,-1.00],[34.05,-1.00],[34.55,-1.05],
+    [35.00,-1.70],[36.00,-2.20],[37.00,-3.05],[37.65,-3.05],[38.20,-3.60],[39.20,-4.68],
+    [39.30,-5.10],[38.85,-6.10],[39.30,-6.80],[39.50,-7.80],[39.85,-8.90],[39.50,-9.60],
+    [40.45,-10.30],[39.60,-10.95],[38.50,-11.20],[37.50,-11.60],[36.20,-11.60],[35.30,-11.42],
+    [34.90,-11.00],[34.60,-10.20],[34.30,-9.60],[33.95,-9.50],[33.55,-9.50],[32.95,-9.40],
+    [32.40,-9.00],[31.95,-8.90],[31.35,-8.60],[30.75,-8.20],[30.45,-7.30],[29.75,-6.40],
+    [29.40,-5.40],[29.35,-4.50],[29.60,-3.30],[30.20,-3.00],[30.60,-2.40],[30.40,-1.80]
+  ];
+
+  var ISLANDS = [
+    [[39.18,-5.72],[39.40,-5.78],[39.55,-6.05],[39.48,-6.42],[39.28,-6.48],[39.20,-6.20],[39.16,-5.95]],
+    [[39.68,-4.87],[39.85,-5.02],[39.83,-5.32],[39.70,-5.47],[39.62,-5.20],[39.65,-5.00]],
+    [[39.62,-7.78],[39.90,-7.86],[39.86,-8.05],[39.66,-8.00]]
+  ];
+
+  var LAKES = [
+    { name: "L. Victoria", pts: [[31.87,-1.02],[33.00,-1.00],[34.05,-1.00],[33.95,-1.80],[33.30,-2.60],[32.60,-2.70],[31.80,-2.20],[31.75,-1.50]] },
+    { name: "L. Tanganyika", pts: [[29.35,-4.50],[29.60,-4.60],[30.00,-5.60],[30.45,-6.80],[30.75,-8.20],[30.45,-7.30],[29.75,-6.40],[29.40,-5.40]] },
+    { name: "L. Nyasa", pts: [[33.95,-9.50],[34.60,-10.20],[34.90,-11.00],[35.30,-11.42],[34.80,-11.20],[34.35,-10.40],[33.90,-9.70]] }
+  ];
+
+  var TYPE_COLOR = { supply: "#C98A3C", demand: "#4FA37E", hub: "#7FA8C7", export: "#C2606B" };
+  var TYPE_LABEL = { supply: "Supply node", demand: "Demand node", hub: "Corridor hub", export: "Export gate" };
+
+  var NODES = [
+    // Phase 1 — Central / Northern corridor
+    { n:"Pugu",        r:"Dar es Salaam", lon:39.10, lat:-6.90, t:"demand", h:4000, p:1, note:"Largest cattle and goat market in the country. 600–1,000 cattle per session." },
+    { n:"Vingunguti",  r:"Dar es Salaam", lon:39.24, lat:-6.85, t:"demand", h:2600, p:1, note:"Abattoir cluster serving the Dar butchery trade. Buys ungraded, on the day, in cash." },
+    { n:"Kizota",      r:"Dodoma",        lon:35.77, lat:-6.13, t:"hub",    h:2200, p:1, note:"Capital-city market and the natural clearing point between the Lake supply zone and the coast." },
+    { n:"Nyamatala",   r:"Shinyanga",     lon:33.20, lat:-3.55, t:"supply", h:3100, p:1, note:"Deep agro-pastoral catchment. Highest cattle density in the country." },
+    { n:"Mhunze",      r:"Kishapu, Shinyanga", lon:33.60, lat:-3.60, t:"supply", h:2400, p:1, note:"Feeds the Dar corridor. Prime candidate for the first holding ground and LDR pilot." },
+    { n:"Bariadi",     r:"Simiyu",        lon:33.99, lat:-2.80, t:"supply", h:2700, p:1, note:"Sukuma pastoral heartland. Distress-sale exposure during dry season is severe." },
+    { n:"Igunga",      r:"Tabora",        lon:33.89, lat:-4.28, t:"supply", h:2300, p:1, note:"Large mixed cattle and shoat market on the central rail line." },
+    { n:"Ipuli",       r:"Tabora",        lon:32.83, lat:-5.02, t:"supply", h:1900, p:1, note:"Western supply into both the central corridor and the Katavi–Rukwa route." },
+    { n:"Singida",     r:"Singida",       lon:34.75, lat:-4.82, t:"hub",    h:1800, p:1, note:"Junction of the Lake and Northern corridors. Natural grading and custody site." },
+    { n:"Meserani",    r:"Monduli, Arusha", lon:36.45, lat:-3.47, t:"hub",  h:3400, p:1, note:"Major northern market drawing Maasai pastoral supply and Kenya-bound demand." },
+    { n:"Themi",       r:"Arusha",        lon:36.70, lat:-3.38, t:"demand", h:1500, p:1, note:"Arusha urban demand plus the tourism-hotel meat trade — quality-sensitive buyers." },
+    { n:"Korogwe",     r:"Tanga",         lon:38.46, lat:-5.15, t:"hub",    h:1700, p:1, note:"Coastal corridor hub between the Northern zone and Dar/Tanga demand." },
+    { n:"Kahama",      r:"Shinyanga",     lon:32.60, lat:-3.84, t:"supply", h:2000, p:1, note:"Western Shinyanga assembly point with strong onward trucking capacity." },
+    { n:"Morogoro",    r:"Morogoro",      lon:37.66, lat:-6.82, t:"demand", h:1600, p:1, note:"Last demand node before Dar. Holding grounds here smooth arrival timing into Pugu." },
+
+    // Phase 2
+    { n:"Nyakato",     r:"Mwanza",        lon:32.92, lat:-2.52, t:"demand", h:2400, p:2, note:"Second city demand and the gateway to the Lake Victoria basin trade." },
+    { n:"Musoma",      r:"Mara",          lon:33.80, lat:-1.50, t:"supply", h:1700, p:2, note:"Lakeside supply feeding both domestic demand and the Kenya border trade." },
+    { n:"Kirumi",      r:"Mara",          lon:33.95, lat:-1.75, t:"supply", h:1500, p:2, note:"Crossing-point market on the Mara river route north." },
+    { n:"Babati",      r:"Manyara",       lon:35.75, lat:-4.22, t:"supply", h:1900, p:2, note:"Manyara pastoral supply into the Arusha and Dodoma markets." },
+    { n:"Namanga",     r:"Kenya border",  lon:36.79, lat:-2.55, t:"export", h:1200, p:2, note:"Principal formal crossing to Kenya. Traceability certification is the licence to trade here." },
+    { n:"Sirari",      r:"Kenya border",  lon:34.48, lat:-1.25, t:"export", h:900,  p:2, note:"Northern crossing onto the Narok–Nairobi beef corridor." },
+    { n:"Holili",      r:"Kenya border",  lon:37.62, lat:-3.42, t:"export", h:700,  p:2, note:"Kilimanjaro-side crossing. Smaller volume, high formalisation upside." },
+    { n:"Bukoba",      r:"Kagera",        lon:31.81, lat:-1.33, t:"supply", h:1300, p:2, note:"North-western supply with Uganda and Rwanda cross-border flow." },
+    { n:"Geita",       r:"Geita",         lon:32.23, lat:-2.87, t:"supply", h:1400, p:2, note:"Mining-town cash demand alongside substantial local supply." },
+    { n:"Tanga Port",  r:"Tanga",         lon:39.10, lat:-5.07, t:"export", h:800,  p:2, note:"Coastal export gate for live shipment and chilled product." },
+    { n:"Unguja",      r:"Zanzibar",      lon:39.20, lat:-6.16, t:"demand", h:1100, p:2, note:"Island demand supplied entirely by sea from the mainland. Price premium, no local supply." },
+    { n:"Dar Port",    r:"Dar es Salaam", lon:39.29, lat:-6.82, t:"export", h:1000, p:2, note:"Live export channel to Comoros and the Gulf. Certification-gated." },
+    { n:"Iringa",      r:"Iringa",        lon:35.69, lat:-7.77, t:"hub",    h:1200, p:2, note:"Southern Highlands hub linking Mbeya supply to coastal demand." },
+    { n:"Uyole",       r:"Mbeya",         lon:33.46, lat:-8.90, t:"demand", h:1600, p:2, note:"Southern Highlands demand centre and staging point for the Zambia trade." },
+    { n:"Sumbawanga",  r:"Rukwa",         lon:31.62, lat:-7.97, t:"supply", h:1500, p:2, note:"Remote high-supply zone with the worst price discovery in the country." },
+    { n:"Mpanda",      r:"Katavi",        lon:31.07, lat:-6.35, t:"supply", h:1300, p:2, note:"Isolated western supply. Highest expected uplift from a national price signal." },
+    { n:"Kigoma",      r:"Kigoma",        lon:29.63, lat:-4.88, t:"demand", h:1000, p:2, note:"Lake Tanganyika demand with cross-border flow toward the DRC side." },
+    { n:"Tunduma",     r:"Zambia border", lon:32.77, lat:-9.30, t:"export", h:900,  p:2, note:"Busiest southern land crossing. Currently almost wholly informal for livestock." },
+    { n:"Songea",      r:"Ruvuma",        lon:35.65, lat:-10.68,t:"supply", h:1100, p:2, note:"Southern supply zone, historically outside every national market channel." },
+    { n:"Mtwara",      r:"Mtwara",        lon:40.18, lat:-10.27,t:"demand", h:800,  p:2, note:"Cashew-country demand centre — the crop and livestock sides share one node here." },
+    { n:"Lindi",       r:"Lindi",         lon:39.72, lat:-10.00,t:"demand", h:600,  p:2, note:"Coastal demand and sesame collection point." },
+    { n:"Nzega",       r:"Tabora",        lon:33.18, lat:-4.22, t:"supply", h:1600, p:2, note:"Central corridor supply with strong existing trader networks." },
+    { n:"Manyoni",     r:"Singida",       lon:34.83, lat:-5.75, t:"supply", h:1200, p:2, note:"Dry-corridor supply, acutely exposed to drought-driven distress selling." },
+    { n:"Kondoa",      r:"Dodoma",        lon:35.78, lat:-4.90, t:"supply", h:1300, p:2, note:"Northern Dodoma supply feeding both Arusha and the capital." },
+    { n:"Handeni",     r:"Tanga",         lon:38.02, lat:-5.43, t:"supply", h:1100, p:2, note:"Coastal-hinterland supply into the Korogwe hub." },
+    { n:"Kibaha",      r:"Pwani",         lon:38.92, lat:-6.77, t:"demand", h:1400, p:2, note:"Peri-urban Dar demand and the site of the first commercial feedlot partnership." }
+  ];
+
+  var CORRIDORS = [
+    { from: [33.20,-3.55], to: [39.10,-6.90], label: "Lake zone → Dar es Salaam" },
+    { from: [36.45,-3.47], to: [39.10,-6.90], label: "Northern zone → Dar es Salaam" },
+    { from: [33.80,-1.50], to: [34.48,-1.25], label: "Mara → Kenya" },
+    { from: [31.07,-6.35], to: [33.46,-8.90], label: "Katavi–Rukwa → Southern Highlands" },
+    { from: [34.75,-4.82], to: [35.77,-6.13], label: "Singida → Dodoma" },
+    { from: [39.24,-6.85], to: [39.20,-6.16], label: "Dar → Zanzibar" }
+  ];
+
+  var W = 760, H = 710, LON0 = 28.8, LAT0 = 0.6, S = 62;
+  function px(lon) { return (lon - LON0) * S; }
+  function py(lat) { return (-lat - LAT0) * S; }
+  function poly(pts) { return pts.map(function (p) { return px(p[0]).toFixed(1) + "," + py(p[1]).toFixed(1); }).join(" "); }
+
+  function svgEl(tag, attrs) {
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) { if (Object.prototype.hasOwnProperty.call(attrs, k)) e.setAttribute(k, attrs[k]); }
+    return e;
+  }
+
+  var mapFigure = document.getElementById("mapFigure");
+  var readout = document.getElementById("mapReadout");
+  var currentPhase = 1;
+
+  function radiusFor(h) { return 3.2 + Math.sqrt(h) * 0.145; }
+
+  function buildMap() {
+    if (!mapFigure) return;
+    mapFigure.innerHTML = "";
+
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "Map of Tanzania showing livestock market nodes by rollout phase" });
+
+    // land
+    svg.appendChild(svgEl("polygon", { points: poly(OUTLINE), fill: "#132320", stroke: "#2C4740", "stroke-width": "1.4", "stroke-linejoin": "round" }));
+    ISLANDS.forEach(function (isl) {
+      svg.appendChild(svgEl("polygon", { points: poly(isl), fill: "#132320", stroke: "#2C4740", "stroke-width": "1.1" }));
+    });
+    LAKES.forEach(function (lk) {
+      svg.appendChild(svgEl("polygon", { points: poly(lk.pts), fill: "#0A1518", stroke: "#233B39", "stroke-width": "0.9" }));
+    });
+
+    // phase 3 density wash
+    if (currentPhase === 3) {
+      var wash = svgEl("g", { opacity: "0.5" });
+      var seed = 991;
+      function rnd() { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }
+      for (var i = 0; i < 240; i++) {
+        var base = NODES[Math.floor(rnd() * NODES.length)];
+        var jx = px(base.lon) + (rnd() - 0.5) * 78;
+        var jy = py(base.lat) + (rnd() - 0.5) * 78;
+        wash.appendChild(svgEl("circle", { cx: jx.toFixed(1), cy: jy.toFixed(1), r: "2.2", fill: "#5E7C72" }));
+      }
+      svg.appendChild(wash);
+    }
+
+    // corridors
+    var arcs = svgEl("g", {});
+    CORRIDORS.forEach(function (c) {
+      var x1 = px(c.from[0]), y1 = py(c.from[1]), x2 = px(c.to[0]), y2 = py(c.to[1]);
+      var mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+      var dx = x2 - x1, dy = y2 - y1;
+      var cx = mx - dy * 0.17, cy = my + dx * 0.17;
+      var path = svgEl("path", {
+        d: "M " + x1.toFixed(1) + " " + y1.toFixed(1) + " Q " + cx.toFixed(1) + " " + cy.toFixed(1) + " " + x2.toFixed(1) + " " + y2.toFixed(1),
+        fill: "none", stroke: "#B4661A", "stroke-width": "1.3", opacity: "0.42", "stroke-dasharray": "5 5"
+      });
+      path.appendChild(svgEl("title", {})).textContent = c.label;
+      arcs.appendChild(path);
+    });
+    svg.appendChild(arcs);
+
+    // nodes
+    var visible = NODES.filter(function (n) { return currentPhase === 1 ? n.p === 1 : true; });
+    visible.forEach(function (n) {
+      var g = svgEl("g", { class: "node", tabindex: "0", role: "button", "aria-label": n.n + ", " + n.r });
+      var x = px(n.lon), y = py(n.lat), r = radiusFor(n.h);
+      g.appendChild(svgEl("circle", { cx: x, cy: y, r: r + 5, fill: TYPE_COLOR[n.t], opacity: "0.14" }));
+      var dot = svgEl("circle", { class: "dot", cx: x, cy: y, r: r, fill: TYPE_COLOR[n.t], "fill-opacity": "0.85", stroke: "#0C1512", "stroke-width": "1" });
+      g.appendChild(dot);
+      g.appendChild(svgEl("circle", { class: "hit", cx: x, cy: y, r: Math.max(r + 9, 14) }));
+
+      if (currentPhase === 1 || n.h >= 1900) {
+        var lbl = svgEl("text", {
+          x: x + r + 6, y: y + 3.6,
+          "font-family": "ui-monospace, Consolas, monospace",
+          "font-size": "11", fill: "#8FA79D"
+        });
+        lbl.textContent = n.n;
+        g.appendChild(lbl);
+      }
+
+      function show() {
+        readout.innerHTML =
+          "<strong>" + n.n + "</strong>" +
+          '<span class="rk">Region </span>' + n.r + "<br>" +
+          '<span class="rk">Type </span>' + TYPE_LABEL[n.t] + "<br>" +
+          '<span class="rk">Est. head / month </span>' + n.h.toLocaleString("en-US") + "<br>" +
+          '<span class="rk">Phase </span>' + n.p + "<br><br>" + n.note;
+      }
+      g.addEventListener("mouseenter", show);
+      g.addEventListener("focus", show);
+      g.addEventListener("click", show);
+      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(); } });
+
+      svg.appendChild(g);
+    });
+
+    if (currentPhase === 3) {
+      var cap = svgEl("text", { x: 30, y: H - 22, "font-family": "ui-monospace, Consolas, monospace", "font-size": "12", fill: "#6F857C" });
+      cap.textContent = "Phase 3 — named nodes plus 240 primary markets shown as density";
+      svg.appendChild(cap);
+    }
+
+    mapFigure.appendChild(svg);
+  }
+
+  buildMap();
+
+  Array.prototype.forEach.call(document.querySelectorAll(".phase-toggle button"), function (btn) {
+    btn.addEventListener("click", function () {
+      currentPhase = parseInt(btn.getAttribute("data-phase"), 10);
+      Array.prototype.forEach.call(document.querySelectorAll(".phase-toggle button"), function (b) {
+        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+      });
+      buildMap();
+    });
+  });
+
+  /* =========================================================
+     FINANCIAL MODEL
+     ========================================================= */
+
+  var BASE = { nodes: 280, cattle: 900, price: 700000, comm: 1.5, crop: 60, loan: 30 };
+
+  var NODE_SHARE = [0.050, 0.143, 0.339, 0.643, 1.000];
+  var MATURITY   = [0.30, 0.45, 0.55, 0.62, 0.68];
+  var LOAN_SHAPE = [0.133, 0.333, 0.600, 0.800, 1.000];
+  var CROP_SHAPE = [0.700, 0.867, 0.917, 0.933, 1.000];
+
+  var TECH   = [0.95, 1.70, 2.90, 4.40, 6.20];
+  var GA     = [0.42, 0.75, 1.35, 2.30, 3.40];
+  var MKT    = [0.30, 0.65, 1.30, 2.10, 2.90];
+  var FIELD_PER_NODE = [0.042, 0.040, 0.038, 0.036, 0.034];
+  var HW_PER_NODE = 0.023;
+
+  var SHOAT_RATIO = 2;           // shoats per cattle head at a node
+  var SHOAT_PRICE = 120000;
+  var CROP_COMM = 0.009;
+  var LOGISTICS_RATE = 0.0024;
+  var PAY_RATE = 0.0030;
+  var DATA_PER_NODE_MONTH = 0.0018;  // TZS bn
+  var CREDIT_FEE = 0.012;
+  var TENOR_DAYS = 45;
+  var NET_MARGIN = 0.10;
+  var FLOAT_DAYS = 2;
+  var FX = 2650;
+
+  var els = {
+    nodes: document.getElementById("cNodes"),
+    cattle: document.getElementById("cCattle"),
+    price: document.getElementById("cPrice"),
+    comm: document.getElementById("cComm"),
+    crop: document.getElementById("cCrop"),
+    loan: document.getElementById("cLoan")
+  };
+  var outs = {
+    nodes: document.getElementById("oNodes"),
+    cattle: document.getElementById("oCattle"),
+    price: document.getElementById("oPrice"),
+    comm: document.getElementById("oComm"),
+    crop: document.getElementById("oCrop"),
+    loan: document.getElementById("oLoan")
+  };
+
+  function bn(v, dp) { return v.toLocaleString("en-US", { minimumFractionDigits: dp === undefined ? 2 : dp, maximumFractionDigits: dp === undefined ? 2 : dp }); }
+
+  function compute() {
+    var nodesY5 = +els.nodes.value;
+    var cattle = +els.cattle.value;
+    var price = +els.price.value;
+    var comm = +els.comm.value / 100;
+    var cropY5 = +els.crop.value / 100;
+    var loanY5 = +els.loan.value / 100;
+
+    var nodeAnnualGmv = 12 * (cattle * price + cattle * SHOAT_RATIO * SHOAT_PRICE) / 1e9; // TZS bn
+
+    var y = [];
+    for (var i = 0; i < 5; i++) {
+      var nodes = Math.round(nodesY5 * NODE_SHARE[i]);
+      var gl = nodes * MATURITY[i] * nodeAnnualGmv;
+      var gc = gl * cropY5 * CROP_SHAPE[i];
+      var gmv = gl + gc;
+      var loanRatio = loanY5 * LOAN_SHAPE[i];
+
+      var rComm = gl * comm + gc * CROP_COMM;
+      var rLog  = gl * LOGISTICS_RATE;
+      var rCred = gmv * loanRatio * CREDIT_FEE;
+      var rData = nodes * MATURITY[i] * 12 * DATA_PER_NODE_MONTH;
+      var rev = rComm + rLog + rCred + rData;
+
+      var cField = nodes * FIELD_PER_NODE[i];
+      var cHw = nodes * HW_PER_NODE;
+      var cPay = gmv * PAY_RATE;
+      var cost = TECH[i] + cField + cHw + cPay + GA[i] + MKT[i];
+
+      y.push({
+        nodes: nodes, gl: gl, gc: gc, gmv: gmv,
+        rComm: rComm, rLog: rLog, rCred: rCred, rData: rData, rev: rev,
+        cost: cost, ebitda: rev - cost,
+        loanVol: gmv * loanRatio
+      });
+    }
+
+    var cum = 0, peak = 0, breakYear = null;
+    y.forEach(function (r, i) {
+      cum += r.ebitda;
+      r.cum = cum;
+      if (cum < peak) peak = cum;
+      if (breakYear === null && r.ebitda > 0) breakYear = i + 1;
+    });
+
+    return { y: y, peak: peak, breakYear: breakYear };
+  }
+
+  function renderModel() {
+    outs.nodes.textContent = els.nodes.value;
+    outs.cattle.textContent = els.cattle.value;
+    outs.price.textContent = (+els.price.value).toLocaleString("en-US");
+    outs.comm.textContent = (+els.comm.value).toFixed(2) + "%";
+    outs.crop.textContent = els.crop.value + "%";
+    outs.loan.textContent = els.loan.value + "%";
+
+    var m = compute();
+    var y = m.y;
+
+    var rows = [
+      { label: "Active nodes", key: "nodes", dp: 0 },
+      { label: "Livestock GMV", key: "gl", rule: true },
+      { label: "Crop GMV", key: "gc" },
+      { label: "Total GMV cleared", key: "gmv", total: true },
+      { label: "Trade commission", key: "rComm", rule: true },
+      { label: "Haulage matching", key: "rLog" },
+      { label: "Credit &amp; custody fees", key: "rCred" },
+      { label: "Data, insurance, verification", key: "rData" },
+      { label: "Total revenue", key: "rev", total: true },
+      { label: "Total operating cost", key: "cost", rule: true },
+      { label: "EBITDA", key: "ebitda", total: true, signed: true },
+      { label: "Cumulative cash", key: "cum", signed: true }
+    ];
+
+    var html = rows.map(function (r) {
+      var cls = (r.total ? "total" : "") + (r.rule ? " rule-above" : "");
+      var cells = y.map(function (v) {
+        var raw = v[r.key];
+        var txt = r.dp === 0 ? Math.round(raw).toLocaleString("en-US") : bn(raw, raw >= 100 ? 0 : 1);
+        var c = "";
+        if (r.signed) { c = raw < 0 ? ' class="neg"' : ' class="pos"'; if (raw < 0) txt = "(" + txt.replace("-", "") + ")"; }
+        return "<td" + c + ">" + txt + "</td>";
+      }).join("");
+      return '<tr class="' + cls.trim() + '"><td>' + r.label + "</td>" + cells + "</tr>";
+    }).join("");
+
+    document.getElementById("modelBody").innerHTML = html;
+
+    var y5 = y[4];
+    document.getElementById("figY5Rev").textContent = bn(y5.rev, 1) + "bn";
+    document.getElementById("figY5Rev").className = "v num pos";
+    document.getElementById("figY5Gmv").textContent = bn(y5.gmv / 1000, 2) + "tn";
+    document.getElementById("figBreak").textContent = m.breakYear ? "Year " + m.breakYear : "beyond Yr 5";
+    document.getElementById("figPeak").textContent = bn(Math.abs(m.peak), 1) + "bn";
+
+    // bank panel
+    var orig = y5.loanVol;
+    var book = orig * TENOR_DAYS / 365;
+    var nii = book * NET_MARGIN;
+    var flt = y5.gmv * FLOAT_DAYS / 365;
+    document.getElementById("bankOrig").textContent = "TZS " + bn(orig, 0) + "bn";
+    document.getElementById("bankBook").textContent = "TZS " + bn(book, 1) + "bn";
+    document.getElementById("bankNii").textContent = "TZS " + bn(nii, 2) + "bn";
+    document.getElementById("bankFloat").textContent = "TZS " + bn(flt, 1) + "bn";
+
+    renderChart(y);
+  }
+
+  function renderChart(y) {
+    var w = 760, h = 300, padL = 62, padR = 20, padT = 16, padB = 34;
+    var maxRev = Math.max.apply(null, y.map(function (r) { return r.rev; }));
+    var minEb = Math.min.apply(null, y.map(function (r) { return r.ebitda; }));
+    var top = Math.max(maxRev, 1) * 1.12;
+    var bottom = Math.min(minEb, 0) * 1.35;
+    var span = top - bottom;
+
+    function sy(v) { return padT + (top - v) / span * (h - padT - padB); }
+
+    var bandW = (w - padL - padR) / 5;
+    var barW = bandW * 0.46;
+
+    var parts = [];
+
+    // zero / grid
+    var ticks = 5;
+    for (var t = 0; t <= ticks; t++) {
+      var val = bottom + span * t / ticks;
+      var yy = sy(val);
+      parts.push('<line x1="' + padL + '" y1="' + yy.toFixed(1) + '" x2="' + (w - padR) + '" y2="' + yy.toFixed(1) + '" stroke="var(--line-soft)" stroke-width="1"/>');
+      parts.push('<text x="' + (padL - 10) + '" y="' + (yy + 4).toFixed(1) + '" text-anchor="end" font-family="ui-monospace, Consolas, monospace" font-size="10" fill="var(--ink-faint)">' + Math.round(val) + '</text>');
+    }
+    parts.push('<line x1="' + padL + '" y1="' + sy(0).toFixed(1) + '" x2="' + (w - padR) + '" y2="' + sy(0).toFixed(1) + '" stroke="var(--line)" stroke-width="1.4"/>');
+
+    var pts = [];
+    y.forEach(function (r, i) {
+      var cx = padL + bandW * i + bandW / 2;
+      var x0 = cx - barW / 2;
+      var stack = [
+        { v: r.rComm, c: "var(--ochre)" },
+        { v: r.rCred, c: "var(--moss)" },
+        { v: r.rLog + r.rData, c: "var(--brass)" }
+      ];
+      var acc = 0;
+      stack.forEach(function (s) {
+        var yTop = sy(acc + s.v), yBot = sy(acc);
+        parts.push('<rect x="' + x0.toFixed(1) + '" y="' + yTop.toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + Math.max(0, yBot - yTop).toFixed(1) + '" fill="' + s.c + '"/>');
+        acc += s.v;
+      });
+      pts.push([cx, sy(r.ebitda)]);
+      parts.push('<text x="' + cx.toFixed(1) + '" y="' + (h - 12) + '" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="11" fill="var(--ink-faint)">Yr ' + (i + 1) + '</text>');
+    });
+
+    parts.push('<polyline points="' + pts.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" ") + '" fill="none" stroke="var(--oxblood)" stroke-width="2"/>');
+    pts.forEach(function (p) {
+      parts.push('<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3.4" fill="var(--surface)" stroke="var(--oxblood)" stroke-width="2"/>');
+    });
+
+    parts.push('<text x="' + padL + '" y="' + (padT - 2) + '" font-family="ui-monospace, Consolas, monospace" font-size="10" fill="var(--ink-faint)">TZS bn</text>');
+
+    document.getElementById("chart").innerHTML =
+      '<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="Stacked revenue by line with EBITDA overlay, years one to five">' + parts.join("") + "</svg>";
+  }
+
+  Object.keys(els).forEach(function (k) { els[k].addEventListener("input", renderModel); });
+
+  document.getElementById("btnReset").addEventListener("click", function () {
+    els.nodes.value = BASE.nodes;
+    els.cattle.value = BASE.cattle;
+    els.price.value = BASE.price;
+    els.comm.value = BASE.comm;
+    els.crop.value = BASE.crop;
+    els.loan.value = BASE.loan;
+    renderModel();
+  });
+
+  renderModel();
+})();
+</script>

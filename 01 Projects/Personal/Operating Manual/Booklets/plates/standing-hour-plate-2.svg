@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" role="img" aria-label="Two paths. Five hundred thousand free users reach no budget line and produce no revenue. Four clients reach an existing monthly budget line and cover the whole household cost."><style>.svg-label{font-family: "JetBrains Mono", monospace; font-size: 11px; fill: #737C88; letter-spacing: 0.06em;}.svg-name{font-family: "Newsreader", Georgia, serif; font-size: 14px; fill: #E4E7EA;}.svg-num{font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; fill: #E4E7EA;}</style><rect x="0" y="0" width="640" height="250" fill="#171C24"/>
+        <defs>
+          <marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+          </marker>
+        </defs>
+        <text x="20" y="24" class="svg-label" fill="#C4644C">A — ADOPTION WITHOUT A PAYER</text>
+        <rect x="20" y="40" width="170" height="56" fill="#1E242E" stroke="#C4644C"></rect>
+        <text x="105" y="64" text-anchor="middle" class="svg-name">500,000 users</text>
+        <text x="105" y="82" text-anchor="middle" class="svg-label">free, engaged, real</text>
+        <line x1="192" y1="68" x2="286" y2="68" stroke="currentColor" stroke-width="2" marker-end="url(#ah4)" color="#C4644C"></line>
+        <text x="239" y="58" text-anchor="middle" class="svg-label" fill="#C4644C">no budget line</text>
+        <rect x="290" y="40" width="150" height="56" fill="none" stroke="#C4644C" stroke-dasharray="5 4"></rect>
+        <text x="365" y="73" text-anchor="middle" class="svg-name" fill="#C4644C">nobody to invoice</text>
+        <line x1="442" y1="68" x2="512" y2="68" stroke="currentColor" stroke-width="2" marker-end="url(#ah4)" color="#C4644C"></line>
+        <text x="600" y="73" text-anchor="end" class="svg-num" fill="#C4644C">$0</text>
+        <text x="20" y="152" class="svg-label" fill="#57A08F">B — A PAYER WITH AN EXISTING LINE</text>
+        <rect x="20" y="168" width="170" height="56" fill="#1E242E" stroke="#57A08F"></rect>
+        <text x="105" y="192" text-anchor="middle" class="svg-name">4 clients</text>
+        <text x="105" y="210" text-anchor="middle" class="svg-label">at $350 / month</text>
+        <line x1="192" y1="196" x2="286" y2="196" stroke="currentColor" stroke-width="2" marker-end="url(#ah4)" color="#57A08F"></line>
+        <text x="239" y="186" text-anchor="middle" class="svg-label" fill="#57A08F">line already exists</text>
+        <rect x="290" y="168" width="150" height="56" fill="#1E242E" stroke="#57A08F"></rect>
+        <text x="365" y="192" text-anchor="middle" class="svg-name">bookkeeping budget</text>
+        <text x="365" y="210" text-anchor="middle" class="svg-label">$400–800/mo, allocated</text>
+        <line x1="442" y1="196" x2="512" y2="196" stroke="currentColor" stroke-width="2" marker-end="url(#ah4)" color="#57A08F"></line>
+        <text x="600" y="192" text-anchor="end" class="svg-num" fill="#57A08F">$1,400</text>
+        <text x="600" y="210" text-anchor="end" class="svg-label">covers everything</text>
+      </svg>

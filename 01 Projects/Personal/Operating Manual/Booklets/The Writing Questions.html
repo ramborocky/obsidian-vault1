@@ -1,0 +1,501 @@
+<title>The Writing Questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+
+<style>
+  :root {
+    --paper:     #FBFBF8;
+    --page:      #FFFFFF;
+    --ink:       #14161A;
+    --ink-soft:  #4B515A;
+    --ink-faint: #8B9099;
+    --rule:      #E1E1DC;
+    --rule-firm: #B8B8B1;
+    --accent:    #C0341C;
+
+    --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --body:    "Literata", Georgia, "Times New Roman", serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:     #131417;
+      --page:      #191B1F;
+      --ink:       #ECEAE5;
+      --ink-soft:  #ADB2BA;
+      --ink-faint: #7B8089;
+      --rule:      #2B2E33;
+      --rule-firm: #474B52;
+      --accent:    #EE7A5F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:     #131417;
+    --page:      #191B1F;
+    --ink:       #ECEAE5;
+    --ink-soft:  #ADB2BA;
+    --ink-faint: #7B8089;
+    --rule:      #2B2E33;
+    --rule-firm: #474B52;
+    --accent:    #EE7A5F;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+  p { margin: 0; }
+  strong { font-weight: 600; }
+
+  .vol {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .sc {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- title page ---------- */
+  .title-page {
+    margin-top: 3.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--rule-firm);
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    text-align: center;
+    align-items: center;
+  }
+  .numeral-mark {
+    font-family: var(--display);
+    font-size: clamp(4.5rem, 16vw, 8rem);
+    line-height: 0.8;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    padding-left: 0.22em;
+  }
+  .title-page h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.1rem, 6vw, 3.3rem);
+    line-height: 1.06;
+    margin: 0;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+  .title-page .byline {
+    font-size: 0.95rem;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+  .epigraph {
+    max-width: 30rem;
+    margin: 1rem auto 0;
+    font-family: var(--display);
+    font-size: 1.28rem;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  .epigraph cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--body);
+    font-style: normal;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- preface ---------- */
+  .preface {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .preface .lead {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .preface p { color: var(--ink-soft); }
+  .preface strong { color: var(--ink); }
+
+  /* ---------- contents ---------- */
+  .contents { display: flex; flex-direction: column; gap: 0; }
+  .contents h2, .backmatter h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.9rem;
+    margin: 0 0 1.1rem;
+    line-height: 1.1;
+  }
+  .toc-row {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr auto;
+    gap: 0.9rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    font-size: 0.95rem;
+  }
+  .toc-row .n { color: var(--accent); font-variant-numeric: tabular-nums; }
+  .toc-row .src { color: var(--ink-faint); font-size: 0.8rem; text-align: right; }
+
+  /* ---------- questions ---------- */
+  .q {
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .q-open {
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+  }
+  .q-num {
+    font-family: var(--display);
+    font-size: clamp(2.6rem, 8vw, 4rem);
+    line-height: 0.85;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    flex: none;
+  }
+  .q h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.65rem, 4.6vw, 2.5rem);
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .stamp-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.4rem;
+    padding-bottom: 0.2rem;
+  }
+  .q p { color: var(--ink); }
+  .q .aside { color: var(--ink-soft); }
+
+  blockquote {
+    margin: 0.3rem 0;
+    padding: 0 0 0 1.2rem;
+    border-left: 2px solid var(--rule-firm);
+    font-family: var(--display);
+    font-size: 1.24rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .takeaway {
+    margin-top: 0.4rem;
+    padding: 0.95rem 0 0;
+    border-top: 2px solid var(--accent);
+    font-size: 1.05rem;
+  }
+  .takeaway span {
+    display: block;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+
+  .figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 0.9rem 1.6rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .figures div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .figures b {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.7rem;
+    line-height: 1;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .figures span { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.35; }
+
+  .table-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 22rem; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 0.45rem 0.9rem 0.45rem 0; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+  th {
+    font-size: 0.66rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--ink-faint);
+    border-bottom: 1px solid var(--rule-firm);
+  }
+  tr:last-child td { border-bottom: none; }
+
+  .backmatter {
+    border-top: 2px solid var(--ink);
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .backmatter p { color: var(--ink-soft); font-size: 0.95rem; }
+  .backmatter strong { color: var(--ink); }
+  ol.steps { margin: 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--ink-soft); font-size: 0.95rem; }
+  ol.steps strong { color: var(--ink); }
+
+  @media (max-width: 620px) {
+    .vol { gap: 3rem; }
+    .q-open { flex-direction: column; gap: 0.3rem; }
+  }
+</style>
+
+<div class="vol">
+
+  <header class="title-page">
+    <div class="numeral-mark">17</div>
+    <h1>The Writing Questions</h1>
+    <p class="byline">A companion volume — the prizes, the prose, and three things nobody had checked</p>
+    <blockquote class="epigraph">
+      The music is free; the bodily performance expensive. The book is free; the bodily talk by the author is expensive.
+      <cite>Kevin Kelly · Better Than Free</cite>
+    </blockquote>
+  </header>
+
+  <section class="preface">
+    <p class="sc">Preface</p>
+    <p class="lead">The vault’s prize apparatus is better than most agencies’. So this volume only reports what it did not already contain — and says plainly where it was ahead of me.</p>
+    <p>Two things I would have presented as findings turned out to be already there, in more detail than I had them. <strong>The KDP Business Plan already holds the 30% US withholding, the absent Tanzania–US treaty and the W-8BEN sequence.</strong> And <em>Morland — What They Actually Fund</em> already asks the best question in the vault about the ten-thousand-words-a-month undertaking. Both were ahead of me and are marked as such.</p>
+    <p>Three findings are new, and one of them should be settled before 1 November.</p>
+  </section>
+
+  <section class="preface">
+    <p class="sc">The three findings</p>
+    <div class="figures">
+      <div><b>2026</b><span>The Commonwealth Foundation investigated AI allegations in its own winning stories — by reading working drafts and time-stamped notes</span></div>
+      <div><b>£90</b><span>Morland’s expected value per application, against the Commonwealth’s £1.92. Roughly 47×</span></div>
+      <div><b>$1,900</b><span>Morland’s monthly payment, against a household-and-debt figure of $1,228</span></div>
+    </div>
+    <p>The first makes your git history the strongest authorship evidence most writers could produce — and makes the AI draft tracked beside the manuscript in a public repository an exposure. Both are true at once, and the difference between them is organisation, not content.</p>
+    <p>The second and third mean <strong>Morland is not a prize. It is a salaried commission with a delivery schedule</strong>, and it is the only thing on either side of this vault that pays the monthly bill in 2027.</p>
+  </section>
+
+  <nav class="contents">
+    <h2>Contents</h2>
+    <div class="toc-row"><span class="n">1</span><span>Who is the payer, and is it a reader?</span><span class="src">The EV table</span></div>
+    <div class="toc-row"><span class="n">2</span><span>Can I prove I wrote this?</span><span class="src">The AI controversy</span></div>
+    <div class="toc-row"><span class="n">3</span><span>What is sitting next to my manuscript?</span><span class="src">The public repo</span></div>
+    <div class="toc-row"><span class="n">4</span><span>Is this published, and who decides?</span><span class="src">The rules boundary</span></div>
+    <div class="toc-row"><span class="n">5</span><span>Which of these can I do more than once?</span><span class="src">Rule 3g</span></div>
+    <div class="toc-row"><span class="n">6</span><span>What does this pay per hour?</span><span class="src">25 hrs/week</span></div>
+    <div class="toc-row"><span class="n">7</span><span>Am I improving, or just producing?</span><span class="src">Loop length</span></div>
+    <div class="toc-row"><span class="n">8</span><span>Would I still be writing this in month nine?</span><span class="src">Yours, not mine</span></div>
+    <div class="toc-row"><span class="n">9</span><span>What can’t be copied in my prose?</span><span class="src">Kelly, on fiction</span></div>
+    <div class="toc-row"><span class="n">10</span><span>What did the winning application actually contain?</span><span class="src">Your own method</span></div>
+    <div class="toc-row"><span class="n">11</span><span>What am I not allowed to do?</span><span class="src">The rule traps</span></div>
+    <div class="toc-row"><span class="n">12</span><span>What does the rubric not measure?</span><span class="src">Nazir, 31/45</span></div>
+    <div class="toc-row"><span class="n">13</span><span>Have I let anyone read it?</span><span class="src">The missing verdict</span></div>
+    <div class="toc-row"><span class="n">14</span><span>What happens to the cut material?</span><span class="src">The Craft Log</span></div>
+    <div class="toc-row"><span class="n">15</span><span>What has to die for this to live?</span><span class="src">Steve Young</span></div>
+    <div class="toc-row"><span class="n">16</span><span>What would this look like if it were easy?</span><span class="src">Ferriss</span></div>
+    <div class="toc-row"><span class="n">17</span><span>What’s the smallest exposure I can take today?</span><span class="src">31 August 2026</span></div>
+  </nav>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">1</span><h2>Who is the payer, and is it a reader?</h2></div>
+    <div class="stamp-line"><span class="sc">31 August 2026</span></div>
+    <p>Three routes out of the same four thousand words. They are not variations of one business — they are three different customers.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Route</th><th scope="col">Who pays</th><th scope="col">Expected value</th><th scope="col">Shape</th></tr></thead>
+      <tbody>
+        <tr><td>Commonwealth</td><td>A panel</td><td>£1.92 / entry</td><td>Lottery ticket</td></tr>
+        <tr><td><strong>Morland</strong></td><td>A foundation</td><td><strong>£90 / application</strong></td><td><strong>A monthly wage</strong></td></tr>
+        <tr><td>Paid markets</td><td>An editor</td><td>$200–480 on acceptance</td><td>An invoice</td></tr>
+      </tbody>
+    </table></div>
+    <p>Notice what none of the three is. <strong>None of them is a reader.</strong> A reader pays for a book, and no route here reaches one for years. That is not an argument against any of them — it is the reason the writing cannot be the income plan, and it stays true however good the prose gets.</p>
+    <div class="takeaway"><span>The question</span>For each thing I am about to spend a month on: <strong>who signs the cheque, how many of them are there, and what are the odds they sign mine?</strong> The campaign with the September deadline and 47× the expectation is currently the one being run in parallel.</div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">2</span><h2>Can I prove I wrote this?</h2></div>
+    <div class="stamp-line"><span class="sc">2026</span><span class="sc">The Commonwealth AI controversy</span></div>
+    <p>The Foundation investigated allegations of AI use in its own winning stories. It declined to use detection tools, citing artistic ownership over unpublished work. Instead it examined <strong>working drafts, time-stamped documents and notes</strong>, consulted judges, and took personal statements from every shortlisted writer.</p>
+    <p>Read that method again, because it changes what an archive is for. Detection tools are unreliable and everyone knows it. <strong>Provenance is not.</strong> A record of a piece coming into existence over months — bad versions, abandoned turns, revisions with reasons attached — is something no generated text has and none can be given after the fact.</p>
+    <p>You have one. Every draft of Chantal is a git commit, time-stamped, in order, with a message saying what changed. An archive hook captures pre-edit prose to the Craft Log before any overwrite. Six knowledge bases record the reasoning; a Pattern Log names the recurring failures. <strong>That is a stronger evidentiary record than most professional novelists could produce</strong>, and it exists because of a decision made for entirely unrelated reasons.</p>
+    <div class="takeaway"><span>The question</span>If someone doubted this was mine, what would I show them — and does it already exist? <strong>Written now it is a record. Written after a question arrives it is a defence, and reads like one.</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">3</span><h2>What is sitting next to my manuscript?</h2></div>
+    <div class="stamp-line"><span class="sc">31 August 2026</span><span class="sc">Read from git directly</span></div>
+    <p>The remote is public. Tracked in it right now, beside the submission candidate: a file named <em>Claude’s Version of Kalemie (AI Draft, Not Canon)</em> in the drafts folder, and the entire <em>x-factor</em> directory of AI-written craft experiments.</p>
+    <p><strong>Both are honestly labelled, and that was the right call</strong>, made before any of this was known. But read it from outside. Someone follows a link and finds a publicly readable repository containing an AI-written version of the same story, in a drafts folder, next to the entry. The disclaimer is <em>inside</em> the file. The filename is what a search returns.</p>
+    <p>The exposure is not to a finding of wrongdoing. It is to <strong>having to explain</strong> — in a year when the Foundation has said it is reviewing its processes, and when an allegation costs nothing to make and a great deal to answer.</p>
+    <p>The fix is not deletion. Git keeps history, a deletion is itself a fact in the record, and deleting destroys the labelling that currently protects you. <strong>Move the AI material to a private repository.</strong></p>
+    <div class="takeaway"><span>The question</span>What is adjacent to my work that I have never looked at from a stranger’s angle? Not <em>is it defensible</em> — <strong>is it explainable in one sentence to someone not inclined to be fair?</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">4</span><h2>Is this published, and who decides?</h2></div>
+    <div class="stamp-line"><span class="sc">The 2026 entry rules</span></div>
+    <p>The rules treat online publication as publication, <strong>with an explicit exception for personal blogs, personal websites and personal Facebook pages.</strong> Magazines, anthologies and other public platforms are not exempt.</p>
+    <p>So is a public code repository a personal website, or a public platform? On the natural reading it is the former. <strong>On the natural reading.</strong> That is not a ruling, and rule 3g means Chantal cannot be entered twice if the reading is wrong.</p>
+    <p>The asymmetry is the whole argument. Asking costs one email and some mild awkwardness. Not asking risks a story that has absorbed months, on a technicality, with no second attempt. <strong>A near-zero cost against a total loss is not a close call</strong> — and the only reason it stays unasked is that the answer might be inconvenient.</p>
+    <div class="takeaway"><span>The question</span>Which rule am I satisfying by interpretation rather than confirmation, and what does being wrong cost? <strong>Find the single definition the whole eligibility rests on. It is nearly always one, and nearly always assumed.</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">5</span><h2>Which of these can I do more than once?</h2></div>
+    <div class="stamp-line"><span class="sc">Rule 3g</span></div>
+    <p>A story entered cannot be entered again. Chantal gets one attempt, ever. That single fact should shape everything around it and mostly hasn’t.</p>
+    <p>One-shot events deserve care in proportion to their irreversibility, and the correct amount of optimisation for a one-shot is high. <strong>That is the honest defence of the Atelier.</strong> But the same fact cuts the other way: <strong>a one-shot cannot teach you anything in time to use it.</strong> Whatever the answer is, it arrives after the decisions it could have informed.</p>
+    <p>And the cycle makes it sharper. Chantal is story one of a planned cycle, and the cut material is trunk material for the rest. <strong>Every story after this one is a fresh attempt at everything.</strong> There is exactly one story in the plan that gets a single shot, and it is the one absorbing all the hours.</p>
+    <div class="takeaway"><span>The question</span>Is this a one-shot or a repeatable — and am I spending like it’s the other one?</div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">6</span><h2>What does this pay per hour?</h2></div>
+    <div class="stamp-line"><span class="sc">The Atelier, ~25 hrs/week</span></div>
+    <p>Every route in the vault is priced per outcome. None is priced per hour, and the hours are where the decision sits. Twelve weeks at twenty-five hours is <strong>three hundred hours.</strong></p>
+    <p>Three hundred hours at the Commonwealth is an expectation of £1.92. The same hours at Morland is a proposal, a biography and a polished extract — £90 of expectation, and a monthly wage if it lands. At paid markets it is perhaps a dozen finished submissions at $200–480 each.</p>
+    <p>The craft hours are not wasted in any of the three, which is what makes this hard and why the choice has never been forced. <strong>But a free entry that consumes twenty-five hours a week is one of the most expensive things you own, and the zero on the invoice is precisely what stops you noticing.</strong></p>
+    <p>And a third thing that is not arithmetic. Samin Nosrat shut down a thriving business because it was making her ill, and needed therapy rather than a spreadsheet to see it. You cannot spreadsheet your way out of everything, nor onto everything.</p>
+    <div class="takeaway"><span>The question</span>What is this paying per hour, at the hours I actually put in — <strong>and would I accept that number if someone offered it to me as a job?</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">7</span><h2>Am I improving, or just producing?</h2></div>
+    <div class="stamp-line"><span class="sc">Loop length</span></div>
+    <p><strong>Prizes: one signal a year, and it is a single bit.</strong> A yes or a silence, twelve months after the work, no explanation, panel composition changing. You cannot learn from it — only be selected by it. <strong>Paid markets: weeks</strong>, many times a year, occasionally with a line from an editor worth more than any prize result. <strong>Readers: days</strong>, and the only loop that answers whether this holds someone not obliged to finish.</p>
+    <p>The apparatus is aimed almost entirely at the slowest loop. And it already contains the evidence: <strong>the 2026 winner scores 31/45 on your rubric and beat 7,806 entries. Chantal scores 40.</strong> The dashboard reads that correctly as a warning.</p>
+    <div class="takeaway"><span>The question</span>What is the shortest loop available here, and am I in it? <strong>If the honest answer is that I’m waiting rather than practising, that is the finding.</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">8</span><h2>Would I still be writing this in month nine?</h2></div>
+    <div class="stamp-line"><span class="sc">Yours, not mine</span><span class="sc">Already in the vault</span></div>
+    <p>This is the best question in the vault and it is already there, in <em>Morland — What They Actually Fund</em>:</p>
+    <blockquote>Could you write 10,000 words a month of it for twelve months? That is the actual undertaking, every month. The idea that excites you least at month nine is the wrong idea, whatever it looks like now.</blockquote>
+    <p>Worth saying why it is so good. Most selection happens at the moment of maximum enthusiasm, when everything is possible and nothing attempted. <strong>Month nine is the honest test condition</strong> — novelty gone, no applause, difficulty fully visible, and the only fuel whatever was intrinsically there.</p>
+    <p>The proposal sheet scores seven axes out of thirty-five. <strong>Month nine is not one of them, and it should be the tiebreak.</strong> Two subjects can score identically and only one will still be written in July. It also protects against choosing the <em>impressive</em> subject — impressiveness is a month-one property, and it decays fastest of anything on the list.</p>
+    <div class="takeaway"><span>The question</span>Not <em>is this the best idea</em> but <strong>which of these am I still doing in month nine, on a bad day, with nobody watching?</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">9</span><h2>What can’t be copied in my prose?</h2></div>
+    <div class="stamp-line"><span class="sc">Kevin Kelly, applied to fiction</span></div>
+    <p>Kelly’s argument lands harder on fiction than anything else. <strong>Competent prose is now free.</strong> A machine will produce a clean, publishable-looking literary short story about a lake town in seconds, and it will be fine.</p>
+    <p>Your own Learning Curve base holds the sharpest answer, from Lynda Clark’s research: <strong>whatever a model generates by default is the cliché.</strong> That is a working definition of the enemy and it is testable — what a model reaches for first is the average of everything written before, and the gap between that average and your page is the only thing you are selling. Its companion finding is the practical one: <strong>grief arrives through the minor object.</strong> The specific, useless, true detail no aggregate would produce, because no aggregate contains it.</p>
+    <p>Four of Kelly’s eight survive for fiction: <strong>authenticity</strong> (nobody else stood where you stood), <strong>embodiment</strong> (a printed thing, a reading, a room), <strong>immediacy</strong> (readers who get it first), and <strong>patronage</strong> (people pay writers because they want them to continue). Every one is built by publishing, not by perfecting.</p>
+    <div class="takeaway"><span>The question</span>What is in this that a model could not have produced — <strong>and have I cut it, in a revision pass, for being strange?</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">10</span><h2>What did the winning application actually contain?</h2></div>
+    <div class="stamp-line"><span class="sc">Your own method, generalised</span></div>
+    <p>The vault does this better than most agencies — winning Morland applications reverse-engineered, the 2022 five read closely, a 2025 post-mortem, the 2026 Commonwealth winner scored against your own instrument.</p>
+    <p>The method: <strong>do not read advice about how to win.</strong> Find what actually won, get the closest available artefact, and read it the way an engineer reads a competitor’s product. What is present, what is absent, what order, how long, what the first paragraph does. Advice is generalised from memory and usually wrong in the specifics that matter. The artefact is evidence.</p>
+    <p>Where it is <em>not</em> being applied: the paid markets. The rates and the ladder exist; the same treatment has not been run on the venues. <strong>The magazines publish their whole back catalogue for free.</strong> Same method, against a target that answers in weeks instead of a year.</p>
+    <div class="takeaway"><span>The question</span>What is the closest artefact to the thing I want, can I get it, and <strong>have I read it as evidence rather than as inspiration?</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">11</span><h2>What am I not allowed to do?</h2></div>
+    <div class="stamp-line"><span class="sc">The rule traps</span></div>
+    <p>Fewer legal traps here than on the accounting side, and more <strong>rule</strong> traps — worse, because there is no appeal and no second attempt. Four, in descending order of what being wrong costs.</p>
+    <p><strong>Prior publication</strong> — online counts, except personal blogs and websites; where a public repository falls is unconfirmed. <strong>One entry per story, forever</strong> — known, and worth restating in the same list, because a rule you know can still be forgotten near a deadline. <strong>Authorship declaration</strong> — every entrant confirms the work is their own, and in 2026 the Foundation examined drafts to satisfy itself. <strong>Eligibility of form</strong> — Morland funds books of 80,000+ words and explicitly excludes short story collections; your proposal is investigative narrative non-fiction and clears it easily, but a drift back toward linked stories would kill the application on a definition.</p>
+    <p>None of these is found by reading craft books. All are found by reading the entry rules once, slowly, with a pen — an hour nobody spends because it produces nothing and feels like admin.</p>
+    <div class="takeaway"><span>The question</span>Which rule is the whole eligibility resting on, and am I inside it by fact or by assumption? <strong>The same question on the other side of the vault turned up a mentor requirement nobody had looked for.</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">12</span><h2>What does the rubric not measure?</h2></div>
+    <div class="stamp-line"><span class="sc">Nazir, 31/45</span></div>
+    <p>The most valuable thing on your dashboard is a disagreement: the 2026 winner scores <strong>31/45</strong> on your nine-axis rubric and beat 7,806 entries. Chantal scores <strong>40</strong>.</p>
+    <p>An instrument that disagrees with the outcome by nine points is not neutral — <strong>it is actively steering.</strong> Every hour spent raising a score on an axis the panel does not weight is an hour spent moving away from what wins. The rubric was built to measure quality and is being used to allocate effort, and those are different jobs.</p>
+    <p>What nine axes cannot hold is roughly Gardner’s vivid and continuous dream. It is not that voice is unmeasurable in principle — it is that it is not measurable <strong>by decomposition</strong>, and a rubric is a decomposition. You can score every part of a sentence and still not know whether the paragraph is alive.</p>
+    <p>Two consequences: <strong>one data point is not calibration</strong> — two more winners read the same way would turn a warning into a correction, and that is a weekend’s work. And the axis that matters most has no number: would a stranger, not obliged to finish, finish it?</p>
+    <div class="takeaway"><span>The question</span>What does this instrument measure well, what does it silently fail to measure, <strong>and am I optimising toward the measurement or toward the thing?</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">13</span><h2>Have I let anyone read it?</h2></div>
+    <div class="stamp-line"><span class="sc">The missing verdict</span></div>
+    <p>Six craft bases. A nine-axis rubric. An empirical campaign measuring real winners. A Craft Atlas pinning concepts to percentage points. Cold-read prompts for extracting honest feedback. A standing adversarial diagnosis of the live draft.</p>
+    <p><strong>Every one of those is a way of evaluating the story without a reader in the room.</strong> That is not a criticism — they are good, and better than what most writers have. It is an observation about what they share: all return a verdict you generated. None returns one you cannot control.</p>
+    <p>A reader can say <em>I got bored on page three</em> and there is no axis to appeal to. That is exactly why the reader is worth more than the instrument, and exactly why the instrument keeps getting built instead. The cold-read prompts already exist. <strong>The question is how many cold reads have actually happened.</strong></p>
+    <div class="takeaway"><span>The question</span>What is the last verdict on this work that I did not generate myself — <strong>and when was it?</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">14</span><h2>What happens to the cut material?</h2></div>
+    <div class="stamp-line"><span class="sc">The Craft Log</span></div>
+    <p>An archive hook captures pre-edit prose before any overwrite, and the Collection Tracker states the principle: cut material is trunk material for other stories in the cycle. <strong>This is the best structural decision in the vault</strong>, and most writers get it exactly wrong.</p>
+    <p>Cutting normally feels like loss, and felt loss is what makes writers defend weak passages. Convert cuts into inventory and the economics invert — <strong>a cut becomes a deposit rather than a deletion</strong>, and the resistance largely disappears. A craft benefit disguised as a filing system.</p>
+    <p>The second effect compounds. Every story after the first inherits a world, a lake, minor characters, a register, and an archive of material too good to lose and wrong for where it was written. <strong>Story five costs a fraction of what story one cost</strong> — and that fraction is the entire argument for a cycle.</p>
+    <div class="takeaway"><span>The question</span>Where does the discarded work go — somewhere it can be used, or somewhere it can only be mourned? <strong>A system that turns losses into inventory changes what you are willing to lose.</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">15</span><h2>What has to die for this to live?</h2></div>
+    <div class="stamp-line"><span class="sc">Steve Young</span><span class="sc">Your document</span></div>
+    <blockquote>Everyone needs to treat it like a death — to mourn it and bury it, and actually have it as a place you can keep referring to, almost like a grave site. Because otherwise you carry it around and you never transition.</blockquote>
+    <p>Staubach’s advice to him was one word: <em>run.</em> The game will never leave you, but you need to leave it. Read carefully, nothing is given up — Young keeps returning to the grave site. What dies is not the football. It is the <strong>primacy</strong>: the arrangement where one thing answers who you are and everything else is an interruption.</p>
+    <p>The arrangement to bury here is not <em>writer</em>. It is <strong>“writer — and one day the writing will pay, and until then the accounting is admin.”</strong> That sentence has been running the allocation, and it explains the shape of the vault exactly.</p>
+    <p>The reordering is small. The writing stops being the plan and becomes the practice: protected hours rather than all of them, no longer carrying the household. <strong>And it gets better as a result</strong>, because work that has to pay the rent this year cannot take the risks good work requires.</p>
+    <div class="takeaway"><span>The question</span>What arrangement has to be buried, with some ceremony, for the new thing to have room? <strong>Nothing is lost. What ends is the ordering.</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">16</span><h2>What would this look like if it were easy?</h2></div>
+    <div class="stamp-line"><span class="sc">Ferriss</span></div>
+    <p><strong>Winning something.</strong> Elaborate: a nine-axis rubric, six craft bases, an empirical campaign, a cross-index. Easy: finish the two paragraphs that are owed, submit, move on. Both briefs are already written and marked inline in Draft 4.</p>
+    <p><strong>Making the writing pay.</strong> Elaborate: win against 7,806 entries and convert it into an agent. Easy: one story a month to a venue paying $200–480 on acceptance, from a cycle that generates material anyway. <strong>Getting better.</strong> Elaborate: build a calibrated instrument. Easy: three honest readers, briefed with prompts that already exist, given a deadline. <strong>The repo question.</strong> Elaborate: a policy on public repositories and prize risk. Easy: one email, this week.</p>
+    <p>Look at what the easy versions share. <strong>Smaller, sooner, more exposed.</strong> The elaborate versions are bigger, later, safer — and that is not a coincidence. Complexity is frequently avoidance with a project plan attached, and it is most convincing when the complexity is genuinely skilled work.</p>
+    <div class="takeaway"><span>The question</span>If this were easy, what would it be? <strong>The elaborate version should have to win against that, and usually it can’t.</strong></div>
+  </article>
+
+  <article class="q">
+    <div class="q-open"><span class="q-num">17</span><h2>What’s the smallest exposure I can take today?</h2></div>
+    <div class="stamp-line"><span class="sc">31 August 2026</span><span class="sc">The only one due before tomorrow</span></div>
+    <p>The obstacle is not craft, information, or instruments. It is that <strong>the exposing act goes second</strong>, and the safe act — real, skilled, defensible work — goes first and absorbs the week. The writing side has a specific version: <strong>every instrument in the vault returns a verdict you generated.</strong></p>
+    <ol class="steps">
+      <li><strong>Email the Foundation</strong> the neutral rules question — does work in a personal public code repository count as previously published? Ten minutes, removes a disqualification risk currently sitting under an assumption.</li>
+      <li><strong>Move the AI material to a private repository.</strong> An hour. Removes the adjacency problem without deleting anything or destroying the labelling.</li>
+      <li><strong>Write the provenance page</strong> while it is still a record rather than a defence.</li>
+      <li><strong>Send three readers the draft</strong>, briefed with the cold-read prompts that already exist, with a deadline.</li>
+      <li><strong>Pick one paid market and send one story this month.</strong> Not the best story. One story.</li>
+    </ol>
+    <p>And the two paragraphs on the dashboard, which are not mine to write and never were.</p>
+    <div class="takeaway"><span>The question, every morning</span>What is the smallest thing I can do today that puts a verdict outside my own control? <strong>An act that cannot tell you you’re wrong has not exposed you to anything, however much work it contained.</strong></div>
+  </article>
+
+  <footer class="backmatter">
+    <h2>What was already there</h2>
+    <p>Two things I would have reported as findings were already in the vault, in more detail than I had them. <strong>The KDP Business Plan</strong> already states the absent Tanzania–US royalty treaty, the 30% withholding on US sales, the W-8BEN sequence, and that skipping the interview makes it worse. <strong>Morland — What They Actually Fund</strong> already asks the month-nine question about the ten-thousand-words-a-month undertaking, and asks it better than I would have. Both are marked as such in the notes rather than quietly absorbed.</p>
+    <p>Every chapter exists as its own note under <strong>01 Projects/Ventures/05 The Writing Questions/</strong>, with the workings in <em>Provenance — The AI Question and the Public Repo</em> and <em>Unknown Unknowns — The Writing Side</em>.</p>
+    <p><strong>One thing to settle before either deadline:</strong> whether a public code repository counts as prior publication. It costs one email and it is currently resting on an assumption, against a rule that allows no second attempt.</p>
+  </footer>
+
+</div>

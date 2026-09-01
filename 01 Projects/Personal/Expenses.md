@@ -150,6 +150,32 @@ If you're in a hurry, this is enough — I'll fill in the rest:
 | 2026-08-08 | Dala dala                      | Transport         |          800 |                                                                                                                                                                                               |
 | 2026-08-08 | Boda boda                      | Transport         |        1,500 |                                                                                                                                                                                               |
 | 2026-08-08 | Tip — basket holder            | Personal          |        1,000 | At the toilet; logged as given for holding a shopping basket                                                                                                                                 |
+| 2026-08-09 | —                              | —                 |            0 | No spending. **Corroborated:** two x-factor notes written and dated the 9th, one saying *"Today is 9 August"* — a desk day, and no fares logged, which fits                                   |
+| 2026-08-10 | —                              | —                 |            0 | No spending. **Corroborated:** vault commits 15:51–22:45, MNADA app rebuild, and the MEMS login + certificate upload on the ACPA file. Another desk day. **The ACPA application fee was not paid** — Day 7 still open, so it is not hiding in this gap |
+| 2026-08-11 | Repaid corner shop             | Debt/Repayment    |       40,000 | Running tab settled. No record of what period it covered                                                                                                                                      |
+| 2026-08-11 | Cooking gas                    | Household         |       25,000 |                                                                                                                                                                                               |
+| 2026-08-11 | Food money — given to wife     | Household         |       15,000 | For the home. Not part of the July four-way split                                                                                                                                             |
+| 2026-08-11 | English breakfast              | Food & Out        |       28,000 | At a restaurant/café                                                                                                                                                                          |
+| 2026-08-11 | Cappuccino                     | Food & Out        |        6,000 | ⚠️ **Moved here on my reading, not yours.** You said everything else was the 12th, but this was bought at the same café as the breakfast and you did not leave the house on the 12th. Say the word and it goes back |
+| 2026-08-11 | Bus fare                       | Transport         |        6,000 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |          800 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |        1,000 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |        1,000 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |          500 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |        4,000 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |        1,500 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |        1,000 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |        1,000 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |        1,000 |                                                                                                                                                                                               |
+| 2026-08-11 | Bus fare                       | Transport         |        1,500 |                                                                                                                                                                                               |
+| 2026-08-12 | Phone — handset                | Miscellaneous     |      350,000 | Flat label and Miscellaneous, same as the Mombasa line — see the repo note of 8 Aug. Largest single item in August. Sent, not carried — see the 3,500 below                                   |
+| 2026-08-12 | Transfer charge — M-Pesa       | Miscellaneous     |        3,500 | Attached to the 350,000 above                                                                                                                                                                 |
+| 2026-08-12 | Loan repayment — DMK Finance   | Debt/Repayment    |      120,000 | First lender repayment in August. Previous DMK payment was 200,000 on 27 July. Still no balance or due date recorded                                                                          |
+| 2026-08-12 | Transfer charge — DMK payment  | Debt/Repayment    |        3,500 | Filed with the payment it belongs to, not separately                                                                                                                                          |
+| 2026-08-12 | Damages — car into a house     | Miscellaneous     |       35,000 | ⚠️ **Dated the 12th on your instruction, but you did not leave the house on the 12th.** Either the crash was the 11th and you paid today, or the payment was sent. Say which                  |
+| 2026-08-12 | Household — misc               | Household         |       10,000 | Logged as approximate                                                                                                                                                                         |
+| 2026-08-12 | Allowance — child              | Family/Obligation |       10,000 | Child not named. Filed like Uweis's pocket money on 26 July                                                                                                                                    |
+| 2026-08-12 | Internet bundles               | Personal          |        7,000 | Under Personal with airtime. Move to Writing if it was bought for the work                                                                                                                    |
 
 ---
 
@@ -251,36 +277,70 @@ Anything about the House build or the ACPA qualification — neither appears in 
 
 ---
 
-### August 2026 — two days logged (6th and 8th)
+### August 2026 — four days logged (6th, 8th, 11th, 12th)
 
-**In 471,000 · logged 312,132 · held 118,000 · unaccounted 40,868.**
+**In 471,000 · logged 984,432.** The 12th alone is **539,000** — more than the whole month before it.
+
+#### 🔴 Money came in that this file has no record of
+
+```
+Received, all August              471,000
+Logged spending 6 + 8 Aug       − 312,132
+                                ─────────
+Cash you counted on 8 Aug         118,000   ← you counted it: 8,000 bank + 110,000 pocket
+Spent 11 Aug                    − 133,300
+                                ─────────
+Already short on the 11th        − 15,300
+Spent 12 Aug                    − 539,000
+                                ─────────
+SHORT                             554,300
+```
+
+**At least 554,300 came in between the 9th and the 12th and is not written down.** That is not the 8.4%/8.7% leak below — that gap is money going *out* unrecorded. **This is money coming *in* unrecorded**, and it is the larger number. A wage, a withdrawal, another after-hours run and new borrowing all look identical from here, and **only one of them adds a repayment you will owe.**
+
+**The dating narrows it usefully.** You were 15,300 short before the 11th ended, so **something arrived on the 9th, 10th or 11th** — the rest by the 12th.
+
+#### 🟢 And most of the 12th is recoverable, unlike every other gap in this file
+
+**You did not leave the house on the 12th, and 480,000 of the 539,000 went out by phone** — the 350,000 and the 120,000 each carry a **3,500 transfer charge**, which is proof they were sent electronically. **You cannot send money that was never in the wallet.**
+
+> **So the M-Pesa statement holds both halves of the answer: what went out on the 12th, and what came in to cover it.** Every previous gap in this file was cash, and cash has no statement. This one does. **Pull the statement for the 9th to the 12th and 554,300 stops being a mystery.**
 
 #### By day
 
-| Date      |    In |      Logged |  Difference |
-| --------- | ----------: | ----------: | ----------: |
-| **6 Aug** |      30,000 *(borrowed)* |  **26,100** |   **3,900** |
-| **8 Aug** |     441,000 *(after hours)* | **286,032** | **154,968** |
-| **Total** | **471,000** | **312,132** | **158,868** |
+| Date       |                        In |         Logged | What kind of day                                     |
+| ---------- | ------------------------: | -------------: | ---------------------------------------------------- |
+| **6 Aug**  |      30,000 *(borrowed)*  |     **26,100** |                                                      |
+| **8 Aug**  |   441,000 *(after hours)* |    **286,032** | Reconciled against counted cash                      |
+| 9 Aug      |                         — |          **0** | Desk day — two x-factor notes written and dated       |
+| 10 Aug     |                         — |          **0** | Desk day — vault commits 15:51–22:45, MEMS login      |
+| **11 Aug** |          **not recorded** |    **133,300** | The day out — eleven fares                            |
+| **12 Aug** |          **not recorded** |    **539,000** | House day — 480,000 of it sent by phone               |
+| **Total**  |               **471,000** |    **984,432** |                                                      |
 
-*Of that 158,868 difference, **118,000 is cash you are holding** and **40,868 is unaccounted.***
+**11 August working:** corner shop 40,000 · gas 25,000 · food money 15,000 · breakfast 28,000 · cappuccino 6,000 · fares 19,300 = **133,300**.
+Fares: 6,000 + 800 + 1,000 + 1,000 + 500 + 4,000 + 1,500 + 1,000 + 1,000 + 1,000 + 1,500 = **19,300** across **eleven trips** — the 6,000 and the 4,000 are long runs, not town hops.
 
-**6 August working:** 12,000 + 1,500 groceries · 6,000 cappuccino · 1,000 snacks · 800 + 800 + 2,000 + 2,000 fares = **26,100**.
-
-**8 August working:** Personal 77,500 · Household 61,532 · Family/Obligation 47,000 · Miscellaneous 45,000 · Debt/Repayment 32,000 · Food & Out 16,500 · Transport 6,500 = **286,032**.
+**12 August working:** handset 350,000 + 3,500 charge · DMK 120,000 + 3,500 charge · damages 35,000 · household 10,000 · allowance 10,000 · bundles 7,000 = **539,000**.
 
 #### By category — August so far
 
-| Category              |      Amount | Share |
-| --------------------- | ----------: | ----: |
-| **Personal**          |  **77,500** |   25% |
-| **Household**         |  **75,032** |   24% |
-| **Family/Obligation** |  **47,000** |   15% |
-| **Miscellaneous**     |  **45,000** |   14% |
-| **Debt/Repayment**    |  **32,000** |   10% |
-| **Food & Out**        |  **23,500** |    8% |
-| **Transport**         |  **12,100** |    4% |
-| **Total**             | **312,132** |       |
+| Category              |      Amount | Share |  11 Aug |  12 Aug |
+| --------------------- | ----------: | ----: | ------: | ------: |
+| **Miscellaneous**     | **433,500** |   44% |       — | 388,500 |
+| **Debt/Repayment**    | **195,500** |   20% |  40,000 | 123,500 |
+| **Household**         | **125,032** |   13% |  40,000 |  10,000 |
+| **Personal**          |  **84,500** |    9% |       — |   7,000 |
+| **Food & Out**        |  **57,500** |    6% |  34,000 |       — |
+| **Family/Obligation** |  **57,000** |    6% |       — |  10,000 |
+| **Transport**         |  **31,400** |    3% |  19,300 |       — |
+| **Total**             | **984,432** |       | **133,300** | **539,000** |
+
+**Miscellaneous is now the largest category in August at 44%, and 350,000 of it is one handset.** The Personal finding below — *Personal is the largest category, watch it* — **is superseded.** Personal has dropped to 9% and is not the line to watch. **One purchase on the 12th is 36% of everything logged this month**, which is larger than the AMON-scale observation July produced.
+
+#### The repayment question from the 8th is answered
+
+August's only repayment was the 32,000 to the friend; the note below asked whether AMON or DMK had anything coming. **DMK got 120,000 on the 12th** (+3,500 transfer charge), the corner shop tab was cleared at 40,000, and **Debt/Repayment is now 195,500 for the month — 20% of it.** **AMON still has nothing against it in August**, and neither lender has a balance, instalment or due date written down anywhere in this file. That remains the single biggest hole.
 
 #### ✅ The borrowed 30,000 is already repaid — flag closed
 
@@ -398,6 +458,11 @@ UNACCOUNTED                  40,868
 - **2026-08-08 · recalculated again** — **Repayment of 32,000 to the friend added** (Debt/Repayment), against the 30,000 borrowed on the 6th. Day **254,032 → 286,032**; August **280,132 → 312,132**; unspent **190,868 → 158,868**. **The third-credit-line flag raised earlier today is closed** — the loan lasted two days. Two things assumed and open: **the date** (taken as the 8th) and **the 2,000 over** — fee or thank-you. It is 6.7% on 30,000 over two days if it is a fee, and nothing at all if it is not.
 - **2026-08-08 · recalculated** — Two rows added, one recategorised. **Haircut 25,000 (Personal)** and **10,000 sent home for household groceries (Household)**. The **45,000 Mombasa** line is now **Item: Mombasa · Category: Miscellaneous**, note cleared, at your instruction — and **Miscellaneous is added to the categories table** as *money out that fits nowhere else and does not need a reason in this file.* Day total **219,032 → 254,032**; August **245,132 → 280,132**; unspent **225,868 → 190,868**. **You also named both sources: the 30,000 was borrowed from a friend and the 441,000 was after-hours work** — the first is a third credit line and is treated as one above.
 - **2026-08-08** — Logged the 6th and the 8th: **41 rows, 245,132** against **471,000** received. The 6th is complete bar **3,900** you said you cannot place. The 8th logs **219,032 of 441,000** — **the other 221,968 is most likely still with you rather than missing**, and that is the one question worth answering while the day is fresh. Three things need you: **which child** the 17,000 boarding money was for, so it joins the July fee entries; **the source** of both receipts, since "received" could be salary, bank or cash; and whether any **debt repayment** is due this month, because August currently shows none against July's 1,200,000. The Mombasa line is filed under **Personal** with a deliberately flat label — see the note above about the repository; rename it as you like, it is your log.
+- **2026-08-12** — Logged **25 rows, 672,300** across two days. Two labels kept flat and filed **Miscellaneous** — the **350,000 handset** and its **3,500 M-Pesa charge** — following the Mombasa precedent from 8 Aug, because this file is tracked in a public repo. Both transfer charges are filed with the payment they belong to rather than in a fees bucket, so the category totals still mean something. Two things filed on assumption: the **10,000 allowance** has no child named, and the **7,000 internet** is under Personal not Writing.
+- **2026-08-12 · dates corrected by you** — **The eleven fares, the English breakfast, the cooking gas, the 15,000 food money and the 40,000 corner shop repayment all move to the 11th.** The 11th becomes a real day of **133,300**; the 12th settles at **539,000**. The month total does not change (984,432) — only the shape does. **Two rows I could not take literally:** the **6,000 cappuccino** was bought at the same café as the breakfast, so it moved to the 11th with the meal even though you said everything else was today; and the **35,000 for the house your car hit** is dated the 12th as you said, but you also did not leave the house on the 12th. Both are flagged in the log rather than quietly fixed. Say the word on either.
+- **2026-08-12 · what git could and could not answer** — You asked whether the repo knew anything about the 9th, 10th and 11th. **It does, about the days — not the money.** The **9th** has two x-factor notes written and dated, one opening *"Today is 9 August."* The **10th** has vault commits from 15:51 to 22:45, the MNADA app rebuild, and the **MEMS login with a certificate uploaded** on the ACPA file. Both were desk days, which is exactly why no fares appear on them — that corroborates the log rather than contradicting it. The **11th has nothing in git at all**, and it is the day you were out. **One thing ruled out: the ACPA application fee was not paid** — Day 7 is still open on that file, so it is not hiding inside the gap. **No commit records money arriving.** Git tracks what you wrote, not what you were paid; the vault has no file that logs income, which is why the Cash Withdrawn table is the only instrument for it.
+- **2026-08-12 · the finding** — **672,300 spent since the 8th against 118,000 you counted and nothing received since.** At least **554,300 came in between the 9th and the 12th that this file has no record of.** Every previous gap in this log has been money leaving unrecorded; this is the first time the *income* side is the hole, and it is bigger than any spending gap here. **It matters because a withdrawal, a wage and a new loan are indistinguishable from inside the log, and one of them adds a repayment.** ✅ **But unlike every gap before it, this one is recoverable:** you did not leave the house on the 12th and **480,000 of that day went out by phone** — the two 3,500 charges prove it. **Money cannot be sent from an empty wallet, so the M-Pesa statement for the 9th to the 12th holds both what went out and what came in.** That statement is the single action worth taking on this file today.
+- **2026-08-12** — **The "Personal is the largest category" flag from 8 Aug is superseded.** Personal is now 9% of August. **Miscellaneous is 44%, and 350,000 of that is a single handset — 36% of everything logged this month.** Separately, the 8 Aug question *"is a debt repayment coming?"* is answered: **DMK 120,000 + 3,500 charge, and the corner shop 40,000.** Debt/Repayment is 195,500, a fifth of the month. **AMON has still had nothing, and neither lender has a balance or due date recorded anywhere.**
 - **2026-07-26** — Added a **Food & Out** category (eating and drinking outside the house), split from **Household** (things consumed at home, house help, repairs). Body lotion, shoe repair and the phone went to **Personal**. Say if you'd rather they sat elsewhere — it is your log.
 
 ---

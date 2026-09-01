@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Release signing is driven by an untracked keystore.properties in the app-android/ folder:
+//
+//   storeFile=C:/keys/mnada-release.jks
+//   storePassword=...
+//   keyAlias=mnada
+//   keyPassword=...
+//
+// If that file is absent the build falls back to the debug key, which is fine for a demo on a
+// phone in a meeting and wrong for anything handed to a bank, a custodian or a field agent.
+def keystorePropsFile = rootProject.file('keystore.properties')
+def keystoreProps = new Properties()
+def hasReleaseKey = keystorePropsFile.exists()
+if (hasReleaseKey) {
+    keystorePropsFile.withInputStream { keystoreProps.load(it) }
+}
+
+android {
+    namespace 'tz.mnada.exchange'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+
+    defaultConfig {
+        applicationId "tz.mnada.exchange"
+        minSdk 26
+        targetSdk 35
+        versionCode 2
+        versionName "0.2.0-custody"
+    }
+
+    signingConfigs {
+        if (hasReleaseKey) {
+            release {
+                storeFile file(keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                keyPassword keystoreProps['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig hasReleaseKey ? signingConfigs.release : signingConfigs.debug
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    packagingOptions {
+        resources.excludes += ['META-INF/*']
+    }
+}

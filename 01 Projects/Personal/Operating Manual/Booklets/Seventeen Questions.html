@@ -1,0 +1,551 @@
+<title>Seventeen Questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+
+<style>
+  :root {
+    --paper:     #FBFBF8;
+    --page:      #FFFFFF;
+    --ink:       #14161A;
+    --ink-soft:  #4B515A;
+    --ink-faint: #8B9099;
+    --rule:      #E1E1DC;
+    --rule-firm: #B8B8B1;
+    --accent:    #C0341C;
+
+    --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --body:    "Literata", Georgia, "Times New Roman", serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:     #131417;
+      --page:      #191B1F;
+      --ink:       #ECEAE5;
+      --ink-soft:  #ADB2BA;
+      --ink-faint: #7B8089;
+      --rule:      #2B2E33;
+      --rule-firm: #474B52;
+      --accent:    #EE7A5F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:     #131417;
+    --page:      #191B1F;
+    --ink:       #ECEAE5;
+    --ink-soft:  #ADB2BA;
+    --ink-faint: #7B8089;
+    --rule:      #2B2E33;
+    --rule-firm: #474B52;
+    --accent:    #EE7A5F;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+  p { margin: 0; }
+  strong { font-weight: 600; }
+
+  .vol {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .sc {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- title page ---------- */
+  .title-page {
+    margin-top: 3.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--rule-firm);
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    text-align: center;
+    align-items: center;
+  }
+  .numeral-mark {
+    font-family: var(--display);
+    font-size: clamp(4.5rem, 16vw, 8rem);
+    line-height: 0.8;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    padding-left: 0.22em;
+  }
+  .title-page h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.1rem, 6vw, 3.3rem);
+    line-height: 1.06;
+    margin: 0;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+  .title-page .byline {
+    font-size: 0.95rem;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+  .epigraph {
+    max-width: 30rem;
+    margin: 1rem auto 0;
+    font-family: var(--display);
+    font-size: 1.28rem;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  .epigraph cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--body);
+    font-style: normal;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- preface ---------- */
+  .preface {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .preface .lead {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .preface p { color: var(--ink-soft); }
+  .preface strong { color: var(--ink); }
+
+  /* ---------- contents ---------- */
+  .contents { display: flex; flex-direction: column; gap: 0; }
+  .contents h2, .backmatter h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.9rem;
+    margin: 0 0 1.1rem;
+    line-height: 1.1;
+  }
+  .toc-row {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr auto;
+    gap: 0.9rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    font-size: 0.95rem;
+  }
+  .toc-row .n { color: var(--accent); font-variant-numeric: tabular-nums; }
+  .toc-row .src { color: var(--ink-faint); font-size: 0.8rem; text-align: right; }
+
+  /* ---------- questions ---------- */
+  .q {
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .q-open {
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+  }
+  .q-num {
+    font-family: var(--display);
+    font-size: clamp(2.6rem, 8vw, 4rem);
+    line-height: 0.85;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    flex: none;
+  }
+  .q h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.65rem, 4.6vw, 2.5rem);
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .stamp-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.4rem;
+    padding-bottom: 0.2rem;
+  }
+  .q p { color: var(--ink); }
+  .q .aside { color: var(--ink-soft); }
+
+  blockquote {
+    margin: 0.3rem 0;
+    padding: 0 0 0 1.2rem;
+    border-left: 2px solid var(--rule-firm);
+    font-family: var(--display);
+    font-size: 1.24rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .takeaway {
+    margin-top: 0.4rem;
+    padding: 0.95rem 0 0;
+    border-top: 2px solid var(--accent);
+    font-size: 1.05rem;
+  }
+  .takeaway span {
+    display: block;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+
+  .figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 0.9rem 1.6rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .figures div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .figures b {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.7rem;
+    line-height: 1;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .figures span { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.35; }
+
+  .table-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 22rem; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 0.45rem 0.9rem 0.45rem 0; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+  th {
+    font-size: 0.66rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--ink-faint);
+    border-bottom: 1px solid var(--rule-firm);
+  }
+  tr:last-child td { border-bottom: none; }
+
+  .backmatter {
+    border-top: 2px solid var(--ink);
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .backmatter p { color: var(--ink-soft); font-size: 0.95rem; }
+  .backmatter strong { color: var(--ink); }
+  ol.steps { margin: 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--ink-soft); font-size: 0.95rem; }
+  ol.steps strong { color: var(--ink); }
+
+  @media (max-width: 620px) {
+    .vol { gap: 3rem; }
+    .q-open { flex-direction: column; gap: 0.3rem; }
+  }
+</style>
+
+<div class="vol">
+
+  <header class="title-page">
+    <div class="numeral-mark">17</div>
+    <h1>Seventeen Questions</h1>
+    <p class="byline">Built from your vault, your documents, and four things nobody had checked</p>
+    <blockquote class="epigraph">
+      When copies are super abundant, they become worthless, and stuff which can’t be copied becomes scarce and valuable.
+      <cite>Kevin Kelly · Better Than Free</cite>
+    </blockquote>
+  </header>
+
+  <section class="preface">
+    <p class="sc">Preface</p>
+    <p class="lead">A model is something you nod at. A question is something you can ask on a Tuesday.</p>
+    <p>The previous version of this work gave you five named mental models. Your two documents argued against that form, and they were right. Ferriss’s seventeen are not concepts — each is a question stamped to the moment it entered his life, told through what actually happened, with real numbers in it. Kelly’s eight generatives replaced my single best idea with something eight times richer.</p>
+    <p>So the models were retired and these were built instead. <strong>Nine come from your documents. Four came out of research. Four came out of your vault’s own record of the last six weeks</strong>, which turns out to be the most revealing source of the three.</p>
+    <p>Question 17 is the only one that has to be answered before tomorrow. The other sixteen are worthless without it.</p>
+  </section>
+
+  <nav class="contents">
+    <h2>Contents</h2>
+    <div class="toc-row"><span class="n">1</span><span>What am I doing instead?</span><span class="src">22 July 2026</span></div>
+    <div class="toc-row"><span class="n">2</span><span>Who pays, out of what money, instead of what?</span><span class="src">Kippa</span></div>
+    <div class="toc-row"><span class="n">3</span><span>What can’t be copied here?</span><span class="src">Kevin Kelly</span></div>
+    <div class="toc-row"><span class="n">4</span><span>What is my Red Hat?</span><span class="src">Kelly #3</span></div>
+    <div class="toc-row"><span class="n">5</span><span>Who has to sign this, and can it be me?</span><span class="src">Kelly #4 · NBAA</span></div>
+    <div class="toc-row"><span class="n">6</span><span>What would I have to believe for this to be a bad idea?</span><span class="src">The inversion</span></div>
+    <div class="toc-row"><span class="n">7</span><span>What did the last person who tried this find out?</span><span class="src">Kippa · Ramani</span></div>
+    <div class="toc-row"><span class="n">8</span><span>What am I not allowed to do?</span><span class="src">§7216 · NBAA</span></div>
+    <div class="toc-row"><span class="n">9</span><span>Can I Shepardize this?</span><span class="src">Martine Rothblatt</span></div>
+    <div class="toc-row"><span class="n">10</span><span>What’s the least crowded channel?</span><span class="src">Ferriss, 2006</span></div>
+    <div class="toc-row"><span class="n">11</span><span>If I could only work two hours a week on this?</span><span class="src">Ferriss, 2004</span></div>
+    <div class="toc-row"><span class="n">12</span><span>Am I hunting antelope or field mice?</span><span class="src">Ferriss</span></div>
+    <div class="toc-row"><span class="n">13</span><span>Do I need to make it back the way I lost it?</span><span class="src">Lori Gottlieb</span></div>
+    <div class="toc-row"><span class="n">14</span><span>What has to die for this to live?</span><span class="src">Steve Young</span></div>
+    <div class="toc-row"><span class="n">15</span><span>Is this making me sick, and who am I staying for?</span><span class="src">Samin Nosrat</span></div>
+    <div class="toc-row"><span class="n">16</span><span>What would this look like if it were easy?</span><span class="src">Ferriss</span></div>
+    <div class="toc-row"><span class="n">17</span><span>What’s the smallest exposure I can take today?</span><span class="src">31 August 2026</span></div>
+  </nav>
+
+  <!-- 1 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">1</span><h2>What am I doing instead?</h2></div>
+    <div class="stamp-line"><span class="sc">22 July 2026</span><span class="sc">Your vault</span></div>
+    <p>The ACPA status question went onto the dashboard as blocker #1. It needed one phone call. Six weeks later it had become <em>easier</em> — the answer sits on your MEMS profile now, three fields, readable while logged in — and it still had not been done.</p>
+    <p>The instinct is to ask why. That question has never once produced an answer that changed behaviour, because it invites a story and you will write a flattering one. Ask the other one instead. <strong>In those six weeks, what did I do?</strong></p>
+    <p class="aside">A nine-axis judging rubric. Six craft knowledge bases. An empirical campaign measuring real prize winners and correcting the rubric against them. Months of genuinely skilled work, all of it real.</p>
+    <p>Which is the point. <strong>Avoidance does not look like idleness. It looks like your best work.</strong> Relief arrives the instant you turn toward the safe task, every time, with zero delay — nothing you deliberately try to build will ever be reinforced that cleanly. So the substitute gets stronger and more impressive each round, and the alibi gets better.</p>
+    <p>The rubric cannot tell you that you can’t write. The MEMS profile can tell you that you’re further from qualified than you hoped. That is the whole selection criterion, and it operates below the level of decision.</p>
+    <div class="takeaway"><span>The question</span>Not <em>why haven’t I done it</em>, but <strong>what did I do instead, and what verdict does that thing protect me from?</strong> The diagnostic that settles it: the blocker shrank from a call to a login and still didn’t move. If effort were the obstacle, halving it would have worked.</div>
+  </article>
+
+  <!-- 2 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">2</span><h2>Who pays, out of what money, instead of what?</h2></div>
+    <div class="stamp-line"><span class="sc">31 August 2026</span><span class="sc">The Kippa post-mortem</span></div>
+    <p>Researching whether to build bookkeeping training for mama ntilie and small traders, I went looking for whoever had tried it. Kippa, in Nigeria, had.</p>
+    <div class="figures">
+      <div><b>$14M+</b><span>raised, Target Global and others</span></div>
+      <div><b>500,000</b><span>small businesses using it</span></div>
+      <div><b>0</b><span>users who can now retrieve their own records</span></div>
+    </div>
+    <p>Half a million people used it. It still died. That finding has a precise shape: <strong>adoption is not demand.</strong> People will happily accept something useful with no intention of paying, their enthusiasm is real, and it is not a business.</p>
+    <p>Three parts, each answerable in one sentence. <strong>Who writes the cheque</strong> — a named role, not a category. <strong>Out of which budget line</strong> — money already allocated, because new budget is ten times harder than reallocated budget. <strong>Instead of what</strong> — what do they stop buying to buy you?</p>
+    <p>The practice passes: the partner at a four-person US firm, from a bookkeeping-outsourcing line running $400–800 a month, instead of the Manila provider billing $10–25 an hour. Three sentences, all specific, no scale required. The training idea has no answer to the third, no budget for the second, and a customer with a few thousand shillings of daily margin for the first.</p>
+    <div class="takeaway"><span>The question</span>If you cannot name all three, <strong>you have a project, not a business</strong> — however many people would use it free, and however right the underlying insight is.</div>
+  </article>
+
+  <!-- 3 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">3</span><h2>What can’t be copied here?</h2></div>
+    <div class="stamp-line"><span class="sc">2008, revised 2026</span><span class="sc">Kevin Kelly · your document</span></div>
+    <p>Copies used to be hard, so we built a legal system around who may make them and creators lived by selling them. The internet made copies free. <strong>AI made competent variations free</strong> — words, images, code, advice, in seconds.</p>
+    <blockquote>When copies are super abundant, they become worthless, and stuff which can’t be copied becomes scarce and valuable.</blockquote>
+    <p>Kelly names eight <strong>generatives</strong> — qualities that must be generated in place, in time, in relationship, and cannot be cloned, faked, stored or banked: immediacy, personalization, interpretation, authenticity, accessibility, embodiment, patronage, findability. Trust is the archetype. You cannot download it.</p>
+    <p>Now apply it. <strong>The bookkeeping output is a copy.</strong> Reconciliations, schedules, a set of management accounts — AI produces competent versions in seconds and that price is heading to zero. A plan to sell the output has a clock on it.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Generative</th><th scope="col">In the practice</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Interpretation</strong></td><td>What the numbers mean and what to do — the core sale</td></tr>
+          <tr><td><strong>Authenticity</strong></td><td>A signed, warranted, professionally liable set of accounts</td></tr>
+          <tr><td><strong>Immediacy</strong></td><td>Close on day five instead of day eighteen</td></tr>
+          <tr><td><strong>Personalization</strong></td><td>Fitted to their accounts and their board, iteratively</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="takeaway"><span>The question</span>You are not selling bookkeeping. Bookkeeping is now the free copy. You are selling <strong>interpretation with a signature on it, delivered faster than anyone else can manage.</strong> That sentence sets the price and writes the offer.</div>
+  </article>
+
+  <!-- 4 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">4</span><h2>What is my Red Hat?</h2></div>
+    <div class="stamp-line"><span class="sc">Kelly, generative #3</span></div>
+    <p>An old joke that turned out not to be one: <em>software, free; the software manual, $10,000.</em> Red Hat has lived for twenty-five years selling support and consultation for code anyone can download for nothing.</p>
+    <p>Kelly’s second example is sharper. Sequencing your DNA will soon be free — pharmaceutical companies may eventually pay to do it. <strong>The interpretation of what it means will be expensive.</strong></p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">The free code</th><th scope="col">The manual</th></tr></thead>
+        <tbody>
+          <tr><td>Reconciliations, schedules, journals</td><td>Which of your five customers is quietly unprofitable</td></tr>
+          <tr><td>A set of management accounts</td><td>Why margin fell three points and what to change</td></tr>
+          <tr><td>A filed return</td><td>Whether the business survives the loan it’s about to take</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Nearly every accountant sells the left column and gives the right one away — the insight arrives as an aside in the last two minutes of the call, unbilled, because it took two minutes. Which is exactly backwards: those two minutes are the only part a machine cannot yet replace, and the eight hours are the part already collapsing to zero.</p>
+    <div class="takeaway"><span>The question</span>What am I giving away in the last two minutes of the call — and what happens if I put it at the top of the invoice instead?</div>
+  </article>
+
+  <!-- 5 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">5</span><h2>Who has to sign this, and can it be me?</h2></div>
+    <div class="stamp-line"><span class="sc">Kelly #4</span><span class="sc">Plus a finding that changes the sequence</span></div>
+    <p>Kelly calls it Authenticity — the artist’s stamp, the signature that makes one copy worth more than an identical one. In 2026 that stopped being a metaphor about art and became a funded category.</p>
+    <div class="figures">
+      <div><b>$1.15B</b><span>Basis valuation, Series B led by Accel</span></div>
+      <div><b>$85M</b><span>Modus — and it buys accounting firms</span></div>
+      <div><b>$1.5B</b><span>General Catalyst’s fund for AI services roll-ups</span></div>
+    </div>
+    <blockquote>Agents do the work. A certified accountant signs off.</blockquote>
+    <p>So the scarce asset is not the ability to do the work. It is <strong>being allowed to stand behind it.</strong> Which reframes something sitting in your vault under the word <em>admin</em>: ACPA-PP is the only part of this business that cannot be competed away by anyone with the same tools and faster internet.</p>
+    <p>And then the sting. <strong>NBAA requires three years under a supervising mentor, with the logbook signed by mentor and employer.</strong> The two central moves — go independent for cash, get credentialed for the moat — may be in direct conflict, and nobody had checked. That doesn’t kill the plan; it changes the sequence, and all three resolutions turn on facts one email can settle.</p>
+    <div class="takeaway"><span>The question</span>In any market where machines do the production, <strong>find the act that legally requires a named human</strong> — then ask whether that human can be you, and what it costs to become them.</div>
+  </article>
+
+  <!-- 6 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">6</span><h2>What would I have to believe for this to be a bad idea?</h2></div>
+    <div class="stamp-line"><span class="sc">The inversion</span></div>
+    <p>When the mama ntilie idea arrived, my first instinct was to look for reasons it works. That instinct is worthless — enthusiasm supplies evidence for anything, and search engines are very good at finding support for a conclusion already reached.</p>
+    <p>Inverted, the question wrote its own research plan in four lines, and all four came back positive for disaster in a single afternoon: someone had already tried it at scale and failed; the training was already free from a telco, a donor and a bank; a funded competitor was three miles away with a lending licence; and the customer had a few thousand shillings of daily margin.</p>
+    <p>Not one of those would have surfaced from asking whether the idea was good, because each is a reason to stop, and a search for validation does not return reasons to stop.</p>
+    <p>The second use matters more: run it on the plan you have <em>chosen</em>. What would make the practice a disaster? <em>The credential turns out to need an employer.</em> Ask, and there it was.</p>
+    <div class="takeaway"><span>The question</span>What would have to be true for this to fail badly — and which of those can I check this week for the price of an afternoon? <span style="display:inline;font-size:inherit;letter-spacing:0;text-transform:none;color:inherit;font-weight:400"></span>The reason nobody does it is emotional: you have to want the answer more than you want the idea.</div>
+  </article>
+
+  <!-- 7 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">7</span><h2>What did the last person who tried this find out?</h2></div>
+    <div class="stamp-line"><span class="sc">Kippa and Ramani</span></div>
+    <p>Before market research, before a business plan, before a spreadsheet: <strong>find the corpse and read the autopsy.</strong> Almost every idea you have has been attempted by someone better funded. That is a gift — they paid for the experiment and the results are public.</p>
+    <p>Three searches, in order. <strong>The idea plus “shut down” or “layoffs”</strong> — failures get written up more honestly than successes. <strong>The idea plus “raises”, restricted to your region</strong> — Ramani.io turned out to be in Dar with $34M and a Bank of Tanzania lending licence. <strong>Who gives this away free, and who funds them</strong> — if a telco or donor is doing it for customer acquisition, there is no price above zero.</p>
+    <p>None of the three asks whether the idea is good. They ask what already happened. And the method points forward too: when you go looking for corpses and find a category being funded instead — Basis, Modus, a solo firm running 37 engagements with no staff — that is the strongest signal available.</p>
+    <div class="takeaway"><span>The question</span>Who has already run my experiment, what did it cost them, and what did they learn that I can have for free? <strong>The corollary is uncomfortable:</strong> six weeks of craft apparatus, and not one hour spent asking whether anyone had tried the income plan before.</div>
+  </article>
+
+  <!-- 8 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">8</span><h2>What am I not allowed to do?</h2></div>
+    <div class="stamp-line"><span class="sc">31 August 2026</span><span class="sc">The unknown-unknowns search</span></div>
+    <p>This question pays only if asked before you start, which is why almost nobody asks it. It produces no plan and no revenue — just a list of walls you would otherwise hit at speed in month nine. Asked once, it returned four things nobody here had considered.</p>
+    <p><strong>The logbook needs a mentor.</strong> Self-employment may not count toward ACPA. <strong>US tax data offshore is a criminal statute</strong> — IRC §7216, up to a year’s imprisonment, standalone written consent required for disclosure outside the United States. <strong>AI on client data has to be named</strong> — “AI tools we may use from time to time” fails the 2026 consent bar; letters are expected to name the specific tools with data-processing terms. <strong>Professional services must VAT-register regardless of turnover</strong> in Tanzania, though exported services are zero-rated.</p>
+    <p>None is fatal, all are cheap to handle at the start, and the third is not even a cost. <strong>A supplier who arrives with §7216 already understood and a named-tools AI clause already written is a different category from those who have never heard of either.</strong> The compliance answer is the sales pitch.</p>
+    <div class="takeaway"><span>The question</span>What are the rules of this game I would not know to look up? <strong>Stare at the asymmetry:</strong> this vault held a nine-axis rubric for judging a short story and nothing at all on whether its own income plan was legal, licensed or loggable.</div>
+  </article>
+
+  <!-- 9 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">9</span><h2>Can I Shepardize this?</h2></div>
+    <div class="stamp-line"><span class="sc">Martine Rothblatt</span><span class="sc">Your document</span></div>
+    <p>Her youngest daughter was diagnosed with pulmonary arterial hypertension. No approved medicines, all patients dead within two to three years. Rothblatt was a lawyer running SiriusXM who hadn’t taken a life-science course since high school.</p>
+    <p>She read in the hospital library at night. Most of it she didn’t understand, so she looked words up, and when a paper was too hard she went <em>backwards</em> — college anatomy texts, then high-school ones — until something explained it, then climbed back up. And she used one technique from law school called <strong>Shepardizing</strong>: read every reference a paper cites, then every reference in those, until three or four levels down the citations start circling back on themselves. That is the point of diminishing returns, and it means the field is mapped.</p>
+    <p>She found a molecule that had failed its heart-failure trial but lowered pressure between lung and heart while leaving the rest of the body alone. She was told no, asked what it would take, built a company to become that, got fifteen executives to sign, and paid $25,000 plus 10%. It has since paid Glaxo Wellcome over a billion in royalties.</p>
+    <div class="takeaway"><span>The question</span>Where are the citations, and how far down before they circle back? <strong>Two weeks, not two years</strong>, to learn a client niche well enough to hold a conversation with a buyer.</div>
+  </article>
+
+  <!-- 10 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">10</span><h2>What’s the least crowded channel?</h2></div>
+    <div class="stamp-line"><span class="sc">Ferriss, December 2006</span><span class="sc">Your document</span></div>
+    <p>Book finished, launch in April, no idea what to do. He asked a dozen bestselling authors what they’d spend on again and heard one word: blogs. Then the question that actually mattered — <strong>how is everyone currently trying to reach bloggers?</strong> Email first, phone second. Those were his strengths, and he deliberately didn’t use them. He went to CES, never walked in the front door, and parked in the blogger lounge. Better odds as one of five people in a room than one email out of five hundred.</p>
+    <p>Small US and UK firms that outsource are pitched constantly, by cold email, by Indian and Filipino providers. Email is the crowded channel — and it is crowded because it is easy.</p>
+    <p>Uncrowded, cheapest first: the groups where firm owners complain to each other about their current provider (answer questions for months, never pitch); their podcasts, which are permanently short of guests with something specific to say — and §7216 plus named-tools AI clauses is something specific; the offshore providers themselves, who have overflow; and one genuinely useful public artefact aimed at exactly that reader.</p>
+    <div class="takeaway"><span>The question</span>How is everyone else reaching this buyer — and what is the room with five people in it instead of the inbox with five hundred? <strong>Go as a participant, not a seller.</strong></div>
+  </article>
+
+  <!-- 11 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">11</span><h2>If I could only work two hours a week on this?</h2></div>
+    <div class="stamp-line"><span class="sc">Ferriss, 2004</span><span class="sc">Your document</span></div>
+    <p>He is explicit that the soft version fails. <em>How can I not be a bottleneck?</em> invites a list. The extreme version is the useful one: gun to your head, two hours a week, what survives?</p>
+    <p>He pairs it with the email that did most of the work — <em>from now on, if it involves less than $100, decide it yourself and write down what you did.</em> Then $500. Then $1,000. The reviews went weekly, monthly, quarterly, then never.</p>
+    <blockquote>To get huge, good things done, you need to be okay with letting the small, bad things happen. And people’s IQs seem to double as soon as you give them responsibility and indicate that you trust them.</blockquote>
+    <p>For a one-person practice with AI doing production, the answer is the whole operating design, in order of scarcity: <strong>sell</strong> — the asks, the only thing that makes a client; <strong>sign</strong> — review and stand behind it, the part that legally cannot be delegated; <strong>handle the exception</strong> — the transaction nobody has a rule for yet. Everything else belongs to the machine and a written procedure.</p>
+    <div class="takeaway"><span>The question</span>With two hours, what would I keep? <strong>Any week where production work displaces selling is a week the practice shrank while feeling busy.</strong></div>
+  </article>
+
+  <!-- 12 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">12</span><h2>Am I hunting antelope or field mice?</h2></div>
+    <div class="stamp-line"><span class="sc">Ferriss</span><span class="sc">Your document</span></div>
+    <p>A lion can spend all day catching field mice and starve doing it — each mouse costs more energy than it returns. The trap is that mice are <em>available</em>. Always there, always catchable, and each one produces a small genuine hit of accomplishment. A day of mice feels full.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Field mice</th><th scope="col">Antelope</th></tr></thead>
+        <tbody>
+          <tr><td>Another craft base, another rubric axis</td><td>One paid client</td></tr>
+          <tr><td>Reorganising the vault</td><td>The three MEMS fields</td></tr>
+          <tr><td>Reading a seventh book on the list</td><td>The NBAA mentor question</td></tr>
+          <tr><td>Tuning the offer wording again</td><td>Ten asks sent</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Four clients at $350 a month covers the entire household-and-debt figure of $1,228.</strong> Four. There are perhaps a dozen genuinely antelope-shaped acts available to you this year. The left column is not fake work — that is what makes it dangerous.</p>
+    <p>And the sharper version is about tolerance for missing. A lion hunting antelope fails most days; mice never fail. <strong>A preference for mice is usually a preference for a guaranteed small win over a probable miss</strong> — the same circuit as question 1, in a productivity costume.</p>
+    <div class="takeaway"><span>The question</span>Asked on Friday: which of the things I did this week could have produced a client, a fact, or a reader? If none, it was a week of mice, however full it felt.</div>
+  </article>
+
+  <!-- 13 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">13</span><h2>Do I need to make it back the way I lost it?</h2></div>
+    <div class="stamp-line"><span class="sc">Ferriss, and Lori Gottlieb</span><span class="sc">Your document</span></div>
+    <p>Gottlieb left entertainment for medical school. Then, two years and two years of tuition into Stanford, she left to be a freelance journalist. Everyone told her to just finish, get the degree, tough out two more years. She had the loans already. She had paid.</p>
+    <p>She left anyway, and gave a specific reason: <em>life has a 100% mortality rate.</em> Why spend two more years on a path she knew she wasn’t taking, to justify the two already spent?</p>
+    <p>The mind refuses this, because writing off the past feels like admitting it was wasted — so it returns to the same table to win it back, and the losses compound. The version that applies here is not that the writing was wrong. It is <strong>which table it has to be won back at.</strong></p>
+    <p>Years of craft are real skill and none of it is wasted. But the instinct is that the return must arrive <em>as a prize</em>, from a panel, in the form the years were spent in — and £15,000 across 7,806 entries is £1.92 of expected value per entry. The same craft pays at a different table: an accountant who writes clean English is rare and priceable, interpretation is a writing skill before it is a numerical one, and the weekly publish that builds a practice is prose.</p>
+    <div class="takeaway"><span>The question</span>Am I trying to win this back at the table where I lost it — and is that the table with the money on it? Gottlieb’s own summary: <strong>she doesn’t feel she had four careers, but one, approached from different directions.</strong></div>
+  </article>
+
+  <!-- 14 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">14</span><h2>What has to die for this to live?</h2></div>
+    <div class="stamp-line"><span class="sc">Steve Young</span><span class="sc">Your document</span></div>
+    <p>The day after he retired, he had been known worldwide for one thing and the next morning it was gone.</p>
+    <blockquote>Everyone needs to treat it like a death — to mourn it and go through all the steps of mourning it and burying it, and actually have it as a place you can keep referring to, almost like a grave site. Because otherwise you carry it around and you never transition.</blockquote>
+    <p>Staubach’s advice to him was one word: <em>run.</em> Run where? <em>Just run away. The game will never leave you, but you need to leave it.</em></p>
+    <p>Read carefully, this is not about giving anything up. Young keeps referring to the grave site — the thing is buried and it is still <em>there</em>, and it can be visited. What dies is not the football. It is the <strong>primacy</strong>: the arrangement where one thing is the answer to who you are and everything else is a hobby.</p>
+    <p>Applied without softening: the identity to be buried is not <em>writer</em>. It is <strong>“writer, and one day the writing will pay, and until then the accounting is admin.”</strong> That arrangement has been running the allocation. Suleika Jaouad supplies the other half — <em>moving on is a myth;</em> you learn to move forward with it, integrated — and notes we have rituals for birth, marriage and death and none for the transitions between, so she invented her own.</p>
+    <div class="takeaway"><span>The question</span>What arrangement has to be buried, properly and with some ceremony, for the new thing to have room? <strong>Nothing is given up. What ends is the ordering.</strong></div>
+  </article>
+
+  <!-- 15 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">15</span><h2>Is this making me sick, and who am I staying for?</h2></div>
+    <div class="stamp-line"><span class="sc">Samin Nosrat</span><span class="sc">Your document</span></div>
+    <p>She sold fresh pasta out of a friend’s empty commercial kitchen. It worked immediately, grew into an online marketplace, tens of thousands on the mailing list, press attention, other unemployed cooks selling alongside her. And it was destroying her. <em>“All of a sudden I’m managing 9,000 business licenses and permits and health department and taxes and sales tax and vendors.”</em> All she had wanted was to make pasta.</p>
+    <p>Two details matter. <strong>Why she stayed too long:</strong> other people’s income depended on it — the strongest glue there is, and not the same thing as the business being right. <strong>What got her out:</strong> therapy. Not a spreadsheet.</p>
+    <blockquote>You cannot spreadsheet your way out of everything, nor onto everything.</blockquote>
+    <p>That is a genuine correction to almost everything else in this booklet, which is arithmetic — expected values, price ladders, four clients at $350. The arithmetic is right and it is not sufficient. <strong>A plan that is optimal on paper and makes you ill has failed</strong>, and it will fail slowly enough that you will blame yourself rather than the plan.</p>
+    <p>Her resolution is the practical part: now that she knows what a bad arrangement feels like in the body, she knows what to ask for in advance, and she takes work that is temporary so the exit is built in before the entry.</p>
+    <div class="takeaway"><span>The question</span>Is this making me sick — and if I’m staying because others depend on it, is that a reason or a rationalisation? <strong>Fifty clients at $150 is a different life from twenty at $400, and the arithmetic barely distinguishes them.</strong></div>
+  </article>
+
+  <!-- 16 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">16</span><h2>What would this look like if it were easy?</h2></div>
+    <div class="stamp-line"><span class="sc">Ferriss</span><span class="sc">Your document</span></div>
+    <p>The mind’s default when a goal is important is to make the plan proportionally elaborate. The question interrupts that with an absurd premise: suppose this were easy.</p>
+    <p><strong>Getting out of debt.</strong> Elaborate: build an app for informal traders, raise money, get a lending licence, scale. Easy: <strong>four clients at $350 a month.</strong> The gap between those two plans is not effort — it is a thousand times the risk.</p>
+    <p><strong>Learning a niche.</strong> Elaborate: a course, a certification, six months. Easy: read three practitioners and everything they cite, three levels down, in two weeks. <strong>Getting the credential moving.</strong> Elaborate: a project plan across seven tasks. Easy: log in, read three fields, send one email. <strong>Pricing.</strong> Elaborate: market analysis. Easy: say $350 without flinching and see what happens.</p>
+    <p>Notice what the easy versions share. They are <strong>smaller, sooner, and more exposed</strong> — while the elaborate versions are bigger, later and safer. That is not a coincidence. Complexity is often avoidance with a project plan attached.</p>
+    <div class="takeaway"><span>The question</span>If this were easy, what would it be? Then ask what it costs to just do that version first. Not because easy is always right — because <strong>the elaborate version should have to win against it, and usually it can’t.</strong></div>
+  </article>
+
+  <!-- 17 -->
+  <article class="q">
+    <div class="q-open"><span class="q-num">17</span><h2>What’s the smallest exposure I can take today?</h2></div>
+    <div class="stamp-line"><span class="sc">31 August 2026</span><span class="sc">The only one due before tomorrow</span></div>
+    <p>Everything here converges on one finding: the obstacle was never ability, information, tooling or time. It is that <strong>the exposing act goes second</strong>, and the safe act — real, good, defensible work — goes first and absorbs the week.</p>
+    <p>Insight does not fix this. The clinical finding is unusually blunt: understanding why you avoid something has close to zero effect on whether you keep avoiding it. Only doing it, while still afraid, and letting the fear decay, works. <strong>Which means the sixteen questions before this are worthless on their own, and this booklet is the most sophisticated avoidance device yet built if it is read and nothing follows.</strong></p>
+    <ol class="steps">
+      <li><strong>Log into MEMS. Read three fields.</strong> Grade, registration date, years logged. Ten minutes, cannot be done wrong.</li>
+      <li><strong>Send NBAA one email.</strong> Does self-employed practice count toward the logbook, and can the mentor be someone other than my employer? It may reorder the entire plan.</li>
+      <li><strong>Write the offer in one sentence and send it to one person</strong> who might buy it. Not ten. One.</li>
+    </ol>
+    <p>Each is small. Each returns something reality decides rather than something you decide — and that is the only property that matters. An act that cannot tell you you’re wrong has not exposed you to anything.</p>
+    <div class="takeaway"><span>The question, every morning</span>What is the smallest thing I can do today that puts a verdict outside my own control? <strong>Scored weekly: zero such acts is a week of hiding, whatever it produced. One is a working week. Three is a good one.</strong></div>
+  </article>
+
+  <footer class="backmatter">
+    <h2>A note on sources</h2>
+    <p>Nine of these come from the two documents you supplied — Kevin Kelly’s <em>Better Than Free</em>, Ferriss’s own seventeen questions, and the podcast passages with Martine Rothblatt, Steve Young, Lori Gottlieb and Samin Nosrat. Four came out of research done for this folder: the Kippa post-mortem, the Ramani finding, the funded AI-accounting category, and the four compliance rules in question 8. Four came out of your vault’s own record of the last six weeks, which turned out to be the most revealing source of the three.</p>
+    <p>Every chapter exists as its own note in the vault under <strong>01 Projects/Personal/Operating Manual/Seventeen Questions/</strong>, wikilinked, with the workings and full sources in <em>Due Diligence — What the Market Says</em> and <em>Unknown Unknowns — What Could Kill This</em>.</p>
+    <p>The five named mental models this replaces are kept, superseded, as a record of what was cut and why. <strong>A model is something you nod at. A question is something you can ask on a Tuesday.</strong></p>
+  </footer>
+
+</div>

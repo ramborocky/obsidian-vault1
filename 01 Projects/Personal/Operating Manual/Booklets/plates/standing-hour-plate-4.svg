@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-label="Two timelines of one year. The weekly signal produces fifty-four correction cycles; the annual signal produces one, arriving late."><style>.svg-label{font-family: "JetBrains Mono", monospace; font-size: 11px; fill: #737C88; letter-spacing: 0.06em;}.svg-name{font-family: "Newsreader", Georgia, serif; font-size: 14px; fill: #E4E7EA;}.svg-num{font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; fill: #E4E7EA;}</style><rect x="0" y="0" width="640" height="220" fill="#171C24"/>
+        <defs>
+          <pattern id="ticks2" width="10.6" height="40" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="3" height="40" fill="#57A08F"></rect>
+          </pattern>
+        </defs>
+        <text x="20" y="30" class="svg-label">WEEKLY SIGNAL — a client reply, an invoice, a published piece</text>
+        <rect x="20" y="40" width="572" height="40" fill="url(#ticks2)" stroke="#3E4A59" stroke-width="1"></rect>
+        <text x="600" y="65" class="svg-num" text-anchor="end" fill="#57A08F">54</text>
+        <text x="20" y="98" class="svg-label">54 corrections in the year · each one cheap, specific, survivable</text>
+        <text x="20" y="146" class="svg-label">ANNUAL SIGNAL — a prize result, an exam, a verdict</text>
+        <rect x="20" y="156" width="572" height="40" fill="none" stroke="#3E4A59" stroke-width="1"></rect>
+        <rect x="586" y="156" width="6" height="40" fill="#C4644C"></rect>
+        <text x="600" y="181" class="svg-num" text-anchor="end" fill="#C4644C">1</text>
+        <line x1="20" y1="176" x2="578" y2="176" stroke="#3E4A59" stroke-width="1" stroke-dasharray="4 5"></line>
+        <text x="30" y="214" class="svg-label">one correction, arriving late, and noisy when it does</text>
+      </svg>

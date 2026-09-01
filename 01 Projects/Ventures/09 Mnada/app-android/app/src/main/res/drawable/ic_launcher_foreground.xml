@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MNADA mark: a pair of ox horns over a rising price bar.
+  Drawn on the 108dp adaptive canvas; the safe zone is the middle 72dp.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- left horn -->
+    <path
+        android:fillColor="#E9A24B"
+        android:pathData="M30,38 C24,38 20,42 20,48 C20,55 26,60 33,60 C37,60 40,58 42,55 C39,54 36,52 34,49 C31,49 28,47 28,44 C28,41 30,39 33,39 C35,39 37,40 38,42 C39,40 40,38 42,37 C39,38 34,38 30,38 Z" />
+    <!-- right horn -->
+    <path
+        android:fillColor="#E9A24B"
+        android:pathData="M78,38 C84,38 88,42 88,48 C88,55 82,60 75,60 C71,60 68,58 66,55 C69,54 72,52 74,49 C77,49 80,47 80,44 C80,41 78,39 75,39 C73,39 71,40 70,42 C69,40 68,38 66,37 C69,38 74,38 78,38 Z" />
+    <!-- head -->
+    <path
+        android:fillColor="#F2F6F2"
+        android:pathData="M54,36 C64,36 72,43 72,53 C72,63 64,74 54,74 C44,74 36,63 36,53 C36,43 44,36 54,36 Z" />
+    <!-- muzzle -->
+    <path
+        android:fillColor="#3E6A57"
+        android:pathData="M54,58 C60,58 64,61 64,65 C64,69 60,72 54,72 C48,72 44,69 44,65 C44,61 48,58 54,58 Z" />
+    <!-- eyes -->
+    <path
+        android:fillColor="#1B3129"
+        android:pathData="M47,50 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0 Z" />
+    <path
+        android:fillColor="#1B3129"
+        android:pathData="M61,50 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0 Z" />
+
+    <!-- rising price bars beneath: the exchange half of the mark -->
+    <path
+        android:fillColor="#C8761A"
+        android:pathData="M38,84 h7 v6 h-7 Z" />
+    <path
+        android:fillColor="#D98A2C"
+        android:pathData="M50,79 h7 v11 h-7 Z" />
+    <path
+        android:fillColor="#E9A24B"
+        android:pathData="M62,73 h7 v17 h-7 Z" />
+</vector>

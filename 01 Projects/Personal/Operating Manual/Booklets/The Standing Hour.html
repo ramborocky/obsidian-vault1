@@ -1,0 +1,769 @@
+<title>The Standing Hour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;700&display=swap">
+
+<style>
+  /* dark-first: the bare :root carries the primary (dark) palette */
+  :root {
+    --ground:      #10141A;
+    --panel:       #171C24;
+    --panel-2:     #1E242E;
+    --line:        #2A3340;
+    --line-strong: #3E4A59;
+    --text:        #E4E7EA;
+    --text-soft:   #A6AEB9;
+    --text-faint:  #737C88;
+    --brass:       #C89B4A;
+    --brass-hi:    #E3BC6B;
+    --verdigris:   #57A08F;
+    --rust:        #C4644C;
+
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --body:    "Newsreader", Georgia, "Times New Roman", serif;
+    --mono:    "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --ground:      #EDEAE4;
+      --panel:       #F7F5F0;
+      --panel-2:     #E3DFD6;
+      --line:        #D2CDC3;
+      --line-strong: #ADA69A;
+      --text:        #191C21;
+      --text-soft:   #4A505A;
+      --text-faint:  #757B85;
+      --brass:       #8A6420;
+      --brass-hi:    #6E4E14;
+      --verdigris:   #2E6A5B;
+      --rust:        #9A4030;
+    }
+  }
+  :root[data-theme="light"] {
+    --ground:      #EDEAE4;
+    --panel:       #F7F5F0;
+    --panel-2:     #E3DFD6;
+    --line:        #D2CDC3;
+    --line-strong: #ADA69A;
+    --text:        #191C21;
+    --text-soft:   #4A505A;
+    --text-faint:  #757B85;
+    --brass:       #8A6420;
+    --brass-hi:    #6E4E14;
+    --verdigris:   #2E6A5B;
+    --rust:        #9A4030;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  p { margin: 0; }
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  .book {
+    max-width: 63rem;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+  }
+
+  .stamp {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  /* ============ COVER ============ */
+  .cover {
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    margin-top: 2.5rem;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    position: relative;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid var(--line);
+    pointer-events: none;
+  }
+  .cover > * { position: relative; }
+  .cover-rule {
+    height: 3px;
+    width: 5.5rem;
+    background: var(--brass);
+  }
+  .cover h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.8rem, 9vw, 5.4rem);
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+    margin: 0;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+  .cover h1 span { color: var(--brass); }
+  .cover .sub {
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    font-weight: 300;
+    color: var(--text-soft);
+    max-width: 34rem;
+  }
+  .cover-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 2rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.1rem;
+    margin-top: 0.6rem;
+  }
+
+  /* ============ CONTENTS ============ */
+  .contents {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .toc-item {
+    background: var(--panel);
+    padding: 1.1rem 1.2rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .toc-item .n {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--brass);
+  }
+  .toc-item h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0;
+    line-height: 1.15;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .toc-item p { font-size: 0.88rem; color: var(--text-faint); line-height: 1.45; }
+
+  /* ============ CHAPTERS ============ */
+  .chapter { display: flex; flex-direction: column; gap: 1.5rem; }
+  .chapter-head {
+    border-top: 2px solid var(--brass);
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .chapter-head h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4.6vw, 2.7rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+  .chapter-head .deck {
+    max-width: 38rem;
+    color: var(--text-soft);
+    font-size: 1.05rem;
+  }
+  .prose {
+    max-width: 38rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .prose h4 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.12rem;
+    margin: 0.7rem 0 -0.4rem;
+    line-height: 1.25;
+  }
+
+  .pull {
+    border-left: 3px solid var(--brass);
+    background: var(--panel);
+    padding: 1.1rem 1.3rem;
+    max-width: 40rem;
+    font-size: 1.12rem;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .pull strong { font-weight: 600; color: var(--brass-hi); }
+
+  .warn {
+    border: 1px solid var(--rust);
+    background: var(--panel);
+    padding: 1.1rem 1.3rem;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .warn .stamp { color: var(--rust); }
+
+  /* ============ PLATES ============ */
+  figure {
+    margin: 0.6rem 0;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 1.25rem 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    overflow-x: auto;
+  }
+  figure svg { display: block; width: 100%; min-width: 30rem; max-width: 100%; height: auto; }
+  figcaption {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 0.7rem;
+    line-height: 1.5;
+  }
+  figcaption b {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .svg-label { font-family: "JetBrains Mono", monospace; font-size: 11px; fill: var(--text-faint); letter-spacing: 0.06em; }
+  .svg-name  { font-family: "Newsreader", Georgia, serif; font-size: 14px; fill: var(--text); }
+  .svg-num   { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; fill: var(--text); }
+
+  /* ============ TABLES ============ */
+  .table-wrap { overflow-x: auto; max-width: 46rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 32rem; font-size: 0.94rem; }
+  th, td { text-align: left; padding: 0.5rem 0.9rem 0.5rem 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+  th {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    border-bottom: 1px solid var(--line-strong);
+  }
+  td.num, td.mod { font-family: var(--mono); font-size: 0.84rem; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--text-soft); }
+  td.mod { color: var(--brass); }
+  tr:last-child td { border-bottom: none; }
+
+  /* ============ MODEL CARDS ============ */
+  .models { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .model { background: var(--panel); padding: 1.2rem 1.3rem 1.4rem; display: flex; flex-direction: column; gap: 0.55rem; }
+  .model .n { font-family: var(--display); font-weight: 700; font-size: 1.6rem; color: var(--brass); line-height: 1; }
+  .model h3 { font-family: var(--display); font-weight: 600; font-size: 1.08rem; margin: 0; text-transform: uppercase; letter-spacing: 0.01em; }
+  .model p { font-size: 0.93rem; color: var(--text-soft); line-height: 1.5; }
+  .model .q { font-size: 0.95rem; color: var(--text); border-top: 1px solid var(--line); padding-top: 0.6rem; margin-top: 0.2rem; }
+  .model .q span { font-family: var(--mono); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.16em; color: var(--brass); display: block; margin-bottom: 0.25rem; }
+
+  /* ============ LISTS ============ */
+  .ord { max-width: 38rem; counter-reset: o; list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.1rem; }
+  .ord > li { counter-increment: o; display: grid; grid-template-columns: 2.6rem 1fr; gap: 0.9rem; }
+  .ord > li::before {
+    content: counter(o, decimal-leading-zero);
+    font-family: var(--mono); font-size: 0.85rem; font-weight: 700;
+    color: var(--brass); padding-top: 0.3rem;
+  }
+  .ord h4 { font-family: var(--display); font-weight: 600; font-size: 1.06rem; margin: 0 0 0.3rem; line-height: 1.25; }
+  .ord p { color: var(--text-soft); font-size: 0.97rem; }
+
+  .grid-two { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.4rem 2.2rem; max-width: 46rem; }
+  .grid-two div { display: flex; flex-direction: column; gap: 0.3rem; }
+  .grid-two strong { font-family: var(--display); font-weight: 600; font-size: 1rem; }
+  .grid-two span { font-size: 0.92rem; color: var(--text-soft); line-height: 1.5; }
+
+  .colophon {
+    border-top: 2px solid var(--line-strong);
+    padding-top: 1.3rem;
+    display: flex; flex-direction: column; gap: 0.9rem;
+    max-width: 42rem;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+  }
+  .colophon code {
+    font-family: var(--mono); font-size: 0.82rem;
+    color: var(--brass); background: var(--panel);
+    padding: 0.1rem 0.35rem; border: 1px solid var(--line);
+  }
+
+  @media (max-width: 640px) {
+    .book { gap: 3rem; padding-bottom: 3.5rem; }
+    .ord > li { grid-template-columns: 1fr; gap: 0.2rem; }
+    .ord > li::before { padding-top: 0; }
+    figure svg { min-width: 26rem; }
+  }
+</style>
+
+<div class="book">
+
+  <header class="cover">
+    <p class="stamp">Field manual &#183; Second edition &#183; 31 August 2026</p>
+    <h1>The Signature<br><span>Test</span></h1>
+    <div class="cover-rule"></div>
+    <p class="sub">There was a business in the vault and it wasn't the one being worked on. Eight plates, five models, and the arithmetic that found it &#8212; rewritten after the research contradicted the first edition.</p>
+    <div class="cover-meta">
+      <span class="stamp">Seven chapters</span>
+      <span class="stamp">Eight plates</span>
+      <span class="stamp">Twelve notes in the vault</span>
+    </div>
+  </header>
+
+  <div class="warn">
+    <span class="stamp">What the second edition changes</span>
+    <p>The first edition said the three-year ceiling was about TSh 100M and told you to make a phone call. Both were wrong. <strong>The ceiling was under-called by four to five times</strong>, because it priced a freelancer selling hours rather than a credentialed practice with AI leverage. And the phone call became a login weeks ago &#8212; the blocker shrank and still didn't move, which turns out to be the most useful fact in the file.</p>
+  </div>
+
+  <nav class="contents" aria-label="Contents">
+    <div class="toc-item"><span class="n">CH. I</span><h3>The Question, Divided</h3><p>One million dollars over thirty-six months, and what the division rules out.</p></div>
+    <div class="toc-item"><span class="n">CH. II</span><h3>The Business in the Vault</h3><p>What the research found, including the idea that had to be killed.</p></div>
+    <div class="toc-item"><span class="n">CH. III</span><h3>Ten Blind Spots</h3><p>Rewritten. Two are new, one was cut, one was wrong.</p></div>
+    <div class="toc-item"><span class="n">CH. IV</span><h3>The Mechanism</h3><p>Why the blocker got smaller and still didn't move.</p></div>
+    <div class="toc-item"><span class="n">CH. V</span><h3>The Architecture</h3><p>Nobody is unstoppable. What exists instead.</p></div>
+    <div class="toc-item"><span class="n">CH. VI</span><h3>Five Models</h3><p>Re-derived against evidence. The first one cost someone $14M.</p></div>
+    <div class="toc-item"><span class="n">CH. VII</span><h3>Thirty-Six Months</h3><p>The route, with a proof gate on every phase.</p></div>
+  </nav>
+
+  <section class="chapter">
+    <div class="chapter-head">
+      <span class="stamp">Chapter one</span>
+      <h2>The Question, Divided</h2>
+      <p class="deck">"How do I become a millionaire in three years?" &#8212; answered with the division done, because the division is what rules out an entire category of plan.</p>
+    </div>
+
+    <div class="prose">
+      <p><strong>First, which million.</strong> TSh 1,000,000 is about $378, and the July log shows 2,184,000 spent in six days. So the question is dollars: $1,000,000, or TSh 2,647,000,000. Over thirty-six months from roughly zero, that is <strong>$27,778 saved every month</strong>.</p>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 640 210" role="img" aria-label="Bar chart: the monthly saving required for one million dollars in three years is $27,778, against a top freelance income of $2,400 and a household running cost of $775.">
+        <text x="176" y="34" text-anchor="end" class="svg-name">Required, per month</text>
+        <rect x="186" y="20" width="420" height="24" fill="var(--brass)"></rect>
+        <text x="186" y="62" class="svg-label">$27,778 &#183; TSh 73,527,778</text>
+        <text x="176" y="106" text-anchor="end" class="svg-name">Top freelance rate</text>
+        <rect x="186" y="92" width="36" height="24" fill="var(--verdigris)"></rect>
+        <text x="232" y="110" class="svg-label">$2,400 &#8212; 20 hrs/week at a specialist rate</text>
+        <text x="176" y="164" text-anchor="end" class="svg-name">Household + debt service</text>
+        <rect x="186" y="150" width="19" height="24" fill="var(--line-strong)"></rect>
+        <text x="215" y="168" class="svg-label">$1,228</text>
+        <line x1="186" y1="186" x2="606" y2="186" stroke="var(--line-strong)" stroke-width="1"></line>
+        <text x="186" y="202" class="svg-label">0</text>
+        <text x="606" y="202" text-anchor="end" class="svg-label">$27,778 / month</text>
+      </svg>
+      <figcaption><b>Plate I &#183; The gap, to scale</b>All three bars at the same scale. The target is 11.6&#215; the top of the freelance range and 22&#215; the monthly figure that currently runs your household and services both lenders.</figcaption>
+    </figure>
+
+    <div class="pull">
+      <p>At $30 an hour, $27,778 a month is <strong>926 billable hours &#8212; 214 hours a week.</strong> A week contains 168. Even at $100 an hour it is 64 billable hours every week for three years, saving every cent. <strong>Selling hours cannot reach it at any rate, ever.</strong></p>
+    </div>
+
+    <div class="prose">
+      <p>That eliminates a category rather than a hope. What remains is equity &#8212; building something with a value that can be sold &#8212; capital you don't have, and luck. Chapter II is what happened when I went looking for the first one, and I found it in a place neither of us was looking.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head">
+      <span class="stamp">Chapter two</span>
+      <h2>The Business in the Vault</h2>
+      <p class="deck">Two ideas went into the research. One came out dead, one came out funded, and the dead one is the more instructive.</p>
+    </div>
+
+    <div class="prose">
+      <h4>The idea that had to be killed</h4>
+      <p>Training mama ntilie and small traders on records and credit. The insight is provably right &#8212; <strong>NMB's own loan criteria require the applicant to have "a proper recording system"</strong>, and 80&#8211;85% of Tanzania's 3.5 million SMEs never get bank finance. But four findings kill it as a first business.</p>
+      <p><strong>It already ran at scale and went dark.</strong> Kippa, in Nigeria, built exactly this: raised over $14M, reached roughly <strong>500,000 small businesses</strong>, shut its payments arm with 40 layoffs, lost a co-founder, and by 2025 the app was inaccessible with users unable to retrieve their own sales records.</p>
+      <p><strong>The training is already free.</strong> Vodacom runs it with district offices. WFP and the Mastercard Foundation run it with the Bank of Tanzania's own academy. CRDB bundles it into the Malkia loan. You would be selling, to people with no spare cash, what three better-capitalised organisations give away as customer acquisition.</p>
+      <p><strong>And your own city has the funded version.</strong> Ramani.io &#8212; Dar es Salaam, Y Combinator, <strong>$32M Series A, $34.3M total, and a Bank of Tanzania lending licence</strong> &#8212; digitises small operators' records and lends against what those records reveal.</p>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 640 250" role="img" aria-label="Two paths. Five hundred thousand free users reach no budget line and produce no revenue. Four clients reach an existing monthly budget line and cover the whole household cost.">
+        <defs>
+          <marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+          </marker>
+        </defs>
+        <text x="20" y="24" class="svg-label" fill="var(--rust)">A &#8212; ADOPTION WITHOUT A PAYER</text>
+        <rect x="20" y="40" width="170" height="56" fill="var(--panel-2)" stroke="var(--rust)"></rect>
+        <text x="105" y="64" text-anchor="middle" class="svg-name">500,000 users</text>
+        <text x="105" y="82" text-anchor="middle" class="svg-label">free, engaged, real</text>
+        <line x1="192" y1="68" x2="286" y2="68" stroke="currentColor" stroke-width="2" marker-end="url(#ah4)" color="var(--rust)"></line>
+        <text x="239" y="58" text-anchor="middle" class="svg-label" fill="var(--rust)">no budget line</text>
+        <rect x="290" y="40" width="150" height="56" fill="none" stroke="var(--rust)" stroke-dasharray="5 4"></rect>
+        <text x="365" y="73" text-anchor="middle" class="svg-name" fill="var(--rust)">nobody to invoice</text>
+        <line x1="442" y1="68" x2="512" y2="68" stroke="currentColor" stroke-width="2" marker-end="url(#ah4)" color="var(--rust)"></line>
+        <text x="600" y="73" text-anchor="end" class="svg-num" fill="var(--rust)">$0</text>
+        <text x="20" y="152" class="svg-label" fill="var(--verdigris)">B &#8212; A PAYER WITH AN EXISTING LINE</text>
+        <rect x="20" y="168" width="170" height="56" fill="var(--panel-2)" stroke="var(--verdigris)"></rect>
+        <text x="105" y="192" text-anchor="middle" class="svg-name">4 clients</text>
+        <text x="105" y="210" text-anchor="middle" class="svg-label">at $350 / month</text>
+        <line x1="192" y1="196" x2="286" y2="196" stroke="currentColor" stroke-width="2" marker-end="url(#ah4)" color="var(--verdigris)"></line>
+        <text x="239" y="186" text-anchor="middle" class="svg-label" fill="var(--verdigris)">line already exists</text>
+        <rect x="290" y="168" width="150" height="56" fill="var(--panel-2)" stroke="var(--verdigris)"></rect>
+        <text x="365" y="192" text-anchor="middle" class="svg-name">bookkeeping budget</text>
+        <text x="365" y="210" text-anchor="middle" class="svg-label">$400&#8211;800/mo, allocated</text>
+        <line x1="442" y1="196" x2="512" y2="196" stroke="currentColor" stroke-width="2" marker-end="url(#ah4)" color="var(--verdigris)"></line>
+        <text x="600" y="192" text-anchor="end" class="svg-num" fill="var(--verdigris)">$1,400</text>
+        <text x="600" y="210" text-anchor="end" class="svg-label">covers everything</text>
+      </svg>
+      <figcaption><b>Plate II &#183; Users are not customers</b>The mechanism is the middle box, not the left one. Path A fails despite half a million real users because no budget line exists to invoice against; path B works with four because the money was already allocated and merely changes supplier. Adoption is not demand.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <h4>The idea that came out funded</h4>
+      <p>In 2026 there is a live category that is precisely <em>a qualified accountant plus an AI</em>. <strong>Basis</strong> raised $100M at a <strong>$1.15bn valuation</strong>. <strong>Modus</strong> raised $85M from Lightspeed and buys accounting firms outright. <strong>Accrual</strong> came out of stealth at $75M. <strong>General Catalyst</strong> took its Creation Fund from $800M to <strong>$1.5bn</strong> to buy and AI-modernise services firms.</p>
+      <p>And the shape of it, in the category's own words: agents do the work, <strong>a certified accountant signs off.</strong></p>
+    </div>
+
+    <div class="pull">
+      <p>That sentence is the business. <strong>You are the accountant who signs. Claude is the agent.</strong> Which makes ACPA-PP &#8212; the public-practice track &#8212; not a study decision but the moat.</p>
+    </div>
+
+    <div class="prose">
+      <p>One person can run it. A solo practice in Texas went AI-native and now services <strong>37 client engagements with no staff accountants</strong>, month-end close down from 18 days to 5, about 90 hours a month reclaimed.</p>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 640 200" role="img" aria-label="Price ladder per client per month. AI-assisted practices charge $150 to $400. US small businesses budget $400 to $800. The target price of $350 sits inside both ranges.">
+        <line x1="110" y1="150" x2="610" y2="150" stroke="var(--line-strong)" stroke-width="1"></line>
+        <text x="110" y="170" class="svg-label">$0</text>
+        <text x="332" y="170" text-anchor="middle" class="svg-label">$400</text>
+        <text x="554" y="170" text-anchor="middle" class="svg-label">$800</text>
+        <text x="610" y="170" text-anchor="end" class="svg-label">per client / month</text>
+        <text x="100" y="52" text-anchor="end" class="svg-name">Buyer's budget</text>
+        <rect x="332" y="36" width="222" height="22" fill="var(--verdigris)" opacity="0.75"></rect>
+        <text x="562" y="52" class="svg-label">$400&#8211;800</text>
+        <text x="100" y="96" text-anchor="end" class="svg-name">AI-assisted practice</text>
+        <rect x="193" y="80" width="139" height="22" fill="var(--brass)" opacity="0.8"></rect>
+        <text x="340" y="96" class="svg-label">$150&#8211;400</text>
+        <line x1="305" y1="24" x2="305" y2="150" stroke="var(--brass-hi)" stroke-width="2" stroke-dasharray="5 4"></line>
+        <text x="305" y="18" text-anchor="middle" class="svg-num" fill="var(--brass-hi)">$350</text>
+        <text x="100" y="132" text-anchor="end" class="svg-name">Four clients</text>
+        <text x="110" y="132" class="svg-label">= $1,400/month &#8212; the entire household-and-debt figure is $1,228</text>
+      </svg>
+      <figcaption><b>Plate III &#183; Where $350 sits</b>The target price is inside the range AI-assisted practices already charge and comfortably under what the buyer has already budgeted. Your competition is not the $40&#8211;75/hour American firm; it is the $10&#8211;25/hour offshore bookkeeper, and you beat them on English prose and AI leverage rather than on price.</figcaption>
+    </figure>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head">
+      <span class="stamp">Chapter three</span>
+      <h2>Ten Blind Spots</h2>
+      <p class="deck">Rewritten after the research. Two entries are new, one was cut, and the first one was factually wrong in the first edition.</p>
+    </div>
+
+    <ol class="ord">
+      <li><div><h4>Sort by uncertainty killed per minute, not by difficulty</h4><p>The live example is three fields on a MEMS profile &#8212; grade, registration date, years logged &#8212; which decide whether the credential is six months away or three years, and which every plan in this booklet is currently guessing at. Planning on an unresolved variable is decoration.</p></div></li>
+      <li><div><h4>One constraint governs the system; everything else is decoration</h4><p>Improvement anywhere but the bottleneck returns zero &#8212; not "less", zero. Yours is monthly cash against two lenders. Not craft, not knowledge, not tooling.</p></div></li>
+      <li><div><h4>Productive procrastination is the most expensive habit there is</h4><p>It is avoidance that produces artefacts, so nobody &#8212; you least of all &#8212; can tell it from diligence. <strong>And AI makes it nearly free:</strong> a tool that builds apparatus ten times faster hides you ten times faster.</p></div></li>
+      <li><div><h4>Feedback-loop length sets how fast you improve</h4><p>Client work delivers a verdict every week; a prize delivers one noisy bit twelve months late. That is most of the argument for the practice over the prize &#8212; not the money, the learning rate.</p></div></li>
+      <li><div><h4>Price is set, not discovered &#8212; and narrowness licenses the price</h4><p>Offshore bookkeepers bill $10&#8211;25/hour, AI-assisted practices charge $150&#8211;400 per client per month, US small businesses budget $400&#8211;800. The same work, priced three ways. Which one you get is a decision.</p></div></li>
+      <li><div><h4>Users are not customers &#8212; name who writes the cheque or don't build</h4><p>The most expensive lesson available, and it cost someone else $14M and 500,000 users. Before building anything: who pays, out of what budget line, instead of what? If you can't name all three, you have a project.</p></div></li>
+      <li><div><h4>Where the machine does the work, the value moves to the signature</h4><p>When execution gets cheap, the scarce thing is whoever is legally allowed to stand behind the output. This is new in 2026 and it is why the letters after your name now matter <em>more</em>, not less.</p></div></li>
+      <li><div><h4>Reach is a separate skill from craft, and it is the one that pays</h4><p>YouTube CPM runs $2.50 in Nigeria and $3.20 in Kenya against $32&#8211;36 in the US, finance content at $20&#8211;38. Same effort, ten to twenty times the return, depending only on who is watching. And opportunity arrives through people who know you slightly.</p></div></li>
+      <li><div><h4>Your own liabilities are the highest guaranteed return available</h4><p>Retiring a loan at 17&#8211;20% is a guaranteed 17&#8211;20% return. And terms are negotiable far more often than borrowers ask &#8212; a restructured loan pays a lender better than a defaulted one. It costs one conversation.</p></div></li>
+      <li><div><h4>Base rates beat stories, and your brain will not do this for you</h4><p>&#163;15,000 across 7,806 entries is &#163;1.92 of expected value per entry. Only 15&#8211;20% of Tanzanian SMEs get a bank loan. The numbers exist and are almost never looked up before committing.</p></div></li>
+    </ol>
+
+    <figure>
+      <svg viewBox="0 0 640 220" role="img" aria-label="Two timelines of one year. The weekly signal produces fifty-four correction cycles; the annual signal produces one, arriving late.">
+        <defs>
+          <pattern id="ticks2" width="10.6" height="40" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="3" height="40" fill="var(--verdigris)"></rect>
+          </pattern>
+        </defs>
+        <text x="20" y="30" class="svg-label">WEEKLY SIGNAL &#8212; a client reply, an invoice, a published piece</text>
+        <rect x="20" y="40" width="572" height="40" fill="url(#ticks2)" stroke="var(--line-strong)" stroke-width="1"></rect>
+        <text x="600" y="65" class="svg-num" text-anchor="end" fill="var(--verdigris)">54</text>
+        <text x="20" y="98" class="svg-label">54 corrections in the year &#183; each one cheap, specific, survivable</text>
+        <text x="20" y="146" class="svg-label">ANNUAL SIGNAL &#8212; a prize result, an exam, a verdict</text>
+        <rect x="20" y="156" width="572" height="40" fill="none" stroke="var(--line-strong)" stroke-width="1"></rect>
+        <rect x="586" y="156" width="6" height="40" fill="var(--rust)"></rect>
+        <text x="600" y="181" class="svg-num" text-anchor="end" fill="var(--rust)">1</text>
+        <line x1="20" y1="176" x2="578" y2="176" stroke="var(--line-strong)" stroke-width="1" stroke-dasharray="4 5"></line>
+        <text x="30" y="214" class="svg-label">one correction, arriving late, and noisy when it does</text>
+      </svg>
+      <figcaption><b>Plate IV &#183; Why loop length decides everything</b>Both bars are one year. Same year, spent two ways.</figcaption>
+    </figure>
+
+    <figure>
+      <svg viewBox="0 0 640 270" role="img" aria-label="Two pipelines with four stages. Widening a non-constraint leaves throughput at 20; widening the constraint raises it to 44.">
+        <defs>
+          <marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+          </marker>
+        </defs>
+        <text x="20" y="22" class="svg-label">A &#8212; WIDEN A NON-CONSTRAINT</text>
+        <rect x="20"  y="40" width="86" height="60" fill="var(--panel-2)" stroke="var(--line-strong)"></rect>
+        <rect x="126" y="40" width="86" height="60" fill="var(--panel-2)" stroke="var(--line-strong)"></rect>
+        <rect x="232" y="60" width="86" height="20" fill="var(--rust)" stroke="var(--line-strong)"></rect>
+        <rect x="338" y="40" width="86" height="60" fill="var(--brass)" stroke="var(--line-strong)"></rect>
+        <text x="63"  y="118" text-anchor="middle" class="svg-label">craft</text>
+        <text x="169" y="118" text-anchor="middle" class="svg-label">notes</text>
+        <text x="275" y="118" text-anchor="middle" class="svg-label" fill="var(--rust)">cash</text>
+        <text x="381" y="118" text-anchor="middle" class="svg-label" fill="var(--brass)">tooling +</text>
+        <line x1="434" y1="70" x2="500" y2="70" stroke="currentColor" stroke-width="2" marker-end="url(#ah5)" color="var(--text-faint)"></line>
+        <rect x="508" y="60" width="26" height="20" fill="var(--rust)"></rect>
+        <text x="544" y="76" class="svg-num" fill="var(--rust)">20</text>
+        <text x="544" y="92" class="svg-label">unchanged</text>
+        <text x="20" y="176" class="svg-label">B &#8212; WIDEN THE CONSTRAINT</text>
+        <rect x="20"  y="194" width="86" height="60" fill="var(--panel-2)" stroke="var(--line-strong)"></rect>
+        <rect x="126" y="194" width="86" height="60" fill="var(--panel-2)" stroke="var(--line-strong)"></rect>
+        <rect x="232" y="202" width="86" height="44" fill="var(--brass)" stroke="var(--line-strong)"></rect>
+        <rect x="338" y="194" width="86" height="60" fill="var(--panel-2)" stroke="var(--line-strong)"></rect>
+        <text x="275" y="272" text-anchor="middle" class="svg-label" fill="var(--brass)">cash +</text>
+        <line x1="434" y1="224" x2="500" y2="224" stroke="currentColor" stroke-width="2" marker-end="url(#ah5)" color="var(--text-faint)"></line>
+        <rect x="508" y="202" width="26" height="44" fill="var(--verdigris)"></rect>
+        <text x="544" y="230" class="svg-num" fill="var(--verdigris)">44</text>
+      </svg>
+      <figcaption><b>Plate V &#183; The constraint is the only stage that moves output</b>In A the tooling stage is doubled and the system still delivers 20. Every hour spent on a stage that is not the bottleneck buys the picture in A.</figcaption>
+    </figure>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head">
+      <span class="stamp">Chapter four</span>
+      <h2>The Mechanism</h2>
+      <p class="deck">The blocker was a phone call in July. It is a login now. It shrank and still didn't move &#8212; which tells you what kind of problem it is.</p>
+    </div>
+
+    <div class="prose">
+      <p>Avoid something you fear and relief arrives instantly. Instant reward, every time, zero delay &#8212; the most powerful reinforcement schedule that exists. Nothing you deliberately try to build will ever be reinforced that cleanly. <strong>Avoidance is not weak will. It is a very well-trained skill.</strong></p>
+      <p>And it never wears its own face. It arrives as <em>the timing isn't right</em>, as <em>I need to prepare more first</em>, as <em>let me get the system in place.</em> It generates work. Sometimes good work. That is the disguise.</p>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 640 250" role="img" aria-label="A reinforcement circuit: an exposing task leads to avoidance, which produces relief in zero seconds, which strengthens avoidance. The exit path runs through approach and discomfort to decay.">
+        <defs>
+          <marker id="ah6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+          </marker>
+        </defs>
+        <rect x="20" y="90" width="130" height="52" fill="var(--panel-2)" stroke="var(--line-strong)"></rect>
+        <text x="85" y="112" text-anchor="middle" class="svg-name">The exposing</text>
+        <text x="85" y="130" text-anchor="middle" class="svg-name">task</text>
+        <g color="var(--rust)">
+          <line x1="150" y1="98" x2="238" y2="66" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></line>
+          <line x1="368" y1="60" x2="440" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></line>
+          <path d="M 500 36 C 500 6, 120 6, 90 82" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></path>
+        </g>
+        <rect x="244" y="36" width="124" height="48" fill="var(--panel-2)" stroke="var(--rust)"></rect>
+        <text x="306" y="66" text-anchor="middle" class="svg-name">Avoid it</text>
+        <rect x="446" y="36" width="112" height="48" fill="var(--panel-2)" stroke="var(--rust)"></rect>
+        <text x="502" y="60" text-anchor="middle" class="svg-name">Relief</text>
+        <text x="502" y="76" text-anchor="middle" class="svg-label" fill="var(--rust)">in 0 seconds</text>
+        <text x="300" y="20" text-anchor="middle" class="svg-label" fill="var(--rust)">avoidance gets stronger every single time</text>
+        <g color="var(--brass)">
+          <line x1="150" y1="134" x2="238" y2="176" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></line>
+          <line x1="368" y1="186" x2="440" y2="186" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></line>
+        </g>
+        <rect x="244" y="162" width="124" height="48" fill="var(--panel-2)" stroke="var(--brass)"></rect>
+        <text x="306" y="184" text-anchor="middle" class="svg-name">Do it, afraid</text>
+        <text x="306" y="200" text-anchor="middle" class="svg-label">no relief at first</text>
+        <rect x="446" y="162" width="150" height="48" fill="var(--panel-2)" stroke="var(--brass)"></rect>
+        <text x="521" y="184" text-anchor="middle" class="svg-name">Fear decays</text>
+        <text x="521" y="200" text-anchor="middle" class="svg-label" fill="var(--brass)">the only exit</text>
+        <text x="306" y="236" text-anchor="middle" class="svg-label">insight does not open this door &#183; only the doing does</text>
+      </svg>
+      <figcaption><b>Plate VI &#183; The circuit, and its one exit</b>The upper loop closes on itself and is reinforced in under a second, which is why it beats any amount of understanding. No arrow leads out of it through thinking about it. Note also that shrinking the task &#8212; call, then login &#8212; does not weaken the loop, because the loop is not about effort.</figcaption>
+    </figure>
+
+    <div class="warn">
+      <span class="stamp">The sharper reading</span>
+      <p>A serious apparatus stands around one 3,896-word story &#8212; nine-axis rubric, six craft bases, an empirical campaign measured against real winners. It is real work and it is good. Meanwhile the credential file has moved once in six weeks.</p>
+      <p><strong>And here is what the research adds.</strong> That credential is not admin sitting beside the writing. It is the moat of the only business here that pays. So the file you have been leaving alone is not the boring one &#8212; it is the valuable one, and it was left alone <em>because</em> something is at stake in it.</p>
+      <p>That is not high standards. High standards are about the work; this is about the self. The tell is always the same: <strong>sustained effort, no exposure.</strong></p>
+    </div>
+
+    <div class="prose">
+      <h4>Four more, briefly</h4>
+      <p><strong>You infer who you are by watching yourself.</strong> Identity follows the evidence of your own behaviour. Two weeks of doing it produces the identity; no amount of deciding ever will.</p>
+      <p><strong>Feelings are predictions, not measurements.</strong> Before acting on a conclusive feeling: did you sleep, have you eaten, is a payment due. A real insight survives eight hours of sleep and a meal.</p>
+      <p><strong>Sort every anxiety into two boxes.</strong> Is an action available? If yes it is an undone task and gets a date. If no it is a thing to grieve, not solve.</p>
+      <p><strong>You get about four more real bets.</strong> Not tasks &#8212; the three-to-four-year commitments that eat everything else while they run. That number turns "keep your options open" from wisdom into an expense.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head">
+      <span class="stamp">Chapter five</span>
+      <h2>The Architecture</h2>
+      <p class="deck">Nobody is unstoppable. What exists is people who engineered their lives so a bad week doesn't end the project.</p>
+    </div>
+
+    <div class="grid-two">
+      <div><strong>Motivation is downstream</strong><span>You act, the action returns something, the feeling follows. Waiting to feel motivated is waiting for the output of the thing you aren't doing.</span></div>
+      <div><strong>Lower the floor, don't raise the ceiling</strong><span>Everyone who lasts has a fifteen-minute version that still counts on a day with a sick child and a power cut. All-or-nothing dies in month three.</span></div>
+      <div><strong>Never twice</strong><span>One missed day is weather, two is a decision, three is a new identity. The danger is the story forming on day two.</span></div>
+      <div><strong>The boring middle is terrain, not signal</strong><span>Most people read the flatness as evidence they chose wrong, and quit where the only work left was continuation.</span></div>
+      <div><strong>Identity attaches to process</strong><span>"I'm someone who ships" survives a rejection. "I'm someone whose story wins" hands a committee custody of your self-worth.</span></div>
+      <div><strong>Front-load decisions</strong><span>Most of what gets called low discipline is a pile of small undecided things, each charging a toll.</span></div>
+    </div>
+
+    <div class="pull">
+      <p>The order of operations is the whole difference: <strong>the exposing thing goes first.</strong> Applied here it has one concrete form &#8212; <strong>the ask goes before the offer is perfect.</strong> Ten rough asks a week in week one beats a beautiful offer in month four, because the market is the only thing that can tell you what the offer should have been, and it will not speak until you ask it something.</p>
+      <p>And the one nobody wants: <strong>volume beats intensity, and it isn't close.</strong> Volume offers no story about how special you are, which is exactly why it stays unpopular and keeps working.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head">
+      <span class="stamp">Chapter six</span>
+      <h2>Five Models</h2>
+      <p class="deck">Re-derived against the evidence. One is new because failing to ask it cost someone $14M, and one was cut for not carrying its weight.</p>
+    </div>
+
+    <div class="models">
+      <div class="model">
+        <span class="n">1</span><h3>The Payer Test</h3>
+        <p>Name three things: who writes the cheque, which budget line it comes out of, and what they stop buying to buy you. If you can't name all three in a sentence each, you have a project, not a business &#8212; however many people would use it free.</p>
+        <p class="q"><span>Ask</span>Who pays, out of what money, instead of what?</p>
+      </div>
+      <div class="model">
+        <span class="n">2</span><h3>The Exposure Ledger</h3>
+        <p>Every choice raises or lowers your exposure to being seen, judged and corrected. When two options are close on merit, take the one with more exposure &#8212; it is the only one that returns information about reality.</p>
+        <p class="q"><span>Ask</span>Which of these can tell me I'm wrong?</p>
+      </div>
+      <div class="model">
+        <span class="n">3</span><h3>The Second Conversation</h3>
+        <p>Everyone is impressive once; charisma is the cheapest thing a person can make. The signal is in the gap: did they do the small thing they said, is the story identical, do they reference what you said.</p>
+        <p class="q"><span>Ask</span>What happened between the two conversations?</p>
+      </div>
+      <div class="model">
+        <span class="n">4</span><h3>The Cheap Autopsy</h3>
+        <p>"Why did this fail" invites a flattering story. The lesson in most failure is not <em>try harder</em> &#8212; it is the invoice for information you declined to buy up front, and the answer is nearly always weeks earlier, for one small deliberate act.</p>
+        <p class="q"><span>Ask</span>When could I have known, and what would it have cost?</p>
+      </div>
+      <div class="model">
+        <span class="n">5</span><h3>The Signature Test</h3>
+        <p>Two questions, and you want a yes to at least one. <strong>Does it stand</strong> &#8212; keep producing after you leave the room? And <strong>does it need your signature</strong> &#8212; could anyone else have put their name to it? As execution gets cheap, the margin moves to whoever is allowed to stand behind the output.</p>
+        <p class="q"><span>Ask</span>Does it keep working without me, and could anyone else have signed it?</p>
+      </div>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 640 240" role="img" aria-label="Two twelve-month timelines. Carried work produces output only while hands are on it. Standing work is built in the first two months and keeps accumulating.">
+        <text x="20" y="22" class="svg-label">CARRIED WORK &#8212; output exists only while hands are on it</text>
+        <line x1="20" y1="96" x2="600" y2="96" stroke="var(--line-strong)" stroke-width="1"></line>
+        <rect x="20"  y="56" width="80" height="40" fill="var(--rust)" opacity="0.85"></rect>
+        <rect x="150" y="56" width="80" height="40" fill="var(--rust)" opacity="0.85"></rect>
+        <rect x="330" y="56" width="80" height="40" fill="var(--rust)" opacity="0.85"></rect>
+        <rect x="480" y="56" width="60" height="40" fill="var(--rust)" opacity="0.85"></rect>
+        <text x="20" y="114" class="svg-label">hands on</text>
+        <text x="600" y="114" text-anchor="end" class="svg-label" fill="var(--rust)">accumulated at month 12: nothing</text>
+        <text x="20" y="160" class="svg-label">STANDING WORK &#8212; built once, keeps producing</text>
+        <line x1="20" y1="234" x2="600" y2="234" stroke="var(--line-strong)" stroke-width="1"></line>
+        <rect x="20" y="194" width="80" height="40" fill="var(--brass)"></rect>
+        <polyline points="100,234 180,222 260,208 340,192 420,178 500,166 600,152" fill="none" stroke="var(--verdigris)" stroke-width="2.5"></polyline>
+        <path d="M 100 234 L 180 222 L 260 208 L 340 192 L 420 178 L 500 166 L 600 152 L 600 234 Z" fill="var(--verdigris)" opacity="0.16"></path>
+        <text x="20" y="252" class="svg-label">hands on</text>
+        <text x="600" y="252" text-anchor="end" class="svg-label" fill="var(--verdigris)">still earning, untouched since month 2</text>
+      </svg>
+      <figcaption><b>Plate VII &#183; Carried hours against standing hours</b>Both rows are twelve months containing roughly the same worked hours. The difference is where those hours were placed. Count last week honestly: most people's standing hours total zero.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p><strong>What was cut, and why it's worth saying.</strong> The first edition had a model called the Ninety-Day Ghost &#8212; <em>what disappears if I don't touch it?</em> Still true, still useful, but it is a scheduling heuristic sitting where a load-bearing model should be. It survives as a curriculum module. The Payer Test took its place because not asking it is the most expensive documented mistake in the whole research file.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head">
+      <span class="stamp">Chapter seven</span>
+      <h2>Thirty-Six Months</h2>
+      <p class="deck">A phase is not finished because time passed. It is finished when the gate clears.</p>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 640 260" role="img" aria-label="A four-phase ladder over thirty-six months, each phase rising and carrying a proof gate: three paid invoices, a package sold three times unmodified, a first inbound enquiry, and a month where a third of income arrives hands-off.">
+        <line x1="20" y1="228" x2="612" y2="228" stroke="var(--line-strong)" stroke-width="1"></line>
+        <rect x="20"  y="188" width="132" height="40" fill="var(--brass)"></rect>
+        <rect x="160" y="156" width="132" height="72" fill="var(--panel-2)" stroke="var(--line-strong)"></rect>
+        <rect x="300" y="112" width="152" height="116" fill="var(--panel-2)" stroke="var(--line-strong)"></rect>
+        <rect x="460" y="60"  width="152" height="168" fill="var(--panel-2)" stroke="var(--line-strong)"></rect>
+        <text x="86"  y="212" text-anchor="middle" class="svg-num" fill="var(--ground)">1</text>
+        <text x="226" y="196" text-anchor="middle" class="svg-num">2</text>
+        <text x="376" y="174" text-anchor="middle" class="svg-num">3</text>
+        <text x="536" y="150" text-anchor="middle" class="svg-num">4</text>
+        <text x="86"  y="246" text-anchor="middle" class="svg-label">MONTH 1&#8211;3</text>
+        <text x="226" y="246" text-anchor="middle" class="svg-label">MONTH 4&#8211;12</text>
+        <text x="376" y="246" text-anchor="middle" class="svg-label">YEAR 2</text>
+        <text x="536" y="246" text-anchor="middle" class="svg-label">YEAR 3</text>
+        <polygon points="152,180 160,172 168,180 160,188" fill="var(--verdigris)"></polygon>
+        <polygon points="292,148 300,140 308,148 300,156" fill="var(--verdigris)"></polygon>
+        <polygon points="452,104 460,96 468,104 460,112" fill="var(--verdigris)"></polygon>
+        <polygon points="604,52 612,44 620,52 612,60" fill="var(--verdigris)"></polygon>
+        <text x="20"  y="30" class="svg-label" fill="var(--verdigris)">GATES &#8212; a phase ends when its gate clears, not when the months run out</text>
+        <text x="160" y="166" class="svg-label">3 paid invoices</text>
+        <text x="300" y="134" class="svg-label">package sold 3&#215; unmodified &#183; debt cleared</text>
+        <text x="460" y="90" class="svg-label">first enquiry you didn't chase</text>
+        <text x="612" y="38" text-anchor="end" class="svg-label">a third of income, hands off</text>
+      </svg>
+      <figcaption><b>Plate VIII &#183; The ladder and its gates</b>Phase 1 is drawn solid because nothing above it is real until it clears. Each gate is an observable event rather than a feeling of readiness, which is what stops a phase being declared complete by the calendar. Before all of it sits Phase 0: three fields on a MEMS profile, and the choice between ACPA and ACPA-PP.</figcaption>
+    </figure>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col"></th><th scope="col">Month 12</th><th scope="col">Month 24</th><th scope="col">Month 36</th></tr></thead>
+        <tbody>
+          <tr><td>Clients at $350&#8211;400/mo</td><td class="num">10</td><td class="num">25</td><td class="num">45&#8211;60</td></tr>
+          <tr><td>Revenue</td><td class="num">~$42k/yr</td><td class="num">~$105k/yr</td><td class="num">$215&#8211;290k/yr</td></tr>
+          <tr><td>Practice value @ ~1.1&#215;</td><td class="num">&#8212;</td><td class="num">&#8212;</td><td class="num">$235&#8211;320k</td></tr>
+          <tr><td>Debt</td><td class="num">cleared</td><td class="num">&#8212;</td><td class="num">&#8212;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <p>Net worth landing around <strong>$300&#8211;450k &#8212; TSh 0.8&#8211;1.2 billion.</strong> Roughly a third of a million dollars, and four to five times what the first edition of this booklet projected. The dollar million needs about $850k&#8211;1.1M of revenue, or 180&#8211;230 clients, which is a firm with staff rather than a solo practice. The buyers for that firm exist and are acquiring today. It is a live option; it is not a plan.</p>
+      <h4>What the 2036 version had to unlearn</h4>
+      <p>That credentials produce income &#8212; they produce <em>permission</em>, and in an AI market permission is the moat. That being good is a form of marketing. That effort earns reward, which school taught and the market disproved. That he had to choose between the numbers and the prose, when the combination was the entire asset. And that his perfectionism was high standards rather than fear with a good vocabulary.</p>
+      <h4>On being impossible to replace</h4>
+      <p>You won't be, and aiming for it is a trap. Aim at <strong>expensive to replace</strong>: a rare pairing of two ordinary skills, context nobody else holds, relationships that route work to you by default, and a signature nobody else can put on the page. Depth in one skill is the weakest of the four and the one everybody chases.</p>
+    </div>
+
+    <div class="warn">
+      <span class="stamp">What the 2036 version would say first</span>
+      <p>None of this outruns the current constraint, which is monthly cash against two lenders. <strong>Phase 1 exists to buy the calm that Phases 2 to 4 require, and everything above it is fiction until the first three invoices clear.</strong></p>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <p class="stamp">Colophon</p>
+    <p>The full text lives in the vault as twelve linked notes under <code>01 Projects/Personal/Operating Manual/</code>. The memory layer is <code>00 Profile &#8212; The Memory.md</code> &#8212; fix that first when a fact changes, because everything else is derived from it. The research is in <code>Due Diligence &#8212; What the Market Says.md</code> with every source linked. Running <code>/second-brain</code> in Claude Code re-derives the seven answers against the current profile.</p>
+    <p>Figures come from the household numbers logged in <code>Expenses.md</code> and from named public sources, all listed in the due-diligence note. Where a number was estimated it says so.</p>
+    <p><strong>Phase 0, and it is not in any chapter.</strong> Log into MEMS. Read three fields: grade, registration date, years logged. Then choose ACPA or ACPA-PP &#8212; public practice is the track that lets you sign for clients, and its referees must be PP too, so deciding late costs the referee search twice. Ten minutes. It was a phone call in July and it is a login now; the blocker shrank and still didn't move, and Chapter IV is why.</p>
+  </footer>
+
+</div>

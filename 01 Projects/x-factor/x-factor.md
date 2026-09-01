@@ -154,6 +154,21 @@ Every Chair of Judges 2021–2026, verbatim, checked against the Commonwealth Fo
 7. **The rhythm metric predicts nothing.** Lubwama 10.5 · Nazir 11.3 · *Dite* **17.5**. Three accomplished stories, two opposite profiles. **Chantal's 14.8 is a register, not a defect.**
 8. **Close third buys reach, not atmosphere — and it does not itemise the bill.** Flipping [[mihogoni-3f]] to first person with one variable changed left five of seven devices untouched and broke two, both for the same reason: third person was paying for access the narrator does not have. **A story about a girl kept out of rooms should not have a narrating position that can see into all of them.** → [[19 The Third-Person Test — What Close Third Bought and Cost]]
 
+---
+
+## 🧭 Method — `Method/`
+
+**The findings above say what is true. These four say what to do about it.** Working aids, not theory — every one is safe to keep open while drafting.
+
+| File | What it is | Reach for it when |
+| --- | --- | --- |
+| **[[How To Build A Short Story]]** | Seven stages, one written question each, with a flowchart. Stages 1–6 happen **before a word of the story** and take about three hours | You are starting something and don't yet have a germ, a position or a shape |
+| **[[Portable Shapes — What Survives Out of the Experiments]]** | The seven devices that survived the experiments, described as **shapes only — no sentences, no quoted prose**, so whatever fills them must be invented at the keyboard | You are drafting and need a device without risking a borrowed phrase |
+| **[[The Letter to Zadie at Eighteen]]** | *NW* reduced to three engines and twelve effects, Kafka's five structural moves, and the three passages worth stealing outright — the dog sentence, the question ladder, the reversal clause | You want to understand **why** a move works before using it |
+| **[[Six Moves — The Simple Guide]]** | The same material as a **tickable checklist** with timers and a calendar to 25 October. Four of the six moves are additive | You are stuck, scattered, or short on time and need one job for tonight |
+
+> **The two halves.** [[The Letter to Zadie at Eighteen]] explains; [[Six Moves — The Simple Guide]] executes. Read the first once. Work from the second.
+
 ## Related
 
 - [[Home]] · [[Dashboard|the Kalemie project]] · [[02 Comparison Board]] · [[Craft Log]]

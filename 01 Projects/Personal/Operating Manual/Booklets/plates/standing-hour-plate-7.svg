@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" role="img" aria-label="Two twelve-month timelines. Carried work produces output only while hands are on it. Standing work is built in the first two months and keeps accumulating."><style>.svg-label{font-family: "JetBrains Mono", monospace; font-size: 11px; fill: #737C88; letter-spacing: 0.06em;}.svg-name{font-family: "Newsreader", Georgia, serif; font-size: 14px; fill: #E4E7EA;}.svg-num{font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; fill: #E4E7EA;}</style><rect x="0" y="0" width="640" height="240" fill="#171C24"/>
+        <text x="20" y="22" class="svg-label">CARRIED WORK — output exists only while hands are on it</text>
+        <line x1="20" y1="96" x2="600" y2="96" stroke="#3E4A59" stroke-width="1"></line>
+        <rect x="20"  y="56" width="80" height="40" fill="#C4644C" opacity="0.85"></rect>
+        <rect x="150" y="56" width="80" height="40" fill="#C4644C" opacity="0.85"></rect>
+        <rect x="330" y="56" width="80" height="40" fill="#C4644C" opacity="0.85"></rect>
+        <rect x="480" y="56" width="60" height="40" fill="#C4644C" opacity="0.85"></rect>
+        <text x="20" y="114" class="svg-label">hands on</text>
+        <text x="600" y="114" text-anchor="end" class="svg-label" fill="#C4644C">accumulated at month 12: nothing</text>
+        <text x="20" y="160" class="svg-label">STANDING WORK — built once, keeps producing</text>
+        <line x1="20" y1="234" x2="600" y2="234" stroke="#3E4A59" stroke-width="1"></line>
+        <rect x="20" y="194" width="80" height="40" fill="#C89B4A"></rect>
+        <polyline points="100,234 180,222 260,208 340,192 420,178 500,166 600,152" fill="none" stroke="#57A08F" stroke-width="2.5"></polyline>
+        <path d="M 100 234 L 180 222 L 260 208 L 340 192 L 420 178 L 500 166 L 600 152 L 600 234 Z" fill="#57A08F" opacity="0.16"></path>
+        <text x="20" y="252" class="svg-label">hands on</text>
+        <text x="600" y="252" text-anchor="end" class="svg-label" fill="#57A08F">still earning, untouched since month 2</text>
+      </svg>

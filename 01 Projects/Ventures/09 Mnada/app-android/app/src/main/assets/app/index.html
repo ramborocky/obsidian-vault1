@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>MNADA · Uangalizi</title>
+<style>
+:root{
+  /* Ground: daylight. A pale green-white field, deep forest ink, and one bright
+     leaf-green that carries the brand. Green is now the primary — ochre has been
+     demoted to the warning tone, which is the only job it was ever doing. */
+  --bg:#F4FAF5; --bg2:#E9F4EC;
+  --surface:#FFFFFF; --surface2:#F1F8F3; --surface3:#E2EFE6;
+  --line:#D8E9DD; --line2:#BEDBC8;
+  --txt:#0F2418; --txt2:#4B6B57; --txt3:#799484;
+
+  --ochre:#B4700A; --ochre2:#C2760D; --ochre-d:#EFD9AE;
+  --moss:#0E8F4C; --moss2:#12A055; --moss-d:#B9E4CB;
+  --red:#C0392B; --red2:#A5301F; --red-d:#F2CFC9;
+  --amber:#A8760A; --amber-d:#EDDCAB;
+
+  --grad-ochre:linear-gradient(135deg,#E8A33F,#C2760D);
+  --grad-moss:linear-gradient(135deg,#1FAE63,#067038);
+  --grad-card:linear-gradient(158deg,#FFFFFF 0%,#F3FAF5 74%);
+  --grad-deep:linear-gradient(180deg,#F8FCF9,#E9F4EC);
+
+  /* translucent fills, so a palette swap does not need 19 separate edits again */
+  --fill:rgba(15,90,55,.045); --fill2:rgba(15,90,55,.075);
+  --hair:rgba(18,160,85,.20);
+
+  --sh-1:0 1px 2px rgba(16,58,36,.08);
+  --sh-2:0 6px 18px -6px rgba(16,58,36,.16);
+  --sh-3:0 18px 44px -14px rgba(16,58,36,.24);
+  --glow-moss:0 0 34px -8px rgba(18,160,85,.55);
+  --glow-ochre:0 0 34px -8px rgba(194,118,13,.45);
+  --glow-red:0 0 34px -8px rgba(192,57,43,.45);
+
+  --r-s:8px; --r-m:14px; --r-l:20px; --r-xl:26px;
+
+  --mono:ui-monospace,"SF Mono","Roboto Mono",Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15px;line-height:1.5;
+     user-select:none;-webkit-user-select:none;
+     -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+
+/* one warm light source, top-left, so the whole app sits in a place */
+#app::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(120% 62% at 12% -8%, rgba(255,201,110,.26), transparent 62%),
+    radial-gradient(96% 54% at 92% 4%, rgba(47,191,110,.20), transparent 60%),
+    var(--grad-deep);}
+.topbar,.scroll,.tabs{position:relative;z-index:1}
+
+#app{display:flex;flex-direction:column;height:100%}
+
+.topbar{flex:0 0 auto;padding:calc(var(--safe-t) + 12px) 18px 12px;
+        display:flex;align-items:center;gap:10px}
+.brand{font-family:var(--mono);font-weight:700;letter-spacing:.26em;font-size:.86rem;
+       background:var(--grad-moss);-webkit-background-clip:text;background-clip:text;
+       -webkit-text-fill-color:transparent}
+.topbar .spacer{flex:1}
+.chip{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;
+      padding:.34rem .6rem;border:1px solid var(--line2);border-radius:999px;
+      color:var(--txt2);background:var(--fill);backdrop-filter:blur(6px)}
+.lang{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;
+      background:var(--fill);border:1px solid var(--line2);color:var(--txt2);
+      padding:.34rem .62rem;border-radius:999px;cursor:pointer;transition:.16s}
+.lang:active{background:var(--surface3);transform:scale(.94)}
+
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.view{display:none;padding:6px 18px calc(24px + var(--safe-b))}
+.view.on{display:block;animation:viewIn .34s cubic-bezier(.2,.85,.3,1)}
+@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* the cards stagger in behind the heading rather than all landing at once */
+.view.on > .card,.view.on > .gauge,.view.on > .mosaic,.view.on > .field{animation:cardIn .42s both}
+.view.on > *:nth-child(3){animation-delay:.03s}
+.view.on > *:nth-child(4){animation-delay:.06s}
+.view.on > *:nth-child(5){animation-delay:.09s}
+.view.on > *:nth-child(n+6){animation-delay:.12s}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .view.on,.view.on > *{animation:none!important}
+  .arc .val{transition:none}
+}
+
+.tabs{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;
+      background:rgba(255,255,255,.90);backdrop-filter:blur(18px) saturate(1.3);
+      border-top:1px solid var(--line);padding:8px 10px calc(8px + var(--safe-b))}
+.tab{background:transparent;border:0;padding:8px 2px 7px;color:var(--txt3);border-radius:var(--r-m);
+     display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;position:relative;
+     font-family:var(--sans);font-size:.63rem;letter-spacing:.02em;font-weight:600;
+     transition:color .2s,background .2s}
+.tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;
+         stroke-linecap:round;stroke-linejoin:round;transition:transform .24s cubic-bezier(.3,1.5,.5,1)}
+.tab.on{color:var(--moss);background:rgba(31,174,99,.13)}
+.tab.on svg{transform:translateY(-2px) scale(1.08)}
+.tab.on::after{content:"";position:absolute;top:2px;width:16px;height:2.5px;border-radius:2px;
+               background:var(--grad-moss);box-shadow:var(--glow-moss)}
+.tab:active{transform:scale(.93)}
+
+h2{font-size:1.72rem;margin:0 0 5px;letter-spacing:-.028em;font-weight:700;line-height:1.14}
+.sub{color:var(--txt2);font-size:.9rem;margin:0 0 20px;line-height:1.5}
+.lbl{font-family:var(--sans);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+     color:var(--txt3);margin:26px 0 10px;font-weight:700}
+.lbl:first-child{margin-top:0}
+
+.card{background:var(--grad-card);border:1px solid var(--line);border-radius:var(--r-l);
+      padding:16px 17px;margin-bottom:11px;box-shadow:var(--sh-2);
+      position:relative;overflow:hidden}
+/* a single hairline of light along the top edge — the thing that reads as "expensive" */
+.card::before{content:"";position:absolute;top:0;left:14px;right:14px;height:1px;
+              background:linear-gradient(90deg,transparent,var(--hair),transparent)}
+.card.tap{cursor:pointer;transition:transform .16s,box-shadow .16s}
+.card.tap:active{transform:scale(.985);box-shadow:var(--sh-1)}
+
+.row{display:flex;align-items:center;gap:10px}
+.row.between{justify-content:space-between}
+.grow{flex:1;min-width:0}
+
+.meta{font-size:.78rem;color:var(--txt3);margin-top:3px}
+.up{color:var(--moss)} .down{color:var(--red)} .warn{color:var(--amber)}
+
+.btn{display:block;width:100%;padding:16px;border-radius:var(--r-m);border:0;
+     background:var(--grad-moss);color:#FFFFFF;font-family:var(--sans);font-size:.94rem;
+     letter-spacing:-.01em;font-weight:700;cursor:pointer;margin-top:14px;
+     box-shadow:0 8px 22px -10px rgba(6,112,56,.6),inset 0 1px 0 rgba(255,255,255,.28);
+     transition:transform .14s,box-shadow .18s,filter .18s}
+.btn:active{transform:scale(.972);box-shadow:0 3px 10px -6px rgba(6,112,56,.55);filter:brightness(.95)}
+.btn.ghost{background:var(--surface);color:var(--txt);border:1px solid var(--line2);
+           box-shadow:var(--sh-1);font-weight:600}
+.btn.ghost:active{background:var(--surface3)}
+.btn.danger{background:rgba(192,57,43,.07);color:var(--red);border:1px solid var(--red-d);box-shadow:none}
+.btn:disabled{opacity:.3;pointer-events:none;filter:saturate(.4)}
+
+.empty{text-align:center;color:var(--txt3);font-size:.88rem;padding:34px 20px;line-height:1.7}
+.empty svg{width:56px;height:56px;stroke:var(--line2);fill:none;stroke-width:1.4;
+           stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px;display:block;
+           margin-left:auto;margin-right:auto}
+
+/* ---------- the lot, as photographs ----------
+   Every animal that has been enrolled, in the order it was enrolled. This is the
+   only screen that shows the lot as a thing rather than as a number. */
+.mosaic{display:grid;grid-template-columns:repeat(auto-fill,minmax(66px,1fr));gap:7px}
+.mtile{position:relative;padding-bottom:100%;border-radius:var(--r-s);overflow:hidden;
+       background:var(--surface2);cursor:pointer;box-shadow:var(--sh-1);transition:transform .16s}
+.mtile:active{transform:scale(.92)}
+.mtile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mtile::after{content:"";position:absolute;inset:0;
+              background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.55))}
+.mtile .dot{position:absolute;right:5px;bottom:5px;width:8px;height:8px;border-radius:50%;
+            z-index:2;box-shadow:0 0 0 2px rgba(0,0,0,.6)}
+.mtile.present .dot{background:var(--moss)}
+.mtile.missing .dot{background:var(--amber)}
+.mtile.dead .dot{background:var(--red)}
+.mtile.dead img{filter:grayscale(1) brightness(.45)}
+.mosaic .more{display:flex;align-items:center;justify-content:center;color:var(--txt2);
+              font-family:var(--mono);font-size:.8rem;background:var(--surface2);
+              position:absolute;inset:0}
+
+.bigpic{width:100%;border-radius:var(--r-m);display:block;margin-bottom:14px;
+        background:var(--surface2);box-shadow:var(--sh-2)}
+
+/* ---------- cover gauge ---------- */
+.gauge{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--r-xl);
+       background:var(--grad-card);padding:20px 18px 16px;margin-bottom:14px;box-shadow:var(--sh-3)}
+.gauge::before{content:"";position:absolute;top:0;left:18px;right:18px;height:1px;
+               background:linear-gradient(90deg,transparent,var(--hair),transparent)}
+/* the colour of the state, bled into the top of the card */
+.gauge::after{content:"";position:absolute;top:-58%;left:50%;transform:translateX(-50%);
+              width:150%;height:100%;pointer-events:none;opacity:.5;transition:background .5s}
+.gauge.ok::after{background:radial-gradient(closest-side,rgba(47,191,110,.30),transparent 72%)}
+.gauge.watch::after{background:radial-gradient(closest-side,rgba(232,163,63,.32),transparent 72%)}
+.gauge.call::after{background:radial-gradient(closest-side,rgba(214,86,66,.28),transparent 72%)}
+
+.arcwrap{position:relative;max-width:290px;margin:0 auto}
+.arc{width:100%;display:block;overflow:visible}
+.arc .trk{fill:none;stroke:rgba(15,90,55,.11);stroke-width:15;stroke-linecap:round}
+.arc .val{fill:none;stroke-width:15;stroke-linecap:round;
+          transition:stroke-dashoffset .85s cubic-bezier(.2,.85,.25,1),stroke .45s}
+.gauge.ok   .arc .val{stroke:url(#gMoss); filter:drop-shadow(0 2px 7px rgba(6,112,56,.35))}
+.gauge.watch .arc .val{stroke:url(#gAmber);filter:drop-shadow(0 2px 7px rgba(194,118,13,.35))}
+.gauge.call .arc .val{stroke:url(#gRed);  filter:drop-shadow(0 2px 7px rgba(165,48,31,.35))}
+.arc .mk{stroke:rgba(15,60,40,.45);stroke-width:2.5;stroke-linecap:round}
+
+.arccentre{position:absolute;left:0;right:0;bottom:2px;text-align:center}
+.arccentre .capt{font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;
+                 color:var(--txt3);font-weight:700}
+.arccentre .big{font-family:var(--mono);font-variant-numeric:tabular-nums;
+                font-size:3.1rem;line-height:1;margin:5px 0 3px;letter-spacing:-.045em;font-weight:600}
+.arccentre .band{font-size:.86rem;font-weight:600}
+.gauge.ok .arccentre .big{color:var(--moss)}
+.gauge.watch .arccentre .big{color:var(--amber)}
+.gauge.call .arccentre .big{color:var(--red)}
+.arcends{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;
+         color:var(--txt3);margin:-6px 6px 0}
+/* the break-even tick label, parked on the arc rather than under the middle of the card */
+.arcmklbl{position:absolute;transform:translate(7px,-50%);font-family:var(--mono);
+          font-size:.6rem;color:var(--txt2);white-space:nowrap;pointer-events:none}
+.gauge .foot{font-size:.76rem;color:var(--txt3);margin-top:12px;line-height:1.6;
+             border-top:1px solid var(--line);padding-top:11px}
+
+/* ---------- form ---------- */
+.field{margin-bottom:16px}
+.field > .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;
+            color:var(--txt3);display:block;margin-bottom:7px}
+.seg{display:flex;gap:7px;flex-wrap:wrap}
+.seg button{flex:1 1 auto;min-width:58px;padding:12px 8px;border-radius:var(--r-s);
+            border:1px solid var(--line2);background:var(--surface);color:var(--txt2);
+            font-family:var(--sans);font-size:.84rem;font-weight:600;cursor:pointer;transition:.16s}
+.seg button.on{background:var(--grad-moss);border-color:transparent;color:#FFFFFF;font-weight:700;
+               box-shadow:0 6px 16px -8px rgba(6,112,56,.7),inset 0 1px 0 rgba(255,255,255,.3)}
+.seg button:active{transform:scale(.95)}
+
+input[type=text],input[type=number],input[type=date]{
+  width:100%;padding:15px 15px;border-radius:var(--r-m);border:1px solid var(--line2);
+  background:var(--surface);color:var(--txt);font-family:var(--mono);font-size:1rem;
+  -webkit-user-select:text;user-select:text;transition:border-color .18s,box-shadow .18s}
+input:focus{outline:none;border-color:var(--moss2);box-shadow:0 0 0 3px rgba(18,160,85,.16)}
+input::placeholder{color:var(--txt3)}
+
+.stepper{display:flex;align-items:center;gap:0;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+.stepper button{width:52px;padding:12px 0;background:var(--surface);border:0;color:var(--moss);
+                font-size:1.15rem;font-family:var(--mono);cursor:pointer}
+.stepper button:active{background:var(--surface2)}
+.stepper .val{flex:1;text-align:center;font-family:var(--mono);font-size:1.05rem;
+              border-left:1px solid var(--line2);border-right:1px solid var(--line2);padding:12px 0}
+.stepper .val small{display:block;font-size:.62rem;color:var(--txt3);letter-spacing:.08em}
+
+.preview{border:1px solid var(--ochre-d);border-radius:6px;background:rgba(224,151,63,.07);
+         padding:13px 14px;margin-top:4px}
+.preview .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ochre)}
+.preview .v{font-family:var(--mono);font-size:1.02rem;margin-top:5px;word-break:break-all;line-height:1.4}
+.preview .est{font-size:.79rem;color:var(--txt2);margin-top:9px;border-top:1px solid var(--line);padding-top:9px}
+.preview .est b{color:var(--txt);font-family:var(--mono)}
+
+/* ---------- evidence capture ---------- */
+.cap{display:flex;gap:13px;align-items:center;border:1.5px dashed var(--line2);border-radius:var(--r-m);
+     background:var(--surface);padding:14px;cursor:pointer;margin-bottom:9px;transition:.18s}
+.cap:active{background:var(--surface3);transform:scale(.985)}
+.cap.done{border-style:solid;border-color:var(--moss);background:rgba(18,160,85,.08)}
+.cap .ico{width:46px;height:46px;flex:0 0 auto;border-radius:var(--r-s);border:1px solid var(--line2);
+          display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg)}
+.cap .ico svg{width:20px;height:20px;stroke:var(--ochre);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cap.done .ico svg{stroke:var(--moss)}
+.cap .ico img{width:100%;height:100%;object-fit:cover;display:block}
+.cap .t{font-size:.86rem}
+.cap .h{font-size:.72rem;color:var(--txt3);margin-top:2px;word-break:break-all;font-family:var(--mono)}
+.hidden-file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+.flag{display:inline-block;font-family:var(--mono);font-size:.58rem;letter-spacing:.09em;
+      text-transform:uppercase;padding:.16rem .42rem;border-radius:3px;
+      border:1px solid var(--amber-d);color:var(--amber);background:rgba(232,163,63,.14)}
+.flag.green{border-color:var(--moss-d);color:var(--moss);background:rgba(31,174,99,.12)}
+.flag.red{border-color:var(--red-d);color:var(--red);background:rgba(192,57,43,.09)}
+
+/* ---------- count rows ---------- */
+.crow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:0}
+.crow .th{width:34px;height:34px;flex:0 0 auto;border-radius:4px;border:1px solid var(--line2);
+          overflow:hidden;background:var(--bg)}
+.crow .th img{width:100%;height:100%;object-fit:cover;display:block}
+.crow .tg{font-family:var(--mono);font-size:.84rem}
+.crow .mk{display:flex;gap:5px;flex:0 0 auto}
+.crow .mk button{width:34px;padding:7px 0;border-radius:4px;border:1px solid var(--line2);
+                 background:var(--surface);color:var(--txt3);font-family:var(--mono);font-size:.7rem;cursor:pointer}
+.crow .mk button.on[data-s=present]{background:var(--moss-d);border-color:var(--moss);color:#064A2A}
+.crow .mk button.on[data-s=missing]{background:var(--amber-d);border-color:var(--amber);color:#5A3F05}
+.crow .mk button.on[data-s=dead]{background:var(--red-d);border-color:var(--red);color:#7A1F14}
+
+.kv{display:flex;justify-content:space-between;gap:14px;padding:11px 0;
+    border-bottom:1px solid var(--line);font-size:.9rem;align-items:baseline}
+.kv:last-child{border-bottom:0}
+.kv .k{color:var(--txt3);font-size:.84rem}
+.kv .v{font-family:var(--mono);text-align:right;word-break:break-all;font-size:.98rem;color:var(--txt)}
+
+table.trig{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:4px}
+table.trig th,table.trig td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right}
+table.trig th:first-child,table.trig td:first-child{text-align:left}
+table.trig th{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);font-weight:400}
+table.trig td{font-family:var(--mono)}
+table.trig tr.now td{color:var(--moss);font-weight:600}
+
+.ev{padding:9px 0;border-bottom:1px solid var(--line);font-size:.8rem}
+.ev:last-child{border-bottom:0}
+.ev .h{font-family:var(--mono);font-size:.68rem;color:var(--txt3);word-break:break-all;margin-top:3px}
+.ev .ty{font-family:var(--mono);font-size:.72rem;color:var(--moss);letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------- swipe deck ----------
+   The one pattern worth borrowing from a consumer feed: a 200-head walk is 200
+   decisions, and a full-screen card you flick is far faster than a list row you
+   aim at. No streaks, no rewards, no counters designed to pull you back. */
+#deck{position:fixed;inset:0;z-index:70;background:var(--bg);display:none;
+      flex-direction:column;padding-top:var(--safe-t);padding-bottom:var(--safe-b)}
+#deck.on{display:flex}
+
+.deckbar{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:12px 16px}
+.deckbar .x{background:transparent;border:0;color:var(--txt2);font-size:1.5rem;
+            line-height:1;padding:4px 8px;cursor:pointer;font-family:var(--mono)}
+.deckbar .prog{flex:1}
+.deckbar .prog .t{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
+                  text-transform:uppercase;color:var(--txt3);display:flex;justify-content:space-between}
+.deckbar .prog .track{height:4px;border-radius:2px;background:var(--line);overflow:hidden;margin-top:5px}
+.deckbar .prog .track i{display:block;height:100%;background:var(--grad-moss);
+                        transition:width .28s cubic-bezier(.2,.8,.3,1)}
+.deckbar .undo{background:transparent;border:1px solid var(--line2);border-radius:4px;
+               color:var(--txt2);font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;
+               text-transform:uppercase;padding:.4rem .55rem;cursor:pointer}
+.deckbar .undo:disabled{opacity:.3}
+
+.stage{flex:1;position:relative;margin:4px 16px 0;min-height:0}
+.dcard{position:absolute;inset:0;border-radius:14px;overflow:hidden;
+       background:var(--surface);border:1px solid var(--line2);
+       display:flex;flex-direction:column;will-change:transform,opacity;
+       touch-action:none;-webkit-user-select:none;user-select:none}
+.dcard.behind{transform:scale(.94) translateY(10px);opacity:.55;pointer-events:none}
+.dcard.settle{transition:transform .26s cubic-bezier(.2,.8,.3,1),opacity .26s}
+.dcard .pic{flex:1;min-height:0;background:var(--surface3);position:relative;overflow:hidden}
+.dcard .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.dcard .pic .none{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+                  color:var(--txt3);font-family:var(--mono);font-size:.78rem}
+.dcard .info{flex:0 0 auto;padding:14px 16px;background:linear-gradient(180deg,rgba(255,255,255,0),var(--surface) 34%)}
+.dcard .tagbig{font-family:var(--mono);font-size:1.6rem;letter-spacing:.02em;line-height:1.15}
+.dcard .subline{font-family:var(--mono);font-size:.78rem;color:var(--txt3);margin-top:4px}
+.dcard .valline{font-family:var(--mono);font-size:.92rem;color:var(--txt2);margin-top:8px}
+
+/* the verdict wash — colour arrives with the gesture, not after it */
+.dcard .wash{position:absolute;inset:0;opacity:0;pointer-events:none;
+             display:flex;align-items:center;justify-content:center}
+.dcard .wash span{font-family:var(--mono);font-size:1.5rem;letter-spacing:.18em;text-transform:uppercase;
+                  border:3px solid currentColor;border-radius:8px;padding:.4rem 1rem;transform:rotate(-8deg)}
+.dcard .wash.present{background:rgba(31,174,99,.26);color:#05532F}
+.dcard .wash.missing{background:rgba(232,163,63,.28);color:#6B4A05}
+.dcard .wash.dead{background:rgba(192,57,43,.24);color:#7A1F14}
+
+.deckbtns{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:14px 16px 10px}
+.deckbtns button{padding:15px 6px;border-radius:9px;border:1px solid var(--line2);
+                 background:var(--surface);font-family:var(--mono);font-size:.7rem;
+                 letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--txt2)}
+.deckbtns button:active{transform:scale(.96)}
+.deckbtns button[data-s=present]{border-color:var(--moss-d);color:var(--moss)}
+.deckbtns button[data-s=missing]{border-color:var(--amber-d);color:var(--amber)}
+.deckbtns button[data-s=dead]{border-color:var(--red-d);color:var(--red)}
+.deckhint{flex:0 0 auto;text-align:center;font-size:.7rem;color:var(--txt3);padding:0 16px 12px}
+
+.deckdone{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;
+          justify-content:center;text-align:center;padding:24px}
+.deckdone.on{display:flex}
+.deckdone .big{font-family:var(--mono);font-size:2.6rem;margin:10px 0 2px}
+.deckdone .lead{color:var(--txt2);font-size:.9rem;max-width:19rem;line-height:1.6}
+.deckdone .btn{max-width:19rem}
+
+/* ---------- sheet & toast ---------- */
+.sheet-bg{position:fixed;inset:0;background:rgba(12,40,26,.42);opacity:0;pointer-events:none;
+          transition:opacity .2s;z-index:40}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;
+       background:linear-gradient(180deg,#FFFFFF,#F5FBF7 30%);
+       border-top:1px solid var(--line2);border-radius:var(--r-xl) var(--r-xl) 0 0;
+       transform:translateY(100%);transition:transform .32s cubic-bezier(.2,.9,.25,1);
+       max-height:90%;display:flex;flex-direction:column;padding-bottom:var(--safe-b);
+       box-shadow:0 -24px 60px -20px rgba(16,58,36,.34)}
+.sheet.on{transform:translateY(0)}
+.sheet .grip{width:38px;height:4px;border-radius:2px;background:var(--line2);margin:11px auto 4px;flex:0 0 auto}
+.sheet .body{overflow-y:auto;padding:12px 18px 22px}
+
+#toast{position:fixed;left:16px;right:16px;bottom:calc(78px + var(--safe-b));z-index:60;
+       background:var(--surface2);border:1px solid var(--moss-d);border-left:3px solid var(--moss);
+       border-radius:5px;padding:12px 14px;font-size:.85rem;
+       opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;pointer-events:none}
+#toast.on{opacity:1;transform:translateY(0)}
+#toast.bad{border-color:var(--red-d);border-left-color:var(--red)}
+
+.disclaimer{font-size:.72rem;color:var(--txt3);line-height:1.65;margin-top:22px;
+            border-top:1px solid var(--line);padding-top:12px}
+.disclaimer b{color:var(--txt2);font-weight:600}
+
+/* ---------- counterparties ----------
+   Who is lending against this lot and who is carrying the mortality risk. The
+   marks are ORIGINAL monograms drawn from each institution's initials — they are
+   not the real logos, and the strip says so on screen. Nothing here implies any
+   of these institutions is a partner; the picker exists so a demo can be run in
+   the name of whoever is across the table. */
+.pstrip{display:flex;gap:9px;overflow-x:auto;padding:2px 0 8px;margin:0 -18px;
+        padding-left:18px;padding-right:18px;scroll-snap-type:x proximity;
+        -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pstrip::-webkit-scrollbar{display:none}
+.ptile{flex:0 0 auto;width:78px;scroll-snap-align:start;background:transparent;
+       border:0;padding:0;cursor:pointer;text-align:center;font-family:var(--sans)}
+.ptile .mark{width:56px;height:56px;margin:0 auto 6px;border-radius:16px;
+             display:flex;align-items:center;justify-content:center;
+             font-family:var(--mono);font-weight:700;font-size:.94rem;letter-spacing:-.02em;
+             color:#fff;box-shadow:var(--sh-1);border:2px solid transparent;
+             transition:transform .16s,box-shadow .18s,border-color .18s}
+.ptile .nm{font-size:.63rem;line-height:1.25;color:var(--txt3);font-weight:600;
+           display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ptile:active .mark{transform:scale(.92)}
+.ptile.on .mark{border-color:var(--moss);box-shadow:var(--glow-moss),var(--sh-2);transform:translateY(-2px)}
+.ptile.on .nm{color:var(--txt);font-weight:700}
+
+/* the chosen pair, restated as a line of record rather than a row of pictures */
+.pnow{display:flex;align-items:center;gap:11px;padding:11px 0;
+      border-bottom:1px solid var(--line)}
+.pnow:last-child{border-bottom:0}
+.pnow .mark{width:38px;height:38px;flex:0 0 auto;border-radius:11px;display:flex;
+            align-items:center;justify-content:center;font-family:var(--mono);
+            font-weight:700;font-size:.68rem;color:#fff;box-shadow:var(--sh-1)}
+.pnow .r{min-width:0;flex:1}
+.pnow .role{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;
+            text-transform:uppercase;color:var(--txt3)}
+.pnow .who{font-size:.92rem;font-weight:600;margin-top:2px;
+           overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="topbar">
+    <div class="brand">MNADA<span>·</span>TZ</div>
+    <div class="spacer"></div>
+    <span class="chip local" id="localChip">—</span>
+    <button class="lang" id="langBtn" type="button">SW</button>
+  </div>
+
+  <div class="scroll" id="scroll">
+
+    <!-- ===== FUNGU / THE LOT ===== -->
+    <section class="view on" id="v-fungu">
+      <h2 data-t="lot.h">Fungu lililowekwa dhamana</h2>
+      <p class="sub" data-t="lot.s">Hali ya dhamana leo, dhidi ya kile mkopeshaji anadai leo.</p>
+
+      <div class="gauge" id="gauge">
+        <div class="arcwrap">
+          <svg class="arc" viewBox="0 0 240 136" aria-hidden="true">
+            <defs>
+              <linearGradient id="gMoss" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#056B36"/><stop offset="1" stop-color="#35C077"/>
+              </linearGradient>
+              <linearGradient id="gAmber" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#9A6A05"/><stop offset="1" stop-color="#E5A82A"/>
+              </linearGradient>
+              <linearGradient id="gRed" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#96291A"/><stop offset="1" stop-color="#D9584A"/>
+              </linearGradient>
+            </defs>
+            <path class="trk" d="M22 120 A 98 98 0 0 1 218 120"/>
+            <path class="val" id="arcVal" d="M22 120 A 98 98 0 0 1 218 120"/>
+            <line class="mk" id="arcMk" x1="0" y1="0" x2="0" y2="0"/>
+          </svg>
+          <div class="arccentre">
+            <div class="capt" data-t="lot.cover">Kinga leo</div>
+            <div class="big num" id="coverPct">—</div>
+            <div class="band" id="coverBand">—</div>
+          </div>
+          <div class="arcmklbl" id="arcMkLbl">100%</div>
+        </div>
+        <div class="arcends"><span>90%</span><span>140%</span></div>
+        <div class="foot" data-t="lot.coverfoot">100% ni pale mkopeshaji analipwa kamili baada ya ushuru na gharama za zizi. Chini ya hapo ni hasara.</div>
+      </div>
+
+      <div class="card">
+        <div class="kv"><span class="k" data-t="lot.day">Siku</span><span class="v" id="kDay">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.head">Mifugo iliyosajiliwa</span><span class="v" id="kHead">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.present">Waliohesabiwa mwisho</span><span class="v" id="kPresent">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.value">Thamani ya sasa</span><span class="v" id="kValue">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.need">Inayohitajika leo</span><span class="v" id="kNeed">—</span></div>
+        <div class="kv"><span class="k" data-t="lot.gap">Ziada juu ya kiwango</span><span class="v" id="kGap">—</span></div>
+      </div>
+
+      <div class="lbl" data-t="lot.parties">Pande za mkataba</div>
+      <div class="card">
+        <div class="pnow"><div class="mark" id="pnLenderMark">—</div>
+          <div class="r"><div class="role" data-t="lot.lender">Mkopeshaji</div>
+            <div class="who" id="pnLenderName">—</div></div></div>
+        <div class="pnow"><div class="mark" id="pnInsurerMark">—</div>
+          <div class="r"><div class="role" data-t="lot.insurer">Bima ya vifo</div>
+            <div class="who" id="pnInsurerName">—</div></div></div>
+      </div>
+
+      <div class="lbl" data-t="lot.pickbank">Benki</div>
+      <div class="pstrip" id="bankStrip"></div>
+
+      <div class="lbl" data-t="lot.pickins">Kampuni ya bima</div>
+      <div class="pstrip" id="insStrip"></div>
+      <p class="meta" data-t="lot.partiesfoot">Alama hizi zimechorwa kwa ajili ya maonyesho — si nembo halisi, na hakuna taasisi hapa iliyokubali lolote.</p>
+
+      <div class="lbl" data-t="lot.herd">Fungu lako</div>
+      <div class="mosaic" id="mosaic"></div>
+
+      <div class="lbl" data-t="lot.trig">Kiwango cha lazima, kinapanda kila siku</div>
+      <table class="trig" id="trigTable"></table>
+      <p class="meta" data-t="lot.trigfoot">Gharama za zizi na riba hujilimbikiza. Kiwango cha siku ya kwanza si cha siku ya 45.</p>
+
+      <div class="lbl" data-t="lot.setup">Mpangilio</div>
+      <div class="field">
+        <span class="k" data-t="lot.draw">Tarehe ya mkopo</span>
+        <input type="date" id="drawDate">
+      </div>
+      <div class="field">
+        <span class="k" data-t="lot.agent">Jina la afisa</span>
+        <input type="text" id="agentName" placeholder="—">
+      </div>
+
+      <p class="disclaimer" data-t-html="lot.dis"></p>
+    </section>
+
+    <!-- ===== SAJILI / ENROL ===== -->
+    <section class="view" id="v-sajili">
+      <h2 data-t="reg.h">Sajili mnyama kwenye fungu</h2>
+      <p class="sub" data-t="reg.s">Kila mnyama anahitaji hereni, picha na mahali. Bila hivyo hasajiliwi.</p>
+
+      <div class="field">
+        <span class="k" data-t="reg.tag">Namba ya hereni</span>
+        <input type="text" id="tagInput" placeholder="TZ0000000" autocomplete="off" autocapitalize="characters">
+        <p class="meta" data-t="reg.taghelp">Andika kwa mkono. Kisomaji cha NFC hakijawekwa kwenye toleo hili.</p>
+      </div>
+
+      <div class="lbl" data-t="reg.evid">Ushahidi</div>
+
+      <div class="cap" id="capPhoto">
+        <div class="ico" id="photoIco">
+          <svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/></svg>
+        </div>
+        <div class="grow">
+          <div class="t" id="photoT" data-t="reg.photo">Piga picha ya mnyama</div>
+          <div class="h" id="photoH" data-t="reg.photoh">Lazima</div>
+        </div>
+      </div>
+
+      <div class="cap" id="capGps">
+        <div class="ico" id="gpsIco">
+          <svg viewBox="0 0 24 24"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        </div>
+        <div class="grow">
+          <div class="t" id="gpsT" data-t="reg.gps">Chukua mahali</div>
+          <div class="h" id="gpsH" data-t="reg.gpsh">Lazima</div>
+        </div>
+      </div>
+
+      <div class="lbl" data-t="reg.grade">Upangaji wa daraja</div>
+
+      <div class="field">
+        <span class="k" data-t="reg.species">Aina</span>
+        <div class="seg" data-seg="species">
+          <button type="button" data-v="C" class="on" data-t="reg.cattle">Ng'ombe</button>
+          <button type="button" data-v="S" data-t="reg.goat">Mbuzi</button>
+          <button type="button" data-v="P" data-t="reg.sheep">Kondoo</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="k" data-t="reg.sex">Jinsia</span>
+        <div class="seg" data-seg="sex">
+          <button type="button" data-v="M" class="on" data-t="reg.male">Dume</button>
+          <button type="button" data-v="F" data-t="reg.female">Jike</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="k" data-t="reg.weight">Uzito hai</span>
+        <div class="stepper">
+          <button type="button" id="wDn">&minus;</button>
+          <div class="val"><span class="num" id="wVal">320</span> kg<small id="wBand">BAND 300&ndash;350</small></div>
+          <button type="button" id="wUp">+</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="k" data-t="reg.age">Umri kwa meno</span>
+        <div class="seg" data-seg="age">
+          <button type="button" data-v="1" data-t="reg.a1">Meno 0</button>
+          <button type="button" data-v="2" class="on" data-t="reg.a2">Meno 2</button>
+          <button type="button" data-v="3" data-t="reg.a3">Meno 4</button>
+          <button type="button" data-v="4" data-t="reg.a4">Meno 6+</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="k" data-t="reg.bcs">Alama ya hali ya mwili</span>
+        <div class="seg" data-seg="bcs">
+          <button type="button" data-v="1">1</button>
+          <button type="button" data-v="2">2</button>
+          <button type="button" data-v="3" class="on">3</button>
+          <button type="button" data-v="4">4</button>
+          <button type="button" data-v="5">5</button>
+        </div>
+      </div>
+
+      <div class="lbl" data-t="reg.keeper">Mfugaji</div>
+      <div class="field">
+        <span class="k" data-t="reg.kname">Jina</span>
+        <input type="text" id="keeperName" placeholder="—" autocomplete="off">
+      </div>
+      <div class="field">
+        <span class="k" data-t="reg.kid">Namba ya NIDA</span>
+        <input type="text" id="keeperId" placeholder="—" autocomplete="off">
+        <p class="meta" style="margin-top:7px">
+          <span class="flag" data-t="reg.unver">Haijathibitishwa</span>
+          <span data-t="reg.unverh"> &mdash; imeandikwa na afisa, haijaangaliwa na NIDA.</span>
+        </p>
+      </div>
+
+      <div class="preview">
+        <div class="k" data-t="reg.lot">Namba ya daraja</div>
+        <div class="v num" id="lotPreview">&mdash;</div>
+        <div class="est" data-t-html="reg.est"></div>
+      </div>
+
+      <button class="btn" id="saveBtn" data-t="reg.save">Hifadhi kwenye fungu</button>
+      <button class="btn ghost" id="clearBtn" data-t="reg.clear">Futa fomu</button>
+
+      <input type="file" accept="image/*" capture="environment" id="fileIn" class="hidden-file">
+    </section>
+
+    <!-- ===== HESABU / RECONCILIATION ===== -->
+    <section class="view" id="v-hesabu">
+      <h2 data-t="cnt.h">Hesabu ya kila wiki</h2>
+      <p class="sub" data-t="cnt.s">Tembea zizi, gusa kila hereni. Mkopeshaji anaona jibu, si ahadi.</p>
+
+      <div class="card" id="cntSummary"></div>
+
+      <button class="btn" id="walkBtn" data-t="cnt.walk">Anza kutembea zizi</button>
+
+      <div class="lbl" data-t="cnt.list">Orodha</div>
+      <div id="cntList"></div>
+
+      <button class="btn" id="finishBtn" data-t="cnt.finish">Maliza hesabu</button>
+      <button class="btn ghost" id="resetCntBtn" data-t="cnt.reset">Anza upya</button>
+
+      <div class="lbl" data-t="cnt.hist">Hesabu zilizopita</div>
+      <div id="cntHist"></div>
+    </section>
+
+    <!-- ===== KUMBUKUMBU / THE RECORD ===== -->
+    <section class="view" id="v-rec">
+      <h2 data-t="rec.h">Kumbukumbu</h2>
+      <p class="sub" data-t="rec.s">Kila kitendo kimefungwa kwenye mnyororo. Kikibadilishwa, mnyororo huvunjika.</p>
+
+      <div class="card">
+        <div class="kv"><span class="k" data-t="rec.events">Matukio</span><span class="v" id="kEvents">0</span></div>
+        <div class="kv"><span class="k" data-t="rec.headhash">Alama ya mwisho</span><span class="v" id="kHead2">—</span></div>
+        <div class="kv"><span class="k" data-t="rec.chain">Hali ya mnyororo</span><span class="v" id="kChain">—</span></div>
+      </div>
+
+      <button class="btn ghost" id="verifyBtn" data-t="rec.verify">Thibitisha mnyororo</button>
+      <button class="btn" id="exportBtn" data-t="rec.export">Toa faili kwa mkopeshaji</button>
+
+      <div class="lbl" data-t="rec.recent">Matukio ya karibuni</div>
+      <div id="evList"></div>
+
+      <div class="lbl" data-t="rec.honest">Toleo hili linafanya nini</div>
+      <div class="card" id="honestCard"></div>
+
+      <button class="btn danger" id="wipeBtn" data-t="rec.wipe">Futa data yote ya simu hii</button>
+
+      <p class="disclaimer" id="buildInfo"></p>
+    </section>
+
+  </div>
+
+  <nav class="tabs">
+    <button class="tab on" data-v="fungu" type="button">
+      <svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg>
+      <span data-t="tab.fungu">Fungu</span>
+    </button>
+    <button class="tab" data-v="sajili" type="button">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      <span data-t="tab.sajili">Sajili</span>
+    </button>
+    <button class="tab" data-v="hesabu" type="button">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/><path d="M18 16.5l1.6 1.6L23 15"/></svg>
+      <span data-t="tab.hesabu">Hesabu</span>
+    </button>
+    <button class="tab" data-v="rec" type="button">
+      <svg viewBox="0 0 24 24"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v6h6M9 13h6M9 17h4"/></svg>
+      <span data-t="tab.rec">Kumbukumbu</span>
+    </button>
+  </nav>
+</div>
+
+<div id="deck">
+  <div class="deckbar">
+    <button class="x" id="deckClose" type="button">&times;</button>
+    <div class="prog">
+      <div class="t"><span id="deckPos">0 / 0</span><span id="deckLeft"></span></div>
+      <div class="track"><i id="deckBar" style="width:0%"></i></div>
+    </div>
+    <button class="undo" id="deckUndo" type="button" disabled data-t="deck.undo">Rudi</button>
+  </div>
+
+  <div class="stage" id="deckStage"></div>
+
+  <div class="deckbtns">
+    <button type="button" data-s="missing" data-t="s.missing">Hayupo</button>
+    <button type="button" data-s="dead" data-t="s.dead">Amekufa</button>
+    <button type="button" data-s="present" data-t="s.present">Yupo</button>
+  </div>
+  <div class="deckhint" data-t="deck.hint">Telesha kulia = yupo · kushoto = hayupo · juu = amekufa</div>
+
+  <div class="deckdone" id="deckDone">
+    <div class="lead" id="deckDoneLead"></div>
+    <div class="big num" id="deckDoneBig">—</div>
+    <div class="lead" id="deckDoneSub"></div>
+    <button class="btn" id="deckFinish" data-t="cnt.finish">Maliza hesabu</button>
+    <button class="btn ghost" id="deckBack" data-t="deck.review">Pitia tena</button>
+  </div>
+</div>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet"><div class="grip"></div><div class="body" id="sheetBody"></div></div>
+<div id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   MNADA — collateral custody record.
+   Scope is one pledged lot under one facility. There is no market
+   board, no bid book and no price index in this build: CropSupply
+   already publishes crop prices nationally, and the livestock index
+   is not something a field app should invent on-device.
+   ============================================================ */
+
+/* ---------- facility, from the Pilot Term Sheet ---------- */
+var FAC = {
+  principal: 118000000,   // TZS drawn
+  ratePa:    0.16,        // illustrative
+  tenorDays: 45,
+  cess:      0.015,       // statutory levies, rank 1 in the waterfall
+  custody:   2200,        // TZS per head per day, rank 2
+  targetHead:200,
+  indexValue:742000,      // entry index, TZ-C-M2-300-350-BCS3
+  callAt:    1.10,        // cover below this = margin call
+  floorAt:   1.02         // cover below this = mandatory sale
+};
+
+/* ============ SHA-256 (hash chain over the event log) ============ */
+var K256=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+
+function utf8Bytes(str){
+  var out=[],i,c,c2;
+  for(i=0;i<str.length;i++){
+    c=str.charCodeAt(i);
+    if(c<0x80){ out.push(c); }
+    else if(c<0x800){ out.push(0xC0|(c>>6),0x80|(c&63)); }
+    else if(c<0xD800||c>=0xE000){ out.push(0xE0|(c>>12),0x80|((c>>6)&63),0x80|(c&63)); }
+    else { i++; c2=str.charCodeAt(i); c=0x10000+(((c&0x3FF)<<10)|(c2&0x3FF));
+           out.push(0xF0|(c>>18),0x80|((c>>12)&63),0x80|((c>>6)&63),0x80|(c&63)); }
+  }
+  return out;
+}
+function rr(v,n){ return (v>>>n)|(v<<(32-n)); }
+function sha256(str){
+  var b=utf8Bytes(str), bitLen=b.length*8, i,t;
+  b.push(0x80);
+  while(b.length%64!==56) b.push(0);
+  var hi=Math.floor(bitLen/4294967296), lo=bitLen>>>0;
+  b.push((hi>>>24)&255,(hi>>>16)&255,(hi>>>8)&255,hi&255,
+         (lo>>>24)&255,(lo>>>16)&255,(lo>>>8)&255,lo&255);
+  var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  var w=new Array(64);
+  for(i=0;i<b.length;i+=64){
+    for(t=0;t<16;t++) w[t]=((b[i+4*t]<<24)|(b[i+4*t+1]<<16)|(b[i+4*t+2]<<8)|b[i+4*t+3])|0;
+    for(t=16;t<64;t++){
+      var s0=rr(w[t-15],7)^rr(w[t-15],18)^(w[t-15]>>>3);
+      var s1=rr(w[t-2],17)^rr(w[t-2],19)^(w[t-2]>>>10);
+      w[t]=(((w[t-16]+s0)|0)+((w[t-7]+s1)|0))|0;
+    }
+    var a=H[0],bv=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+    for(t=0;t<64;t++){
+      var S1=rr(e,6)^rr(e,11)^rr(e,25);
+      var ch=(e&f)^((~e)&g);
+      var t1=(((h+S1)|0)+((ch+K256[t])|0)+w[t])|0;
+      var S0=rr(a,2)^rr(a,13)^rr(a,22);
+      var mj=(a&bv)^(a&c)^(bv&c);
+      var t2=(S0+mj)|0;
+      h=g; g=f; f=e; e=(d+t1)|0; d=c; c=bv; bv=a; a=(t1+t2)|0;
+    }
+    H[0]=(H[0]+a)|0; H[1]=(H[1]+bv)|0; H[2]=(H[2]+c)|0; H[3]=(H[3]+d)|0;
+    H[4]=(H[4]+e)|0; H[5]=(H[5]+f)|0; H[6]=(H[6]+g)|0; H[7]=(H[7]+h)|0;
+  }
+  var out="";
+  for(i=0;i<8;i++) out += ("00000000"+((H[i]>>>0).toString(16))).slice(-8);
+  return out;
+}
+
+/* ============ i18n ============ */
+var T = {
+  sw:{
+    "lot.h":"Fungu lililowekwa dhamana","lot.s":"Hali ya dhamana leo, dhidi ya kile mkopeshaji anadai leo.",
+    "lot.cover":"Kinga leo",
+    "lot.coverfoot":"100% ni pale mkopeshaji analipwa kamili baada ya ushuru na gharama za zizi. Chini ya hapo ni hasara.",
+    "lot.day":"Siku","lot.head":"Mifugo iliyosajiliwa","lot.present":"Waliohesabiwa mwisho",
+    "lot.value":"Thamani ya sasa","lot.need":"Inayohitajika leo","lot.gap":"Ziada juu ya kiwango",
+    "lot.trig":"Kiwango cha lazima, kinapanda kila siku",
+    "lot.trigfoot":"Gharama za zizi na riba hujilimbikiza. Kiwango cha siku ya kwanza si cha siku ya 45.",
+    "lot.herd":"Fungu lako","lot.setup":"Mpangilio","lot.draw":"Tarehe ya mkopo","lot.agent":"Jina la afisa",
+    "lot.dis":"Thamani hutumia bei ya kuingia ya <b>TZS 742,000</b> kwa kichwa hadi bei halisi itakapowekwa. Si ahadi ya mkopo, wala si ushauri wa uwekezaji.",
+    "reg.h":"Sajili mnyama kwenye fungu","reg.s":"Kila mnyama anahitaji hereni, picha na mahali. Bila hivyo hasajiliwi.",
+    "reg.tag":"Namba ya hereni","reg.taghelp":"Andika kwa mkono. Kisomaji cha NFC hakijawekwa kwenye toleo hili.",
+    "reg.evid":"Ushahidi","reg.photo":"Piga picha ya mnyama","reg.photoh":"Lazima",
+    "reg.gps":"Chukua mahali","reg.gpsh":"Lazima",
+    "reg.grade":"Upangaji wa daraja","reg.species":"Aina","reg.cattle":"Ng'ombe","reg.goat":"Mbuzi","reg.sheep":"Kondoo",
+    "reg.sex":"Jinsia","reg.male":"Dume","reg.female":"Jike","reg.weight":"Uzito hai",
+    "reg.age":"Umri kwa meno","reg.a1":"Meno 0","reg.a2":"Meno 2","reg.a3":"Meno 4","reg.a4":"Meno 6+",
+    "reg.bcs":"Alama ya hali ya mwili","reg.keeper":"Mfugaji","reg.kname":"Jina","reg.kid":"Namba ya NIDA",
+    "reg.unver":"Haijathibitishwa","reg.unverh":" — imeandikwa na afisa, haijaangaliwa na NIDA.",
+    "reg.lot":"Namba ya daraja","reg.save":"Hifadhi kwenye fungu","reg.clear":"Futa fomu",
+    "cnt.h":"Hesabu ya kila wiki","cnt.s":"Tembea zizi, gusa kila hereni. Mkopeshaji anaona jibu, si ahadi.",
+    "cnt.list":"Orodha","cnt.finish":"Maliza hesabu","cnt.reset":"Anza upya","cnt.hist":"Hesabu zilizopita",
+    "cnt.walk":"Anza kutembea zizi","deck.undo":"Rudi","deck.review":"Pitia tena",
+    "deck.hint":"Telesha kulia = yupo · kushoto = hayupo · juu = amekufa",
+    "rec.h":"Kumbukumbu","rec.s":"Kila kitendo kimefungwa kwenye mnyororo. Kikibadilishwa, mnyororo huvunjika.",
+    "rec.events":"Matukio","rec.headhash":"Alama ya mwisho","rec.chain":"Hali ya mnyororo",
+    "rec.verify":"Thibitisha mnyororo","rec.export":"Toa faili kwa mkopeshaji",
+    "rec.recent":"Matukio ya karibuni","rec.honest":"Toleo hili linafanya nini","rec.wipe":"Futa data yote ya simu hii",
+    "lot.parties":"Pande za mkataba","lot.lender":"Mkopeshaji","lot.insurer":"Bima ya vifo",
+    "lot.pickbank":"Benki","lot.pickins":"Kampuni ya bima",
+    "lot.partiesfoot":"Alama hizi zimechorwa kwa ajili ya maonyesho — si nembo halisi, na hakuna taasisi hapa iliyokubali lolote.",
+    "t.lenderset":"Mkopeshaji amewekwa:","t.insurerset":"Bima imewekwa:",
+    "tab.fungu":"Fungu","tab.sajili":"Sajili","tab.hesabu":"Hesabu","tab.rec":"Kumbukumbu",
+    "st.ok":"Salama","st.watch":"Angalia","st.call":"Ongeza dhamana",
+    "s.present":"Yupo","s.missing":"Hayupo","s.dead":"Amekufa","s.pending":"Bado",
+    "t.saved":"Amesajiliwa na kufungwa kwenye mnyororo.",
+    "t.needtag":"Andika namba ya hereni.",
+    "t.duptag":"Hereni hii tayari ipo kwenye fungu.",
+    "t.needphoto":"Picha inahitajika.",
+    "t.needgps":"Mahali panahitajika.",
+    "t.nogps":"Mahali hapajapatikana. Ruhusu GPS, kisha jaribu tena.",
+    "gps.noh":"Mahali hapajapatikana","gps.flag":"Mfano",
+    "gps.nos":"GPS haipatikani hapa. Kwenye simu, ruhusu ruhusa ya mahali. Kwa maonyesho tu, tumia mahali pa mfano — kitakuwa na alama ya MFANO kwenye kumbukumbu milele.",
+    "gps.demo":"Tumia mahali pa mfano","t.demopack":"Kumbukumbu hii ina mahali pa mfano — si ushahidi.",
+    "t.countdone":"Hesabu imekamilika na kuhifadhiwa.",
+    "t.countpend":"Bado kuna mifugo ambayo haijahesabiwa.",
+    "t.chainok":"Mnyororo ni mzima.",
+    "t.chainbad":"MNYORORO UMEVUNJIKA — data imebadilishwa.",
+    "t.exported":"Faili limehifadhiwa: ",
+    "t.exportfail":"Faili halikuhifadhiwa. Imetumwa kama maandishi.",
+    "t.wiped":"Data yote imefutwa.",
+    "t.nolot":"Hakuna mnyama kwenye fungu bado.",
+    "e.empty":"Hakuna mnyama bado. Nenda Sajili.",
+    "e.noev":"Hakuna matukio bado.",
+    "e.nohist":"Hakuna hesabu bado.",
+    "h.does":"<b>Linafanya:</b> husajili mnyama mmoja mmoja na hereni, picha, mahali na saa; huhifadhi kwenye simu bila mtandao; hufunga kila kitendo kwenye mnyororo wa alama; huhesabu kinga kwa kutumia gharama zinazojilimbikiza; hutoa faili moja kwa mkopeshaji.",
+    "h.doesnt":"<b>Halifanyi:</b> halithibitishi NIDA; halina seva wala mtandao — data ipo kwenye simu hii pekee; halina malipo wala pesa za simu; halina bima; halitoi hati ya umiliki. Kinga hutumia bei ya kuingia, si bei ya soko ya leo."
+  },
+  en:{
+    "lot.h":"The pledged lot","lot.s":"Where the security stands today, against what the lender is owed today.",
+    "lot.cover":"Cover today",
+    "lot.coverfoot":"100% is the point where the lender is repaid in full after cess and custody. Below that is a loss.",
+    "lot.day":"Day","lot.head":"Head enrolled","lot.present":"Present at last count",
+    "lot.value":"Value today","lot.need":"Needed today","lot.gap":"Headroom over the line",
+    "lot.trig":"The line the lot must clear, and it rises daily",
+    "lot.trigfoot":"Custody and interest accrue. The day-1 line is not the day-45 line.",
+    "lot.herd":"Your lot","lot.setup":"Setup","lot.draw":"Drawdown date","lot.agent":"Field agent name",
+    "lot.dis":"Value uses the entry index of <b>TZS 742,000</b> per head until a real mark is supplied. Not a credit offer and not investment advice.",
+    "reg.h":"Enrol an animal into the lot","reg.s":"Every animal needs a tag, a photo and a place. Without them it is not enrolled.",
+    "reg.tag":"Ear tag number","reg.taghelp":"Typed by hand. No NFC reader is fitted in this build.",
+    "reg.evid":"Evidence","reg.photo":"Photograph the animal","reg.photoh":"Required",
+    "reg.gps":"Capture location","reg.gpsh":"Required",
+    "reg.grade":"Grading","reg.species":"Species","reg.cattle":"Cattle","reg.goat":"Goat","reg.sheep":"Sheep",
+    "reg.sex":"Sex","reg.male":"Male","reg.female":"Female","reg.weight":"Live weight",
+    "reg.age":"Age by dentition","reg.a1":"0 teeth","reg.a2":"2 teeth","reg.a3":"4 teeth","reg.a4":"6+ teeth",
+    "reg.bcs":"Body condition score","reg.keeper":"Keeper","reg.kname":"Name","reg.kid":"National ID number",
+    "reg.unver":"Unverified","reg.unverh":" — typed by the agent, not checked against NIDA.",
+    "reg.lot":"Grade code","reg.save":"Save into the lot","reg.clear":"Clear form",
+    "cnt.h":"Weekly reconciliation","cnt.s":"Walk the pen, tap every tag. The lender sees an answer, not an assurance.",
+    "cnt.list":"Roll","cnt.finish":"Finish count","cnt.reset":"Start over","cnt.hist":"Past counts",
+    "cnt.walk":"Start walking the pen","deck.undo":"Undo","deck.review":"Back to the roll",
+    "deck.hint":"Swipe right = present · left = missing · up = dead",
+    "rec.h":"The record","rec.s":"Every action is sealed into a chain. Change one and the chain breaks.",
+    "rec.events":"Events","rec.headhash":"Head hash","rec.chain":"Chain status",
+    "rec.verify":"Verify chain","rec.export":"Export pack for the lender",
+    "rec.recent":"Recent events","rec.honest":"What this build does","rec.wipe":"Wipe all data on this phone",
+    "lot.parties":"Counterparties","lot.lender":"Lender","lot.insurer":"Mortality cover",
+    "lot.pickbank":"Bank","lot.pickins":"Insurer",
+    "lot.partiesfoot":"These marks are drawn for the demonstration — they are not the real logos, and no institution shown here has agreed to anything.",
+    "t.lenderset":"Lender set to","t.insurerset":"Insurer set to",
+    "tab.fungu":"Lot","tab.sajili":"Enrol","tab.hesabu":"Count","tab.rec":"Record",
+    "st.ok":"Covered","st.watch":"Watch","st.call":"Margin call",
+    "s.present":"Present","s.missing":"Missing","s.dead":"Dead","s.pending":"Pending",
+    "t.saved":"Enrolled and sealed into the chain.",
+    "t.needtag":"Enter the ear tag number.",
+    "t.duptag":"That tag is already in the lot.",
+    "t.needphoto":"A photograph is required.",
+    "t.needgps":"A location is required.",
+    "t.nogps":"No location available. Allow GPS, then try again.",
+    "gps.noh":"No location available","gps.flag":"Demo",
+    "gps.nos":"GPS is not available here. On a phone, allow the location permission. For a demonstration only, use a sample position — it is marked DEMO in the record permanently.",
+    "gps.demo":"Use a sample location","t.demopack":"This record contains sample locations — it is not evidence.",
+    "t.countdone":"Count complete and recorded.",
+    "t.countpend":"Some animals have not been marked yet.",
+    "t.chainok":"Chain intact.",
+    "t.chainbad":"CHAIN BROKEN — the record has been altered.",
+    "t.exported":"Saved to: ",
+    "t.exportfail":"Could not write the file. Sent as text instead.",
+    "t.wiped":"All data wiped.",
+    "t.nolot":"No animals in the lot yet.",
+    "e.empty":"No animals yet. Go to Enrol.",
+    "e.noev":"No events yet.",
+    "e.nohist":"No counts yet.",
+    "h.does":"<b>It does:</b> enrol animals one by one with tag, photo, location and time; store them on the phone with no network; seal every action into a hash chain; compute cover against accruing senior costs; export one file for the lender.",
+    "h.doesnt":"<b>It does not:</b> verify NIDA; talk to any server — the data lives on this phone only; move money or mobile money; arrange insurance; issue a document of title. Cover uses the entry index, not today's market price."
+  }
+};
+var lang = "sw";
+function t(k){ return (T[lang] && T[lang][k]) || T.en[k] || k; }
+
+/* ============ device bridge ============ */
+var A = (typeof window.Android !== "undefined") ? window.Android : null;
+function haptic(ms){ try{ if(A && A.haptic) A.haptic(ms||18); }catch(e){} }
+
+/* ============ helpers ============ */
+function el(id){ return document.getElementById(id); }
+function fmt(n){ return Math.round(n).toLocaleString("en-US"); }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+function pad3(n){ return ("00"+n).slice(-3); }
+function isoDay(ts){ var d=new Date(ts); return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2); }
+function shortHash(h){ return h ? h.slice(0,12) : "—"; }
+
+/**
+ * Eases a percentage into place rather than snapping it. Worth it on exactly one number —
+ * the cover ratio is the figure the agent checks each morning, and the movement is what makes
+ * a change register. Everything else in the app updates instantly and silently.
+ */
+function countTo(node, target){
+  var from = parseFloat(node.getAttribute("data-v") || "0");
+  if(Math.abs(target - from) < 0.05){
+    node.textContent = target.toFixed(1) + "%";
+    node.setAttribute("data-v", target);
+    return;
+  }
+  node.setAttribute("data-v", target);
+  var t0 = null, dur = 520;
+  function step(ts){
+    if(t0 === null) t0 = ts;
+    var k = Math.min(1, (ts - t0)/dur);
+    var eased = 1 - Math.pow(1 - k, 3);
+    node.textContent = (from + (target - from)*eased).toFixed(1) + "%";
+    if(k < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+var toastTimer;
+function toast(msg, bad){
+  var x = el("toast");
+  x.textContent = msg;
+  x.className = bad ? "on bad" : "on";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ x.className = bad ? "bad" : ""; }, 3200);
+}
+
+/* ============ grading (unchanged — this part was always real) ============ */
+var INDEX = {
+  "C-M-250-300":585000,"C-M-300-350":742000,"C-M-350-420":968000,"C-M-420-999":1145000,
+  "C-F-200-250":425000,"C-F-250-300":508000,"C-F-300-350":655000,"C-F-350-420":830000,
+  "S-M-020-030":118000,"S-M-030-045":158000,"S-F-020-030":104000,"S-F-030-045":139000,
+  "P-M-020-030":112000,"P-M-030-045":149000,"P-F-020-030":98000,"P-F-030-045":131000
+};
+var BCS_ADJ={1:0.72,2:0.87,3:1.00,4:1.09,5:1.13};
+var AGE_ADJ={1:0.94,2:1.00,3:0.97,4:0.88};
+var CATTLE_BANDS=[[250,300],[300,350],[350,420],[420,999]];
+var SHOAT_BANDS=[[20,30],[30,45]];
+
+function bandFor(sp,kg){
+  var bands = (sp==="C") ? CATTLE_BANDS : SHOAT_BANDS;
+  for(var i=0;i<bands.length;i++){ if(kg>=bands[i][0] && kg<bands[i][1]) return bands[i]; }
+  return bands[kg<bands[0][0] ? 0 : bands.length-1];
+}
+function lotCode(f){
+  var b=bandFor(f.species,f.weight);
+  return "TZ-"+f.species+"-"+f.sex+f.age+"-"+pad3(b[0])+"-"+pad3(b[1])+"-BCS"+f.bcs;
+}
+function indexKey(f){ var b=bandFor(f.species,f.weight); return f.species+"-"+f.sex+"-"+pad3(b[0])+"-"+pad3(b[1]); }
+function valueOf(f){
+  var base = INDEX[indexKey(f)] || 500000;
+  return base * (BCS_ADJ[f.bcs]||1) * (AGE_ADJ[f.age]||1);
+}
+
+/* ============ counterparties ============
+   Tanzanian banks and insurers a livestock facility would realistically sit with.
+   The `mk` strings are ORIGINAL monograms and the colours are drawn from one
+   curated palette, not from anybody's brand book — these are deliberately not
+   reproductions of the real logos. Nothing here asserts that any institution has
+   seen this app, endorsed it, or agreed to anything. The strip says so on screen
+   and the export pack repeats it. */
+var PARTIES = {
+  banks: [
+    { id:"crdb",    nm:"CRDB Bank",       mk:"CRDB", c:"#146B45" },
+    { id:"nmb",     nm:"NMB Bank",        mk:"NMB",  c:"#1E5AA8" },
+    { id:"nbc",     nm:"NBC Bank",        mk:"NBC",  c:"#5B3A8C" },
+    { id:"exim",    nm:"Exim Bank",       mk:"EXIM", c:"#A8322D" },
+    { id:"absa",    nm:"Absa Tanzania",   mk:"ABSA", c:"#B04A1E" },
+    { id:"stanbic", nm:"Stanbic Bank",    mk:"SBIC", c:"#0F5B57" },
+    { id:"equity",  nm:"Equity Bank",     mk:"EQTY", c:"#8A5A06" },
+    { id:"azania",  nm:"Azania Bank",     mk:"AZ",   c:"#2A4C86" },
+    { id:"tcb",     nm:"TCB",             mk:"TCB",  c:"#3F6B2E" }
+  ],
+  insurers: [
+    { id:"jubilee",  nm:"Jubilee",   mk:"JUB", c:"#0D6E6E" },
+    { id:"alliance", nm:"Alliance",  mk:"ALL", c:"#7A3E9D" },
+    { id:"nic",      nm:"NIC",       mk:"NIC", c:"#16588C" },
+    { id:"heritage", nm:"Heritage",  mk:"HRT", c:"#8C5A17" },
+    { id:"britam",   nm:"Britam",    mk:"BRT", c:"#A32E4E" },
+    { id:"sanlam",   nm:"Sanlam",    mk:"SAN", c:"#1F6B3A" },
+    { id:"reliance", nm:"Reliance",  mk:"REL", c:"#444E8F" },
+    { id:"bumaco",   nm:"Bumaco",    mk:"BMC", c:"#6B7A12" }
+  ]
+};
+function partyBy(kind, id){
+  var list = PARTIES[kind];
+  for(var i=0;i<list.length;i++) if(list[i].id===id) return list[i];
+  return list[0];
+}
+
+/* ============ persistent state ============ */
+var KEY = "mnada.custody.v2";
+var S = null;
+
+function blankState(){
+  return { v:2, drawTs:null, agent:"", animals:[], counts:[], log:[], marks:{},
+           lender:"crdb", insurer:"jubilee" };
+}
+function load(){
+  try{
+    var raw = localStorage.getItem(KEY);
+    S = raw ? JSON.parse(raw) : blankState();
+    if(!S || S.v !== 2) S = blankState();
+    if(!S.marks) S.marks = {};
+    /* records written before the counterparty picker existed have no pair — give
+       them the default rather than bumping the storage key and wiping a demo */
+    if(!S.lender)  S.lender  = "crdb";
+    if(!S.insurer) S.insurer = "jubilee";
+  }catch(e){ S = blankState(); }
+}
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(S)); }
+  catch(e){ toast("Storage full — export and wipe.", true); }
+}
+
+/* ---- the hash chain ---- */
+function headHash(){ return S.log.length ? S.log[S.log.length-1].hash : "0"; }
+function payload(ev){
+  return ev.seq+"|"+ev.ts+"|"+ev.type+"|"+JSON.stringify(ev.data)+"|"+ev.prev;
+}
+function append(type, data){
+  var ev = { seq:S.log.length+1, ts:Date.now(), type:type, data:data, prev:headHash(), hash:"" };
+  ev.hash = sha256(payload(ev));
+  S.log.push(ev);
+  save();
+  return ev;
+}
+function verifyLog(log){
+  var prev = "0";
+  for(var i=0;i<log.length;i++){
+    var ev = log[i];
+    if(!ev || ev.seq !== i+1 || ev.prev !== prev) return i+1;
+    if(sha256(payload(ev)) !== ev.hash) return i+1;
+    prev = ev.hash;
+  }
+  return 0;
+}
+/**
+ * Verifies what is actually persisted, not what this session happens to hold in memory.
+ * Anyone tampering with the record edits the stored copy while the app is shut, so checking
+ * the in-memory array would pass on evidence that has already been altered underneath it.
+ */
+function verifyChain(){
+  var stored = null;
+  try{
+    var raw = localStorage.getItem(KEY);
+    if(raw) stored = JSON.parse(raw);
+  }catch(e){ stored = null; }
+  if(!stored || !stored.log) return verifyLog(S.log);
+  var bad = verifyLog(stored.log);
+  if(bad) return bad;
+  // A truncated store is tampering too: the chain that is left verifies perfectly.
+  if(stored.log.length < S.log.length) return stored.log.length + 1;
+  return 0;
+}
+
+/* ---- photo blobs live in IndexedDB, thumbnails in the record ---- */
+var db = null;
+function openDb(cb){
+  if(db){ cb(db); return; }
+  try{
+    var rq = indexedDB.open("mnada-photos", 1);
+    rq.onupgradeneeded = function(){ rq.result.createObjectStore("photos"); };
+    rq.onsuccess = function(){ db = rq.result; cb(db); };
+    rq.onerror = function(){ cb(null); };
+  }catch(e){ cb(null); }
+}
+function putPhoto(sha, dataUrl){
+  openDb(function(d){
+    if(!d) return;
+    try{ d.transaction("photos","readwrite").objectStore("photos").put(dataUrl, sha); }catch(e){}
+  });
+}
+
+/* ============ the arithmetic that matters ============ */
+// Senior costs rank ahead of the lender and accrue daily, so the coverage
+// line is not a constant. This is the accrual-adjusted version.
+function dayNow(){
+  if(!S.drawTs) return 1;
+  var d = Math.floor((Date.now() - S.drawTs)/86400000) + 1;
+  return Math.max(1, d);
+}
+function headCount(){ return S.animals.length; }
+function presentCount(){
+  if(!S.counts.length) return headCount();
+  return S.counts[S.counts.length-1].present;
+}
+function owedOn(day){ return FAC.principal * (1 + FAC.ratePa * day/365); }
+function custodyOn(day, head){ return FAC.custody * head * day; }
+function grossNeeded(day, head){
+  return (owedOn(day) + custodyOn(day, head)) / (1 - FAC.cess);
+}
+function lotValue(){
+  var v = 0;
+  for(var i=0;i<S.animals.length;i++){
+    if(S.animals[i].status === "dead") continue;
+    v += S.animals[i].value;
+  }
+  return v;
+}
+function coverNow(){
+  var head = headCount() || FAC.targetHead;
+  var need = grossNeeded(dayNow(), head);
+  var val = lotValue();
+  return { need:need, val:val, ratio: need>0 ? val/need : 0, day:dayNow(), head:head };
+}
+
+/* ============ rendering ============ */
+function renderChip(){
+  el("localChip").textContent = headCount() + " · " + S.log.length;
+}
+
+/* The gauge is a 180° arc of radius 98 centred on (120,120), spanning 90%–140%
+   cover. The tick sits on 100% — the point where the lender is exactly whole. */
+var ARC = { cx:120, cy:120, r:98, lo:90, hi:140 };
+var ARC_LEN = Math.PI * ARC.r;
+
+function arcPoint(frac, radius){
+  var ang = Math.PI - frac * Math.PI;         // 180° down to 0°
+  return [ ARC.cx + radius * Math.cos(ang), ARC.cy - radius * Math.sin(ang) ];
+}
+function drawArc(pct, has){
+  var frac = has ? Math.max(0, Math.min(1, (pct - ARC.lo)/(ARC.hi - ARC.lo))) : 0;
+  var v = el("arcVal");
+  v.style.strokeDasharray = ARC_LEN;
+  v.style.strokeDashoffset = ARC_LEN * (1 - frac);
+
+  var mf = (100 - ARC.lo)/(ARC.hi - ARC.lo);
+  var a = arcPoint(mf, ARC.r - 13), b = arcPoint(mf, ARC.r + 13);
+  var mk = el("arcMk");
+  mk.setAttribute("x1", a[0].toFixed(1)); mk.setAttribute("y1", a[1].toFixed(1));
+  mk.setAttribute("x2", b[0].toFixed(1)); mk.setAttribute("y2", b[1].toFixed(1));
+
+  // park the label just clear of the tick, reading inward so it never runs off the card
+  var lp = arcPoint(mf, ARC.r + 14);
+  var lbl = el("arcMkLbl");
+  lbl.style.left = (lp[0]/240*100).toFixed(2) + "%";
+  lbl.style.top  = (lp[1]/136*100).toFixed(2) + "%";
+}
+
+function renderLot(){
+  var c = coverNow();
+  var g = el("gauge");
+  var pct = c.ratio*100;
+  var cls = pct >= FAC.callAt*100 ? "ok" : (pct >= FAC.floorAt*100 ? "watch" : "call");
+  var band = pct >= FAC.callAt*100 ? t("st.ok") : (pct >= FAC.floorAt*100 ? t("st.watch") : t("st.call"));
+  g.className = "gauge " + cls;
+  if(c.val) countTo(el("coverPct"), pct); else el("coverPct").textContent = "—";
+  el("coverBand").textContent = c.val ? band : "—";
+  el("coverBand").className = "band " + (cls==="ok"?"up":(cls==="watch"?"warn":"down"));
+  drawArc(pct, c.val > 0);
+
+  el("kDay").textContent = c.day + " / " + FAC.tenorDays;
+  el("kHead").textContent = headCount() + " / " + FAC.targetHead;
+  el("kPresent").textContent = S.counts.length ? presentCount() : "—";
+  el("kValue").textContent = "TZS " + fmt(c.val);
+  el("kNeed").textContent = "TZS " + fmt(c.need);
+  var gap = c.val - c.need;
+  el("kGap").textContent = (gap>=0?"+":"−") + " TZS " + fmt(Math.abs(gap));
+  el("kGap").className = "v " + (gap>=0?"up":"down");
+
+  var head = headCount() || FAC.targetHead;
+  var rows = [1, c.day, FAC.tenorDays];
+  var seen = {}, html = '<tr><th data-x>' + (lang==="sw"?"Siku":"Day") + '</th><th>' +
+      (lang==="sw"?"Zizi + riba":"Custody + interest") + '</th><th>' +
+      (lang==="sw"?"Inayohitajika":"Line") + '</th></tr>';
+  rows.forEach(function(d){
+    if(seen[d]) return; seen[d]=1;
+    var senior = custodyOn(d,head) + (owedOn(d) - FAC.principal);
+    var need = grossNeeded(d, head);
+    html += '<tr' + (d===c.day?' class="now"':'') + '><td>' + d + '</td><td>' +
+            fmt(senior/1e6) + 'M</td><td>' + fmt(need/1e6) + 'M</td></tr>';
+  });
+  el("trigTable").innerHTML = html;
+  renderParties();
+  renderMosaic();
+}
+
+/* the two counterparty strips, plus the pair restated as a line of record */
+function renderParties(){
+  [["banks","bankStrip","lender"],["insurers","insStrip","insurer"]].forEach(function(spec){
+    var kind = spec[0], node = el(spec[1]), sel = S[spec[2]];
+    node.innerHTML = PARTIES[kind].map(function(p){
+      return '<button type="button" class="ptile' + (p.id===sel?" on":"") + '" data-kind="' +
+             kind + '" data-id="' + p.id + '">' +
+             '<span class="mark" style="background:' + p.c + '">' + esc(p.mk) + '</span>' +
+             '<span class="nm">' + esc(p.nm) + '</span></button>';
+    }).join("");
+  });
+  var L = partyBy("banks", S.lender), I = partyBy("insurers", S.insurer);
+  el("pnLenderMark").textContent = L.mk;
+  el("pnLenderMark").style.background = L.c;
+  el("pnLenderName").textContent = L.nm;
+  el("pnInsurerMark").textContent = I.mk;
+  el("pnInsurerMark").style.background = I.c;
+  el("pnInsurerName").textContent = I.nm;
+}
+
+/* Changing who holds the paper is a custody fact, so it is sealed like any other.
+   Selecting the value that is already set is a no-op — no event, no chain entry. */
+function pickParty(kind, id){
+  var field = kind==="banks" ? "lender" : "insurer";
+  if(S[field] === id) return;
+  S[field] = id;
+  var p = partyBy(kind, id);
+  append(kind==="banks" ? "lender.set" : "insurer.set", { id:id, name:p.nm });
+  save();
+  renderParties();
+  haptic(14);
+  toast(t(kind==="banks" ? "t.lenderset" : "t.insurerset") + " " + p.nm);
+}
+
+var MOSAIC_CAP = 60;   // enough to read as a herd; the roll on Hesabu holds the rest
+function renderMosaic(){
+  var m = el("mosaic");
+  if(!S.animals.length){
+    m.innerHTML = '<div class="empty" style="grid-column:1/-1">' +
+      '<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/></svg>' +
+      t("e.empty") + '</div>';
+    return;
+  }
+  var shown = S.animals.slice(0, MOSAIC_CAP);
+  var extra = S.animals.length - shown.length;
+  var html = shown.map(function(a){
+    var st = a.status === "dead" ? "dead" : (a.status === "missing" ? "missing" : "present");
+    return '<div class="mtile ' + st + '" data-tag="' + esc(a.tag) + '">' +
+      (a.thumb ? '<img src="' + a.thumb + '" alt="">' : '') +
+      '<span class="dot"></span></div>';
+  }).join("");
+  if(extra > 0){
+    html += '<div class="mtile" data-more="1"><span class="more">+' + extra + '</span></div>';
+  }
+  m.innerHTML = html;
+}
+
+el("mosaic").addEventListener("click", function(e){
+  var tile = e.target.closest ? e.target.closest(".mtile") : null;
+  if(!tile) return;
+  haptic(12);
+  if(tile.getAttribute("data-more")){ switchTab("hesabu"); return; }
+  showAnimal(tile.getAttribute("data-tag"));
+});
+
+function showAnimal(tag){
+  var a = null;
+  for(var i=0;i<S.animals.length;i++){ if(S.animals[i].tag === tag){ a = S.animals[i]; break; } }
+  if(!a) return;
+  var st = a.status === "dead" ? "red" : (a.status === "missing" ? "" : "green");
+  var stLabel = a.status === "dead" ? t("s.dead") : (a.status === "missing" ? t("s.missing") : t("s.present"));
+  openSheet(
+    '<img class="bigpic" id="bigPic" src="' + (a.thumb || "") + '" style="filter:blur(8px)" alt="">' +
+    '<div class="row between" style="margin-bottom:10px">' +
+      '<div><div style="font-family:var(--mono);font-size:1.5rem">' + esc(a.tag) + '</div>' +
+      '<div class="meta">' + esc(a.code) + '</div></div>' +
+      '<span class="flag ' + st + '">' + stLabel + '</span>' +
+    '</div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Thamani":"Value") + '</span><span class="v">TZS ' + fmt(a.value) + '</span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Uzito":"Weight") + '</span><span class="v">' + a.weight + ' kg</span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Mfugaji":"Keeper") + '</span><span class="v">' +
+       (esc(a.keeperName) || "—") + ' <span class="flag">' + t("reg.unver") + '</span></span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Mahali":"Location") + '</span><span class="v">' +
+       a.lat.toFixed(5) + ', ' + a.lon.toFixed(5) +
+       (a.locSource === "demo" ? ' <span class="flag">' + t("gps.flag") + '</span>' : '') + '</span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Muda":"Recorded") + '</span><span class="v">' +
+       new Date(a.ts).toLocaleString() + '</span></div>' +
+    '<div class="kv"><span class="k">' + (lang==="sw"?"Alama ya picha":"Photo hash") + '</span><span class="v">' +
+       shortHash(a.photoSha) + '</span></div>'
+  );
+  // the stored thumbnail shows at once, the full frame replaces it
+  getPhoto(a.photoSha, function(full){
+    var img = el("bigPic");
+    if(img && full){ img.src = full; img.style.filter = ""; }
+    else if(img){ img.style.filter = "blur(3px)"; }
+  });
+}
+
+function renderCountSummary(){
+  var p=0,m=0,d=0,pend=0;
+  S.animals.forEach(function(a){
+    var mk = S.marks[a.tag];
+    if(mk==="present") p++; else if(mk==="missing") m++; else if(mk==="dead") d++; else pend++;
+  });
+  var total = S.animals.length;
+  if(!total){ el("cntSummary").innerHTML = ""; return; }
+  var shortfall = (m+d)/total;
+  var flagCls = shortfall > 0.01 ? "flag red" : "flag green";
+  el("cntSummary").innerHTML =
+    '<div class="kv"><span class="k">'+t("s.present")+'</span><span class="v up">'+p+'</span></div>' +
+    '<div class="kv"><span class="k">'+t("s.missing")+'</span><span class="v warn">'+m+'</span></div>' +
+    '<div class="kv"><span class="k">'+t("s.dead")+'</span><span class="v down">'+d+'</span></div>' +
+    '<div class="kv"><span class="k">'+t("s.pending")+'</span><span class="v">'+pend+'</span></div>' +
+    '<div class="kv"><span class="k">'+(lang==="sw"?"Upungufu":"Shortfall")+'</span><span class="v">' +
+      (shortfall*100).toFixed(1) + '% <span class="'+flagCls+'">' +
+      (shortfall>0.01 ? (lang==="sw"?"Zaidi ya 1%":"Over 1%") : (lang==="sw"?"Ndani ya 1%":"Within 1%")) +
+    '</span></span></div>';
+}
+
+function renderCount(){
+  var list = el("cntList");
+  if(!S.animals.length){
+    list.innerHTML = '<div class="empty">' + t("e.empty") + '</div>';
+    el("cntSummary").innerHTML = '';
+  } else {
+    var rows = S.animals.map(function(a){
+      var mk = S.marks[a.tag] || "";
+      var thumb = a.thumb ? '<img src="'+a.thumb+'" alt="">' : '';
+      return '<div class="crow" data-tag="'+esc(a.tag)+'">' +
+        '<div class="th">'+thumb+'</div>' +
+        '<div class="grow"><div class="tg">'+esc(a.tag)+'</div>' +
+        '<div class="meta">'+esc(a.code)+'</div></div>' +
+        '<div class="mk">' +
+          '<button type="button" data-s="present"'+(mk==="present"?' class="on"':'')+'>&#10003;</button>' +
+          '<button type="button" data-s="missing"'+(mk==="missing"?' class="on"':'')+'>?</button>' +
+          '<button type="button" data-s="dead"'+(mk==="dead"?' class="on"':'')+'>&#10007;</button>' +
+        '</div></div>';
+    }).join("");
+    list.innerHTML = rows;
+    renderCountSummary();
+  }
+
+  var hist = el("cntHist");
+  if(!S.counts.length){ hist.innerHTML = '<div class="empty">' + t("e.nohist") + '</div>'; }
+  else {
+    hist.innerHTML = S.counts.slice().reverse().map(function(c){
+      var bad = c.total ? ((c.missing+c.dead)/c.total > 0.01) : false;
+      return '<div class="card"><div class="row between">' +
+        '<div class="grow"><div class="tg num">'+isoDay(c.ts)+'</div>' +
+        '<div class="meta">'+c.present+' '+t("s.present").toLowerCase()+' · '+c.missing+' '+t("s.missing").toLowerCase()+' · '+c.dead+' '+t("s.dead").toLowerCase()+'</div></div>' +
+        '<span class="'+(bad?"flag red":"flag green")+'">'+((c.total?((c.missing+c.dead)/c.total*100):0).toFixed(1))+'%</span>' +
+      '</div></div>';
+    }).join("");
+  }
+}
+
+function renderRecord(){
+  el("kEvents").textContent = S.log.length;
+  el("kHead2").textContent = shortHash(headHash());
+  var evs = el("evList");
+  if(!S.log.length){ evs.innerHTML = '<div class="empty">' + t("e.noev") + '</div>'; }
+  else {
+    evs.innerHTML = S.log.slice(-12).reverse().map(function(ev){
+      var d = new Date(ev.ts);
+      return '<div class="ev"><span class="ty">'+esc(ev.type)+'</span> · ' +
+        isoDay(ev.ts) + " " + ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2) +
+        '<div class="h">#'+ev.seq+' '+shortHash(ev.hash)+'</div></div>';
+    }).join("");
+  }
+  var demo = demoCount();
+  el("honestCard").innerHTML =
+    (demo ? '<p style="margin:0 0 10px;font-size:.84rem;line-height:1.65"><span class="flag">' +
+       t("gps.flag") + '</span> ' + t("t.demopack") + '</p>' : '') +
+    '<p style="margin:0 0 10px;font-size:.84rem;line-height:1.65">' + t("h.does") + '</p>' +
+    '<p style="margin:0;font-size:.84rem;line-height:1.65;color:var(--txt2)">' + t("h.doesnt") + '</p>';
+}
+
+function renderAll(){ renderChip(); renderLot(); renderCount(); renderRecord(); refreshPreview(); }
+
+/* ============ enrolment form ============ */
+var form = { species:"C", sex:"M", weight:320, age:2, bcs:3 };
+var pending = { photoSha:null, thumb:null, lat:null, lon:null, acc:null, locTs:null, locSource:null };
+
+function refreshPreview(){
+  var b = bandFor(form.species, form.weight);
+  var wb = el("wBand"); if(wb) wb.textContent = "BAND " + b[0] + "–" + b[1];
+  var lp = el("lotPreview"); if(lp) lp.textContent = lotCode(form);
+  var v = valueOf(form);
+  var est = document.querySelector("[data-t-html='reg.est']");
+  if(est){
+    est.innerHTML = (lang==="sw" ? "Thamani ya daraja hili " : "Index value for this grade ") +
+      '<b class="num">TZS ' + fmt(v) + '</b>';
+  }
+}
+
+function bindSegs(){
+  Array.prototype.forEach.call(document.querySelectorAll("[data-seg]"), function(seg){
+    var key = seg.getAttribute("data-seg");
+    seg.addEventListener("click", function(e){
+      var b = e.target.closest ? e.target.closest("button") : null;
+      if(!b) return;
+      Array.prototype.forEach.call(seg.querySelectorAll("button"), function(x){ x.classList.remove("on"); });
+      b.classList.add("on");
+      var v = b.getAttribute("data-v");
+      form[key] = (key==="age"||key==="bcs") ? parseInt(v,10) : v;
+      if(key==="species"){ form.weight = (form.species==="C") ? 320 : 28; el("wVal").textContent = form.weight; }
+      haptic(12);
+      refreshPreview();
+    });
+  });
+}
+function stepWeight(d){
+  var step = (form.species==="C") ? 10 : 1;
+  var lo = (form.species==="C") ? 150 : 12;
+  var hi = (form.species==="C") ? 600 : 60;
+  form.weight = Math.max(lo, Math.min(hi, form.weight + d*step));
+  el("wVal").textContent = form.weight;
+  haptic(8);
+  refreshPreview();
+}
+
+/* ---- photo ---- */
+el("capPhoto").addEventListener("click", function(){ haptic(14); el("fileIn").click(); });
+el("fileIn").addEventListener("change", function(){
+  var f = this.files && this.files[0];
+  if(!f) return;
+  var fr = new FileReader();
+  fr.onload = function(){
+    var img = new Image();
+    img.onload = function(){
+      // full frame, capped at 1024px, goes to IndexedDB; a 96px thumb goes in the record
+      pending.photoSha = sha256(shrink(img, 1024, 0.72));
+      pending.thumb = shrink(img, 96, 0.55);
+      putPhoto(pending.photoSha, shrink(img, 1024, 0.72));
+      el("capPhoto").classList.add("done");
+      el("photoIco").innerHTML = '<img src="'+pending.thumb+'" alt="">';
+      el("photoT").textContent = (lang==="sw" ? "Picha imepigwa" : "Photograph captured");
+      el("photoH").textContent = shortHash(pending.photoSha);
+      haptic(30);
+    };
+    img.onerror = function(){ toast(t("t.needphoto"), true); };
+    img.src = fr.result;
+  };
+  fr.readAsDataURL(f);
+  this.value = "";
+});
+function shrink(img, max, q){
+  var w = img.width, h = img.height;
+  var scale = Math.min(1, max/Math.max(w,h));
+  var cv = document.createElement("canvas");
+  cv.width = Math.max(1, Math.round(w*scale));
+  cv.height = Math.max(1, Math.round(h*scale));
+  cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height);
+  return cv.toDataURL("image/jpeg", q);
+}
+
+/* ---- location ---- */
+el("capGps").addEventListener("click", function(){
+  haptic(14);
+  var raw = "";
+  try{ if(A && A.location) raw = A.location(); }catch(e){ raw = ""; }
+  if(raw){
+    try{
+      var o = JSON.parse(raw);
+      setLoc(o.lat, o.lon, o.acc, o.ts, "gps");
+      return;
+    }catch(e){}
+  }
+  try{ if(A && A.requestLocation) A.requestLocation(); }catch(e){}
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(function(p){
+      setLoc(p.coords.latitude, p.coords.longitude, p.coords.accuracy, p.timestamp, "gps");
+    }, offerDemoLocation, {enableHighAccuracy:true, timeout:8000});
+    return;
+  }
+  offerDemoLocation();
+});
+
+/**
+ * A browser opened from a file, or a phone with no fix, cannot give a real position. Rather than
+ * dead-ending the demo, offer an obviously-marked sample position — and carry that mark all the
+ * way into the sealed record, so a pack built this way can never be mistaken for field evidence.
+ */
+function offerDemoLocation(){
+  toast(t("t.nogps"), true);
+  openSheet(
+    '<h2 style="margin-bottom:6px">' + t("gps.noh") + '</h2>' +
+    '<p class="sub">' + t("gps.nos") + '</p>' +
+    '<button class="btn ghost" data-act="demoloc">' + t("gps.demo") + '</button>'
+  );
+}
+
+function setLoc(lat, lon, acc, ts, source){
+  pending.lat = lat; pending.lon = lon; pending.acc = acc;
+  pending.locTs = ts || Date.now();
+  pending.locSource = source || "gps";
+  el("capGps").classList.add("done");
+  el("gpsT").innerHTML = (source === "demo")
+    ? (lang==="sw" ? "Mahali pa mfano " : "Sample location ") + '<span class="flag">' + t("gps.flag") + '</span>'
+    : (lang==="sw" ? "Mahali pamepatikana" : "Location captured");
+  el("gpsH").textContent = lat.toFixed(5) + ", " + lon.toFixed(5) + " ±" + Math.round(acc||0) + "m";
+  haptic(30);
+}
+
+/* ---- save ---- */
+el("saveBtn").addEventListener("click", function(){
+  var tag = (el("tagInput").value || "").trim().toUpperCase();
+  if(!tag){ toast(t("t.needtag"), true); return; }
+  for(var i=0;i<S.animals.length;i++){ if(S.animals[i].tag === tag){ toast(t("t.duptag"), true); return; } }
+  if(!pending.photoSha){ toast(t("t.needphoto"), true); return; }
+  if(pending.lat === null){ toast(t("t.needgps"), true); return; }
+
+  var rec = {
+    tag: tag,
+    code: lotCode(form),
+    species: form.species, sex: form.sex, weight: form.weight, age: form.age, bcs: form.bcs,
+    value: Math.round(valueOf(form)),
+    photoSha: pending.photoSha,
+    thumb: pending.thumb,
+    lat: pending.lat, lon: pending.lon, acc: pending.acc, locTs: pending.locTs,
+    locSource: pending.locSource || "gps",
+    keeperName: (el("keeperName").value||"").trim(),
+    keeperId: (el("keeperId").value||"").trim(),
+    idVerified: false,
+    agent: S.agent || "",
+    ts: Date.now(),
+    status: "present"
+  };
+  S.animals.push(rec);
+  if(!S.drawTs){ S.drawTs = Date.now(); el("drawDate").value = isoDay(S.drawTs); }
+  // the thumbnail is deliberately not hashed into the chain — the photo hash is
+  var sealed = {};
+  Object.keys(rec).forEach(function(k){ if(k!=="thumb") sealed[k]=rec[k]; });
+  append("ENROL", sealed);
+  save();
+  haptic(45);
+  clearForm();
+  renderAll();
+  toast(t("t.saved"));
+});
+
+el("clearBtn").addEventListener("click", function(){ haptic(10); clearForm(); });
+
+function clearForm(){
+  el("tagInput").value = "";
+  el("keeperName").value = "";
+  el("keeperId").value = "";
+  pending = { photoSha:null, thumb:null, lat:null, lon:null, acc:null, locTs:null, locSource:null };
+  el("capPhoto").classList.remove("done");
+  el("capGps").classList.remove("done");
+  el("photoIco").innerHTML = '<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/></svg>';
+  el("photoT").textContent = t("reg.photo");
+  el("photoH").textContent = t("reg.photoh");
+  el("gpsT").textContent = t("reg.gps");
+  el("gpsH").textContent = t("reg.gpsh");
+}
+
+/* ============ reconciliation ============ */
+el("cntList").addEventListener("click", function(e){
+  var b = e.target.closest ? e.target.closest("button[data-s]") : null;
+  if(!b) return;
+  var row = b.closest(".crow");
+  var tag = row.getAttribute("data-tag");
+  S.marks[tag] = b.getAttribute("data-s");
+  save();
+  haptic(12);
+  // Touch only the row that was tapped. Rebuilding 200 rows on every tap of a
+  // 200-head walk is slow on a cheap phone and throws away the scroll position.
+  Array.prototype.forEach.call(row.querySelectorAll("button[data-s]"), function(x){
+    x.classList.toggle("on", x === b);
+  });
+  renderCountSummary();
+});
+
+el("finishBtn").addEventListener("click", function(){
+  if(!S.animals.length){ toast(t("t.nolot"), true); return; }
+  var p=0,m=0,d=0,pend=0;
+  S.animals.forEach(function(a){
+    var mk = S.marks[a.tag];
+    if(mk==="present") p++; else if(mk==="missing") m++; else if(mk==="dead") d++; else pend++;
+  });
+  if(pend){ toast(t("t.countpend"), true); return; }
+  // a dead animal leaves the lot value; a missing one is a default event, not a write-off
+  S.animals.forEach(function(a){ if(S.marks[a.tag]==="dead") a.status = "dead"; else a.status = S.marks[a.tag]; });
+  var c = { ts:Date.now(), total:S.animals.length, present:p, missing:m, dead:d,
+            agent:S.agent||"", day:dayNow() };
+  S.counts.push(c);
+  append("COUNT", c);
+  S.marks = {};
+  save();
+  haptic(50);
+  renderAll();
+  toast(t("t.countdone"));
+});
+
+el("resetCntBtn").addEventListener("click", function(){
+  S.marks = {}; save(); haptic(12); renderCount();
+});
+
+/* ============ the swipe deck ============ */
+var deck = { queue:[], i:0, history:[], card:null, next:null, drag:null };
+
+function getPhoto(sha, cb){
+  openDb(function(d){
+    if(!d || !sha){ cb(null); return; }
+    try{
+      var rq = d.transaction("photos","readonly").objectStore("photos").get(sha);
+      rq.onsuccess = function(){ cb(rq.result || null); };
+      rq.onerror = function(){ cb(null); };
+    }catch(e){ cb(null); }
+  });
+}
+
+function openDeck(){
+  deck.queue = S.animals.filter(function(a){ return !S.marks[a.tag]; });
+  if(!deck.queue.length){
+    // nothing left unmarked — go straight to the summary
+    deck.queue = [];
+  }
+  deck.i = 0;
+  deck.history = [];
+  el("deckUndo").disabled = true;
+  el("deck").classList.add("on");
+  el("deckDone").classList.remove("on");
+  buildCards();
+  updateDeckProgress();
+}
+function closeDeck(){
+  el("deck").classList.remove("on");
+  el("deckStage").innerHTML = "";
+  deck.card = deck.next = null;
+  renderAll();
+}
+
+function cardHtml(a){
+  return '<div class="pic"><div class="none">' + (lang==="sw"?"Hakuna picha":"No photograph") + '</div></div>' +
+    '<div class="wash present"><span>' + t("s.present") + '</span></div>' +
+    '<div class="wash missing"><span>' + t("s.missing") + '</span></div>' +
+    '<div class="wash dead"><span>' + t("s.dead") + '</span></div>' +
+    '<div class="info">' +
+      '<div class="tagbig">' + esc(a.tag) + '</div>' +
+      '<div class="subline">' + esc(a.code) + '</div>' +
+      '<div class="valline">TZS ' + fmt(a.value) + '</div>' +
+    '</div>';
+}
+function makeCard(a, behind){
+  var c = document.createElement("div");
+  c.className = "dcard" + (behind ? " behind" : "");
+  c.innerHTML = cardHtml(a);
+  // the thumbnail shows instantly; the full frame replaces it when IndexedDB answers
+  var pic = c.querySelector(".pic");
+  if(a.thumb){
+    var none = pic.querySelector(".none");
+    if(none) none.style.display = "none";
+    var img = document.createElement("img");
+    img.src = a.thumb;
+    img.style.filter = "blur(6px)";
+    pic.insertBefore(img, pic.firstChild);
+    getPhoto(a.photoSha, function(full){
+      if(full && img.parentNode){ img.src = full; img.style.filter = ""; }
+      else { img.style.filter = "blur(2px)"; }
+    });
+  }
+  return c;
+}
+
+function buildCards(){
+  var stage = el("deckStage");
+  stage.innerHTML = "";
+  if(deck.i >= deck.queue.length){ showDeckDone(); return; }
+  el("deckDone").classList.remove("on");
+  var nxt = deck.queue[deck.i+1];
+  deck.next = nxt ? makeCard(nxt, true) : null;
+  if(deck.next) stage.appendChild(deck.next);
+  deck.card = makeCard(deck.queue[deck.i], false);
+  stage.appendChild(deck.card);
+  bindDrag(deck.card);
+}
+
+function updateDeckProgress(){
+  var total = S.animals.length;
+  var marked = 0;
+  S.animals.forEach(function(a){ if(S.marks[a.tag]) marked++; });
+  el("deckPos").textContent = marked + " / " + total;
+  el("deckLeft").textContent = (total - marked) + " " + (lang==="sw" ? "wamebaki" : "left");
+  el("deckBar").style.width = (total ? (marked/total*100) : 0).toFixed(1) + "%";
+}
+
+function washFor(dx, dy){
+  if(dy < -70 && Math.abs(dy) > Math.abs(dx)) return "dead";
+  if(dx > 60) return "present";
+  if(dx < -60) return "missing";
+  return null;
+}
+function paintWash(card, dx, dy){
+  var w = washFor(dx, dy);
+  ["present","missing","dead"].forEach(function(k){
+    var e2 = card.querySelector(".wash." + k);
+    if(!e2) return;
+    var mag = (k === "dead") ? Math.min(1, Math.max(0,-dy)/150) : Math.min(1, Math.abs(dx)/150);
+    e2.style.opacity = (w === k) ? mag.toFixed(2) : 0;
+  });
+}
+
+function bindDrag(card){
+  card.addEventListener("pointerdown", function(e){
+    if(e.button !== undefined && e.button !== 0) return;
+    deck.drag = { x:e.clientX, y:e.clientY, dx:0, dy:0, id:e.pointerId };
+    card.classList.remove("settle");
+    try{ card.setPointerCapture(e.pointerId); }catch(err){}
+  });
+  card.addEventListener("pointermove", function(e){
+    if(!deck.drag || deck.drag.id !== e.pointerId) return;
+    deck.drag.dx = e.clientX - deck.drag.x;
+    deck.drag.dy = e.clientY - deck.drag.y;
+    card.style.transform = "translate(" + deck.drag.dx + "px," + deck.drag.dy +
+      "px) rotate(" + (deck.drag.dx/22).toFixed(2) + "deg)";
+    paintWash(card, deck.drag.dx, deck.drag.dy);
+  });
+  function release(e){
+    if(!deck.drag || deck.drag.id !== e.pointerId) return;
+    var dx = deck.drag.dx, dy = deck.drag.dy;
+    deck.drag = null;
+    var verdict = washFor(dx, dy);
+    if(verdict){ flingCard(card, verdict, dx, dy); }
+    else {
+      card.classList.add("settle");
+      card.style.transform = "";
+      paintWash(card, 0, 0);
+    }
+  }
+  card.addEventListener("pointerup", release);
+  card.addEventListener("pointercancel", release);
+}
+
+function flingCard(card, verdict, dx, dy){
+  var a = deck.queue[deck.i];
+  if(!a) return;
+  card.classList.add("settle");
+  var ox = verdict === "present" ? 700 : (verdict === "missing" ? -700 : (dx||0));
+  var oy = verdict === "dead" ? -800 : (dy||0);
+  card.style.transform = "translate(" + ox + "px," + oy + "px) rotate(" + (ox/22).toFixed(1) + "deg)";
+  card.style.opacity = "0";
+  // a short, single tick — confirmation, not reward
+  haptic(verdict === "dead" ? 34 : 16);
+  markFromDeck(a.tag, verdict);
+  setTimeout(function(){
+    deck.i++;
+    buildCards();
+    updateDeckProgress();
+  }, 170);
+}
+
+function markFromDeck(tag, verdict){
+  S.marks[tag] = verdict;
+  deck.history.push(tag);
+  el("deckUndo").disabled = false;
+  save();
+}
+
+el("deckStage").addEventListener("click", function(){ /* taps fall through to buttons */ });
+
+document.querySelector(".deckbtns").addEventListener("click", function(e){
+  var b = e.target.closest ? e.target.closest("button[data-s]") : null;
+  if(!b || !deck.card) return;
+  flingCard(deck.card, b.getAttribute("data-s"), 0, 0);
+});
+
+el("deckUndo").addEventListener("click", function(){
+  if(!deck.history.length) return;
+  var tag = deck.history.pop();
+  delete S.marks[tag];
+  save();
+  haptic(12);
+  // step back to the animal that was just judged
+  for(var i=0;i<deck.queue.length;i++){ if(deck.queue[i].tag === tag){ deck.i = i; break; } }
+  el("deckUndo").disabled = deck.history.length === 0;
+  buildCards();
+  updateDeckProgress();
+});
+
+el("deckClose").addEventListener("click", function(){ haptic(10); closeDeck(); });
+el("deckBack").addEventListener("click", function(){ haptic(10); closeDeck(); });
+
+function showDeckDone(){
+  var p=0,m=0,d=0,pend=0;
+  S.animals.forEach(function(a){
+    var mk = S.marks[a.tag];
+    if(mk==="present") p++; else if(mk==="missing") m++; else if(mk==="dead") d++; else pend++;
+  });
+  var total = S.animals.length;
+  var shortfall = total ? (m+d)/total : 0;
+  el("deckDoneLead").textContent = pend
+    ? (lang==="sw" ? "Bado hawajahesabiwa" : "Still unmarked")
+    : (lang==="sw" ? "Upungufu wa hesabu hii" : "Shortfall on this count");
+  el("deckDoneBig").textContent = pend ? pend : (shortfall*100).toFixed(1) + "%";
+  el("deckDoneBig").className = "big num " +
+    (pend ? "" : (shortfall > 0.01 ? "down" : "up"));
+  el("deckDoneSub").textContent = pend
+    ? (lang==="sw" ? "Rudi kwenye orodha kuwamaliza." : "Return to the roll to finish them.")
+    : (p + " " + t("s.present").toLowerCase() + " · " + m + " " + t("s.missing").toLowerCase() +
+       " · " + d + " " + t("s.dead").toLowerCase() +
+       (shortfall > 0.01
+         ? (lang==="sw" ? " — zaidi ya 1%, ni tukio la kuvunja mkataba."
+                        : " — over 1%, which is an event of default.")
+         : ""));
+  el("deckFinish").disabled = !!pend;
+  el("deckDone").classList.add("on");
+}
+
+el("deckFinish").addEventListener("click", function(){
+  closeDeck();
+  el("finishBtn").click();
+});
+
+el("walkBtn").addEventListener("click", function(){
+  if(!S.animals.length){ toast(t("t.nolot"), true); return; }
+  haptic(18);
+  openDeck();
+});
+
+/* ============ record: verify, export, wipe ============ */
+el("verifyBtn").addEventListener("click", function(){
+  haptic(20);
+  var bad = verifyChain();
+  var k = el("kChain");
+  if(bad === 0){ k.textContent = t("t.chainok"); k.className = "v up"; toast(t("t.chainok")); }
+  else { k.textContent = "#" + bad; k.className = "v down"; toast(t("t.chainbad"), true); }
+});
+
+function demoCount(){
+  var n = 0;
+  S.animals.forEach(function(a){ if(a.locSource === "demo") n++; });
+  return n;
+}
+
+function buildPack(){
+  var c = coverNow();
+  var demo = demoCount();
+  return JSON.stringify({
+    format: "mnada-custody-pack",
+    version: 2,
+    // A pack with any sample position in it is a demonstration, and says so first.
+    demonstration: demo > 0,
+    demonstrationNote: demo > 0
+      ? demo + " of " + S.animals.length + " records carry a sample location, not a GPS fix. "
+        + "This pack is a demonstration and must not be relied on as custody evidence."
+      : null,
+    generatedAt: new Date().toISOString(),
+    agent: S.agent || "",
+    facility: FAC,
+    // Named so the pack is self-describing, and flagged so nobody downstream reads
+    // the names as evidence that either institution is party to anything.
+    counterparties: {
+      lender: partyBy("banks", S.lender).nm,
+      insurer: partyBy("insurers", S.insurer).nm,
+      note: "Selected inside the app for demonstration purposes. Neither institution "
+          + "has reviewed, endorsed, or agreed to this facility."
+    },
+    drawdown: S.drawTs ? new Date(S.drawTs).toISOString() : null,
+    day: c.day,
+    position: { head: headCount(), value: Math.round(c.val),
+                grossNeededToday: Math.round(c.need), cover: +(c.ratio).toFixed(4) },
+    animals: S.animals.map(function(a){
+      var o = {}; Object.keys(a).forEach(function(k){ if(k!=="thumb") o[k]=a[k]; }); return o;
+    }),
+    counts: S.counts,
+    log: S.log,
+    chainHead: headHash(),
+    chainValid: verifyChain() === 0,
+    note: "Photographs are held on the capture device, keyed by photoSha. This pack carries the hashes, not the images."
+  }, null, 2);
+}
+
+el("exportBtn").addEventListener("click", function(){
+  haptic(30);
+  var name = "mnada-pack-" + isoDay(Date.now()) + "-" + headHash().slice(0,8) + ".json";
+  var content = buildPack();
+  var path = "";
+  try{ if(A && A.savePack) path = A.savePack(name, content); }catch(e){ path = ""; }
+  if(path){ toast(t("t.exported") + path); return; }
+  try{
+    if(A && A.share){ A.share(name, content); toast(t("t.exportfail"), true); return; }
+  }catch(e){}
+  // browser fallback
+  try{
+    var blob = new Blob([content], {type:"application/json"});
+    var url = URL.createObjectURL(blob);
+    var a2 = document.createElement("a");
+    a2.href = url; a2.download = name; a2.click();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }catch(e){ toast(t("t.exportfail"), true); }
+});
+
+el("wipeBtn").addEventListener("click", function(){
+  openSheet('<h2 style="margin-bottom:8px">' + t("rec.wipe") + '</h2>' +
+    '<p class="sub">' + (lang==="sw"
+      ? "Hakuna nakala nyingine. Toa faili kwanza."
+      : "There is no other copy. Export the pack first.") + '</p>' +
+    '<button class="btn danger" data-act="wipe">' + t("rec.wipe") + '</button>');
+});
+
+el("sheetBody").addEventListener("click", function(e){
+  var b = e.target.closest ? e.target.closest("[data-act]") : null;
+  if(!b) return;
+  if(b.getAttribute("data-act") === "demoloc"){
+    // Nyamatala market, Shinyanga — a real place, an unreal fix, and labelled as such.
+    setLoc(-3.4589, 33.4211, 0, Date.now(), "demo");
+    closeSheet();
+    return;
+  }
+  if(b.getAttribute("data-act") === "wipe"){
+    S = blankState();
+    save();
+    try{ localStorage.removeItem(KEY); }catch(err){}
+    closeSheet();
+    el("drawDate").value = "";
+    el("agentName").value = "";
+    clearForm();
+    renderAll();
+    toast(t("t.wiped"));
+  }
+});
+
+/* ============ sheet ============ */
+var sheetOpen = false;
+function openSheet(html){
+  el("sheetBody").innerHTML = html;
+  el("sheet").classList.add("on"); el("sheetBg").classList.add("on"); sheetOpen = true;
+}
+function closeSheet(){
+  el("sheet").classList.remove("on"); el("sheetBg").classList.remove("on"); sheetOpen = false;
+}
+el("sheetBg").addEventListener("click", closeSheet);
+
+/* ============ setup fields ============ */
+el("drawDate").addEventListener("change", function(){
+  var v = this.value;
+  if(!v){ S.drawTs = null; }
+  else {
+    var p = v.split("-");
+    S.drawTs = new Date(+p[0], +p[1]-1, +p[2], 8, 0, 0).getTime();
+  }
+  save(); renderLot();
+});
+el("agentName").addEventListener("change", function(){
+  S.agent = (this.value||"").trim(); save();
+});
+
+/* ============ counterparty pickers ============ */
+["bankStrip","insStrip"].forEach(function(id){
+  el(id).addEventListener("click", function(e){
+    var b = e.target.closest ? e.target.closest(".ptile") : null;
+    if(!b) return;
+    pickParty(b.getAttribute("data-kind"), b.getAttribute("data-id"));
+  });
+});
+
+/* ============ nav ============ */
+var current = "fungu";
+function switchTab(name){
+  current = name;
+  Array.prototype.forEach.call(document.querySelectorAll(".view"), function(v){
+    v.classList.toggle("on", v.id === "v-" + name);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(b){
+    b.classList.toggle("on", b.getAttribute("data-v") === name);
+  });
+  el("scroll").scrollTop = 0;
+}
+document.querySelector(".tabs").addEventListener("click", function(e){
+  var b = e.target.closest ? e.target.closest(".tab") : null;
+  if(!b) return;
+  haptic(10);
+  switchTab(b.getAttribute("data-v"));
+});
+
+/* ============ language ============ */
+function applyLang(){
+  document.documentElement.lang = lang;
+  el("langBtn").textContent = (lang === "sw") ? "EN" : "SW";
+  Array.prototype.forEach.call(document.querySelectorAll("[data-t]"), function(e2){
+    e2.textContent = t(e2.getAttribute("data-t"));
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-t-html]"), function(e2){
+    var k = e2.getAttribute("data-t-html");
+    if(k !== "reg.est") e2.innerHTML = t(k);
+  });
+  renderAll();
+}
+el("langBtn").addEventListener("click", function(){
+  lang = (lang === "sw") ? "en" : "sw";
+  haptic(12);
+  applyLang();
+});
+
+/* ============ hardware back ============ */
+window.MNADA = {
+  onBack: function(){
+    if(el("deck").classList.contains("on")){ closeDeck(); return true; }
+    if(sheetOpen){ closeSheet(); return true; }
+    if(current !== "fungu"){ switchTab("fungu"); return true; }
+    return false;
+  },
+  // Exposed so the same hash can be recomputed outside the app when checking a pack.
+  sha256: sha256,
+  verify: verifyChain
+};
+
+/* ============ boot ============ */
+load();
+bindSegs();
+el("wUp").addEventListener("click", function(){ stepWeight(1); });
+el("wDn").addEventListener("click", function(){ stepWeight(-1); });
+if(S.drawTs) el("drawDate").value = isoDay(S.drawTs);
+el("agentName").value = S.agent || "";
+applyLang();
+try{
+  el("buildInfo").textContent = ((A && A.buildInfo) ? A.buildInfo() : "MNADA")
+    + " · " + (lang==="sw"
+        ? "data ipo kwenye simu hii pekee · hakuna seva"
+        : "data on this device only · no server");
+}catch(e){
+  el("buildInfo").textContent = "MNADA · data on this device only · no server";
+}
+
+})();
+</script>
+</body>
+</html>

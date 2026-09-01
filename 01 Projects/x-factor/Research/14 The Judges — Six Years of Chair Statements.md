@@ -98,6 +98,11 @@ Regional judges: Fred Khumalo (Africa), Rifat Munim (Asia), Norma Dunning (Canad
 
 Every substantive phrase from six years, sorted. **This is the finding.**
 
+> [!important] Read this table together with [[22 The Negation Test — Which Chair Statements Survive]]
+> The hit rates below are **accurate frequency data** — they predict what a chair will *write* about a story they liked. They are **not a specification you can draft toward**, because most of the phrases feeding them fail the negation test: negate *moving*, *assured* or *believable* and you get a position no judge could hold.
+>
+> **Seven phrases in six years do survive negation, and three of them are Makumbi's.** Those seven are the brief. This table is the weather report.
+
 | What was praised | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | Hit rate |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | **Emotional / moral force** — *moving, urgent, heartbroken, breathless, changes us, real heart* | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | **6 / 6** |
