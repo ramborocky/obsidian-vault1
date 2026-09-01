@@ -12,24 +12,24 @@ cssclasses: [home]
 > `+255 22 2 211890` · `info@nbaa.go.tz` · → [[ACPA(T) NBAA To-Do]]
 > - [ ] Answered and written into the file
 >
-> ### 2 · ✍️ Chantal needs two paragraphs — **from you, not from Claude**
-> Both briefs are marked inline in [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)|Draft 4]]. Draft 3 stays the submission candidate until they're written.
-> - [ ] **The counting fails** — after the back room. She counts everything, so let her count the *wrong* thing. Flat, no emotion named
-> - [ ] ***Shemeji*** — one sentence, no gloss, her register
+> ### 2 · ✍️ Two small calls left in Draft 4 — **yours, not Claude's**
+> ✅ **Both owed paragraphs were written by you on 31 July.** [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)|Draft 4]] is the submission candidate now; Draft 3 is superseded. What is still open is smaller and still yours:
+> - [ ] **Is *"just before we reached 34"* deliberately unfinished?** If yes, leave it exactly as it is. If no, it needs an ending
+> - [ ] **The tense wobble in the Daudi clause** — *he **would** grind his teeth* beside *and **clenched** his fists*. One of the two verbs wants to change; *that sounding thing* is also vague for a story this precise
 >
 > ### 3 · 🎯 VOICE, NOT STRUCTURE
 > [[Nazir — The Serpent in the Grove|The 2026 winner]] scores **31/45** on our rubric and beat **7,806 entries.** Chantal scores 40. **That gap is a warning, not a win** — the rubric rewards architecture and this panel forgives architecture.
 > **Nothing in Chantal gets cut for tightness again.** The gains left are prose control and controlling idea.
 
 > [!danger] 💰 Miles Morland Scholarship — **£18,000** · deadline 22 September, **target 1 September**
-> **`$= Math.ceil((new Date("2026-09-22T23:59:00Z") - new Date()) / 86400000) + " days left"`** · 4 scholarships from ~800 entries — **1 in 200, against the Commonwealth's 1 in 1,561**
+> **`$= Math.ceil((new Date("2026-09-22T23:59:00Z") - new Date()) / 86400000) + " days left"`** · **the self-imposed target was 1 September** · 4 scholarships from ~800 entries — **1 in 200, against the Commonwealth's 1 in 1,561**
 > **The gate is already cleared:** *Voices of Azania* is published on Kindle and offered for sale, and the Foundation confirmed in writing that it qualifies.
 > **Extract:** *The Fastest Car in Mazimbu* — in revision, ten bricks → [[Fastest Car — The Build Order]]
 > **Proposal:** [[The Village, The House, The Road — Proposal Sheet|The Village, The House, The Road]] · **Bio:** [[The Biography — Draft to Rewrite by Hand|drafted, awaiting your hand]]
 > **Both campaigns on one page → [[Two Campaigns — The Master Calendar]]**
 
 > [!danger] Commonwealth Short Story Prize — deadline 1 November 2026, 23:59 GMT
-> **`$= Math.ceil((new Date("2026-11-01T23:59:00Z") - new Date()) / 86400000) + " days left"`** · entries open 1 September
+> **`$= Math.ceil((new Date("2026-11-01T23:59:00Z") - new Date()) / 86400000) + " days left"`** · ✅ **entries OPEN since 1 September**
 > That is **02:59 on 2 November** in Tanzania. Rules: [[12 The Rules — Source of Truth]]
 >
 > **Before submitting:** export `Chantal.docx` → **`Chantal.pdf`** · check Word's word count · your name nowhere in the file → [[README — Submission Format and Log]]
@@ -40,16 +40,17 @@ cssclasses: [home]
 
 | | |
 | --- | --- |
-| **Submission candidate** | [[2026-07-28 — Chantal (Draft 3, Prize Pass)\|Chantal, Draft 3]] |
-| **Length** | 3,896 words · gate is 2,000–5,000 |
+| **Submission candidate** | [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)\|Chantal, Draft 4]] — since 31 Jul |
+| **Length** | 3,936 words as the file states · gate is 2,000–5,000 · **Word's count is the authoritative one — re-measure before submitting** |
 | **Gate 1 · Floor** | ✅ pass |
-| **Gate 2 · Make** | **40 / 45** |
-| **Gate 3 · Fight** | **23 / 25** |
+| **Gate 2 · Make** | **40 / 45** — *scored on Draft 3* |
+| **Gate 3 · Fight** | **23 / 25** — *scored on Draft 3* |
+| **Re-score owed** | Both gates predate the three insertions and two deletions. The numbers are indicative, not current |
 | **Gate 4 · Afterlife** | ⚠️ **no evidence — no cold reader yet** |
-| **Two open faults** | *shemeji* · the counting-fails paragraph — **see the box above** |
-| **Git** | `$= "6 commits local and unpushed as of 29 Jul — say push when you want them up"` |
+| **Two open calls** | the unfinished *34* · the Daudi tense wobble — **see the box above** |
+| **Git** | ✅ synced 1 Sep — laptop, GitHub and the cloud sessions are one history again |
 
-**The one thing that would change the most:** name a cold reader. Four instruments depend on a human who is not you, and there is nobody. → [[10 The Three Moves — Reader, Winners, Record]]
+**The one thing that would change the most:** name a cold reader. Four instruments depend on a human who is not you, and there is nobody. [[09 The Practice — Calendar, Ritual and Ilmu Huruf|The practice calendar]] has **Gate 4 answers due ~4 September** — three days out, with no reader to collect them from. → [[10 The Three Moves — Reader, Winners, Record]]
 
 ---
 
@@ -76,6 +77,7 @@ cssclasses: [home]
 | [[The Apprenticeship — Learning By Hand]] | [[08 Three Gates — Field Comparison]] | [[Expenses]] |
 | [[The De-Slop Pass — English Prose]] | [[12 The Rules — Source of Truth]] | [[The Day Plan — 80-20, Pomodoro and Practice]] |
 | [[Craft Log]] | [[09 The Practice — Calendar, Ritual and Ilmu Huruf]] | [[House - Airbnb Writers Retreat]] |
+| [[Booklets]] | [[Two Campaigns — The Master Calendar]] | [[Operating Manual]] |
 
 ---
 
