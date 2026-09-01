@@ -1,0 +1,121 @@
+/* ==========================================================================
+   colour.css — colour for this vault specifically.
+
+   Palette is lifted from the booklets so the vault and the volumes match:
+   flame #E0451F · blue #1E6E8C · deep #124454 · verdigris #57A08F ·
+   brass #C89B4A · plum #7A4A6B.
+
+   Everything is defined twice — once for light, once for dark — because
+   a colour that sings on cream goes muddy on charcoal. Works on top of any
+   theme; nothing here fights the theme's layout.
+   ========================================================================== */
+
+.theme-light {
+  --v-flame:     #C93C18;
+  --v-blue:      #1E6E8C;
+  --v-deep:      #124454;
+  --v-verdigris: #3E8574;
+  --v-brass:     #A97C2E;
+  --v-plum:      #7A4A6B;
+}
+
+.theme-dark {
+  --v-flame:     #F0714B;
+  --v-blue:      #5AAFCC;
+  --v-deep:      #7FC4D8;
+  --v-verdigris: #6FBFA9;
+  --v-brass:     #E3BC6B;
+  --v-plum:      #C08AB0;
+}
+
+/* ---------- 1. Headings, so a long note has visible structure ---------- */
+
+.markdown-preview-view h1,
+.markdown-source-view.mod-cm6 .HyperMD-header-1 { color: var(--v-flame); }
+
+.markdown-preview-view h2,
+.markdown-source-view.mod-cm6 .HyperMD-header-2 { color: var(--v-blue); }
+
+.markdown-preview-view h3,
+.markdown-source-view.mod-cm6 .HyperMD-header-3 { color: var(--v-verdigris); }
+
+.markdown-preview-view h4,
+.markdown-source-view.mod-cm6 .HyperMD-header-4 { color: var(--v-brass); }
+
+/* ---------- 2. Tags, coloured by what they mean ----------
+   Craft bases warm, campaign money-coloured, admin cool, AI sandbox plum.
+   Reading view only — Obsidian gives the editor no per-tag hook.          */
+
+a.tag { border-radius: 999px; padding: 1px 8px; font-size: 0.82em; font-weight: 500; }
+
+a.tag[href="#mckee"], a.tag[href="#cleland"], a.tag[href="#gardner"],
+a.tag[href="#craft"], a.tag[href="#structure"], a.tag[href="#character"],
+a.tag[href="#revision"] {
+  color: var(--v-brass); background: color-mix(in srgb, var(--v-brass) 14%, transparent);
+}
+
+a.tag[href="#prize"], a.tag[href="#campaign"], a.tag[href="#morland"],
+a.tag[href="#ventures"] {
+  color: var(--v-flame); background: color-mix(in srgb, var(--v-flame) 13%, transparent);
+}
+
+a.tag[href="#kalemie"], a.tag[href="#booklet"], a.tag[href="#questions"],
+a.tag[href="#research"] {
+  color: var(--v-blue); background: color-mix(in srgb, var(--v-blue) 13%, transparent);
+}
+
+a.tag[href="#personal"], a.tag[href="#operating-manual"] {
+  color: var(--v-verdigris); background: color-mix(in srgb, var(--v-verdigris) 14%, transparent);
+}
+
+a.tag[href="#x-factor"] {
+  color: var(--v-plum); background: color-mix(in srgb, var(--v-plum) 14%, transparent);
+}
+
+/* ---------- 3. The file explorer, so folders are findable by colour ---------- */
+
+.nav-folder-title[data-path="01 Projects/Kalemie"] .nav-folder-title-content { color: var(--v-blue); font-weight: 600; }
+.nav-folder-title[data-path="01 Projects/Ventures"] .nav-folder-title-content { color: var(--v-flame); font-weight: 600; }
+.nav-folder-title[data-path="01 Projects/Personal"] .nav-folder-title-content { color: var(--v-verdigris); font-weight: 600; }
+.nav-folder-title[data-path="01 Projects/x-factor"] .nav-folder-title-content { color: var(--v-plum); font-weight: 600; }
+.nav-folder-title[data-path="01 Projects/00 Craft Atlas"] .nav-folder-title-content { color: var(--v-brass); font-weight: 600; }
+.nav-folder-title[data-path="claudey"] .nav-folder-title-content { opacity: 0.45; font-style: italic; }
+
+/* Home.md sits at the top of the list and should look like the front door */
+.nav-file-title[data-path="Home.md"] .nav-file-title-content { color: var(--v-flame); font-weight: 700; }
+
+/* ---------- 4. Links, quotes, marks ---------- */
+
+.markdown-preview-view a.internal-link { color: var(--v-blue); text-decoration-color: color-mix(in srgb, var(--v-blue) 40%, transparent); }
+.markdown-preview-view a.internal-link.is-unresolved { color: var(--v-plum); opacity: 0.75; }
+
+.markdown-preview-view blockquote {
+  border-left: 3px solid var(--v-brass);
+  background: color-mix(in srgb, var(--v-brass) 7%, transparent);
+  border-radius: 0 6px 6px 0;
+}
+
+.markdown-preview-view mark, .cm-highlight {
+  background: color-mix(in srgb, var(--v-brass) 32%, transparent);
+  border-radius: 3px;
+}
+
+.markdown-preview-view strong { color: var(--v-deep); }
+
+.markdown-preview-view code:not(pre code) {
+  color: var(--v-flame);
+  background: color-mix(in srgb, var(--v-flame) 10%, transparent);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+/* ---------- 5. Word-count and status frontmatter, made legible ---------- */
+
+.metadata-property[data-property-key="status"] .metadata-property-value { color: var(--v-verdigris); }
+.metadata-property[data-property-key="words"]  .metadata-property-value { color: var(--v-flame); font-weight: 600; }
+.metadata-property[data-property-key="pov"]    .metadata-property-value { color: var(--v-plum); }
+
+/* ---------- 6. Checkboxes: done work should read as done ---------- */
+
+.markdown-preview-view .task-list-item-checkbox:checked { accent-color: var(--v-verdigris); }
+.markdown-preview-view .task-list-item.is-checked { color: var(--text-faint); }
