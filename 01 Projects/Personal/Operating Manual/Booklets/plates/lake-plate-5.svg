@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="A road forking: one branch runs to a town representing the practice, the other climbs into hills representing the book. Both start from the same point."><style>.svg-t{font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 13px; fill: #142028; letter-spacing: 0.04em;}.svg-s{font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 10.5px; fill: #75838B; letter-spacing: 0.14em; text-transform: uppercase;}.svg-n{font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 22px;}</style><rect x="0" y="0" width="1200" height="400" fill="#EDE7D6"/>
+        <rect x="0" y="0" width="1200" height="400" fill="#EDE7D6"></rect>
+        <rect x="0" y="0" width="1200" height="180" fill="url(#dotsF)" opacity="0.12"></rect>
+
+        <polygon points="560,400 640,400 700,150 660,150" fill="#142028" opacity="0.15"></polygon>
+        <polygon points="560,400 640,400 520,150 480,150" fill="#142028" opacity="0.15"></polygon>
+        <polygon points="560,400 640,400 690,160 668,160" fill="#1E6E8C" opacity="0.55"></polygon>
+        <polygon points="560,400 640,400 530,160 508,160" fill="#E0451F" opacity="0.6"></polygon>
+
+        <g opacity="0.85">
+          <rect x="700" y="112" width="26" height="44" fill="#142028"></rect>
+          <rect x="734" y="96" width="20" height="60" fill="#142028"></rect>
+          <rect x="762" y="122" width="30" height="34" fill="#142028"></rect>
+          <polygon points="800,156 818,124 836,156" fill="#142028"></polygon>
+        </g>
+        <text x="700" y="182" class="svg-t">The practice — a payer, a budget line, a signature</text>
+
+        <polygon points="330,158 400,104 470,158" fill="#124454" opacity="0.75"></polygon>
+        <polygon points="270,158 330,118 392,158" fill="#1E6E8C" opacity="0.5"></polygon>
+        <circle cx="452" cy="92" r="20" fill="#E0451F"></circle>
+        <text x="270" y="182" class="svg-t">The book — 10,000 words a month, for twelve months</text>
+
+        <circle cx="600" cy="392" r="11" fill="#142028"></circle>
+        <text x="600" y="368" class="svg-s" text-anchor="middle">One set of hours</text>
+      </svg>

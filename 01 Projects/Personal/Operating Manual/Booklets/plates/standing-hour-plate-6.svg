@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" role="img" aria-label="A reinforcement circuit: an exposing task leads to avoidance, which produces relief in zero seconds, which strengthens avoidance. The exit path runs through approach and discomfort to decay."><style>.svg-label{font-family: "JetBrains Mono", monospace; font-size: 11px; fill: #737C88; letter-spacing: 0.06em;}.svg-name{font-family: "Newsreader", Georgia, serif; font-size: 14px; fill: #E4E7EA;}.svg-num{font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; fill: #E4E7EA;}</style><rect x="0" y="0" width="640" height="250" fill="#171C24"/>
+        <defs>
+          <marker id="ah6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+          </marker>
+        </defs>
+        <rect x="20" y="90" width="130" height="52" fill="#1E242E" stroke="#3E4A59"></rect>
+        <text x="85" y="112" text-anchor="middle" class="svg-name">The exposing</text>
+        <text x="85" y="130" text-anchor="middle" class="svg-name">task</text>
+        <g color="#C4644C">
+          <line x1="150" y1="98" x2="238" y2="66" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></line>
+          <line x1="368" y1="60" x2="440" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></line>
+          <path d="M 500 36 C 500 6, 120 6, 90 82" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></path>
+        </g>
+        <rect x="244" y="36" width="124" height="48" fill="#1E242E" stroke="#C4644C"></rect>
+        <text x="306" y="66" text-anchor="middle" class="svg-name">Avoid it</text>
+        <rect x="446" y="36" width="112" height="48" fill="#1E242E" stroke="#C4644C"></rect>
+        <text x="502" y="60" text-anchor="middle" class="svg-name">Relief</text>
+        <text x="502" y="76" text-anchor="middle" class="svg-label" fill="#C4644C">in 0 seconds</text>
+        <text x="300" y="20" text-anchor="middle" class="svg-label" fill="#C4644C">avoidance gets stronger every single time</text>
+        <g color="#C89B4A">
+          <line x1="150" y1="134" x2="238" y2="176" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></line>
+          <line x1="368" y1="186" x2="440" y2="186" stroke="currentColor" stroke-width="2" marker-end="url(#ah6)"></line>
+        </g>
+        <rect x="244" y="162" width="124" height="48" fill="#1E242E" stroke="#C89B4A"></rect>
+        <text x="306" y="184" text-anchor="middle" class="svg-name">Do it, afraid</text>
+        <text x="306" y="200" text-anchor="middle" class="svg-label">no relief at first</text>
+        <rect x="446" y="162" width="150" height="48" fill="#1E242E" stroke="#C89B4A"></rect>
+        <text x="521" y="184" text-anchor="middle" class="svg-name">Fear decays</text>
+        <text x="521" y="200" text-anchor="middle" class="svg-label" fill="#C89B4A">the only exit</text>
+        <text x="306" y="236" text-anchor="middle" class="svg-label">insight does not open this door · only the doing does</text>
+      </svg>
