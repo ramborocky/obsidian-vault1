@@ -71,11 +71,11 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 
 > Our Descendants Came Back Home ~~and~~ **`→ is an`** 85,000 word narrative non-**`→ [delete space]`**fiction investigating the history of Zigua and Somali Bantu communities who reside in Tanzania, Somalia, Kenya and the United States.
 
-> 📌 🔴 **The first sentence of the proposal has a broken verb.** *"X and 85,000 word non-fiction"* — there is no verb at all. It does more damage than its size suggests, because of where it sits: a reader screening 800 applications forms a judgement here and does not revise it.
+> 📌 🔴 **The first sentence of the proposal has a broken verb.** *"X and 85,000 word non-fiction"* — there is no verb at all. The most damaging fault in the document because of where it sits: a reader screening 800 applications forms a judgement here and does not revise it.
 >
 > 📌 *non- fiction* has a stray space. Fix both and the sentence is sound.
 >
-> 📌 **Substantive:** *"investigating the history of"* is a flat verb-phrase carrying your best fact — a people whose officials needed **no interpreter** when they arrived in 2003. Consider whether the opening is where compliance data goes, or where the image goes.
+> 📌 **Substantive:** *"investigating the history of"* is the weakest available verb-phrase for the strongest fact you own — a people whose officials needed **no interpreter** when they arrived in 2003. Consider whether the opening is where compliance data goes, or where the best image goes.
 
 **`[BRIEF — ¶3-INSERT · ~45 words · THE HIGHEST-VALUE ADDITION IN THIS DOCUMENT]`**
 
@@ -149,7 +149,7 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 
 > When I visited Chogo in Handeni the first place I went was under the mango tree where a group of women were taking refuge from the evening sun. Some of them were plaiting each other's hair and others were ~~gossiping the usual gossip~~ **`→ [rephrase]`** in Zigula. On the far side of the tree, an old woman, with children ranging from 3 to 7 surrounded her, listening attentively to the words she was saying.
 
-🟢 **KEEP THIS PARAGRAPH.** The only place in the document where the book becomes visible.
+🟢 **KEEP THIS PARAGRAPH. The best writing in the document, and the only place the book becomes visible.**
 
 > 📌 Three touches only:
 >
@@ -167,7 +167,7 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 
 > 'Wize mudje' she said as she welcomed them to a plate of ugali, with a side dish of greens made from Cassava **`→ cassava`** leaves and ~~grounded~~ **`→ ground`** peanuts. This type of food might be somehow different from what they eat in Mogadishu, but not her home in Jubba or Shebelle. Not here in Handeni either.
 
-🟢 **Keep.** The three-beat close — *Mogadishu / Jubba or Shebelle / Handeni either* — is doing work no sentence around it does.
+🟢 **Keep. The three-beat close — *Mogadishu / Jubba or Shebelle / Handeni either* — is the best rhythm in the document.**
 
 > 📌 *"might be somehow different"* — two hedges in three words. It **is** different, or it **is not**. You know which; you were there.
 >
@@ -197,13 +197,13 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 >
 > 📌 The first sentence has a dangling participle: *Being a Zigua* has no subject to attach to, so grammatically nobody is being a Zigua. Deleting the comma fixes it — *Being a Zigua made me…*
 >
-> 📌 Delete *But*. It turns the sentence into a concession.
+> 📌 Delete *But*. It weakens the best line in the document by turning it into a concession.
 
 **`[BRIEF — ¶9-INSERT · ~20 words · THE FACT YOU HAD AND DROPPED]`**
 
 > **The people at Chogo are what your family would have been if a raid had gone the other way.**
 >
-> That sentence, in your words, is the why-you. It was in your working notes and it is not in this draft.
+> That sentence, in your words, is the strongest why-you available to any applicant to this scholarship anywhere. It was in your working notes and it is not in this draft.
 >
 > **Rules:** state it. Do not argue it, do not claim it is significant, do not follow it with *which is why I am uniquely placed.* One sentence, then stop.
 >
@@ -217,7 +217,7 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 
 **CUT — 16 words.**
 
-> 📌 *"successive ruptures"* is seminar vocabulary and the paragraph adds no fact. ¶8 has already shown the cuisine surviving, on a plate, with a name for it. A scene has made this point; the abstraction now un-makes it.
+> 📌 *"successive ruptures"* is seminar vocabulary and the paragraph adds no fact. ¶8 has already shown the cuisine surviving, on a plate, with a name for it. **A scene has made this point; the abstraction now un-makes it.**
 >
 > 📌 *survived throughout all this time* — *survived* already contains it.
 
@@ -229,9 +229,9 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 
 **CUT ENTIRELY — 20 words.**
 
-> 📌 🔴 Four faults in twenty words: *proposes **and** Inward* (should be *an*), *Inward* capitalised for no reason, *"a crossroads where modernity meets tradition"* could be attached to any African subject, and *"which is painfully personal"* **tells** the reader to feel something the document has not earned.
+> 📌 🔴 Four faults in twenty words: *proposes **and** Inward* (should be *an*), *Inward* capitalised for no reason, *"a crossroads where modernity meets tradition"* is the most generic phrase available about any African subject, and *"which is painfully personal"* **tells** the reader to feel something the document has not earned.
 >
-> 📌 Nothing survives. Cut it.
+> 📌 Nothing survives. Cut and lose nothing.
 
 ---
 
@@ -245,7 +245,7 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 >
 > 📌 *"Of which may be answered through generations as well as geography."* — fragment, no subject, and it softens a hard question into a vague promise. **Cut.**
 >
-> 📌 Consider whether this belongs 200 words earlier, immediately after the interpreter fact. **Order: image → question → form → structure.** Currently the question arrives fifth.
+> 📌 Consider whether this belongs 200 words earlier, immediately after the interpreter fact. **The strongest architecture is image → question → form → structure.** Currently the question arrives fifth.
 
 ---
 
@@ -255,7 +255,7 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 
 **CUT — 103 words — replace with ¶13-INSERT.**
 
-> 📌 **Why all of it goes:** it describes a *sequence of exploration*, not a book. *We will explore… it will further explore…* Two sentences begin with *Where* as fragments. *"how as a people it can be carried forward to be called 'ourselves'"* is unparseable; I cannot say what it means.
+> 📌 **Why all of it goes:** it describes a *sequence of exploration*, not a book. *We will explore… it will further explore…* Two sentences begin with *Where* as fragments. *"how as a people it can be carried forward to be called 'ourselves'"* is unparseable — I have read it six times and cannot say what it means.
 >
 > 📌 *"which have given birth to Gosha or Somali Bantu"* — the Zigula-speaking community did not give birth to the Gosha; the Gosha **are** them, after the escape into the forest. As written it is a factual error a specialist reader catches immediately.
 >
@@ -358,7 +358,7 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 >
 > 📌 *"I feel it is incumbent on us"* — six words of throat-clearing, and *us* is nobody.
 >
-> 📌 **The book's questions, reduced to fragments.** ¶12 already asks the real one; three more dilute it. A proposal that ends its argument in question marks reads as a writer still deciding.
+> 📌 **The book's questions in the least effective possible form.** ¶12 already asks the real one; three more dilute it. A proposal that ends its argument in question marks reads as a writer still deciding.
 
 ---
 
@@ -453,7 +453,7 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 >
 > 📌 *"I hope this will be the what give the book its narrative form"* — *the what give*. Broken beyond repair, and it announces that you hope to find a voice, which invites the judges to wonder whether you have one.
 >
-> 📌 🟢 **Worth keeping:** *Whenever I take a trip to Handeni, as we enter the region, there is a sense of relief that enters my heart.* A real, specific, physical observation — the previous draft's *a kind of chill or tranquility that I have arrived* is better still. This is what the Masala quote was reaching for, and it does not need the quote. Trim either *"as we enter the region"* or *"there is a sense of relief"* — one is spare.
+> 📌 🟢 **Worth keeping:** *Whenever I take a trip to Handeni, as we enter the region, there is a sense of relief that enters my heart.* A real, specific, physical observation — the previous draft's *a kind of chill or tranquility that I have arrived* is better still. **This is what the Masala quote was reaching for, and it does not need the quote.** Trim either *"as we enter the region"* or *"there is a sense of relief"* — one is spare.
 
 ---
 
@@ -499,7 +499,7 @@ author: Claude — annotations only. Every bracketed insert is a brief for the a
 >
 > 📌 🔴 **This paragraph announces that the book will not conclude anything.** With ¶32's refusal properly aimed you do not need it — and without that, this reads as evasion rather than judgement.
 >
-> 📌 The last fragment is five abstract nouns in a row. Compare the four movements at ¶13-INSERT, which say the same in events. Keep the movements, cut the nouns.
+> 📌 The last fragment is five abstract nouns in a row. **Compare the four movements at ¶13-INSERT, which say the same in events.** Keep the movements, cut the nouns.
 
 ---
 
