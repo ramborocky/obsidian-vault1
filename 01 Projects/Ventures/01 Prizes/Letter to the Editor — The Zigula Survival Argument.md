@@ -51,7 +51,7 @@ If a reader stops here they still have the point.
 ### 4 · What follows — 2 claims, ~150 words
 Two only, each with something concrete under it:
 - **Transmission, not numbers, is the measure.** Adults speak it; not all the young do. A language dies at the moment parents stop passing it on, not when the last speaker dies — that moment arrives decades earlier and is invisible
-- **What preserved it was the absence of an alternative.** In the Juba valley there was no prestige language available to the household. In Handeni there is, and it is a good one. That is the whole problem in one sentence
+- **It has been under pressure at both ends, and the question is why it held in one place and not the other.** Maay Maay progressively replaced Swahili and the Bantu languages across the Gosha villages; Mushunguli survives in Jilib and Jamaame districts, not everywhere. So the diaspora was never a sealed jar. **The real question — and it is a better one — is why a language holds where it is the marker of a distinct people, and slips where it is merely the old way of saying things**
 
 ### 5 · The ask — 2 sentences
 Letters that name an action get printed:
@@ -88,9 +88,20 @@ That standing is why they print you and not the next letter.
 | Status | Vigorous (6a) — all adults, **not all young people** | Ethnologue |
 | Sukuma, for scale | ~8.1M | [Sukuma language](https://en.wikipedia.org/wiki/Sukuma_language) |
 | Retention vs other formerly enslaved Bantu groups in Somalia | Wazigua kept language and culture most fully | [Somali Bantu culture profile](http://www.hartfordinfo.org/issues/wsd/immigrants/somali_bantu.pdf) |
+| Zigula in the lower Juba, 1900 | ~15 villages | search, 2 Sep 2026 — verify in the Cambridge article below |
+| Where Mushunguli survives now | Jilib and Jamaame districts, Lower Juba | as above |
+| What displaced it elsewhere | Maay Maay, a Cushitic language | as above |
+
+> [!tip] Two sources to obtain before writing
+> - ***Shifting memories and forced migrations: the Somali Zigula migration to Tanzania*** — peer-reviewed, in *Africa* (Cambridge). Directly about the return this book is about. [Link](https://www.cambridge.org/core/journals/africa/article/shifting-memories-and-forced-migrations-the-somali-zigula-migration-to-tanzania/4C14390AA65F817D8620EF2CB21C6610)
+> - ***Shift-Induced Interference ... in Somali Bantu Kizigua*** — linguistics on Mushunguli itself; feeds [[Zigula in Four Weeks — The Course]] as well. [Link](https://www.researchgate.net/publication/291424228_The_Role_of_Shift-Induced_Interference_in_the_Development_of_a_Typologically_Rare_Phonological_Contrast_in_Somali_Bantu_Kizigua)
+
+> [!warning] Corrected 2 September 2026
+> An earlier version of this note claimed the language survived in the Juba valley because no prestige language was available to the household. **That is wrong.** Maay Maay — Cushitic, not Somali proper — progressively replaced Swahili and the Bantu languages across Goshaland, and Mushunguli now survives in Jilib and Jamaame districts rather than throughout. The language was held against pressure on both sides, and lost ground on both.
+> **Do not write the sealed-jar version.** The defensible engine is the comparison: why it held in Jilib and Jamaame, and why it is slipping in Handeni.
 
 > [!warning] One claim to confirm before it is printed
-> That transmission is breaking **faster in Handeni than in the diaspora** is the letter's engine, and it is the one thing here resting on inference rather than a source. Ethnologue's "not all young people" covers the language as a whole. **Settle it at Chogo:** ask three households which language the children answer in. That single answer, reported plainly, is worth more than any figure in the table above.
+> That transmission is breaking **faster in Handeni than in the diaspora** remains the letter's engine, and it still rests on inference rather than a source. Ethnologue's "not all young people" covers the language as a whole. **Settle it at Chogo:** ask three households which language the children answer in. That single answer, reported plainly, is worth more than any figure in the table above.
 
 ## Related
 - [[Our Descendants Came Back Home — Marked Up]] · [[The Mushunguli — Structure and Proposal Draft]] · [[Morland 2026 — The Campaign]] · [[08 The Opportunities Board]]

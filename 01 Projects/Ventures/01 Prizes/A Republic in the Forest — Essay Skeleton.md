@@ -43,6 +43,16 @@ The argument is the same. The evidence is yours. That is the whole reason to tak
 | In the 1880s he **secured the Sultan of Zanzibar's recognition** — plus firearms — in exchange for accepting the Sultan's rights on the river | **The pivot of the whole essay.** A republic of former slaves negotiating with a monarchy as a state, not as a grievance |
 | The **Italians detained and hanged him in 1907** | The ending. It was not a kingdom that ended it. It was a colony |
 
+### What they spoke in the forest
+
+| Fact | Why it matters to the essay |
+| --- | --- |
+| Goshaland was **Yao, Zigua, Nyasa, Makua, Kikuyu and Nyamwezi** | A polity assembled out of strangers, not a transplanted tribe |
+| **Many arrived having already lost their own languages** — the route through Zanzibar and the coastal plantations did that before the Juba | The forest republic was built by people stripped of the thing that identifies a people |
+| The working languages were **Swahili**, from the coastal trade system, and **Chimwiini** from Brava, whose speakers were absorbed into the Kizigua-speaking community late in the 1800s | **Bunda, a Yao, would have negotiated with Zanzibar in Swahili — the language of the system that enslaved him.** Put this in the essay |
+| **The Zigua were the exception**: by 1900 Zigula was the language of about **15 villages** in the lower Juba | Why it is Zigula and not Yao that came home |
+| **Maay Maay**, a Cushitic language, progressively replaced Swahili and the Bantu languages across the Gosha villages. Mushunguli survives in **Jilib and Jamaame** | The republic's own language was assimilated in the end, by neither a king nor a colony but by neighbours |
+
 > [!danger] The error to avoid
 > **Nassib Bunda was Yao, not Zigua.** The Gosha were made of several origins, the Wazigua among them and prominent among them — but he was not one of your ancestors and must not be implied to be. Your markup already flags one error of exactly this shape (*"the Zigula-speaking community gave birth to the Gosha"*). A specialist reader catches both instantly. **Your claim is to the population, not to the man.**
 
@@ -75,6 +85,7 @@ Chogo. Descendants of that polity came home to a republic, and are received as a
 - ❌ **Claiming Bunda.** See above
 - ❌ **Making the contemporary charge explicit.** The restraint *is* the power. One sentence at the end, no more. The moment it becomes an accusation it becomes a political letter and gets read as one
 - ❌ Citing forums or wikis. Read the thesis and the Brill article
+- ❌ **Merging the Juba and the Shabelle.** The Juba valley holds the people brought as slaves — yours. The Shabelle holds older Bantu-ancestry communities with a different history and largely Somali speech. **Your proposal currently merges them** ("the Jubba and Shebelle Regions"); fix it there too
 
 ## Where it goes
 
