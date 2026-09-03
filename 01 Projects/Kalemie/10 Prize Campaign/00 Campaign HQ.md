@@ -130,6 +130,7 @@ gantt
 | ✅ | Late reframe implemented | 85.1% · [[05 The Late Reframe]] · independently validated by story 2 |
 | ✅ | Pregnancy destiny settled | Barrett's rule closed |
 | ✅ | Stories 1–2 of 10 measured | Giorgis · Uwazuruike |
+| 🟡 | **Cold readers named** | **Nahida .E · Riziki Mwandiya** — named 3 Sep · not yet approached · see below |
 | 🔴 | Controlling idea for Chantal | **still undecided** — the last open decision |
 | 🟡 | EX 3 — the mother | commentary rationing now lifted |
 | 🟡 | EX 3 — the mother | not started |
@@ -137,6 +138,41 @@ gantt
 | 🟡 | Stories 2–10 | not started |
 | 🟢 | 3 practice projects | undefined — generated *by* the analysis |
 | 🟢 | Motherboard cut from Daudi drafts | only one story may hold it |
+
+---
+
+## 👤 The cold readers — named 3 September 2026
+
+> [!success] The longest-standing hole in the campaign is closed at the naming stage
+> [[10 The Three Moves — Reader, Winners, Record|Move 1]] asked for **one** name. There are two.
+> **Chantal has been scored on four rubrics by two entities and read by no reader.** That ends here.
+
+| | Reader | Status | Screened? |
+| :--: | --- | --- | :--: |
+| 1 | **Nahida .E** | named 3 Sep — not yet approached | ⬜ |
+| 2 | **Riziki Mwandiya** | named 3 Sep — not yet approached | ⬜ |
+
+### Screen them against the definition before sending anything
+
+**Cold means: not a writer, not a relative, not somebody who wants you to be happy.** Someone who reads fiction, does not know the story's history, and will not soften. Two readers who both fail the test are worth less than one who passes it.
+
+### The ask — send this and nothing else
+
+> *Don't tell me if it's good. Tell me the moment you were bored, and the moment you were lost.*
+
+Anything added to that sentence buys you politeness. → [[The Cold Read Protocol]]
+
+### What they unblock
+
+| Instrument | Was blocked on |
+| --- | --- |
+| [[The Three Gates — Unified Instrument\|Gate 4 · Afterlife]] | a stranger, 72 hours, three questions |
+| [[The Cold Read Protocol]] | somebody to give the brutal read |
+| The seven-day rule | somebody to hold the draft while you stay away |
+| [[The Underground Rubric — Risk, Afterlife and the Room\|Afterlife]] | somebody who still remembers it on Friday |
+
+> [!warning] The ~4 September Gate 4 date in [[09 The Practice — Calendar, Ritual and Ilmu Huruf|the practice calendar]] cannot hold
+> It assumed a handover that never happened. **Gate 4 needs 72 hours after the draft is in a reader's hands** — so handover today puts the earliest honest collection date at **~6 September**, not 4 September. Re-date it rather than collecting early; answers gathered before 72 hours are not Gate 4 answers.
 
 ---
 

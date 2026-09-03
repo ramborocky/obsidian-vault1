@@ -52,11 +52,11 @@ cssclasses: [home]
 | **Gate 2 · Make** | **40 / 45** — *scored on Draft 3* |
 | **Gate 3 · Fight** | **23 / 25** — *scored on Draft 3* |
 | **Re-score owed** | Both gates predate the three insertions and two deletions. The numbers are indicative, not current |
-| **Gate 4 · Afterlife** | ⚠️ **no evidence — no cold reader yet** |
+| **Gate 4 · Afterlife** | 🟡 **two readers named 3 Sep** — Nahida .E · Riziki Mwandiya · **handover not yet made** → [[00 Campaign HQ]] |
 | **Two open calls** | the unfinished *34* · the Daudi tense wobble — **see the box above** |
 | **Git** | ✅ synced 1 Sep — laptop, GitHub and the cloud sessions are one history again |
 
-**The one thing that would change the most:** name a cold reader. Four instruments depend on a human who is not you, and there is nobody. [[09 The Practice — Calendar, Ritual and Ilmu Huruf|The practice calendar]] has **Gate 4 answers due ~4 September** — that is tomorrow, with no reader to collect them from. → [[10 The Three Moves — Reader, Winners, Record]]
+**The one thing that would change the most — now half done.** Two cold readers are named as of 3 September: **Nahida .E** and **Riziki Mwandiya**. Four instruments were waiting on exactly this. **What is left is the handover**, and it is the whole value — a named reader who never receives the draft unblocks nothing. Screen both against the definition first (*not a writer, not a relative, not somebody who wants you to be happy*), then send the one sentence. **Gate 4 needs 72 hours in a reader's hands, so the practice calendar's ~4 September collection date is dead** — handover today makes ~6 September the earliest honest one. → [[00 Campaign HQ]] · [[10 The Three Moves — Reader, Winners, Record]]
 
 ---
 
