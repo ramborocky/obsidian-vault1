@@ -7,10 +7,16 @@ cssclasses: [home]
 
 > [!danger] ⛔ READ THIS FIRST — three things, nothing else matters until they're done
 >
-> ### 1 · ☎️ Answer the ACPA status question
-> **Twenty minutes. Unblocks six tasks.** Are you a registered Graduate Accountant, and how many years are logged?
-> `+255 22 2 211890` · `info@nbaa.go.tz` · → [[ACPA(T) NBAA To-Do]]
-> - [ ] Answered and written into the file
+> ### 1 · 🎓 Read the ACPA status off your MEMS profile
+> **Twenty minutes. Unblocks six tasks. No phone call — corrected 31 Aug: MEMS holds the answer and you are already logged in.**
+> Three fields to read while you are in there → [[ACPA(T) NBAA To-Do]]
+> 1. **Membership grade** — Graduate Accountant / a GA number, or something else?
+> 2. **Registration date** — this starts the three-year clock
+> 3. **Practical experience / logbook** — does the section exist, are any years already recorded?
+>
+> While logged in, also look for **UNKNOWN #4** — *does self-employed practice count toward the NBAA logbook?* The profile calls it the highest-value unanswered question in the vault; if it doesn't count, the cash plan and the credential plan are in direct conflict.
+> `info@nbaa.go.tz` · `+255 22 2 211890` — *only if MEMS turns out not to show it*
+> - [ ] Three fields read and written into the file
 >
 > ### 2 · ✍️ Two small calls left in Draft 4 — **yours, not Claude's**
 > ✅ **Both owed paragraphs were written by you on 31 July.** [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)|Draft 4]] is the submission candidate now; Draft 3 is superseded. What is still open is smaller and still yours:
@@ -50,7 +56,7 @@ cssclasses: [home]
 | **Two open calls** | the unfinished *34* · the Daudi tense wobble — **see the box above** |
 | **Git** | ✅ synced 1 Sep — laptop, GitHub and the cloud sessions are one history again |
 
-**The one thing that would change the most:** name a cold reader. Four instruments depend on a human who is not you, and there is nobody. [[09 The Practice — Calendar, Ritual and Ilmu Huruf|The practice calendar]] has **Gate 4 answers due ~4 September** — three days out, with no reader to collect them from. → [[10 The Three Moves — Reader, Winners, Record]]
+**The one thing that would change the most:** name a cold reader. Four instruments depend on a human who is not you, and there is nobody. [[09 The Practice — Calendar, Ritual and Ilmu Huruf|The practice calendar]] has **Gate 4 answers due ~4 September** — that is tomorrow, with no reader to collect them from. → [[10 The Three Moves — Reader, Winners, Record]]
 
 ---
 
