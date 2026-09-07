@@ -18,7 +18,8 @@ your logo link at the top, press Copy, paste into Gmail.
 | `signature-plain.html` | Tall layout. Same content stacked, gold rule on the left. |
 | `preview-wide.html` | Open in a browser to see the wide one under a message. |
 | `signature.html` | The logo version. Kept in case the logo is wanted again. |
-| `logo.jpg` | The logo, 172x148, decoded from the old data URI. |
+| `logo.png` | **In use.** 200x174, padded onto white, dead black band cropped. |
+| `logo.jpg` | Superseded. Flush to every edge, black bottom band. Kept as the source. |
 | `extract-logo.sh` | Recovers `logo.png` from the old file's base64. |
 | `build.sh` | Bakes your logo URL in, writes `signature-ready.html`. |
 | `preview.html` | Open in a browser; copy the rendered block from here. |
@@ -158,3 +159,29 @@ as a 279x281 PNG, which is undamaged. Getting that file into the repo (GitHub
 web upload, or `./extract-logo.sh` against the old signature file) and pointing
 the `img` at it resolves this. Until then, `signature-icons.html` carries no
 logo at all and sidesteps the problem entirely.
+
+
+## Padding — fixed 2026-09-07
+
+`logo.jpg` measured margins of **L 0, R 0, B 0**: content ran flush to every
+edge, so it read as cropped wherever it was placed. Its bottom rows were also
+near-solid black (row 140 was 99%), left over from the transparency being
+flattened.
+
+`logo.png` is that file with the 2 genuinely dead rows cropped and a 14px white
+margin baked in — 200x174. Only true black was cut, so the "Dedicated to
+providing quality health Care" tagline survives and is legible.
+
+The signature displays it at **138x120**, which matches the 1.149 ratio exactly.
+Change one dimension and the other must change with it. The logo cell padding
+also went from `16px 18px 16px 4px` to `18px 22px 18px 6px` so the badge is not
+crammed against the gold divider.
+
+Live URL, verified HTTP 200 / `image/png` / byte-identical:
+
+```
+https://raw.githubusercontent.com/ramborocky/obsidian-vault1/claude/email-signature-html-fho2m7/01%20Projects/Personal/Email%20Signature/logo.png
+```
+
+This fixed the framing, not the colour. The darkness is baked into the source
+and still wants a clean PNG to resolve properly.
