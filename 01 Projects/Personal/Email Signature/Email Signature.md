@@ -217,3 +217,30 @@ processing reconstructs pixels that were overwritten before the file reached us.
 
 Until then `signature-icons.html` carries no logo and has none of these
 problems.
+
+
+## Resolved with the official asset — 2026-09-07
+
+The user supplied the official logo from `selfservice.nhif.or.tz` (this session's
+egress policy blocks that host, so they downloaded and uploaded it themselves;
+it landed on `main` as `nhif-logo.png`).
+
+It is 536x465 **RGBA with a real alpha channel** — the pristine asset, not a
+screenshot. Flattening it onto white via `alpha_composite` produces a clean
+logo: arc text sharp, family in colour, NHIF lettering crisp, tagline legible.
+No checkerboard, no rainbow blocks, no black background.
+
+This confirms the earlier diagnosis exactly. The old `logo.jpg` was the *same
+artwork* saved to JPEG without compositing the alpha first, which is what turned
+its transparent pixels black. The corruption was introduced in that conversion,
+not present in the source.
+
+Files now:
+
+- `nhif-logo-source.png` — the pristine 536x465 RGBA original. Start from this.
+- `nhif-official-2x.png` — 280x238, flattened on white, trimmed and padded 18px.
+  Displayed at **140x119**, exactly half, which keeps it sharp.
+- `logo.jpg` — the corrupted file. Kept only as the record of what went wrong.
+
+`nhif-logo-2x.png` was deleted; it was derived from the corrupted source and is
+strictly worse than what we now have.
