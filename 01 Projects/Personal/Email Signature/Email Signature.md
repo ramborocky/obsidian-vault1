@@ -13,7 +13,9 @@ your logo link at the top, press Copy, paste into Gmail.
 | --- | --- |
 | `signature-tool.html` | **Start here.** Logo box, live preview, copy button, per-client steps. |
 | `INSTALL.md` | The same steps in text, for reading in Obsidian. |
-| `signature-plain.html` | **The one in use.** Text and colour only, no image. |
+| `signature-wide.html` | **Horizontal layout.** Contact details across one line. |
+| `signature-plain.html` | Tall layout. Same content stacked, gold rule on the left. |
+| `preview-wide.html` | Open in a browser to see the wide one under a message. |
 | `signature.html` | The logo version. Kept in case the logo is wanted again. |
 | `logo.jpg` | The logo, 172x148, decoded from the old data URI. |
 | `extract-logo.sh` | Recovers `logo.png` from the old file's base64. |
@@ -64,6 +66,17 @@ a `bgcolor`, not an image, so nothing is fetched and nothing can be blocked.
 
 The logo version is still here if it is ever wanted, and the hosting notes
 below still apply to it.
+
+## Wide vs tall
+
+`signature-wide.html` runs about 700px across: name and credentials on one
+line, then phone / email / P.O. Box side by side under a gold rule, with the
+address full-width beneath because it is too long to sit in a column.
+
+Those columns carry `white-space:nowrap` so they cannot collapse into a stack.
+That is what keeps the layout horizontal in every client, but it also means a
+narrow phone screen scrolls sideways rather than reflowing — email has no media
+queries to fall back on. Drop the `nowrap` if wrapping is preferred to scrolling.
 
 ## Hosting (logo version only)
 
