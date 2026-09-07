@@ -6,8 +6,15 @@ date: 2026-09-07
 
 # Email Signature — Ramadhani Mhina
 
-Files here: `signature.html` (the block to paste), `extract-logo.sh` (pulls the
-logo out of the old file), `preview.html` (open in a browser to check it).
+**To install it, read [[INSTALL]].** That is the step-by-step.
+
+| File | What it is |
+| --- | --- |
+| `INSTALL.md` | Step-by-step for Gmail, Outlook, Apple Mail and phone. |
+| `signature.html` | The source. `LOGO_URL_HERE` is a placeholder. |
+| `extract-logo.sh` | Recovers `logo.png` from the old file's base64. |
+| `build.sh` | Bakes your logo URL in, writes `signature-ready.html`. |
+| `preview.html` | Open in a browser; copy the rendered block from here. |
 
 ## Why the old one didn't show
 
@@ -37,46 +44,14 @@ Both are now table cells with `bgcolor` and `height` attributes instead.
 
 ## How to install it
 
-**Gmail (easiest — skip the HTML file entirely):**
-
-1. Settings → See all settings → General → Signature → Create new.
-2. Type the text directly into the box.
-3. For the logo, use the **Insert image** button in the signature toolbar and
-   upload `logo.png`. This uploads it to Google's servers and inserts a real
-   URL, which is exactly what you need. Do not try to embed it yourself.
-
-**Gmail (keeping this exact layout):**
-
-1. Host `logo.png` somewhere public and replace `LOGO_URL_HERE` in
-   `signature.html` with that link. It must be `https://` and must not require
-   a login — Google Drive share links do *not* work for this.
-2. Open `preview.html` in a browser.
-3. Select the whole signature block with the mouse, Ctrl+C.
-4. Paste into the Gmail signature box with Ctrl+V.
-
-**Outlook desktop:** paste the rendered block into
-`%APPDATA%\Microsoft\Signatures\` → edit the `.htm` file, or just paste into
-Signature → Edit.
-
-## Getting logo.png
-
-The logo is still embedded in the old file. Save that file into this folder,
-then:
-
-```
-./extract-logo.sh old-signature.html
-```
-
-It writes `logo.png` (279 × 281 px). That is the file to upload.
+See [[INSTALL]].
 
 ## Check before you use it
 
 - The address is **1st Floor** (confirmed 2026-09-07). The printed card shows
   5th Floor, so the card is wrong — worth correcting before the next reprint.
-- The old HTML had a trailing bullet after "Benefit •" and read
-  "Senior Accountant • Expenditure • Benefit •". I made it
-  "Senior Accountant • Expenditure & Benefits". Change if the card wording is
-  meant to be exact.
+- Tagline reads "Senior Accountant • Expenditure & Benefits" — settled
+  2026-09-07, leave as is.
 - The card shows an email icon next to the P.O. Box line and a pin next to the
   address. Those are the wrong icons for that content — a P.O. Box is postal,
   not email. I used plain T / P / A labels, which survive every client. Round
