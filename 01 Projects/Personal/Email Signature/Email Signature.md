@@ -71,8 +71,8 @@ It writes `logo.png` (279 × 281 px). That is the file to upload.
 
 ## Check before you use it
 
-- The old HTML said **1st Floor**. The printed card says **5th Floor**. I used
-  5th Floor, from the card. Confirm which is right.
+- The address is **1st Floor** (confirmed 2026-09-07). The printed card shows
+  5th Floor, so the card is wrong — worth correcting before the next reprint.
 - The old HTML had a trailing bullet after "Benefit •" and read
   "Senior Accountant • Expenditure • Benefit •". I made it
   "Senior Accountant • Expenditure & Benefits". Change if the card wording is
