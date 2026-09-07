@@ -13,7 +13,8 @@ your logo link at the top, press Copy, paste into Gmail.
 | --- | --- |
 | `signature-tool.html` | **Start here.** Logo box, live preview, copy button, per-client steps. |
 | `INSTALL.md` | The same steps in text, for reading in Obsidian. |
-| `signature-wide.html` | **Horizontal layout.** Contact details across one line. |
+| `signature-icons.html` | **The current one.** Navy badge per contact row. |
+| `signature-wide.html` | Horizontal layout. Contact details across one line. |
 | `signature-plain.html` | Tall layout. Same content stacked, gold rule on the left. |
 | `preview-wide.html` | Open in a browser to see the wide one under a message. |
 | `signature.html` | The logo version. Kept in case the logo is wanted again. |
@@ -111,3 +112,25 @@ the other, or it squashes.
 and office address. That is business-card information you hand out anyway, so
 I have committed it — but say the word and I will pull it out and add it to
 `.gitignore` instead.
+
+
+## The badge version
+
+`signature-icons.html` follows a reference the user supplied: a badge per
+contact row, generous spacing, name and credentials stacked above. Four rows —
+website, phone, email, address.
+
+Two deliberate departures from that reference, both forced by email itself:
+
+**The badges hold letters, not pictograms.** The reference used SVG line icons
+for globe, phone, envelope and pin. SVG does not render in email — Gmail strips
+it and Outlook never supported it. Real icons would mean hosted PNGs, which is
+the same fragility as the logo. Letters render identically everywhere and load
+nothing.
+
+**Outlook renders the circles as squares.** `border-radius` is unsupported by
+Word's engine, which is what Outlook on Windows draws with. Navy squares with
+white letters still read as intentional. Every other client shows circles.
+
+Swapping in hosted icon PNGs would fix both and reintroduce the hosting
+dependency. Not done, and it should stay a conscious choice rather than drift.
