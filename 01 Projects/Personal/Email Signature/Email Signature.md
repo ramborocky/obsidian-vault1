@@ -6,11 +6,13 @@ date: 2026-09-07
 
 # Email Signature — Ramadhani Mhina
 
-**To install it, read [[INSTALL]].** That is the step-by-step.
+**Open `signature-tool.html` in a browser. That is the whole thing.** Paste
+your logo link at the top, press Copy, paste into Gmail.
 
 | File | What it is |
 | --- | --- |
-| `INSTALL.md` | Step-by-step for Gmail, Outlook, Apple Mail and phone. |
+| `signature-tool.html` | **Start here.** Logo box, live preview, copy button, per-client steps. |
+| `INSTALL.md` | The same steps in text, for reading in Obsidian. |
 | `signature.html` | The source. `LOGO_URL_HERE` is a placeholder. |
 | `extract-logo.sh` | Recovers `logo.png` from the old file's base64. |
 | `build.sh` | Bakes your logo URL in, writes `signature-ready.html`. |
@@ -44,7 +46,7 @@ Both are now table cells with `bgcolor` and `height` attributes instead.
 
 ## How to install it
 
-See [[INSTALL]].
+Open `signature-tool.html`, or read [[INSTALL]] for the same steps as text.
 
 ## Check before you use it
 

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Email Signature — Ramadhani Mhina</title>
+<style>
+  :root{
+    --navy:#18344b; --gold:#a66a2c; --ink:#2b333a; --muted:#6b757d;
+    --line:#d9d5cd; --bg:#efece6; --card:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+       font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;}
+  .wrap{max-width:860px;margin:0 auto;padding:32px 22px 80px}
+  h1{font-size:23px;line-height:1.25;margin:0 0 4px;color:var(--navy);letter-spacing:-.2px}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 30px}
+  h2{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);
+     margin:38px 0 12px;font-weight:700}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:20px}
+  label{display:block;font-size:12px;font-weight:700;color:var(--navy);
+        text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+  input[type=text]{width:100%;padding:11px 13px;font:14px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+        border:1.5px solid var(--line);border-radius:5px;background:#fcfbf9;color:var(--ink)}
+  input[type=text]:focus{outline:none;border-color:var(--gold);background:#fff}
+  .hint{font-size:13px;color:var(--muted);margin:9px 0 0}
+  .hint code{background:#f2efe9;padding:1px 5px;border-radius:3px;font-size:12px}
+  button{font:600 14px/1 inherit;padding:11px 17px;border-radius:5px;border:1.5px solid var(--navy);
+         background:var(--navy);color:#fff;cursor:pointer}
+  button:hover{background:#20415d}
+  button.ghost{background:#fff;color:var(--navy)}
+  button.ghost:hover{background:#f4f1eb}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+  .count{font-size:13px;color:var(--muted)}
+  .count b{color:var(--navy)}
+  .count.over b{color:#a3231f}
+  .stage{background:#fff;border:1px solid var(--line);border-radius:7px;padding:26px;overflow-x:auto}
+  .mail{background:#fff;border:1px solid var(--line);border-radius:7px;padding:26px 28px;overflow-x:auto}
+  .mail .body{font:14px/1.6 Arial,Helvetica,sans-serif;color:#222;margin-bottom:20px}
+  ol{padding-left:20px;margin:0}
+  ol li{margin-bottom:9px}
+  .warn{border-left:3px solid var(--gold);background:#fbf7f0;padding:13px 16px;
+        border-radius:0 5px 5px 0;font-size:14px;margin-top:14px}
+  pre{background:#f7f5f1;border:1px solid var(--line);border-radius:5px;padding:14px;
+      overflow-x:auto;font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:0}
+  .tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+  .tabs button{padding:8px 14px;font-size:13px;border:1.5px solid var(--line);
+               background:#fff;color:var(--muted)}
+  .tabs button[aria-selected=true]{border-color:var(--navy);color:var(--navy);background:#f4f1eb}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(90px);
+         background:var(--navy);color:#fff;padding:12px 22px;border-radius:6px;font-size:14px;
+         box-shadow:0 6px 20px rgba(0,0,0,.24);transition:transform .22s ease;z-index:9}
+  .toast.on{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Email signature</h1>
+  <p class="sub">Paste your logo link, press Copy, paste into Gmail. That is the whole job.</p>
+
+  <h2>1 &nbsp;Logo link</h2>
+  <div class="card">
+    <label for="logo">Public https:// address of your logo image</label>
+    <input type="text" id="logo" spellcheck="false"
+           placeholder="https://raw.githubusercontent.com/…/logo.png">
+    <p class="hint">
+      Must be public and need no login. <strong>Google Drive share links do not
+      work</strong> &mdash; they serve a preview page, not the image. Test the link in a
+      private browser window first: if the logo appears on a blank page, it will work.
+      Leave this empty to preview with a stand-in.
+    </p>
+  </div>
+
+  <h2>2 &nbsp;Check it</h2>
+  <div class="stage"><div id="sig1"></div></div>
+
+  <p class="hint" style="margin:16px 0 10px">Under a real message, which is where spacing problems show:</p>
+  <div class="mail">
+    <div class="body">
+      Dear Mr. Kimaro,<br><br>
+      Please find attached the reconciliation for the August benefit expenditure.
+      The variance on the outpatient line is explained in note 4.<br><br>
+      Kind regards,
+    </div>
+    <div id="sig2"></div>
+  </div>
+
+  <h2>3 &nbsp;Copy it</h2>
+  <div class="card">
+    <div class="row">
+      <button id="copy">Copy signature</button>
+      <button class="ghost" id="copyText">Copy plain-text version</button>
+      <button class="ghost" id="toggleSrc">Show HTML source</button>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="warn" id="limitWarn" hidden>
+      Over Gmail's 10,000-character limit. Shorten the logo URL or use Gmail's own
+      image upload instead.
+    </div>
+    <div id="srcBox" hidden style="margin-top:16px"><pre id="src"></pre></div>
+  </div>
+
+  <h2>4 &nbsp;Paste it in</h2>
+  <div class="card">
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true"  data-p="gmail">Gmail</button>
+      <button role="tab" aria-selected="false" data-p="outlook">Outlook</button>
+      <button role="tab" aria-selected="false" data-p="apple">Apple Mail</button>
+      <button role="tab" aria-selected="false" data-p="phone">Phone</button>
+    </div>
+
+    <div data-panel="gmail">
+      <ol>
+        <li>Gmail &rarr; gear icon &rarr; <strong>See all settings</strong> &rarr; <strong>General</strong> tab.</li>
+        <li>Scroll to <strong>Signature</strong> &rarr; <strong>Create new</strong>, give it a name.</li>
+        <li>Click into the big box and press <strong>Ctrl+V</strong>.</li>
+        <li>Under <strong>Signature defaults</strong>, set it for new mail and for replies.</li>
+        <li>Tick <strong>Insert signature before quoted text</strong>.</li>
+        <li>Scroll to the bottom and click <strong>Save Changes</strong>.</li>
+      </ol>
+      <div class="warn">
+        Step 5 is the one people skip. Without it, replies put your signature below
+        the entire quoted thread where nobody scrolls.
+      </div>
+      <div class="warn">
+        <strong>If the logo will not appear:</strong> delete the broken image in the
+        signature box, leave the cursor there, and use the image icon in Gmail's
+        signature toolbar to upload the file directly. Gmail then hosts it and you
+        can ignore step 1 entirely.
+      </div>
+    </div>
+
+    <div data-panel="outlook" hidden>
+      <ol>
+        <li><strong>File</strong> &rarr; <strong>Options</strong> &rarr; <strong>Mail</strong> &rarr; <strong>Signatures</strong>.</li>
+        <li><strong>New</strong>, name it, paste into the edit box, <strong>OK</strong>.</li>
+        <li>Set the <strong>New messages</strong> and <strong>Replies/forwards</strong> dropdowns to it.</li>
+      </ol>
+      <div class="warn">
+        Outlook on Windows renders with Word, not a browser. Expect square corners
+        and a pixel or two of drift. This layout is built from tables with
+        <code>bgcolor</code> attributes precisely so it survives that.
+      </div>
+    </div>
+
+    <div data-panel="apple" hidden>
+      <ol>
+        <li><strong>Mail</strong> &rarr; <strong>Settings</strong> &rarr; <strong>Signatures</strong>.</li>
+        <li>Select your account on the left, click <strong>+</strong>.</li>
+        <li><strong>Untick &ldquo;Always match my default message font&rdquo;</strong> before pasting.</li>
+        <li>Paste, then pick it under <strong>Choose Signature</strong>.</li>
+      </ol>
+      <div class="warn">
+        Step 3 has to happen first. Paste with that box ticked and Mail strips every
+        colour and size out of the signature.
+      </div>
+    </div>
+
+    <div data-panel="phone" hidden>
+      <p style="margin-top:0">
+        Neither the Gmail nor the Outlook mobile app can store an HTML signature.
+        They accept plain text only. Mail you send from the web keeps the full
+        signature; mail sent from the phone uses whatever you set there. Use
+        <strong>Copy plain-text version</strong> above and paste it into
+        Gmail app &rarr; Settings &rarr; your account &rarr; Mobile signature.
+      </p>
+    </div>
+  </div>
+
+  <h2>Before you rely on it</h2>
+  <div class="card">
+    <p style="margin-top:0">
+      Send one to yourself and open it in a <em>different</em> client than you sent
+      from. Mail clients block remote images on first receipt, so click
+      &ldquo;display images&rdquo; to confirm the logo actually resolves. If you can,
+      send one to a colleague on Outlook &mdash; that is where layout problems surface.
+    </p>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var PLACEHOLDER = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNzkiIGhlaWdodD0iMjgxIiB2aWV3Qm94PSIwIDAgMjc5IDI4MSI+CjxjaXJjbGUgY3g9IjEzOS41IiBjeT0iMTIyIiByPSIxMDMiIGZpbGw9IiMxZDRmOTEiLz4KPGNpcmNsZSBjeD0iMTM5LjUiIGN5PSIxMjIiIHI9IjEwMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYTY2YTJjIiBzdHJva2Utd2lkdGg9IjciLz4KPHRleHQgeD0iMTM5LjUiIHk9IjExNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmIj5OSElGPC90ZXh0Pgo8dGV4dCB4PSIxMzkuNSIgeT0iMTQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2M4ZDhlYSI+cGFzdGUgeW91cjwvdGV4dD4KPHRleHQgeD0iMTM5LjUiIHk9IjE2NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNjOGQ4ZWEiPmxvZ28gbGluayBhYm92ZTwvdGV4dD4KPHRleHQgeD0iMTM5LjUiIHk9IjI2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtc3R5bGU9Iml0YWxpYyIgZmlsbD0iI2E2NmEyYyI+c3RhbmQtaW48L3RleHQ+Cjwvc3ZnPg==";
+
+  function esc(s){
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")
+                    .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  // The signature. One definition, used for preview, source view and clipboard.
+  function build(logo){
+    return [
+'<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;background:#ffffff;font-family:Arial,Helvetica,sans-serif;">',
+'<tr>',
+'<td width="128" style="width:128px;padding:16px 18px 16px 4px;text-align:center;vertical-align:middle;">',
+'<img src="' + esc(logo) + '" width="118" height="119" alt="NHIF" style="display:block;width:118px;height:119px;border:0;outline:none;text-decoration:none;">',
+'</td>',
+'<td width="2" bgcolor="#a66a2c" style="width:2px;background-color:#a66a2c;font-size:1px;line-height:1px;">&nbsp;</td>',
+'<td style="padding:16px 4px 16px 20px;vertical-align:middle;">',
+'<div style="font-family:Arial,Helvetica,sans-serif;font-size:19px;line-height:23px;font-weight:bold;color:#18344b;">RAMADHANI MHINA</div>',
+'<div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:19px;font-weight:bold;color:#a66a2c;padding-top:2px;">CPA(T) &nbsp;|&nbsp; MBA(ITM)</div>',
+'<div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#3f4b52;padding-top:2px;">Senior Accountant &nbsp;&bull;&nbsp; Expenditure &amp; Benefits</div>',
+'<div style="height:9px;line-height:9px;font-size:1px;">&nbsp;</div>',
+'<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;">',
+'<tr>',
+'<td width="20" style="width:20px;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:16px;color:#a66a2c;font-weight:bold;vertical-align:top;padding-bottom:3px;">T</td>',
+'<td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:16px;color:#3f4b52;padding-bottom:3px;"><a href="tel:+255739888999" style="color:#3f4b52;text-decoration:none;"><strong>0739 888 999</strong></a></td>',
+'</tr>',
+'<tr>',
+'<td width="20" style="width:20px;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:16px;color:#a66a2c;font-weight:bold;vertical-align:top;padding-bottom:3px;">P</td>',
+'<td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:16px;color:#3f4b52;padding-bottom:3px;">P.O. Box 33668</td>',
+'</tr>',
+'<tr>',
+'<td width="20" style="width:20px;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:16px;color:#a66a2c;font-weight:bold;vertical-align:top;">A</td>',
+'<td style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:16px;color:#3f4b52;">PSSSF Commercial Complex, 1st Floor &ndash; Wing B, House No.&nbsp;24,<br>Sam Nujoma Road, 16102 Sinza C &ndash; Street, Dar es Salaam</td>',
+'</tr>',
+'</table>',
+'</td>',
+'</tr>',
+'<tr><td colspan="3" height="4" bgcolor="#18344b" style="height:4px;background-color:#18344b;font-size:1px;line-height:4px;">&nbsp;</td></tr>',
+'</table>'
+    ].join("");
+  }
+
+  var PLAIN = [
+    "Ramadhani Mhina, CPA(T) | MBA(ITM)",
+    "Senior Accountant • Expenditure & Benefits",
+    "National Health Insurance Fund",
+    "T  0739 888 999",
+    "P  P.O. Box 33668",
+    "A  PSSSF Commercial Complex, 1st Floor – Wing B, House No. 24,",
+    "   Sam Nujoma Road, 16102 Sinza C – Street, Dar es Salaam"
+  ].join("\n");
+
+  var $ = function(id){ return document.getElementById(id); };
+  var input = $("logo"), current = "";
+
+  function render(){
+    var url = input.value.trim();
+    current = build(url || PLACEHOLDER);
+    $("sig1").innerHTML = current;
+    $("sig2").innerHTML = current;
+    $("src").textContent = current;
+
+    // Character count reflects what Gmail actually stores.
+    var n = current.length, over = n > 10000;
+    $("count").className = "count" + (over ? " over" : "");
+    $("count").innerHTML = "<b>" + n.toLocaleString() + "</b> of 10,000 characters";
+    $("limitWarn").hidden = !over;
+  }
+
+  function toast(msg){
+    var t = $("toast");
+    t.textContent = msg;
+    t.classList.add("on");
+    clearTimeout(t._t);
+    t._t = setTimeout(function(){ t.classList.remove("on"); }, 2400);
+  }
+
+  // Select the rendered block and copy it, so the clipboard carries formatting.
+  function copyRich(){
+    var node = $("sig1");
+    var done = function(){ toast("Signature copied — paste into your signature box"); };
+
+    if (navigator.clipboard && window.ClipboardItem) {
+      var item = new ClipboardItem({
+        "text/html":  new Blob([current], {type:"text/html"}),
+        "text/plain": new Blob([PLAIN],   {type:"text/plain"})
+      });
+      navigator.clipboard.write([item]).then(done, selectFallback);
+      return;
+    }
+    selectFallback();
+
+    function selectFallback(){
+      var r = document.createRange();
+      r.selectNodeContents(node);
+      var s = window.getSelection();
+      s.removeAllRanges(); s.addRange(r);
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch(e){ ok = false; }
+      if (ok) { done(); }
+      else { toast("Selected it — now press Ctrl+C"); }
+    }
+  }
+
+  $("copy").addEventListener("click", copyRich);
+
+  $("copyText").addEventListener("click", function(){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(PLAIN).then(
+        function(){ toast("Plain-text version copied"); },
+        function(){ toast("Copy failed — select it manually"); }
+      );
+    } else {
+      toast("Clipboard unavailable in this browser");
+    }
+  });
+
+  $("toggleSrc").addEventListener("click", function(){
+    var box = $("srcBox"), hidden = box.hidden;
+    box.hidden = !hidden;
+    this.textContent = hidden ? "Hide HTML source" : "Show HTML source";
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){
+    b.addEventListener("click", function(){
+      Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(o){
+        o.setAttribute("aria-selected", String(o === b));
+      });
+      Array.prototype.forEach.call(document.querySelectorAll("[data-panel]"), function(p){
+        p.hidden = (p.getAttribute("data-panel") !== b.getAttribute("data-p"));
+      });
+    });
+  });
+
+  input.addEventListener("input", render);
+  render();
+})();
+</script>
+</body>
+</html>
