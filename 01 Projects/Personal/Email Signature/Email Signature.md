@@ -185,3 +185,35 @@ https://raw.githubusercontent.com/ramborocky/obsidian-vault1/claude/email-signat
 
 This fixed the framing, not the colour. The darkness is baked into the source
 and still wants a clean PNG to resolve properly.
+
+
+## The source image is corrupted — 2026-09-07
+
+Magnifying the top-right quadrant of `logo.jpg` at 5x shows **transparency
+checkerboard squares and rainbow noise blocks baked into the pixels**, sitting
+directly over the "…RANCE FUND" arc lettering. This is not compression softness
+and not a rendering problem. The file was made from a screenshot that captured
+an image editor's transparency indicator, and those pixels are now image data.
+
+Roughly 4% of pixels carry the artefact, concentrated in the ring where the arc
+text sits — the worst possible place.
+
+**Two repairs were attempted and both rejected by eye:**
+
+1. *Flat-field correction* fixed the background gradient (white at top, grey
+   ~149 mid, black at bottom) and genuinely worked — that part is kept.
+2. *Median inpainting* of the artefact blocks destroyed the arc text. The
+   lettering and the checkerboard are both high-contrast against white, so no
+   local-contrast detector separates them. Flagging one flags the other.
+
+**Do not attempt further repair of this file.** The lettering underneath the
+checkerboard is not damaged-but-recoverable; it is absent. No amount of
+processing reconstructs pixels that were overwritten before the file reached us.
+
+**The fix is a clean source.** Any of:
+- `./extract-logo.sh` against the user's original signature (a 279x281 PNG).
+- Right-click and save the logo from www.nhif.or.tz in a browser.
+- Ask NHIF communications for the official asset.
+
+Until then `signature-icons.html` carries no logo and has none of these
+problems.
