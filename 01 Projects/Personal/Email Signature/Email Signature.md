@@ -13,7 +13,8 @@ your logo link at the top, press Copy, paste into Gmail.
 | --- | --- |
 | `signature-tool.html` | **Start here.** Logo box, live preview, copy button, per-client steps. |
 | `INSTALL.md` | The same steps in text, for reading in Obsidian. |
-| `signature.html` | The source. `LOGO_URL_HERE` is a placeholder. |
+| `signature.html` | **Ready to paste.** Real logo URL already baked in. |
+| `logo.jpg` | The logo, 172x148, decoded from the old data URI. |
 | `extract-logo.sh` | Recovers `logo.png` from the old file's base64. |
 | `build.sh` | Bakes your logo URL in, writes `signature-ready.html`. |
 | `preview.html` | Open in a browser; copy the rendered block from here. |
@@ -47,6 +48,22 @@ Both are now table cells with `bgcolor` and `height` attributes instead.
 ## How to install it
 
 Open `signature-tool.html`, or read [[INSTALL]] for the same steps as text.
+
+## Hosting
+
+`logo.jpg` lives in this folder and is served publicly at:
+
+```
+https://raw.githubusercontent.com/ramborocky/obsidian-vault1/claude/email-signature-html-fho2m7/01%20Projects/Personal/Email%20Signature/logo.jpg
+```
+
+Verified live: HTTP 200, `image/jpeg`, byte-identical to the committed file.
+If this branch is ever merged or deleted, swap `claude/email-signature-html-fho2m7`
+for `main` in that URL and re-copy the signature.
+
+The logo is **172 x 148** — landscape, not square. The image tag says
+`width="126" height="108"` to hold that ratio. Change one and you must change
+the other, or it squashes.
 
 ## Check before you use it
 
