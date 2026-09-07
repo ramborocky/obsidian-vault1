@@ -13,7 +13,8 @@ your logo link at the top, press Copy, paste into Gmail.
 | --- | --- |
 | `signature-tool.html` | **Start here.** Logo box, live preview, copy button, per-client steps. |
 | `INSTALL.md` | The same steps in text, for reading in Obsidian. |
-| `signature.html` | **Ready to paste.** Real logo URL already baked in. |
+| `signature-plain.html` | **The one in use.** Text and colour only, no image. |
+| `signature.html` | The logo version. Kept in case the logo is wanted again. |
 | `logo.jpg` | The logo, 172x148, decoded from the old data URI. |
 | `extract-logo.sh` | Recovers `logo.png` from the old file's base64. |
 | `build.sh` | Bakes your logo URL in, writes `signature-ready.html`. |
@@ -49,7 +50,22 @@ Both are now table cells with `bgcolor` and `height` attributes instead.
 
 Open `signature-tool.html`, or read [[INSTALL]] for the same steps as text.
 
-## Hosting
+## Why the plain version won
+
+Chased the logo through four dead ends: base64 (stripped by Gmail, unsupported
+by Outlook), a screenshot on a Windows drive Claude cannot reach, nhif.or.tz
+(blocked by this environment's network policy), and a hosted GitHub URL that
+previews fine at home but may be blocked on NHIF's own network. Every one of
+them was a way for the signature to break somewhere.
+
+Text and colour break nowhere. The gold rule down the left is a table cell with
+a `bgcolor`, not an image, so nothing is fetched and nothing can be blocked.
+`signature-plain.html` is 1,890 characters and needs no hosting at all.
+
+The logo version is still here if it is ever wanted, and the hosting notes
+below still apply to it.
+
+## Hosting (logo version only)
 
 `logo.jpg` lives in this folder and is served publicly at:
 
