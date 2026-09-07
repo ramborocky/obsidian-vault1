@@ -134,3 +134,27 @@ white letters still read as intentional. Every other client shows circles.
 
 Swapping in hosted icon PNGs would fix both and reintroduce the hosting
 dependency. Not done, and it should stay a conscious choice rather than drift.
+
+
+## The logo is dark — diagnosed 2026-09-07
+
+`logo.jpg` renders too dark to use. Measured: the top corners are pure white,
+the bottom corners are `(10, 0, 16)` — effectively black.
+
+**Cause.** The original logo was a PNG with a transparent background. JPEG has
+no transparency, so on conversion the transparent pixels flattened to *black*
+rather than white. Nothing in the signature markup causes this; the file itself
+carries the damage.
+
+**Repair was attempted and rejected.** Flood-filling the black background back
+to white, from the border inward, at thresholds of 18, 26 and 48. Every setting
+that removed enough background also hollowed out the "NHIF" lettering — JPEG
+compression has smeared those dark letters into the dark background, so no
+threshold separates them. The output was checked visually and looked worse than
+the original. Do not retry this approach on this file; the information is gone.
+
+**The fix is a clean source.** The user's *original* signature embedded the logo
+as a 279x281 PNG, which is undamaged. Getting that file into the repo (GitHub
+web upload, or `./extract-logo.sh` against the old signature file) and pointing
+the `img` at it resolves this. Until then, `signature-icons.html` carries no
+logo at all and sidesteps the problem entirely.
