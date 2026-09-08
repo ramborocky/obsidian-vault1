@@ -1,12 +1,12 @@
 ---
-tags: [kalemie, draft, djamela, prose, prize, submission-candidate]
+tags: [kalemie, draft, djamela, prose, prize, superseded]
 story: Kalemie
 aliases: [Chantal Draft 3, Prize Pass]
 date: 2026-07-27
-status: submission-candidate
+status: "Superseded by Draft 4 (2026-07-31), then by Draft 5 (2026-09-08)"
 supersedes: "2026-07-26 — Chantal (Djamela POV, Draft 2 — Barrett Pass)"
 pov: Djamela, first person
-words: 3569
+words: 3895
 short_sentence_ratio: 49%
 ---
 
