@@ -18,20 +18,33 @@ Mechanical findings on [[2026-09-07 — Chantal (as sent to Riziki Mwandia)]] (4
 
 ## The root cause behind most of this
 
-In [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)|Draft 4]] the narrator **is** Djamela. In this version she is **Zinduna** (Chantal to Jean Luc), and **Djamela has become a separate schoolmate**. One character was split into two. Items 1, 2 and 11 below are all fallout from that split, and they are cheap to close once you decide who is who.
+> [!success] Resolved 2026-09-09 by reading [[2026-07-28 — Chantal (Draft 3, Prize Pass)|Draft 3]]
+> **The friend was always Alicia.** In Draft 3 the narrator is Djamela — named exactly once, by her mother — and **all four** of the friend's appearances are Alicia: the school gate, "Alicia took my arm as she does", the Primary Six fish line, and the corridor at the close.
+>
+> The rename in this draft went **narrator: Djamela → Zinduna**. But *Djamela* also got pasted into the **friend's** slot in the first half, while the close kept *Alicia*. So the discarded narrator name is now sitting on the friend, and the friend has two names.
+>
+> Items 1 and 3 below are therefore **regressions from Draft 3, not new problems** — and Draft 3 holds your own correct text for both.
 
 ---
 
 ## 🔴 Critical — these are visible to a first-round reader
 
-### 1 · The opening and closing use the same clause with different names
+### 1 · The friend has two names — a rename that landed on the wrong instance
 
-- **Opening:** "Djamela took my arm as she does and I let her"
-- **Closing:** "Alicia... took my arm as she does, and we walked out to the gate together"
+- **Opening (this draft):** "**Djamela** took my arm as she does and I let her"
+- **Closing (this draft):** "**Alicia**... took my arm as she does, and we walked out to the gate together"
 
-The repeated clause is clearly a deliberate bookend. But Djamela appears 5 times in the manuscript and **Alicia appears exactly once — here, on the last page, never introduced.** Given the narrator/friend split above, the likeliest reading is that the opening's *Djamela* is the leftover from Draft 4 and *Alicia* is the friend's new name — but as it stands a reader meets a stranger in the final paragraph.
+The repeated clause is a deliberate bookend. In this draft *Djamela* appears 4 times and *Alicia* exactly once — on the last page, never introduced.
 
-**Question:** who takes your arm, and does the other one exist at all?
+**Draft 3 shows what these sentences were**, and both used Alicia:
+
+> The bell went, and **Alicia** took my arm as she does and I let her, and we walked in past the notice board…
+>
+> In Primary Six, **Alicia** told a whole row that our house smelled of fish, back when she was somebody else's friend and not mine.
+
+**So this is not an open question any more.** Two instances in the first half — the arm at the opening and the Primary Six fish line — carry the narrator's discarded name. The dala dala speech at line 65 is a third, newer *Djamela* that Draft 3 does not have at all, so that one is a real decision rather than a slip.
+
+**Still yours to decide:** whether the dala dala speaker is Alicia, a genuinely new character, or cut.
 
 ### 2 · Four names for the narrator, none of them agreeing with the title
 
@@ -48,13 +61,25 @@ This matters more than usual here because the story's own thesis is about names:
 
 **Question:** is *Shantal* her spelling, and if so where does the reader earn it?
 
-### 3 · Broken sentence in the fourth paragraph
+### 3 · The Tuesday — a dropped paragraph and a garbled frame, both regressions
+
+**In this draft:**
 
 > "Why Tuesday?, and not about the man."
 
-The frame the clause needs is missing, and this sits in the exact place a first-round reader decides whether to keep going.
+The frame the clause needs is missing, and it sits exactly where a first-round reader decides whether to keep going. The first line promises a Tuesday — *"Nobody tells you the exact day your body stops being only yours. Mine picked a Tuesday."* — and **no scene in this manuscript is ever identified as that Tuesday.**
 
-Related: the first line promises a Tuesday — *"Nobody tells you the exact day your body stops being only yours. Mine picked a Tuesday."* — and **no scene in the manuscript is ever identified as that Tuesday.** (The 30 July draft stated it outright: *"It happened to me on a Tuesday, and I didn't see any clouds in the sky."* The promise survived the revision; the payoff did not.)
+**Draft 3 had both halves.** The frame was a clean sentence:
+
+> I am telling you about the Tuesday first because everybody wants to start with the man. The man comes later.
+
+And the payoff was a whole paragraph, second in the story, which **this draft drops entirely**:
+
+> I was behind the school gate counting on my fingers, the way you count coins when you already know they are not enough. Alicia was talking about somebody's hairdo and whether the girl had paid for it herself. Thirty-four days. I counted twice, and the first time I got thirty-three, and I wanted the smaller number to be the true one, so I counted again and it got bigger.
+
+That paragraph is what made *"your body stops being only yours"* concrete on page one — the Tuesday is the day she finishes the count. It also plants the counting habit that the last line pays off (*"It came out even, the way it does"*), and it is the "34" that [[2026-07-29 — Chantal (Draft 4, Voice Pass — WORKING)|Draft 4]]'s open question refers to.
+
+**Nothing here needs writing.** The text exists in Draft 3 in your own words. The decision is whether it comes back, and in what position.
 
 ---
 
@@ -128,9 +153,27 @@ Both may be deliberate — a red herring and a withheld fact are both legitimate
 
 ## Open questions for you
 
-1. Djamela or Alicia — who takes your arm, and does the other exist?
+1. ~~Djamela or Alicia — who takes your arm?~~ **Answered by Draft 3: Alicia.** What remains is the third *Djamela*, the dala dala speaker, who has no counterpart in Draft 3 — keep her, rename her, or cut her?
 2. Is *Shantal* her spelling, and where does the reader earn it?
-3. Which day is the Tuesday?
+3. ~~Which day is the Tuesday?~~ **Answered by Draft 3: the day she finishes the count.** What remains is whether the dropped school-gate paragraph comes back, and where.
 4. Does the father's white envelope come back, or does it stand as a red herring?
 5. Is the Uvira payment meant to land on a first read or a second?
 6. Does the dala dala passage change anyone's situation, or is it texture?
+
+---
+
+## What reading Draft 3 changed, 2026-09-09
+
+Two of the three Critical items were **regressions between [[2026-07-28 — Chantal (Draft 3, Prize Pass)|Draft 3]] and this draft**, not faults introduced by the rewrite from scratch. That is worth knowing on its own: the losses happened in transit, and Draft 3 still holds the author's own text for both.
+
+So I re-measured the three devices Draft 3's header logs, prose only, both drafts:
+
+| Device | Draft 3 (designed) | 2026-09-07 | |
+|---|---|---|---|
+| ***mia tano mia tano*** refrain | 14% · 32% · 93% | 27% · 32% · 93% | ✅ three beats intact, first plant drifted later |
+| **Four ships** leitmotif | **21%** · 87% · close | **— · 87% · close** | 🔴 **the opening statement is gone** |
+| ***"the way X"*** frame | 7 | 6 | ✅ held |
+
+**The four ships lost their first beat.** Draft 3's design was *stated → shortened → restored*: "the four rusted ships in it that have not moved…" at 21%, "with the four ships in it" at 87%, then restored in full at the close. This draft has only the short middle and the restoration — so the last line restores something the reader was never given.
+
+That one is worth weighing against Riziki's question about theme. The closing image is the story's final argument, and it currently arrives without its plant.

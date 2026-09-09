@@ -93,7 +93,15 @@ The controlling idea fires at 38% and is **never restated**. What a reader carri
 
 The Prize Plan already logs *"closed aphorisms: 5 — miscalibrated, both placed stories evaluate harder."* That note and Riziki's question are the same problem from opposite ends: **the story states its idea early and often, then closes on an image that does not carry it.**
 
-**Open — and this is an axis-7 decision, the author's alone.** Nothing here proposes a line.
+### Added 2026-09-09 — part of it is a lost plant, not a design fault
+
+Re-measuring against [[2026-07-28 — Chantal (Draft 3, Prize Pass)|Draft 3]] turned up something that bears directly on this. Draft 3 placed the four ships **three** times — *stated* at 21% ("the four rusted ships in it that have not moved…"), *shortened* at 87%, *restored in full* at the close. **This draft has only the last two.**
+
+So the closing image — the one a reader carries out and the one that reads as futility — arrives having never been planted. The restoration restores something the reader was never given. The same pass dropped the school-gate paragraph that made the opening line concrete (see [[2026-09-07 — Chantal (as sent to Riziki Mwandia) — Copy & Continuity List|the copy list]], item 3).
+
+That does not settle axis 7. But it means part of what Riziki felt may be two missing paragraphs rather than an unclear idea — and both exist in Draft 3, in your own words.
+
+**Still open, and still an axis-7 decision, the author's alone.** Nothing here proposes a line.
 
 ---
 
