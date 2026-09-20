@@ -28,6 +28,11 @@ cssclasses: [home]
 > **Proposal:** [[The Village, The House, The Road — Proposal Sheet|The Village, The House, The Road]] · **Bio:** [[The Biography — Draft to Rewrite by Hand|drafted, awaiting your hand]]
 > **Both campaigns on one page → [[Two Campaigns — The Master Calendar]]**
 
+> [!danger] 🏥 NHIF Call for Abstracts/Concepts — deadline 25 September 2026
+> **`$= Math.ceil((new Date("2026-09-25T23:59:00Z") - new Date()) / 86400000) + " days left"`** · free to enter, career track not literary — a 300-word abstract + 1,000-word concept note on Universal Health Insurance Coverage
+> **Not the emergency above** — Morland closes first, at 2 days. This is the five-day one behind it.
+> Draft abstract and concept note ready → [[NHIF Call for Abstracts — Research Competition 2026]]
+
 > [!danger] Commonwealth Short Story Prize — deadline 1 November 2026, 23:59 GMT
 > **`$= Math.ceil((new Date("2026-11-01T23:59:00Z") - new Date()) / 86400000) + " days left"`** · ✅ **entries OPEN since 1 September**
 > That is **02:59 on 2 November** in Tanzania. Rules: [[12 The Rules — Source of Truth]]
