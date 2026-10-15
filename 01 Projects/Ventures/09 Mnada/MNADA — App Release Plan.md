@@ -8,6 +8,10 @@ author: Claude — planning. Not a credit offer, not investment advice.
 
 # MNADA — GETTING THE APP OUT
 
+> [!warning] 📅 Dates changed — 2026-10-15
+> **Commonwealth:** postponed. Entries open **1 January 2027**, closing date TBC; any "25 October" or "1 November" below is void → [[12 The Rules — Source of Truth]]
+> **Morland 2026:** ✅ done. Next look **1 July 2027** → [[Morland 2026 — The Campaign]]
+
 → [[MNADA — Due Diligence and Gap Analysis]] · [[Pilot Term Sheet — Plain English]] · `app-android/README.md`
 
 ---

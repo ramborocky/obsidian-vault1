@@ -7,6 +7,11 @@ author: Claude — desk research 31 August 2026
 ---
 
 # PROVENANCE — THE AI QUESTION AND THE PUBLIC REPO
+
+> [!warning] 📅 Dates changed — 2026-10-15
+> **Commonwealth:** postponed. Entries open **1 January 2027**, closing date TBC; any "25 October" or "1 November" below is void → [[12 The Rules — Source of Truth]]
+> **Morland 2026:** ✅ done. Next look **1 July 2027** → [[Morland 2026 — The Campaign]]
+
 ### The thing that looks like the risk is also the strongest asset you own
 
 > [!danger] Read this before submitting Chantal

@@ -4,7 +4,7 @@ aliases: [Morland — pointer]
 date: 2026-08-05
 deadline: 2026-09-22
 fee: free
-status: live campaign — see the full note
+status: ✅ done — 2026 round closed · next look 1 July 2027
 ---
 
 # 💰 MILES MORLAND SCHOLARSHIP — pointer
@@ -20,7 +20,7 @@ status: live campaign — see the full note
 | | |
 | --- | --- |
 | **Money** | **£18,000**, paid monthly over 12 months — 18 for non-fiction |
-| **Window** | 1 July – **22 September 2026** |
+| **Window** | 1 July – **22 September 2026** · ✅ **done** · next window expected **1 July 2027** |
 | **Fee** | Free |
 | **Odds** | 4 scholarships from 800+ submissions — **1 in 200** |
 | **Gate** | A 2,000–5,000 word excerpt from prose **published and offered for sale** |

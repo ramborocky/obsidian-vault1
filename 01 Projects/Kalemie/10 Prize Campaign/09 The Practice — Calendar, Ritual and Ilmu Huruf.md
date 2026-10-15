@@ -45,6 +45,9 @@ Assign one job to each. **The rule is that no other work happens on that day**, 
 
 The Commonwealth window has historically been **1 September to 1 November**. **Verify this for the current cycle before planning against it** — I cannot confirm the dates from here.
 
+> [!danger] ⛔ It did not hold — 2026-10-15
+> The 2027 prize is postponed: **entries open 1 January 2027, closing date TBC.** The table below was planned against the old window. Redo it against the new dates once the deadline is announced → [[12 The Rules — Source of Truth]]
+
 If it holds:
 
 | When | Moon | What happens |

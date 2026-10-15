@@ -168,13 +168,14 @@ Commonwealth: 1 in 1,561      = $2.46 expected value per entry
 | Month | Opens / closes |
 | --- | --- |
 | **Dec** | Caine opens (1st) · Afritondo closes (~23rd) |
-| **Jan** | **Safal opens (29th)** |
+| **Jan** | **Commonwealth opens (1st) — 2027 only, postponed from Sep; closing date TBC** · **Safal opens (29th)** |
 | **Mar** | **Caine closes (6th)** · Safal closes (31st) · Tejumola (~1st) |
 | **Apr** | **Tuzo Nyerere ceremony** — so entries close before this. **Confirm the window** |
 | **May** | Gerald Kraak opens (25th) · IHRAM SADC call |
 | **Aug** | **Gerald Kraak closes (18th)** |
-| **Sep** | Commonwealth opens (1st) · **Miles Morland closes (22nd)** · Sillerman opens (15th) |
-| **Oct–Nov** | Commonwealth closes (1 Nov) |
+| **Jul** | **Miles Morland opens (~1st)** |
+| **Sep** | ~~Commonwealth opens (1st)~~ *(moved to January for 2027)* · **Miles Morland closes (22nd)** · Sillerman opens (15th) |
+| **Oct–Nov** | ~~Commonwealth closes (1 Nov)~~ *(2027 closing date TBC)* |
 
 ---
 

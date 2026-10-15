@@ -8,6 +8,11 @@ author: Claude — analysis. Not investment advice.
 ---
 
 # 🎯 THE BOARD
+
+> [!warning] 📅 Dates changed — 2026-10-15
+> **Commonwealth:** postponed. Entries open **1 January 2027**, closing date TBC; any "25 October" or "1 November" below is void → [[12 The Rules — Source of Truth]]
+> **Morland 2026:** ✅ done. Next look **1 July 2027** → [[Morland 2026 — The Campaign]]
+
 ### Current status: **employed, carrying debt.** Seven tracks. Two may run at a time.
 
 > [!danger] Read this before opening any other folder

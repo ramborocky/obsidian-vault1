@@ -6,7 +6,7 @@ This repository is an **Obsidian vault belonging to a fiction writer**, not a so
 
 ## The work in one paragraph
 
-One short story, *Chantal* (3,896 words, first person, narrated by Djamela), is being prepared for the **Commonwealth Short Story Prize** — entries 1 September – 1 November 2026, with a self-imposed submit date of **25 October**. Around it sits a large craft apparatus: six knowledge bases, a nine-axis judging rubric, and an empirical campaign that measures real prize winners and corrects the rubric against them. Chantal is also story #1 of a planned cycle set in Mihogoni, by the lake. The apparatus is as much the project as the story is.
+One short story, *Chantal* (3,896 words, first person, narrated by Djamela), is being prepared for the **Commonwealth Short Story Prize** — **postponed by the Foundation: entries now open 1 January 2027, closing date not yet announced** (the 1 September – 1 November 2026 window and the self-imposed 25 October submit date are void). The Miles Morland Scholarship 2026 round is done; the next look is 1 July 2027. Around it sits a large craft apparatus: six knowledge bases, a nine-axis judging rubric, and an empirical campaign that measures real prize winners and corrects the rubric against them. Chantal is also story #1 of a planned cycle set in Mihogoni, by the lake. The apparatus is as much the project as the story is.
 
 ## Layout
 

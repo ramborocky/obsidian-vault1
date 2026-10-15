@@ -9,6 +9,10 @@ author: Claude
 
 # The Writing Questions
 
+> [!warning] 📅 Dates changed — 2026-10-15
+> **Commonwealth:** postponed. Entries open **1 January 2027**, closing date TBC; any "25 October" or "1 November" below is void → [[12 The Rules — Source of Truth]]
+> **Morland 2026:** ✅ done. Next look **1 July 2027** → [[Morland 2026 — The Campaign]]
+
 > [!abstract] The Writing Questions (Volume)
 > The companion volume — provenance, the EV re-ranking, the rule traps.
 > Part of [[Booklets]] · [[Operating Manual]]. The browser version is the [illustrated artifact](https://claude.ai/code/artifact/3d46370e-8668-4b55-9e64-1b774ed374a9) — same text, its own typography.

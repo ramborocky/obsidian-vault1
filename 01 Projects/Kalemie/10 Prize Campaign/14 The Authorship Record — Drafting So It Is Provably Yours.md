@@ -8,6 +8,11 @@ author: Claude — instrument, not story prose
 ---
 
 # 14 · THE AUTHORSHIP RECORD
+
+> [!warning] 📅 Dates changed — 2026-10-15
+> **Commonwealth:** postponed. Entries open **1 January 2027**, closing date TBC; any "25 October" or "1 November" below is void → [[12 The Rules — Source of Truth]]
+> **Morland 2026:** ✅ done. Next look **1 July 2027** → [[Morland 2026 — The Campaign]]
+
 ### Drafting so that the work is provably yours
 
 > [!info] What this is for

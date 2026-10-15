@@ -11,7 +11,7 @@ cssclasses:
 
 > [!abstract] The whole operation on one page
 > **Submission:** [[2026-07-26 — Chantal (Djamela POV, Draft 2 — Barrett Pass)|Chantal]] · Djamela, first person · **3,407 words** · scored **40/45**
-> **Target:** Commonwealth Short Story Prize · **window 1 Sep – 1 Nov 2026**
+> **Target:** Commonwealth Short Story Prize · **window opens 1 Jan 2027 · closes TBC** *(postponed from 1 Sep – 1 Nov 2026 — see [[12 The Rules — Source of Truth]])*
 > **Detailed plan:** [[Chantal — Prize Plan]] · **Instrument:** [[01 The Six — Analysis Instrument]] · **Data:** [[02 Comparison Board]]
 
 ---
@@ -40,7 +40,7 @@ flowchart TD
     D3 --> F
     E3 --> F
 
-    F --> G(["<b>SUBMIT</b><br/>window 1 Sep – 1 Nov 2026"])
+    F --> G(["<b>SUBMIT</b><br/>window opens 1 Jan 2027"])
 
     style B fill:#1f6f3f,color:#fff,stroke:#0d3b21
     style G fill:#7a1f1f,color:#fff,stroke:#3d0f0f
@@ -86,6 +86,9 @@ flowchart LR
 
 ## 14 weeks
 
+> [!danger] ⛔ This timeline is superseded — 2026-10-15
+> It was built for a 1 Sep – 1 Nov 2026 window that never opened. The prize is postponed to **1 January 2027**, closing date TBC. Kept below as the record of the original plan; rebuild it when the deadline is announced.
+
 ```mermaid
 gantt
     title Road to 1 November 2026
@@ -112,8 +115,8 @@ gantt
     Window CLOSES                 :milestone, crit, m4, 2026-11-01, 0d
 ```
 
-> [!warning] Submit by 25 October, not 1 November
-> A week of margin. Nothing about this prize rewards submitting on the last day, and everything about a portal at midnight punishes it.
+> [!warning] Submit a week before the deadline, never on the last day
+> The original target was 25 October against a 1 November close. **Both dates are void** — set the new target as soon as the 2027 closing date is published. The principle stands: nothing about this prize rewards submitting on the last day, and everything about a portal at midnight punishes it.
 
 ---
 
@@ -122,7 +125,7 @@ gantt
 | | Item | State |
 | :--: | --- | --- |
 | ✅ | Submission draft chosen | Chantal · 40/45 |
-| ✅ | Deadline found | **1 Sep – 1 Nov**, annually |
+| ⚠️ | Deadline | **postponed — opens 1 Jan 2027, closes TBC** (was 1 Sep – 1 Nov) |
 | ✅ | Old apparatus retired | 53 questions + 3 hybrids |
 | ✅ | Analysis instrument built | [[01 The Six — Analysis Instrument]] |
 | ✅ | **Draft 3 written** | 3,569w · **49%** · [[2026-07-28 — Chantal (Draft 3, Prize Pass)]] |

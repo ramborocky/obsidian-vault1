@@ -95,21 +95,20 @@ I formatted your manuscripts this morning to standard convention. **Four of thos
 
 ---
 
-## The calendar — now confirmed, not estimated
+## The calendar
 
-> *"Entries open from 1 September – 1 November every year."*
-
-The 2026 cycle closed **1 November 2025, 11.59pm GMT**. So the next cycle to enter is **2027**:
+> [!danger] ⛔ CHANGED 2026-10-15 — the 2027 prize is postponed. **Entries now open 1 January 2027.**
+> The official page says the prize is *currently closed*. The Foundation is postponing the 2027 round until January 2027 to review its processes, entry rules and submission guidelines. **The 1 Sep – 1 Nov 2026 window below never opened.** The FAQ warns that details may change after the review, so **every rule on this page needs re-checking against the new rules the day they appear.**
 
 | Date | What |
 | --- | --- |
-| **~Aug 2026** | 2027 entry rules published — **re-read them, do not rely on this page** |
-| **1 Sep 2026** | Entries open |
-| **1 Nov 2026, 23:59 GMT** | **Deadline. Hard. No late entries considered** |
+| **1 Jan 2027** | **Entries open** (postponed from 1 Sep 2026) |
+| **TBC** | **Deadline — not yet announced.** Write it here the day it is published |
+| **TBC** | New entry rules — **re-read them in full, do not rely on this page** |
 
-**That is 95 days from today.** GMT, not East Africa time — Tanzania is UTC+3, so the deadline falls at **02:59 on 2 November** your time. Do not let that be the thing that ends this.
+When the deadline is announced, check the time zone. The old deadline was 23:59 GMT, which in Tanzania (UTC+3) was **02:59 the next morning**.
 
-The lunar plan in [[09 The Practice — Calendar, Ritual and Ilmu Huruf]] targeted submission by early October. **That still works and now has three weeks more margin than it looked like.**
+*Superseded, kept for the record:* the rules used to read *"Entries open from 1 September – 1 November every year."* The 2026 cycle closed **1 November 2025, 11.59pm GMT**.
 
 ---
 

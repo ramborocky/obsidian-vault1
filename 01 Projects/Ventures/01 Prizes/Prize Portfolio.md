@@ -42,7 +42,7 @@ Free to enter, so that £1.92 is positive. It is still £1.92.
 | Prize | Money | Window | Fee | Notes |
 | --- | --- | --- | --- | --- |
 | **Safal Kiswahili** | **up to $5,000** ≈ TSh 13.2M | 29 Jan – 31 Mar | *unconfirmed* | **The best odds you have. See below** |
-| **Commonwealth** | £5,000 / £2,500 | 1 Sep – 1 Nov | **Free** | 7,806 entries. Chantal, 25 Oct |
+| **Commonwealth** | £5,000 / £2,500 | **opens 1 Jan 2027** · closes TBC *(postponed)* | **Free** | 7,806 entries. Chantal — target date TBC |
 | **Afritondo** | ~$1,000–1,400 | closes ~23 Dec | *unconfirmed* | **Publishes — burns 3f** |
 | **Brittle Paper** | varies | rolling | — | **Publishes — burns 3f** |
 | **Bradford** | *not found* | — | *not found* | Could not confirm a short story prize exists. **Check before planning around it** |
@@ -74,7 +74,7 @@ Entries open **29 January**. That is after the Commonwealth deadline, so **the t
 - Writing in English ✅
 - The project must be a **full-length book, 80,000+ words** — fiction or non-fiction
 - **A 2,000–5,000 word excerpt from work already published AND offered for sale**, with evidence
-- **Deadline 22 September**
+- **Deadline 22 September** — **2026 round ✅ done.** Next window expected **1 July 2027**
 
 ### ✅ RESOLVED — 5 August 2026. The KDP route works
 
@@ -96,7 +96,7 @@ Prizes stay on this board for one reason: **the free ones cost nothing but a sub
 
 **But budget nothing on them.** Not one shilling of the household's plan should assume a prize.
 
-**Maintenance, not programme.** A submission when a story is finished. The 25 October Commonwealth entry stands because that work is already bought and there is no second attempt.
+**Maintenance, not programme.** A submission when a story is finished. The Commonwealth entry stands because that work is already bought and there is no second attempt. *(The 25 October date is void: the prize is postponed to open 1 January 2027.)*
 
 ---
 
@@ -105,7 +105,7 @@ Prizes stay on this board for one reason: **the free ones cost nothing but a sub
 - [x] **Email Miles Morland** about self-published eligibility and the collection question — one email, highest value on this page ✅ 2026-08-05
 - [ ] **Find the Safal 2027 guidelines** when published; confirm fee, length, deadline
 - [ ] Confirm whether a Bradford short story prize exists at all
-- [ ] Submit **Chantal, 25 October** — [[Home]]
+- [ ] Submit **Chantal** to the Commonwealth — opens **1 January 2027**, closing date TBC — [[Home]]
 - [ ] **Do not pay any entry fee** without recomputing the odds first
 
 ## Sources

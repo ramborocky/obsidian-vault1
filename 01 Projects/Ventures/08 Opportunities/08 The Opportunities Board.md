@@ -18,7 +18,7 @@ status: five calls logged — two are open to you, one is a trap, two are poetry
 | Closes | Call | Money | Fee | Open to you? |
 | --- | --- | --- | --- | --- |
 | **31 Aug** | [[Oxford Poetry Prize 2026\|Oxford Poetry Prize]] | £2,000 / £1,000 / £500 | **£10 per poem** | ⚠️ eligible — but poetry, and paid |
-| **22 Sep** | [[Morland 2026 — The Campaign\|Miles Morland Scholarship]] | **£18,000** | Free | ✅ **the one that matters** |
+| **22 Sep** | [[Morland 2026 — The Campaign\|Miles Morland Scholarship]] | **£18,000** | Free | ✅ **DONE** — next window ~1 Jul 2027 |
 | **30 Sep** | [[Doek! Literary Magazine — Issue 18\|Doek! Issue 18]] | unpaid / credit | Free | ⚠️ **nonfiction only — fiction is closed to you** |
 | **14 Nov** | [[Brittle Paper — Festive Anthology\|Brittle Paper Festive Anthology]] | unpaid / credit | Free | ✅ fiction, essay or poetry |
 | **1 Dec** | [[Sillerman First Book Prize for African Poetry\|Sillerman First Book Prize]] | $1,000 + publication | Free | ❌ poetry collection — you don't have one |
@@ -55,7 +55,7 @@ Same standing arrangement as everywhere else in this vault: **you write every wo
 | **by 11 Aug** | Morland week 1: authorship answer, KDP account, enquiry email |
 | **by 20 Aug** | **Decide Oxford yes/no** and stop thinking about it either way |
 | **by 15 Sep** | Doek! nonfiction piece drafted, or formally dropped |
-| **by 15 Sep** | **Morland submitted** — target date, hard stop 22 Sep |
+| **by 15 Sep** | ✅ **Morland — done** |
 | **30 Sep** | Doek! closes |
 | **by 7 Nov** | Brittle Paper piece finished — the theme is *away from home* |
 | **14 Nov** | Brittle Paper closes |

@@ -75,16 +75,15 @@ Chantal's idea is somewhere in this range, and it has to be picked before the re
 
 The draft's own candidate line is **"That is the part I would like written down somewhere. Not that I was fooled. That I did the deciding."** Axis 7 goes from 4 to 5 the moment the story stops nudging this and simply is it.
 
-### ✅ The deadline — found 2026-07-27
+### ⚠️ The deadline — CHANGED 2026-10-15
 
-**Entries open 1 September and close 1 November, every year.**
+> [!danger] Postponed. **Entries now open 1 January 2027; closing date not yet announced.**
+> The usual 1 Sep – 1 Nov 2026 window did not run: the Foundation paused the prize to review its rules. The old 25 October target is void. → [[12 The Rules — Source of Truth]]
 
 | | |
 | --- | --- |
-| **Window** | 1 Sep – 1 Nov 2026 |
-| **Opens in** | 5 weeks |
-| **Closes in** | 14 weeks |
-| **Target submission** | **25 October** — a week of margin |
+| **Window** | **opens 1 Jan 2027** · closes TBC |
+| **Target submission** | **TBC** — set it, with a week of margin, the day the closing date is published |
 | Word gate | 2,000–5,000 · Chantal 3,407 ✅ |
 | Eligibility | Commonwealth citizens 18+ · Tanzania ✅ |
 | Prize | £2,500 regional · £5,000 overall |

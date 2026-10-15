@@ -21,16 +21,13 @@ cssclasses: [home]
 > [[Nazir — The Serpent in the Grove|The 2026 winner]] scores **31/45** on our rubric and beat **7,806 entries.** Chantal scores 40. **That gap is a warning, not a win** — the rubric rewards architecture and this panel forgives architecture.
 > **Nothing in Chantal gets cut for tightness again.** The gains left are prose control and controlling idea.
 
-> [!danger] 💰 Miles Morland Scholarship — **£18,000** · deadline 22 September, **target 1 September**
-> **`$= Math.ceil((new Date("2026-09-22T23:59:00Z") - new Date()) / 86400000) + " days left"`** · **the self-imposed target was 1 September** · 4 scholarships from ~800 entries — **1 in 200, against the Commonwealth's 1 in 1,561**
-> **The gate is already cleared:** *Voices of Azania* is published on Kindle and offered for sale, and the Foundation confirmed in writing that it qualifies.
-> **Extract:** *The Fastest Car in Mazimbu* — in revision, ten bricks → [[Fastest Car — The Build Order]]
-> **Proposal:** [[The Village, The House, The Road — Proposal Sheet|The Village, The House, The Road]] · **Bio:** [[The Biography — Draft to Rewrite by Hand|drafted, awaiting your hand]]
-> **Both campaigns on one page → [[Two Campaigns — The Master Calendar]]**
+> [!success]- ✅ Miles Morland Scholarship 2026 — **DONE** · off the list until next July
+> The 2026 round is closed and finished. Nothing more to do on it this year → [[Morland 2026 — The Campaign]]
+> 🔔 **Reminder set for 1 July 2027:** the next window should open then. The task lives on [[Morland 2026 — The Campaign]] and shows under *Open tasks* below.
 
-> [!danger] Commonwealth Short Story Prize — deadline 1 November 2026, 23:59 GMT
-> **`$= Math.ceil((new Date("2026-11-01T23:59:00Z") - new Date()) / 86400000) + " days left"`** · ✅ **entries OPEN since 1 September**
-> That is **02:59 on 2 November** in Tanzania. Rules: [[12 The Rules — Source of Truth]]
+> [!danger] Commonwealth Short Story Prize — **postponed · opens 1 January 2027**
+> **`$= Math.ceil((new Date("2027-01-01T00:00:00Z") - new Date()) / 86400000) + " days until it opens"`** · ⛔ **the usual 1 Sep – 1 Nov 2026 window did not run**
+> The Foundation paused the prize to review its processes, entry rules and submission guidelines. **Closing date not yet announced.** Re-read the rules the day it reopens — they may have changed. Rules: [[12 The Rules — Source of Truth]]
 >
 > **Before submitting:** export `Chantal.docx` → **`Chantal.pdf`** · check Word's word count · your name nowhere in the file → [[README — Submission Format and Log]]
 

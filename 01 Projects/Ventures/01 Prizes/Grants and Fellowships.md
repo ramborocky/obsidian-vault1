@@ -38,7 +38,7 @@ So this list is sorted by **one question: can you do it without leaving home and
 - Writing in English ✅
 - Project must be a **full-length book, 80,000+ words**
 - Requires a **2,000–5,000 word excerpt from work already published and offered for sale**
-- **Deadline 22 September**
+- **Deadline 22 September** — **2026 round ✅ done.** Next window expected **1 July 2027**
 
 > ✅ **Blocker cleared, 5 Aug 2026.** The MMF FAQ: *"Being published on Kindle is acceptable; it is the only online medium that is."* Free publication does not count; the sample must be prose. **A £0.99 Kindle short story creates eligibility in 72 hours** — no novel required. → **[[Morland 2026 — The Campaign]]**
 >

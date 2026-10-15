@@ -2,10 +2,17 @@
 tags: [ventures, morland, commonwealth, calendar, campaign, master]
 aliases: [Master Calendar, Two Campaigns]
 date: 2026-08-05
-status: both live — 6 August to 15 November
+status: superseded 2026-10-15 — Morland done; Commonwealth postponed to 1 Jan 2027
 ---
 
 # 🗓️ TWO CAMPAIGNS — THE MASTER CALENDAR
+
+> [!danger] ⛔ SUPERSEDED — 2026-10-15. Neither campaign below is live in this form.
+> - **Morland 2026: ✅ done.** Closed 22 September. Next look **1 July 2027** → [[Morland 2026 — The Campaign]]
+> - **Commonwealth: postponed.** The 1 Sep – 1 Nov 2026 window never opened. **Entries open 1 January 2027**, closing date TBC → [[12 The Rules — Source of Truth]]
+>
+> The calendar below is kept as the record of the August plan. Do not schedule against it.
+
 ### Morland closes **22 September**. Commonwealth closes **1 November**. **Eighty-eight days, two submissions, one desk.**
 
 → [[Morland 2026 — The Campaign]] · [[Home]] · [[00 The Board]]

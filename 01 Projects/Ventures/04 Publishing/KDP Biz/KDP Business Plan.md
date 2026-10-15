@@ -9,6 +9,11 @@ author: Claude — analysis and plan, not story prose
 ---
 
 # KDP BUSINESS PLAN
+
+> [!warning] 📅 Dates changed — 2026-10-15
+> **Commonwealth:** postponed. Entries open **1 January 2027**, closing date TBC; any "25 October" or "1 November" below is void → [[12 The Rules — Source of Truth]]
+> **Morland 2026:** ✅ done. Next look **1 July 2027** → [[Morland 2026 — The Campaign]]
+
 ### Nine new stories → one anthology → Amazon Kindle Direct Publishing
 
 > [!info] This is a separate project

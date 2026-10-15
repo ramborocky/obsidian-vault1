@@ -106,8 +106,8 @@ Specific deadlines rot. These publish new calls monthly, free, and are worth mor
 ## NEXT ACTIONS
 
 - [ ] Subscribe to **African Writer Weekly** and **Writing Africa** — free, twenty minutes a month
-- [ ] **25 October: submit Chantal**
-- [ ] **Diarise 22 September** for Miles Morland — and email them first about the eligibility question → [[Grants and Fellowships]]
+- [ ] **Submit Chantal** — Commonwealth postponed, **opens 1 January 2027**, closing date TBC *(was 25 October)*
+- [x] **Diarise 22 September** for Miles Morland — and email them first about the eligibility question → [[Grants and Fellowships]] ✅ 2026 round done; next look 1 July 2027
 - [ ] **Diarise late January** for Safal Kiswahili — the best odds you have
 - [ ] Write **one essay** on money, work or class in Tanzania. It is the least competed, best-fitting thing on this page
 - [ ] **Skip every poetry call** until there is a poetry practice to justify it

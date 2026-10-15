@@ -8,6 +8,11 @@ author: Claude — analysis from your own logged numbers and public sources
 ---
 
 # THREE TRACKS
+
+> [!warning] 📅 Dates changed — 2026-10-15
+> **Commonwealth:** postponed. Entries open **1 January 2027**, closing date TBC; any "25 October" or "1 November" below is void → [[12 The Rules — Source of Truth]]
+> **Morland 2026:** ✅ done. Next look **1 July 2027** → [[Morland 2026 — The Campaign]]
+
 ### ACPA · remote freelance · the writing — compared on numbers
 
 > [!info] How to read this

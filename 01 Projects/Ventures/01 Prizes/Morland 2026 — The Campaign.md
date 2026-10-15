@@ -4,12 +4,17 @@ aliases: [Morland Campaign, MMF 2026]
 date: 2026-08-05
 deadline: 2026-09-22
 target: 2026-09-01
-status: gate cleared · extract in revision · proposal chosen · bio drafted
+status: ✅ done — 2026 round closed · next look July 2027
 author: Claude — analysis, deadlines and mechanics. Every word of the application is the user's.
 ---
 
 # 💰 MORLAND 2026 — THE CAMPAIGN
-### **£18,000 · closes 22 September · submitting 1 September.** This page is the single source of truth. Everything else hangs beneath it.
+
+> [!success] ✅ DONE — marked complete 2026-10-15. Off the active list.
+> The 2026 round closed on 22 September. Nothing more is owed on this page this year. **Everything below is the record, kept for the 2027 attempt.**
+> - [ ] 🔔 **Morland 2027 — window expected to open; check dates and decide whether to enter** 📅 2027-07-01
+
+### **£18,000 · closed 22 September 2026.** This page is the single source of truth. Everything else hangs beneath it.
 
 → [[Two Campaigns — The Master Calendar]] · [[Home]] · [[00 The Board]]
 
