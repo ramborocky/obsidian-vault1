@@ -19,7 +19,7 @@ author: Claude — written at the user's request, from [[00 Profile — The Memo
 | # | What | How long | Why this one |
 |---|---|---|---|
 | 1 | **Dawn: Fajr, then outside.** Twenty minutes of morning light, walking or sitting, phone in pocket. This is the meditation. Dhikr on the walk if you want words. | 20–30 min | From [[Magha Rising]]: the remedy for a fallen Sun is the rising one. Morning light also sets sleep and mood, and that is measurable. |
-| 2 | **One writing block before anything else claims the day.** Kalemie / Mihogoni, or the two paragraphs [[Home]] says are owed. Timer on, door shut. | 45 min | Jupiter/Mars runs to 10 Feb 2027 from the 12th: the closed-room season. Use it. |
+| 2 | **One writing block before anything else claims the day.** Kalemie / Mihogoni, or the two paragraphs [[Home]] says are owed. Timer on, door shut. **During the MAF: Tue and Thu 05:50, plus Sunday 07:00.** Mon/Wed/Fri mornings are study ([[MAF — Roadmap, Protocol and Timetable]] §4) | 45 min | Jupiter/Mars runs to 10 Feb 2027 from the 12th: the closed-room season. Use it. |
 | 3 | **Five-line evening log.** (1) what I did, (2) one exposure: sent, asked, showed, (3) tablets taken ✓, (4) spend logged in [[Expenses]] ✓, (5) leave-work time kept ✓. | 5 min | This is the journal, but built to catch the pattern. A day with line 2 empty is the one to notice. |
 
 > [!tip] Plus the fixed rules from [[Magha Rising]]

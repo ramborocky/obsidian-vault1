@@ -5,6 +5,11 @@ cssclasses: [home]
 
 # 🏠 Home
 
+> [!example] 🎮 [[The Game]] · 📅 today's note: click today in the Calendar · 📘 [[MAF]] · 🖋️ [[Essays]]
+> ```dataviewjs
+> await dv.view("01 Projects/Personal/The Game/game", {mode: "home"})
+> ```
+
 > [!danger] ⛔ READ THIS FIRST — three things, nothing else matters until they're done
 >
 > ### 1 · ☎️ Answer the ACPA status question
@@ -53,7 +58,7 @@ cssclasses: [home]
 
 ## ✍️ Today's practice
 
-- [ ] 🕔 **17:00 · The Explaining Pass** — 15 min, one tier, top-down → [[The Explaining Sentences — Chantal Draft 3]]
+- [ ] 🕔 **Writing block (Tue/Thu 05:50 · Sun 07:00) · The Explaining Pass** — 15 min, one tier, top-down → [[The Explaining Sentences — Chantal Draft 3]]
 - [ ] 🖊 **The Impromptu** — 15 min, one page, never finished, never revised
 - [ ] 📖 **The Read** — 20 min, one published story
 - [ ] 🔁 **Rotating slot** — copywork / technique / read aloud *(🔧 Reconstruction on Saturdays)*
@@ -75,6 +80,7 @@ cssclasses: [home]
 | [[The De-Slop Pass — English Prose]] | [[12 The Rules — Source of Truth]] | [[The Day Plan — 80-20, Pomodoro and Practice]] |
 | [[Craft Log]] | [[09 The Practice — Calendar, Ritual and Ilmu Huruf]] | [[House - Airbnb Writers Retreat]] |
 | [[Booklets]] | [[Two Campaigns — The Master Calendar]] | [[Operating Manual]] |
+| [[Essays]] · [[Money and Motive]] | [[MAF]] | [[The Game]] |
 
 ---
 
@@ -136,7 +142,7 @@ Approximate — verify before building anything on it. → [[09 The Practice —
 > [!quote] The Writing Constitution
 > We write scenes, not explanations. Objects carry emotion. Dialogue reveals class.
 
-> [!danger] 🕔 STANDING PASS · 17:00 daily — **no sentence explains the sentence before it**
+> [!danger] 🕔 STANDING PASS · every writing block (17:00 is class now) — **no sentence explains the sentence before it**
 > **Show, don't tell — and the specific fault is the gloss.** One sentence does the work; the next one says what the first one meant. The reader can feel it being done for them, and it is what holds axis 2 · prose control at **4** and *the slide* at **3**.
 >
 > **Every instance in Chantal D3 is located, tiered and line-numbered:** → **[[The Explaining Sentences — Chantal Draft 3]]**
