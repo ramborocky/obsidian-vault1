@@ -1,6 +1,5 @@
 {
   "folder": "01 Projects/Personal/Daily",
   "format": "YYYY-MM-DD",
-  "template": "Templates2/Daily Note",
-  "autorun": true
+  "template": "Templates2/Daily Note"
 }
