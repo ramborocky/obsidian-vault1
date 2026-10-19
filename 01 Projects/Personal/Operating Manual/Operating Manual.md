@@ -36,6 +36,7 @@ author: Claude — written at the user's request
 | — | [[Five Models I Can't Unsee]] | Superseded. Kept as the record of what was cut |
 | 7 | [[The Ten-Years-Ahead Operator]] | The practice, and the 36-month route with proof gates |
 | — | [[The Millionaire Question — Honest Arithmetic]] | $1M ÷ 36 months. Revised upward 31 Aug |
+| — | [[The Rhythm — Daily, Monthly, Quarterly]] | Three a day, month and quarter, plus three books and three courses. To Feb 2027 |
 
 ---
 
