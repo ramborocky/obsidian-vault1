@@ -1,5 +1,6 @@
 ---
-tags: [personal, career, accounting, finance, iaa, maf, study, pinned]
+tags: [maf, career, accounting, finance, iaa, study, pinned]
+cssclasses: [maf]
 aliases: [MAF, Master of Accounting and Finance, MAF Roadmap]
 date: 2026-10-19
 status: live — replaces the MSc Finance & Economics roadmap

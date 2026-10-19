@@ -1,5 +1,6 @@
 ---
 tags: [maf, module]
+cssclasses: [maf]
 area: maf
 semester: 1
 nbaa: ""

@@ -1,5 +1,6 @@
 ---
-tags: [essays, fiction, behavioural-finance, bridge]
+tags: [writing, fiction, essays, behavioural-finance, bridge]
+cssclasses: [fiction]
 area: nonfiction
 date: 2026-10-19
 status: live — one line added each time a bias comes up in class

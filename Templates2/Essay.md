@@ -1,5 +1,6 @@
 ---
-tags: [essay, nonfiction]
+tags: [writing, essay, nonfiction]
+cssclasses: [fiction]
 area: nonfiction
 date: {{date:YYYY-MM-DD}}
 bias: ""

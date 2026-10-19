@@ -69,6 +69,7 @@ A `PreToolUse` hook (`.claude/hooks/archive-before-edit.sh`, wired in `.claude/s
 ## Conventions and quirks
 
 - **Wikilinks, not paths.** Dataview queries depend on frontmatter (`tags`, `status`, `pov`, `words`, `date`, `area`, and the daily-note game properties). Preserve it when editing, and keep `words:` honest.
+- **Two sides, two colours** (`.obsidian/snippets/areas.css`): 🟧 **writing** (fiction and essays) and 🟦 **MAF** (accounting, NBAA). New notes get a side tag, `fiction`/`writing` or `maf`, and `cssclasses: [fiction]` or `[maf]` if they're hubs or plans. **Don't bulk-tag existing story files:** sidebar colour comes from the folder path, and editing prose files fires the archive hook. To put a new folder on a side, add its path to section 1 of the snippet and to the graph colour groups.
 - **The daily-note properties are the game's data.** Don't rename them. `scripts/pomodoro.ps1` and `The Game/game.js` both read them.
 - **Plugins:** Dataview (with JS) is installed and does the scoring. The **Tasks** plugin is listed as enabled but its files are missing, so the `tasks` block on Home doesn't render until the user reinstalls it from Community plugins.
 - **`claudey/`** is a stale duplicate of an older vault root. Don't edit it, and don't use it as a source of truth.

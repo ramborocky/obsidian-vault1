@@ -5,7 +5,7 @@ cssclasses: [home]
 
 # 🏠 Home
 
-> [!example] 🎮 [[The Game]] · 📅 today's note: click today in the Calendar · 📘 [[MAF]] · 🖋️ [[Essays]]
+> [!example] 🎮 [[The Game]] · 📅 today's note: click today in the Calendar · 🟦 [[MAF]] · 🟧 [[Essays]] · 🟧 writing / 🟦 MAF
 > ```dataviewjs
 > await dv.view("01 Projects/Personal/The Game/game", {mode: "home"})
 > ```

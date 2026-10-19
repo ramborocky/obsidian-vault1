@@ -1,3 +1,8 @@
+---
+tags: [maf, career, superseded]
+cssclasses: [maf]
+---
+
 # 🎯 Career Roadmap & Strategic Blueprint
 
 > [!warning] Superseded 2026-10-19

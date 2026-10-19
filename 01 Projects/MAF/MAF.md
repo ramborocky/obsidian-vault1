@@ -1,5 +1,6 @@
 ---
 tags: [maf, hub, pinned]
+cssclasses: [maf]
 area: maf
 date: 2026-10-19
 status: live

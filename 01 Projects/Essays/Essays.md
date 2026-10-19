@@ -1,5 +1,6 @@
 ---
-tags: [essays, nonfiction, hub]
+tags: [writing, essays, nonfiction, hub]
+cssclasses: [fiction]
 area: nonfiction
 date: 2026-10-19
 status: live
