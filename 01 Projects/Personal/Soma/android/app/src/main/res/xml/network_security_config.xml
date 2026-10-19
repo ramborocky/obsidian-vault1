@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Sync talks to the PC hub over plain HTTP on the local network (192.168.x.x), where there are
+  no certificates. Soma only ever connects to the address typed into its Sync settings, and
+  every sync carries the 6-digit code.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

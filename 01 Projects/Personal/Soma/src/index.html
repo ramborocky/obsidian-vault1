@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f14">
+<meta name="description" content="Soma: an offline study and writing feed. Swipe through today's work, one focused block at a time.">
+<title>Soma</title>
+<style>/*__CSS__*/</style>
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <div class="modes" role="group" aria-label="Feed order">
+      <button data-mode="smart" aria-pressed="true">For you</button>
+      <button data-mode="timetable" aria-pressed="false">Timetable</button>
+    </div>
+    <div class="areas" role="group" aria-label="Which side">
+      <button data-area="all" aria-pressed="true">All</button>
+      <button data-area="maf" aria-pressed="false">MAF</button>
+      <button data-area="writing" aria-pressed="false">Write</button>
+    </div>
+    <button class="xp" id="xp">Lv 1 · 0 XP</button>
+  </header>
+
+  <main id="view-feed" class="view feed" tabindex="-1" aria-label="Today's feed"><div class="card"><div class="card-body"><h2>Loading…</h2></div></div></main>
+  <main id="view-library" class="view" hidden aria-label="Library"></main>
+  <main id="view-stats" class="view" hidden aria-label="Stats"></main>
+  <main id="view-settings" class="view" hidden aria-label="Settings"></main>
+
+  <nav class="bottom" aria-label="Sections">
+    <button data-view="feed" aria-current="page"><span class="ico" aria-hidden="true">▶</span>Feed</button>
+    <button data-view="library"><span class="ico" aria-hidden="true">📚</span>Library</button>
+    <button data-view="stats"><span class="ico" aria-hidden="true">🏆</span>Stats</button>
+    <button data-view="settings"><span class="ico" aria-hidden="true">⚙</span>Settings</button>
+  </nav>
+
+  <div id="focus" class="overlay" hidden role="dialog" aria-modal="true" aria-label="Focus timer"></div>
+  <div id="sheetwrap" class="sheet-wrap" hidden><div id="sheet" class="sheet" role="dialog" aria-modal="true" tabindex="-1"></div></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+</div>
+<noscript><p style="padding:20px">Soma needs JavaScript turned on.</p></noscript>
+<script>/*__DATA__*/</script>
+<script>/*__CONTENT__*/</script>
+<script>/*__ENGINE__*/</script>
+<script>/*__APP__*/</script>
+</body>
+</html>

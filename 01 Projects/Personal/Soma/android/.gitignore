@@ -1,0 +1,18 @@
+# Machine-specific SDK path
+local.properties
+
+# Build output
+build/
+.gradle/
+*.apk
+*.aab
+
+# Signing material must never be committed
+*.jks
+*.keystore
+keystore.properties
+
+# IDE
+.idea/
+*.iml
+.cxx/
