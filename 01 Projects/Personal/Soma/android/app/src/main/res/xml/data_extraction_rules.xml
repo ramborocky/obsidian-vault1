@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Unlike MNADA, Soma's data is only the user's own study record, so Android may carry it to a
+  new phone. The WebView's localStorage lives under the app's root directory.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="root" />
+        <include domain="sharedpref" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="root" />
+        <include domain="sharedpref" />
+    </device-transfer>
+</data-extraction-rules>

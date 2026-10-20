@@ -1,4 +1,12 @@
+---
+tags: [maf, career, superseded]
+cssclasses: [maf]
+---
+
 # 🎯 Career Roadmap & Strategic Blueprint
+
+> [!warning] Superseded 2026-10-19
+> The plan is now the **Master of Accounting and Finance** at IAA, not the MSc Finance & Economics. See [[MAF — Roadmap, Protocol and Timetable]]. This file is kept for the record.
 > **Practitioner-Scholar Path: Age 50+ Strategy**
 
 ---
