@@ -78,5 +78,22 @@ author: Claude — written at the user's request, from [[00 Profile — The Memo
 
 ---
 
+## In Google Calendar (set 21 Oct 2026, runs to 21 Jan 2027)
+
+All of the above is on the primary Google Calendar, colour-coded: 🟧 writing, 🟦 MAF, 🟩 health, 🟨 money, 🟪 life and review, 🟥 exposure. Daily items pop up on the phone. The evening log, weekly review and every monthly, quarterly and key-date event also send an **email**. The Windows reminders in `scripts/rhythm/` still run on the PC.
+
+| Kind | Events |
+|---|---|
+| Daily | Fajr + light 05:20 · writing Tue/Thu 05:50 · study Mon/Wed/Fri 05:50 · pre-read 16:30 and class 17:00 (weekdays) · evening log 21:00 · hard stop 21:30 |
+| Weekly | Sat: Tunjīnā 06:15, deep study 08:30, one person 16:00 · Sun: writing 07:00, reading 08:00, review 16:00 |
+| One-off | IAA + NBAA emails **25 Oct** · money reviews 31 Oct, 28 Nov, 26 Dec · health checks 2 Nov, 9 Dec, 5 Jan · bloods 14 Dec · exposure 14 Nov, 19 Dec · entries open 1 Jan · **submit Chantal 9 Jan** · NBAA step 16 Jan · quarterly review 24 Jan |
+
+| ACPA(T), daily 12:30 | 13 dated steps from [[ACPA(T) NBAA To-Do]], 22 Oct → 3 Nov (MEMS fields, forms, ACPA vs ACPA-PP, referees, employer details, photos, logbook, fee, chase NBAA), then **"ACPA: one thing today"** every day to 21 Jan |
+| Accounting and tax campaign | Setup Sat 24 Oct (WhatsApp Business, TikTok/Insta) and Sun 25 Oct (faceless YouTube) · **post daily 12:50** · WhatsApp broadcast Mon 13:05 · batch clips Sat 10:45 · YouTube video every other Sun 10:00 · campaign numbers Sun 15:30 · content hooks on the 4th (PAYE/SDL) and 16th (VAT) |
+
+The old 25 Oct and 1 Nov Commonwealth events were deleted (void after the postponement). The campaign's measure is **paying clients**, not views: four at about $350/month is the line in [[Operating Manual]].
+
+---
+
 ## Related
 [[Operating Manual]] · [[00 Profile — The Memory]] · [[Magha Rising]] · [[The Second Curriculum]] · [[Unstoppable — The Architecture]] · [[Expenses]] · [[ACPA(T) NBAA To-Do]]
