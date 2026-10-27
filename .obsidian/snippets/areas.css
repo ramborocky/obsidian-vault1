@@ -1,0 +1,143 @@
+/* ==========================================================================
+   areas.css — two sides of the vault, two colours.
+
+   🟧 WRITING (fiction, essays)   flame — the booklets' #E0451F family
+   🟦 MAF (accounting, NBAA)      blue  — the booklets' #1E6E8C family
+
+   Colour comes from three places, and none of them needs a plugin:
+     1. Sidebar folders and files, by path.
+     2. Tags (#fiction, #maf and their relatives), in reading and editing view.
+     3. Whole notes, via `cssclasses: [fiction]` or `cssclasses: [maf]`.
+   To put another folder on a side, add its path to the lists in section 1.
+   ========================================================================== */
+
+.theme-light {
+  --area-writing: #C93C18;
+  --area-maf:     #1E6E8C;
+}
+.theme-dark {
+  --area-writing: #F0714B;
+  --area-maf:     #5AAFCC;
+}
+
+/* ---------- 1. Sidebar ---------- */
+
+/* Which top-level folder belongs to which side */
+.nav-folder-title:is(
+  [data-path="01 Projects/Kalemie"],
+  [data-path="01 Projects/00 Craft Atlas"],
+  [data-path="01 Projects/00The beat of my hurt"],
+  [data-path="01 Projects/x-factor"],
+  [data-path="01 Projects/Freedom"],
+  [data-path="01 Projects/Msasani Peninsula-The crossroads where the Coconut Breaks"],
+  [data-path="01 Projects/Essays"],
+  [data-path="Short stories"],
+  [data-path="StoryLine"],
+  [data-path="02 Characters"]
+) { --area: var(--area-writing); }
+
+.nav-folder-title:is(
+  [data-path="01 Projects/MAF"],
+  [data-path="Msc. Finance and Economic"]
+) { --area: var(--area-maf); }
+
+/* Everything inside those folders */
+:is(.nav-file-title, .nav-folder-title):is(
+  [data-path^="01 Projects/Kalemie/"],
+  [data-path^="01 Projects/00 Craft Atlas/"],
+  [data-path^="01 Projects/00The beat of my hurt/"],
+  [data-path^="01 Projects/x-factor/"],
+  [data-path^="01 Projects/Freedom/"],
+  [data-path^="01 Projects/Msasani Peninsula-The crossroads where the Coconut Breaks/"],
+  [data-path^="01 Projects/Essays/"],
+  [data-path^="Short stories/"],
+  [data-path^="StoryLine/"],
+  [data-path^="02 Characters/"]
+) { --area-child: var(--area-writing); }
+
+:is(.nav-file-title, .nav-folder-title):is(
+  [data-path^="01 Projects/MAF/"],
+  [data-path^="Msc. Finance and Economic/"],
+  [data-path="01 Projects/Personal/ACPA(T) NBAA To-Do.md"]
+) { --area-child: var(--area-maf); }
+
+/* Top-level side folders: coloured, bold, tinted, with a bar on the left */
+.nav-folder-title:is(
+  [data-path="01 Projects/Kalemie"], [data-path="01 Projects/00 Craft Atlas"],
+  [data-path="01 Projects/00The beat of my hurt"], [data-path="01 Projects/x-factor"],
+  [data-path="01 Projects/Freedom"],
+  [data-path="01 Projects/Msasani Peninsula-The crossroads where the Coconut Breaks"],
+  [data-path="01 Projects/Essays"], [data-path="Short stories"], [data-path="StoryLine"],
+  [data-path="02 Characters"], [data-path="01 Projects/MAF"], [data-path="Msc. Finance and Economic"]
+) {
+  color: var(--area);
+  font-weight: 600;
+  background-color: color-mix(in srgb, var(--area) 12%, transparent);
+  box-shadow: inset 3px 0 0 var(--area);
+  border-radius: 4px;
+}
+
+/* Their contents: a thin bar in the side's colour. Invisible everywhere else. */
+.nav-file-title,
+.nav-folder-title {
+  box-shadow: inset 2px 0 0 var(--area-child, transparent);
+}
+
+/* ---------- 2. Tags ---------- */
+
+/* Writing side */
+a.tag:is(
+  [href="#fiction"], [href="#writing"], [href="#essays"], [href="#essay"], [href="#nonfiction"],
+  [href="#kalemie"], [href="#chantal"], [href="#mihogoni-cycle"], [href="#draft"],
+  [href="#submission-candidate"], [href="#craft"], [href="#structure"], [href="#revision"],
+  [href="#character"], [href="#prose"], [href="#voice"], [href="#story-design"], [href="#prize"],
+  [href="#campaign"], [href="#x-factor"], [href="#mckee"], [href="#cleland"], [href="#gardner"],
+  [href="#barrett"], [href="#kiteley"], [href="#learning-curve"],
+  [href^="#fiction/"], [href^="#writing/"]
+),
+.cm-hashtag:is(
+  .cm-tag-fiction, .cm-tag-writing, .cm-tag-essays, .cm-tag-essay, .cm-tag-nonfiction,
+  .cm-tag-kalemie, .cm-tag-chantal, .cm-tag-mihogoni-cycle, .cm-tag-draft, .cm-tag-craft,
+  .cm-tag-prize
+) {
+  --tag-color: var(--area-writing);
+  --tag-color-hover: var(--area-writing);
+  --tag-background: color-mix(in srgb, var(--area-writing) 14%, transparent);
+  --tag-background-hover: color-mix(in srgb, var(--area-writing) 24%, transparent);
+  color: var(--area-writing);
+  background-color: color-mix(in srgb, var(--area-writing) 14%, transparent);
+}
+
+/* MAF side */
+a.tag:is(
+  [href="#maf"], [href="#accounting"], [href="#nbaa"], [href="#finance"], [href="#iaa"],
+  [href="#study"], [href="#module"], [href="#behavioural-finance"], [href^="#maf/"]
+),
+.cm-hashtag:is(
+  .cm-tag-maf, .cm-tag-accounting, .cm-tag-nbaa, .cm-tag-finance, .cm-tag-iaa, .cm-tag-module
+) {
+  --tag-color: var(--area-maf);
+  --tag-color-hover: var(--area-maf);
+  --tag-background: color-mix(in srgb, var(--area-maf) 14%, transparent);
+  --tag-background-hover: color-mix(in srgb, var(--area-maf) 24%, transparent);
+  color: var(--area-maf);
+  background-color: color-mix(in srgb, var(--area-maf) 14%, transparent);
+}
+
+/* ---------- 3. Whole notes: cssclasses: [fiction] or [maf] ---------- */
+
+.fiction { --note-area: var(--area-writing); }
+.maf     { --note-area: var(--area-maf); }
+
+:is(.fiction, .maf) .inline-title {
+  color: var(--note-area);
+  border-bottom: 3px solid var(--note-area);
+  padding-bottom: 0.2em;
+}
+:is(.fiction, .maf) :is(.markdown-preview-view h1, .HyperMD-header-1),
+:is(.fiction, .maf).markdown-preview-view h1 {
+  color: var(--note-area);
+}
+:is(.fiction, .maf) :is(.markdown-preview-view blockquote, .HyperMD-quote) {
+  border-left-color: var(--note-area);
+}
