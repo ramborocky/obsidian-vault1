@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kumbukumbu Short</title>
+<style>
+  :root { --bg:#1C1140; --panel:#2B1B5A; --text:#FFF3E0; --gold:#FFC20E; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.4 "Segoe UI",Arial,sans-serif;
+         display:flex; flex-direction:column; align-items:center; gap:12px; padding:16px; }
+  canvas { height:min(78vh, 160vw); aspect-ratio:9/16; max-width:100%; border-radius:12px; background:#000;
+           box-shadow:0 8px 30px rgba(0,0,0,.4); }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center; max-width:680px; }
+  button { background:var(--gold); color:#1A1026; border:0; border-radius:8px; padding:9px 14px; font-weight:700; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  input[type=range] { width:min(520px, 90vw); }
+  input[type=text] { background:var(--panel); color:var(--text); border:1px solid #4a3a80; border-radius:8px; padding:8px 10px; }
+  #status { min-height:1.4em; color:#e6dcf5; text-align:center; max-width:640px; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<input id="seek" type="range" min="0" max="60" step="0.05" value="0">
+<div class="bar">
+  <button id="play">▶ Cheza</button>
+  <button id="rec">⏺ Rekodi &amp; pakua video</button>
+  <label><input id="music" type="checkbox" checked> Muziki (ngoma)</label>
+  <label>Channel: <input id="handle" type="text" value="@HesabuRahisi" size="15"></label>
+</div>
+<div id="status">Video ya sekunde 60, 1080×1920, na ngoma ndogo ya nyuma. Kurekodi: acha tab hii wazi hadi imalize.</div>
+
+<script>
+const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+const W = 1080, H = 1920;
+// Kanga / kitenge palette
+const K = { indigo:'#2B1B5A', deep:'#1C1140', magenta:'#D6246E', orange:'#F26B1D', sun:'#FFC20E', teal:'#12A5A0',
+            cream:'#FFF3E0', ink:'#1A1026', white:'#FFFFFF', skin:'#8A5332', feat:'#2B140B', red:'#E03C31', green:'#1E9E5A' };
+const FONT = '"Segoe UI", Arial, sans-serif';
+
+// ---------- helpers ----------
+const clamp = (v, a=0, b=1) => Math.max(a, Math.min(b, v));
+const ease = t => 1 - Math.pow(1 - clamp(t), 3);
+const back = t => { t = clamp(t); const c = 1.70158; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
+const p = (t, a, b) => ease((t - a) / (b - a));
+const fmt = n => Math.round(n).toLocaleString('en-US');
+const rand = i => { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); };
+
+function wrap(s, maxW) {
+  const out = [];
+  for (const para of s.split('\n')) {
+    let line = '';
+    for (const w of para.split(' ')) {
+      const test = line ? line + ' ' + w : w;
+      if (ctx.measureText(test).width > maxW && line) { out.push(line); line = w; } else line = test;
+    }
+    out.push(line);
+  }
+  return out;
+}
+function txt(s, x, y, o = {}) {
+  let { size=80, color=K.ink, align='center', weight='800', alpha=1, maxW=880, lh=1.18, dy=0, scale=1, stroke=null } = o;
+  if (alpha <= 0) return;
+  ctx.save();
+  ctx.globalAlpha *= clamp(alpha);
+  ctx.translate(x, y + dy); ctx.scale(scale, scale);
+  ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  ctx.font = `${weight} ${size}px ${FONT}`;
+  // shrink so the longest single word still fits the box
+  const widest = Math.max(...s.split(/\s+/).map(w => ctx.measureText(w).width));
+  if (widest > maxW) { size *= maxW / widest; ctx.font = `${weight} ${size}px ${FONT}`; }
+  const lines = wrap(s, maxW), off = (lines.length - 1) * size * lh / 2;
+  lines.forEach((l, i) => {
+    if (stroke) { ctx.lineWidth = size * 0.18; ctx.strokeStyle = stroke; ctx.strokeText(l, 0, -off + i * size * lh); }
+    ctx.fillText(l, 0, -off + i * size * lh);
+  });
+  ctx.restore();
+}
+// word-by-word kinetic caption; `hi` lists UPPERCASE words to colour
+function kin(s, x, y, t, o = {}) {
+  let { size=90, per=0.12, color=K.white, hi=[], hiColor=K.sun, maxW=880, lh=1.15, stroke=K.ink, weight='900' } = o;
+  if (t <= 0) return;
+  ctx.save();
+  ctx.font = `${weight} ${size}px ${FONT}`;
+  const words = s.split(' ');
+  const widest = Math.max(...words.map(w => ctx.measureText(w).width));
+  if (widest > maxW) { size *= maxW / widest; ctx.font = `${weight} ${size}px ${FONT}`; }
+  const space = ctx.measureText(' ').width, lines = [[]];
+  let lw = 0;
+  words.forEach((w, i) => {
+    const ww = ctx.measureText(w).width;
+    if (lw + ww > maxW && lines.at(-1).length) { lines.push([]); lw = 0; }
+    lines.at(-1).push({ w, ww, i }); lw += ww + space;
+  });
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  lines.forEach((ln, li) => {
+    const lineW = ln.reduce((a, q) => a + q.ww, 0) + space * (ln.length - 1);
+    let cx = x - lineW / 2;
+    const cy = y + (li - (lines.length - 1) / 2) * size * lh;
+    ln.forEach(q => {
+      const lt = t - q.i * per;
+      if (lt > 0) {
+        const isHi = hi.includes(q.w.replace(/[^\p{L}\d]/gu, '').toUpperCase());
+        ctx.save(); ctx.translate(cx + q.ww / 2, cy); ctx.scale(back(lt / .25), back(lt / .25));
+        if (stroke) { ctx.lineWidth = size * 0.18; ctx.strokeStyle = stroke; ctx.strokeText(q.w, 0, 0); }
+        ctx.fillStyle = isHi ? hiColor : color; ctx.fillText(q.w, 0, 0);
+        ctx.restore();
+      }
+      cx += q.ww + space;
+    });
+  });
+  ctx.restore();
+}
+function rr(x, y, w, h, r, fill, stroke, lw = 6) {
+  ctx.beginPath(); ctx.roundRect(x, y, w, h, r);
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); }
+}
+function circle(x, y, r, fill) { ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fillStyle = fill; ctx.fill(); }
+function diamond(x, y, r, fill) { ctx.beginPath(); ctx.moveTo(x, y - r); ctx.lineTo(x + r, y); ctx.lineTo(x, y + r); ctx.lineTo(x - r, y); ctx.fillStyle = fill; ctx.fill(); }
+function withAlpha(a, fn) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); fn(); ctx.restore(); }
+function at(x, y, s, fn) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); fn(); ctx.restore(); }
+function shake(lt, hit) { const d = lt - hit; if (d < 0 || d > .5) return; const a = (1 - d / .5) * 24; ctx.translate(Math.sin(d * 90) * a, Math.cos(d * 77) * a); }
+
+// ---------- kanga backgrounds ----------
+function bg(base, dot, t) {
+  ctx.fillStyle = base; ctx.fillRect(-60, -60, W + 120, H + 120);
+  withAlpha(.12, () => {
+    const off = (t * 20) % 120;
+    for (let y = -120 + off; y < H + 120; y += 120)
+      for (let x = 0; x < W + 120; x += 120) diamond(x + ((y - off) / 120 % 2 ? 60 : 0), y, 18, dot);
+  });
+}
+// pindo: the patterned border of a kanga, scrolling slowly
+function border(t) {
+  const bw = 44, step = 66, off = (t * 40) % step, cols = [K.sun, K.teal, K.magenta, K.orange];
+  ctx.fillStyle = K.ink;
+  ctx.fillRect(0, 0, W, bw); ctx.fillRect(0, H - bw, W, bw); ctx.fillRect(0, 0, bw, H); ctx.fillRect(W - bw, 0, bw, H);
+  let i = 0;
+  for (let x = -step + off; x < W + step; x += step, i++) {
+    ctx.fillStyle = cols[i % 4];
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + step, 0); ctx.lineTo(x + step / 2, bw); ctx.fill();
+    ctx.fillStyle = cols[(i + 2) % 4];
+    ctx.beginPath(); ctx.moveTo(x, H); ctx.lineTo(x + step, H); ctx.lineTo(x + step / 2, H - bw); ctx.fill();
+  }
+  i = 0;
+  for (let y = -step + off; y < H + step; y += step, i++) {
+    ctx.fillStyle = cols[(i + 1) % 4];
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(0, y + step); ctx.lineTo(bw, y + step / 2); ctx.fill();
+    ctx.fillStyle = cols[(i + 3) % 4];
+    ctx.beginPath(); ctx.moveTo(W, y); ctx.lineTo(W, y + step); ctx.lineTo(W - bw, y + step / 2); ctx.fill();
+  }
+  ctx.strokeStyle = K.sun; ctx.lineWidth = 5; ctx.strokeRect(bw + 8, bw + 8, W - 2 * bw - 16, H - 2 * bw - 16);
+}
+
+// ---------- characters & icons (drawn around 0,0) ----------
+function mamaAsha(mood = 'neutral', t = 0) {
+  ctx.translate(0, Math.sin(t * 3) * 5);
+  // kitenge dress
+  ctx.beginPath(); ctx.moveTo(-95, 40); ctx.lineTo(95, 40); ctx.lineTo(170, 310); ctx.quadraticCurveTo(0, 345, -170, 310); ctx.closePath();
+  ctx.fillStyle = K.magenta; ctx.fill();
+  ctx.save(); ctx.clip();
+  for (let y = 70, r = 0; y < 340; y += 52, r++) for (let x = -175; x < 190; x += 56) diamond(x + (r % 2) * 28, y, 15, K.sun);
+  ctx.strokeStyle = K.teal; ctx.lineWidth = 12;
+  for (let y = 95; y < 340; y += 104) { ctx.beginPath(); ctx.moveTo(-180, y); ctx.lineTo(180, y); ctx.stroke(); }
+  ctx.restore();
+  rr(-30, -10, 60, 62, 22, K.skin);                       // neck
+  circle(0, -72, 84, K.skin);                             // head
+  // gele (headwrap)
+  ctx.fillStyle = K.orange;
+  ctx.beginPath(); ctx.ellipse(-55, -178, 78, 58, -0.4, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(0, -142, 118, 62, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(78, -196, 46, 36, 0.5, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = K.sun; ctx.lineWidth = 10;
+  ctx.beginPath(); ctx.ellipse(0, -132, 104, 40, 0, Math.PI * 1.05, Math.PI * 1.95); ctx.stroke();
+  for (let i = -2; i <= 2; i++) circle(i * 38, -158 - Math.abs(i) * 4, 7, K.teal);
+  circle(-84, -50, 13, K.sun); circle(84, -50, 13, K.sun); // earrings
+  // face
+  const blink = (t % 3.2) > 3.05;
+  for (const ex of [-30, 30]) {
+    if (mood === 'happy' || blink) {
+      ctx.strokeStyle = K.feat; ctx.lineWidth = 7; ctx.lineCap = 'round';
+      ctx.beginPath(); blink && mood !== 'happy' ? (ctx.moveTo(ex - 13, -78), ctx.lineTo(ex + 13, -78)) : ctx.arc(ex, -72, 14, Math.PI * 1.15, Math.PI * 1.85); ctx.stroke();
+    } else { circle(ex, -78, 15, K.white); circle(ex, -76, 8, K.feat); }
+  }
+  ctx.strokeStyle = K.feat; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.beginPath();
+  if (mood === 'happy') ctx.arc(0, -52, 30, Math.PI * .15, Math.PI * .85);
+  else if (mood === 'sad') ctx.arc(0, -10, 26, Math.PI * 1.25, Math.PI * 1.75);
+  else { ctx.moveTo(-20, -34); ctx.lineTo(20, -34); }
+  ctx.stroke();
+  if (mood === 'happy') withAlpha(.35, () => { circle(-52, -45, 16, K.magenta); circle(52, -45, 16, K.magenta); });
+}
+function pot(t) {
+  ctx.lineCap = 'round'; ctx.strokeStyle = K.white; ctx.lineWidth = 10;
+  for (let i = -1; i <= 1; i++) {
+    ctx.beginPath();
+    for (let k = 0; k <= 20; k++) { const yy = -90 - k * 5, xx = i * 45 + Math.sin(k / 3 + t * 4 + i) * 10; k ? ctx.lineTo(xx, yy) : ctx.moveTo(xx, yy); }
+    withAlpha(.7, () => ctx.stroke());
+  }
+  rr(-130, -60, 260, 140, 30, K.orange);
+  rr(-150, -75, 300, 30, 15, K.teal);
+  rr(-180, -30, 50, 24, 12, K.teal); rr(130, -30, 50, 24, 12, K.teal);
+  for (let i = -2; i <= 2; i++) diamond(i * 48, 10, 12, K.sun);
+}
+function bank(col = K.white) {
+  ctx.fillStyle = col;
+  ctx.beginPath(); ctx.moveTo(-170, -50); ctx.lineTo(0, -140); ctx.lineTo(170, -50); ctx.closePath(); ctx.fill();
+  for (let i = 0; i < 4; i++) rr(-140 + i * 85, -35, 45, 140, 6, col);
+  rr(-180, 110, 360, 30, 6, col);
+  circle(0, -82, 22, K.sun);
+}
+function book() {
+  rr(-140, -170, 280, 340, 18, K.cream, K.ink, 8);
+  rr(-140, -170, 44, 340, 10, K.magenta);
+  for (let i = 0; i < 7; i++) diamond(-118, -140 + i * 46, 10, K.sun);
+  ctx.strokeStyle = '#D8C7B0'; ctx.lineWidth = 6;
+  for (let i = 0; i < 6; i++) { ctx.beginPath(); ctx.moveTo(-70, -110 + i * 48); ctx.lineTo(110, -110 + i * 48); ctx.stroke(); }
+}
+function coin(x, y, r) {
+  circle(x, y, r, K.sun); ctx.strokeStyle = K.orange; ctx.lineWidth = r * .14;
+  ctx.beginPath(); ctx.arc(x, y, r * .72, 0, Math.PI * 2); ctx.stroke();
+  txt('TSh', x, y + 2, { size: r * .55, color: K.orange, weight: '900' });
+}
+function stamp(s, x, y, lt, col) {
+  if (lt < 0) return;
+  const k = clamp(lt / .22);
+  withAlpha(k, () => at(x, y, 3 - 2 * ease(k), () => {
+    ctx.rotate(-0.16);
+    ctx.font = `900 100px ${FONT}`;
+    const w = Math.min(ctx.measureText(s).width + 90, 860);
+    rr(-w / 2, -88, w, 176, 22, 'rgba(255,255,255,.94)', col, 14);
+    txt(s, 0, 4, { size: 100, color: col, weight: '900', maxW: w - 70 });
+  }));
+}
+function bubble(s, x, y, w, a, fill, color, tail) {
+  withAlpha(a, () => {
+    const h = 190, yy = y + (1 - a) * 40, tx = tail === 'left' ? x + 90 : x + w - 90;
+    rr(x, yy, w, h, 40, fill);
+    ctx.fillStyle = fill; ctx.beginPath();
+    ctx.moveTo(tx - 30, yy + h - 2); ctx.lineTo(tx + 30, yy + h - 2); ctx.lineTo(tx + (tail === 'left' ? -40 : 40), yy + h + 60); ctx.fill();
+    txt(s, x + w / 2, yy + h / 2, { size: 56, color, maxW: w - 80, weight: '800' });
+  });
+}
+function confetti(lt) {
+  const cols = [K.sun, K.magenta, K.teal, K.orange, K.white];
+  for (let i = 0; i < 70; i++) {
+    const x = rand(i) * W, y = -50 + (lt * (500 + rand(i + 9) * 500)) - rand(i + 3) * 400;
+    if (y < -40 || y > H) continue;
+    ctx.save(); ctx.translate(x + Math.sin(lt * 3 + i) * 30, y); ctx.rotate(lt * 4 + i);
+    ctx.fillStyle = cols[i % 5]; ctx.fillRect(-12, -7, 24, 14); ctx.restore();
+  }
+}
+
+// ---------- scenes (t = seconds since scene start) ----------
+function hook(t) {
+  bg(K.indigo, K.sun, t); shake(t, 1.2);
+  withAlpha(p(t, 0, .2), () => at(W / 2, 520, 1.0, () => mamaAsha(t > 1.2 ? 'sad' : 'neutral', t)));
+  kin('BENKI ILIMKATALIA MAMA ASHA MKOPO', W / 2, 1190, t + .3, { size: 108, per: .09, hi: ['MAMA', 'ASHA'] });
+  stamp('IMEKATALIWA', W / 2, 1560, t - 1.2, K.red);
+}
+function sababu(t) {
+  bg(K.magenta, K.sun, t);
+  const strike = (y, w, a, b) => { const k = p(t, a, b); if (k <= 0) return;
+    ctx.strokeStyle = K.sun; ctx.lineWidth = 16; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(W / 2 - w / 2, y); ctx.lineTo(W / 2 - w / 2 + w * k, y); ctx.stroke(); };
+  kin('Si mtaji.', W / 2, 520, t, { size: 110 }); strike(525, 520, .5, .8);
+  kin('Si dhamana.', W / 2, 740, t - .9, { size: 110 }); strike(745, 680, 1.4, 1.7);
+  kin('Ilikuwa KITU KIMOJA...', W / 2, 1060, t - 1.9, { size: 104, hi: ['KITU', 'KIMOJA'] });
+  withAlpha(p(t, 2.4, 2.7), () => {
+    const by = 1380 + Math.abs(Math.sin(t * 6)) * 30;
+    ctx.fillStyle = K.sun; ctx.beginPath(); ctx.moveTo(W / 2 - 80, by); ctx.lineTo(W / 2 + 80, by); ctx.lineTo(W / 2, by + 110); ctx.fill();
+    txt('angalia hadi mwisho', W / 2, 1600, { size: 54, color: K.white, weight: '700' });
+  });
+}
+function story(t) {
+  bg(K.cream, K.orange, t);
+  kin('Mama Asha anauza chakula KILA SIKU', W / 2, 300, t, { size: 82, per: .13, color: K.indigo, stroke: null, hi: ['KILA', 'SIKU'], hiColor: K.magenta });
+  at(380, 900, 1.25, () => mamaAsha(t > 3 ? 'sad' : 'happy', t));
+  withAlpha(p(t, .4, .8), () => at(770, 1180, 1, () => pot(t)));
+  for (let i = 0; i < 8; i++) {                          // money flying away
+    const lt = t - 2.0 - i * .18; if (lt < 0) continue;
+    coin(770 + Math.sin(i * 2.1) * 160 * lt, 1080 - lt * 650, 46);
+  }
+  kin('Pesa inaingia... na INAPOTEA', W / 2, 1560, t - 2.0, { size: 86, color: K.indigo, stroke: null, hi: ['INAPOTEA'], hiColor: K.red });
+}
+function benki(t) {
+  bg(K.teal, K.white, t); shake(t, 3.3);
+  withAlpha(p(t, 0, .3), () => at(W / 2, 300, 1, () => bank(K.white)));
+  bubble('Unauza kiasi gani kwa mwezi?', 110, 470, 860, p(t, .3, .7), K.indigo, K.white, 'left');
+  withAlpha(p(t, 1.4, 1.8), () => at(250, 1130, .75, () => mamaAsha('sad', t)));
+  bubble('Aah... sijui kwa uhakika', 400, 860, 590, p(t, 1.6, 2.0), K.white, K.ink, 'right');
+  withAlpha(p(t, 3.3, 3.45), () => at(W / 2, 1530, back((t - 3.3) / .3), () => {
+    rr(-440, -160, 880, 320, 30, K.sun, K.ink, 10);
+    txt('HAKUNA KUMBUKUMBU\n= HAKUNA MKOPO', 0, 0, { size: 78, color: K.ink, weight: '900', maxW: 820 });
+  }));
+}
+function rehook(t) {
+  bg(K.deep, K.magenta, t);
+  kin('Lakini alianza kufanya KITU KIMOJA kidogo...', W / 2, 760, t, { size: 104, per: .1, hi: ['KITU', 'KIMOJA'] });
+  withAlpha(p(t, 1.0, 1.3), () => at(W / 2, 1350, back((t - 1.0) / .4) * .9, book));
+}
+function daftari(t) {
+  bg(K.cream, K.magenta, t);
+  kin('DAFTARI LA KUMBUKUMBU', W / 2, 240, t, { size: 84, color: K.magenta, stroke: null, per: .1 });
+  withAlpha(p(t, .5, .9), () => {
+    rr(90, 360, 900, 760, 30, K.white, K.indigo, 8);
+    rr(90, 360, 900, 120, [30, 30, 0, 0], K.indigo);
+    [['Tarehe', 190], ['Mauzo', 410], ['Matumizi', 645], ['Faida', 875]].forEach(([h, x]) => txt(h, x, 420, { size: 46, color: K.sun, weight: '800', maxW: 210 }));
+    [['1/11', 45000, 30000], ['2/11', 50000, 32000], ['3/11', 40000, 28000]].forEach((r, i) => {
+      const ra = p(t, 1.1 + i * .9, 1.4 + i * .9), y = 570 + i * 160;
+      ctx.strokeStyle = '#EADFCF'; ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.moveTo(120, y + 80); ctx.lineTo(960, y + 80); ctx.stroke();
+      withAlpha(ra, () => {
+        txt(r[0], 190, y, { size: 48, color: '#7A6E80', weight: '700' });
+        txt(fmt(r[1]), 410, y, { size: 48, color: K.ink });
+        txt(fmt(r[2]), 645, y, { size: 48, color: K.magenta });
+      });
+      txt(fmt(r[1] - r[2]), 875, y, { size: 50, color: K.green, weight: '900', scale: back((t - 1.5 - i * .9) / .3), alpha: p(t, 1.5 + i * .9, 1.6 + i * .9) });
+    });
+    txt('...kila siku', W / 2, 1060, { size: 44, color: '#7A6E80', alpha: p(t, 4.0, 4.4), weight: '600' });
+  });
+  withAlpha(p(t, 4.8, 5.1), () => at(W / 2, 1320, back((t - 4.8) / .35), () => {
+    rr(-430, -110, 860, 220, 40, K.orange);
+    txt('MAUZO − MATUMIZI = FAIDA', 0, 4, { size: 66, color: K.white, weight: '900', maxW: 780 });
+  }));
+  kin('Dakika 5 tu kila jioni', W / 2, 1600, t - 6.4, { size: 80, color: K.teal, stroke: null, hi: ['5'], hiColor: K.magenta });
+}
+function mwezi(t) {
+  bg(K.indigo, K.teal, t);
+  kin('Mwisho wa mwezi:', W / 2, 300, t, { size: 96 });
+  [['Mauzo', 1350000, K.white], ['Matumizi', 900000, '#FF9BC2'], ['Faida', 450000, K.sun]].forEach(([label, v, col], i) => {
+    const a = p(t, .7 + i * 1.1, 1.0 + i * 1.1), y = 600 + i * 300, n = v * ease((t - .7 - i * 1.1) / 1.3);
+    withAlpha(a, () => {
+      rr(110, y - 120 + (1 - a) * 40, 860, 240, 36, K.deep, i === 2 ? K.sun : K.teal, i === 2 ? 10 : 4);
+      txt(label, 160, y - 45 + (1 - a) * 40, { size: 52, color: '#C9BCEB', align: 'left', weight: '700' });
+      txt('TZS ' + fmt(n), 160, y + 38 + (1 - a) * 40, { size: 86, color: col, align: 'left', weight: '900' });
+    });
+  });
+  kin('Sasa ANAJUA ukweli', W / 2, 1560, t - 4.6, { size: 84, hi: ['ANAJUA'] });
+  txt('(mfano: siku 30)', W / 2, 1700, { size: 40, color: '#A99BD6', alpha: p(t, 5, 5.4), weight: '600' });
+}
+function siri(t) {
+  bg(K.cream, K.teal, t);
+  withAlpha(p(t, 0, .2), () => at(W / 2, 270, back(t / .4), () => {
+    rr(-260, -90, 520, 180, 90, K.magenta);
+    txt('SIRI 3', 0, 4, { size: 104, color: K.sun, weight: '900' });
+  }));
+  const steps = ['Andika mauzo na matumizi KILA SIKU', 'Tenganisha pesa ya biashara na ya nyumbani', 'Pitisha pesa benki au kwenye simu — ni ushahidi'];
+  const cols = [K.orange, K.teal, K.magenta];
+  steps.forEach((s, i) => {
+    const a = p(t, .8 + i * 2.2, 1.2 + i * 2.2), y = 640 + i * 380, dx = (1 - a) * -120;
+    withAlpha(a, () => {
+      rr(100 + dx, y - 150, 880, 300, 36, K.white, cols[i], 8);
+      circle(205 + dx, y, 72, cols[i]);
+      txt(String(i + 1), 205 + dx, y + 4, { size: 88, color: K.white, weight: '900' });
+      txt(s, 625 + dx, y, { size: 54, color: K.ink, maxW: 600, weight: '800' });
+    });
+  });
+}
+function kubaliwa(t) {
+  bg(K.teal, K.sun, t); shake(t, 1.5);
+  kin('MIEZI 6 BAADAYE...', W / 2, 280, t, { size: 96, hi: ['6'] });
+  at(W / 2, 880, 1.25, () => mamaAsha(t > 1.5 ? 'happy' : 'neutral', t));
+  stamp('IMEKUBALIWA', W / 2, 1450, t - 1.5, K.green);
+  if (t > 1.5) confetti(t - 1.5);
+  txt('Hadithi ya mfano', W / 2, 1700, { size: 38, color: K.white, alpha: p(t, 2, 2.4), weight: '600' });
+}
+function ngazi(t) {
+  bg(K.deep, K.sun, t);
+  kin('Biashara ikikua, ngazi inaendelea:', W / 2, 300, t, { size: 76, per: .08 });
+  ['Daftari', 'Taarifa za benki', 'Hesabu rasmi', 'Hesabu zilizokaguliwa', 'MKOPO MKUBWA'].forEach((s, i) => {
+    const a = p(t, .6 + i * .55, .9 + i * .55), x = 100 + i * 65, y = 1580 - i * 215, last = i === 4;
+    const pulse = last ? 1 + Math.sin(t * 6) * .035 * p(t, 3.4, 3.7) : 1;
+    const fills = [K.green, K.teal, K.orange, K.magenta, K.sun];
+    withAlpha(a, () => at(x + 310, y + (1 - a) * 50, pulse, () => {
+      rr(-310, -90, 620, 180, 28, fills[i], last ? K.white : null, 8);
+      txt(s, 0, 0, { size: last ? 64 : 54, color: last ? K.ink : K.white, weight: last ? '900' : '800', maxW: 560 });
+    }));
+  });
+}
+function cta(t) {
+  bg(K.indigo, K.magenta, t);
+  kin('Wewe ndiye MAMA ASHA anayefuata?', W / 2, 460, t, { size: 104, per: .1, hi: ['MAMA', 'ASHA'] });
+  const pulse = 1 + Math.sin(t * 6) * .045 * p(t, 1.8, 2.2);
+  withAlpha(p(t, 1.4, 1.6), () => at(W / 2, 960, back((t - 1.4) / .4) * pulse, () => {
+    rr(-340, -100, 680, 200, 100, K.sun);
+    txt('FUATILIA ➜', 0, 4, { size: 84, color: K.ink, weight: '900' });
+  }));
+  withAlpha(p(t, 2.6, 3.0), () => {
+    rr(120, 1180 + (1 - p(t, 2.6, 3.0)) * 40, 840, 230, 36, K.teal);
+    txt('TUMA video hii kwa mama ntilie unayemjua', W / 2, 1295 + (1 - p(t, 2.6, 3.0)) * 40, { size: 58, color: K.white, weight: '800', maxW: 760 });
+  });
+  txt('Kesho: daftari la siku moja', W / 2, 1570, { size: 54, color: K.sun, alpha: p(t, 4.0, 4.4), weight: '700' });
+}
+
+// [duration, scene, beat-hit times within scene]
+const scenes = [[3.5, hook, [1.2]], [3.5, sababu, []], [5, story, []], [5.5, benki, [3.3]], [2.5, rehook, []],
+                [9, daftari, []], [7, mwezi, []], [8, siri, []], [4.5, kubaliwa, [1.5]], [4.5, ngazi, []], [7, cta, []]];
+const TOTAL = scenes.reduce((a, [d]) => a + d, 0);
+const starts = []; scenes.reduce((a, [d]) => (starts.push(a), a + d), 0);
+const hits = scenes.flatMap(([, , h], i) => h.map(x => starts[i] + x));
+
+function frame(time) {
+  const i = Math.max(0, starts.findLastIndex(s => time >= s));
+  const [d, fn] = scenes[i], lt = Math.min(time - starts[i], d);
+  ctx.save();
+  // zoom punch on every cut
+  const z = 1 + .07 * (1 - ease(lt / .45));
+  ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2);
+  fn(lt);
+  ctx.restore();
+  // kanga-stripe wipe reveal
+  if (i > 0 && lt < .4) {
+    const k = ease(lt / .4);
+    [[K.teal, 2], [K.sun, 1], [K.magenta, 0]].forEach(([c, j]) => {
+      const e = k * (W + 900) - j * 150;
+      ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(e, 0); ctx.lineTo(W + 2000, 0); ctx.lineTo(W + 2000, H); ctx.lineTo(e - 500, H); ctx.fill();
+    });
+  }
+  border(time);
+  ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.fillRect(60, 62, W - 120, 12);
+  ctx.fillStyle = K.sun; ctx.fillRect(60, 62, (W - 120) * clamp(time / TOTAL), 12);
+  const handle = document.getElementById('handle').value.trim();
+  if (handle) {
+    ctx.save(); ctx.font = `700 40px ${FONT}`; const w = ctx.measureText(handle).width + 60; ctx.restore();
+    rr(W / 2 - w / 2, H - 160, w, 76, 38, 'rgba(26,16,38,.55)');
+    txt(handle, W / 2, H - 120, { size: 40, color: K.white, weight: '700' });
+  }
+}
+
+// ---------- music: a small synthesized ngoma beat ----------
+let actx = null, recDest = null, master = null, noiseBuf = null;
+function ensureAudio() {
+  if (actx) return;
+  actx = new AudioContext(); recDest = actx.createMediaStreamDestination();
+  noiseBuf = actx.createBuffer(1, actx.sampleRate, actx.sampleRate);
+  const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+}
+function env(g, when, peak, decay) { g.gain.setValueAtTime(peak, when); g.gain.exponentialRampToValueAtTime(.0001, when + decay); }
+function tone(when, f0, f1, dur, peak) {
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.frequency.setValueAtTime(f0, when); o.frequency.exponentialRampToValueAtTime(f1, when + dur * .5);
+  env(g, when, peak, dur); o.connect(g).connect(master); o.start(when); o.stop(when + dur);
+}
+function noise(when, type, f, dur, peak, sweepTo) {
+  const s = actx.createBufferSource(), fl = actx.createBiquadFilter(), g = actx.createGain();
+  s.buffer = noiseBuf; fl.type = type; fl.frequency.setValueAtTime(f, when);
+  if (sweepTo) fl.frequency.exponentialRampToValueAtTime(sweepTo, when + dur);
+  env(g, when, peak, dur); s.connect(fl).connect(g).connect(master); s.start(when); s.stop(when + dur);
+}
+function startMusic(from) {
+  ensureAudio(); actx.resume(); stopMusic();
+  master = actx.createGain(); master.gain.value = document.getElementById('music').checked ? .45 : 0;
+  master.connect(actx.destination); master.connect(recDest);
+  const zero = actx.currentTime + .05 - from, beat = 60 / 112;
+  for (let n = 0; n * beat / 2 < TOTAL; n++) {             // 8th-note grid
+    const tt = n * beat / 2; if (tt < from) continue;
+    const w = zero + tt, step = n % 8;
+    if ([0, 3, 4].includes(step)) tone(w, 140, 45, .32, .9);            // kick
+    noise(w, 'highpass', 7000, .05, step % 2 ? .07 : .14);               // shaker
+    if ([2, 5, 7].includes(step)) tone(w, step === 5 ? 230 : 320, 190, .18, .35); // conga
+  }
+  starts.slice(1).forEach(s => s > from + .1 && noise(zero + s - .2, 'bandpass', 500, .35, .25, 5000)); // whoosh
+  hits.forEach(s => s >= from && (tone(zero + s, 90, 35, .5, 1), noise(zero + s, 'lowpass', 900, .25, .5))); // stamp thud
+}
+function stopMusic() { if (master) { master.disconnect(); master = null; } }
+
+// ---------- playback + recording ----------
+const seek = document.getElementById('seek'), playBtn = document.getElementById('play'),
+      recBtn = document.getElementById('rec'), status = document.getElementById('status');
+seek.max = TOTAL;
+let playing = false, startAt = 0, cur = 0, onEnd = null;
+
+function loop(now) {
+  if (playing) {
+    cur = (now - startAt) / 1000;
+    if (cur >= TOTAL) { cur = TOTAL; pause(); onEnd && onEnd(); onEnd = null; }
+    seek.value = cur;
+  }
+  frame(cur);
+  requestAnimationFrame(loop);
+}
+function play(from = cur) {
+  if (from >= TOTAL) from = 0;
+  startAt = performance.now() - from * 1000; playing = true; playBtn.textContent = '⏸ Simamisha';
+  startMusic(from);
+}
+function pause() { playing = false; playBtn.textContent = '▶ Cheza'; stopMusic(); }
+playBtn.onclick = () => playing ? pause() : play();
+seek.oninput = () => { pause(); cur = +seek.value; };
+
+recBtn.onclick = () => {
+  ensureAudio();
+  const types = ['video/mp4;codecs=avc1,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm'];
+  const mime = types.find(t => window.MediaRecorder && MediaRecorder.isTypeSupported(t));
+  if (!mime) { status.textContent = 'Browser hii haiwezi kurekodi. Tumia Chrome au Edge.'; return; }
+  const stream = new MediaStream([...cv.captureStream(30).getVideoTracks(), ...recDest.stream.getAudioTracks()]);
+  const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8_000_000 });
+  const chunks = [];
+  rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+  rec.onstop = () => {
+    const ext = mime.includes('mp4') ? 'mp4' : 'webm', a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(chunks, { type: mime }));
+    a.download = 'kumbukumbu-short.' + ext; a.click();
+    status.textContent = `Imekamilika: kumbukumbu-short.${ext} imepakuliwa. Iweke kwenye CapCut, ongeza sauti yako, punguza muziki.`;
+    recBtn.disabled = false; playBtn.disabled = false;
+  };
+  recBtn.disabled = true; playBtn.disabled = true;
+  status.textContent = 'Inarekodi... usibadilishe tab hadi sekunde 60 ziishe.';
+  cur = 0; frame(0); rec.start(250); play(0);
+  onEnd = () => setTimeout(() => rec.stop(), 300);
+};
+
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
