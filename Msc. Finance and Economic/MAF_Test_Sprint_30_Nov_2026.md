@@ -8,6 +8,34 @@ tests-start: 2026-11-30
 >
 > [[MSc_Study_Plan|Full semester roadmap]] · [[../MAF & Life Dashboard|Life dashboard]]
 
+
+> [!abstract] 🎓 THE NOVEMBER TEST DESK
+> **START:** 30 November 2026  
+> **MISSION:** practise all five subjects before test week.  
+> **TODAY'S WIN:** solve one fresh question, mark it, fix the error.
+>
+> 🔵 Finance techniques · 🟣 Performance · 🟢 Research · 🟠 Finance management · 🟡 Reporting
+
+## 🌈 Your five subject zones
+
+| Zone | Main challenge | Jump straight in |
+|---|---|---|
+| 🔵 **CALCULATE** | Money, risk and probability | [[#🔵 1 Finance techniques|Open blue zone →]] |
+| 🟣 **DECIDE** | Costs and business choices | [[#🟣 2 Performance Management|Open purple zone →]] |
+| 🟢 **INTERPRET** | Correlation and evidence | [[#🟢 3 Research Methodology|Open green zone →]] |
+| 🟠 **EVALUATE** | Cash, restructuring and acquisitions | [[#🟠 4 Financial Management|Open orange zone →]] |
+| 🟡 **REPORT** | Concepts, adjustments and statements | [[#🟡 5 Financial Reporting|Open yellow zone →]] |
+
+> [!todo] ⚡ Pick only three priorities today
+> - [ ] **One numerical problem:** ____________________
+> - [ ] **One explanation or case:** ____________________
+> - [ ] **One previous mistake to repair:** ____________________
+
+> [!success] 🟢 What counts as progress
+> A correct answer **with workings and an explanation**. Record your score in the readiness tracker. A topic becomes green after two fresh sets at 80%+, your personal target.
+
+---
+
 ## 🔴 What controls this revision plan
 
 > [!important] Five papers start on Monday 30 November 2026
@@ -57,19 +85,23 @@ The exercises below are original practice questions. Use the timetable to choose
 
 **Q1 — cash timing.** Find the present value of TZS 5,000,000 payable in three years at 12% annually. Then find the PV of TZS 1,000,000 received at each year-end for three years at the same rate.
 
-**Answer:** lump sum = 5,000,000/(1.12³) ≈ **TZS 3,558,901**. Annuity = 1,000,000[1−1.12^(-3)]/0.12 ≈ **TZS 2,401,831**. Draw the timelines before calculating.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** lump sum = 5,000,000/(1.12³) ≈ **TZS 3,558,901**. Annuity = 1,000,000[1−1.12^(-3)]/0.12 ≈ **TZS 2,401,831**. Draw the timelines before calculating.
 
 **Q2 — risk/return.** Returns are −10%, 10%, 30% with probabilities 0.2, 0.5, 0.3. Calculate expected return and standard deviation.
 
-**Answer:** E(R) = −2%+5%+9% = **12%**. Using percentage-point units, variance = 0.2(−22)²+0.5(−2)²+0.3(18)² = **196**; SD = **14 percentage points**. Equivalently, decimal variance is 0.0196 and SD 0.14. Expected return is not a guaranteed outcome.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** E(R) = −2%+5%+9% = **12%**. Using percentage-point units, variance = 0.2(−22)²+0.5(−2)²+0.3(18)² = **196**; SD = **14 percentage points**. Equivalently, decimal variance is 0.0196 and SD 0.14. Expected return is not a guaranteed outcome.
 
 **Q3 — CAPM.** Risk-free return is 8%, expected market return 14%, beta 1.2. A share's forecast return is 13%. Evaluate it using CAPM.
 
-**Answer:** required return = 8%+1.2(14%−8%) = **15.2%**. Forecast return is **2.2 percentage points below** the CAPM requirement. Under these assumptions it fails the required-return test. Explain estimation/model limitations.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** required return = 8%+1.2(14%−8%) = **15.2%**. Forecast return is **2.2 percentage points below** the CAPM requirement. Under these assumptions it fails the required-return test. Explain estimation/model limitations.
 
 **Q4 — distribution choice.** Ten independent borrowers each have a 10% probability of default. Find the probability exactly two default.
 
-**Answer:** assuming equal independent default probabilities, use binomial: C(10,2)×0.1²×0.9⁸ ≈ **19.37%**. Real borrower defaults need not be independent. Unit 2.2 names the binomial distribution.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** assuming equal independent default probabilities, use binomial: C(10,2)×0.1²×0.9⁸ ≈ **19.37%**. Real borrower defaults need not be independent. Unit 2.2 names the binomial distribution.
 
 **Q4b — total probability and Bayes.** Group A makes up 70% of borrowers and group B makes up 30%. Their respective default probabilities are 2% and 6%. Find the default probability for a randomly chosen borrower and the probability that a randomly chosen defaulter belongs to B.
 
@@ -80,6 +112,10 @@ The exercises below are original practice questions. Use the timetable to choose
 **Check:** expected return = 0.6 × 10% + 0.4 × 16% = **12.4%**. Covariance = 0.25 × 0.10 × 0.20 = 0.005. Portfolio variance = 0.6² × 0.10² + 0.4² × 0.20² + 2 × 0.6 × 0.4 × 0.005 = 0.0124. Standard deviation ≈ **11.14%**. If the correlation were +1, the same weights would give 14%.
 
 ## 🟣 2 Performance Management
+
+> [!example] 🟣 PURPLE ZONE · COSTS INTO DECISIONS
+> **Your output:** a cost model or alternatives table, followed by a recommendation.
+> **Start with:** Q5 → Q6. Always explain which costs change.
 
 The PM guide explicitly includes high-low, scattergraph, least squares/regression, reliability, learning curves, relevant costing, CVP, pricing and decisions under risk/uncertainty. Your phrase **“decision-making scenarios” is broad**: confirm which of these have been selected for this test.
 
@@ -97,15 +133,21 @@ The PM guide explicitly includes high-low, scattergraph, least squares/regressio
 
 **Q5 — high-low.** At 2,000 units, cost is TZS 7,000,000; at 5,000 units, cost is TZS 13,000,000. Estimate the cost function and cost at 4,000 units.
 
-**Answer:** variable cost = (13m−7m)/(5,000−2,000) = **TZS 2,000/unit**. Fixed cost = 7m−2,000×2,000 = **TZS 3m**. Equation **Y = 3,000,000 + 2,000X**. At 4,000 units, cost = **TZS 11m**. High-low uses the highest/lowest **activity**, not cost; it relies on two observations and a stable relationship.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** variable cost = (13m−7m)/(5,000−2,000) = **TZS 2,000/unit**. Fixed cost = 7m−2,000×2,000 = **TZS 3m**. Equation **Y = 3,000,000 + 2,000X**. At 4,000 units, cost = **TZS 11m**. High-low uses the highest/lowest **activity**, not cost; it relies on two observations and a stable relationship.
 
 **Q6 — make or buy.** You need 10,000 components. Internal variable cost is TZS 4,000 each; avoidable fixed cost TZS 5m. The supplier asks TZS 4,800 each. Unavoidable allocated overhead is TZS 8m. Assume no alternative use of capacity.
 
-**Answer:** make = 40m+5m = **45m**; buy = **48m**. Making saves **3m**. Exclude the unchanged allocated overhead from the comparison. Assess quality, reliability and capacity. If buying frees capacity producing net additional contribution above 3m, the choice can change.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** make = 40m+5m = **45m**; buy = **48m**. Making saves **3m**. Exclude the unchanged allocated overhead from the comparison. Assess quality, reliability and capacity. If buying frees capacity producing net additional contribution above 3m, the choice can change.
 
 **Further prompts:** classify ten sunk/opportunity costs; solve one limiting-factor problem; calculate one expected-value decision and explain why a risk-averse manager might choose differently. Only expand into each branch once its test inclusion is known.
 
 ## 🟢 3 Research Methodology
+
+> [!success] 🟢 GREEN ZONE · NUMBERS INTO EVIDENCE
+> **Your output:** correct correlation, contextual interpretation and a limitation.
+> **Start with:** Q7, then the software-output interpretation.
 
 Your test list specifies **correlation analysis**. The Research Methods outline (§§4–5) includes data analysis and names Excel, SPSS and Smart PLS. For a worked methods checklist, use **Quantitative Techniques §1.4**, which explicitly lists Pearson, Spearman and cautions when using correlation. The Research lecturer has still to specify the coefficients, significance tests and software tasks required for this paper.
 
@@ -124,7 +166,8 @@ If a significance calculation is taught, the conventional Pearson test uses **t 
 
 **Q7 — calculate and interpret.** X = 1,2,3,4,5; Y = 2,4,5,4,5. Calculate Pearson r and comment.
 
-**Answer:** n=5; Σx=15; Σy=20; Σx²=55; Σy²=86; Σxy=66. Numerator=30; denominator=√(50×30)=√1500. **r≈0.775**. There is a positive linear association in these five observations. It does not establish causation; the sample is small.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** n=5; Σx=15; Σy=20; Σx²=55; Σy²=86; Σxy=66. Numerator=30; denominator=√(50×30)=√1500. **r≈0.775**. There is a positive linear association in these five observations. It does not establish causation; the sample is small.
 
 **Output question:** a fictional study reports r=0.62, two-sided p≈0.0035, n=20 between study hours and scores. Explain that the observed association is positive and statistically significant at 5% under the test assumptions. Do not say “hours cause 62% of marks.” In a simple linear regression with an intercept, r²≈0.384 describes the sample proportion of outcome variation accounted for by the fitted model, not a causal percentage.
 
@@ -135,6 +178,10 @@ If a significance calculation is taught, the conventional Pearson test uses **t 
 **Excel check for Q7:** enter X and Y in A2:A6 and B2:B6. Use `=CORREL(A2:A6,B2:B6)` and make an XY scatterplot. Write one sentence on the pattern and one plausible alternative explanation. Keep a hand-calculation version for a closed-book paper.
 
 ## 🟠 4 Financial Management
+
+> [!warning] 🟠 ORANGE ZONE · CASH AND CORPORATE VALUE
+> **Your output:** a funding/cash calculation and a defensible business choice.
+> **Start with:** Q8 → Q9 → restructuring essay.
 
 The FM guide supports working-capital policies/requirements and M&A strategy, funding and valuation. **Corporate restructuring is explicitly in your test list but is not separately detailed in the guide.** Its specific breadth must come from class notes.
 
@@ -151,15 +198,21 @@ The FM guide supports working-capital policies/requirements and M&A strategy, fu
 
 **Q8 — cash cycle.** Inventories TZS 60m, receivables 80m, payables 40m; annual cost of sales 360m, all-credit sales 480m, all-credit purchases 300m. Use 360 days.
 
-**Answer:** inventory days=60/360×360=**60**; receivables=80/480×360=**60**; payables=40/300×360=**48**. Cash-conversion cycle=60+60−48=**72 days**. Cutting collection time by ten days releases approximately 480m/360×10=**TZS 13.33m**, if credit sales stay constant. Discuss customer and supplier consequences. Use purchases for payables when supplied.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** inventory days=60/360×360=**60**; receivables=80/480×360=**60**; payables=40/300×360=**48**. Cash-conversion cycle=60+60−48=**72 days**. Cutting collection time by ten days releases approximately 480m/360×10=**TZS 13.33m**, if credit sales stay constant. Discuss customer and supplier consequences. Use purchases for payables when supplied.
 
 **Q9 — acquisition value.** Buyer value TZS 500m, target standalone value 200m, synergy PV 60m. Buyer pays cash 230m; integration costs have PV 10m. Ignore tax and financing effects; all values are on a consistent basis.
 
-**Answer:** premium=230−200=**30m**; net buyer gain=60−30−10=**20m**. Combined operating value before deducting payment/integration costs=500+200+60=**760m**. Value to buyer's owners after these deductions=760−230−10=**520m**, versus original 500m. Maximum zero-gain cash price=200+60−10=**250m**. A price below this is not automatically sensible if synergy assumptions are poor.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** premium=230−200=**30m**; net buyer gain=60−30−10=**20m**. Combined operating value before deducting payment/integration costs=500+200+60=**760m**. Value to buyer's owners after these deductions=760−230−10=**520m**, versus original 500m. Maximum zero-gain cash price=200+60−10=**250m**. A price below this is not automatically sensible if synergy assumptions are poor.
 
 **Restructuring essay prompt:** a profitable company has a short-term debt crisis and a loss-making division. Compare debt rescheduling, new equity and disposal of the division. Discuss cash relief, value, control, creditors and implementation. Recommend a route using the facts rather than listing definitions.
 
 ## 🟡 5 Financial Reporting
+
+> [!attention] 🟡 YELLOW ZONE · PRINCIPLES INTO STATEMENTS
+> **Your output:** adjustment → journal entry → statement effect → explanation.
+> **Start with:** Q10, then the full-statement exercise. Confirm the standards included.
 
 Your “elements of financial statements” heading is **potentially much wider than definitions**. In the uploaded detailed syllabus, Topic 2 includes PPE, borrowing costs/grants, impairment, intangibles, leases, revenue/construction contracts, instruments, provisions, inventories and tax. Ask whether the test includes **all** of Topic 2 or just the standards taught so far.
 
@@ -174,10 +227,11 @@ Your “elements of financial statements” heading is **potentially much wider 
 
 **Q10 — adjustment drill.** Ignore tax. A machine cost TZS 12m at the start of the year, has a four-year life, nil residual and straight-line depreciation. Insurance TZS 2.4m paid on 1 October covers 12 months. Year-end is 31 December. Utilities of TZS 0.5m are unpaid and unrecorded.
 
-**Answer:** annual depreciation **3m**, machine carrying amount **9m**; insurance expense for three months **0.6m**, prepayment **1.8m**; utilities expense/accrual **0.5m**. Explain accrual allocation and show:
-- Dr depreciation expense 3m; Cr accumulated depreciation 3m.
-- If insurance payment was initially expensed: Dr prepayment 1.8m; Cr insurance expense 1.8m.
-- Dr utilities expense 0.5m; Cr accrued liabilities 0.5m.
+> [!success]- ✅ Reveal the worked answer
+> **Answer:** annual depreciation **3m**, machine carrying amount **9m**; insurance expense for three months **0.6m**, prepayment **1.8m**; utilities expense/accrual **0.5m**. Explain accrual allocation and show:
+> - Dr depreciation expense 3m; Cr accumulated depreciation 3m.
+> - If insurance payment was initially expensed: Dr prepayment 1.8m; Cr insurance expense 1.8m.
+> - Dr utilities expense 0.5m; Cr accrued liabilities 0.5m.
 
 **Full-statement practice question.** Use this small trial balance, in TZS millions:
 
@@ -198,9 +252,31 @@ Your “elements of financial statements” heading is **potentially much wider 
 
 Closing inventory is 7; depreciation 3; wages accrued 1. Ignore tax, interest, drawings and other adjustments. Prepare profit/loss and financial position.
 
-**Check figures:** cost of sales=6+20−7=**19**; profit=30−19−4−6−3=**−2**. Assets=cash10+receivables8+inventory7+equipment net9=**34**. Liabilities=payables7+loan3+wage accrual1=**11**. Closing equity=25−2=**23**. **34=11+23**. This is a practice scaffold, not a forecast of paper complexity.
+> [!success]- ✅ Check your financial statements
+> **Check figures:** cost of sales=6+20−7=**19**; profit=30−19−4−6−3=**−2**. Assets=cash10+receivables8+inventory7+equipment net9=**34**. Liabilities=payables7+loan3+wage accrual1=**11**. Closing equity=25−2=**23**. **34=11+23**. This is a practice scaffold, not a forecast of paper complexity.
 
 ## 🗓️ 20–29 November execution plan
+
+> [!tip] 🏁 THREE REVISION STAGES
+> **20–25 NOV · BUILD** — diagnose, practise each subject, collect scope details.  
+> **26–28 NOV · TEST** — timed sets, marking and targeted repairs.  
+> **29 NOV · SHARPEN** — first-paper priorities, short recall and materials check.
+
+```mermaid
+gantt
+    title November revision sprint
+    dateFormat YYYY-MM-DD
+    axisFormat %d %b
+    section Build
+    Diagnose and practise all five :a1, 2026-11-20, 6d
+    section Test
+    Timed sets and corrections :a2, 2026-11-26, 3d
+    section Sharpen
+    First-paper review :a3, 2026-11-29, 1d
+    section Test week
+    Tests begin :milestone, 2026-11-30, 0d
+```
+
 
 **Suggested time:** 2 hours on weekdays, 3 hours each weekend day: approximately **24 hours** over this ten-day window. Adjust to your availability; this is not exam weighting. Rotate all five instead of perfecting one subject before touching the others.
 
@@ -226,6 +302,16 @@ If you cannot start on 20 November, merge diagnostics into the first session and
 After each paper, record only one or two lessons, then move to the next subject. Use the available gap for its red/amber topics, not a full reread. Preserve the question/mark information you are permitted to retain for later revision.
 
 ## ✅ Readiness tracker
+
+> [!danger] 🔴 NEEDS HELP
+> Cannot choose the method or set up the answer. Use one worked example, then try a fresh problem.
+
+> [!warning] 🟠 NEEDS PRACTICE
+> Method understood, but accuracy, explanation or timing needs repair.
+
+> [!success] 🟢 READY TO MAINTAIN
+> Two fresh sets at 80%+ with clear workings and explanations. Keep a short recall slot.
+
 
 | Subject | Scope confirmed | Timed set completed | Score | Weakest skill / next question |
 |---|---|---|---|---|
