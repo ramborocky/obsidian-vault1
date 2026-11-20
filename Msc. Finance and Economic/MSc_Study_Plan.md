@@ -1,13 +1,15 @@
 ---
 tags: [msc, semester-one, exams, study-roadmap]
-updated: 2026-11-17
+updated: 2026-11-20
 planning-end: 2027-03-31
 exam-date-confirmed: false
 ---
 # 🎯 Semester One Strategic Study Roadmap
-> **17 November 2026 → March 2027 | Financial Management • Financial Reporting • Performance Management**
+> **20 November 2026 → March 2027 · Five subjects**
 >
-> Build the skill, secure coursework marks, then practise delivering under exam conditions.
+> Tests begin **Monday 30 November**. Open the [[MAF_Test_Sprint_30_Nov_2026|ten-day test plan and worked questions]] for 20–29 November. After your last paper, use the fortnightly roadmap and weekly timetable below.
+
+🔷 Quantitative Techniques for Finance · 🟢 Research Methodology · 🟠 Financial Management · 🔵 Financial Reporting · 🟣 Performance Management
 
 ## 🧭 Start here
 
@@ -15,6 +17,7 @@ exam-date-confirmed: false
 |---|---|
 | You want the assessment rules and uncertainties | [Marks and evidence](#-marks-and-evidence) |
 | You want to know what the guides put in exams or coursework | [Financial Reporting](#-financial-reporting-the-clearest-assessment-map), [Financial Management](#-financial-management-decisions-backed-by-numbers), [Performance Management](#-performance-management-costs-decisions-and-control) |
+| You need the two new course outlines mapped to practice | [Quantitative Techniques](#-quantitative-techniques-for-finance) · [Research Methodology](#-research-methodology) |
 | You need this week's work | [Roadmap](#-roadmap-to-march-2027) |
 | You need questions to ask lecturers | [Clarification checklist](#-questions-to-ask-your-lecturers-now) |
 | You need to turn studying into completed work | [Weekly execution](#-weekly-execution-and-progress-board) |
@@ -23,15 +26,17 @@ exam-date-confirmed: false
 > The attached documents show **planned assessment coverage**, not what actually appeared in past exams. No past papers or marking schemes were supplied. **No document gives fixed exam percentages for individual topics.** Practice questions, priorities and deadlines below are recommendations, not leaked questions or official allocations.
 
 > [!note] Planning assumption
-> **March 2027 is your provisional semester-end target.** No official exam timetable appears in these documents. The roadmap runs through 31 March as a planning boundary; move the final revision phase to the actual exam dates once confirmed. These documents name MA/MAF programmes, although your folder says MSc Finance and Economics. Confirm that all three modules apply to your registration.
+> **March 2027 is your provisional semester-end target.** No official exam timetable appears in these documents. The roadmap runs through 31 March as a planning boundary; move the final revision phase to the actual exam dates once confirmed. These documents name MA/MAF programmes, although your folder says MSc Finance and Economics. Both new outlines include MAF among several programmes. Confirm your registered module codes and the final assessment format for your intake.
 
 ## 💰 Marks and evidence
 
-| Module | Credits in guide | Coursework | Semester exam | Confidence and action |
+| Module | Credits / credit hours as stated | In-semester assessment | Final assessment | Evidence and action |
 |---|---:|---:|---:|---|
 | Financial Management | 10 | 50% | 50% | Stated consistently in §§4.4–4.5; guide labelled 2026/2027. Topic grid has gaps/conflicts. |
 | Financial Reporting | 15 | 50% | 50% | Competence-grid headers and integrated assessment agree. Year/code/template errors mean current applicability needs confirmation. |
 | Performance Management | 15 | 50% in introduction/breakdown | 50% in introduction/breakdown | **Conflict:** competence grid says CA 40% / exam 60%. Ask lecturer which applies. |
+| Quantitative Techniques for Finance | Unstated | 50% continuous assessment | 50% final exam | Two compulsory tests plus quizzes, assignments and case studies. The guide gives no separate percentage for either test. |
+| Research Methodology | 15 credit hours, NTA Level 9 | 30% continuous assessment + 20% proposal development and defence | 50% final examination / dissertation defence | The 30% covers assignments, class participation and presentations. Confirm which final format applies to MAF. |
 
 **CA = continuous assessment**, which can contain tests, assignments and other activities. **SE = semester examination.** A CA tick alone does not identify a test or assignment.
 
@@ -62,6 +67,8 @@ If 50/50 is confirmed: **module total = 0.5 × coursework percentage + 0.5 × ex
 | 70% | 60% | 65% |
 | 80% | 60% | 70% |
 | 60% | 80% | 70% |
+
+**Research example.** With 70% in continuous assessment, 75% on the proposal and 60% on the final component, the module mark is 0.30 × 70 + 0.20 × 75 + 0.50 × 60 = **66%**. Enter each component’s own percentage before weighting it.
 
 **Personal target:** 70%+ in coursework and timed practice, then improve weak areas. This is a study target, not an official grade boundary. Do not let assignments consume all your time; do not postpone them until exam revision either.
 
@@ -182,6 +189,39 @@ If 50/50 is confirmed: **module total = 0.5 × coursework percentage + 0.5 × ex
 
 **Useful personal application:** build a fictional health-service example for VFM, budgets and balanced scorecard. Use invented or public data for practice. Your aim is to connect the calculation to a management decision.
 
+## 🔷 Quantitative Techniques for Finance
+
+**November priority:** Unit 2 (probability and distributions) and Unit 4 (time value of money, risk/return and CAPM). Section 1.4 also supports the Research correlation paper. The module outline lists nine units and two compulsory tests. It leaves their dates, separate weights and the topic split between tests open.
+
+| Unit | What to practise | Evidence to keep |
+|---|---|---|
+| 1 · Descriptive statistics and correlation (self-study) | Summarise a dataset, inspect shape, calculate Pearson and Spearman, compare moving averages or smoothing forecasts | One labelled distribution, scatterplot and forecast-error comparison |
+| 2 · Probability and distributions | Use Bayes and conditional probability, distinguish discrete and continuous variables, calculate expectations and explain moments | A worked Bayes tree and two questions using different distributions |
+| 3 · Statistical inference | Use the sampling distribution, standard error and confidence interval. Revisit Gauss–Markov assumptions in regression | One interval with a written interpretation |
+| 4 · Time value, risk and CAPM | Discount lump sums and annuities, use continuous compounding, NPV/IRR, two-asset covariance, the efficient frontier and CAPM | A cash-flow timeline, portfolio-risk calculation and required-return decision |
+| 5 · Multivariate regression | Interpret a slope holding other variables constant, investigate omitted variables, interactions, F-tests and differences-in-differences | One annotated output and a paragraph explaining an identification assumption |
+| 6 · Inference problems | Diagnose multicollinearity, heteroskedasticity and serial correlation. Explain the purpose of weighted least squares or a Durbin–Watson check | A symptom, consequence and appropriate response for each problem |
+| 7 · Volatility and correlation | Read ARCH/GARCH output and describe how shocks affect conditional variance | One interpretation of a volatility forecast |
+| 8 · Univariate time series | Investigate stationarity and unit roots, compare AR, MA and ARIMA models using forecast errors | A model choice supported by an out-of-sample comparison |
+| 9 · Simultaneous equations | Distinguish structural and reduced form, check identification and explain simultaneous-equation bias | A two-equation example with a proposed identifying restriction |
+
+**Reading:** start with Epaphra, *Quantitative Methods for Economics and Finance*, for the finance calculations. Use Brooks, *Introductory Econometrics for Finance*, alongside the regression and time-series lectures. Both appear in the supplied reading list.
+
+## 🟢 Research Methodology
+
+**November priority:** correlation analysis, as specified in your test list. **Semester priority:** produce and defend a research proposal worth **20%**. The six course components below can be developed around one question. For example, using fictional facility data, ask whether monthly claim volume is associated with processing time.
+
+| Course component | Study task | Output you can check |
+|---|---|---|
+| 1 · Introduction to research | Frame the problem, population, unit of analysis and a question that the data can answer | A one-paragraph problem statement and a measurable objective |
+| 2 · Literature review | Compare how studies define the variables, choose samples and handle alternative explanations | A literature matrix with one row per paper and a paragraph identifying a gap |
+| 3 · Research methodology | Specify the design, sample, variables, ethics and analysis. For correlation, inspect the plot, select a coefficient and justify it | A methods page and one reproducible analysis using Excel or SPSS |
+| 4 · Findings and discussion | Report sample size, direction, magnitude and limitations. Compare the finding with earlier work | One labelled table or plot and a short discussion using practice data |
+| 5 · Research proposal writing | Join the problem, literature and methods into a coherent proposal; rehearse likely questions | A draft and a five-minute practice defence explaining feasibility and method |
+| 6 · Dissertation writing | Build the chapter structure, connect findings to objectives and track references | A chapter outline and a sample results section. Adapt final preparation to the lecturer’s exam/defence format |
+
+**Reading:** use Saunders, Lewis and Thornhill for the research process and Creswell (2023) for design choices. The outline also lists Magigi for proposal and report writing. The outline names Excel, SPSS and Smart PLS; select the tool that answers the question in the brief.
+
 ## 🗓️ Roadmap to March 2027
 
 **Proposed work windows, not official teaching dates.** Start from your actual knowledge: use diagnostics to shorten mastered material and protect time for weak prerequisites. Each fortnight revisits older topics; it is not a one-pass reading schedule.
@@ -192,7 +232,8 @@ gantt
     dateFormat YYYY-MM-DD
     axisFormat %b
     section Establish
-    Verify rules and diagnose :a1, 2026-11-17, 14d
+    Five-subject test preparation :a1, 2026-11-20, 10d
+    Tests begin :milestone, 2026-11-30, 0d
     section Build
     Core calculations and standards :a2, 2026-12-01, 31d
     Integrated decisions and reporting :a3, 2027-01-01, 31d
@@ -204,7 +245,7 @@ gantt
 
 | Window | Financial Management | Financial Reporting | Performance Management | Milestone |
 |---|---|---|---|---|
-| 17–30 Nov | FM1; discounting diagnostic; FM2 forecast outline | FR9; diagnose PPE, provisions and foreign-currency skills; obtain FR1–FR2 examples | PM1–PM3 diagnostic | Record baseline scores; confirm rules, dates and actual coursework briefs |
+| 20–30 Nov | Working capital, restructuring and M&A | Framework, elements and statement preparation | Cost estimation and decision scenarios | Finish one timed set per subject by 28 Nov. Prioritise the first paper on 29 Nov |
 | 1–14 Dec | FM7 appraisal; start FM4 WACC | FR10–FR12 assets/inventories; FR6 provisions | PM4–PM5 costing; PM6 CVP | One complete appraisal, asset case and costing/CVP set |
 | 15–31 Dec | FM3–FM5 funding, WACC and gearing | FR15–FR16 leases/revenue; FR5 events; FR7 disposal | PM7 relevant decisions; PM8 pricing | Timed mixed set for each subject; submit any work due before the break |
 | 1–14 Jan | FM2 forecasts; FM8 working capital | FR17–FR18 instruments/tax; FR8 foreign currency | PM9 risk; PM10 budgets | Linked cash forecast, lease/tax schedules and decision tree |
@@ -213,6 +254,20 @@ gantt
 | 15–28 Feb | First full mock and corrections | First full mock and corrections | First full mock and corrections | One mock per subject, marked; redo lost-mark areas after 48 hours |
 | 1–14 Mar | Second full mock; theory/application gaps | Second full mock; entries/disclosures and integrated questions | Second full mock; variance/control explanations | Two mocks per subject completed; no unresolved major prerequisite gap |
 | 15–31 Mar | Follow actual exam order; short recall and targeted questions | Follow actual exam order; timed adjustments and explanations | Follow actual exam order; formula recall and case decisions | Sit exams if scheduled; otherwise repeat targeted practice until confirmed dates |
+
+### Quantitative Techniques and Research in the same study windows
+
+| Window | 🔷 Quantitative Techniques | 🟢 Research Methodology |
+|---|---|---|
+| 20–30 Nov | Work Unit 2 and Unit 4 questions from the test sprint. Show the model, workings and interpretation | Calculate Pearson by hand, check it in Excel, plot pairs and practise a rank-based example |
+| 1–14 Dec | After your last paper, revisit mistakes and complete Unit 1 descriptive statistics and forecasting | Define a feasible question and two variables. Begin a literature matrix |
+| 15–31 Dec | Complete Unit 2 distributions and Unit 3 sampling, standard errors and intervals | Compare five studies, identify a gap and draft research objectives |
+| 1–14 Jan | Revisit Unit 4 valuation and portfolio risk. Begin Unit 5 regression | Draft the design, sample, ethics and analysis plan |
+| 15–31 Jan | Finish Unit 5 and work a Unit 6 diagnostics case | Assemble the proposal and rehearse a defence. Apply the rubric and deadline when issued |
+| 1–14 Feb | Complete Units 7–8. Compare volatility and time-series forecasts on a small dataset | Use practice data to draft a results table and a discussion of limitations |
+| 15–28 Feb | Complete Unit 9. Attempt a mixed mock and correct the weakest unit | Outline the dissertation and rehearse a mock exam or defence for the MAF format |
+| 1–14 Mar | Take a second timed mixed paper, including one diagnostic interpretation | Revise the written answer or defence after feedback. Check citations and align conclusions to objectives |
+| 15–31 Mar | Follow official exam order once published | Follow the confirmed examination or defence timetable |
 
 > [!warning] Dates move when evidence arrives
 > A lecturer's test date, assignment deadline or exam timetable overrides this study sequence. Start any actual assignment when issued. Do not wait for the month assigned to its topic above. If exams begin in early March, move second mocks into late February.
@@ -245,6 +300,8 @@ Record the answer, date and document/message supporting it. A verbal hint should
 | 🟡 10 | “Can we have the paper format, duration, compulsory/optional structure, mark scheme and two or three recent papers?” | Makes timed practice and historical analysis possible |
 | 🟡 11 | “Are calculators, formula sheets, tables or Excel allowed? What constitutes a complete answer?” | Sets realistic practice conditions |
 | 🟡 12 | “What referencing, word limit, collaboration and AI-use rules apply to assignments?” | Defines acceptable submission practice |
+| 🟢 RM | “Which correlation methods and software outputs are assessed in November? What is the MAF proposal deadline, rubric and final exam or defence format?” | Separates the first test, the 20% proposal and the 50% final component |
+| 🔷 QT | “Which Unit 2/4 calculations and tables are required for the first test? When is the second compulsory test, and how is the 50% coursework mark divided?” | Sets test depth, timing and the grade tracker |
 
 ### Questions to ask yourself before submitting an answer
 
@@ -257,17 +314,17 @@ Record the answer, date and document/message supporting it. A verbal hint should
 
 ## 🛠️ Weekly execution and progress board
 
-**Base plan: 10 hours outside class.** Allocate **FR 3h, PM 3h, FM 2.5h, review/buffer 1.5h**. This is a suggested starting allocation, not exam weighting; adjust to errors and deadlines. If only eight hours are possible, use FR 2.5h, PM 2.5h, FM 2h and review 1h.
+**After the November tests, budget 10 hours a week across all five subjects.** Each subject gets two hours in the rotation below. Swap one hour toward an actual deadline or a repeated error when necessary. For an eight-hour week, use 90 minutes per subject and put the remaining 30 minutes into the most urgent correction.
 
 | Session | Time | Deliverable |
 |---|---:|---|
-| Monday | 60 min | FR rule recall and one fresh case |
-| Tuesday | 60 min | FM calculation and recommendation |
-| Wednesday | 60 min | PM numerical problem and interpretation |
-| Thursday | 60 min | FR second case or actual coursework |
-| Friday | 30 min | FM formula recall and corrected errors |
-| Saturday | 3 hours | PM 2h; FM 1h — substantial problem sets/actual coursework |
-| Sunday | 2.5 hours | FR 1h; review, marking and buffer 1.5h |
+| Monday | 1 hour | QT calculation from the current unit |
+| Tuesday | 1 hour | RM literature entry, data interpretation or proposal page |
+| Wednesday | 1 hour | FM computation and recommendation |
+| Thursday | 1 hour | FR worked case with entries and statement effects |
+| Friday | 1 hour | PM cost or decision problem |
+| Saturday | 3 hours | One hour each for QT, FR and PM. Mark or retry the week’s hardest question |
+| Sunday | 2 hours | One hour each for FM and RM. Finish the finance case and revise the proposal or analysis |
 
 **Each hour:** 10 minutes closed-book recall → 15 minutes repair/learning → 30 minutes questions → 5 minutes log. During full mocks, use the confirmed paper duration and permitted materials instead.
 
@@ -286,6 +343,8 @@ Record the answer, date and document/message supporting it. A verbal hint should
 | FR | Fill after diagnostic | — | One case from weakest ID | — | 🔴 Unmeasured |
 | FM | Fill after diagnostic | — | One problem from weakest ID | — | 🔴 Unmeasured |
 | PM | Fill after diagnostic | — | One problem from weakest ID | — | 🔴 Unmeasured |
+| QT | Fill after diagnostic | — | One fresh Unit 2 or 4 calculation | — | 🔴 Unmeasured |
+| RM | Fill after diagnostic | — | Interpret a fresh correlation output | — | 🔴 Unmeasured |
 
 ### Choose your next study action
 
@@ -318,6 +377,9 @@ Do not invent dates or mark weights. Populate this from actual briefs.
 | FR — awaiting brief | — | — | — | — | Obtain topic, rubric and deadline |
 | FM — awaiting brief | — | — | — | — | Obtain topic, rubric and deadline |
 | PM — awaiting brief | — | — | — | — | Confirm breakdown and collect briefs |
+| QT — tests 1 and 2, quizzes, assignments, case studies | Per brief | 50% together | — | — | Enter each weight when provided |
+| RM — assignments, participation and presentations | Per brief | 30% together | — | — | Record briefs and presentation dates |
+| RM — proposal development and defence | Per brief | 20% | — | — | Obtain rubric and draft the question |
 
 **Assignment workflow:** translate the brief into a checklist → outline sections against marks → calculate/research → complete draft → verify figures and references → check every requirement → submit and retain receipt. For group work, agree owners and an internal deadline; each person must understand the whole submission.
 
@@ -330,6 +392,8 @@ These are **self-set exercises**, not official assignments. Use them to connect 
 | FM | A fictional provider wants to buy equipment and is choosing between funding alternatives | 3–4 page memo plus forecast, WACC, investment appraisal and liquidity analysis | Why this funding mix? What assumption reverses your recommendation? |
 | FR | A fictional entity has an asset adjustment, lease, customer contract, provision and post-year-end event | Adjustment schedule, journal entries, statement extracts and short standards-based explanations | Why recognise this item? Why use that measurement? What disclosure is needed? |
 | PM | A fictional service unit has rising cost, constrained capacity and missed targets | Cost model, relevant-decision case, budget, variance report and scorecard | Which costs are controllable? Does the measure encourage gaming? What action follows? |
+| QT | Two assets have different expected returns, volatilities and correlation | Calculate portfolio return and risk, then compare a share forecast with CAPM | What changes if correlation rises? Which risk does beta measure? |
+| RM | A fictional set of facilities has claim volumes and processing times | A scatterplot, a justified coefficient, an interpretation and a one-page proposal sketch | What could confound the association? What data would improve the design? |
 
 **Reading strategy:** lecture notes and assigned cases first; then use the relevant section of the guide's listed texts. FM lists Pandey and corporate-finance texts; FR lists ACCA/NBAA and financial-reporting texts; PM lists Drury, Horngren and related cost-accounting texts. Choose one main text per subject. Match editions and standard treatments to lecturer requirements instead of reading several books cover to cover.
 
@@ -347,12 +411,12 @@ These are **self-set exercises**, not official assignments. Use them to connect 
 
 ## ✅ First seven days
 
-- [ ] Obtain official dates and resolve the assessment conflicts above.
-- [ ] Attempt three diagnostics: one WACC/appraisal problem, one reporting case and one CVP/costing problem.
-- [ ] Enter your baseline scores and red topics in the progress board.
-- [ ] Start one FR exam-ticked topic and one FR coursework-ticked topic.
-- [ ] Set up the coursework tracker using real briefs, not assumptions.
-- [ ] Finish the week with one corrected answer per subject and next week's three priorities.
+- [ ] **20 Nov:** attempt one diagnostic per subject and record the weakest skill in each.
+- [ ] **21–22 Nov:** finish a Unit 2/4 numerical set, one PM decision and an FR adjustment.
+- [ ] **23 Nov:** calculate Pearson, check it in Excel and explain a limitation.
+- [ ] **24–25 Nov:** solve the FM working-capital and acquisition cases, then prepare a balanced FR statement.
+- [ ] **26 Nov:** time one QT set and one PM set. Mark both and schedule retries.
+- [ ] Follow the [[MAF_Test_Sprint_30_Nov_2026|test sprint]] for 27–30 November. Record paper times and permitted materials as soon as issued.
 
 ## 📚 Source register and interpretation
 
@@ -362,6 +426,9 @@ These are **self-set exercises**, not official assignments. Use them to connect 
 | [FR allocation guide](<ALLOCATION   OF TOPICS  MODULE GUIDE AND ASSESSMENT PLAN    FINANCIAL REPORTING.docx>) | Exact CA/SE ticks in §4.2; methods; 50/50 split | Template/date/code errors; no topic-level test/assignment separation |
 | [FR syllabus](<FINANCIAL REPORTING SYLLABUS.docx>) | Detailed Topics 1–4; additional coverage and overview-only consolidation/ethics | Describes some material as general coverage; not an assessment blueprint |
 | [PM guide — original PDF in repository](<ASSESSMENT PLAN & MODULE GUIDE-PERFORMANCE MNG-ACG09104-2022-2023.pdf>) | Learning-table topic/method mapping; assessment grid; breakdown §4.4; command-word glossary | Older 2021/2022 label; conflicting component weights; conversion may shift page layout |
+| IAA, *Quantitative Techniques for Finance / Statistics and Econometrics for Finance / Econometrics* (2024 PDF) | pp. 1–6, nine units, self-study sections, two compulsory tests and 50/50 split | No separate test percentages, first-test boundaries or current dates |
+| *Research Methods for Finance / Research Methodology and Dissertation / Project Research Methods and Statistics* | §§1–7, course information, six components, software, references and 30/20/50 weights | The MAF final format and assessment dates need confirmation |
+| Your five-subject November test list | Topics and the 30 November start | Individual paper order, times and detailed methods still to confirm |
 | [Career roadmap style reference](career_roadmap_strategy.md) | Visual structure: numbered sections, tables, colour cues and Mermaid timeline | Career predictions/figures were not used as academic evidence |
 
-The PM analysis uses the attached Word conversion; its source link points to the original PDF already in this repository. The Word conversion has the same assessment conflict. Read from the five attached files on **17 November 2026**. The plan distinguishes direct assessment labels, broad group coverage, unresolved gaps and suggested practice. It does not establish the full MSc curriculum or guarantee exam questions. Topic IDs are navigation aids created for this plan.
+The original maps for FM, FR and PM come from the 17 November review of their guides. The two additional course outlines and your test list were incorporated on 20 November 2026. Topic IDs, practice tasks and study dates are planning aids. The institution sets final assessment dates and requirements.

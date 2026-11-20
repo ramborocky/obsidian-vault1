@@ -10,15 +10,14 @@ tests-start: 2026-11-30
 
 ## 🔴 What controls this revision plan
 
-Your supplied topic list is the **test scope reported by you**. The GitHub guides support the topic breakdown for FM, FR and PM. They do not identify the exact forthcoming questions. All questions and worked examples below are newly created practice material.
+> [!important] Five papers start on Monday 30 November 2026
+> Your test list sets the November topics. The Quantitative Techniques guide identifies the content of Units 2 and 4. The Research Methods outline describes the semester and assessment. You identified correlation as the Research test topic. The timetable, marks, duration and permitted materials still need lecturer confirmation.
 
-**Missing:** test order/times, duration, marks, permitted materials, and lecture notes/module guides for Research Methodology and the first subject. Its supplied name is “Qualitative techniques for finance”; the numerical topics suggest **Quantitative Techniques for Finance**, but confirm the official name.
-
-**Do not use the old semester-exam ticks to exclude these test topics.** This is a separate, short-term preparation plan based on the new list. It does not replace the March semester roadmap.
+The exercises below are original practice questions. Use the timetable to choose the final review order. Use the [[MSc_Study_Plan|semester roadmap]] for later topics, coursework and the proposal.
 
 | Subject | Your test topics | Expected practice formats — inference, not confirmed paper format |
 |---|---|---|
-| 🔵 Finance techniques — title to confirm | Time value of money; risk/return; CAPM; probability/distributions | Numerical problems, choosing a model, interpreting a result |
+| 🔵 Quantitative Techniques for Finance | Time value of money; risk/return; CAPM; probability/distributions | Numerical problems, choosing a model, interpreting a result |
 | 🟣 Performance Management | Cost estimation; decision-making scenarios | Estimate a cost function; evaluate alternatives; recommend with calculations |
 | 🟢 Research Methodology | Correlation analysis | Calculate/interpret correlation; read output; explain limitations |
 | 🟠 Financial Management | Working capital; restructuring; mergers/acquisitions | Cash-cycle and funding calculations; comparisons; acquisition valuation and recommendation |
@@ -26,9 +25,9 @@ Your supplied topic list is the **test scope reported by you**. The GitHub guide
 
 **Known date:** tests start 30 November. **Unknown:** which subject is first and the remaining dates. The schedule below covers all five before the start, then follows the real order when supplied.
 
-## 🔵 1 Finance techniques
+## 🔵 1 Quantitative Techniques for Finance
 
-No dedicated guide for this subject was found in the current MSc folder. This section is standard preparation inferred from your topic headings. Advanced extensions are labelled for confirmation.
+**Open the module contents on pp. 4–5 of the 2024 outline.** Start with Unit 2.1–2.3 on probability rules, discrete and continuous distributions. Pair that with Unit 4 on annuities, risk, portfolio return and CAPM. Unit 2.4 also covers moments and generating functions. Check your lecture examples for how far each topic is examined in November.
 
 | Topic | You should be able to do | Representative question | Common mistake |
 |---|---|---|---|
@@ -38,7 +37,9 @@ No dedicated guide for this subject was found in the current MSc folder. This se
 | CAPM | Required return from risk-free rate, beta and market premium; explain systematic risk | “Is the forecast return sufficient for this beta?” | Treating the market return as the market risk premium |
 | Probability | Addition, multiplication, independence and conditional probability | “Given default, what is the probability the borrower belongs to group A?” | Confusing P(A given B) with P(B given A) |
 | Distributions | Expected value/variance; recognise a suitable distribution; interpret normal probabilities | “Find the probability of returns below a threshold.” | Assuming normality without being told |
-| Confirm depth | Binomial, Bayes, normal tables; portfolios/covariance, perpetuities and effective rates | “Which of these were taught and included?” | Spending revision time on untaught extensions |
+| Unit 2 in the outline | Total probability and Bayes, Bernoulli, binomial, Poisson, uniform, joint/marginal distributions, moments and generating functions | “Which model fits this situation, and which parameters does it need?” | Using binomial when the task counts events over an interval at a given rate |
+| Unit 4 in the outline | Continuous compounding, PV/FV of annuities, NPV/IRR, portfolio covariance and risk, efficient frontier, characteristic line and CAPM | “How does the correlation between two assets change portfolio risk?” | Averaging asset standard deviations without accounting for covariance |
+| Check first-test depth | Ask which distributions, derivations, tables and Unit 4 extensions appear in the lecturer’s examples | “Will we derive a generating function or only recognise the distribution?” | Spending the final review block on an unassigned derivation |
 
 ### Core formula card
 
@@ -68,7 +69,15 @@ No dedicated guide for this subject was found in the current MSc folder. This se
 
 **Q4 — distribution choice.** Ten independent borrowers each have a 10% probability of default. Find the probability exactly two default.
 
-**Answer:** assuming equal independent default probabilities, use binomial: C(10,2)×0.1²×0.9⁸ ≈ **19.37%**. Real borrower defaults need not be independent. Confirm binomial coverage with the lecturer.
+**Answer:** assuming equal independent default probabilities, use binomial: C(10,2)×0.1²×0.9⁸ ≈ **19.37%**. Real borrower defaults need not be independent. Unit 2.2 names the binomial distribution.
+
+**Q4b — total probability and Bayes.** Group A makes up 70% of borrowers and group B makes up 30%. Their respective default probabilities are 2% and 6%. Find the default probability for a randomly chosen borrower and the probability that a randomly chosen defaulter belongs to B.
+
+**Check:** P(default) = 0.70 × 0.02 + 0.30 × 0.06 = **3.2%**. P(B given default) = 0.018 / 0.032 = **56.25%**. The second question changes the denominator to borrowers who defaulted.
+
+**Q4c — portfolio risk.** Put 60% into asset A and 40% into B. Their expected returns are 10% and 16%, their standard deviations are 10% and 20%, and their return correlation is 0.25. Find portfolio return and standard deviation.
+
+**Check:** expected return = 0.6 × 10% + 0.4 × 16% = **12.4%**. Covariance = 0.25 × 0.10 × 0.20 = 0.005. Portfolio variance = 0.6² × 0.10² + 0.4² × 0.20² + 2 × 0.6 × 0.4 × 0.005 = 0.0124. Standard deviation ≈ **11.14%**. If the correlation were +1, the same weights would give 14%.
 
 ## 🟣 2 Performance Management
 
@@ -98,7 +107,7 @@ The PM guide explicitly includes high-low, scattergraph, least squares/regressio
 
 ## 🟢 3 Research Methodology
 
-Dedicated lecture notes are missing. **Correlation analysis is confirmed by your list; Pearson versus Spearman, significance tests and software-output depth still need confirmation.**
+Your test list specifies **correlation analysis**. The Research Methods outline (§§4–5) includes data analysis and names Excel, SPSS and Smart PLS. For a worked methods checklist, use **Quantitative Techniques §1.4**, which explicitly lists Pearson, Spearman and cautions when using correlation. The Research lecturer has still to specify the coefficients, significance tests and software tasks required for this paper.
 
 | Skill | Practice task | What a sound answer shows |
 |---|---|---|
@@ -117,7 +126,13 @@ If a significance calculation is taught, the conventional Pearson test uses **t 
 
 **Answer:** n=5; Σx=15; Σy=20; Σx²=55; Σy²=86; Σxy=66. Numerator=30; denominator=√(50×30)=√1500. **r≈0.775**. There is a positive linear association in these five observations. It does not establish causation; the sample is small.
 
-**Output question:** a fictional study reports r=0.62, p=0.003, n=20 between study hours and scores. Explain that the observed association is positive and statistically significant at 5% under the test assumptions. Do not say “hours cause 62% of marks.” In a simple linear regression with an intercept, r²≈0.384 describes the sample proportion of outcome variation accounted for by the fitted model, not a causal percentage.
+**Output question:** a fictional study reports r=0.62, two-sided p≈0.0035, n=20 between study hours and scores. Explain that the observed association is positive and statistically significant at 5% under the test assumptions. Do not say “hours cause 62% of marks.” In a simple linear regression with an intercept, r²≈0.384 describes the sample proportion of outcome variation accounted for by the fitted model, not a causal percentage.
+
+**Q7b — ranks.** Five branches have ranks X = 1, 2, 3, 4, 5 and Y = 1, 3, 2, 5, 4 for two service measures. Find Spearman’s correlation, then explain what the number tells a manager.
+
+**Check:** the squared rank differences sum to 4. With no ties, ρₛ = 1 − 6 × 4 / [5 × (5² − 1)] = **0.80**. Higher-ranked branches on X tend to rank higher on Y in this sample. For ties, assign average ranks and correlate the two rank columns.
+
+**Excel check for Q7:** enter X and Y in A2:A6 and B2:B6. Use `=CORREL(A2:A6,B2:B6)` and make an XY scatterplot. Write one sentence on the pattern and one plausible alternative explanation. Keep a hand-calculation version for a closed-book paper.
 
 ## 🟠 4 Financial Management
 
@@ -194,12 +209,12 @@ Each two-hour block: 15 min recall → 25 min repair/learning → 60 min fresh q
 | Date | Main work | Second work / review | Finish with |
 |---|---|---|---|
 | Fri 20 Nov | Diagnose all five: one small question each | Ask for test order, FR standard list and PM scenario scope | Five baseline scores and red-topic list |
-| Sat 21 Nov | Finance techniques: TVM, CAPM, risk/return | Probability/distribution questions; third hour weakest diagnostic | Marked numerical set and formula card |
+| Sat 21 Nov | QT Unit 4: annuities, CAPM and two-asset risk | QT Unit 2: Bayes and binomial; third hour weakest diagnostic | Marked numerical set and formula card |
 | Sun 22 Nov | PM: high-low, regression/learning as confirmed | Relevant-decision scenarios; third hour FR scope/adjustments | Cost equation, decision answer and corrections |
-| Mon 23 Nov | RM: Pearson calculation/output | Scatterplots, significance and limitations; brief earlier-topic recall | One hand calculation and one written interpretation |
+| Mon 23 Nov | RM: calculate Pearson by hand, then check in Excel | Plot the pairs, interpret the result, then retry with ranks (Q7b) | One hand calculation and one written interpretation |
 | Tue 24 Nov | FM: working capital and cash cycle | Restructuring and acquisition-value case | Cash-cycle calculation and defensible deal decision |
 | Wed 25 Nov | FR: framework/concepts | Adjustments/statements and confirmed Topic 2 standards | Balanced statements plus explanations |
-| Thu 26 Nov | Timed finance-techniques set | PM timed set; mark both | Error list ranked by lost marks |
+| Thu 26 Nov | Timed QT: one Unit 2 and one Unit 4 problem | PM timed set; mark both | Error list ranked by lost marks |
 | Fri 27 Nov | Timed RM set | FM timed set; mark both | Corrected correlation and finance answers |
 | Sat 28 Nov | Timed FR set | Repair weakest numerical areas; third hour mixed recall | Every subject has one marked timed set |
 | Sun 29 Nov | Prioritise the actual first paper | Short formula/rule recall; selected error retries; materials check | Readiness check and test-week sequence |
@@ -214,7 +229,7 @@ After each paper, record only one or two lessons, then move to the next subject.
 
 | Subject | Scope confirmed | Timed set completed | Score | Weakest skill / next question |
 |---|---|---|---|---|
-| Finance techniques | ☐ Title and distribution depth | ☐ | — | — |
+| QT | ☐ First-test distribution and portfolio depth | ☐ | — | — |
 | PM | ☐ Decision scenarios and estimation methods | ☐ | — | — |
 | RM | ☐ Pearson/Spearman/testing/output | ☐ | — | — |
 | FM | ☐ Restructuring and valuation depth | ☐ | — | — |
@@ -229,7 +244,7 @@ The 80% threshold is a personal mastery target, not the institution's pass mark.
 ## ❓ Send or ask for these missing details
 
 1. Exact date/time/order and duration of all five tests; marks, compulsory/optional format and permitted aids.
-2. Finance-techniques official title, distribution types and lecture examples.
+2. QT Unit 2 and Unit 4 test depth, especially generating functions, portfolio theory, NPV/IRR and permitted tables.
 3. PM's precise decision scenarios: relevant costing, CVP, risk, constraints, pricing? Which estimation techniques?
 4. RM's correlation methods, significance calculations and software-output requirements.
 5. FM's restructuring forms, M&A valuation methods and working-capital models.
@@ -244,6 +259,7 @@ No need to wait for all answers before beginning the overlapping fundamentals ab
 - [PM guide](<ASSESSMENT PLAN & MODULE GUIDE-PERFORMANCE MNG-ACG09104-2022-2023.pdf>): estimation and decision techniques in the learning tables; older guide, so no current test-format guarantee.
 - [FR syllabus](<FINANCIAL REPORTING SYLLABUS.docx>): Topics 1–3; broad meaning of statement elements and preparation.
 - [FR assessment allocation](<ALLOCATION   OF TOPICS  MODULE GUIDE AND ASSESSMENT PLAN    FINANCIAL REPORTING.docx>): framework and standard-level coursework allocation; not an exact first-test blueprint.
-- Repository listing checked **20 November 2026**: the four source documents retain the same blob hashes as those previously read. No dedicated finance-techniques/RM guides or test papers were present in this folder.
+- **IAA, Quantitative Techniques for Finance / Statistics and Econometrics for Finance / Econometrics** (2024 PDF), pp. 3–5 for §1.4 and Units 2 and 4, p. 6 for the 50% coursework / 50% final split and two compulsory tests.
+- **Research Methods for Finance / Research Methodology and Dissertation / Project Research Methods and Statistics**, §§2, 4, 5 and 7 for course components, software and the 30% / 20% / 50% assessment split. The November correlation topic comes from your test list.
 
 Worked examples, numerical data, question formats, time allocations and suggested priorities were created for practice. They are not actual examination questions or official marking schemes.

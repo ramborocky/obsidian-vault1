@@ -10,12 +10,12 @@ tags:
 
 # MAF & Life Dashboard
 
-[[Home|Vault home]] · [[Msc. Finance and Economic/MSc_Study_Plan|Semester roadmap]] · [[Msc. Finance and Economic/career_roadmap_strategy|Research roadmap]] · [[01 Projects/Kalemie/10 Prize Campaign/00 Campaign HQ|Writing HQ]]
+[[Home|Vault home]] · [[Msc. Finance and Economic/MAF_Test_Sprint_30_Nov_2026|November test sprint]] · [[Msc. Finance and Economic/MSc_Study_Plan|Semester roadmap]] · [[Msc. Finance and Economic/career_roadmap_strategy|Research roadmap]] · [[01 Projects/Kalemie/10 Prize Campaign/00 Campaign HQ|Writing HQ]]
 
-> [!abstract] 🎓 MAF · Semester One
-> **Financial Management · Financial Reporting · Performance Management**
+> [!abstract] 🎓 Five MAF papers · Tests begin Monday 30 November
+> **20–29 November** · Prepare the topics listed for each subject below. Start with a short question in each subject and mark your weakest skill.
 >
-> **Current target:** build toward March 2027. The official exam timetable and module applicability still need confirmation. The semester roadmap maps planned assessment coverage and flags where the guides disagree.
+> **After the tests** · Follow the [[Msc. Finance and Economic/MSc_Study_Plan|five-subject semester roadmap]]. March 2027 is the provisional semester-end target. Add the actual paper order when the timetable arrives.
 
 > [!tip] Three moves for this week
 > **Study** · Work one problem from memory before opening the notes.
@@ -47,21 +47,29 @@ The dated checkboxes below feed these views through Obsidian Tasks. Dates are pe
 
 ## 📚 MAF study board
 
-| Module | Start here | Next worked output |
-| --- | --- | --- |
-| 🟠 **Financial Management** | Discounting diagnostic and forecast outline | One investment appraisal with NPV, assumptions and a recommendation |
-| 🔵 **Financial Reporting** | Conceptual framework and a diagnostic on PPE, provisions and FX | One IAS 37 case with a recognition or disclosure decision |
-| 🟣 **Performance Management** | PM1–PM3 diagnostic | One costing and CVP set with an explanation of the result |
+| Module | November focus | Next worked output |
+|---|---|---|
+| 🔷 **Quantitative Techniques for Finance** | Unit 2 probability/distributions and Unit 4 time value, risk/return and CAPM | A Bayes calculation and a two-asset risk calculation with a CAPM decision |
+| 🟢 **Research Methodology** | Correlation analysis | Calculate Pearson by hand, check in Excel and explain the finding and one limitation |
+| 🟣 **Performance Management** | Cost estimation and decisions | Estimate a cost equation and use relevant costs to choose make or buy |
+| 🟠 **Financial Management** | Working capital, restructuring and M&A | Work out a cash cycle and the maximum acquisition price, then explain one restructuring option |
+| 🟡 **Financial Reporting** | Framework, elements and statement preparation | Post the adjusting entries and produce statements that balance |
 
-> [!important] Confirm with lecturers
-> - [ ] Record the registered modules and official test, assignment and exam dates 📅 2026-11-24
-> - [ ] Confirm the PM coursework/exam split, FM exam coverage of WACC, and the FR treatment expected for leases and revenue 📅 2026-11-27
-> - [ ] Log baseline scores and pick one weak topic per module 📅 2026-11-30
+> [!note] Semester assessment
+> **QT:** 50% coursework and 50% final exam. Coursework includes two compulsory tests. **RM:** 30% continuous assessment, 20% proposal development and defence, 50% final examination / dissertation defence. The [[Msc. Finance and Economic/MSc_Study_Plan|marks table]] records all five modules and the conflicting PM weights.
+
+> [!important] November checkpoints
+> - [ ] Record a baseline score and one weak skill for each subject 📅 2026-11-20
+> - [ ] Complete the correlation calculation and interpret the scatterplot 📅 2026-11-23
+> - [ ] Request paper dates, times and permitted aids. Record the timetable when issued 📅 2026-11-24
+> - [ ] Confirm the PM assessment split, FM WACC exam coverage and FR standards expected 📅 2026-11-27
+> - [ ] Mark one timed set in each of the five subjects 📅 2026-11-28
+> - [ ] Retry the weakest question for the first scheduled paper 📅 2026-11-29
 
 > [!example]- Semester milestones
-> - [ ] Complete one appraisal, one asset case and one costing/CVP set 📅 2026-12-14
-> - [ ] Attempt the topics explicitly allocated in the study plan and list remaining gaps 📅 2027-01-31
-> - [ ] Mark one full mock per module and schedule corrections 📅 2027-02-28
+> - [ ] Produce a QT forecast or distribution exercise, an RM question and literature matrix, plus one worked FM, FR and PM case 📅 2026-12-14
+> - [ ] Draft the RM proposal and rehearse a defence. Check the actual submission date and rubric 📅 2027-01-31
+> - [ ] Mark one practice assessment per subject, using the confirmed RM exam or defence format 📅 2027-02-28
 > - [ ] Align final revision with the official exam order once published
 
 ## 🌍 Outside class
