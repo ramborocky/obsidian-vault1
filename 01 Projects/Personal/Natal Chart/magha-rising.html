@@ -1,0 +1,630 @@
+<title>Magha Rising</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ground:#F3F3F8;  --surface:#FCFCFE;  --sunk:#EDECF4;
+    --ink:#16161F;     --muted:#63627A;    --faint:#8A899E;
+    --rule:#DCDBE7;    --rule-hard:#C4C2D6;
+    --accent:#3B3F8F;  --accent-soft:#E4E5F5;
+    --good:#2A6B54;    --good-bg:#E1EFE8;
+    --avoid:#A03A2B;   --avoid-bg:#F6E4DF;
+    --mixed:#6C6386;   --mixed-bg:#EAE7F1;
+    --brass:#8A6A2A;
+    --shadow:0 1px 2px rgba(22,22,31,.05), 0 8px 24px -12px rgba(22,22,31,.16);
+    --measure:66ch;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#13131B; --surface:#1E1E29; --sunk:#191922;
+      --ink:#E9E9F1;    --muted:#9C9AB2;   --faint:#7A788F;
+      --rule:#2F2F3F;   --rule-hard:#3E3E52;
+      --accent:#9095EE; --accent-soft:#242741;
+      --good:#63C29B;   --good-bg:#17301F;
+      --avoid:#EC8974;  --avoid-bg:#341C19;
+      --mixed:#A9A2C4;  --mixed-bg:#242131;
+      --brass:#CBA95C;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#13131B; --surface:#1E1E29; --sunk:#191922;
+    --ink:#E9E9F1;    --muted:#9C9AB2;   --faint:#7A788F;
+    --rule:#2F2F3F;   --rule-hard:#3E3E52;
+    --accent:#9095EE; --accent-soft:#242741;
+    --good:#63C29B;   --good-bg:#17301F;
+    --avoid:#EC8974;  --avoid-bg:#341C19;
+    --mixed:#A9A2C4;  --mixed-bg:#242131;
+    --brass:#CBA95C;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:"Karla","Segoe UI",system-ui,sans-serif;
+    font-size:17px; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:1080px; margin:0 auto; padding:clamp(28px,5vw,72px) clamp(18px,4vw,40px) 96px;
+        display:flex; flex-direction:column; gap:clamp(48px,6vw,80px);}
+  .col{max-width:var(--measure);}
+  p{margin:0 0 1em;}
+  p:last-child{margin-bottom:0;}
+  a{color:var(--accent);}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px;}
+
+  /* ---- masthead ---- */
+  .mast{display:flex; flex-direction:column; gap:22px;
+        border-bottom:1px solid var(--rule-hard); padding-bottom:34px;}
+  .eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; font-weight:500;
+           letter-spacing:.16em; text-transform:uppercase; color:var(--faint); margin:0;}
+  h1{font-family:"Bodoni Moda",Didot,"Times New Roman",serif; font-weight:400;
+     font-size:clamp(46px,9vw,86px); line-height:.94; letter-spacing:-.015em;
+     margin:0; text-wrap:balance;}
+  h1 em{font-style:italic; color:var(--accent);}
+  .standfirst{font-size:clamp(18px,2.2vw,21px); color:var(--muted); max-width:52ch; margin:0;}
+  .vitals{display:flex; flex-wrap:wrap; gap:0 34px; font-family:"IBM Plex Mono",monospace;
+          font-size:12.5px; color:var(--muted); padding-top:6px;}
+  .vitals b{color:var(--ink); font-weight:500;}
+
+  /* ---- sections ---- */
+  section{display:flex; flex-direction:column; gap:22px;}
+  h2{font-family:"Bodoni Moda",Didot,serif; font-weight:400; font-size:clamp(27px,3.6vw,38px);
+     line-height:1.14; letter-spacing:-.01em; margin:0; text-wrap:balance;}
+  h3{font-family:"Karla",sans-serif; font-weight:700; font-size:15px; letter-spacing:.01em;
+     margin:0; color:var(--ink);}
+  .lede{color:var(--muted);}
+
+  /* ---- data tables ---- */
+  .scroll{overflow-x:auto; border:1px solid var(--rule); border-radius:3px;
+          background:var(--surface); box-shadow:var(--shadow);}
+  table{border-collapse:collapse; width:100%; font-family:"IBM Plex Mono",ui-monospace,monospace;
+        font-size:13px; font-variant-numeric:tabular-nums; white-space:nowrap;}
+  caption{text-align:left; caption-side:top; padding:14px 16px 12px; font-family:"Karla",sans-serif;
+          font-size:13px; color:var(--muted); border-bottom:1px solid var(--rule);}
+  th{text-align:left; font-weight:600; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+     color:var(--faint); padding:11px 16px; border-bottom:1px solid var(--rule-hard);
+     background:var(--sunk); position:sticky; top:0;}
+  td{padding:9px 16px; border-bottom:1px solid var(--rule);}
+  tbody tr:last-child td{border-bottom:0;}
+  .num{text-align:right;}
+  .dim{color:var(--muted);}
+  .mark{color:var(--avoid); font-weight:500;}
+  .accented{color:var(--accent); font-weight:500;}
+  tr.spot td{background:var(--accent-soft);}
+  tr.spot td:first-child{box-shadow:inset 3px 0 0 var(--accent);}
+
+  /* ---- tarabala: 3 columns of 9, because the cycle repeats every 9 ---- */
+  .cycles{display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:20px;}
+  .cycle{background:var(--surface); border:1px solid var(--rule); border-radius:3px;
+         box-shadow:var(--shadow); overflow:hidden;}
+  .cycle > p{margin:0; padding:12px 16px; border-bottom:1px solid var(--rule-hard);
+             background:var(--sunk);}
+  .cycle ol{list-style:none; margin:0; padding:6px 0;}
+  .cycle li{display:grid; grid-template-columns:1.6em 1fr auto; align-items:center; gap:10px;
+            padding:6px 16px; font-family:"IBM Plex Mono",monospace; font-size:12.5px;}
+  .cycle li .n{color:var(--faint); font-size:11px;}
+  .chip{font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+        padding:3px 8px; border-radius:2px; white-space:nowrap;}
+  .chip.good{color:var(--good); background:var(--good-bg);}
+  .chip.avoid{color:var(--avoid); background:var(--avoid-bg);}
+  .chip.mixed{color:var(--mixed); background:var(--mixed-bg);}
+
+  /* ---- dasha: a true sequence, so it gets numbered rails ---- */
+  .timeline{display:flex; flex-direction:column; border-left:2px solid var(--rule-hard);
+            padding-left:0; margin:0; list-style:none;}
+  .timeline li{display:grid; grid-template-columns:118px 1fr; gap:18px; padding:14px 0 14px 22px;
+               position:relative; border-bottom:1px solid var(--rule);}
+  .timeline li:last-child{border-bottom:0;}
+  .timeline li::before{content:""; position:absolute; left:-5px; top:22px;
+                       width:8px; height:8px; border-radius:50%; background:var(--rule-hard);}
+  .timeline li.now::before{background:var(--accent); box-shadow:0 0 0 4px var(--accent-soft);}
+  .timeline .span{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted);
+                  font-variant-numeric:tabular-nums; padding-top:3px;}
+  .timeline .body strong{font-family:"Bodoni Moda",serif; font-size:21px; font-weight:400;
+                         display:block; line-height:1.2;}
+  .timeline li.now .body strong{color:var(--accent);}
+  .timeline .body span{color:var(--muted); font-size:14.5px;}
+
+  /* ---- callout ---- */
+  .note{border-left:3px solid var(--brass); padding:2px 0 2px 20px; color:var(--muted);
+        font-size:15.5px;}
+  .note b{color:var(--ink);}
+  .flag{background:var(--surface); border:1px solid var(--rule); border-radius:3px;
+        padding:22px 24px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:12px;}
+  .flag h3{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.14em;
+           text-transform:uppercase; color:var(--faint); font-weight:600;}
+  dl{margin:0; display:flex; flex-direction:column; gap:14px;}
+  dt{font-weight:700; font-size:14.5px;}
+  dd{margin:0; color:var(--muted); font-size:15px;}
+
+  footer{border-top:1px solid var(--rule-hard); padding-top:26px; color:var(--faint);
+         font-size:13.5px;}
+  @media (prefers-reduced-motion:no-preference){
+    .cycle,.flag,.scroll{transition:border-color .2s ease;}
+  }
+</style>
+
+<div class="page">
+
+  <header class="mast">
+    <p class="eyebrow">Rectified nativity &middot; sidereal, Lahiri</p>
+    <h1>Magha <em>Rising</em></h1>
+    <p class="standfirst">A chart for 20 October 1977, Dar es Salaam — rectified from a remembered
+      02:00 to 02:37 by two independent tests, and the lunar-mansion reference that goes with it.</p>
+    <div class="vitals">
+      <span>20 OCT 1977 &middot; <b>02:37 EAT</b></span>
+      <span>06&deg;49&prime;S 39&deg;17&prime;E</span>
+      <span>Ayanamsa <b>23&deg;32&prime;35&Prime;</b></span>
+      <span>Moon accurate to <b>&lt;1&prime;</b></span>
+    </div>
+  </header>
+
+  <section>
+    <div class="col">
+      <h2>How the birth time moved</h2>
+      <p class="lede">A remembered &ldquo;two o&rsquo;clock&rdquo; is a rounded number, not a record.
+        Two things narrowed it, and neither was the stated time.</p>
+    </div>
+    <div class="col">
+      <dl>
+        <dt>Saturn transited Aquarius, 16 Jan 2023 &rarr; 29 Mar 2025.</dt>
+        <dd>Aquarius is the 7th house only from a Leo ascendant — from Cancer it is the 8th, and the
+          7th-house crossing would have fallen in 2020&ndash;2022 instead. The reported partnership
+          rupture dates to 2023&ndash;2025. That window fits Leo and excludes Cancer.</dd>
+        <dt>Saturn sits at 4&deg;38&prime; Leo.</dt>
+        <dd>Magha rises between 02:20 and 03:08 EAT. At <b>02:37</b> the ascendant is exactly
+          conjunct Saturn — same sign, same nakshatra, same pada. That is the natural anchor within
+          the window, and it matches a lifelong Saturn-on-the-ascendant temperament.</dd>
+      </dl>
+    </div>
+    <div class="col note">
+      <b>The 37-minute shift changes nothing lunar.</b> The Moon moved 21 arcminutes. Uttara Ashadha
+      pada 4 holds from 22:59 on the 19th to 04:44 on the 20th, so the janma nakshatra, the daśā
+      sequence and the tārābala below were never in question. Only the houses were.
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>The chart</h2>
+      <p class="lede">Sidereal longitudes, whole-sign houses from a Leo ascendant. <span
+        class="mark">L6+7</span> reads &ldquo;lord of the 6th and 7th.&rdquo;</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <caption>Positions computed for 02:37 EAT and validated against Drik Panchang to under one arcminute.</caption>
+        <thead>
+          <tr><th>Body</th><th class="num">Longitude</th><th>Sign</th><th>Nakshatra</th>
+              <th class="num">House</th><th>Rules</th><th>Condition</th></tr>
+        </thead>
+        <tbody>
+          <tr class="spot"><td>Ascendant</td><td class="num">4&deg;37&prime;</td><td>Leo</td><td>Magha p2</td><td class="num">1</td><td class="dim">—</td><td class="dim">—</td></tr>
+          <tr class="spot"><td>Saturn</td><td class="num">4&deg;38&prime;</td><td>Leo</td><td>Magha p2</td><td class="num">1</td><td>L6+7</td><td class="accented">exact on lagna</td></tr>
+          <tr><td>Sun</td><td class="num">2&deg;56&prime;</td><td>Libra</td><td>Chitra p3</td><td class="num">3</td><td>L1</td><td class="mark">debilitated</td></tr>
+          <tr><td>Mercury</td><td class="num">3&deg;38&prime;</td><td>Libra</td><td>Chitra p4</td><td class="num">3</td><td>L2+11</td><td class="mark">combust, 42&prime;</td></tr>
+          <tr><td>Venus</td><td class="num">10&deg;04&prime;</td><td>Virgo</td><td>Hasta p1</td><td class="num">2</td><td>L3+10</td><td class="mark">debilitated</td></tr>
+          <tr><td>Rahu</td><td class="num">20&deg;53&prime;</td><td>Virgo</td><td>Hasta p4</td><td class="num">2</td><td class="dim">—</td><td class="dim">retrograde</td></tr>
+          <tr><td>Moon</td><td class="num">8&deg;46&prime;</td><td>Capricorn</td><td>U. Ashadha p4</td><td class="num">6</td><td>L12</td><td class="dim">—</td></tr>
+          <tr><td>Jupiter</td><td class="num">12&deg;33&prime;</td><td>Gemini</td><td>Ardra p2</td><td class="num">11</td><td>L5+8</td><td class="dim">—</td></tr>
+          <tr><td>Mars</td><td class="num">3&deg;26&prime;</td><td>Cancer</td><td>Pushya p1</td><td class="num">12</td><td>L4+9</td><td class="mark">debilitated</td></tr>
+          <tr><td>Ketu</td><td class="num">20&deg;53&prime;</td><td>Pisces</td><td>Revati p2</td><td class="num">8</td><td class="dim">—</td><td class="dim">retrograde</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <p><b>Three planets debilitated, and the lagna lord is one of them.</b> The Sun rules the
+        ascendant and sits in its sign of fall. Saturn — ruler of the 6th and 7th — sits on the
+        ascendant itself. Mars, the 9th lord, is in fall in the 12th. This is a demanding chart and
+        there is no reading of it that isn&rsquo;t.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>The same sky, three ways</h2>
+      <p class="lede">The two anchor points of the chart, named in each of the three lunar-mansion
+        systems. The convergence isn&rsquo;t coincidence — all three key off overlapping
+        determinative stars.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Point</th><th>Nakshatra (27)</th><th>Manzil (28)</th><th>Xiu (28)</th><th>Anchor star</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Moon 8&deg;46&prime; Cap</td><td>Uttara Ashadha</td><td>al-Balda &mdash; &ldquo;the district&rdquo;</td><td>&#26007; Dǒu, Southern Dipper</td><td class="dim">starless region</td></tr>
+          <tr><td>Ascendant 4&deg;37&prime; Leo</td><td>Magha</td><td>al-Ṭarf &rarr; al-Jabha</td><td>&#26143; Xīng, the Star</td><td>Regulus, 1&deg;20&prime; ahead</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <p><b>al-Balda is the empty station</b> — a mansion the Arabs defined by the absence of stars,
+        a blank patch between the Archer&rsquo;s bow and the Goat. The natal Moon sits in it.</p>
+      <p><b>Magha is the mansion of the ancestors.</b> Deity: the Pitṛs, the dead. Ruled by Ketu.
+        Symbol: the throne. Its whole subject is authority received down an unbroken line rather than
+        built from nothing — and the ascendant stops 1&deg;20&prime; short of Regulus, at the royal
+        star&rsquo;s doorstep rather than on it.</p>
+      <p class="dim" style="font-size:14px">Chinese lodges are defined by right ascension rather than
+        ecliptic longitude, so those two identifications are approximate. The nakshatra and manzil
+        columns are not.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>Tārābala, permanently</h2>
+      <p class="lede">Counted from the janma nakshatra, Uttara Ashadha. The tāra cycle repeats every
+        ninth nakshatra, so the 27 fall naturally into three passes — which is why they&rsquo;re set
+        in three columns here. Nine of the 27 are days to avoid starting things.</p>
+    </div>
+    <div class="cycles">
+      <div class="cycle">
+        <p class="eyebrow">First pass &middot; 1&ndash;9</p>
+        <ol>
+          <li><span class="n">1</span><span>U. Ashadha</span><span class="chip mixed">Janma</span></li>
+          <li><span class="n">2</span><span>Shravana</span><span class="chip good">Sampat</span></li>
+          <li><span class="n">3</span><span>Dhanishtha</span><span class="chip avoid">Vipat</span></li>
+          <li><span class="n">4</span><span>Shatabhisha</span><span class="chip good">Kshema</span></li>
+          <li><span class="n">5</span><span>P. Bhadrapada</span><span class="chip avoid">Pratyari</span></li>
+          <li><span class="n">6</span><span>U. Bhadrapada</span><span class="chip good">Sadhaka</span></li>
+          <li><span class="n">7</span><span>Revati</span><span class="chip avoid">Vadha</span></li>
+          <li><span class="n">8</span><span>Ashwini</span><span class="chip good">Mitra</span></li>
+          <li><span class="n">9</span><span>Bharani</span><span class="chip good">Ati-Mitra</span></li>
+        </ol>
+      </div>
+      <div class="cycle">
+        <p class="eyebrow">Second pass &middot; 10&ndash;18</p>
+        <ol>
+          <li><span class="n">10</span><span>Krittika</span><span class="chip mixed">Janma</span></li>
+          <li><span class="n">11</span><span>Rohini</span><span class="chip good">Sampat</span></li>
+          <li><span class="n">12</span><span>Mrigashira</span><span class="chip avoid">Vipat</span></li>
+          <li><span class="n">13</span><span>Ardra</span><span class="chip good">Kshema</span></li>
+          <li><span class="n">14</span><span>Punarvasu</span><span class="chip avoid">Pratyari</span></li>
+          <li><span class="n">15</span><span>Pushya</span><span class="chip good">Sadhaka</span></li>
+          <li><span class="n">16</span><span>Ashlesha</span><span class="chip avoid">Vadha</span></li>
+          <li><span class="n">17</span><span>Magha</span><span class="chip good">Mitra</span></li>
+          <li><span class="n">18</span><span>P. Phalguni</span><span class="chip good">Ati-Mitra</span></li>
+        </ol>
+      </div>
+      <div class="cycle">
+        <p class="eyebrow">Third pass &middot; 19&ndash;27</p>
+        <ol>
+          <li><span class="n">19</span><span>U. Phalguni</span><span class="chip mixed">Janma</span></li>
+          <li><span class="n">20</span><span>Hasta</span><span class="chip good">Sampat</span></li>
+          <li><span class="n">21</span><span>Chitra</span><span class="chip avoid">Vipat</span></li>
+          <li><span class="n">22</span><span>Swati</span><span class="chip good">Kshema</span></li>
+          <li><span class="n">23</span><span>Vishakha</span><span class="chip avoid">Pratyari</span></li>
+          <li><span class="n">24</span><span>Anuradha</span><span class="chip good">Sadhaka</span></li>
+          <li><span class="n">25</span><span>Jyeshtha</span><span class="chip avoid">Vadha</span></li>
+          <li><span class="n">26</span><span>Mula</span><span class="chip good">Mitra</span></li>
+          <li><span class="n">27</span><span>P. Ashadha</span><span class="chip good">Ati-Mitra</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="col note">
+      <b>To use it:</b> look up the Moon&rsquo;s nakshatra for any given day in a panchang, find it
+      above, and read the chip. The nine marked <span class="chip avoid">avoid</span> are Dhanishtha,
+      Purva Bhadrapada, Revati, Mrigashira, Punarvasu, Ashlesha, Chitra, Vishakha and Jyeshtha. This
+      governs <em>starting</em> things — it says nothing about days that are simply lived through.
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>Vimśottarī</h2>
+      <p class="lede">A genuine sequence, so it&rsquo;s set as one. Boundaries carry roughly two
+        months of uncertainty from the 37-minute rectification.</p>
+    </div>
+    <div class="col">
+      <ol class="timeline">
+        <li><span class="span">1978 — 1988</span><span class="body"><strong>Moon</strong><span>10 years &middot; L12, in the 6th</span></span></li>
+        <li><span class="span">1988 — 1995</span><span class="body"><strong>Mars</strong><span>7 years &middot; L4+9, debilitated in the 12th</span></span></li>
+        <li><span class="span">1995 — 2013</span><span class="body"><strong>Rahu</strong><span>18 years &middot; in the 2nd</span></span></li>
+        <li class="now"><span class="span">2013 — 2029</span><span class="body"><strong>Jupiter</strong><span>16 years &middot; L5+8, in the 11th &mdash; currently running</span></span></li>
+        <li><span class="span">2029 — 2048</span><span class="body"><strong>Saturn</strong><span>19 years &middot; L6+7, on the ascendant</span></span></li>
+        <li><span class="span">2048 — 2065</span><span class="body"><strong>Mercury</strong><span>17 years &middot; L2+11, in the 3rd</span></span></li>
+      </ol>
+    </div>
+    <div class="col">
+      <p><b>The one to have on the calendar is 2029.</b> A mahādaśā belonging to the planet that sits
+        on the ascendant is the most defining period this system describes, and it runs nineteen
+        years. As 7th lord in the 1st the standard reading includes partnership returning; as 6th
+        lord in the 1st it puts health, debt and adversaries at the centre. Both are orthodox. It is
+        three years out.</p>
+      <p>Within Jupiter, the remaining sub-periods are <b>Jupiter/Mars</b> to February 2027 — the 9th
+        lord, dharma and the teacher, running from the 12th house of retreat and seclusion — then
+        <b>Jupiter/Rahu</b> to the end of the mahādaśā.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>Saturn&rsquo;s pass</h2>
+      <p class="lede">Sade sati, measured as angular separation between transiting Saturn and the
+        natal Moon. Closest approach per year.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Year</th><th class="num">Separation</th><th>Pressure</th><th>Phase</th></tr></thead>
+        <tbody>
+          <tr><td>2016</td><td class="num">41.2&deg;</td><td class="dim">▇▇▇▇▇</td><td class="dim">before</td></tr>
+          <tr><td>2017</td><td class="num">31.2&deg;</td><td>▇▇▇▇▇▇▇▇</td><td>begins 26 Jan</td></tr>
+          <tr><td>2018</td><td class="num">21.2&deg;</td><td>▇▇▇▇▇▇▇▇▇▇</td><td class="dim">rising</td></tr>
+          <tr><td>2019</td><td class="num">11.2&deg;</td><td>▇▇▇▇▇▇▇▇▇▇▇▇</td><td class="dim">rising</td></tr>
+          <tr><td>2020</td><td class="num">0.5&deg;</td><td class="mark">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</td><td class="dim">peak</td></tr>
+          <tr class="spot"><td>2021</td><td class="num">0.0&deg;</td><td class="mark">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</td><td class="accented">exact, 8 Jan</td></tr>
+          <tr><td>2022</td><td class="num">9.4&deg;</td><td>▇▇▇▇▇▇▇▇▇▇▇▇</td><td class="dim">separating</td></tr>
+          <tr><td>2023</td><td class="num">19.9&deg;</td><td>▇▇▇▇▇▇▇▇▇▇</td><td>Saturn enters the 7th</td></tr>
+          <tr><td>2024</td><td class="num">30.7&deg;</td><td>▇▇▇▇▇▇▇▇</td><td class="dim">separating</td></tr>
+          <tr><td>2025</td><td class="num">42.0&deg;</td><td class="dim">▇▇▇▇▇</td><td>ends 29 Mar</td></tr>
+          <tr><td>2026</td><td class="num">53.6&deg;</td><td class="dim">▇▇</td><td>3rd from Moon</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <p>Saturn now transits the 3rd from the natal Moon, which classical texts rate as the single
+        most favourable position it can occupy — the <em>upachaya</em>, where the debt is said to be
+        repaid rather than collected.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>This week</h2>
+      <p class="lede">26 &ndash; 28 August 2026. The 13th to the 15th of Rabīʿ al-Awwal 1448, the
+        ayyām al-bīḍ.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <caption>The lunation is eclipse-bracketed: total solar eclipse 12 Aug, partial lunar 28 Aug.</caption>
+        <thead><tr><th>When</th><th>Moon</th><th>Tāra</th><th>Verdict</th><th>House from lagna</th></tr></thead>
+        <tbody>
+          <tr><td>26 Aug, to 22:18</td><td>Shravana</td><td>Sampat</td><td><span class="chip good">good</span></td><td class="num">6</td></tr>
+          <tr class="spot"><td>26 Aug 22:18 &rarr; 27 Aug</td><td>Dhanishtha</td><td>Vipat</td><td><span class="chip avoid">avoid</span></td><td class="num">6&rarr;7</td></tr>
+          <tr><td>27 Aug, from 23:45</td><td>Shatabhisha</td><td>Kshema</td><td><span class="chip good">good</span></td><td class="num">7</td></tr>
+          <tr><td>28 Aug 07:18 &mdash; eclipse</td><td>Shatabhisha</td><td>Kshema</td><td><span class="chip good">good</span></td><td class="num">7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <p><b>The eclipse falls on the 1st/7th axis</b> — Sun at 10&deg;40&prime; Leo in the 1st, eclipsed
+        Moon at 10&deg;40&prime; Aquarius in the 7th, with transiting Rahu 5&deg;23&prime; away in the
+        same house and Saturn, the 7th lord, in the 8th.</p>
+      <p>The practical reading is narrow and it is about initiation, not endurance: <b>don&rsquo;t
+        start anything partnership-shaped in this window</b> — no new commitment, no reconciliation
+        attempt, no signature on anything joint. Kshema tāra opens late on the 27th and the eclipse
+        clears the morning of the 28th.</p>
+      <p class="dim" style="font-size:14px">Fasting the white days is a separate matter under a
+        separate system. Tārābala has no jurisdiction over it and there is no conflict between the two.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>The next ten months</h2>
+      <p class="lede">Four clocks run at once through this period, at four different speeds. They
+        agree on one date.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <caption>August 2026 &rarr; June 2027. The Jupiter window peaked before it was noticed.</caption>
+        <thead><tr><th>Clock</th><th>Speed</th><th>What it does in this window</th></tr></thead>
+        <tbody>
+          <tr><td>Jupiter</td><td class="dim">12 years</td><td>In Cancer &mdash; the 7th from your Moon &mdash; 1 Jun 2026 to 25 Jun 2027. <span class="mark">Exact hit already passed: 14 Jul 2026.</span> Retrograde 13 Dec, direct 13 Apr at 22&deg;47&prime; Cancer. No second pass.</td></tr>
+          <tr><td>Daśā</td><td class="dim">years</td><td>Jupiter/Mars to <b>10 Feb 2027</b>, then Jupiter/Rahu to the end of the mahādaśā. Rahu sits in your 2nd.</td></tr>
+          <tr class="spot"><td>Eclipses</td><td class="dim">~6 months</td><td>28 Aug 2026 on the 7th &middot; then a triple season: 22 Jan (12th), 6 Feb (6th), <span class="accented">21 Feb on the ascendant</span> &middot; 18 Jul 2027 on the natal Moon.</td></tr>
+          <tr><td>Moon</td><td class="dim">27 days</td><td>Three clear windows of about four days each per cycle, roughly nine days apart. The calendar below.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col flag">
+      <h3>February 2027 &mdash; three things in fifteen days</h3>
+      <dl>
+        <dt>6 Feb &middot; solar eclipse, 24&deg;25&prime; Capricorn, your 6th.</dt>
+        <dd>Work, health, obligation, the things you owe.</dd>
+        <dt>10 Feb &middot; the sub-period changes.</dt>
+        <dd>Jupiter/Mars ends, Jupiter/Rahu begins and runs to 2029.</dd>
+        <dt>21 Feb &middot; lunar eclipse, 8&deg;13&prime; Leo, Magha &mdash; your 1st.</dt>
+        <dd>Three and a half degrees from your ascendant and from natal Saturn. An eclipse landing on
+          the rising degree, on the planet that defines the chart, four days after the sub-period
+          turns over. Nothing else in this ten-month window is close to it.</dd>
+      </dl>
+    </div>
+    <div class="col">
+      <p>Then <b>18 July 2027</b>, a lunar eclipse at 2&deg;40&prime; Capricorn &mdash; six degrees
+        from your natal Moon, inside Uttara Ashadha, your own janma nakshatra.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>Clear windows</h2>
+      <p class="lede">Stretches with no Vipat, Pratyari or Vadha day in them. Every one of these
+        contains an Ati-Mitra day, the best of the nine tāras. About four good days in every nine.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <caption>Start things here. Eclipse weeks are marked — hold anything partnership-shaped through those.</caption>
+        <thead><tr><th>Month</th><th>Window 1</th><th>Window 2</th><th>Window 3</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Sep 2026</td><td>31 Aug – 4 Sep</td><td>9 – 13 Sep</td><td>18 – 23 Sep</td><td class="dim">clear month</td></tr>
+          <tr><td>Oct 2026</td><td>28 Sep – 1 Oct</td><td>6 – 10 Oct</td><td>16 – 20 Oct</td><td class="dim">also 25–29 Oct</td></tr>
+          <tr><td>Nov 2026</td><td>2 – 6 Nov</td><td>12 – 16 Nov</td><td>22 – 25 Nov</td><td class="dim">also 30 Nov–4 Dec</td></tr>
+          <tr><td>Dec 2026</td><td>9 – 14 Dec</td><td>19 – 23 Dec</td><td>27 – 31 Dec</td><td class="dim">Jupiter stations 13th</td></tr>
+          <tr class="spot"><td>Jan 2027</td><td>5 – 10 Jan</td><td>15 – 19 Jan</td><td>23 – 27 Jan</td><td class="mark">eclipse 22 Jan</td></tr>
+          <tr class="spot"><td>Feb 2027</td><td>2 – 6 Feb</td><td>12 – 15 Feb</td><td>20 – 24 Feb</td><td class="mark">eclipses 6 &amp; 21 Feb</td></tr>
+          <tr><td>Mar 2027</td><td>1 – 5 Mar</td><td>11 – 15 Mar</td><td>19 – 23 Mar</td><td class="dim">also 28 Mar–2 Apr</td></tr>
+          <tr><td>Apr 2027</td><td>7 – 11 Apr</td><td>16 – 19 Apr</td><td>25 – 29 Apr</td><td class="dim">Jupiter direct 13th</td></tr>
+          <tr><td>May 2027</td><td>4 – 8 May</td><td>13 – 17 May</td><td>22 – 26 May</td><td class="dim">clear month</td></tr>
+          <tr><td>Jun 2027</td><td>1 – 5 Jun</td><td>9 – 13 Jun</td><td>18 – 23 Jun</td><td class="dim">Jupiter leaves 25th</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col note">
+      <b>This governs starting, not living.</b> Tārābala has nothing to say about an ordinary
+      Tuesday — it is a tool for choosing when to begin something, and that is all it is. Don&rsquo;t
+      let a list of dates turn into a reason to avoid your own life. If the calendar starts making
+      decisions instead of informing them, close it.
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>Planetary hours</h2>
+      <p class="lede">The one piece of this that never expires, because it&rsquo;s a method rather
+        than a forecast. Derive it for any day, anywhere, forever.</p>
+    </div>
+    <div class="col">
+      <p>Three traditions run the identical system. Sanskrit calls it <em>horā</em>; Arabic
+        astronomers call it <em>sāʿāt al-kawākib</em> and al-Bīrūnī sets it out in full; the Latin
+        West calls them planetary hours. Same order, same rules, one Hellenistic root.</p>
+      <ol style="padding-left:1.2em; display:flex; flex-direction:column; gap:10px; margin:0">
+        <li>Split <b>daylight</b> into 12 equal parts and <b>darkness</b> into 12. These are your
+          hours — unequal, and rarely 60 minutes. At 6&deg;49&prime;S they stay within a few minutes
+          of 60 all year, which makes Dar es Salaam an unusually forgiving place to work this.</li>
+        <li>The <b>first hour after sunrise</b> belongs to the ruler of that weekday. Sunday&nbsp;Sun,
+          Monday&nbsp;Moon, Tuesday&nbsp;Mars, Wednesday&nbsp;Mercury, Thursday&nbsp;Jupiter,
+          Friday&nbsp;Venus, Saturday&nbsp;Saturn.</li>
+        <li>Every hour after that steps through the <b>Chaldean order</b>, slowest planet to fastest,
+          looping forever:</li>
+      </ol>
+      <p style="font-family:'IBM Plex Mono',monospace; font-size:13.5px; background:var(--sunk);
+                border:1px solid var(--rule); border-radius:3px; padding:14px 16px; margin:4px 0 0">
+        Saturn &rarr; Jupiter &rarr; Mars &rarr; Sun &rarr; Venus &rarr; Mercury &rarr; Moon &rarr; <span class="dim">(repeat)</span>
+      </p>
+    </div>
+    <div class="col note">
+      <b>Why the week is ordered the way it is.</b> Step 24 hours through that loop from any day&rsquo;s
+      first hour and you land exactly on the next day&rsquo;s ruler. Sunday to Monday to Tuesday looks
+      arbitrary until you know the Chaldean sequence — then it&rsquo;s forced. The names of the days
+      of the week are an artefact of this table.
+    </div>
+    <div class="scroll">
+      <table>
+        <caption>Which hours are yours, from the lordships of a Leo ascendant.</caption>
+        <thead><tr><th>Hour</th><th>Role in your chart</th><th>Use it for</th></tr></thead>
+        <tbody>
+          <tr><td class="accented">Sun</td><td>Lagna lord — but debilitated</td><td>authority, visibility, asserting yourself, matters of the father</td></tr>
+          <tr><td class="accented">Mars</td><td>Yogakāraka — rules your 4th and 9th, the strongest planet you own by lordship</td><td>action, courage, exercise, anything requiring nerve</td></tr>
+          <tr><td class="accented">Jupiter</td><td>Current mahādaśā lord, rules your 5th</td><td>learning, teaching, asking, elders, spiritual practice</td></tr>
+          <tr class="spot"><td>Saturn</td><td>Rules your 6th and 7th, sits on your ascendant</td><td class="accented">don&rsquo;t avoid it — see below</td></tr>
+          <tr><td class="dim">Venus</td><td class="dim">Rules 3rd and 10th, debilitated</td><td class="dim">neutral for you</td></tr>
+          <tr><td class="dim">Mercury</td><td class="dim">Rules 2nd and 11th, combust</td><td class="dim">neutral for you</td></tr>
+          <tr><td class="dim">Moon</td><td class="dim">Rules your 12th</td><td class="dim">rest, retreat, withdrawal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h3>The counterintuitive part</h3>
+      <p>Saturn is not a planet you get to avoid. It is sitting on your ascendant, it rules the house
+        of your health and the house of your marriage, it has just spent seven and a half years on
+        your Moon, and in 2029 it takes over your life for nineteen years. There is no version of
+        this chart where you route around it.</p>
+      <p>The tradition&rsquo;s answer to a Saturn like this was never avoidance. It is <b>service</b>:
+        consistency, discipline, unglamorous work done on schedule, and charity toward the old, the
+        poor and those who labour. So <b>use the Saturn hours rather than dodging them</b> — a
+        recitation kept up in a Saturn hour on a Saturday is the tradition&rsquo;s own prescription
+        for exactly your configuration. Saturn is said to answer to being shown up for. Nothing else
+        moves it.</p>
+    </div>
+    <div class="col note">
+      <b>On the legal status.</b> Using the hours to <em>choose your timing</em> is ordinary
+      almanac practice. Using them to <em>compel an outcome</em> is where classical scholars draw the
+      line, and it is the objection behind most rulings against this material. The safe position, and
+      the one most ṭuruq operate under: pick your hour, do your dhikr, and leave the result to God.
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>The rule</h2>
+      <p class="lede">Four complaints — the office you can&rsquo;t leave, the people you can&rsquo;t
+        face, the body that aches, the mirror that lies about your age — map onto four placements.
+        The rule answers all four. It is deliberately small, because a rule you keep beats a rule you
+        admire.</p>
+    </div>
+    <div class="col flag">
+      <h3>Daily and weekly</h3>
+      <dl>
+        <dt>Dawn — don&rsquo;t go back to sleep.</dt>
+        <dd>Fajr, then stay up and get outside. Twenty minutes with light on your face. The classical
+          remedy for a fallen Sun has always been the rising one, and the obligation was already in
+          your day before you went looking for a practice.</dd>
+        <dt>Saturday, a Saturn hour — Ṣalāt al-Tunjīnā.</dt>
+        <dd>07:25 or 20:23. Keep the count small enough that you could do it with a fever. The prayer
+          of deliverance from constriction, offered to the planet that <em>is</em> constriction. Don&rsquo;t
+          make it grand; make it unbreakable.</dd>
+        <dt>Leave the building at a clock time.</dt>
+        <dd>Not &ldquo;when I&rsquo;m done.&rdquo; Pick an hour and stand up. Your Moon lives in the
+          6th, the house of labour, inside Saturn&rsquo;s own sign — the part of you that decides
+          when you&rsquo;re finished has its address at work and will lie to you every evening.</dd>
+        <dt>One person, once a week.</dt>
+        <dd>Not a crowd. Mars is fallen in the 12th, so crowds cost you something real and pretending
+          otherwise doesn&rsquo;t help. One person. One hour. That is the whole obligation.</dd>
+      </dl>
+    </div>
+    <div class="col">
+      <h3>The knot</h3>
+      <p>The three things wanted — the woman, the story prize, the rank at work — are all on the far
+        side of the door being held shut. Every one of them requires being seen. That is the
+        illness, and the rule above is aimed at it rather than at any of the three separately.</p>
+      <p><b>The story prize is the nearest fruit.</b> Jupiter rules the 5th — what you make — and
+        sits in the 11th, the house of gain and recognition, running its own mahādaśā until 2029.
+        It is the single most favourable thing in the chart and it is live right now. Magha rising
+        and Ketu in the 8th in Revatī say what the material is: the ancestors, the line, what was
+        handed down unasked.</p>
+      <p><b>And the withdrawal is not the sickness — it is the studio.</b> The pull inward runs
+        through Jupiter/Mars to February 2027, from the 12th, the house of the closed room. That is
+        where writing gets done. Use the season for the work rather than for hiding, then come out
+        of it.</p>
+      <p><b>At work, the long hours are not the obstacle.</b> The lord of the 10th is fallen and
+        tangled with Rahu in the house of speech: the work gets done and is not seen being done.
+        Visibility, not productivity. Saturn rises by outlasting in plain sight, and in 2029 that is
+        the currency that pays.</p>
+    </div>
+    <div class="col note">
+      <b>And the body is a doctor&rsquo;s business.</b> Bloods — thyroid, vitamin D, B12, iron —
+      and every cardiology appointment kept, every tablet taken as prescribed. Aching, tiredness,
+      looking older and withdrawing have ordinary treatable causes far more often than cosmic ones,
+      and only one kind of cause comes with a prescription. The tradition never permitted otherwise:
+      seeking the cure is obedience, not doubt. Taking the medicine on schedule every morning is
+      itself an act of Saturn.
+    </div>
+  </section>
+
+  <section>
+    <div class="col">
+      <h2>What this document is, and isn&rsquo;t</h2>
+    </div>
+    <div class="col flag">
+      <h3>Three tiers of confidence</h3>
+      <dl>
+        <dt>Computed and verified.</dt>
+        <dd>Every position here. The lunar theory was validated against Drik Panchang&rsquo;s
+          independent Lahiri figures at four separate instants and agreed to better than one
+          arcminute. Planetary positions use JPL approximate elements, good to arcminutes. The
+          arithmetic is not in doubt.</dd>
+        <dt>Traditional, not demonstrated.</dt>
+        <dd>Every interpretation. Debilitation, tārābala, sade sati, the mansion attributions,
+          the daśā readings. These come from specific text lineages that disagree with one another,
+          and no controlled evidence supports them. They are reported accurately as tradition, and
+          claimed as nothing more.</dd>
+        <dt>Not blind.</dt>
+        <dd>The rectification rests on confirmations given after the expected answers had been
+          stated. Two independent tests pointed the same way, which is suggestive — it is not proof.
+          A documented birth time would still beat all of it.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer>
+    Sidereal positions, Lahiri ayanamsa. Times East Africa Time, UTC+3, no daylight saving.
+    Ephemeris computed from Meeus, <em>Astronomical Algorithms</em>, ch. 25 &amp; 47, with JPL
+    approximate Keplerian elements for the planets.
+  </footer>
+
+</div>

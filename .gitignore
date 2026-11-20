@@ -49,6 +49,10 @@
 # tracked so it can be downloaded and sideloaded without a toolchain. It is signed
 # with the Android debug key and carries no story prose.
 !01 Projects/Ventures/09 Mnada/mnada-demo-*.apk
+# Exception, on the user's instruction 2026-10-19 ("commit all the stuff"): the Soma study-app
+# build, so it can be downloaded straight onto the phone. Debug-signed, no story prose, and no
+# personal data (that lives in Soma/data/, which is ignored).
+!01 Projects/Personal/Soma/Soma-*.apk
 
 # Other authors' stories held in full for study. Published works, copyright theirs.
 # Tracked on the user's explicit instruction 2026-07-31: these are published and

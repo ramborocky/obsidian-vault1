@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wewe Ltd Short</title>
+<style>
+  :root { --bg:#0D0A1A; --panel:#17112E; --text:#F4F1FF; --lime:#C6FF3D; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.4 "Segoe UI",Arial,sans-serif;
+         display:flex; flex-direction:column; align-items:center; gap:12px; padding:16px; }
+  canvas { height:min(78vh, 160vw); aspect-ratio:9/16; max-width:100%; border-radius:12px; background:#000;
+           box-shadow:0 8px 40px rgba(255,46,136,.25); }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center; max-width:680px; }
+  button { background:var(--lime); color:#0D0A1A; border:0; border-radius:8px; padding:9px 14px; font-weight:700; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  input[type=range] { width:min(520px, 90vw); }
+  input[type=text] { background:var(--panel); color:var(--text); border:1px solid #3b2f6b; border-radius:8px; padding:8px 10px; }
+  #status { min-height:1.4em; color:#cfc8ee; text-align:center; max-width:640px; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<input id="seek" type="range" min="0" max="67" step="0.05" value="0">
+<div class="bar">
+  <button id="play">▶ Cheza</button>
+  <button id="rec">⏺ Rekodi &amp; pakua video</button>
+  <label><input id="music" type="checkbox" checked> Muziki (amapiano)</label>
+  <label title="Haipendekezwi: sekunde 3 za kwanza ndizo hook"><input id="cdIn" type="checkbox"> Countdown ndani ya video</label>
+  <label>Channel: <input id="handle" type="text" value="@HesabuRahisi" size="15"></label>
+</div>
+<div id="status">Video ya sekunde 67, 1080×1920, na beat ya amapiano. Kurekodi: acha tab hii wazi hadi imalize.</div>
+
+<script>
+const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+const W = 1080, H = 1920;
+// Night-city neon palette, with the brand's kanga strip kept top and bottom
+const N = { bg:'#0D0A1A', bg2:'#1D1240', pink:'#FF2E88', lime:'#C6FF3D', cyan:'#22E4FF', gold:'#FFC20E',
+            red:'#FF4D4D', green:'#2EE59D', white:'#FFFFFF', grey:'#9A93B8', ink:'#0D0A1A', paper:'#FAF8F2',
+            magenta:'#D6246E', teal:'#12A5A0', orange:'#F26B1D' };
+const FONT = '"Segoe UI", "Segoe UI Emoji", Arial, sans-serif';
+
+// ---------- helpers ----------
+const clamp = (v, a=0, b=1) => Math.max(a, Math.min(b, v));
+const ease = t => 1 - Math.pow(1 - clamp(t), 3);
+const back = t => { t = clamp(t); const c = 1.70158; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
+const p = (t, a, b) => ease((t - a) / (b - a));
+const fmt = n => (n < 0 ? '−' : '') + Math.abs(Math.round(n)).toLocaleString('en-US');
+const rand = i => { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); };
+
+function wrap(s, maxW) {
+  const out = [];
+  for (const para of s.split('\n')) {
+    let line = '';
+    for (const w of para.split(' ')) {
+      const test = line ? line + ' ' + w : w;
+      if (ctx.measureText(test).width > maxW && line) { out.push(line); line = w; } else line = test;
+    }
+    out.push(line);
+  }
+  return out;
+}
+function txt(s, x, y, o = {}) {
+  let { size=80, color=N.white, align='center', weight='800', alpha=1, maxW=900, lh=1.18, dy=0, scale=1, stroke=null, glow=null } = o;
+  if (alpha <= 0) return;
+  ctx.save();
+  ctx.globalAlpha *= clamp(alpha);
+  ctx.translate(x, y + dy); ctx.scale(scale, scale);
+  ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  ctx.font = `${weight} ${size}px ${FONT}`;
+  const widest = Math.max(...s.split(/\s+/).map(w => ctx.measureText(w).width));
+  if (widest > maxW) { size *= maxW / widest; ctx.font = `${weight} ${size}px ${FONT}`; }
+  const lines = wrap(s, maxW), off = (lines.length - 1) * size * lh / 2;
+  lines.forEach((l, i) => {
+    if (stroke) { ctx.lineWidth = size * 0.18; ctx.strokeStyle = stroke; ctx.strokeText(l, 0, -off + i * size * lh); }
+    if (glow) { ctx.shadowColor = glow; ctx.shadowBlur = size * .45; }
+    ctx.fillText(l, 0, -off + i * size * lh);
+    ctx.shadowBlur = 0;
+  });
+  ctx.restore();
+}
+// word-by-word kinetic caption; `hi` lists UPPERCASE words to colour
+function kin(s, x, y, t, o = {}) {
+  let { size=90, per=0.11, color=N.white, hi=[], hiColor=N.lime, maxW=900, lh=1.15, stroke=N.ink, weight='900', glow=true } = o;
+  if (t <= 0) return;
+  ctx.save();
+  ctx.font = `${weight} ${size}px ${FONT}`;
+  const words = s.split(' ');
+  const widest = Math.max(...words.map(w => ctx.measureText(w).width));
+  if (widest > maxW) { size *= maxW / widest; ctx.font = `${weight} ${size}px ${FONT}`; }
+  const space = ctx.measureText(' ').width, lines = [[]];
+  let lw = 0;
+  words.forEach((w, i) => {
+    const ww = ctx.measureText(w).width;
+    if (lw + ww > maxW && lines.at(-1).length) { lines.push([]); lw = 0; }
+    lines.at(-1).push({ w, ww, i }); lw += ww + space;
+  });
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  lines.forEach((ln, li) => {
+    const lineW = ln.reduce((a, q) => a + q.ww, 0) + space * (ln.length - 1);
+    let cx = x - lineW / 2;
+    const cy = y + (li - (lines.length - 1) / 2) * size * lh;
+    ln.forEach(q => {
+      const lt = t - q.i * per;
+      if (lt > 0) {
+        const isHi = hi.includes(q.w.replace(/[^\p{L}\d%]/gu, '').toUpperCase());
+        ctx.save(); ctx.translate(cx + q.ww / 2, cy); ctx.scale(back(lt / .25), back(lt / .25));
+        if (stroke) { ctx.lineWidth = size * 0.16; ctx.strokeStyle = stroke; ctx.strokeText(q.w, 0, 0); }
+        if (isHi && glow) { ctx.shadowColor = hiColor; ctx.shadowBlur = size * .5; }
+        ctx.fillStyle = isHi ? hiColor : color; ctx.fillText(q.w, 0, 0);
+        ctx.restore();
+      }
+      cx += q.ww + space;
+    });
+  });
+  ctx.restore();
+}
+function rr(x, y, w, h, r, fill, stroke, lw = 6) {
+  ctx.beginPath(); ctx.roundRect(x, y, w, h, r);
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); }
+}
+function circle(x, y, r, fill) { ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fillStyle = fill; ctx.fill(); }
+function withAlpha(a, fn) { if (a <= 0) return; ctx.save(); ctx.globalAlpha *= clamp(a); fn(); ctx.restore(); }
+function at(x, y, s, fn) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); fn(); ctx.restore(); }
+function shake(lt, hit) { const d = lt - hit; if (d < 0 || d > .5) return; const a = (1 - d / .5) * 24; ctx.translate(Math.sin(d * 90) * a, Math.cos(d * 77) * a); }
+function neonBox(x, y, w, h, r, col, fill = 'rgba(13,10,26,.75)') {
+  ctx.save(); ctx.shadowColor = col; ctx.shadowBlur = 30; rr(x, y, w, h, r, fill, col, 5); ctx.restore();
+}
+
+// ---------- night-city backgrounds ----------
+function nightBg(t, a = N.bg, b = N.bg2) {
+  const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, a); g.addColorStop(1, b);
+  ctx.fillStyle = g; ctx.fillRect(-60, -60, W + 120, H + 120);
+  const cols = [N.pink, N.cyan, N.gold, N.lime];
+  for (let i = 0; i < 24; i++) {                       // club-light bokeh drifting up
+    const r = 30 + rand(i + 3) * 80, x = rand(i) * W;
+    const y = H + 100 - ((rand(i + 1) * (H + 200) + t * 40 * (.4 + rand(i + 2))) % (H + 200));
+    const rg = ctx.createRadialGradient(x, y, 0, x, y, r);
+    rg.addColorStop(0, cols[i % 4]); rg.addColorStop(1, 'rgba(0,0,0,0)');
+    withAlpha(.10 + .06 * Math.sin(t * 2 + i), () => { ctx.fillStyle = rg; ctx.fillRect(x - r, y - r, 2 * r, 2 * r); });
+  }
+}
+function skyline(t, y0 = H - 40) {
+  let x = 0, i = 0;
+  while (x < W) {
+    const w = 70 + rand(i + 50) * 90, h = 120 + rand(i + 80) * 260;
+    ctx.fillStyle = '#07050F'; ctx.fillRect(x, y0 - h, w - 6, h);
+    for (let wy = y0 - h + 20; wy < y0 - 20; wy += 34)
+      for (let wx = x + 12; wx < x + w - 24; wx += 26) {
+        const k = rand(wx * 3 + wy);
+        if (k > .55) { ctx.fillStyle = k > .9 && Math.sin(t * 3 + k * 50) > 0 ? N.pink : 'rgba(255,194,14,.55)'; ctx.fillRect(wx, wy, 12, 16); }
+      }
+    x += w; i++;
+  }
+}
+// the brand's kanga strip, top and bottom only
+function strip(t) {
+  const bw = 30, step = 46, off = (t * 40) % step, cols = [N.gold, N.teal, N.magenta, N.orange];
+  ctx.fillStyle = N.ink; ctx.fillRect(0, 0, W, bw); ctx.fillRect(0, H - bw, W, bw);
+  let i = 0;
+  for (let x = -step + off; x < W + step; x += step, i++) {
+    ctx.fillStyle = cols[i % 4];
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + step, 0); ctx.lineTo(x + step / 2, bw); ctx.fill();
+    ctx.fillStyle = cols[(i + 2) % 4];
+    ctx.beginPath(); ctx.moveTo(x, H); ctx.lineTo(x + step, H); ctx.lineTo(x + step / 2, H - bw); ctx.fill();
+  }
+}
+function stamp(s, x, y, lt, col) {
+  if (lt < 0) return;
+  const k = clamp(lt / .22);
+  withAlpha(k, () => at(x, y, 3 - 2 * ease(k), () => {
+    ctx.rotate(-0.14);
+    ctx.font = `900 110px ${FONT}`;
+    const w = Math.min(ctx.measureText(s).width + 90, 860);
+    ctx.shadowColor = col; ctx.shadowBlur = 40;
+    rr(-w / 2, -88, w, 176, 22, 'rgba(13,10,26,.9)', col, 14);
+    ctx.shadowBlur = 0;
+    txt(s, 0, 4, { size: 110, color: col, weight: '900', maxW: w - 70, glow: col });
+  }));
+}
+
+// ---------- scenes (t = seconds since scene start) ----------
+const GROSS = 2500000, NET = 1297000;
+function hook(t) {
+  nightBg(t); shake(t, 2.8);
+  kin('MSHAHARA', W / 2, 360, t + .3, { size: 110 });
+  txt('TZS 2,500,000', W / 2, 520, { size: 120, color: N.white, weight: '900', alpha: p(t, 0, .2), glow: N.cyan });
+  // strike the gross figure, then count down to what actually arrives
+  const k = p(t, .7, 1.0);
+  if (k > 0) { ctx.strokeStyle = N.red; ctx.lineWidth = 16; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(150, 525); ctx.lineTo(150 + 780 * k, 525); ctx.stroke(); }
+  kin('UNAPOKEA...', W / 2, 800, t - 1.0, { size: 96, hi: ['UNAPOKEA'], hiColor: N.pink });
+  const n = GROSS - (GROSS - NET) * ease((t - 1.3) / 1.5);
+  withAlpha(p(t, 1.3, 1.4), () => {
+    txt(fmt(n), W / 2, 1080, { size: 190, color: t > 2.8 ? N.lime : N.white, weight: '900', glow: t > 2.8 ? N.lime : null, scale: t > 2.8 ? back((t - 2.8) / .3) : 1 });
+    for (let i = 0; i < 10; i++) {                     // red chunks flying off
+      const lt = t - 1.3 - i * .14; if (lt < 0 || lt > 1) continue;
+      txt('−', W / 2 + (rand(i) - .5) * 700 * lt, 1080 - 500 * lt, { size: 80, color: N.red, alpha: 1 - lt, weight: '900' });
+    }
+  });
+  txt('kwa mwezi', W / 2, 1270, { size: 56, color: N.grey, alpha: p(t, 1.5, 1.8), weight: '700' });
+  skyline(t);
+}
+function phone(t) {
+  rr(-250, -480, 500, 960, 70, '#1C1830', '#3A3360', 8);
+  ctx.save(); ctx.beginPath(); ctx.roundRect(-222, -450, 444, 900, 48); ctx.clip();
+  const g = ctx.createLinearGradient(0, -450, 0, 450); g.addColorStop(0, '#3B1E6E'); g.addColorStop(1, '#0E2A44');
+  ctx.fillStyle = g; ctx.fillRect(-222, -450, 444, 900);
+  txt('08:00', 0, -330, { size: 120, weight: '300', color: N.white });
+  txt('Ijumaa, 25 Oktoba', 0, -240, { size: 34, weight: '600', color: '#D9D2FF' });
+  const ny = -560 + 420 * back((t - .3) / .5);
+  rr(-200, ny, 400, 190, 30, 'rgba(255,255,255,.96)');
+  txt('🏦 BENKI · sasa hivi', -175, ny + 38, { size: 26, align: 'left', color: '#6B6680', weight: '700' });
+  txt('Mshahara umeingia', -175, ny + 88, { size: 36, align: 'left', color: N.ink, weight: '800' });
+  txt('TZS 1,297,000', -175, ny + 145, { size: 50, align: 'left', color: '#0A8A55', weight: '900' });
+  ctx.restore();
+  rr(-70, -470, 140, 34, 17, '#000');
+}
+function sms(t) {
+  nightBg(t);
+  withAlpha(p(t, 0, .2), () => at(W / 2, 760, 1, () => phone(t)));
+  kin('Subiri... si nililipwa MILIONI 2.5??', W / 2, 1490, t - 1.2, { size: 84, hi: ['MILIONI', '25'], hiColor: N.pink });
+}
+function slip(t) {
+  nightBg(t, '#120D24', '#120D24');
+  kin('Hati ya mshahara 👇', W / 2, 190, t, { size: 76 });
+  withAlpha(p(t, .2, .5), () => {
+    rr(90, 290, 900, 1330, 26, N.paper);
+    rr(90, 290, 900, 150, [26, 26, 0, 0], '#23204A');
+    txt('HATI YA MSHAHARA — OKTOBA 2026', W / 2, 345, { size: 40, color: N.white, weight: '800' });
+    txt('Jina: Wewe   ·   Cheo: Afisa', W / 2, 400, { size: 32, color: '#C9C4E6', weight: '600' });
+    const row = (label, val, y, col, k, bold) => withAlpha(k, () => {
+      txt(label, 140, y, { size: 42, align: 'left', color: N.ink, weight: bold ? '900' : '700', maxW: 520 });
+      txt(val, 940, y, { size: 46, align: 'right', color: col, weight: '900' });
+    });
+    row('Mshahara ghafi (Gross)', fmt(GROSS), 520, N.ink, p(t, .5, .8), true);
+    ctx.strokeStyle = '#D9D4C8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(130, 580); ctx.lineTo(950, 580); ctx.stroke();
+    const cuts = [['NSSF (10%)', 250000], ['PAYE — kodi ya mapato', 503000], ['Bodi ya Mikopo HESLB (15%)', 375000], ['NHIF — bima ya afya (3%)', 75000]];
+    cuts.forEach(([l, v], i) => {
+      const a = 1.6 + i * 1.3, y = 670 + i * 130;
+      row(l, '−' + fmt(v), y, '#D92D2D', p(t, a, a + .2));
+      const k = p(t, a + .05, a + .3);                 // red slash as it's cut
+      if (k > 0 && k < 1) { ctx.fillStyle = 'rgba(255,77,77,.25)'; ctx.fillRect(110, y - 50, 860 * k, 100); }
+    });
+    ctx.strokeStyle = N.ink; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(130, 1200); ctx.lineTo(950, 1200); ctx.stroke();
+    row('Jumla ya makato', '−' + fmt(GROSS - NET), 1260, '#D92D2D', p(t, 6.6, 6.9), true);
+    withAlpha(p(t, 7.0, 7.2), () => at(W / 2, 1440, back((t - 7.0) / .35), () => {
+      rr(-420, -90, 840, 180, 24, N.ink);
+      txt('MSHAHARA HALISI', -390, -28, { size: 38, align: 'left', color: N.grey, weight: '800' });
+      txt('TZS ' + fmt(NET), -390, 36, { size: 74, align: 'left', color: N.lime, weight: '900', glow: N.lime });
+    }));
+  });
+  txt('Viwango: PAYE 2025/26 · NSSF 10% · HESLB 15% · NHIF 3% — mfano, hakiki na HR', W / 2, 1720, { size: 30, color: N.grey, weight: '600', alpha: p(t, 2, 2.4), maxW: 920 });
+}
+function pct(t) {
+  nightBg(t);
+  const cx = W / 2, cy = 800, R = 300, k = ease(t / 1.2), cut = .481;
+  ctx.lineWidth = 110; ctx.lineCap = 'butt';
+  ctx.save(); ctx.shadowColor = N.red; ctx.shadowBlur = 40;
+  ctx.strokeStyle = N.red; ctx.beginPath(); ctx.arc(cx, cy, R, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * cut * k); ctx.stroke();
+  ctx.shadowColor = N.lime; ctx.strokeStyle = N.lime;
+  ctx.beginPath(); ctx.arc(cx, cy, R, -Math.PI / 2 + Math.PI * 2 * cut * k, -Math.PI / 2 + Math.PI * 2 * k); ctx.stroke();
+  ctx.restore();
+  txt(Math.round(48 * k) + '%', cx, cy - 20, { size: 170, color: N.red, weight: '900', glow: N.red });
+  txt('makato', cx, cy + 100, { size: 50, color: N.grey, weight: '700', alpha: p(t, .6, 1) });
+  kin('48% imeenda KABLA hujaigusa', W / 2, 1400, t - 1.0, { size: 92, hi: ['KABLA', '48%'], hiColor: N.red });
+}
+function ltd(t) {
+  nightBg(t);
+  kin('Wewe si mfanyakazi tu.', W / 2, 360, t, { size: 76, maxW: 940 });
+  kin('Wewe ni KAMPUNI.', W / 2, 560, t - 1.0, { size: 110, hi: ['KAMPUNI'], hiColor: N.gold });
+  withAlpha(p(t, 1.8, 2.1), () => at(W / 2, 1000, back((t - 1.8) / .45), () => {
+    ctx.save(); ctx.shadowColor = N.gold; ctx.shadowBlur = 50; rr(-380, -230, 760, 460, 40, '#1A1430', N.gold, 8); ctx.restore();
+    txt('WEWE LTD', 0, -110, { size: 120, color: N.gold, weight: '900', glow: N.gold });
+    txt('Mkurugenzi: Wewe', 0, 30, { size: 48, color: N.white, weight: '700' });
+    txt('Mhasibu: ???', 0, 110, { size: 48, color: N.pink, weight: '800' });
+  }));
+  skyline(t);
+}
+const EXPENSES = [['🏠', 'Kodi ya nyumba', 350000], ['🚌', 'Nauli + bodaboda/Bolt', 120000], ['☕', 'Chai asubuhi + chakula', 180000],
+                  ['📱', 'Bando + vocha', 50000], ['👕', 'Nguo mpya', 150000], ['🍗', 'KFC Mlimani City', 80000],
+                  ['🍾', 'Club Ijumaa & Jumamosi', 200000], ['🏝️', 'Mbudya island', 100000], ['💍', 'Michango ya harusi', 100000],
+                  ['📲', 'Mkopo wa app', 150000]];
+const ROW0 = .8, ROWDT = 1.15;
+function expenses(t) {
+  nightBg(t);
+  const shown = EXPENSES.filter((_, i) => t >= ROW0 + i * ROWDT);
+  const bal = NET - shown.reduce((a, r) => a + r[2], 0);
+  const neg = bal < 0;
+  if (neg) shake(t, ROW0 + 8 * ROWDT);
+  txt('Matumizi ya WEWE LTD — mwezi 1', W / 2, 140, { size: 52, color: N.gold, weight: '800' });
+  neonBox(110, 200, 860, 170, 30, neg ? N.red : N.lime);
+  txt('SALIO', 160, 250, { size: 36, align: 'left', color: N.grey, weight: '800' });
+  txt('TZS ' + fmt(bal), 160, 318, { size: 76, align: 'left', color: neg ? N.red : N.lime, weight: '900', glow: neg ? N.red : N.lime });
+  EXPENSES.forEach(([e, label, v], i) => {
+    const a = p(t, ROW0 + i * ROWDT, ROW0 + i * ROWDT + .3), y = 470 + i * 128, dx = (1 - a) * 200;
+    withAlpha(a, () => {
+      rr(110 + dx, y - 54, 860, 108, 22, i >= 5 && i <= 7 ? 'rgba(255,46,136,.16)' : 'rgba(255,255,255,.07)');
+      txt(e, 170 + dx, y, { size: 56 });
+      txt(label, 230 + dx, y, { size: 42, align: 'left', color: N.white, weight: '700', maxW: 470 });
+      txt('−' + fmt(v), 945 + dx, y, { size: 44, align: 'right', color: N.red, weight: '900' });
+    });
+  });
+  kin('Salio limeisha… na ni tarehe 18 😬', W / 2, 1740, t - 11.6, { size: 52, hi: ['18'], hiColor: N.red, maxW: 940 });
+}
+function pnl(t) {
+  nightBg(t, '#120D24', '#120D24'); shake(t, 3.0);
+  kin('TAARIFA YA MAPATO', W / 2, 250, t, { size: 72, maxW: 960, hi: ['MAPATO'], hiColor: N.gold });
+  txt('WEWE LTD · Oktoba 2026', W / 2, 360, { size: 44, color: N.grey, weight: '700', alpha: p(t, .3, .6) });
+  const row = (l, v, y, col, k) => withAlpha(k, () => {
+    txt(l, 150, y, { size: 56, align: 'left', color: N.white, weight: '800' });
+    txt(v, 930, y, { size: 62, align: 'right', color: col, weight: '900' });
+  });
+  row('Mapato', fmt(NET), 560, N.lime, p(t, .6, .9));
+  row('Matumizi', '(' + fmt(1480000) + ')', 700, N.red, p(t, 1.2, 1.5));
+  withAlpha(p(t, 1.8, 2.0), () => { ctx.strokeStyle = N.white; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(150, 790); ctx.lineTo(930, 790); ctx.stroke(); });
+  row('Matokeo', '(183,000)', 880, N.red, p(t, 2.1, 2.4));
+  stamp('HASARA', W / 2, 1180, t - 3.0, N.red);
+  kin('Kampuni hii INGEFILISIKA.', W / 2, 1520, t - 4.0, { size: 90, hi: ['INGEFILISIKA'], hiColor: N.red });
+}
+function spiral(t) {
+  nightBg(t);
+  kin('Na mwezi ujao?', W / 2, 260, t, { size: 92 });
+  const cx = W / 2, cy = 930, R = 360, nodes = ['Hasara', 'Mkopo wa app', 'Riba juu', 'Hasara KUBWA'];
+  const active = Math.floor(Math.max(0, t - .6) * 2.2) % 4;
+  ctx.strokeStyle = 'rgba(255,77,77,.6)'; ctx.lineWidth = 10;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2 * p(t, .3, 1.0)); ctx.stroke();
+  const rot = t * 1.8;                                   // a dot chasing round the trap
+  circle(cx + Math.cos(rot) * R, cy + Math.sin(rot) * R, 22, N.red);
+  nodes.forEach((s, i) => {
+    const ang = -Math.PI / 2 + i * Math.PI / 2, x = cx + Math.cos(ang) * R, y = cy + Math.sin(ang) * R;
+    withAlpha(p(t, .4 + i * .25, .7 + i * .25), () => at(x, y, i === active ? 1.08 : 1, () => {
+      neonBox(-150, -62, 300, 124, 24, i === active ? N.red : N.pink, i === active ? 'rgba(255,77,77,.35)' : 'rgba(13,10,26,.85)');
+      txt(s, 0, 0, { size: 42, color: N.white, weight: '900', maxW: 260 });
+    }));
+  });
+  txt('MTEGO WA', cx, cy - 36, { size: 52, color: N.red, weight: '900', alpha: p(t, 1.2, 1.5), glow: N.red });
+  txt('MADENI', cx, cy + 36, { size: 52, color: N.red, weight: '900', alpha: p(t, 1.2, 1.5), glow: N.red });
+  kin('Unamjua mtu yuko hapa? 👀', W / 2, 1530, t - 2.6, { size: 76, hi: ['HAPA'], hiColor: N.pink });
+}
+function fix(t) {
+  nightBg(t); shake(t, 7.6);
+  kin('Usiache starehe. IPANGE.', W / 2, 200, t, { size: 92, hi: ['IPANGE'] });
+  const moves = [['🍾', 'Club', 200000, 80000], ['👕', 'Nguo', 150000, 50000], ['🍗', 'KFC', 80000, 40000]];
+  moves.forEach(([e, l, from, to], i) => {
+    const a = p(t, 1.4 + i * 1.6, 1.8 + i * 1.6), y = 470 + i * 220, k = p(t, 2.0 + i * 1.6, 2.6 + i * 1.6);
+    withAlpha(a, () => {
+      neonBox(110, y - 85, 860, 170, 30, N.cyan);
+      txt(e, 190, y, { size: 70 });
+      txt(l, 260, y, { size: 56, align: 'left', color: N.white, weight: '800' });
+      txt(fmt(from), 680, y, { size: 46, align: 'right', color: N.grey, weight: '800' });
+      if (k > 0) { ctx.strokeStyle = N.red; ctx.lineWidth = 7; ctx.beginPath(); ctx.moveTo(530, y); ctx.lineTo(530 + 155 * k, y); ctx.stroke(); }
+      txt('→ ' + fmt(to), 930, y, { size: 52, align: 'right', color: N.lime, weight: '900', alpha: k });
+    });
+  });
+  // result flips from loss to profit
+  const flip = p(t, 6.6, 7.6), v = -183000 + 260000 * flip, good = v >= 0;
+  withAlpha(p(t, 6.4, 6.6), () => {
+    neonBox(110, 1150, 860, 250, 36, good ? N.lime : N.red);
+    txt(good ? 'FAIDA KILA MWEZI' : 'HASARA', W / 2, 1215, { size: 46, color: N.grey, weight: '800' });
+    txt((good ? '+' : '') + fmt(v), W / 2, 1310, { size: 110, color: good ? N.lime : N.red, weight: '900', glow: good ? N.lime : N.red, scale: t > 7.6 ? back((t - 7.6) / .3) : 1 });
+  });
+  kin('Mkopo wa app ukiisha: +227,000 💰', W / 2, 1560, t - 8.6, { size: 70, hi: ['227000'], hiColor: N.gold });
+}
+function cta(t) {
+  nightBg(t);
+  kin('Una madeni? Bajeti haieleweki?', W / 2, 330, t, { size: 92, hi: ['MADENI', 'BAJETI'], hiColor: N.pink });
+  const pulse = 1 + Math.sin(t * 6) * .045 * p(t, 1.8, 2.2);
+  withAlpha(p(t, 1.3, 1.5), () => at(W / 2, 720, back((t - 1.3) / .4) * pulse, () => {
+    ctx.save(); ctx.shadowColor = N.lime; ctx.shadowBlur = 50; rr(-400, -130, 800, 260, 40, N.lime); ctx.restore();
+    txt('COMMENT "BAJETI"', 0, -30, { size: 66, color: N.ink, weight: '900', maxW: 780 });
+    txt('tukusaidie kupanga', 0, 60, { size: 46, color: N.ink, weight: '700' });
+  }));
+  withAlpha(p(t, 2.8, 3.2), () => {
+    neonBox(140, 980, 800, 160, 30, N.pink);
+    txt('TAG rafiki wa club ya Ijumaa 😂', W / 2, 1060, { size: 52, color: N.white, weight: '800', maxW: 740 });
+  });
+  txt('FUATILIA kwa WEWE LTD sehemu ya 2', W / 2, 1260, { size: 54, color: N.gold, weight: '800', alpha: p(t, 4.0, 4.4) });
+  txt('Elimu ya fedha — si ushauri wa uwekezaji. Namba ni mfano.', W / 2, 1400, { size: 32, color: N.grey, weight: '600', alpha: p(t, 4.4, 4.8) });
+  skyline(t);
+}
+
+// [duration, scene, thud times, snip times] (times within the scene)
+const scenes = [[3.5, hook, [2.8], []], [3.5, sms, [], []], [9, slip, [7.0], [1.6, 2.9, 4.2, 5.5]], [3.5, pct, [], []],
+                [4, ltd, [1.8], []], [14, expenses, [ROW0 + 8 * ROWDT], EXPENSES.map((_, i) => ROW0 + i * ROWDT)],
+                [6, pnl, [3.0], []], [5.5, spiral, [], []], [11, fix, [7.6], [2.0, 3.6, 5.2]], [7, cta, [], []]];
+const TOTAL = scenes.reduce((a, [d]) => a + d, 0);
+const starts = []; scenes.reduce((a, [d]) => (starts.push(a), a + d), 0);
+const hits = scenes.flatMap(([, , h], i) => h.map(x => starts[i] + x));
+const snips = scenes.flatMap(([, , , s], i) => s.map(x => starts[i] + x));
+
+function frame(time) {
+  const i = Math.max(0, starts.findLastIndex(s => time >= s));
+  const [d, fn] = scenes[i], lt = Math.min(time - starts[i], d);
+  ctx.save();
+  const z = 1 + .07 * (1 - ease(lt / .45));           // zoom punch on every cut
+  ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2);
+  fn(lt);
+  ctx.restore();
+  if (i > 0 && lt < .35) {                              // neon wipe reveal
+    const k = ease(lt / .35);
+    [[N.cyan, 2], [N.lime, 1], [N.pink, 0]].forEach(([c, j]) => {
+      const e = k * (W + 900) - j * 140;
+      ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(e, 0); ctx.lineTo(W + 2000, 0); ctx.lineTo(W + 2000, H); ctx.lineTo(e - 500, H); ctx.fill();
+    });
+  }
+  strip(time);
+  ctx.fillStyle = 'rgba(255,255,255,.12)'; ctx.fillRect(60, 44, W - 120, 10);
+  ctx.fillStyle = N.lime; ctx.fillRect(60, 44, (W - 120) * clamp(time / TOTAL), 10);
+  const handle = document.getElementById('handle').value.trim();
+  if (handle) {
+    ctx.save(); ctx.font = `700 36px ${FONT}`; const w = ctx.measureText(handle).width + 56; ctx.restore();
+    rr(W / 2 - w / 2, H - 108, w, 60, 30, 'rgba(13,10,26,.6)');
+    txt(handle, W / 2, H - 77, { size: 36, color: N.white, weight: '700' });
+  }
+}
+
+// ---------- music: a small synthesized amapiano groove ----------
+let actx = null, recDest = null, master = null, noiseBuf = null;
+function ensureAudio() {
+  if (actx) return;
+  actx = new AudioContext(); recDest = actx.createMediaStreamDestination();
+  noiseBuf = actx.createBuffer(1, actx.sampleRate, actx.sampleRate);
+  const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+}
+function env(g, when, peak, decay) { g.gain.setValueAtTime(peak, when); g.gain.exponentialRampToValueAtTime(.0001, when + decay); }
+function tone(when, f0, f1, dur, peak, type = 'sine') {
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.type = type; o.frequency.setValueAtTime(f0, when); o.frequency.exponentialRampToValueAtTime(f1, when + dur * .6);
+  env(g, when, peak, dur); o.connect(g).connect(master); o.start(when); o.stop(when + dur);
+}
+function noise(when, type, f, dur, peak, sweepTo) {
+  const s = actx.createBufferSource(), fl = actx.createBiquadFilter(), g = actx.createGain();
+  s.buffer = noiseBuf; fl.type = type; fl.frequency.setValueAtTime(f, when);
+  if (sweepTo) fl.frequency.exponentialRampToValueAtTime(sweepTo, when + dur);
+  env(g, when, peak, dur); s.connect(fl).connect(g).connect(master); s.start(when); s.stop(when + dur);
+}
+function startMusic(from) {
+  ensureAudio(); actx.resume(); stopMusic();
+  master = actx.createGain(); master.gain.value = document.getElementById('music').checked ? .4 : 0;
+  master.connect(actx.destination); master.connect(recDest);
+  const zero = actx.currentTime + .05 - from, s16 = 60 / 112 / 4, logPitch = [55, 55, 73, 49];
+  for (let n = 0; n * s16 < TOTAL; n++) {               // 16th-note grid
+    const tt = n * s16; if (tt < from) continue;
+    const w = zero + tt, step = n % 16, bar = Math.floor(n / 16);
+    if (step % 4 === 0) tone(w, 120, 48, .25, .7);                           // soft four-on-the-floor
+    noise(w, 'highpass', 8000, .04, step % 2 ? .05 : .1);                    // shaker
+    if (step === 4 || step === 12) noise(w, 'bandpass', 1800, .12, .35);     // clap
+    if ([3, 6, 10, 14].includes(step)) {                                     // log drum
+      const f = logPitch[(bar + [3, 6, 10, 14].indexOf(step)) % 4];
+      tone(w, f * 1.6, f, .42, .55); tone(w, f * 3.2, f * 2, .12, .12, 'triangle');
+    }
+  }
+  starts.slice(1).forEach(s => s > from + .1 && noise(zero + s - .2, 'bandpass', 500, .35, .22, 5000)); // whoosh
+  hits.forEach(s => s >= from && (tone(zero + s, 90, 35, .5, 1), noise(zero + s, 'lowpass', 900, .25, .5)));
+  snips.forEach(s => s >= from && noise(zero + s, 'highpass', 3000, .08, .4)); // cash-register snip
+}
+function stopMusic() { if (master) { master.disconnect(); master = null; } }
+
+// ---------- 3-2-1 countdown ----------
+let cdStart = null, cdThen = null;
+function beep(when, f) {
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.frequency.value = f; env(g, when, .3, .18);
+  o.connect(g); g.connect(actx.destination); g.connect(recDest); o.start(when); o.stop(when + .2);
+}
+function startCountdown(then) {
+  ensureAudio(); actx.resume();
+  cdStart = performance.now(); cdThen = then;
+  for (let i = 0; i < 3; i++) beep(actx.currentTime + .02 + i, i === 2 ? 660 : 440);
+}
+function countdownFrame(e) {
+  const n = 3 - Math.floor(e), f = e % 1, col = [N.lime, N.gold, N.pink][3 - n], cx = W / 2, cy = H / 2 - 80;
+  nightBg(e);
+  ctx.save();
+  ctx.lineWidth = 26; ctx.strokeStyle = 'rgba(255,255,255,.12)';
+  ctx.beginPath(); ctx.arc(cx, cy, 260, 0, Math.PI * 2); ctx.stroke();
+  ctx.shadowColor = col; ctx.shadowBlur = 40; ctx.strokeStyle = col; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.arc(cx, cy, 260, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - f)); ctx.stroke();
+  ctx.restore();
+  txt(String(n), cx, cy + 10, { size: 300, color: col, weight: '900', glow: col, scale: 1.35 - .35 * ease(f / .35), alpha: 1 - clamp((f - .8) / .2) });
+  txt('Tayari?', cx, cy + 420, { size: 70, color: N.white, weight: '800' });
+  strip(e);
+}
+
+// ---------- playback + recording ----------
+const seek = document.getElementById('seek'), playBtn = document.getElementById('play'),
+      recBtn = document.getElementById('rec'), status = document.getElementById('status');
+seek.max = TOTAL;
+let playing = false, startAt = 0, cur = 0, onEnd = null;
+
+function loop(now) {
+  if (cdStart !== null) {
+    const e = (now - cdStart) / 1000;
+    if (e < 3) { countdownFrame(e); requestAnimationFrame(loop); return; }
+    const then = cdThen; cdStart = cdThen = null; then();
+  }
+  if (playing) {
+    cur = (now - startAt) / 1000;
+    if (cur >= TOTAL) { cur = TOTAL; pause(); onEnd && onEnd(); onEnd = null; }
+    seek.value = cur;
+  }
+  frame(cur);
+  requestAnimationFrame(loop);
+}
+function play(from = cur) {
+  if (from >= TOTAL) from = 0;
+  startAt = performance.now() - from * 1000; playing = true; playBtn.textContent = '⏸ Simamisha';
+  startMusic(from);
+}
+function pause() { playing = false; playBtn.textContent = '▶ Cheza'; stopMusic(); }
+playBtn.onclick = () => {
+  if (cdStart !== null) return;
+  if (playing) pause();
+  else if (cur === 0 || cur >= TOTAL) startCountdown(() => play(0));
+  else play();
+};
+seek.oninput = () => { pause(); cur = +seek.value; };
+
+recBtn.onclick = () => {
+  ensureAudio();
+  const types = ['video/mp4;codecs=avc1,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm'];
+  const mime = types.find(t => window.MediaRecorder && MediaRecorder.isTypeSupported(t));
+  if (!mime) { status.textContent = 'Browser hii haiwezi kurekodi. Tumia Chrome au Edge.'; return; }
+  const stream = new MediaStream([...cv.captureStream(30).getVideoTracks(), ...recDest.stream.getAudioTracks()]);
+  const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8_000_000 });
+  const chunks = [];
+  rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+  rec.onstop = () => {
+    const ext = mime.includes('mp4') ? 'mp4' : 'webm', a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(chunks, { type: mime }));
+    a.download = 'wewe-ltd-short.' + ext; a.click();
+    status.textContent = `Imekamilika: wewe-ltd-short.${ext} imepakuliwa. Iweke kwenye CapCut, ongeza sauti yako, punguza muziki.`;
+    recBtn.disabled = false; playBtn.disabled = false;
+  };
+  recBtn.disabled = true; playBtn.disabled = true;
+  status.textContent = 'Inarekodi... usibadilishe tab hadi video iishe.';
+  // countdown is recorded only when the box is ticked; otherwise recording starts on the hook
+  const inVideo = document.getElementById('cdIn').checked;
+  if (inVideo) rec.start(250);
+  startCountdown(() => { cur = 0; frame(0); if (!inVideo) rec.start(250); play(0); });
+  onEnd = () => setTimeout(() => rec.stop(), 300);
+};
+
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

@@ -16,6 +16,12 @@
     Three rounds of 50/10, labelled, for a longer drafting session.
 
 .EXAMPLE
+    .\pomodoro.ps1 -Rounds 1 -LongBreak 0 -Task "Chantal" -Score write
+    One 25-minute block. The minutes are added to write_min in today's daily
+    note (01 Projects/Personal/Daily/YYYY-MM-DD.md), which feeds The Game.
+    Stopping early with Ctrl+C still credits the whole minutes already done.
+
+.EXAMPLE
     .\pomodoro.ps1 -Task "Rubric scoring" -Log
     Same as default, but appends each finished block to scripts\pomodoro-log.md.
 
@@ -33,8 +39,8 @@ param(
     [ValidateRange(1, 240)]
     [int]$Break = 5,
 
-    # Length of the break after the final round, in minutes.
-    [ValidateRange(1, 240)]
+    # Length of the break after the final round, in minutes. 0 skips it.
+    [ValidateRange(0, 240)]
     [int]$LongBreak = 15,
 
     # How many work blocks before the long break.
@@ -47,6 +53,15 @@ param(
     # Append each completed work block to a markdown log.
     [switch]$Log,
 
+    # Add the work minutes to today's daily note for The Game:
+    # "write" adds to write_min, "study" adds to study_min.
+    [ValidateSet("none", "write", "study")]
+    [string]$Score = "none",
+
+    # Where the daily notes live, and the template used to start a missing one.
+    [string]$DailyDir = (Join-Path $PSScriptRoot "..\01 Projects\Personal\Daily"),
+    [string]$DailyTemplate = (Join-Path $PSScriptRoot "..\Templates2\Daily Note.md"),
+
     # Where the log lives, if -Log is used.
     [string]$LogPath = (Join-Path $PSScriptRoot "pomodoro-log.md")
 )
@@ -55,6 +70,7 @@ Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
 $script:Tray = $null
+$script:WorkStarted = $null   # set while a work block runs, so Ctrl+C can credit it
 
 function Show-Alert {
     param(
@@ -94,6 +110,40 @@ function Start-Countdown {
     Write-Host "`r  $Label  done.        " -ForegroundColor Green
 }
 
+function Add-DailyMinutes {
+    param([Parameter(Mandatory)][int]$Minutes)
+
+    if ($Score -eq "none" -or $Minutes -le 0) { return }
+    $field = if ($Score -eq "write") { "write_min" } else { "study_min" }
+    $now = Get-Date
+    $path = Join-Path $DailyDir ($now.ToString("yyyy-MM-dd") + ".md")
+    $utf8 = New-Object System.Text.UTF8Encoding($false)
+
+    if (Test-Path $path) {
+        $text = [IO.File]::ReadAllText($path, $utf8)
+    } else {
+        # Fill the same placeholders Obsidian's core Templates plugin would.
+        New-Item -ItemType Directory -Force -Path $DailyDir | Out-Null
+        $culture = [Globalization.CultureInfo]::InvariantCulture
+        $text = [IO.File]::ReadAllText($DailyTemplate, $utf8)
+        $text = $text.Replace("{{date:YYYY-MM-DD}}", $now.ToString("yyyy-MM-dd"))
+        $text = $text.Replace("{{date:dddd D MMMM YYYY}}", $now.ToString("dddd d MMMM yyyy", $culture))
+    }
+
+    $match = [regex]::Match($text, "(?m)^$($field):[ \t]*(\d*)[ \t]*\r?$")
+    if ($match.Success) {
+        $old = 0
+        if ($match.Groups[1].Value) { $old = [int]$match.Groups[1].Value }
+        $text = $text.Remove($match.Index, $match.Length).Insert($match.Index, "$($field): $($old + $Minutes)")
+    } elseif ($text.StartsWith("---")) {
+        $text = $text.Insert(3, "`n$($field): $Minutes")
+    } else {
+        $text = "---`n$($field): $Minutes`n---`n" + $text
+    }
+    [IO.File]::WriteAllText($path, $text, $utf8)
+    Write-Host "  +$Minutes min to $field in $(Split-Path $path -Leaf)" -ForegroundColor Yellow
+}
+
 function Write-LogEntry {
     param([Parameter(Mandatory)][int]$Round)
 
@@ -121,7 +171,10 @@ try {
 
     for ($round = 1; $round -le $Rounds; $round++) {
         Show-Alert -Title "Round $round of $Rounds - start" -Message "$Task. $Work minutes."
+        $script:WorkStarted = Get-Date
         Start-Countdown -Minutes $Work -Label "Round $round/$Rounds"
+        $script:WorkStarted = $null
+        Add-DailyMinutes -Minutes $Work
         Write-LogEntry -Round $round
 
         if ($round -lt $Rounds) {
@@ -130,8 +183,10 @@ try {
         }
     }
 
-    Show-Alert -Title "Long break - $LongBreak min" -Message "All $Rounds rounds done. $Task."
-    Start-Countdown -Minutes $LongBreak -Label "Long break"
+    if ($LongBreak -gt 0) {
+        Show-Alert -Title "Long break - $LongBreak min" -Message "All $Rounds rounds done. $Task."
+        Start-Countdown -Minutes $LongBreak -Label "Long break"
+    }
 
     Show-Alert -Title "Session complete" -Message "$Rounds rounds of $Task finished."
     Write-Host ""
@@ -140,6 +195,11 @@ try {
     Write-Host ""
 }
 finally {
+    # Stopped mid-block with Ctrl+C: the whole minutes already done still count.
+    if ($script:WorkStarted) {
+        $done = [int][math]::Floor(((Get-Date) - $script:WorkStarted).TotalMinutes)
+        Add-DailyMinutes -Minutes $done
+    }
     if ($script:Tray) {
         $script:Tray.Visible = $false
         $script:Tray.Dispose()

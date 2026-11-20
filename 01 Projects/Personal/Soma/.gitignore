@@ -1,0 +1,5 @@
+# The Android asset is a build copy of dist/soma.html
+android/app/src/main/assets/soma.html
+
+# The sync hub's data: everyone's study record, and the sync code. Personal. Never commit.
+data/

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Timetable reminders and the "time's up" alert. Android 13+ asks the user once. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!--
+      Exact alarms, so a 25-minute timer alerts at 25 minutes, not "within the next 11".
+      USE_EXACT_ALARM is granted at install on Android 13+. Google Play only allows it for
+      alarm and calendar apps, which doesn't matter for a sideloaded APK. On Android 12
+      the older SCHEDULE_EXACT_ALARM covers it. If neither is granted, Soma falls back to
+      inexact alarms.
+    -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" android:maxSdkVersion="32" />
+    <!-- Alarms are cleared on reboot; this lets Soma put the reminders back. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!--
+      Network access is only for syncing with your own PC's Soma hub on the local network
+      (same Wi-Fi or the phone's hotspot; no internet needed). Soma connects to nothing else:
+      it only ever calls the address typed into its Sync settings, and each sync carries the
+      6-digit code. Course links open in the phone's own browser.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:hardwareAccelerated="true"
+        android:theme="@style/Theme.Soma">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|uiMode"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.Soma">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Fires reminders and the timer alert. Only Soma's own alarms reach it. -->
+        <receiver android:name=".ReminderReceiver" android:exported="false" />
+
+        <!-- Re-schedules reminders after a reboot. -->
+        <receiver android:name=".BootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>
